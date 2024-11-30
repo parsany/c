@@ -9,7 +9,7 @@ export default function Projects() {
       description:
         'Flexible and powerful data analysis / manipulation library for Python, providing labeled data structures.',
       date: 'Oct 26, 2023',
-      image: '/pandas.png', // Replace with actual image path
+      image: '/c/vercel.svg',
       link: '#',
     },
     {
@@ -18,7 +18,7 @@ export default function Projects() {
       description:
         'PyTorch is a Python package that provides tensor computation (like NumPy) with strong GPU acceleration.',
       date: 'Oct 26, 2023',
-      image: '/pytorch.png', // Replace with actual image path
+      image: '/c/vercel.svg',
       link: '#',
     },
     {
@@ -27,7 +27,7 @@ export default function Projects() {
       description:
         'scikit-learn is a Python module for machine learning built on top of SciPy and is distributed under the 3-Clause BSD license.',
       date: 'Oct 26, 2023',
-      image: '/scikit-learn.png', // Replace with actual image path
+      image: '/c/vercel.svg',
       link: '#',
     },
   ];
@@ -36,7 +36,7 @@ export default function Projects() {
     <div className={styles.container}>
       <h1 className={styles.title}>Selected Projects</h1>
       <p className={styles.subtitle}>
-        I enjoy making things. Here are a selection of projects that I have worked on over the years.
+        I enjoy making things. Here are a selection of projects that I’ve worked on throughout my journey.
       </p>
       <div className={styles.grid}>
         {projects.map((project) => (
