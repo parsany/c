@@ -1,6 +1,11 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --header-height: 4rem;
+  --primary-color: #1b1e25;
+  --accent-color: #dddb5d;
+  --text-color: #c0c0c0;
+  --hover-text-color: #fff;
 }
 
 @media (prefers-color-scheme: dark) {
