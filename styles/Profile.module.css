@@ -1,0 +1,119 @@
+.Main{
+    background-color: rgb(137, 137, 199);
+}
+
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #ffffff;
+  background-color: #013220;
+  border-radius: 10px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profileImage {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.name {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.name h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #ffffff;
+}
+
+.name h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #a0ffa0;
+}
+
+.name h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: #66bb66;
+}
+
+.links {
+  margin-top: 10px;
+}
+
+.links a {
+  margin-right: 10px;
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: #a0ffa0;
+}
+
+.links a:hover {
+  color: #ffffff;
+}
+
+.about {
+  margin-bottom: 20px;
+}
+
+.about h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.about p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.downloadCV {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #006600;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.downloadCV:hover {
+  background-color: #004d00;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.section {
+  flex: 1;
+}
+
+.section h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.section li {
+  font-size: 1rem;
+  line-height: 1.5;
+}
