@@ -1,0 +1,123 @@
+.container {
+  padding: 2rem;
+  background-color: var(--background-color);
+  color: #ffffff;
+  border-radius: 0.5rem;
+}
+
+.title {
+  margin-top: 45px;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.skillsWrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.category {
+  border: 1px solid --box-color;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: var(--skills-color);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+}
+
+.category:hover {
+  will-change: transform;
+  transition: transform 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  backface-visibility: hidden;
+  transform: translateY(-2px) scale(1.01) translateZ(0);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.categoryTitle {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--skill-title); 
+  /* add dark mode */
+}
+
+.skillsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skillItem {
+  
+  background-color: #444;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.skillName {
+  font-size: 1.1rem;
+  color: var(--skill-name)
+}
+
+
+.itemrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  column-gap: 150px;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .skillsWrapper {
+    padding: 1rem;
+  }
+
+  .itemrow {
+    flex-direction: column;
+    column-gap: 0;
+    align-items: center;
+  }
+
+  .categoryTitle {
+    font-size: 1.3rem;
+  }
+
+  .skillName {
+    font-size: 1rem;
+  }
+
+  .skillLevel {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .categoryTitle {
+    font-size: 1.1rem;
+  }
+}
+
+.itemrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  column-gap: 150px;
+}
+

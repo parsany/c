@@ -1,0 +1,144 @@
+.main {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #ffffff;
+  background-color: #1b2747;
+  border-radius: 10px;
+  border: 1px solid #3a549b;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.329);
+}
+
+
+.profile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profileImage {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+
+.logo {
+  width: 20px; 
+  height: 20px; 
+  object-fit: cover;
+}
+
+.logo:hover {
+  transform: scale(1.15);
+}
+
+.name {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+
+.links {
+  margin-top: 10px;
+}
+
+.links a {
+  margin-right: 10px;
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: #a0ffa0;
+}
+
+.links a:hover {
+  color: #ffffff;
+}
+
+.about {
+  margin-bottom: 20px;
+}
+
+.about h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.about p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.downloadCV {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #006600;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.downloadCV:hover {
+  background-color: #004d00;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.section {
+  flex: 1;
+}
+
+.section h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.section li {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+
+
+.tuple_construct {
+  display: flex;
+  align-items: center; 
+}
+
+.name {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.name h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #ffffff;
+}
+
+.name h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #a0ffa0;
+}
+
+.name h3 {
+  font-size: 0.9rem;
+  color: #66bb66;
+  margin-left: 8px;
+  margin-top: 8px;
+}

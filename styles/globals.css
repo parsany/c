@@ -1,0 +1,105 @@
+:root {
+  --background: #f8f9fa; 
+  --foreground: #121212; 
+  --header-height: 4rem;
+  --accent-color: #f9c74f; 
+  --text-color: #212529; 
+  --hover-text-color: #0a58ca; 
+  --background-color: #64543b;
+  --nice-color: #FEB91D; 
+  --background-cc: #f4f4f4; 
+  --primary-color: #ffffff; 
+  --card-background: #ffffff; 
+  --highlight-color: #00a8e8; 
+  --highlight-color2: #028090; 
+  --highlight-color3: #02c39a; 
+  --title-color: #002849; 
+  --subtitle-color: #6c757d; 
+  --banner-background: #f5f5f5; 
+  --project-name-color: #0056b3; 
+  --project-description-color: #495057; 
+  --project-date-color: #6c757d; 
+  --skills-nav: rgb(89, 133, 7);
+  --skills-nav-closed: rgb(49, 50, 51);
+  --foreground2: #dfa460;
+  --experience-company: #3d3d3d;
+  --experience-dates: #686868;
+  --experience-color: rgb(36, 47, 58);
+  --experience-res: rgb(79, 79, 80);
+  --skills-color:#ffffff;
+  --box-color: rgb(224, 224, 224);
+  --skill-name: #ffc65c;
+  --skill-title: #1b1b1b;
+  --button-color:rgb(38, 38, 39);
+  --button-color2:rgb(252, 252, 252);
+  --button-color3: rgb(17, 17, 17);
+  --search-color: rgb(252, 252, 252);
+  --teach-color: rgb(240, 236, 0);
+}
+
+.dark-mode {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --accent-color: #dddb5d; 
+  --text-color: #c0c0c0; 
+  --hover-text-color: #ffffff;
+  --background-color: #1b1f25;
+  --primary-color: #262934;
+  --card-background: #2e3a59;
+  --highlight-color: #00ffcc;
+  --highlight-color2: #01ad8b;
+  --highlight-color3: #00bcd4;
+  --title-color: #ffffff;
+  --subtitle-color: #d3d3d3;
+  --banner-background: #333333;
+  --project-name-color: #00ffcc;
+  --project-description-color: #ffffff;
+  --project-date-color: #cccccc;
+  --skills-nav: rgb(103, 150, 42);
+  --skills-nav-closed: rgb(88, 129, 13);
+  --foreground2: #ededed;
+  --experience-company: #b0bec5;
+  --experience-dates: #90a4ae;
+  --experience-color: rgb(255, 255, 255);
+  --experience-res: rgb(164, 171, 192);
+  --skills-color:#323f63;
+  --box-color: rgb(20, 27, 39);
+  --skill-name: #f0a51a;
+  --skill-title: #20dfb5;
+  --button-color:rgb(38, 38, 39);
+  --button-color2:rgb(175, 175, 177);
+  --button-color3: rgb(51, 49, 49);
+  --search-color: var(--primary-color);
+  --teach-color: white;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}

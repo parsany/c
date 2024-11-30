@@ -1,0 +1,97 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(to right, #1f1f1f, #2a2a2a);
+  padding: 60px;
+  min-height: 100vh;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  margin-top: 37px;
+}
+
+
+.box {
+  color: var(--experience-color);
+  background-color: var(--primary-color);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  width: 90%;
+  max-width: 800px;
+}
+
+.boxnormal {
+  background-color: var(--primary-color);
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.boxnormal {
+  background-color: var(--primary-color);
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.job {
+  margin-bottom: 30px;
+  padding: 14px;
+  border-left: 4px solid #00bcd4;
+}
+
+.jobHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.icond {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  filter: invert(1);
+}
+
+.jobTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.company {
+  font-size: 1.2rem;
+  color: var(--experience-company);
+}
+
+.dates {
+  font-size: 1rem;
+  color: var(--experience-dates);
+}
+
+.responsibilitiesTitle {
+  margin-top: 20px;
+}
+
+.responsibilities {
+  padding: 10px;
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+.responsibilitiesItem{
+  margin-top: 5px;
+  color: var(--experience-res);
+}

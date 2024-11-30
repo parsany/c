@@ -1,0 +1,86 @@
+  .container {
+    background-color: var(--background-color);
+    padding: 40px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .title {
+    color: var(--teach-color);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .searchBar {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--highlight-color);
+    width: 300px;
+    margin-bottom: 40px;
+    background-color: var(--search-color);
+    color: var(--text-color);
+  }
+  
+  .cardContainer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap; 
+    max-width: calc(4 * (300px + 20px));
+  }
+  
+  .card {
+    background-color: var(--primary-color);
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: scale(1.02);
+  }
+  
+  .image {
+    border-radius: 8px;
+    object-fit: cover;
+    width: 100%;
+    height: 200px;
+    display: block;
+}
+  
+  .courseTitle {
+    color: var(--highlight-color);
+    font-size: 1.5rem;
+    margin: 10px 0;
+  }
+  
+  .description {
+    color: var(--text-color);
+    margin: 10px 0;
+  }
+  
+  .date {
+    color: #cccccc;
+    font-size: 0.9rem;
+  }
+  
+  .showMoreButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--button-color);
+    color: var(--button-color2);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .showMoreButton:hover {
+    background-color: var(--button-color3);
+  }
+  
