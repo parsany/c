@@ -7,6 +7,14 @@ export default function Home() {
   return (
     <div>
       <p ClassName={styles.page}> &lt;p&gt; diddy</p>
+      <Image
+        src="/c/vercel.svg"
+        alt="Vercel Logo"
+        className={styles.vercelLogo}
+        width={100}
+        height={24}
+        priority
+      />
     </div>
   );
 }

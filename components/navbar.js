@@ -14,7 +14,7 @@ export default function NavBar() {
       <nav className={Styles.navbar} role="navigation">
         <li>
           <Link href="/" className={Styles.logo}>
-            <p>Home</p>
+            <p> Home</p>
           </Link>
         </li>
 
