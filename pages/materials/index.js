@@ -5,7 +5,7 @@ import { Materials } from "@/public/JSONJS";
 
 export default function Teaching() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [visibleCount, setVisibleCount] = useState(12); 
+  const [visibleCount, setVisibleCount] = useState(4); 
 
   const filteredCourses = Materials.filter(course =>
     course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||

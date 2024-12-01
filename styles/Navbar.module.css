@@ -16,16 +16,26 @@
   color: var(--text-color);
 }
 
+.togglecolor{
+  width: 20px;
+  height: 20px;
+  margin-left:-20px;
+}
+
 .navlist {
   display: flex;
   flex-direction: row;
   column-gap: 2rem;
   margin: 0;
   padding: 0;
+  transition: max-height 0.3s ease-in-out;  
+  overflow: hidden;  
 }
 
 .navlistOpen {
-  display: block;
+  display: flex;  
+  flex-direction: column;  
+  max-height: 350px;  
 }
 
 .navitem {
@@ -46,10 +56,8 @@
   font-family: "Dancing Script", cursive;
   font-size: 1.8rem;
   text-decoration: none;
-  /* color:var(--highlight-color2); */
 }
 
-/* Hamburg - TODO: FLAWED */
 .hamburger {
   display: none;
   background: none;
@@ -80,14 +88,14 @@
   transform: rotate(-45deg) translateY(-8px);
 }
 
-/* MEDIA */
+
 @media (max-width: 850px) {
   .hamburger {
     display: flex;
   }
 
   .navlist {
-    display: none;
+    display: none;  
     flex-direction: column;
     position: absolute;
     top: var(--header-height);
@@ -96,6 +104,12 @@
     width: 100%;
     padding: 1rem 0;
     z-index: 100;
+    transition: max-height 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  }
+
+  .navlistOpen {
+    display: flex;
+    transition: all 0.3s ease-in-out;
   }
 
   .navitem {

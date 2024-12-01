@@ -120,13 +120,6 @@ export const Materials = [
     image: "/c/content/course.jpg",
   },
   {
-    id: 4,
-    title: "responsive website",
-    description: "responsive",
-    date: "Oct 24, 1700",
-    image: "/c/content/course.jpg",
-  },
-  {
     id: 5,
     title: "add anims",
     description: "responsive",
@@ -142,27 +135,13 @@ export const Materials = [
   },
   {
     id: 7,
-    title: "make max 4 items",
-    description: "responsive",
-    date: "Oct 24, 1700",
-    image: "/c/content/course.jpg",
-  },
-  {
-    id: 8,
     title: "light dark mode",
     description: "responsive",
     date: "Oct 24, 1700",
     image: "/c/content/course.jpg",
   },
   {
-    id: 9,
-    title: "fix hamburg",
-    description: "responsive",
-    date: "Oct 24, 1700",
-    image: "/c/content/course.jpg",
-  },
-  {
-    id: 10,
+    id: 4,
     title: "post page",
     description: "responsive",
     date: "Oct 24, 1700",
