@@ -1,5 +1,11 @@
 .Main{
-    background-color: rgb(137, 137, 199);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--background-color);
+  color: #ffffff;
+  padding: 40px;
+  min-height: 100vh;
 }
 
 .container {
@@ -8,9 +14,12 @@
   padding: 20px;
   font-family: Arial, sans-serif;
   color: #ffffff;
-  background-color: #013220;
+  background-color: #1b2747;
   border-radius: 10px;
+  border: 1px solid #3a549b;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.329);
 }
+
 
 .profile {
   display: flex;

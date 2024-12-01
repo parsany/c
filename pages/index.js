@@ -21,7 +21,7 @@ export default function Home() {
           <h2>Computer Science Student</h2>
           {/* <h3>-</h3> */}
           <div className={styles.links}>
-            {/* Replace # with actual links */}
+            {/* links later */}
             <a href="#" aria-label="Email">📧</a>
             <a href="#" aria-label="X (Twitter)">❌</a>
             <a href="#" aria-label="Instagram">📸</a>
@@ -33,7 +33,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* About Section */}
+      {/* About */}
       <div className={styles.about}>
         <h2>Bio</h2>
         <p>
@@ -44,7 +44,7 @@ export default function Home() {
         </button>
       </div>
 
-      {/* Interests and Education */}
+      {/* Interests */}
       <div className={styles.details}>
         <div className={styles.section}>
           <h3>Interests</h3>
@@ -58,8 +58,6 @@ export default function Home() {
           <h3>Education</h3>
           <ul>
             <li>BSc Computer Science - SRBIAU</li>
-            {/* <li>MEng Artificial Intelligence - MIT</li>
-            <li>BSc Artificial Intelligence - MIT</li> */}
           </ul>
         </div>
       </div>

@@ -17,9 +17,7 @@ export default function Experience() {
               height={24}
               priority
             />
-            <h2 className={styles.jobTitle}>
-              Director of Cloud Infrastructure
-            </h2>
+            <h2 className={styles.jobTitle}>Director of Cloud Infrastructure</h2>
             <p className={styles.company}>GenCoin</p>
             <p className={styles.dates}>January 2021 - Present</p>
           </div>
@@ -52,24 +50,26 @@ export default function Experience() {
             <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
           </ul>
         </div>
+      </div>
 
-        <h1 className={styles.title}>Education</h1>
+      <h1 className={styles.title}>Education</h1>
 
+      <div className={styles.box}>
         <div className={styles.job}>
-          <div className={styles.jobHeader}>
-            <Image
-              src="/c/icons/education.svg"
-              alt="education Icon"
-              className={styles.icon}
-              width={100}
-              height={24}
-              priority
-            />
-            <h2 className={styles.jobTitle}>PhD Artificial Intelligence</h2>
-            <p className={styles.company}>Stanford University</p>
-            <p className={styles.dates}>January 2016 - December 2020</p>
-          </div>
+        <div className={styles.jobHeader}>
+          <Image
+            src="/c/icons/education.svg"
+            alt="Education Icon"
+            className={styles.icon}
+            width={100}
+            height={24}
+            priority
+          />
+          <h2 className={styles.jobTitle}>PhD Artificial Intelligence</h2>
+          <p className={styles.company}>Stanford University</p>
+          <p className={styles.dates}>January 2016 - December 2020</p>
         </div>
+      </div>
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ export default function Projects() {
 
   return (
     <div className={styles.container}>
+      <div className={styles.elements}>
       <h1 className={styles.title}>Selected Projects</h1>
       <p className={styles.subtitle}>
         I enjoy making things. Here are a selection of projects that I’ve worked on throughout my journey.
@@ -36,6 +37,7 @@ export default function Projects() {
           </div>
         ))}
       </div>
+    </div>
     </div>
   );
 }

@@ -1,35 +1,10 @@
 import { useState } from "react";
 import styles from "@/styles/ProSkills.module.css";
 import Languages from "../../components/Languages";
+import {ProSkills} from "@/public/JSONJS";
 
-const professionalSkills = [
-  {
-    category: "Languages",
-    items: [
-      { name: "English", level: 100 },
-      { name: "Spanish", level: 80 },
-      { name: "French", level: 60 },
-    ],
-  },
-  {
-    category: "Libraries & Frameworks (Backend)",
-    items: [
-      { name: "Node.js", level: 90 },
-      { name: "Express", level: 85 },
-      { name: "MongoDB", level: 75 },
-    ],
-  },
-  {
-    category: "Frontend Development",
-    items: [
-      { name: "React", level: 95 },
-      { name: "Next.js", level: 90 },
-      { name: "CSS Modules", level: 85 },
-    ],
-  },
-];
 
-const ProfessionalSkills = () => {
+export default function LanguageSkills() {
   const [expandedIndex, setExpandedIndex] = useState(-1);
 
   const toggleExpansion = (index) => {
@@ -40,7 +15,7 @@ const ProfessionalSkills = () => {
     <div className={styles.container}>
       <h2 className={styles.title}>Professional Skills</h2>
       <div className={styles.skillsWrapper}>
-        {professionalSkills.map((category, index) => (
+        {ProSkills.map((category, index) => (
           <div key={index} className={styles.category}>
             <div
               className={`${styles.header} ${
@@ -80,5 +55,3 @@ const ProfessionalSkills = () => {
     </div>
   );
 };
-
-export default ProfessionalSkills;

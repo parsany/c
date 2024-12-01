@@ -3,9 +3,8 @@ import styles from '@/styles/Languages.module.css';
 export default function Languages() {
     
   const languages = [
-    { name: 'English', percentage: 100 },
-    { name: 'Chinese', percentage: 75 },
-    { name: 'Portuguese', percentage: 25 },
+    { percentage: 'English', name: 'Bilingual' },
+    { percentage: 'Persian', name: 'Bilingual' },
   ];
 
   return (
@@ -14,7 +13,7 @@ export default function Languages() {
       <div className={styles.languageContainer}>
         {languages.map((lang, index) => (
           <div key={index} className={styles.languageCard}>
-            <div className={styles.percentage}>{lang.percentage}%</div>
+            <div className={styles.percentage}>{lang.percentage}</div>
             <p className={styles.languageName}>{lang.name}</p>
           </div>
         ))}
