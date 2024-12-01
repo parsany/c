@@ -12,11 +12,11 @@ export default function NavBar() {
   return (
     <header className={Styles.header} role="banner">
       <nav className={Styles.navbar} role="navigation">
-        <li>
+        
           <Link href="/" className={Styles.logo}>
-            <p> Home</p>
+            <p> Phy</p>
           </Link>
-        </li>
+        
 
         <button
           className={`${Styles.hamburger} ${menuOpen ? Styles.open : ""}`}

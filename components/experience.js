@@ -14,7 +14,6 @@ export default function Experience({IsIsolated}) {
               className={styles.icon}
               width={30}
               height={30}
-              priority
             />
             <div className={styles.jobInfo}>
               <h2 className={styles.jobTitle}>Junior Frontend Web Developer</h2>
@@ -50,11 +49,10 @@ export default function Experience({IsIsolated}) {
               className={styles.icon}
               width={30}
               height={30}
-              priority
             />
             <div className={styles.jobInfo}>
               <h2 className={styles.jobTitle}>UI Designer</h2>
-              <p className={styles.company}>Huralya Game Studio</p>
+              <p className={styles.company}>- Game Studio</p>
               <p className={styles.dates}>December 2021 - August 2022</p>
             </div>
           </div>
@@ -87,7 +85,6 @@ export default function Experience({IsIsolated}) {
               className={styles.icon}
               width={30}
               height={30}
-              priority
             />
             <div className={styles.jobInfo}>
               <h2 className={styles.jobTitle}>BSc Computer Science</h2>

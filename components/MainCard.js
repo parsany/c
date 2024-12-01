@@ -14,7 +14,6 @@ export default function MainCard() {
             className={styles.profileImage}
             width={100}
             height={24}
-            priority
           />
           <div className={styles.name}>
             <div className={styles.tuple_construct}>
@@ -31,7 +30,6 @@ export default function MainCard() {
             className={styles.logo}
             width={30}
             height={30}
-            priority
           />
               </a> 
               <a href="https://www.instagram.com/velvetphy" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
@@ -41,7 +39,6 @@ export default function MainCard() {
             className={styles.logoS}
             width={30}
             height={30}
-            priority
           />
               </a> 
               <a
@@ -56,7 +53,7 @@ export default function MainCard() {
                   className={styles.logoI}
                   width={30}
                   height={30}
-                  priority
+    
                 />
               </a>
               {/* <a href="#" aria-label="LinkedIn">
@@ -79,7 +76,7 @@ export default function MainCard() {
             Parsa Niavand is a computer science student currently studying at
             the University of SRBIAU. He has a passion for intelligent systems,
             modeling and computation, and robotics. In addition to his academic
-            pursuits, he enjoys exploring game and web development, combining
+            pursuits, he enjoys exploring web and game development, combining
             creativity with technical skill.
           </p>
           <button className={styles.downloadCV}>

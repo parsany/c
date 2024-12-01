@@ -5,9 +5,9 @@ import Experience from "../components/experience";
 import Skills from "../components/skills";
 import Styles from "@/styles/Main.module.css";
 
-//main card and experience are flawed
-//fix the not fitting bug
-// add boxes to elements
+//TODO: resposive
+//TODO: dark mode/light mode
+//TODO: animations for pages
 
 export default function Main() {
   return (
