@@ -75,7 +75,7 @@ export const ProjectStuff = [
 
 export const NewsPost = [
     {
-      date: 'Oct 27, 2021',
+      date: 'Oct 27, 2000',
       emoji: '🎉',
       title: 'Easily create your own simple yet highly customizable blog',
       description:
@@ -83,7 +83,7 @@ export const NewsPost = [
       link: '#',
     },
     {
-      date: 'Oct 26, 2023',
+      date: 'Oct 26, 2024',
       emoji: '🧠',
       title: 'Sharpen your thinking with a second brain',
       description:

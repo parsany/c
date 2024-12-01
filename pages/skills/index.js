@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "@/styles/ProSkills.module.css";
+import Languages from "../../components/Languages";
 
 const professionalSkills = [
   {
@@ -37,27 +38,31 @@ const ProfessionalSkills = () => {
 
   return (
     <div className={styles.container}>
-      <h2>Professional Skills</h2>
-      {professionalSkills.map((category, index) => (
-        <div key={index} className={styles.category}>
-          <div
-            className={`${styles.header} ${
-              expandedIndex === index ? styles.expanded : ""
-            }`}
-            onClick={() => toggleExpansion(index)}
-          >
-            <h3>{category.category}</h3>
-            <span className={styles.arrow}>
-              {expandedIndex === index ? "▲" : "▼"}
-            </span>
-          </div>
-          {expandedIndex === index && (
-            <div className={styles.content}>
+      <h2 className={styles.title}>Professional Skills</h2>
+      <div className={styles.skillsWrapper}>
+        {professionalSkills.map((category, index) => (
+          <div key={index} className={styles.category}>
+            <div
+              className={`${styles.header} ${
+                expandedIndex === index ? styles.expanded : ""
+              }`}
+              onClick={() => toggleExpansion(index)}
+            >
+              <h3 className={styles.categoryTitle}>{category.category}</h3>
+              <span className={styles.arrow}>
+                {expandedIndex === index ? "▲" : "▼"}
+              </span>
+            </div>
+            <div
+              className={`${styles.content} ${
+                expandedIndex === index ? styles.show : styles.hide
+              }`}
+            >
               {category.items.map((item, itemIndex) => (
                 <div key={itemIndex} className={styles.item}>
                   <div className={styles.itemHeader}>
-                    <h4>{item.name}</h4>
-                    <span>{item.level}%</span>
+                    <h4 className={styles.itemName}>{item.name}</h4>
+                    <span className={styles.itemLevel}>{item.level}%</span>
                   </div>
                   <div className={styles.progressBar}>
                     <div
@@ -68,39 +73,12 @@ const ProfessionalSkills = () => {
                 </div>
               ))}
             </div>
-          )}
-        </div>
-      ))}
-
-<div className={styles.container}>
-    <h2>Skills & Hobbies</h2>
-    <div className={styles.sections}>
-      <div className={styles.section}>
-        <h3>Technical Skills</h3>
-        <ul className={styles.list}>
-          {['PYTHON', 'DATA SCIENCE', 'SQL'].map((skill, index) => (
-            <li key={index} className={styles.item}>
-              {skill}
-            </li>
-          ))}
-        </ul>
+          </div>
+        ))}
       </div>
-      <div className={styles.section}>
-        <h3>Hobbies</h3>
-        <ul className={styles.list}>
-          {['HIKING', 'CATS', 'PHOTOGRAPHY'].map((hobby, index) => (
-            <li key={index} className={styles.item}>
-              {hobby}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  </div>
-
+      <Languages />
     </div>
   );
 };
 
 export default ProfessionalSkills;
-
