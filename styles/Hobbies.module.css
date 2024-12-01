@@ -10,3 +10,27 @@
 .list li {
   margin: 5px 0;
 }
+
+.hobbybox{
+  margin-top: 60px;
+  border: 1px solid var(--highlight-color3);
+  background-color: var(--primary-color);
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  box-shadow: inset 0 0 3px var(--highlight-color2);
+}
+
+.hobbybox:hover{
+  transform: scale(1.02);
+  box-shadow: inset 0 0 20px var(--highlight-color2);
+}
+
+.hobbybox:hover, .hobbybox:focus {
+  transition: all 0.3s ease-in-out;
+}
+
+.hobbybox:not(:hover) {
+  transition: all 0.3s ease-in-out;
+}
+

@@ -24,6 +24,14 @@
   max-width: 800px;
 }
 
+.boxnormal {
+  background-color: var(--primary-color);
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 800px;
+}
+
 .job {
   margin-bottom: 30px;
   padding: 15px;

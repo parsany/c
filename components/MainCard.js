@@ -2,15 +2,15 @@ import styles from "@/styles/Profile.module.css";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function MainCard(){
-    return(
-      <div className={styles.container}>
+export default function MainCard() {
+  return (
+    <div>
       <div className={styles.main}>
         {/* Profile Section */}
         <div className={styles.profile}>
           <Image
             src="/c/content/main.jpg"
-            alt="Vercel Logo"
+            alt="Image"
             className={styles.profileImage}
             width={100}
             height={24}
@@ -23,22 +23,43 @@ export default function MainCard(){
             </div>
 
             <h2>Computer Science Student</h2>
-            {/* <h3>-</h3> */}
             <div className={styles.links}>
-              {/* links later */}
-              <a href="#" aria-label="Email">
-                📧
+              <a href="https://twitter.com/payrimSp" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
+              <Image
+            src="/c/icons/twitter.svg"
+            alt="Twitter"
+            className={styles.logo}
+            width={30}
+            height={30}
+            priority
+          />
+              </a> 
+              <a href="https://www.instagram.com/velvetphy" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+              <Image
+            src="/c/icons/instagram.svg"
+            alt="Instagram"
+            className={styles.logoS}
+            width={30}
+            height={30}
+            priority
+          />
+              </a> 
+              <a
+                href="https://github.com/parsany"
+                aria-label="GitHub"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  src="/c/icons/github-mark.svg"
+                  alt="GitHub"
+                  className={styles.logoI}
+                  width={30}
+                  height={30}
+                  priority
+                />
               </a>
-              <a href="#" aria-label="X (Twitter)">
-                ❌
-              </a>
-              <a href="#" aria-label="Instagram">
-                📸
-              </a>
-              <a href="#" aria-label="GitHub">
-                🐙
-              </a>
-              <a href="#" aria-label="LinkedIn">
+              {/* <a href="#" aria-label="LinkedIn">
                 🔗
               </a>
               <a href="#" aria-label="Google Scholar">
@@ -46,7 +67,7 @@ export default function MainCard(){
               </a>
               <a href="#" aria-label="ORCID">
                 🆔
-              </a>
+              </a> */}
             </div>
           </div>
         </div>

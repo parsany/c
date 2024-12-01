@@ -1,9 +1,0 @@
-.outerContainer {
-    display: flex;
-    flex-direction: column;
-    padding: 50px;
-    align-items: center;
-    background-color: var(--background-color);
-    color: #ffffff;
-    min-height: 100vh;
-  }

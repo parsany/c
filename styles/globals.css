@@ -10,6 +10,7 @@
   --card-background: #2a2a2a;
   --highlight-color: #00ffcc;
   --highlight-color2: #01ad8b;
+  --highlight-color3: #00bcd4;
 }
 
 @media (prefers-color-scheme: dark) {

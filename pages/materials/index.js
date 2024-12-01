@@ -5,7 +5,7 @@ import { Materials } from "@/public/JSONJS";
 
 export default function Teaching() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [visibleCount, setVisibleCount] = useState(12); // Initial visible items
+  const [visibleCount, setVisibleCount] = useState(12); 
 
   const filteredCourses = Materials.filter(course =>
     course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -13,7 +13,7 @@ export default function Teaching() {
   ).sort((a, b) => new Date(b.date) - new Date(a.date));
 
   const handleShowMore = () => {
-    setVisibleCount(prevCount => prevCount + 12); // Increase visible count by 12
+    setVisibleCount(prevCount => prevCount + 12); 
   };
 
   return (

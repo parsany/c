@@ -1,4 +1,4 @@
-import Styles from "@/styles/ContactPage.module.css";
+import Styles from "@/styles/PageStyle.module.css";
 import Contact from "../../components/contact";
 
 export default function ContactPage() {
