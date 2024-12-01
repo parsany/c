@@ -1,0 +1,44 @@
+/* styles/experience.module.css */
+.container {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .job {
+    margin-bottom: 30px;
+    padding: 15px;
+    border-left: 4px solid #00bcd4;
+  }
+  
+  .jobHeader {
+    margin-bottom: 10px;
+  }
+  
+  .jobTitle {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .company {
+    font-size: 1.2rem;
+    color: #b0bec5;
+  }
+  
+  .dates {
+    font-size: 1rem;
+    color: #90a4ae;
+  }
+  
+  .responsibilities {
+    list-style-type: disc;
+    margin-left: 20px;
+  }
+  
