@@ -37,23 +37,23 @@ export default function NavBar() {
             </Link>
           </li>
           <li className={Styles.navitem}>
+            <Link href="/skills">
+              <p>Skills</p>
+            </Link>
+          </li>
+          <li className={Styles.navitem}>
             <Link href="/experience">
               <p>Experience</p>
             </Link>
           </li>
           <li className={Styles.navitem}>
             <Link href="/posts">
-              <p>Posts</p>
+              <p>Blog Posts</p>
             </Link>
           </li>
           <li className={Styles.navitem}>
             <Link href="/materials">
               <p>Materials</p>
-            </Link>
-          </li>
-          <li className={Styles.navitem}>
-            <Link href="/about">
-              <p>About</p>
             </Link>
           </li>
           <li className={Styles.navitem}>
@@ -66,3 +66,5 @@ export default function NavBar() {
     </header>
   );
 }
+
+// teaching, talks, publications, awards

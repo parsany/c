@@ -9,6 +9,7 @@ export default function main() {
             <p>LinkedIn: <a href="https://www.linkedin.com/in/parsany/">parsany</a></p>
             <p>Phone: +1234567890</p>
             <p>Address: 123 Main St, Anytown, USA</p>
+            <p>add email send page by google script</p>
         </div>
     );
 }
