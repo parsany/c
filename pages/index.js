@@ -18,7 +18,7 @@ export default function Home() {
           />
           <div className={styles.name}>
             <div className={styles.tuple_construct}>
-              <h1>P Ny</h1>
+              <h1>Parsa Niavand</h1>
               <h3>he/him, they/them</h3>
             </div>
 
