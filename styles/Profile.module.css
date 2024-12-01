@@ -41,23 +41,6 @@
   gap: 5px;
 }
 
-.name h1 {
-  margin: 0;
-  font-size: 1.8rem;
-  color: #ffffff;
-}
-
-.name h2 {
-  margin: 0;
-  font-size: 1.2rem;
-  color: #a0ffa0;
-}
-
-.name h3 {
-  margin: 0;
-  font-size: 1rem;
-  color: #66bb66;
-}
 
 .links {
   margin-top: 10px;
@@ -125,4 +108,36 @@
 .section li {
   font-size: 1rem;
   line-height: 1.5;
+}
+
+
+
+.tuple_construct {
+  display: flex;
+  align-items: center; 
+}
+
+.name {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.name h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #ffffff;
+}
+
+.name h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #a0ffa0;
+}
+
+.name h3 {
+  font-size: 0.9rem;
+  color: #66bb66;
+  margin-left: 8px;
+  margin-top: 8px;
 }

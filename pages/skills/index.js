@@ -1,10 +1,9 @@
 import { useState } from "react";
-import styles from "@/styles/ProSkills.module.css";
+import styles from "@/styles/SkillsPage.module.css";
 import Languages from "../../components/Languages";
-import {ProSkills} from "@/public/JSONJS";
+import { ProSkills } from "@/public/JSONJS";
 
-
-export default function LanguageSkills() {
+export default function SkillsPage() {
   const [expandedIndex, setExpandedIndex] = useState(-1);
 
   const toggleExpansion = (index) => {
@@ -13,7 +12,7 @@ export default function LanguageSkills() {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>Professional Skills</h2>
+      <h2 className={styles.title}>Tech Stack</h2>
       <div className={styles.skillsWrapper}>
         {ProSkills.map((category, index) => (
           <div key={index} className={styles.category}>
@@ -24,8 +23,12 @@ export default function LanguageSkills() {
               onClick={() => toggleExpansion(index)}
             >
               <h3 className={styles.categoryTitle}>{category.category}</h3>
-              <span className={styles.arrow}>
-                {expandedIndex === index ? "▲" : "▼"}
+              <span
+                className={`${styles.arrow} ${
+                  expandedIndex === index ? styles.rotated : ""
+                }`}
+              >
+                ▼
               </span>
             </div>
             <div
@@ -54,4 +57,4 @@ export default function LanguageSkills() {
       <Languages />
     </div>
   );
-};
+}

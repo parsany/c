@@ -1,6 +1,7 @@
 .container {
   color: #eaeaea;
   background-color: var(--background-color);
+  min-height: 100vh;
 }
 
 .elements {
@@ -51,6 +52,12 @@
 .image {
   border-radius: 50%;
   margin-bottom: 20px;
+  background-color: rgb(255, 255, 255);
+}
+
+.card:hover img{
+  transform: scale(1.02);
+  transition: transform 0.3s ease;
 }
 
 .content {
@@ -58,6 +65,12 @@
 }
 
 .projectName {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  color: #8df79d;
+}
+
+.projectName:hover{
   font-size: 1.6rem;
   margin-bottom: 10px;
   color: #8df79d;

@@ -1,76 +1,32 @@
 export const ProjectStuff = [
   {
     id: 1,
-    name: "Pandas",
+    name: "Cat Emotion recognition",
     description:
-      "Flexible and powerful data analysis / manipulation library for Python, providing labeled data structures.",
-    date: "Oct 26, 2023",
-    image: "/c/vercel.svg",
-    link: "#",
+      "Using CNN, I trained a model to recognize the emotion of cats.",
+    date: "Dec 1, 2024",
+    image: "/c/projects/cat.png",
+    link: "https://github.com/parsany/CatRecognition",
   },
   {
     id: 2,
-    name: "PyTorch",
+    name: "Evolutionary Algorithm in C++",
     description:
-      "PyTorch is a Python package that provides tensor computation (like NumPy) with strong GPU acceleration.",
-    date: "Oct 26, 2023",
-    image: "/c/vercel.svg",
-    link: "#",
+      "I like heuristic algorithms and simulations.",
+    date: "May 20, 2024",
+    image: "/c/projects/robot.png",
+    link: "https://github.com/parsany/EvolutionaryAlgo",
   },
   {
     id: 3,
-    name: "scikit-learn",
+    name: "PID_NN",
     description:
-      "scikit-learn is a Python module for machine learning built on top of SciPy and is distributed under the 3-Clause BSD license.",
-    date: "Oct 26, 2021",
-    image: "/c/vercel.svg",
-    link: "#",
+      "PID control for optimization of neural networks.",
+    date: "March 27, 2024",
+    image: "/c/projects/PID.png?bg=white",
+    link: "https://github.com/parsany/PID_NN",
   },
-  {
-    id: 4,
-    name: "scikit-learn",
-    description:
-      "scikit-learn is a Python module for machine learning built on top of SciPy and is distributed under the 3-Clause BSD license.",
-    date: "Oct 26, 2023",
-    image: "/c/vercel.svg",
-    link: "#",
-  },
-  {
-    id: 4,
-    name: "scikit-learn",
-    description:
-      "scikit-learn is a Python module for machine learning built on top of SciPy and is distributed under the 3-Clause BSD license.",
-    date: "Oct 26, 2023",
-    image: "/c/vercel.svg",
-    link: "#",
-  },
-  {
-    id: 4,
-    name: "scikit-learn",
-    description:
-      "scikit-learn is a Python module for machine learning built on top of SciPy and is distributed under the 3-Clause BSD license.",
-    date: "Oct 26, 2023",
-    image: "/c/vercel.svg",
-    link: "#",
-  },
-  {
-    id: 4,
-    name: "scikit-learn",
-    description:
-      "scikit-learn is a Python module for machine learning built on top of SciPy and is distributed under the 3-Clause BSD license.",
-    date: "Oct 26, 2023",
-    image: "/c/vercel.svg",
-    link: "#",
-  },
-  {
-    id: 4,
-    name: "scikit-learn",
-    description:
-      "scikit-learn is a Python module for machine learning built on top of SciPy and is distributed under the 3-Clause BSD license.",
-    date: "Oct 26, 2024",
-    image: "/c/vercel.svg",
-    link: "#",
-  },
+  
 ];
 
 export const NewsPost = [
@@ -104,25 +60,38 @@ export const ProSkills = [
   {
     category: "Languages",
     items: [
-      { name: "English", level: 100 },
-      { name: "Spanish", level: 80 },
-      { name: "French", level: 60 },
+      { name: "Python", level: 75},
+      { name: "C++", level: 60 },
+      { name: "Javascript", level: 60 },
     ],
   },
   {
-    category: "Libraries & Frameworks (Backend)",
+    category: "Tools",
     items: [
-      { name: "Node.js", level: 90 },
-      { name: "Express", level: 85 },
-      { name: "MongoDB", level: 75 },
+      { name: "Git", level: 70 },
+      { name: "Bash Scripting", level: 60 },
+      { name: "Linux server", level: 70 }
     ],
   },
   {
-    category: "Frontend Development",
+    category: "Web Development",
     items: [
-      { name: "React", level: 95 },
-      { name: "Next.js", level: 90 },
-      { name: "CSS Modules", level: 85 },
+      { name: "Next.js", level: 60 },
+      { name: "CSS modules", level: 70 },
+      { name: "React", level: 70 }
+    ],
+  },
+  {
+    category: "Python stuff",
+    items: [
+      { name: "Pytorch", level: 60 },
+      { name: "Numpy", level: 70 },
+      { name: "Jupyter", level: 80 }
+    ],
+  },
+  {category: "Document Prepration",
+    items: [
+      { name: "Latex", level: 70 },
     ],
   },
 ];
@@ -131,15 +100,148 @@ export const Materials = [
   {
     id: 1,
     title: "JavaScript",
-    description: "Easily learn JavaScript in 10 minutes!",
+    description: "Easily learn JavaScript in 10 years!",
     date: "Oct 24, 2023",
-    image: "/path/to/javascript-image.jpg", // Replace with your image path
+    image: "/c/content/course.jpg",
   },
   {
     id: 2,
-    title: "Python",
-    description: "Easily learn Python in 10 minutes!",
-    date: "Oct 24, 2023",
-    image: "/path/to/python-image.jpg", // Replace with your image path
+    title: "COBOL",
+    description: "Easily learn COBOL in 100^20 nanoseconds!",
+    date: "Oct 24, 1990",
+    image: "/c/content/course.jpg",
   },
+  {
+    id: 3,
+    title: "Python",
+    description: "Easily learn Python in 100^20 minutes!",
+    date: "Oct 24, 2000",
+    image: "/c/content/course.jpg",
+  },
+  {
+    id: 4,
+    title: "Python",
+    description: "Easily learn Python in 100^20 minutes!",
+    date: "Oct 24, 2000",
+    image: "/c/content/course.jpg",
+  },
+  {
+    id: 5,
+    title: "Python",
+    description: "Easily learn Python in 100^20 minutes!",
+    date: "Oct 24, 2000",
+    image: "/c/content/course.jpg",
+  },
+  {
+    id: 6,
+    title: "Python",
+    description: "Easily learn Python in 100^20 minutes!",
+    date: "Oct 24, 2000",
+    image: "/c/content/course.jpg",
+  },
+  {
+    id: 7,
+    title: "Python",
+    description: "Easily learn Python in 100^20 minutes!",
+    date: "Oct 24, 2000",
+    image: "/c/content/course.jpg",
+  },
+  {
+    id: 8,
+    title: "Python",
+    description: "Easily learn Python in 100^20 minutes!",
+    date: "Oct 24, 2000",
+    image: "/c/content/course.jpg",
+  },
+  {
+    id: 9,
+    title: "Python",
+    description: "Easily learn Python in 100^20 minutes!",
+    date: "Oct 24, 2000",
+    image: "/c/content/course.jpg",
+  },
+  {
+    id: 10,
+    title: "cat",
+    description: "Easily learn Python in 100^20 minutes!",
+    date: "Oct 24, 2000",
+    image: "/c/content/course.jpg",
+  },
+  {
+    id: 11,
+    title: "cat",
+    description: "Easily learn Python in 100^20 minutes!",
+    date: "Oct 24, 2000",
+    image: "/c/content/course.jpg",
+  },
+  {
+    id: 12,
+    title: "cat",
+    description: "Easily learn Python in 100^20 minutes!",
+    date: "Oct 24, 2000",
+    image: "/c/content/course.jpg",
+  },
+  {
+    id: 13,
+    title: "cat",
+    description: "Easily learn Python in 100^20 minutes!",
+    date: "Oct 24, 2000",
+    image: "/c/content/course.jpg",
+  },
+  {
+    id: 14,
+    title: "cat",
+    description: "Easily learn Python in 100^20 minutes!",
+    date: "Oct 24, 2000",
+    image: "/c/content/course.jpg",
+  },
+  {
+    id: 15,
+    title: "cat",
+    description: "Easily learn Python in 100^20 minutes!",
+    date: "Oct 24, 2000",
+    image: "/c/content/course.jpg",
+  },
+  {
+    id: 16,
+    title: "cat",
+    description: "Easily learn Python in 100^20 minutes!",
+    date: "Oct 24, 2000",
+    image: "/c/content/course.jpg",
+  },
+  {
+    id: 17,
+    title: "dog",
+    description: "Easily learn Python in 100^20 minutes!",
+    date: "Oct 24, 2000",
+    image: "/c/content/course.jpg",
+  },
+  {
+    id: 18,
+    title: "dog",
+    description: "Easily learn Python in 100^20 minutes!",
+    date: "Oct 24, 2000",
+    image: "/c/content/course.jpg",
+  },
+  {
+    id: 19,
+    title: "dog",
+    description: "Easily learn Python in 100^20 minutes!",
+    date: "Oct 24, 2000",
+    image: "/c/content/course.jpg",
+  },
+  {
+    id: 20,
+    title: "dog",
+    description: "Easily learn Python in 100^20 minutes!",
+    date: "Oct 24, 2000",
+    image: "/c/content/course.jpg",
+  },
+  {
+    id: 21,
+    title: "dog",
+    description: "Easily learn Python in 100^20 minutes!",
+    date: "Oct 24, 2000",
+    image: "/c/content/course.jpg",
+  }
 ];

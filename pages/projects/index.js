@@ -9,7 +9,7 @@ export default function Projects() {
       <div className={styles.elements}>
       <h1 className={styles.title}>Selected Projects</h1>
       <p className={styles.subtitle}>
-        I enjoy making things. Here are a selection of projects that I’ve worked on throughout my journey.
+        I like to learn by making things. Here&apos;s some projects I&apos;ve worked on.
       </p>
       <div className={styles.grid}>
         {ProjectStuff

@@ -9,6 +9,7 @@
   --primary-color: #262934;
   --card-background: #2a2a2a;
   --highlight-color: #00ffcc;
+  --highlight-color2: #01ad8b;
 }
 
 @media (prefers-color-scheme: dark) {

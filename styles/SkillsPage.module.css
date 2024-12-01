@@ -37,7 +37,7 @@
 }
 
 .header.expanded {
-  background-color: #8caa46;
+  background-color: var(--highlight-color2);
 }
 
 .categoryTitle {
@@ -47,24 +47,30 @@
 
 .arrow {
   font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.rotated {
+  transform: rotate(180deg);
 }
 
 .content {
   padding: 0 1rem; 
   max-height: 0; 
   overflow: hidden; 
-  transition: max-height 0.3s ease, opacity 0.3s ease; 
   opacity: 0; 
+  transition: max-height 0.3s;
 }
 
 .show {
   max-height: 500px; 
   opacity: 1; 
+  transition: max-height 0.5s linear 0.1s;
 }
 
 .hide {
   max-height: 0; 
-  opacity: 0; 
+  opacity: 1; 
 }
 
 .item {
