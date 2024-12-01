@@ -1,0 +1,22 @@
+.container{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.Cardcontainer {
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--background-color);
+    color: #ffffff;
+    margin-bottom: -30px;
+  }
+
+
+.BoxContainer{
+    background-color: blue;
+    
+}

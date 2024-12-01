@@ -1,16 +1,10 @@
-import Styles from "@/styles/Contact.module.css";
+import Styles from "@/styles/ContactPage.module.css";
+import Contact from "../../components/contact";
 
-export default function Contact() {
-    return (
-        <div className={Styles.outerContainer}>
-            <div className={Styles.container}>
-                <h1>Contact Me</h1>
-                <div className={Styles.contactInfo}>
-                    <p>Email: <a href="mailto:parsaniavand0 at gmail.com">parsaniavand0 at gmail.com</a></p>
-                    <p>Telegram: <a href="https://t.me/velvetphy">at velvetphy</a></p>
-                    <p>LinkedIn: <a href="https://www.linkedin.com/in/parsany/">linkedin.com/in/parsany</a></p>
-                </div>
-            </div>
-        </div>
-    );
+export default function ContactPage() {
+  return (
+    <div className={Styles.outerContainer}>
+        <Contact />
+    </div>
+  );
 }

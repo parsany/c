@@ -1,16 +1,7 @@
-.outerContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: var(--background-color);
-  padding: 20px;
-}
-
 .container {
-  margin-top: -450px;
+  margin: 0; 
   width: 900px;
-  padding: 30px;
+  padding: 20px;
   background-color: var(--primary-color);
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -21,7 +12,6 @@
 
 .container h1 {
   font-size: 2rem;
-  margin-bottom: 20px;
   text-align: center;
   color: #ffffff;
 }
@@ -42,12 +32,3 @@
   text-decoration: underline;
   color: #ffffff;
 }
-
-.phone, .address {
-  font-weight: normal;
-}
-
-.container > *:last-child {
-  margin-bottom: 0;
-}
-

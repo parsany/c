@@ -1,7 +1,9 @@
 import { useState } from "react";
 import styles from "@/styles/SkillsPage.module.css";
 import Languages from "../../components/Languages";
+import SkillsHobbies from "../../components/hobbies";
 import { ProSkills } from "@/public/JSONJS";
+
 
 export default function SkillsPage() {
   const [expandedIndex, setExpandedIndex] = useState(-1);
@@ -54,7 +56,10 @@ export default function SkillsPage() {
           </div>
         ))}
       </div>
+      <div className={styles.itemrow}>
       <Languages />
+      <SkillsHobbies/>
+      </div>
     </div>
   );
 }

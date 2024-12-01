@@ -107,3 +107,12 @@
   border-radius: 0.25rem;
   transition: width 0.3s ease; 
 }
+
+.itemrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  column-gap: 150px;
+}
+
