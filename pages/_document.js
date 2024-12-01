@@ -5,6 +5,7 @@ export default function Document() {
     <Html lang="en">
       <Head>
       <title>-_@-Under Maintenance-_$-</title>
+      <link rel="shortcut icon" href="/c/favicon.ico" />
       </Head>
       <body>
         <Main />
