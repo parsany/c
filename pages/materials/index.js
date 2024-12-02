@@ -22,7 +22,7 @@ export default function Teaching() {
 
       <input
         type="text"
-        placeholder="Search for a course name or desc..."
+        placeholder="Search for course name or desc..."
         className={styles.searchBar}
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
