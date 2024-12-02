@@ -3,14 +3,14 @@ export const ProjectStuff = [
     id: 1,
     name: "Cat Emotion recognition",
     description:
-      "Using CNN, I trained a model to recognize the emotion of cats. (havent pushed)",
+      "Using CNN, I trained a model to recognize the emotion of cats. (*havent pushed)",
     date: "Dec 1, 2024",
     image: "/c/projects/cat.png",
     link: "https://github.com/parsany/CatRecognition",
   },
   {
     id: 2,
-    name: "Evolutionary Algorithm in C++ (havent pushed)",
+    name: "Evolutionary Algorithm in C++ (*havent pushed)",
     description:
       "I like heuristic algorithms and simulations.",
     date: "May 20, 2024",
