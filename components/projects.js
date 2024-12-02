@@ -2,8 +2,7 @@ import styles from '@/styles/Projects.module.css';
 import Image from 'next/image';
 import {ProjectStuff} from '@/public/JSONJS';
 
-export default function Projects() {
-
+export default function Projects({NumberShown}) {
   return (
       <div className={styles.elements}>
       <h1 className={styles.title}>Selected Projects</h1>
@@ -12,8 +11,8 @@ export default function Projects() {
       </p>
       <div className={styles.grid}>
         {ProjectStuff
-          .slice()
           .sort((a, b) => new Date(b.date) - new Date(a.date))
+          .slice(0, NumberShown === 0 ? undefined : NumberShown)
           .map((project) => (
             <div key={project.id} className={styles.card}>
               <Image

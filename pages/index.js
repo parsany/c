@@ -19,7 +19,7 @@ export default function Main() {
         <Experience IsIsolated={false}/>
       </div>
       <div className={Styles.BoxContainer}>
-        <Projects />
+        <Projects NumberShown={3}/>
       </div>
       <div className={Styles.BoxContainer}>
         <Skills />

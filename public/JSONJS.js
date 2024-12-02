@@ -25,8 +25,7 @@ export const ProjectStuff = [
     date: "March 27, 2024",
     image: "/c/projects/PID.png?bg=white",
     link: "https://github.com/parsany/PID_NN",
-  },
-  
+  },  
 ];
 
 export const NewsPost = [
