@@ -6,8 +6,8 @@ const SkillsHobbies = () => {
       <h3 className={styles.subtitle}>Hobbies</h3>
       <ul className={styles.list}>
         <li>🚶‍♂️ HIKING</li>
-        <li>🎸 Playing Acoustic Guitar</li>
-        <li>🎭 Cinema &Theater</li>
+        <li>🎸 Acoustic Guitar</li>
+        <li>🎭 Cinephile</li>
       </ul>
     </div>
   );
