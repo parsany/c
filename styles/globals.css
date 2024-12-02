@@ -1,11 +1,12 @@
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #c94a4a;
   --header-height: 4rem;
   --accent-color: #dddb5d;
   --text-color: #c0c0c0;
   --hover-text-color: #fff;
-  --background-color: #1A1D23;
+  --background-color: #1b1f25;
+  --background-cc: #1A1D23;
   --primary-color: #262934;
   --card-background: #2a2a2a;
   --highlight-color: #00ffcc;
@@ -19,7 +20,7 @@
   --accent-color: #dddb5d; 
   --text-color: #c0c0c0; 
   --hover-text-color: #ffffff;
-  --background-color: #1A1D23;
+  --background-color: #1b1f25;
   --primary-color: #262934;
   --card-background: #2a2a2a;
   --highlight-color: #00ffcc;
