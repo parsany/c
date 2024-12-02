@@ -1,9 +1,9 @@
 export const ProjectStuff = [
   {
     id: 1,
-    name: "Cat Emotion recognition",
+    name: "Cat Emotion recognition (*havent pushed)",
     description:
-      "Using CNN, I trained a model to recognize the emotion of cats. (*havent pushed)",
+      "Using CNN, I trained a model to recognize the emotion of cats.",
     date: "Dec 1, 2024",
     image: "/c/projects/cat.png",
     link: "https://github.com/parsany/CatRecognition",
