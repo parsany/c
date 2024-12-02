@@ -55,12 +55,13 @@ export const NewsPost = [
   },
 ];
 
+
 export const ProSkills = [
   {
     category: "Languages",
     items: [
       { name: "Python", level: 75},
-      { name: "C++", level: 60 },
+      { name: "C++", level: 55 },
       { name: "Javascript", level: 60 },
     ],
   },
@@ -69,8 +70,8 @@ export const ProSkills = [
     items: [
       { name: "Git", level: 70 },
       { name: "Bash Scripting", level: 60 },
-      { name: "Linux server", level: 70 },
-      { name: "Unreal Engine", level: 20 },
+      { name: "Linux server", level: 76 },
+      { name: "Unreal Engine", level: 24 },
     ],
   },
   {
@@ -86,7 +87,7 @@ export const ProSkills = [
     items: [
       { name: "Pytorch", level: 60 },
       { name: "Numpy", level: 70 },
-      { name: "Jupyter", level: 80 }
+      { name: "Jupyterlab", level: 90 }
     ],
   },
   {category: "Document Prepration",

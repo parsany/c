@@ -41,7 +41,15 @@ export default function Skills() {
                 <div key={itemIndex} className={styles.item}>
                   <div className={styles.itemHeader}>
                     <h4 className={styles.itemName}>{item.name}</h4>
-                    <span className={styles.itemLevel}>{item.level}%</span>
+                    <span className={styles.itemLevel}>
+                      {item.level >= 75
+                        ? "Advanced"
+                        : item.level >= 50
+                        ? "Transitional"
+                        : item.level >= 25
+                        ? "Adept"
+                        : "Novice"}
+                    </span>
                   </div>
                   <div className={styles.progressBar}>
                     <div
