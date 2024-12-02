@@ -17,7 +17,7 @@ export default function Experience({IsIsolated}) {
             />
             <div className={styles.jobInfo}>
               <h2 className={styles.jobTitle}>Junior Frontend Web Developer</h2>
-              <p className={styles.company}>-</p>
+              <p className={styles.company}>Pixie Studio</p>
               <p className={styles.dates}>November 2023 - October 2024</p>
             </div>
           </div>
@@ -52,7 +52,7 @@ export default function Experience({IsIsolated}) {
             />
             <div className={styles.jobInfo}>
               <h2 className={styles.jobTitle}>UI Designer</h2>
-              <p className={styles.company}>- Game Studio</p>
+              <p className={styles.company}>Karo Game Studio</p>
               <p className={styles.dates}>December 2021 - August 2022</p>
             </div>
           </div>
