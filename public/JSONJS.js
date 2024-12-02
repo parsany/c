@@ -83,7 +83,7 @@ export const ProSkills = [
     ],
   },
   {
-    category: "Python stuff",
+    category: "Python Libraries",
     items: [
       { name: "Pytorch", level: 60 },
       { name: "Numpy", level: 70 },
