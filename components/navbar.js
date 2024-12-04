@@ -19,6 +19,15 @@ export default function NavBar() {
     setMenuOpen((prev) => !prev);
   };
 
+  const NAV_LINKS = [
+    { title: "Projects", href: "/projects" },
+    { title: "Experience", href: "/experience" },
+    { title: "Skills", href: "/skills" },
+    { title: "Blog Posts", href: "/posts" },
+    { title: "Materials", href: "/materials" },
+    { title: "Contact", href: "/contact" },
+  ];
+
   const handleLinkClick = () => {
     setMenuOpen(false); 
   };
@@ -50,36 +59,14 @@ export default function NavBar() {
         <ul
           className={`${Styles.navlist} ${menuOpen ? Styles.navlistOpen : ""}`}
         >
-          <li className={Styles.navitem}>
-            <Link href="/projects" onClick={handleLinkClick}>
-              <p>Projects</p>
-            </Link>
-          </li>
-          <li className={Styles.navitem}>
-            <Link href="/skills" onClick={handleLinkClick}>
-              <p>Skills</p>
-            </Link>
-          </li>
-          <li className={Styles.navitem}>
-            <Link href="/experience" onClick={handleLinkClick}>
-              <p>Experience</p>
-            </Link>
-          </li>
-          <li className={Styles.navitem}>
-            <Link href="/posts" onClick={handleLinkClick}>
-              <p>Blog Posts</p>
-            </Link>
-          </li>
-          <li className={Styles.navitem}>
-            <Link href="/materials" onClick={handleLinkClick}>
-              <p>Materials</p>
-            </Link>
-          </li>
-          <li className={Styles.navitem}>
-            <Link href="/contact" onClick={handleLinkClick}>
-              <p>Contact</p>
-            </Link>
-          </li>
+          {NAV_LINKS.map(({ title, href }) => (
+            <li key={href} className={Styles.navitem}>
+              <Link href={href} onClick={handleLinkClick}>
+                <p>{title}</p>
+              </Link>
+            </li>
+          ))}
+
           <li className={Styles.navitem}>
             <button onClick={toggleTheme} aria-label="Toggle theme">
               <Image
@@ -96,5 +83,3 @@ export default function NavBar() {
     </header>
   );
 }
-
-
