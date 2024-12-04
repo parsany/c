@@ -22,8 +22,8 @@
 }
 
 .hobbybox:hover{
-  transform: scale(1.02);
-  box-shadow: inset 0 0 20px var(--highlight-color2);
+  /* transform: scale(1.02); */
+  box-shadow: inset 0 0 10px var(--highlight-color2);
 }
 
 .hobbybox:hover, .hobbybox:focus {

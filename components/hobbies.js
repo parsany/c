@@ -5,9 +5,9 @@ const SkillsHobbies = () => {
     <div className={styles.hobbybox}>
       <h3 className={styles.subtitle}>Hobbies</h3>
       <ul className={styles.list}>
-        <li>🚶‍♂️ HIKING</li>
+        <li>🚶‍♂️ hiking</li>
         <li>🎸 Acoustic Guitar</li>
-        <li>🎭 Cinephile</li>
+        <li>🎭 Movies</li>
       </ul>
     </div>
   );

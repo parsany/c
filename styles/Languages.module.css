@@ -29,13 +29,14 @@
   justify-content: center;
   align-items: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  transition: transform 0.2s;
   border: 2px solid var(--highlight-color3);
+  transition: filter 0.4s;
 }
 
 .languageCard:hover {
-  transform: scale(1.01);
+  /* transform: scale(1.01); */
   filter: saturate(150%);
+  
 }
 
 .percentage {

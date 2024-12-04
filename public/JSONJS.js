@@ -66,12 +66,20 @@ export const ProSkills = [
     ],
   },
   {
+    category: "Python Libraries",
+    items: [
+      { name: "Pytorch", level: 60 },
+      { name: "Numpy", level: 70 }
+    ],
+  },
+  {
     category: "Tools",
     items: [
       { name: "Git", level: 70 },
       { name: "Bash Scripting", level: 60 },
       { name: "Linux server", level: 76 },
       { name: "Unreal Engine", level: 24 },
+      { name: "Latex", level: 70 },
     ],
   },
   {
@@ -80,19 +88,6 @@ export const ProSkills = [
       { name: "Next.js", level: 60 },
       { name: "CSS modules", level: 70 },
       { name: "React", level: 70 }
-    ],
-  },
-  {
-    category: "Python Libraries",
-    items: [
-      { name: "Pytorch", level: 60 },
-      { name: "Numpy", level: 70 },
-      { name: "Jupyterlab", level: 90 }
-    ],
-  },
-  {category: "Document Prepration",
-    items: [
-      { name: "Latex", level: 70 },
     ],
   },
 ];

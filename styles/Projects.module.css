@@ -6,6 +6,7 @@
 }
 
 .title {
+  font-family: 'Roboto', monospace;
   font-size: 2.5rem;
   font-weight: bold;
   text-align: center;
@@ -29,7 +30,11 @@
 .card {
   background-color: #2e3a59;
   border-radius: 12px;
-  padding: 25px;
+  padding-bottom: 25px;
+  padding-right: 25px;
+  padding-left: 25px;
+  padding-top: 25px;
+  /* remove top padding */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,7 +51,10 @@
 .image {
   border-radius: 50%;
   margin-bottom: 20px;
+  
   background-color: rgb(255, 255, 255);
+
+  /* fix image to be big no c */
 }
 
 .card:hover img{
@@ -82,7 +90,7 @@
 
 .projectDescription {
   font-size: 1rem;
-  color: #b3b3b3;
+  color: #daf9ff;
   margin-bottom: 15px;
 }
 
