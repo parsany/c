@@ -93,7 +93,7 @@ export default function MainCard() {
             <ul>
               <li>Artificial Intelligence</li>
               <li>Robotics</li>
-              <li>Simulation and Graphics</li>
+              <li>Simulation and Dynamics</li>
             </ul>
           </div>
           <div className={styles.section}>
