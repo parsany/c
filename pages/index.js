@@ -25,7 +25,7 @@ export default function Main() {
         <Skills />
       </div>
       <div className={Styles.LastContainer}>
-        <Contact />
+        <Contact/>
       </div>
     </div>
   );

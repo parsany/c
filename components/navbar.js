@@ -15,6 +15,13 @@ export default function NavBar() {
     }
   }, []);
 
+    const toggleTheme = () => {
+    const newTheme = isDarkMode ? "light" : "dark";
+    setIsDarkMode(!isDarkMode);
+    localStorage.setItem("theme", newTheme);
+    document.body.classList.toggle("dark-mode", newTheme === "dark");
+  };
+
   const toggleMenu = () => {
     setMenuOpen((prev) => !prev);
   };
@@ -30,13 +37,6 @@ export default function NavBar() {
 
   const handleLinkClick = () => {
     setMenuOpen(false); 
-  };
-
-  const toggleTheme = () => {
-    const newTheme = isDarkMode ? "light" : "dark";
-    setIsDarkMode(!isDarkMode);
-    localStorage.setItem("theme", newTheme);
-    document.body.classList.toggle("dark-mode", newTheme === "dark");
   };
 
   return (
