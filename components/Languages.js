@@ -1,10 +1,9 @@
 import styles from '@/styles/Languages.module.css';
 
 export default function Languages() {
-    
   const languages = [
-    { percentage: 'English', name: 'Bilingual' },
-    { percentage: 'Persian', name: 'Bilingual' },
+    {  name: 'English', proficiency: 'Bilingual' },
+    {  name: 'Spanish', proficiency: 'Fluent' },
   ];
 
   return (
@@ -12,12 +11,16 @@ export default function Languages() {
       <h1 className={styles.title}>Languages</h1>
       <div className={styles.languageContainer}>
         {languages.map((lang, index) => (
-          <div key={index} className={styles.languageCard}>
-            <div className={styles.percentage}>{lang.percentage}</div>
-            <p className={styles.languageName}>{lang.name}</p>
+          <div
+            key={index}
+            className={styles.languageCard}
+            aria-label={`${lang.name} - ${lang.proficiency} (${lang.percentage})`}
+          >
+            <div className={styles.languageName}>{lang.name}</div>
+            <p className={styles.proficiency}>{lang.proficiency}</p>
           </div>
         ))}
       </div>
     </div>
   );
-};
+}

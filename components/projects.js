@@ -21,15 +21,17 @@ export default function Projects({ NumberShown }) {
                 rel="noopener noreferrer"
                 aria-label={`Link to ${project.name}`}
               >
-                <Image
-                  src={project.image}
-                  alt={project.name}
-                  width={120}
-                  height={120}
-                  className={styles.image}
-                />
+                <div className={styles.banner}>
+                  <Image
+                    src={project.image}
+                    alt={project.name}
+                    layout="fill"
+                    objectFit="cover"
+                    className={styles.image}
+                  />
+                </div>
                 <div className={styles.content}>
-                  <h3 className={styles.projectName}>{project.name} </h3>
+                  <h3 className={styles.projectName}>{project.name}</h3>
                   <p className={styles.projectDescription}>
                     {project.description}
                   </p>

@@ -1,17 +1,23 @@
 :root {
-  --background: #ffffff;
-  --foreground: #c94a4a;
+  --background: #f8f9fa; /* Softer white for less eye strain */
+  --foreground: #121212; /* High contrast black for text */
   --header-height: 4rem;
-  --accent-color: #dddb5d;
-  --text-color: #c0c0c0;
-  --hover-text-color: #fff;
-  --background-color: #1b1f25;
-  --background-cc: #1A1D23;
-  --primary-color: #262934;
-  --card-background: #2a2a2a;
-  --highlight-color: #00ffcc;
-  --highlight-color2: #01ad8b;
-  --highlight-color3: #00bcd4;
+  --accent-color: #f9c74f; /* Warm, attention-grabbing accent */
+  --text-color: #212529; /* Darker gray for better readability */
+  --hover-text-color: #0a58ca; /* Accessible blue for hover effects */
+  --background-color: #ffffff; /* Clean and neutral background */
+  --background-cc: #f4f4f4; /* Slight contrast for sections */
+  --primary-color: #e9ecef; /* Muted gray for primary sections */
+  --card-background: #ffffff; /* Clear, clean card background */
+  --highlight-color: #00a8e8; /* Brighter but calming highlight */
+  --highlight-color2: #028090; /* Slightly muted teal */
+  --highlight-color3: #02c39a; /* Balanced turquoise highlight */
+  --title-color: #343a40; /* Dark gray for titles */
+  --subtitle-color: #6c757d; /* Subtle gray for subtitles */
+  --banner-background: #f5f5f5; /* Light gray for banner */
+  --project-name-color: #0056b3; /* Accessible blue for project names */
+  --project-description-color: #495057; /* Neutral gray for descriptions */
+  --project-date-color: #6c757d; /* Subtle gray for dates */
 }
 
 .dark-mode {
@@ -22,10 +28,16 @@
   --hover-text-color: #ffffff;
   --background-color: #1b1f25;
   --primary-color: #262934;
-  --card-background: #2a2a2a;
+  --card-background: #2e3a59;
   --highlight-color: #00ffcc;
   --highlight-color2: #01ad8b;
   --highlight-color3: #00bcd4;
+  --title-color: #ffffff;
+  --subtitle-color: #d3d3d3;
+  --banner-background: #333333;
+  --project-name-color: #00ffcc;
+  --project-description-color: #ffffff;
+  --project-date-color: #cccccc;
 }
 
 html,
