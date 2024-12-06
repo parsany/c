@@ -1,23 +1,35 @@
 :root {
-  --background: #f8f9fa; /* Softer white for less eye strain */
-  --foreground: #121212; /* High contrast black for text */
+  --background: #f8f9fa; 
+  --foreground: #121212; 
   --header-height: 4rem;
-  --accent-color: #f9c74f; /* Warm, attention-grabbing accent */
-  --text-color: #212529; /* Darker gray for better readability */
-  --hover-text-color: #0a58ca; /* Accessible blue for hover effects */
-  --background-color: #ffffff; /* Clean and neutral background */
-  --background-cc: #f4f4f4; /* Slight contrast for sections */
-  --primary-color: #e9ecef; /* Muted gray for primary sections */
-  --card-background: #ffffff; /* Clear, clean card background */
-  --highlight-color: #00a8e8; /* Brighter but calming highlight */
-  --highlight-color2: #028090; /* Slightly muted teal */
-  --highlight-color3: #02c39a; /* Balanced turquoise highlight */
-  --title-color: #343a40; /* Dark gray for titles */
-  --subtitle-color: #6c757d; /* Subtle gray for subtitles */
-  --banner-background: #f5f5f5; /* Light gray for banner */
-  --project-name-color: #0056b3; /* Accessible blue for project names */
-  --project-description-color: #495057; /* Neutral gray for descriptions */
-  --project-date-color: #6c757d; /* Subtle gray for dates */
+  --accent-color: #f9c74f; 
+  --text-color: #212529; 
+  --hover-text-color: #0a58ca; 
+  --background-color: #1c5ca0;
+  --nice-color: #FEB91D; 
+  --background-cc: #f4f4f4; 
+  --primary-color: #ffffff; 
+  --card-background: #ffffff; 
+  --highlight-color: #00a8e8; 
+  --highlight-color2: #028090; 
+  --highlight-color3: #02c39a; 
+  --title-color: #343a40; 
+  --subtitle-color: #6c757d; 
+  --banner-background: #f5f5f5; 
+  --project-name-color: #0056b3; 
+  --project-description-color: #495057; 
+  --project-date-color: #6c757d; 
+  --skills-nav: rgb(89, 133, 7);
+  --skills-nav-closed: rgb(49, 50, 51);
+  --foreground2: #dfa460;
+  --experience-company: #3d3d3d;
+  --experience-dates: #686868;
+  --experience-color: rgb(36, 47, 58);
+  --experience-res: rgb(79, 79, 80);
+  --skills-color:#ffffff;
+  --box-color: rgb(224, 224, 224);
+  --skill-name: #ffc65c;
+  --skill-title: #1b1b1b;
 }
 
 .dark-mode {
@@ -38,6 +50,17 @@
   --project-name-color: #00ffcc;
   --project-description-color: #ffffff;
   --project-date-color: #cccccc;
+  --skills-nav: rgb(103, 150, 42);
+  --skills-nav-closed: rgb(88, 129, 13);
+  --foreground2: #ededed;
+  --experience-company: #b0bec5;
+  --experience-dates: #90a4ae;
+  --experience-color: rgb(255, 255, 255);
+  --experience-res: rgb(164, 171, 192);
+  --skills-color:#323f63;
+  --box-color: rgb(20, 27, 39);
+  --skill-name: #f0a51a;
+  --skill-title: #20dfb5;
 }
 
 html,

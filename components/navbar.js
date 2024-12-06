@@ -68,15 +68,15 @@ export default function NavBar() {
           ))}
 
           <li className={Styles.navitem}>
-            <button onClick={toggleTheme} aria-label="Toggle theme">
+            <a onClick={toggleTheme} className={Styles.toggleMode}>
               <Image
                 src={isDarkMode ? "/c/icons/dark_mode.svg" : "/c/icons/light_mode.svg"}
                 alt="Toggle Icon"
                 className={Styles.togglecolor}
-                width={30}
-                height={30}
+                width={20}
+                height={20}
               />
-            </button>
+            </a>
           </li>
         </ul>
       </nav>

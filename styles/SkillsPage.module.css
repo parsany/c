@@ -19,11 +19,11 @@
 }
 
 .category {
-  border: 1px solid #444;
+  border: 1px solid --box-color;
   border-radius: 0.5rem;
   margin-bottom: 1rem;
   padding: 1rem;
-  background-color: #323f63;
+  background-color: var(--skills-color);
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
 }
@@ -41,7 +41,7 @@
 .categoryTitle {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
-  color: var(--highlight-color3); 
+  color: var(--skill-title); 
   /* add dark mode */
 }
 
@@ -52,6 +52,7 @@
 }
 
 .skillItem {
+  
   background-color: #444;
   padding: 0.5rem 1rem;
   border-radius: 0.25rem;
@@ -62,13 +63,9 @@
 
 .skillName {
   font-size: 1.1rem;
-  color: #52ebff;
+  color: var(--skill-name)
 }
 
-.skillLevel {
-  font-size: 1rem;
-  color: #b0bec5;
-}
 
 .itemrow {
   display: flex;

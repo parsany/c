@@ -16,11 +16,24 @@
   color: var(--text-color);
 }
 
-.togglecolor{
-  width: 20px;
-  height: 20px;
-  margin-left:-20px;
+.toggleMode{
+  transition: all ease-in-out 0.2s;
 }
+
+.toggleMode:hover {
+  cursor: pointer;
+  filter:  contrast(1.5);
+}
+
+.togglecolor {
+  filter: invert();
+  margin: auto;
+}
+
+.togglecolor image:hover {
+  cursor: pointer;
+}
+
 
 .navlist {
   display: flex;
@@ -42,11 +55,11 @@
   list-style: none;
   position: relative;
   margin: 0 1rem;
+  transition: color 0.2s ease-in-out;
 }
 
 .navitem:hover {
   color: #dddb5d;
-  transition: color 0.2s ease-in-out;
 }
 
 .logo {
@@ -87,6 +100,7 @@
 .hamburger.open .line:nth-child(3) {
   transform: rotate(-45deg) translateY(-8px);
 }
+
 
 
 @media (max-width: 850px) {

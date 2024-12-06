@@ -1,8 +1,16 @@
 import styles from "@/styles/Profile.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import MailBox from "@/components/MailBox";
+import React, { useState } from "react";
 
 export default function MainCard() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleToggle = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <div>
       <div className={styles.main}>
@@ -23,24 +31,45 @@ export default function MainCard() {
 
             <h2>Computer Science Student</h2>
             <div className={styles.links}>
-              <a href="https://twitter.com/payrimSp" aria-label="Twitter" target="_blank" rel="noopener noreferrer">
-              <Image
-            src="/c/icons/twitter.svg"
-            alt="Twitter"
-            className={styles.logo}
-            width={30}
-            height={30}
-          />
-              </a> 
-              <a href="https://www.instagram.com/velvetphy" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
-              <Image
-            src="/c/icons/instagram.svg"
-            alt="Instagram"
-            className={styles.logoS}
-            width={30}
-            height={30}
-          />
-              </a> 
+              <a onClick={setIsOpen} style={{ cursor: "pointer" }}>
+                <Image
+                  src="/c/icons/mail.svg"
+                  alt="mail"
+                  className={styles.logo}
+                  width={30}
+                  height={30}
+                />
+              </a>
+              {isOpen && <MailBox onClose={handleToggle} />}
+
+              <a
+                href="https://twitter.com/payrimSp"
+                aria-label="Twitter"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  src="/c/icons/twitter.svg"
+                  alt="Twitter"
+                  className={styles.logo}
+                  width={30}
+                  height={30}
+                />
+              </a>
+              <a
+                href="https://www.linkedin.com/parsany"
+                aria-label="linkedin"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  src="/c/icons/linkedin.svg"
+                  alt="linkedin"
+                  className={styles.logo}
+                  width={30}
+                  height={30}
+                />
+              </a>
               <a
                 href="https://github.com/parsany"
                 aria-label="GitHub"
@@ -50,10 +79,23 @@ export default function MainCard() {
                 <Image
                   src="/c/icons/github-mark.svg"
                   alt="GitHub"
-                  className={styles.logoI}
+                  className={styles.logo}
                   width={30}
                   height={30}
-    
+                />
+              </a>
+              <a
+                href="https://t.me/velvetphy"
+                aria-label="Telegram"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  src="/c/icons/telegram.svg"
+                  alt="Telegram"
+                  className={styles.logo}
+                  width={30}
+                  height={30}
                 />
               </a>
               {/* <a href="#" aria-label="LinkedIn">

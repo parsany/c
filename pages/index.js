@@ -24,9 +24,6 @@ export default function Main() {
       <div className={Styles.BoxContainer}>
         <Skills />
       </div>
-      <div className={Styles.LastContainer}>
-        <Contact/>
-      </div>
     </div>
   );
 }

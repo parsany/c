@@ -2,9 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--background-color);
-  color: #ffffff;
-  padding: 40px;
+  background: linear-gradient(to right, #1f1f1f, #2a2a2a);
+  padding: 60px;
   min-height: 100vh;
 }
 
@@ -15,12 +14,14 @@
   margin-top: 37px;
 }
 
+
 .box {
+  color: var(--experience-color);
   background-color: var(--primary-color);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  width: 100%;
+  width: 90%;
   max-width: 800px;
 }
 
@@ -34,7 +35,7 @@
 
 .job {
   margin-bottom: 30px;
-  padding: 15px;
+  padding: 14px;
   border-left: 4px solid #00bcd4;
 }
 
@@ -57,12 +58,12 @@
 
 .company {
   font-size: 1.2rem;
-  color: #b0bec5;
+  color: var(--experience-company);
 }
 
 .dates {
   font-size: 1rem;
-  color: #90a4ae;
+  color: var(--experience-dates);
 }
 
 .responsibilitiesTitle {
@@ -77,5 +78,5 @@
 
 .responsibilitiesItem{
   margin-top: 5px;
-  color: rgb(164, 171, 192);
+  color: var(--experience-res);
 }
