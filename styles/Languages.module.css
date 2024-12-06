@@ -17,7 +17,7 @@
   display: flex;
   justify-content: center;
   gap: 20px;
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  flex-wrap: wrap;
 }
 
 .languageCard {
@@ -53,7 +53,7 @@
   color: #b0bec5;
 }
 
-/* Media Queries for responsiveness */
+/* media queries */
 @media (max-width: 768px) {
   .languageCard {
     width: 100px;
