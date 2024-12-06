@@ -3,7 +3,7 @@ import { ProSkills } from "@/public/JSONJS";
 import Languages from "./Languages"; 
 import SkillsHobbies from "./hobbies"; 
 
-export default function Skills() {
+export default function Skills( {MainPage}) {
   return (
     <div>
       <h2 className={styles.title}>Tech Stack</h2>
@@ -24,7 +24,7 @@ export default function Skills() {
       </div>
       <div className={styles.itemrow}>
         <Languages />
-        <SkillsHobbies />
+        {process.env.MainPage === "show" && <SkillsHobbies />}
       </div>
     </div>
   );

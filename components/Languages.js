@@ -3,7 +3,7 @@ import styles from '@/styles/Languages.module.css';
 export default function Languages() {
   const languages = [
     {  name: 'English', proficiency: 'Bilingual' },
-    {  name: 'Spanish', proficiency: 'Fluent' },
+    {  name: 'Persian', proficiency: 'Bilingual' },
   ];
 
   return (

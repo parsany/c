@@ -7,7 +7,6 @@ export default function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme) {
@@ -15,7 +14,7 @@ export default function NavBar() {
     }
   }, []);
 
-    const toggleTheme = () => {
+  const toggleTheme = () => {
     const newTheme = isDarkMode ? "light" : "dark";
     setIsDarkMode(!isDarkMode);
     localStorage.setItem("theme", newTheme);
@@ -27,16 +26,16 @@ export default function NavBar() {
   };
 
   const NAV_LINKS = [
-    { title: "Projects", href: "/projects" },
     { title: "Experience", href: "/experience" },
     { title: "Skills", href: "/skills" },
     { title: "Blog Posts", href: "/posts" },
     { title: "Materials", href: "/materials" },
+    { title: "Projects", href: "/projects" },
     { title: "Contact", href: "/contact" },
   ];
 
   const handleLinkClick = () => {
-    setMenuOpen(false); 
+    setMenuOpen(false);
   };
 
   return (
@@ -70,7 +69,11 @@ export default function NavBar() {
           <li className={Styles.navitem}>
             <a onClick={toggleTheme} className={Styles.toggleMode}>
               <Image
-                src={isDarkMode ? "/c/icons/dark_mode.svg" : "/c/icons/light_mode.svg"}
+                src={
+                  isDarkMode
+                    ? "/c/icons/dark_mode.svg"
+                    : "/c/icons/light_mode.svg"
+                }
                 alt="Toggle Icon"
                 className={Styles.togglecolor}
                 width={20}

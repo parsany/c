@@ -16,13 +16,10 @@ export default function Main() {
       <MainCard />
       </div>
       <div className={Styles.BoxContainer}>
-        <Experience IsIsolated={false}/>
-      </div>
-      <div className={Styles.BoxContainer}>
         <Projects NumberShown={3}/>
       </div>
       <div className={Styles.BoxContainer}>
-        <Skills />
+        <Skills MainPage="off"/>
       </div>
     </div>
   );
