@@ -30,6 +30,11 @@
   --box-color: rgb(224, 224, 224);
   --skill-name: #ffc65c;
   --skill-title: #1b1b1b;
+  --button-color:rgb(38, 38, 39);
+  --button-color2:rgb(252, 252, 252);
+  --button-color3: rgb(17, 17, 17);
+  --search-color: rgb(252, 252, 252);
+  --teach-color: rgb(240, 236, 0);
 }
 
 .dark-mode {
@@ -61,6 +66,11 @@
   --box-color: rgb(20, 27, 39);
   --skill-name: #f0a51a;
   --skill-title: #20dfb5;
+  --button-color:rgb(38, 38, 39);
+  --button-color2:rgb(175, 175, 177);
+  --button-color3: rgb(51, 49, 49);
+  --search-color: var(--primary-color);
+  --teach-color: white;
 }
 
 html,

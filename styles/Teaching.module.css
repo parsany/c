@@ -8,7 +8,7 @@
   }
   
   .title {
-    color: var(--highlight-color);
+    color: var(--teach-color);
     font-size: 2.5rem;
     margin-bottom: 20px;
   }
@@ -19,7 +19,7 @@
     border: 1px solid var(--highlight-color);
     width: 300px;
     margin-bottom: 40px;
-    background-color: #333;
+    background-color: var(--search-color);
     color: var(--text-color);
   }
   
@@ -74,13 +74,13 @@
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background-color: var(--primary-color);
-    color: #fff;
+    background-color: var(--button-color);
+    color: var(--button-color2);
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
   
   .showMoreButton:hover {
-    background-color: var(--highlight-color2);
+    background-color: var(--button-color3);
   }
   

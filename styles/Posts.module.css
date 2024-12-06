@@ -1,15 +1,13 @@
-
-
 .title {
   margin-top: 40px;
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 20px;
-  color: #e3e3e3;
+  color: var(--title-color);
 }
 
 .newsBox {
-  background-color: var(--primary-color);
+  background-color: var(--card-background);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
@@ -39,7 +37,7 @@
 
 .date {
   font-size: 0.9rem;
-  color: #90a4ae;
+  color: var(--subtitle-color);
   width: 100px;
   text-align: right;
 }
@@ -52,18 +50,18 @@
   font-size: 1.5rem;
   font-weight: bold;
   margin: 0;
-  color: #ffffff;
+  color: var(--text-color);
 }
 
 .description {
   font-size: 1rem;
   margin: 10px 0;
-  color: #cccccc;
+  color: var(--foreground);
 }
 
 .readMore {
   font-size: 0.9rem;
-  color: #00ff00;
+  color: var(--highlight-color);
   text-decoration: none;
   font-weight: bold;
 }
