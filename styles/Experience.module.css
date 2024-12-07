@@ -51,6 +51,13 @@
   margin-right: 10px;
 }
 
+.icond {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  filter: invert(1);
+}
+
 .jobTitle {
   font-size: 1.5rem;
   font-weight: bold;

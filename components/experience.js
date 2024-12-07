@@ -1,7 +1,16 @@
 import styles from "@/styles/Experience.module.css";
 import Image from "next/image";
+import { useEffect, useState } from 'react';
 
 export default function Experience({IsIsolated}) {
+
+  const [theme, setTheme] = useState(null);
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+    setTheme(savedTheme);
+  }, []);
+  
   return (
     <div>
       <h1 className={styles.title}>Experience</h1>
@@ -9,9 +18,9 @@ export default function Experience({IsIsolated}) {
         <div className={styles.job}>
           <div className={styles.jobHeader}>
             <Image
-              src="/c/icons/cloud.svg"
-              alt="Cloud Icon"
-              className={styles.icon}
+              src="/c/icons/experience.svg"
+              alt="Experience Icon"
+              className={theme === 'dark' ? styles.icon : styles.icond}
               width={30}
               height={30}
             />
@@ -44,9 +53,9 @@ export default function Experience({IsIsolated}) {
         <div className={styles.job}>
           <div className={styles.jobHeader}>
             <Image
-              src="/c/icons/software.svg"
-              alt="Software Icon"
-              className={styles.icon}
+              src="/c/icons/experience.svg"
+              alt="Experience Icon"
+              className={theme === 'dark' ? styles.icon : styles.icond}
               width={30}
               height={30}
             />
@@ -82,7 +91,7 @@ export default function Experience({IsIsolated}) {
             <Image
               src="/c/icons/education.svg"
               alt="Education Icon"
-              className={styles.icon}
+              className={theme === 'dark' ? styles.icon : styles.icond}
               width={30}
               height={30}
             />
@@ -95,6 +104,29 @@ export default function Experience({IsIsolated}) {
           <p className={styles.responsibilitiesTitle}>GPA: 3.4</p>
         </div>
       </div>
+
+      {/* <h1 className={styles.title}>Awards</h1>
+      <div className={IsIsolated ? styles.box : styles.boxnormal}>
+        <div className={styles.job}>
+          <div className={styles.jobHeader}>
+            <Image
+              src="/c/icons/cup.svg"
+              alt="Awards Icon"
+                            className={theme === 'dark' ? styles.icon : styles.icond}
+              width={30}
+              height={30}
+            />
+            <div className={styles.jobInfo}>
+              <h2 className={styles.jobTitle}>
+                1st Place in the 2022 
+              </h2>
+              <p className={styles.company}>AI for Oceans</p>
+              <p className={styles.dates}>November 2022</p>
+            </div>
+          </div>
+        </div>
+      </div> */}
+
     </div>
   );
 }
