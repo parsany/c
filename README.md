@@ -121,7 +121,7 @@ You should see your site deployed to GitHub Pages in a few minutes. 🚀
 
 ---
 
-## credits:
+## (credits)[https://github.com/gregrickaby/nextjs-github-pages]
 
-https://github.com/gregrickaby/nextjs-github-pages
+
 ---
