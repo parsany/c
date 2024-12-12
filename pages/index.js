@@ -1,9 +1,10 @@
 import MainCard from "../components/MainCard";
 import Contact from "../components/contact";
-import Projects from "../components/projects";
 import Experience from "../components/experience";
+import Projects from "../components/projects";
 import Skills from "../components/skills";
 import Styles from "@/styles/Main.module.css";
+import UpdateBar from "../components/UpdateBar";
 
 //TODO: resposive
 //TODO: dark mode/light mode
@@ -11,6 +12,8 @@ import Styles from "@/styles/Main.module.css";
 
 export default function Main() {
   return (
+    <div>
+      <UpdateBar/>
     <div className={Styles.container}>
       <div className={Styles.maincard}>
       <MainCard />
@@ -21,6 +24,7 @@ export default function Main() {
       <div className={Styles.BoxContainer}>
         <Skills MainPage="off"/>
       </div>
+    </div>
     </div>
   );
 }
