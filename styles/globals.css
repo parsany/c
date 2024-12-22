@@ -35,6 +35,7 @@
   --button-color3: rgb(17, 17, 17);
   --search-color: rgb(252, 252, 252);
   --teach-color: rgb(240, 236, 0);
+  --code-color: #282C34;
 }
 
 .dark-mode {
@@ -71,6 +72,7 @@
   --button-color3: rgb(51, 49, 49);
   --search-color: var(--primary-color);
   --teach-color: white;
+  --code-color: #282C34;
 }
 
 html,

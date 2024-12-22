@@ -8,13 +8,60 @@
         "content": "# Python Basics\nLearn Python programming step by step."
       },
       {
+        "type": "markdown",
+        "content": "## Introduction to Python\nPython is a versatile programming language that is easy to learn and widely used for various applications."
+      },
+      {
         "type": "code",
         "language": "python",
         "content": "def greet(name):\n    return f\"Hello, {name}!\"\n\nprint(greet(\"World\"))"
       },
       {
+        "type": "markdown",
+        "content": "## Variables and Data Types\nIn Python, you can create variables to store data. Here are some common data types:\n- **Integer**: Whole numbers\n- **Float**: Decimal numbers\n- **String**: Text data"
+      },
+      {
+        "type": "code",
+        "language": "python",
+        "content": "age = 30\nheight = 5.9\nname = \"Alice\"\n\nprint(f\"Name: {name}, Age: {age}, Height: {height}\")"
+      },
+      {
+        "type": "markdown",
+        "content": "## Control Structures\nPython includes control structures like loops and conditionals. Here's an example of a simple `if` statement."
+      },
+      {
+        "type": "code",
+        "language": "python",
+        "content": "if age >= 18:\n    print(\"You are an adult.\")\nelse:\n    print(\"You are a minor.\")"
+      },
+      {
+        "type": "markdown",
+        "content": "## Functions\nFunctions allow you to encapsulate code for reuse. Here’s an example of a function that calculates the area of a rectangle."
+      },
+      {
+        "type": "code",
+        "language": "python",
+        "content": "def area_of_rectangle(length, width):\n    return length * width\n\nprint(area_of_rectangle(5, 3))"
+      },
+      {
+        "type": "markdown",
+        "content": "## Introduction to LaTeX\nLaTeX is a typesetting system that is widely used for mathematical and scientific documents."
+      },
+      {
         "type": "latex",
         "content": "\\text{Quadratic Formula: } x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}"
+      },
+      {
+        "type": "markdown",
+        "content": "### Example of a Quadratic Equation\nLet's solve a quadratic equation using the formula."
+      },
+      {
+        "type": "latex",
+        "content": "\\text{For example: } 2x^2 + 3x - 2 = 0"
+      },
+      {
+        "type": "markdown",
+        "content": "## Conclusion\nPython is a powerful tool for programming, and learning its basics is the first step towards mastering it."
       }
     ]
   }

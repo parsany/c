@@ -21,8 +21,11 @@
   border: 1px solid var(--highlight-color);
   border-radius: 8px;
   padding: 20px;
-  position: sticky;
-  top: 20px;
+  position: fixed;
+  top: 120px;
+  right: 50px;
+  left: auto;
+
 }
 
 .rightPane h2 {
@@ -97,7 +100,7 @@
 }
 
 .latexBlock {
-  background-color: var(--card-background);
+  background-color: var(--primary-color);
   color: var(--text-color);
   padding: 15px;
   border-radius: 8px;
