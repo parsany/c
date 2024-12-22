@@ -31,28 +31,55 @@ export const ProjectStuff = [
 
 export const NewsPost = [
   {
-    date: "Oct 27, 2000",
+    date: "Jan 27, 2000",
     emoji: "🎉",
     title: "Easily create your own simple yet highly customizable blog",
     description:
       "Take full control of your personal brand and privacy by migrating away from the big tech platforms!",
     link: "#",
+    tags: ["V", "N"],
   },
   {
-    date: "Oct 26, 2024",
+    date: "Dec 26, 2024",
     emoji: "🧠",
     title: "Sharpen your thinking with a second brain",
     description:
       "Create a personal knowledge base and share your knowledge with your peers.",
     link: "#",
+    tags: ["A", "B"],
   },
   {
-    date: "Oct 25, 2023",
+    date: "Nov 25, 2023",
     emoji: "📊",
     title:
       "Communicate your results effectively with the best data visualizations",
     description: "Use popular tools such as Plotly, Mermaid, and data frames.",
     link: "#",
+    tags: ["D", "C"],
+  },{
+    date: "Jan 27, 2000",
+    emoji: "🎉",
+    title: "Easily create your own simple yet highly customizable blog",
+    description:
+      "Take full control of your personal brand and privacy by migrating away from the big tech platforms!",
+    link: "#",
+    tags: ["D", "E"],
+  },{
+    date: "Dec 01, 2000",
+    emoji: "🎉",
+    title: "Easily create your own CC yet highly customizable blog",
+    description:
+      "Take full control of your personal brand and privacy by migrating away from the big tech platforms!",
+    link: "#",
+    tags: ["B", "C"],
+  },{
+    date: "Nov 22, 2000",
+    emoji: "🎉",
+    title: "Easily FFuck your own simple yet highly customizable blog",
+    description:
+      "Take full control of your personal brand and privacy by migrating away from the big tech platforms!",
+    link: "#",
+    tags: ["A"],
   },
 ];
 

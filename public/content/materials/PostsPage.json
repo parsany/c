@@ -1,0 +1,32 @@
+[
+    {
+      "id": "P1",
+      "name": "Post 1: Introduction to React",
+      "title": "Easily create your own simple yet highly customizable blog",
+      "description":"Take full control of your personal brand and privacy by migrating away from the big tech platforms!",
+      "date": "Jan 27, 2000",
+      "emoji": "🎉",
+      "link": "#",
+      "tags": ["V", "N"],
+      "body": "React is a JavaScript library for building user interfaces. In this post, we will explore the fundamentals of React and how to create dynamic web applications."
+    },
+    {
+      "id": "P2",
+      "name": "Post 2: Understanding JavaScript Closures",
+      "desc": "Deep dive into closures in JavaScript",
+      "body": "A closure is a function that retains access to its lexical scope, even when the function is executed outside that scope. This post covers the concept of closures and provides practical examples."
+    },
+    {
+      "id": "P3",
+      "name": "Post 3: The Power of CSS Grid",
+      "desc": "How to create complex layouts with CSS Grid",
+      "body": "CSS Grid is a powerful tool for creating responsive web layouts. This post will walk you through the basics of CSS Grid and how to use it to create modern web layouts."
+    },
+    {
+      "id": "P4",
+      "name": "Post 4: Mastering Asynchronous JavaScript",
+      "desc": "Understanding async/await in JavaScript",
+      "body": "Asynchronous JavaScript is a crucial concept for modern web development. In this post, we will dive into async/await, Promises, and how to handle asynchronous operations efficiently."
+    }
+  ]
+  
