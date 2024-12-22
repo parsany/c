@@ -108,7 +108,7 @@ export const Materials = [
     description: "responsive",
     date: "Oct 24, 1800",
     image: "/c/content/course.jpg",
-    link: "learn-python",
+    link: "Coq",
   },
   {
     id: 3,
