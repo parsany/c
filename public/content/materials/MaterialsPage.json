@@ -1,0 +1,21 @@
+[
+  {
+    "id": "learn-python",
+    "title": "Learn Python",
+    "body": [
+      {
+        "type": "markdown",
+        "content": "# Python Basics\nLearn Python programming step by step."
+      },
+      {
+        "type": "code",
+        "language": "python",
+        "content": "def greet(name):\n    return f\"Hello, {name}!\"\n\nprint(greet(\"World\"))"
+      },
+      {
+        "type": "latex",
+        "content": "\\text{Quadratic Formula: } x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}"
+      }
+    ]
+  }
+]

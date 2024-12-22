@@ -96,41 +96,20 @@ export const ProSkills = [
 export const Materials = [
   {
     id: 1,
-    title: "JavaScript",
-    description: "Easily learn JavaScript in 10 years!",
-    date: "Oct 24, 2023",
-    image: "/c/content/course.jpg",
-  },
-  {
-    id: 2,
-    title: "COBOL",
-    description: "Easily learn COBOL in 100^20 nanoseconds!",
-    date: "Oct 24, 1990",
-    image: "/c/content/course.jpg",
-  },
-  {
-    id: 3,
-    title: "Python",
-    description: "Easily learn Python in 100^20 minutes!",
-    date: "Oct 24, 2000",
-    image: "/c/content/course.jpg",
-  },
-  {
-    id: 5,
     title: "add anims",
     description: "responsive",
     date: "Oct 24, 1700",
     image: "/c/content/course.jpg",
   },
   {
-    id: 6,
+    id: 2,
     title: "add this page with latex support",
     description: "responsive",
     date: "Oct 24, 1700",
     image: "/c/content/course.jpg",
   },
   {
-    id: 7,
+    id: 3,
     title: "light dark mode",
     description: "responsive",
     date: "Oct 24, 1700",
