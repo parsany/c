@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "@/styles/Teaching.module.css";
 import Image from "next/image";
 import { Materials } from "@/public/JSONJS";
+import Link from "next/link";
 
 export default function Teaching() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -31,6 +32,7 @@ export default function Teaching() {
       <div className={styles.cardContainer}>
         {filteredCourses.slice(0, visibleCount).map(course => (
           <div key={course.id} className={styles.card}>
+            <Link href={"materials/"+course.link}>
             <Image
               src={course.image}
               alt={course.title}
@@ -41,6 +43,7 @@ export default function Teaching() {
             <h2 className={styles.courseTitle}>{course.title}</h2>
             <p className={styles.description}>{course.description}</p>
             <p className={styles.date}>{course.date}</p>
+          </Link>
           </div>
         ))}
       </div>
