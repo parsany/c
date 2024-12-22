@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
 import Materials from '@/public/content/materials/MaterialsPage.json';
 import styles from '@/styles/MaterialPage.module.css';
 import ReactMarkdown from 'react-markdown';
@@ -11,18 +10,8 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'; // Dark theme
 import 'katex/dist/katex.min.css';
 
-export default function MaterialPage() {
-  const router = useRouter();
-  const { id } = router.query;
-  const [content, setContent] = useState(null);
-
-  useEffect(() => {
-    if (id) {
-      const material = Materials.find(item => item.id === id);
-      setContent(material);
-    }
-  }, [id]);
-
+export default function MaterialPage({ content }) {
+  // If content is not found, show a loading message
   if (!content) return <div className={styles.loading}>Loading...</div>;
 
   return (
@@ -65,7 +54,7 @@ export default function MaterialPage() {
               case 'latex':
                 return (
                   <div key={index} className={styles.latexBlock}>
-                    <Latex>$${block.content}$$</Latex>
+                    <Latex>${block.content}$</Latex>
                   </div>
                 );
               default:
@@ -97,4 +86,22 @@ export default function MaterialPage() {
       </aside>
     </div>
   );
+}
+
+export async function getStaticPaths() {
+  const paths = Materials.map(material => ({
+    params: { id: material.id },
+  }));
+
+  return { paths, fallback: false }; // No fallback means 404 for non-existing pages
+}
+
+export async function getStaticProps({ params }) {
+  const content = Materials.find(item => item.id === params.id) || null;
+
+  return {
+    props: {
+      content,
+    },
+  };
 }

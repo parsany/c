@@ -24,8 +24,7 @@
   position: fixed;
   top: 120px;
   right: 50px;
-  left: auto;
-
+  text-align: auto;
 }
 
 .rightPane h2 {
