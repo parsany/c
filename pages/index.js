@@ -21,9 +21,6 @@ export default function Main() {
       <div className={Styles.BoxContainer}>
         <Projects NumberShown={3}/>
       </div>
-      <div className={Styles.BoxContainer}>
-        <Skills MainPage="off"/>
-      </div>
     </div>
     </div>
   );

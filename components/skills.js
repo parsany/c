@@ -24,7 +24,7 @@ export default function Skills( {MainPage}) {
       </div>
       <div className={styles.itemrow}>
         <Languages />
-        {process.env.MainPage === "show" && <SkillsHobbies />}
+        {process.env.MainPage === true && <SkillsHobbies />}
       </div>
     </div>
   );
