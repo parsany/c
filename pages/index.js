@@ -19,7 +19,7 @@ export default function Main() {
           <MainCard />
         </div>
         <div className={Styles.BoxContainer}>
-          <Projects NumberShown={3} />
+          <Projects LimitShow={true} />
         </div>
         <div className={Styles.BoxContainer}>
           <p>News elements</p>

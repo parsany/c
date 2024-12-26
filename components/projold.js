@@ -3,7 +3,7 @@ import styles from "@/styles/Projects.module.css";
 import Image from "next/image";
 import { ProjectStuff } from "@/public/JSONJS";
 
-export default function Projects({ LimitShow }) {
+export default function Projects({ NumberShown }) {
   const [hoveredId, setHoveredId] = useState(null);
   const [playedVideos, setPlayedVideos] = useState({});
 
@@ -19,24 +19,25 @@ export default function Projects({ LimitShow }) {
     }, 200);
   };
 
-  const renderMedia = ({ id, video, image, name }) => {
-    const isPlaying = (hoveredId?.id === id || playedVideos[id]) && video;
-    return isPlaying ? (
+  const renderMedia = (project) => {
+    const isVideoPlaying = (hoveredId?.id === project.id || playedVideos[project.id]) && project.video;
+    return isVideoPlaying ? (
       <video
-        src={video}
+        src={project.video}
         autoPlay
         muted
         loop
         className={styles.video}
-        onEnded={() =>
-          !hoveredId?.id === id &&
-          setPlayedVideos((prev) => ({ ...prev, [id]: false }))
-        }
+        onEnded={() => {
+          if (hoveredId?.id !== project.id) {
+            setPlayedVideos((prev) => ({ ...prev, [project.id]: false }));
+          }
+        }}
       />
     ) : (
       <Image
-        src={image}
-        alt={name}
+        src={project.image}
+        alt={project.name}
         layout="fill"
         objectFit="cover"
         className={styles.image}
@@ -45,45 +46,30 @@ export default function Projects({ LimitShow }) {
   };
 
   const getCardClass = (project, index) => {
-    if (LimitShow !== true) return styles.card;
+    if (NumberShown !== 3) return styles.card;
 
     const isHovered = hoveredId?.id === project.id;
-    const directionClass = hoveredId
-      ? hoveredId.index < index
-        ? styles.moveRight
-        : styles.moveLeft
-      : "";
+    const directionClass = hoveredId ? (hoveredId.index < index ? styles.moveRight : styles.moveLeft) : "";
 
-    const positionClass = isHovered
-      ? project.id === 1
-        ? styles.selectedLeft
-        : project.id === 2
-        ? styles.selected
-        : project.id === 3
-        ? styles.selectedRight
-        : ""
-      : "";
+    let positionClass = "";
+    if (isHovered) {
+      positionClass =
+        project.id === 1 ? styles.selectedLeft :
+        project.id === 2 ? styles.selected :
+        project.id === 3 ? styles.selectedRight : "";
+    }
 
-    return [styles.card, positionClass, directionClass]
-      .filter(Boolean)
-      .join(" ");
+    return `${styles.card} ${positionClass} ${directionClass}`.trim();
   };
 
-  const displayedProjects =
-    LimitShow === true
-      ? ProjectStuff.filter((project) => [1, 2, 3].includes(project.id)) 
-          .sort((a, b) => a.id - b.id) 
-      : ProjectStuff.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(
-          0,
-          LimitShow || undefined
-        );
+  const sortedProjects = ProjectStuff.sort((a, b) => new Date(b.date) - new Date(a.date));
+  const displayedProjects = NumberShown === 0 ? sortedProjects : sortedProjects.slice(0, NumberShown);
 
   return (
     <div className={styles.elements}>
       <h1 className={styles.title}>Selected Projects</h1>
       <p className={styles.subtitle}>
-        I like to learn by making things. Here&apos;s some projects I&apos;ve
-        worked on.
+        I like to learn by making things. Here&apos;s some projects I&apos;ve worked on.
       </p>
       <div className={styles.grid}>
         {displayedProjects.map((project, index) => (
@@ -102,9 +88,7 @@ export default function Projects({ LimitShow }) {
               <div className={styles.banner}>{renderMedia(project)}</div>
               <div className={styles.content}>
                 <h3 className={styles.projectName}>{project.name}</h3>
-                <p className={styles.projectDescription}>
-                  {project.description}
-                </p>
+                <p className={styles.projectDescription}>{project.description}</p>
               </div>
             </a>
           </div>
