@@ -6,7 +6,7 @@ export default function SkillsPage() {
 
   return (
     <div className={Pagestyles.container}>
-      <Skills MainPage="true"/>
+      <Skills ShowSkills="true"/>
     </div>
   );
 }

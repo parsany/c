@@ -13,15 +13,21 @@ import UpdateBar from "../components/UpdateBar";
 export default function Main() {
   return (
     <div>
-      <UpdateBar/>
-    <div className={Styles.container}>
-      <div className={Styles.maincard}>
-      <MainCard />
+      <UpdateBar />
+      <div className={Styles.container}>
+        <div className={Styles.maincard}>
+          <MainCard />
+        </div>
+        <div className={Styles.BoxContainer}>
+          <Projects NumberShown={3} />
+        </div>
+        <div className={Styles.BoxContainer}>
+          <p>News elements</p>
+        </div>
+        <div className={Styles.BoxContainer}>
+          <p>random post</p>
+        </div>
       </div>
-      <div className={Styles.BoxContainer}>
-        <Projects NumberShown={3}/>
-      </div>
-    </div>
     </div>
   );
 }

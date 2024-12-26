@@ -84,3 +84,37 @@
     background-color: var(--button-color3);
   }
   
+
+  .loadingOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.432);
+    color: var(--highlight-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; 
+  }
+  
+  .loadingSpinner {
+    width: 50px; 
+    height: 50px; 
+    border: 5px solid var(--highlight-color); 
+    border-top: 5px solid transparent; 
+    border-radius: 50%;
+    animation: spin 1s linear infinite; 
+  }
+  
+  .loadingContainer p {
+    margin-top: 10px; 
+    text-align: center; 
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  

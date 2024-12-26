@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "@/styles/Teaching.module.css";
 import Image from "next/image";
 import { Materials } from "@/public/JSONJS";
@@ -6,16 +6,26 @@ import Link from "next/link";
 
 export default function Teaching() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [visibleCount, setVisibleCount] = useState(4); 
+  const [visibleCount, setVisibleCount] = useState(4);
+  const [loading, setLoading] = useState(false);
 
-  const filteredCourses = Materials.filter(course =>
-    course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    course.description.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredCourses = Materials.filter(
+    (course) =>
+      course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      course.description.toLowerCase().includes(searchTerm.toLowerCase())
   ).sort((a, b) => new Date(b.date) - new Date(a.date));
 
   const handleShowMore = () => {
-    setVisibleCount(prevCount => prevCount + 12); 
+    setVisibleCount((prevCount) => prevCount + 12);
   };
+
+  const handleCourseClick = () => {
+    setLoading(true);
+  };
+
+  useEffect(() => {
+    setLoading(false);
+  }, [searchTerm]);
 
   return (
     <div className={styles.container}>
@@ -30,20 +40,20 @@ export default function Teaching() {
       />
 
       <div className={styles.cardContainer}>
-        {filteredCourses.slice(0, visibleCount).map(course => (
+        {filteredCourses.slice(0, visibleCount).map((course) => (
           <div key={course.id} className={styles.card}>
-            <Link href={"materials/"+course.link}>
-            <Image
-              src={course.image}
-              alt={course.title}
-              className={styles.image}
-              width={300}
-              height={200}
-            />
-            <h2 className={styles.courseTitle}>{course.title}</h2>
-            <p className={styles.description}>{course.description}</p>
-            <p className={styles.date}>{course.date}</p>
-          </Link>
+            <Link href={"materials/" + course.link} onClick={handleCourseClick}>
+              <Image
+                src={course.image}
+                alt={course.title}
+                className={styles.image}
+                width={300}
+                height={200}
+              />
+              <h2 className={styles.courseTitle}>{course.title}</h2>
+              <p className={styles.description}>{course.description}</p>
+              <p className={styles.date}>{course.date}</p>
+            </Link>
           </div>
         ))}
       </div>
@@ -53,6 +63,15 @@ export default function Teaching() {
           Show More
         </button>
       )}
+
+{loading && (
+  <div className={styles.loadingOverlay}>
+    <div className={styles.loadingContainer}>
+      <div className={styles.loadingSpinner}></div>
+      <p>Loading...</p>
+    </div>
+  </div>
+)}
     </div>
   );
 }
