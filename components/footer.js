@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className={Styles.footer}>
       <div className={Styles.container}>
         <p className={Styles.copyright}>
-          Copyright {new Date().getFullYear()} - All rights open
+          Copyright {new Date().getFullYear()} Parsa ny - All rights open
         </p>
         <p>
           Made with Next.js, hosted over Github Pages
