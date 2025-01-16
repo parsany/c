@@ -1,11 +1,13 @@
 import styles from "@/styles/Profile.module.css";
 import Image from "next/image";
-import Link from "next/link";
 import MailBox from "@/components/MailBox";
 import React, { useState } from "react";
 
 export default function MainCard() {
   const [isOpen, setIsOpen] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+  const openPopup = () => setShowPopup(true);
+  const closePopup = () => setShowPopup(false);
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
@@ -121,11 +123,31 @@ export default function MainCard() {
             pursuits, he enjoys exploring web and game development, combining
             creativity with technical skill.
           </p>
-          <button className={styles.downloadCV}>
-            <a href="/c/CV.pdf" download="cv">
+          <div>
+            <button className={styles.downloadCV} onClick={openPopup}>
               Download CV
-            </a>
-          </button>
+            </button>
+
+            {showPopup && (
+              <div className={styles.overlay} onClick={closePopup}>
+                <div
+                  className={styles.CV_container}
+                  onClick={(e) => e.stopPropagation()} // Prevent closing popup when clicking inside
+                >
+                  <button className={styles.downloadCV}>
+                    <a href="/c/CV.pdf" download="cv">
+                      Academic CV
+                    </a>
+                  </button>
+                  <button className={styles.downloadCV}>
+                    <a href="/c/CVB.pdf" download="cv">
+                      Business CV
+                    </a>
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Interests */}
