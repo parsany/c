@@ -151,3 +151,31 @@
   color: var(--project-date-color);
   margin-bottom: 40px;
 }
+
+@media (max-width: 850px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(90%, 1fr)); 
+    justify-content: center; 
+    gap: 20px; 
+  }
+
+  .card {
+    margin: 0 auto; 
+  }
+
+  .card.selected {
+    transform: scale(1.3); 
+    z-index: 99;
+  }
+
+  .card.selectedLeft,
+  .card.selectedRight {
+    transform: scale(1.3); 
+    z-index: 99;
+  }
+
+  .card.moveLeft,
+  .card.moveRight {
+    transform: scale(1); 
+  }
+}
