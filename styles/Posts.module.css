@@ -291,6 +291,27 @@
   background-color: var(--highlight-color3);
 }
 
+.viewMoreWrapper {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.viewMoreButton {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: var(--highlight-color2);
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.viewMoreButton:hover {
+  background-color: var(--highlight-color3);
+}
+
+
 @media (max-width: 768px) {
 
   .container {

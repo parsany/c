@@ -8,7 +8,7 @@ export default function News() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedYear, setSelectedYear] = useState(null);
   const [selectedMonth, setSelectedMonth] = useState(null);
-
+  const [visibleCount, setVisibleCount] = useState(5); // State to manage how many posts to show
   
   const toggleTag = (tag) => {
     setSelectedTags((prevTags) =>
@@ -18,20 +18,16 @@ export default function News() {
     );
   };
 
-  
   const filterByYear = (year) => {
     setSelectedYear(year);
     setSelectedMonth(null); 
   };
 
-  
   const filterByMonth = (month) => {
     setSelectedMonth(month);
   };
 
-  
   const filterPosts = () => {
-    
     const searchWords = searchQuery
       .trim()
       .toLowerCase()
@@ -39,7 +35,6 @@ export default function News() {
       .filter((word) => word.length > 0); 
     
     return Posts.filter((post) => {
-      
       const matchesSearch =
         searchWords.length === 0 || 
         searchWords.every((word) => {
@@ -49,35 +44,29 @@ export default function News() {
           );
         });
   
-      
       const matchesTags =
         selectedTags.length === 0 ||
         post.tags.some((tag) => selectedTags.includes(tag));
   
-      
       const matchesYear =
         !selectedYear || new Date(post.date).getFullYear() === selectedYear;
   
-      
       const matchesMonth =
         !selectedMonth || new Date(post.date).getMonth() === selectedMonth;
   
       return matchesSearch && matchesTags && matchesYear && matchesMonth;
     }).sort((a, b) => new Date(b.date) - new Date(a.date)); 
   };
-  
 
   const postsToShow = filterPosts();
-
+  const postsToDisplay = postsToShow.slice(0, visibleCount);
   
   const allTags = [...new Set(Posts.flatMap((post) => post.tags))];
 
-  
   const allYears = [...new Set(Posts.map((post) => new Date(post.date).getFullYear()))].sort(
     (a, b) => b - a
   );
 
-  
   const availableMonths =
     selectedYear &&
     [...new Set(Posts.filter((post) => new Date(post.date).getFullYear() === selectedYear)
@@ -89,14 +78,17 @@ export default function News() {
     router.push(`/posts/${id}`);
   };
 
+  const handleViewMore = () => {
+    setVisibleCount(visibleCount + 5);
+  };
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Recent Posts</h1>
       <div className={styles.contentWrapper}>
-        {}
         <div className={styles.newsBox}>
           <div className={styles.newsList}>
-            {postsToShow.map((item) => (
+            {postsToDisplay.map((item) => (
               <div
                 key={item.id}
                 className={styles.newsItem}
@@ -115,7 +107,6 @@ export default function News() {
           </div>
         </div>
 
-        {}
         <div className={styles.rightPanel}>
           <div className={styles.tagsBox}>
             <h3 className={styles.filterTitle}>Tags</h3>
@@ -132,7 +123,6 @@ export default function News() {
             </div>
           </div>
 
-          {}
           <div className={styles.searchBox}>
             <h3 className={styles.filterTitle}>Search</h3>
             <input
@@ -143,7 +133,6 @@ export default function News() {
             />
           </div>
 
-          {}
           <div className={styles.yearMonthBox}>
             <h3 className={styles.filterTitle}>Year</h3>
             <div className={styles.yearList}>
@@ -159,7 +148,6 @@ export default function News() {
             </div>
           </div>
 
-          {}
           {selectedYear && availableMonths.length > 0 && (
             <div className={styles.monthList}>
               <h3 className={styles.filterTitle}>Month</h3>
@@ -175,7 +163,6 @@ export default function News() {
             </div>
           )}
 
-          {}
           <button
             className={styles.clearButton}
             onClick={() => {
@@ -189,6 +176,14 @@ export default function News() {
           </button>
         </div>
       </div>
+
+      {visibleCount < postsToShow.length && (
+        <div className={styles.viewMoreWrapper}>
+          <button className={styles.viewMoreButton} onClick={handleViewMore}>
+            View More
+          </button>
+        </div>
+      )}
     </div>
   );
 }

@@ -42,5 +42,39 @@
     "link": "#",
     "tags": ["JavaScript", "Asynchronous", "Promises"],
     "body": "Asynchronous JavaScript is an essential concept in modern web development. Let's explore how async/await and Promises work to handle asynchronous operations.\n\n### Example Code\n\n```javascript\nfunction fetchData(url) {\n  return new Promise((resolve, reject) => {\n    setTimeout(() => {\n      resolve(`Data from ${url}`);\n    }, 2000);\n  });\n}\n\nasync function displayData() {\n  try {\n    const data = await fetchData('https://api.example.com');\n    console.log(data);\n  } catch (error) {\n    console.error(error);\n  }\n}\n\ndisplayData();\n```\n\nIn this example, we use `async/await` to handle the asynchronous operation of fetching data, simplifying the code compared to using traditional Promises."
-  }
-]
+  },
+    {
+      "id": "P5",
+      "name": "Post 5: Introduction to Python Decorators 🐍",
+      "title": "Introduction to Python Decorators",
+      "description": "Learn about decorators in Python and how they enhance the functionality of functions.",
+      "date": "Jan 25, 2001",
+      "emoji": "🐍",
+      "link": "#",
+      "tags": ["Python", "Decorators", "Programming"],
+      "body": "Decorators in Python are a way to modify the behavior of a function or class. In this post, we'll learn how decorators work and how to use them effectively.\n\n### Example Code\n\n```python\ndef decorator(func):\n    def wrapper():\n        print('Before the function is called')\n        func()\n        print('After the function is called')\n    return wrapper\n\n@decorator\ndef say_hello():\n    print('Hello, World!')\n\nsay_hello()\n```\n\nIn this example, the `say_hello` function is decorated to add extra functionality before and after the function call."
+    },
+    {
+      "id": "P6",
+      "name": "Post 6: Understanding React Hooks",
+      "title": "Understanding React Hooks",
+      "description": "Get an introduction to React Hooks and learn how they simplify managing state and side effects in React.",
+      "date": "Feb 1, 2001",
+      "emoji": "⚛️",
+      "link": "#",
+      "tags": ["React", "Hooks", "JavaScript"],
+      "body": "React Hooks provide a simpler and cleaner way to manage state and side effects in functional components. Let's explore the basics of React Hooks.\n\n### Example Code\n\n```javascript\nimport React, { useState, useEffect } from 'react';\n\nfunction Counter() {\n  const [count, setCount] = useState(0);\n\n  useEffect(() => {\n    console.log('Component rendered');\n  }, []);\n\n  return (\n    <div>\n      <p>Count: {count}</p>\n      <button onClick={() => setCount(count + 1)}>Increment</button>\n    </div>\n  );\n}\n\nexport default Counter;\n```\n\nIn this example, we use `useState` to manage the state and `useEffect` to handle side effects in a functional component."
+    },
+    {
+      "id": "P7",
+      "name": "Post 7: Introduction to SQL Joins",
+      "title": "Introduction to SQL Joins",
+      "description": "Understand the different types of SQL joins and how they are used to retrieve related data from multiple tables.",
+      "date": "Feb 5, 2001",
+      "emoji": "🔗",
+      "link": "#",
+      "tags": ["SQL", "Databases", "Programming"],
+      "body": "SQL joins are used to combine rows from two or more tables based on a related column. We'll explore the different types of joins in SQL.\n\n### Example Code\n\n```sql\nSELECT employees.name, departments.name\nFROM employees\nJOIN departments ON employees.department_id = departments.id;\n```\n\nIn this example, we use an inner join to retrieve data from two related tables: `employees` and `departments`."
+    }
+  ]
+  
