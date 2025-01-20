@@ -1,44 +1,82 @@
 :root {
-  --background: #f8f9fa; 
-  --foreground: #121212; 
+  --background: #f9fafb; 
+  --foreground: #212529; 
   --header-height: 4rem;
   --accent-color: #f9c74f; 
   --text-color: #212529; 
   --hover-text-color: #0a58ca; 
-  --background-color: #94969b;
-  --nice-color: #FEB91D; 
-  --background-cc: #f4f4f4; 
-  --primary-color: #ffffff; 
-  --card-background: #ffffff; 
-  --highlight-color: #00a8e8; 
-  --highlight-color2: #028090; 
-  --highlight-color3: #02c39a; 
-  --title-color: #02c39a;
-  --subtitle-color: #6c757d; 
-  --banner-background: #f5f5f5; 
-  --project-name-color: #0056b3; 
-  --project-description-color: #495057; 
-  --project-date-color: #6c757d; 
+  --background-color: #f2efe3; 
+  --nice-color: #ffc107; 
+  --background-cc: #f5f5f5; 
+  --primary-color: #ffffff;
+  --card-background: #ffffff;
+  --highlight-color: #00a8e8;
+  --highlight-color2: #02c39a;
+  --highlight-color3: #ff5a5f; 
+  --title-color: #1b2747;
+  --subtitle-color: #6c757d;
+  --banner-background: #f7f8fa;
+  --project-name-color: #0056b3;
+  --project-description-color: #495057;
+  --project-date-color: #6c757d;
   --skills-nav: rgb(89, 133, 7);
   --skills-nav-closed: rgb(49, 50, 51);
-  --foreground2: #dfa460;
-  --experience-company: #3d3d3d;
-  --experience-dates: #686868;
+  --foreground2: #dfa460; 
+  --experience-company: #495057;
+  --experience-dates: #6c757d;
   --experience-color: rgb(36, 47, 58);
   --experience-res: rgb(79, 79, 80);
-  --skills-color:#ffffff;
-  --box-color: rgb(224, 224, 224);
+  --skills-color: #ffffff;
+  --box-color: #e0e0e0;
   --skill-name: #ffc65c;
   --skill-title: #1b1b1b;
-  --button-color:rgb(38, 38, 39);
-  --button-color2:rgb(252, 252, 252);
+  --button-color: rgb(38, 38, 39);
+  --button-color2: rgb(245, 245, 245);
   --button-color3: rgb(17, 17, 17);
-  --search-color: rgb(252, 252, 252);
+  --search-color: #f8f9fa;
   --teach-color: rgb(240, 236, 0);
-  --code-color: #282C34;
+  --code-color: #282C34; 
 }
 
 .dark-mode {
+  --background: #121212; 
+  --foreground: #e0e0e0; 
+  --accent-color: #ffb400; 
+  --text-color: #e0e0e0;
+  
+  --hover-text-color: #ffffff;
+  --background-color: #1b1f25;
+  --primary-color: #262934;
+  --card-background: #2e3a59;
+  --highlight-color: #00ffcc;
+  --highlight-color2: #01ad8b;
+  --highlight-color3: #00bcd4;
+  --title-color: #ffffff;
+  --subtitle-color: #b0bec5;
+  --banner-background: #1a1a1a;
+  --project-name-color: #00ffcc;
+  --project-description-color: #dcdcdc;
+  --project-date-color: #a0a0a0;
+  --skills-nav: rgb(103, 150, 42);
+  --skills-nav-closed: rgb(88, 129, 13);
+  --foreground2: #ffa726; 
+  --experience-company: #b0bec5;
+  --experience-dates: #90a4ae;
+  --experience-color: #ffffff;
+  --experience-res: rgb(164, 171, 192);
+  --skills-color: #323f63;
+  --box-color: #282828;
+  --skill-name: #ffc107;
+  --skill-title: #20dfb5;
+  --button-color: rgb(38, 38, 39);
+  --button-color2: rgb(100, 100, 100);
+  --button-color3: rgb(51, 51, 51);
+  --search-color: #1e1e1e;
+  --teach-color: #f9f9f9;
+  --code-color: #2d2f33;
+}
+
+/* .dark-mode {
   --background: #0a0a0a;
   --foreground: #ededed;
   --accent-color: #dddb5d; 
@@ -73,7 +111,7 @@
   --search-color: var(--primary-color);
   --teach-color: white;
   --code-color: #282C34;
-}
+} */
 
 html,
 body {

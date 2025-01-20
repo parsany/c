@@ -8,7 +8,7 @@
   }
   
   .title {
-    color: var(--teach-color);
+    color: var(--title-color);
     font-size: 2.5rem;
     margin-bottom: 20px;
   }

@@ -1,58 +1,112 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--background-color);
+  justify-content: center;
+  color: var(--text-color);
+  min-height: 100vh;
+  padding: 80px;
+  font-family: 'Georgia', serif; 
+}
+
+
+.content {
+  background-color: var(--card-background);
+  padding: 40px;
+  width: 100%;
+  max-width: 1400px; /*900*/
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px; 
+  margin: 20px;
+}
+
+
+.title {
+  font-size: 3rem; 
+  font-weight: 700; 
+  margin-bottom: 20px; 
+  color: var(--title-color);
+  text-align: center;
+  font-family: 'Helvetica Neue', sans-serif; 
+}
+
+
+.body {
+  font-size: 1.25rem; 
+  line-height: 1.75; 
+  text-align: justify;
+  color: var(--foreground);
+  font-family: 'Georgia', serif;
+}
+
+
+.codeBlock {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.1rem;
+  background-color: #2d2d2d;
+  color: #d4d4d4;
+  border-radius: 8px;
+  padding: 20px;
+  overflow-x: auto;
+  margin: 30px 0; 
+  line-height: 1.6;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  word-wrap: break-word;
+}
+
+
+.inlineCode {
+  background-color: #333;
+  color: #f8f8f2;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem; 
+}
+
+
+.loading {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  text-align: center;
+  padding: 100px;
+}
+
+
+@media (max-width: 768px) {
 
   .container {
-    background-color: var(--primary-bg-color);
-    display: flex;
-    justify-content: center;
-    padding: 20px 0;
     min-height: 100vh;
-    color: var(--text-color);
+    padding: 10px;
+
   }
-  
-  
-  .content {
-    background-color: #2d3748; 
-    border-radius: 10px;
-    padding: 40px;
-    width: 100%;
-    max-width: var(--container-width);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+  .title {
     margin-top: 50px;
   }
-  
+
+  .content {
+    background-color: unset;
+    padding: 20px;
+    width: 100%;
+    max-width: 1400px; /*900*/
+    box-shadow: unset;
+    border-radius: 8px; 
+    margin: 20px;
+  }
+
   .title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    color: var(--primary-color);
-    text-align: center;
+    font-size: 2.5rem; 
   }
-  
+
   .body {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    text-align: justify;
-    color: #e2e8f0; 
+    font-size: 1.15rem;
   }
-  
-  .loading {
-    font-size: 1.5rem;
-    color: var(--text-color);
-    text-align: center;
-    padding: 100px;
+
+  .codeBlock {
+    font-size: 1rem; 
+    padding: 15px; 
   }
-  
-  @media (max-width: 768px) {
-    .content {
-      padding: 20px;
-      width: 100%;
-    }
-  
-    .title {
-      font-size: 2rem;
-    }
-  
-    .body {
-      font-size: 1.1rem;
-    }
-  }
-  
+}

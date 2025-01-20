@@ -1,32 +1,46 @@
 [
-    {
-      "id": "P1",
-      "name": "Post 1: Introduction to React",
-      "title": "Easily create your own simple yet highly customizable blog",
-      "description":"Take full control of your personal brand and privacy by migrating away from the big tech platforms!",
-      "date": "Jan 27, 2000",
-      "emoji": "🎉",
-      "link": "#",
-      "tags": ["V", "N"],
-      "body": "React is a JavaScript library for building user interfaces. In this post, we will explore the fundamentals of React and how to create dynamic web applications."
-    },
-    {
-      "id": "P2",
-      "name": "Post 2: Understanding JavaScript Closures",
-      "desc": "Deep dive into closures in JavaScript",
-      "body": "A closure is a function that retains access to its lexical scope, even when the function is executed outside that scope. This post covers the concept of closures and provides practical examples."
-    },
-    {
-      "id": "P3",
-      "name": "Post 3: The Power of CSS Grid",
-      "desc": "How to create complex layouts with CSS Grid",
-      "body": "CSS Grid is a powerful tool for creating responsive web layouts. This post will walk you through the basics of CSS Grid and how to use it to create modern web layouts."
-    },
-    {
-      "id": "P4",
-      "name": "Post 4: Mastering Asynchronous JavaScript",
-      "desc": "Understanding async/await in JavaScript",
-      "body": "Asynchronous JavaScript is a crucial concept for modern web development. In this post, we will dive into async/await, Promises, and how to handle asynchronous operations efficiently."
-    }
-  ]
-  
+  {
+    "id": "P1",
+    "name": "Post 1: Dynamic Simulation in C++",
+    "title": "Dynamic Simulation in C++",
+    "description": "Learn how to create a dynamic simulation in C++ to simulate real-world systems.",
+    "date": "Jan 10, 2023",
+    "emoji": "🖥️",
+    "link": "#",
+    "tags": ["C++", "Simulation", "Programming"],
+    "body": "In this post, we will learn how to create a dynamic simulation in C++. We will focus on simulating a simple system where the state evolves over time based on user inputs.\n\n### Example Code\n\n```cpp\n#include <iostream>\n#include <vector>\n\nclass Particle {\npublic:\n    float x, y;\n    Particle(float x, float y) : x(x), y(y) {}\n    void update() {\n        x += 0.1f;\n        y += 0.1f;\n    }\n};\n\nint main() {\n    std::vector<Particle> particles;\n    particles.push_back(Particle(0.0f, 0.0f));\n\n    for (int i = 0; i < 10; ++i) {\n        for (auto& particle : particles) {\n            particle.update();\n            std::cout << \"Particle position: \" << particle.x << \", \" << particle.y << std::endl;\n        }\n    }\n    return 0;\n}\n```\n\nThis C++ code demonstrates a basic simulation where particles update their positions over time."
+  },
+  {
+    "id": "P2",
+    "name": "Post 2: Understanding JavaScript Closures",
+    "title": "Understanding JavaScript Closures",
+    "description": "Learn what closures are in JavaScript and how to use them effectively.",
+    "date": "Feb 15, 2023",
+    "emoji": "🔒",
+    "link": "#",
+    "tags": ["JavaScript", "Closures", "Programming"],
+    "body": "Closures are a powerful feature of JavaScript that allow a function to remember its lexical scope even after it has been executed. Let's dive into closures and how they work.\n\n### Example Code\n\n```javascript\nfunction outer() {\n  let count = 0;\n  return function inner() {\n    count++;\n    console.log(count);\n  }\n}\n\nconst counter = outer();\ncounter(); // 1\ncounter(); // 2\ncounter(); // 3\n```\n\nIn the above example, the `inner` function forms a closure that 'remembers' the `count` variable from the `outer` function."
+  },
+  {
+    "id": "P3",
+    "name": "Post 3: The Power of CSS Grid",
+    "title": "The Power of CSS Grid",
+    "description": "Discover the flexibility and power of CSS Grid to create complex layouts.",
+    "date": "Mar 20, 2023",
+    "emoji": "🗺️",
+    "link": "#",
+    "tags": ["CSS", "Grid", "Web Design"],
+    "body": "CSS Grid is a powerful layout system that allows for complex and responsive layouts with ease. In this post, we'll explore the basics of CSS Grid and build a simple layout.\n\n### Example Code\n\n```css\n.container {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 20px;\n}\n\n.item {\n  background-color: #f0f0f0;\n  padding: 20px;\n  text-align: center;\n}\n```\n\n```html\n<div class=\"container\">\n  <div class=\"item\">Item 1</div>\n  <div class=\"item\">Item 2</div>\n  <div class=\"item\">Item 3</div>\n</div>\n```\n\nThis CSS Grid layout creates a simple three-column design with a gap between each item."
+  },
+  {
+    "id": "P4",
+    "name": "Post 4: Mastering Asynchronous JavaScript",
+    "title": "Mastering Asynchronous JavaScript",
+    "description": "Understand how async/await and Promises work to handle asynchronous operations in JavaScript.",
+    "date": "Mar 20, 2023",
+    "emoji": "⏳",
+    "link": "#",
+    "tags": ["JavaScript", "Asynchronous", "Promises"],
+    "body": "Asynchronous JavaScript is an essential concept in modern web development. Let's explore how async/await and Promises work to handle asynchronous operations.\n\n### Example Code\n\n```javascript\nfunction fetchData(url) {\n  return new Promise((resolve, reject) => {\n    setTimeout(() => {\n      resolve(`Data from ${url}`);\n    }, 2000);\n  });\n}\n\nasync function displayData() {\n  try {\n    const data = await fetchData('https://api.example.com');\n    console.log(data);\n  } catch (error) {\n    console.error(error);\n  }\n}\n\ndisplayData();\n```\n\nIn this example, we use `async/await` to handle the asynchronous operation of fetching data, simplifying the code compared to using traditional Promises."
+  }
+]
