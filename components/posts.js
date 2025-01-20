@@ -31,25 +31,41 @@ export default function News() {
 
   
   const filterPosts = () => {
+    
+    const searchWords = searchQuery
+      .trim()
+      .toLowerCase()
+      .split(/\s+/) 
+      .filter((word) => word.length > 0); 
+    
     return Posts.filter((post) => {
+      
       const matchesSearch =
-        post.title ||
-        post.description;
-
+        searchWords.length === 0 || 
+        searchWords.every((word) => {
+          return (
+            post.title.toLowerCase().includes(word) || 
+            post.description.toLowerCase().includes(word)
+          );
+        });
+  
+      
       const matchesTags =
         selectedTags.length === 0 ||
         post.tags.some((tag) => selectedTags.includes(tag));
-
+  
+      
       const matchesYear =
         !selectedYear || new Date(post.date).getFullYear() === selectedYear;
-
+  
+      
       const matchesMonth =
-        !selectedMonth ||
-        new Date(post.date).getMonth() === selectedMonth;
-
+        !selectedMonth || new Date(post.date).getMonth() === selectedMonth;
+  
       return matchesSearch && matchesTags && matchesYear && matchesMonth;
     }).sort((a, b) => new Date(b.date) - new Date(a.date)); 
   };
+  
 
   const postsToShow = filterPosts();
 

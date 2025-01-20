@@ -11,7 +11,7 @@ export const ProjectStuff = [
   },
   {
     id: 2,
-    name: "Evolutionary Algorithm in C++",
+    name: "Evolutionary Algorithm in C++ (still working on it)",
     description:
       "I like heuristic algorithms and simulations.",
     date: "May 20, 2024",

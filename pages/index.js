@@ -5,6 +5,7 @@ import Projects from "../components/projects";
 import Skills from "../components/skills";
 import Styles from "@/styles/Main.module.css";
 import UpdateBar from "../components/UpdateBar";
+import RandomPost from "@/components/randomPost";
 
 //TODO: resposive
 //TODO: dark mode/light mode
@@ -25,7 +26,7 @@ export default function Main() {
           <p>News elements</p>
         </div>
         <div className={Styles.BoxContainer}>
-          <p>random post</p>
+          <RandomPost />
         </div>
       </div>
     </div>
