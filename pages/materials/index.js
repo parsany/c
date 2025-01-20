@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import styles from "@/styles/Teaching.module.css";
 import Image from "next/image";
-import { Materials } from "@/public/JSONJS";
+import Materials from '@/public/content/materials/MaterialsPage.json';
 import Link from "next/link";
 
 export default function Teaching() {
@@ -11,8 +11,9 @@ export default function Teaching() {
 
   const filteredCourses = Materials.filter(
     (course) =>
-      course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      course.description.toLowerCase().includes(searchTerm.toLowerCase())
+      course.show === 1 && // Only include items where "show" is 1
+      (course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        course.description.toLowerCase().includes(searchTerm.toLowerCase()))
   ).sort((a, b) => new Date(b.date) - new Date(a.date));
 
   const handleShowMore = () => {
@@ -64,14 +65,14 @@ export default function Teaching() {
         </button>
       )}
 
-{loading && (
-  <div className={styles.loadingOverlay}>
-    <div className={styles.loadingContainer}>
-      <div className={styles.loadingSpinner}></div>
-      <p>Loading...</p>
-    </div>
-  </div>
-)}
+      {loading && (
+        <div className={styles.loadingOverlay}>
+          <div className={styles.loadingContainer}>
+            <div className={styles.loadingSpinner}></div>
+            <p>Loading...</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

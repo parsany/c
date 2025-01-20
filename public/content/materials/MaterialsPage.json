@@ -4,7 +4,12 @@
     "title": "Learn Python",
     "similar_id": "python",
     "similar_index": 1,
+    "date": "Oct 24, 2024",
     "children": ["functions", "OOP", "Dictionaries"],
+    "link": "learn-python",
+    "image": "/c/content/course.jpg",
+    "show": 1,
+    "description": "python tutorial!",
     "body": [
       {
         "type": "markdown",
@@ -74,6 +79,11 @@
     "children": ["lambda"],
     "similar_id": "python",
     "similar_index": 2,
+    "date": "Oct 24, 2024",
+    "link": "learn-python",
+    "image": "/c/content/course.jpg",
+    "show": 0,
+    "description": "responsive",
     "body": [
       {
         "type": "markdown",
@@ -105,6 +115,11 @@
     "children": [],
     "similar_id": "python",
     "similar_index": 3,
+    "date": "Oct 24, 2024",
+    "link": "learn-python",
+    "image": "/c/content/course.jpg",
+    "show": 0,
+    "description": "responsive",
     "body": [
       {
         "type": "markdown",
@@ -136,6 +151,11 @@
     "children": [],
     "similar_id": "python",
     "similar_index": 4,
+    "date": "Oct 24, 2024",
+    "link": "learn-python",
+    "image": "/c/content/course.jpg",
+    "show": 0,
+    "description": "responsive",
     "body": [
       {
         "type": "markdown",
@@ -158,6 +178,11 @@
     "children": [],
     "similar_id": "python",
     "similar_index": 5,
+    "date": "Oct 24, 2024",
+    "link": "learn-python",
+    "image": "/c/content/course.jpg",
+    "show": 0,
+    "description": "responsive",
     "body": [
       {
         "type": "markdown",
@@ -189,6 +214,11 @@
     "similar_id": "Coq",
     "children": ["Coq", "Coq", "Coq"],
     "similar_index": 1,
+    "date": "Oct 24, 2024",
+    "link": "Coq",
+    "image": "/c/content/course.jpg",
+    "show": 1,
+    "description": "responsive",
     "body": [
       {
         "type": "markdown",

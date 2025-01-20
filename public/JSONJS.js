@@ -29,61 +29,6 @@ export const ProjectStuff = [
   }
 ];
 
-export const NewsPost = [
-  {
-    date: "Jan 27, 2000",
-    emoji: "🎉",
-    title: "Easily create your own simple yet highly customizable blog",
-    description:
-      "Take full control of your personal brand and privacy by migrating away from the big tech platforms!",
-    link: "#",
-    tags: ["V", "N"],
-  },
-  {
-    date: "Dec 26, 2024",
-    emoji: "🧠",
-    title: "Sharpen your thinking with a second brain",
-    description:
-      "Create a personal knowledge base and share your knowledge with your peers.",
-    link: "#",
-    tags: ["A", "B"],
-  },
-  {
-    date: "Nov 25, 2023",
-    emoji: "📊",
-    title:
-      "Communicate your results effectively with the best data visualizations",
-    description: "Use popular tools such as Plotly, Mermaid, and data frames.",
-    link: "#",
-    tags: ["D", "C"],
-  },{
-    date: "Jan 27, 2000",
-    emoji: "🎉",
-    title: "Easily create your own simple yet highly customizable blog",
-    description:
-      "Take full control of your personal brand and privacy by migrating away from the big tech platforms!",
-    link: "#",
-    tags: ["D", "E"],
-  },{
-    date: "Dec 01, 2000",
-    emoji: "🎉",
-    title: "Easily create your own CC yet highly customizable blog",
-    description:
-      "Take full control of your personal brand and privacy by migrating away from the big tech platforms!",
-    link: "#",
-    tags: ["B", "C"],
-  },{
-    date: "Nov 22, 2000",
-    emoji: "🎉",
-    title: "Easily FFuck your own simple yet highly customizable blog",
-    description:
-      "Take full control of your personal brand and privacy by migrating away from the big tech platforms!",
-    link: "#",
-    tags: ["A"],
-  },
-];
-
-
 export const ProSkills = [
   {
     category: "Languages",
@@ -117,48 +62,5 @@ export const ProSkills = [
       { name: "CSS modules", level: 70 },
       { name: "React", level: 70 }
     ],
-  },
-];
-
-export const Materials = [
-  {
-    id: 1,
-    title: "learn python",
-    description: "python tutorial!",
-    date: "Oct 24, 2024",
-    image: "/c/content/course.jpg",
-    link: "learn-python",
-  },
-  {
-    id: 2,
-    title: "add anims",
-    description: "responsive",
-    date: "Oct 24, 1800",
-    image: "/c/content/course.jpg",
-    link: "Coq",
-  },
-  {
-    id: 3,
-    title: "add this page with latex support",
-    description: "responsive",
-    date: "Oct 24, 1700",
-    image: "/c/content/course.jpg",
-    link: "learn-python",
-  },
-  {
-    id: 4,
-    title: "light dark mode",
-    description: "responsive",
-    date: "Oct 24, 1600",
-    image: "/c/content/course.jpg",
-    link: "learn-python",
-  },
-  {
-    id: 5,
-    title: "post page",
-    description: "responsive",
-    date: "Oct 24, 1500",
-    image: "/c/content/course.jpg",
-    link: "learn-python",
   },
 ];
