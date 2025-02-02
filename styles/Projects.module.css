@@ -23,12 +23,15 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(330px, 330px));
   gap: 30px;
-  position: relative;
+  justify-content: center;
+  padding: 10px;
 }
 
 .card {
+  width: 100%; 
+  max-width: 350px;
   padding: 0;
   background-color: var(--card-background);
   border-radius: 12px;
@@ -150,6 +153,36 @@
   font-size: 0.9rem;
   color: var(--project-date-color);
   margin-bottom: 40px;
+}
+
+.filterContainer {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.filterButton {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  background-color: #00000000;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.filterButton:hover {
+  background-color: var(--highlight-color2);
+  transform: translateY(-2px);
+}
+
+.filterButton.active {
+  background-color: var(--primary-color);
+  color: var(--hover-text-color);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 850px) {

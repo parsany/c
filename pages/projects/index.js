@@ -4,7 +4,7 @@ export default function ProjectsPage() {
 
   return (
     <div className={styles.container}>
-      <Projects NumberShown={0}/>
+      <Projects LimitShow={false}/>
     </div>
   );
 }

@@ -7,7 +7,8 @@ export const ProjectStuff = [
     date: "Dec 1, 2024",
     image: "/c/projects/cat.png",
     link: "https://github.com/parsany/CatRecognition",
-    video: "/c/media/cat.webm"
+    video: "/c/media/cat.webm",
+    tag: "AI"
   },
   {
     id: 2,
@@ -17,6 +18,7 @@ export const ProjectStuff = [
     date: "May 20, 2024",
     image: "/c/projects/robot.png",
     link: "https://github.com/parsany/EvolutionaryAlgo",
+    tag: "Robotics"
   },
   {
     id: 3,
@@ -26,6 +28,17 @@ export const ProjectStuff = [
     date: "March 27, 2024",
     image: "/c/projects/PID.png?bg=white",
     link: "https://github.com/parsany/PID_NN",
+    tag: "AI"
+  },
+  {
+    id: 4,
+    name: "Website React MERN",
+    description:
+      "website made with React, MongoDB, Node.js and Express.",
+    date: "May 20, 2022",
+    image: "/c/projects/website.png",
+    link: "",
+    tag: "Web Dev"
   }
 ];
 
