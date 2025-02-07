@@ -1,6 +1,6 @@
 import styles from "@/styles/Hobbies.module.css";
 
-const SkillsHobbies = () => {
+export default function SkillsHobbies(){
   return (
     <div className={styles.hobbybox}>
       <h3 className={styles.subtitle}>Hobbies</h3>
@@ -11,6 +11,4 @@ const SkillsHobbies = () => {
       </ul>
     </div>
   );
-};
-
-export default SkillsHobbies;
+}

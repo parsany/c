@@ -23,7 +23,7 @@ export default function Main() {
           <Projects LimitShow={true} />
         </div>
         <div className={Styles.BoxContainer}>
-          <p>News elements</p>
+          <p>Public element</p>
         </div>
         <div className={Styles.BoxContainer}>
           <RandomPost />

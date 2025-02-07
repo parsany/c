@@ -31,7 +31,7 @@ export default function NavBar() {
     { title: "Blog Posts", href: "/posts" },
     { title: "Materials", href: "/materials" },
     { title: "Projects", href: "/projects" },
-    { title: "Contact", href: "/contact" },
+    { title: "News", href: "/news" },
   ];
 
   const handleLinkClick = () => {

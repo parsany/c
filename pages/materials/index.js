@@ -11,7 +11,7 @@ export default function Teaching() {
 
   const filteredCourses = Materials.filter(
     (course) =>
-      course.show === 1 && // Only include items where "show" is 1
+      course.show === 1 && 
       (course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         course.description.toLowerCase().includes(searchTerm.toLowerCase()))
   ).sort((a, b) => new Date(b.date) - new Date(a.date));

@@ -7,10 +7,29 @@ export default function Projects({ LimitShow }) {
   const [hoveredId, setHoveredId] = useState(null);
   const [playedVideos, setPlayedVideos] = useState({});
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredProjects = useMemo(() => {
+    let projects = selectedCategory && selectedCategory !== "All"
+      ? ProjectStuff.filter((project) => project.tag === selectedCategory)
+      : ProjectStuff;
+
+
+    if (searchTerm.trim()) {
+      projects = projects.filter(
+        (project) =>
+          project.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          project.description.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+
+    return projects.sort((a, b) => new Date(b.date) - new Date(a.date));
+  }, [selectedCategory, searchTerm]);
+
 
   const categories = useMemo(() => {
-    const tags = new Set(ProjectStuff.map(project => project.tag));
-    return ['All', ...Array.from(tags).sort()]; // Sort tags alphabetically
+    const tags = new Set(ProjectStuff.map((project) => project.tag));
+    return ["All", ...Array.from(tags).sort()];
   }, []);
 
   const handleMouseEnter = (id, index) => {
@@ -52,14 +71,12 @@ export default function Projects({ LimitShow }) {
 
   const getCardClass = (project, index) => {
     if (LimitShow !== true) return styles.card;
-
     const isHovered = hoveredId?.id === project.id;
     const directionClass = hoveredId
       ? hoveredId.index < index
         ? styles.moveRight
         : styles.moveLeft
       : "";
-
     const positionClass = isHovered
       ? project.id === 1
         ? styles.selectedLeft
@@ -69,52 +86,51 @@ export default function Projects({ LimitShow }) {
             ? styles.selectedRight
             : ""
       : "";
-
     return [styles.card, positionClass, directionClass]
       .filter(Boolean)
       .join(" ");
   };
 
-  const filteredProjects = selectedCategory && selectedCategory !== 'All' 
-    ? ProjectStuff.filter(project => project.tag === selectedCategory)
-    : ProjectStuff;
-
-    const displayedProjects =
+  const displayedProjects =
     LimitShow === true
-      ? ProjectStuff.filter((project) => [1, 2, 3].includes(project.id))
-          .sort((a, b) => a.id - b.id)
-      : filteredProjects.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(
-          0,
-          LimitShow || undefined
-        );
+      ? filteredProjects.filter((project) => [1, 2, 3].includes(project.id)).sort((a, b) => a.id - b.id)
+      : filteredProjects.slice(0, LimitShow || undefined);
 
-        return (
-          <div className={styles.elements}>
-            <h1 className={styles.title}>Selected Projects</h1>
-            <p className={styles.subtitle}>
-              I like to learn by making things. Here&apos;s some projects I&apos;ve
-              worked on.
-            </p>
-            
-            {!LimitShow && (
-              <div className={styles.filterContainer}>
-                {categories.map(category => (
-                  <button
-                    key={category}
-                    onClick={() => setSelectedCategory(category === 'All' ? null : category)}
-                    className={`${styles.filterButton} ${
-                      (selectedCategory === category || (!selectedCategory && category === 'All')) ? 
-                      styles.active : ''
-                    }`}
-                  >
-                    {category}
-                  </button>
-                ))}
-              </div>
-            )}
-      
-            <div className={styles.grid}>
-              {displayedProjects.map((project, index) => (
+  return (
+    <div className={styles.elements}>
+      <h1 className={styles.title}>Selected Projects</h1>
+      <p className={styles.subtitle}>
+        I like to learn by making things. Here&apos;s some projects I&apos;ve worked on.
+      </p>
+
+
+      <input
+        type="text"
+        placeholder="Search for project name or desc..."
+        className={styles.searchBar}
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+
+      {!LimitShow && (
+        <div className={styles.filterContainer}>
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setSelectedCategory(category === "All" ? null : category)}
+              className={`${styles.filterButton} ${selectedCategory === category || (!selectedCategory && category === "All")
+                  ? styles.active
+                  : ""
+                }`}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+      )}
+
+      <div className={styles.grid}>
+        {displayedProjects.map((project, index) => (
           <div
             key={project.id}
             className={getCardClass(project, index)}
@@ -130,9 +146,7 @@ export default function Projects({ LimitShow }) {
               <div className={styles.banner}>{renderMedia(project)}</div>
               <div className={styles.content}>
                 <h3 className={styles.projectName}>{project.name}</h3>
-                <p className={styles.projectDescription}>
-                  {project.description}
-                </p>
+                <p className={styles.projectDescription}>{project.description}</p>
               </div>
             </a>
           </div>

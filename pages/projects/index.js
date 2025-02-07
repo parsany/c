@@ -5,6 +5,6 @@ export default function ProjectsPage() {
   return (
     <div className={styles.container}>
       <Projects LimitShow={false}/>
-    </div>
+  </div>
   );
 }
