@@ -29,6 +29,20 @@
   padding: 10px;
 }
 
+.searchBar {
+  display: block;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--highlight-color);
+  width: 300px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  background-color: var(--search-color);
+  color: var(--text-color);
+  outline: none;
+}
+
 .card {
   width: 100%; 
   max-width: 350px;

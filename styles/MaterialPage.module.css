@@ -4,7 +4,7 @@
   padding: 20px;
   background-color: var(--background-color);
   color: var(--text-color);
-  justify-content: center; 
+  justify-content: center;
   min-height: 100vh;
 }
 
@@ -24,10 +24,10 @@
   padding: 20px;
   position: sticky;
   top: 20px;
-  max-height: 100rem;
   margin-left: 150px;
   margin-top: 50px;
 }
+
 
 .leftPane {
   flex: 1;
@@ -38,17 +38,17 @@
   padding: 20px;
   position: sticky;
   top: 20px;
-  max-height: 100rem;
   margin-top: 50px;
 }
+
 
 .rightPane h2,
 .leftPane h2 {
   font-size: 1.5rem;
   margin-bottom: 10px;
   color: var(--title-color);
-  
 }
+
 
 .toc {
   list-style: none;
@@ -70,6 +70,7 @@
   text-decoration: underline;
 }
 
+
 .title {
   margin-top: 80px;
   font-size: 2.5rem;
@@ -78,13 +79,16 @@
   color: var(--title-color);
 }
 
+
 .content {
   line-height: 1.8;
 }
 
+
 .markdown {
   margin-bottom: 20px;
 }
+
 
 .spoiler {
   margin: 20px 0;
@@ -104,18 +108,20 @@
   margin-top: 10px;
 }
 
+
 .codeBlock {
-  font-family: 'Courier New', Courier, monospace; 
-  font-size: 1.2rem; 
-  background-color: #1e1e1e; 
-  color: #d4d4d4; 
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.2rem;
+  background-color: #1e1e1e;
+  color: #d4d4d4;
   border-radius: 8px;
   padding: 15px;
-  overflow-x: auto; 
+  overflow-x: auto;
   margin: 20px 0;
   line-height: 1.5;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
+
 
 .latexBlock {
   background-color: var(--primary-color);
@@ -126,7 +132,6 @@
   margin: 20px 0;
   font-size: 1.25rem;
 }
-
 
 
 .navigation {
@@ -174,35 +179,19 @@
 }
 
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
     padding: 10px;
   }
 
-  .leftPane {
-    max-width: 100%;
-    position: relative;
-    top: 0;
-    margin-bottom: 20px;
-    margin-left: unset;
-  }
-
-  .mainContent {
-    max-width: 100%;
-    margin-right: 0;
-    margin-left: unset;
-    padding: 10px;
-  }
-
+  .leftPane,
+  .mainContent,
   .rightPane {
     max-width: 100%;
     position: relative;
     top: 0;
-    right: 0;
-    margin-bottom: 20px;
-    margin-left: unset;
+    margin: 0 auto 20px;
   }
 
   .title {
@@ -226,4 +215,11 @@
   .latexBlock {
     font-size: 1rem;
   }
+}
+
+
+.loading {
+  text-align: center;
+  padding: 50px;
+  font-size: 1.5rem;
 }

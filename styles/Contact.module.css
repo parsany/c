@@ -7,7 +7,6 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   color: var(--hover-text-color); 
   font-family: 'Georgia', serif;
-  border: 1px solid var(--text-color); 
 }
 
 .container h1 {

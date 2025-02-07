@@ -21,6 +21,7 @@
     margin-bottom: 40px;
     background-color: var(--search-color);
     color: var(--text-color);
+    outline: none;
   }
   
   .cardContainer {
