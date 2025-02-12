@@ -103,7 +103,7 @@ export default function Projects({ LimitShow }) {
         I like to learn by making things. Here&apos;s some projects I&apos;ve worked on.
       </p>
 
-
+      {!LimitShow &&
       <input
         type="text"
         placeholder="Search for project name or desc..."
@@ -111,6 +111,7 @@ export default function Projects({ LimitShow }) {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
+}
 
       {!LimitShow && (
         <div className={styles.filterContainer}>
