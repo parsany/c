@@ -8,6 +8,7 @@ export default function Projects({ LimitShow }) {
   const [playedVideos, setPlayedVideos] = useState({});
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const [videoStates, setVideoStates] = useState({});
 
   const filteredProjects = useMemo(() => {
     let projects = selectedCategory && selectedCategory !== "All"
@@ -35,39 +36,13 @@ export default function Projects({ LimitShow }) {
   const handleMouseEnter = (id, index) => {
     setHoveredId({ id, index });
     setPlayedVideos((prev) => ({ ...prev, [id]: true }));
+    setVideoStates((prev) => ({ ...prev, [id]: { loopStarted: false, loopCompleted: false } }));
   };
 
   const handleMouseLeave = (id) => {
-    setTimeout(() => {
-      setHoveredId(null);
-      setPlayedVideos((prev) => ({ ...prev, [id]: false }));
-    }, 200);
+    setHoveredId(null);
   };
 
-  const renderMedia = ({ id, video, image, name }) => {
-    const isPlaying = (hoveredId?.id === id || playedVideos[id]) && video;
-    return isPlaying ? (
-      <video
-        src={video}
-        autoPlay
-        muted
-        loop
-        className={styles.video}
-        onEnded={() =>
-          !hoveredId?.id === id &&
-          setPlayedVideos((prev) => ({ ...prev, [id]: false }))
-        }
-      />
-    ) : (
-      <Image
-        src={image}
-        alt={name}
-        layout="fill"
-        objectFit="cover"
-        className={styles.image}
-      />
-    );
-  };
 
   const getCardClass = (project, index) => {
     if (LimitShow !== true) return styles.card;
@@ -91,10 +66,47 @@ export default function Projects({ LimitShow }) {
       .join(" ");
   };
 
+  const renderMedia = ({ id, video, image, name }) => {
+    const shouldPlayVideo = (hoveredId?.id === id || (playedVideos[id] && !videoStates[id]?.loopCompleted)) && video;
+    
+    return shouldPlayVideo ? (
+      <video
+        src={video}
+        autoPlay
+        muted
+        loop
+        className={styles.video}
+        onTimeUpdate={(e) => {
+          if (e.target.currentTime < 0.1 && videoStates[id]?.loopStarted && !hoveredId) {
+            setVideoStates((prev) => ({
+              ...prev,
+              [id]: { ...prev[id], loopCompleted: true }
+            }));
+            setPlayedVideos((prev) => ({ ...prev, [id]: false }));
+          } else if (e.target.currentTime > 0.1 && !videoStates[id]?.loopStarted) {
+            setVideoStates((prev) => ({
+              ...prev,
+              [id]: { ...prev[id], loopStarted: true }
+            }));
+          }
+        }}
+      />
+    ) : (
+      <Image
+        src={image}
+        alt={name}
+        layout="fill"
+        objectFit="cover"
+        className={styles.image}
+      />
+    );
+  };
+  
   const displayedProjects =
-    LimitShow === true
-      ? filteredProjects.filter((project) => [1, 2, 3].includes(project.id)).sort((a, b) => a.id - b.id)
-      : filteredProjects.slice(0, LimitShow || undefined);
+  LimitShow === true
+    ? filteredProjects.filter((project) => [1, 2, 3].includes(project.id)).sort((a, b) => a.id - b.id)
+    : filteredProjects.slice(0, LimitShow || undefined);
+
 
   return (
     <div className={styles.elements}>
