@@ -11,7 +11,9 @@ export default function RandomPost() {
   
   const getLastThreePosts = () => {
     
-    const sortedPosts = Posts.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 3);
+    const sortedPosts = Posts
+    .filter(post => post.tags && !(post.tags.includes('publication')))
+    .sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 3);
     setRecentPosts(sortedPosts);
   };
 

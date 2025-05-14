@@ -24,7 +24,7 @@ export default function Skills( {ShowSkills}) {
       </div>
       <div className={styles.itemrow}>
         <Languages />
-        {ShowSkills && <SkillsHobbies />}
+        {/* {ShowSkills && <SkillsHobbies />} */}
       </div>
     </div>
   );

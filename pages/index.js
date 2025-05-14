@@ -6,12 +6,19 @@ import Skills from "../components/skills";
 import Styles from "@/styles/Main.module.css";
 import UpdateBar from "../components/UpdateBar";
 import RandomPost from "@/components/randomPost";
+import Publications from "../components/publication";
+import Posts from '@/public/content/materials/PostsPage.json';
 
 //TODO: resposive
 //TODO: dark mode/light mode
 //TODO: animations for pages
 
 export default function Main() {
+
+  const hasPublications = Posts.some(
+    (post) => post.tags && post.tags.includes('publication')
+  );
+
   return (
     <div>
       <UpdateBar />
@@ -22,9 +29,9 @@ export default function Main() {
         <div className={Styles.BoxContainer}>
           <Projects LimitShow={true} />
         </div>
-        <div className={Styles.BoxContainer}>
-          <p>Publication element</p>
-        </div>
+        {hasPublications && (<div className={Styles.BoxContainer} >
+          <Publications/>
+        </div>)}
         <div className={Styles.BoxContainer}>
           <RandomPost />
         </div>
