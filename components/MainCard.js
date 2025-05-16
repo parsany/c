@@ -156,8 +156,8 @@ export default function MainCard() {
             <h3>Interests</h3>
             <ul>
               <li>Artificial Intelligence</li>
-              <li>Robotics</li>
-              <li>Simulation and Dynamics</li>
+              <li>Robotics and Simulation</li>
+              <li>Artificial Life</li>
             </ul>
           </div>
           <div className={styles.section}>
