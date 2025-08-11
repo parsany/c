@@ -25,9 +25,9 @@ export default function Experience({IsIsolated}) {
               height={30}
             />
             <div className={styles.jobInfo}>
-              <h2 className={styles.jobTitle}>Junior Frontend Web Developer</h2>
-              <p className={styles.company}>Pixie Studio</p>
-              <p className={styles.dates}>November 2023 - October 2024</p>
+              <h2 className={styles.jobTitle}>Web Developer</h2>
+              <p className={styles.company}>Freelance</p>
+              <p className={styles.dates}>January 2024 - </p>
             </div>
           </div>
           <p className={styles.responsibilitiesTitle}>
@@ -38,13 +38,10 @@ export default function Experience({IsIsolated}) {
               Developed responsive web applications using Next.js and React.
             </li>
             <li className={styles.responsibilitiesItem}>
-              Utilized Tailwind CSS for efficient styling and layout design.
-            </li>
-            <li className={styles.responsibilitiesItem}>
               Implemented server-side components to enhance performance and SEO.
             </li>
             <li className={styles.responsibilitiesItem}>
-              Participated in code reviews and contributed to team knowledge
+              Participated in code reviews and code contribution.
               sharing.
             </li>
           </ul>
