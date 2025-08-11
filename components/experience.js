@@ -42,7 +42,6 @@ export default function Experience({IsIsolated}) {
             </li>
             <li className={styles.responsibilitiesItem}>
               Participated in code reviews and code contribution.
-              sharing.
             </li>
           </ul>
         </div>
