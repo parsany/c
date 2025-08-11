@@ -28,7 +28,7 @@ export default function MainCard() {
           <div className={styles.name}>
             <div className={styles.tuple_construct}>
               <h1>Parsa Niavand</h1>
-              <h3>he/him, they/them</h3>
+              <h3>he/him</h3>
             </div>
 
             <h2>Computer Science Student</h2>
