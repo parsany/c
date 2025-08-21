@@ -3,6 +3,7 @@
   padding: 40px 50px;
   width: 100%;
   margin: 0 auto;
+  padding-bottom: 5px;
 }
 
 .title {
@@ -114,6 +115,28 @@
   margin: 0; 
   background-color: var(--banner-background);
 }
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.morePostsButton {
+  background-color: var(--highlight-color2);
+  color: white;
+  padding: 6px 15px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.morePostsButton:hover {
+  background-color: var(--highlight-color3);
+}
+
 
 .image {
   position: absolute;

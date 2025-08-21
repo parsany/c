@@ -2,6 +2,7 @@ import { useState, useMemo } from "react";
 import styles from "@/styles/Projects.module.css";
 import Image from "next/image";
 import { ProjectStuff } from "@/public/JSONJS";
+import { useRouter } from 'next/router';
 
 export default function Projects({ LimitShow }) {
   const [hoveredId, setHoveredId] = useState(null);
@@ -9,6 +10,7 @@ export default function Projects({ LimitShow }) {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [videoStates, setVideoStates] = useState({});
+  const router = useRouter();
 
   const filteredProjects = useMemo(() => {
     let projects = selectedCategory && selectedCategory !== "All"
@@ -165,6 +167,17 @@ export default function Projects({ LimitShow }) {
           </div>
         ))}
       </div>
+
+      {LimitShow && (
+        <div className={styles.buttonContainer}>
+        <button
+          className={styles.morePostsButton}
+          onClick={() => router.push('/projects')}
+        >
+          More Projects
+        </button>
+        </div>
+      )}
     </div>
   );
 }

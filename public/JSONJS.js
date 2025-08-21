@@ -17,8 +17,9 @@ export const ProjectStuff = [
       "I like heuristic algorithms and simulations.(empty repo, stay tuned!)",
     date: "May 20, 2024",
     image: "/c/projects/robot.png",
-    link: "https://github.com/parsany/EvolutionaryAlgo",
-    tag: "Robotics"
+    link: "",
+    tag: "Robotics",
+    wlink:"https://github.com/parsany/EvolutionaryAlgo"
   },
   {
     id: 3,
