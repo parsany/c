@@ -3,25 +3,25 @@ export const ProjectStuff = [
     id: 1,
     name: "Cat Emotion recognition",
     description:
-      "Using CNN, I trained a model to recognize the emotion of cats.",
-    date: "Dec 1, 2024",
+      "Using CNN, I trained a model to recognize the emotion of cats. Last update Aug 2025, *improved accuracy to 70%* ",
+    date: "Aug 21, 2025",
     image: "/c/projects/cat.png",
     link: "https://github.com/parsany/CatRecognition",
     video: "/c/media/cat.webm",
     tag: "AI"
   },
   {
-    id: 2,
-    name: "Evolutionary Algorithm in C++ (still working on it)",
+    id: 3,
+    name: "Evolutionary Algorithm in C++",
     description:
-      "I like heuristic algorithms and simulations.",
+      "I like heuristic algorithms and simulations.(empty repo, stay tuned!)",
     date: "May 20, 2024",
     image: "/c/projects/robot.png",
     link: "https://github.com/parsany/EvolutionaryAlgo",
     tag: "Robotics"
   },
   {
-    id: 3,
+    id: 2,
     name: "PID_NN",
     description:
       "PID control for optimization of neural networks.",
@@ -32,11 +32,11 @@ export const ProjectStuff = [
   },
   {
     id: 4,
-    name: "Website React MERN",
+    name: "Roza Inventory Management",
     description:
-      "website made with React, MongoDB, Node.js and Express.",
+      "website made with NextJS, PostgreSQL and Express.js.",
     date: "May 20, 2022",
-    image: "/c/projects/website.png",
+    image: "/c/projects/Roza.png",
     link: "",
     tag: "Web Dev"
   }
@@ -49,13 +49,17 @@ export const ProSkills = [
       { name: "Python", level: 75},
       { name: "C++", level: 55 },
       { name: "Javascript", level: 60 },
+      { name: "Typescript", level: 60 },
     ],
   },
   {
     category: "Python Libraries",
     items: [
       { name: "Pytorch", level: 60 },
-      { name: "Numpy", level: 70 }
+      { name: "Numpy", level: 70 },
+      { name: "scikit-learn", level: 70 },
+      { name: "Matplotlib", level: 70 },
+      { name: "OpenCV", level: 70 },
     ],
   },
   {
@@ -72,8 +76,9 @@ export const ProSkills = [
     category: "Web Development",
     items: [
       { name: "Next.js", level: 60 },
-      { name: "CSS modules", level: 70 },
-      { name: "React", level: 70 }
+      { name: "Express.js", level: 70 },
+      { name: "React", level: 70 },
+      { name: "PostgreSQL", level: 70 },
     ],
   },
 ];

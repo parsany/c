@@ -31,7 +31,8 @@ export default function MainCard() {
               <h3>he/him</h3>
             </div>
 
-            <h2>Computer Science Student</h2>
+            <h2>Web Developer, AI Programmer</h2>
+            {/* Full-Stack Developer & AI Specialist */}
             <div className={styles.links}>
               <a onClick={setIsOpen} style={{ cursor: "pointer" }}>
                 <Image
