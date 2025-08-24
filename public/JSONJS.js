@@ -22,7 +22,7 @@ export const ProjectStuff = [
     tag: "programming"
   },
   {
-    id: 4,
+    id: 5,
     name: "Evolutionary Algorithm in C++",
     description:
       "I like heuristic algorithms and simulations.(empty repo, stay tuned!)",
@@ -33,7 +33,7 @@ export const ProjectStuff = [
     wlink:"https://github.com/parsany/EvolutionaryAlgo"
   },
   {
-    id: 3,
+    id: 4,
     name: "PID_NN",
     description:
       "PID control for optimization of neural networks.",
@@ -43,7 +43,7 @@ export const ProjectStuff = [
     tag: "AI"
   },
   {
-    id: 2,
+    id: 3,
     name: "Roza Inventory Management",
     description:
       "website made with NextJS, PostgreSQL and Express.js.",
