@@ -11,6 +11,17 @@ export const ProjectStuff = [
     tag: "AI"
   },
   {
+    id: 2,
+    name: "Conway Invaders",
+    description:
+      "Space invaders game but the enemies are cellular automata!",
+    date: "Aug 24, 2025",
+    image: "/c/projects/cell.png",
+    link: "https://github.com/parsany/Conway-game-of-life-invaders",
+    video: "/c/media/cell.webm",
+    tag: "programming"
+  },
+  {
     id: 4,
     name: "Evolutionary Algorithm in C++",
     description:
