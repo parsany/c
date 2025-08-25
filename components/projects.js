@@ -14,7 +14,8 @@ export default function Projects({ LimitShow }) {
 
   const filteredProjects = useMemo(() => {
     let projects = selectedCategory && selectedCategory !== "All"
-      ? ProjectStuff.filter((project) => project.tag === selectedCategory)
+      // Check if the project's tag array includes the selected category
+      ? ProjectStuff.filter((project) => project.tag.includes(selectedCategory))
       : ProjectStuff;
 
 
@@ -31,9 +32,12 @@ export default function Projects({ LimitShow }) {
 
 
   const categories = useMemo(() => {
-    const tags = new Set(ProjectStuff.map((project) => project.tag));
-    return ["All", ...Array.from(tags).sort()];
-  }, []);
+    // Use flatMap to get all tags from each project's tag array
+    const allTags = ProjectStuff.flatMap((project) => project.tag);
+    // Create a Set to get only the unique tags
+    const uniqueTags = new Set(allTags);
+    return ["All", ...Array.from(uniqueTags).sort()];
+}, []);
 
   const handleMouseEnter = (id, index) => {
     setHoveredId({ id, index });

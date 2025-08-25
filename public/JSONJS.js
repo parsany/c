@@ -8,7 +8,7 @@ export const ProjectStuff = [
     image: "/c/projects/cat.png",
     link: "https://github.com/parsany/CatRecognition",
     video: "/c/media/cat.webm",
-    tag: "AI"
+    tag: ["AI"]
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ export const ProjectStuff = [
     image: "/c/projects/cell.png",
     link: "https://github.com/parsany/Conway-game-of-life-invaders",
     video: "/c/media/cell.webm",
-    tag: "programming"
+    tag: ["Programming", "Games"]
   },
   {
     id: 5,
@@ -29,7 +29,7 @@ export const ProjectStuff = [
     date: "May 20, 2024",
     image: "/c/projects/robot.png",
     link: "",
-    tag: "Robotics",
+    tag: ["Robotics"],
     wlink:"https://github.com/parsany/EvolutionaryAlgo"
   },
   {
@@ -40,18 +40,28 @@ export const ProjectStuff = [
     date: "March 27, 2024",
     image: "/c/projects/PID.png?bg=white",
     link: "https://github.com/parsany/PID_NN",
-    tag: "AI"
+    tag: ["AI"]
   },
   {
     id: 3,
     name: "Roza Inventory Management",
     description:
       "website made with NextJS, PostgreSQL and Express.js.",
-    date: "May 20, 2022",
+    date: "May 20, 2025",
     image: "/c/projects/Roza.png",
     link: "",
-    tag: "Web Dev"
-  }
+    tag: ["Web Dev"]
+  },
+  {
+    id: 6,
+    name: "Library Program QT",
+    description:
+      "I Hate Calibre's UI and macOS got a pretty nice feel app, so i made this for myself.",
+    date: "Feb 14, 2025",
+    image: "/c/projects/QtLib.png",
+    link: "https://github.com/parsany/PyLibrary-QT",
+    tag: ["Programming","Apps"],
+  },
 ];
 
 export const ProSkills = [
