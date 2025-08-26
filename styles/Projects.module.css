@@ -80,10 +80,10 @@
 }
 
 .card.moveLeft {
-  transform: translateX(-1300px);
+  transform: translateX(-5000px);
 }
 .card.moveRight {
-  transform: translateX(1300px);
+  transform: translateX(5000px);
 }
 
 .card:hover {
@@ -131,6 +131,8 @@
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .morePostsButton:hover {
@@ -161,7 +163,7 @@
 }
 
 .content {
-  margin-top: 15px;
+  margin: 15px;
 }
 
 .projectName {
