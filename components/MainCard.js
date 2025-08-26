@@ -120,7 +120,7 @@ export default function MainCard() {
           <p>
             Parsa Niavand is a computer science student currently studying at
             the University of SRBIAU. He has a passion for intelligent systems,
-            modeling and computation, and robotics. In addition to his academic
+            modeling, computation, and robotics. In addition to his academic
             pursuits, he enjoys exploring web and game development, combining
             creativity with technical skill.
           </p>
