@@ -1,6 +1,6 @@
 .elements {
   max-width: 1200px;
-  padding: 40px 50px;
+  padding: 40px 10px;
   width: 100%;
   margin: 0 auto;
   padding-bottom: 5px;
@@ -226,7 +226,8 @@
 
 @media (max-width: 850px) {
   .grid {
-    grid-template-columns: repeat(auto-fit, minmax(90%, 1fr)); 
+    /* grid-template-columns: repeat(auto-fit, minmax(90%, 1fr));  */
+    grid-template-columns: repeat(auto-fit);
     justify-content: center; 
     gap: 20px; 
   }
@@ -250,4 +251,9 @@
   .card.moveRight {
     transform: scale(1); 
   }
+
+  /* .searchBar {
+    width: 100px;
+  } */
+
 }

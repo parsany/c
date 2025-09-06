@@ -119,7 +119,7 @@ export default function Projects({ LimitShow }) {
       </p>
 
       {!LimitShow &&
-      <input
+        <input
         type="text"
         placeholder="Search for project name or desc..."
         className={styles.searchBar}
