@@ -38,7 +38,7 @@ export const ProjectStuff = [
     description:
       "PID control for optimization of neural networks.",
     date: "March 27, 2024",
-    image: "/c/projects/PID.png?bg=white",
+    image: "/c/projects/PID.png",
     link: "https://github.com/parsany/PID_NN",
     tag: ["AI"]
   },
