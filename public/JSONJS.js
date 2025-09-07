@@ -22,7 +22,7 @@ export const ProjectStuff = [
     tag: ["Programming", "Games"]
   },
   {
-    id: 5,
+    id: 7,
     name: "Evolutionary Algorithm in C++",
     description:
       "I like heuristic algorithms and simulations.(empty repo, stay tuned!)",
@@ -61,6 +61,16 @@ export const ProjectStuff = [
     image: "/c/projects/QtLib.png",
     link: "https://github.com/parsany/PyLibrary-QT",
     tag: ["Programming","Apps"],
+  },
+  {
+    id: 5,
+    name: "Simple Interpreter with Flex & Bison",
+    description:
+      "project i did for university class",
+    date: "Sep 2, 2025",
+    image: "/c/projects/flex.png",
+    link: "https://github.com/parsany/InterpreterFlexBison",
+    tag: ["Programming"],
   },
 ];
 
