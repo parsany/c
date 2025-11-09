@@ -25,7 +25,7 @@ export default function Experience({IsIsolated}) {
               height={30}
             />
             <div className={styles.jobInfo}>
-              <h2 className={styles.jobTitle}>Web Developer</h2>
+              <h2 className={styles.jobTitle}>Software Developer</h2>
               <p className={styles.company}>Freelance</p>
               <p className={styles.dates}>January 2023 - </p>
             </div>
