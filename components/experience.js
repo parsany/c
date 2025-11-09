@@ -27,7 +27,7 @@ export default function Experience({IsIsolated}) {
             <div className={styles.jobInfo}>
               <h2 className={styles.jobTitle}>Web Developer</h2>
               <p className={styles.company}>Freelance</p>
-              <p className={styles.dates}>January 2024 - </p>
+              <p className={styles.dates}>January 2023 - </p>
             </div>
           </div>
           <p className={styles.responsibilitiesTitle}>
