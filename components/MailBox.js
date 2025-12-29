@@ -5,7 +5,7 @@ export default function MailPage({onClose}){
         <div className={Styles.overlay} onClick={onClose}>
             <div className={Styles.mailbox}  onClick={e => e.stopPropagation()}>
                 <p className={Styles.email}>
-                    parsaniavand0 at gmail.com
+                    vvsparsa at gmail.com
                 </p>
             </div>
         </div>

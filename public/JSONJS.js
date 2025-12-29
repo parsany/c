@@ -22,7 +22,7 @@ export const ProjectStuff = [
     tag: ["Programming", "Games"]
   },
   {
-    id: 7,
+    id: 6,
     name: "Evolutionary Algorithm in C++",
     description:
       "I like heuristic algorithms and simulations.(empty repo, stay tuned!)",
@@ -33,7 +33,7 @@ export const ProjectStuff = [
     wlink:"https://github.com/parsany/EvolutionaryAlgo"
   },
   {
-    id: 4,
+    id: 3,
     name: "PID_NN",
     description:
       "PID control for optimization of neural networks.",
@@ -43,17 +43,7 @@ export const ProjectStuff = [
     tag: ["AI"]
   },
   {
-    id: 3,
-    name: "Roza Inventory Management",
-    description:
-      "website made with NextJS, PostgreSQL and Express.js.",
-    date: "May 20, 2025",
-    image: "/c/projects/Roza.png",
-    link: "",
-    tag: ["Web Dev"]
-  },
-  {
-    id: 6,
+    id: 5,
     name: "Library Program QT",
     description:
       "I Hate Calibre's UI and macOS got a pretty nice feel app, so i made this for myself.",
@@ -63,7 +53,7 @@ export const ProjectStuff = [
     tag: ["Programming","Apps"],
   },
   {
-    id: 5,
+    id: 4,
     name: "Simple Interpreter with Flex & Bison",
     description:
       "project i did for university class",
