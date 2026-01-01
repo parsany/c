@@ -19,7 +19,7 @@ export default function MainCard() {
         {/* Profile Section */}
         <div className={styles.profile}>
           <Image
-            src="/c/content/main.jpg"
+            src="/content/main.jpg"
             alt="Image"
             className={styles.profileImage}
             width={100}
@@ -36,7 +36,7 @@ export default function MainCard() {
             <div className={styles.links}>
               <a onClick={setIsOpen} style={{ cursor: "pointer" }}>
                 <Image
-                  src="/c/icons/mail.svg"
+                  src="/icons/mail.svg"
                   alt="mail"
                   className={styles.logo}
                   width={30}
@@ -52,7 +52,7 @@ export default function MainCard() {
                 rel="noopener noreferrer"
               >
                 <Image
-                  src="/c/icons/twitter.svg"
+                  src="/icons/twitter.svg"
                   alt="Twitter"
                   className={styles.logo}
                   width={30}
@@ -66,7 +66,7 @@ export default function MainCard() {
                 rel="noopener noreferrer"
               >
                 <Image
-                  src="/c/icons/linkedin.svg"
+                  src="/icons/linkedin.svg"
                   alt="linkedin"
                   className={styles.logo}
                   width={30}
@@ -80,7 +80,7 @@ export default function MainCard() {
                 rel="noopener noreferrer"
               >
                 <Image
-                  src="/c/icons/github-mark.svg"
+                  src="/icons/github-mark.svg"
                   alt="GitHub"
                   className={styles.logo}
                   width={30}
@@ -94,7 +94,7 @@ export default function MainCard() {
                 rel="noopener noreferrer"
               >
                 <Image
-                  src="/c/icons/telegram.svg"
+                  src="/icons/telegram.svg"
                   alt="Telegram"
                   className={styles.logo}
                   width={30}
@@ -136,12 +136,12 @@ export default function MainCard() {
                   onClick={(e) => e.stopPropagation()} // Prevent closing popup when clicking inside
                 >
                   <button className={styles.downloadCV}>
-                    <a href="/c/CV.pdf" download="cv">
+                    <a href="/CV.pdf" download="cv">
                       Academic CV
                     </a>
                   </button>
                   <button className={styles.downloadCV}>
-                    <a href="/c/CVB.pdf" download="cv">
+                    <a href="/CVB.pdf" download="cv">
                       Business CV
                     </a>
                   </button>

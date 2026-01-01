@@ -18,7 +18,7 @@ export default function Experience({IsIsolated}) {
         <div className={styles.job}>
           <div className={styles.jobHeader}>
             <Image
-              src="/c/icons/experience.svg"
+              src="/icons/experience.svg"
               alt="Experience Icon"
               className={theme === 'dark' ? styles.icon : styles.icond}
               width={30}
@@ -49,7 +49,7 @@ export default function Experience({IsIsolated}) {
         <div className={styles.job}>
           <div className={styles.jobHeader}>
             <Image
-              src="/c/icons/experience.svg"
+              src="/icons/experience.svg"
               alt="Experience Icon"
               className={theme === 'dark' ? styles.icon : styles.icond}
               width={30}
@@ -85,7 +85,7 @@ export default function Experience({IsIsolated}) {
         <div className={styles.job}>
           <div className={styles.jobHeader}>
             <Image
-              src="/c/icons/education.svg"
+              src="/icons/education.svg"
               alt="Education Icon"
               className={theme === 'dark' ? styles.icon : styles.icond}
               width={30}
@@ -106,7 +106,7 @@ export default function Experience({IsIsolated}) {
         <div className={styles.job}>
           <div className={styles.jobHeader}>
             <Image
-              src="/c/icons/cup.svg"
+              src="/icons/cup.svg"
               alt="Awards Icon"
                             className={theme === 'dark' ? styles.icon : styles.icond}
               width={30}

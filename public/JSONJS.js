@@ -5,9 +5,9 @@ export const ProjectStuff = [
     description:
       "Using CNN, I trained a model to recognize the emotion of cats. Last update Aug 2025, *improved accuracy to 70%* ",
     date: "Aug 21, 2025",
-    image: "/c/projects/cat.png",
+    image: "/projects/cat.png",
     link: "https://github.com/parsany/CatRecognition",
-    video: "/c/media/cat.webm",
+    video: "/media/cat.webm",
     tag: ["AI"]
   },
   {
@@ -16,9 +16,9 @@ export const ProjectStuff = [
     description:
       "Space invaders game but the enemies are cellular automata!",
     date: "Aug 24, 2025",
-    image: "/c/projects/cell.png",
+    image: "/projects/cell.png",
     link: "https://github.com/parsany/Conway-game-of-life-invaders",
-    video: "/c/media/cell.webm",
+    video: "/media/cell.webm",
     tag: ["Programming", "Games"]
   },
   {
@@ -27,7 +27,7 @@ export const ProjectStuff = [
     description:
       "I like heuristic algorithms and simulations.(empty repo, stay tuned!)",
     date: "May 20, 2024",
-    image: "/c/projects/robot.png",
+    image: "/projects/robot.png",
     link: "",
     tag: ["Robotics"],
     wlink:"https://github.com/parsany/EvolutionaryAlgo"
@@ -38,7 +38,7 @@ export const ProjectStuff = [
     description:
       "PID control for optimization of neural networks.",
     date: "March 27, 2024",
-    image: "/c/projects/PID.png",
+    image: "/projects/PID.png",
     link: "https://github.com/parsany/PID_NN",
     tag: ["AI"]
   },
@@ -48,7 +48,7 @@ export const ProjectStuff = [
     description:
       "I Hate Calibre's UI and macOS got a pretty nice feel app, so i made this for myself.",
     date: "Feb 14, 2025",
-    image: "/c/projects/QtLib.png",
+    image: "/projects/QtLib.png",
     link: "https://github.com/parsany/PyLibrary-QT",
     tag: ["Programming","Apps"],
   },
@@ -58,7 +58,7 @@ export const ProjectStuff = [
     description:
       "project i did for university class",
     date: "Sep 2, 2025",
-    image: "/c/projects/flex.png",
+    image: "/projects/flex.png",
     link: "https://github.com/parsany/InterpreterFlexBison",
     tag: ["Programming"],
   },

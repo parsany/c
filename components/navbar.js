@@ -50,8 +50,8 @@ export default function NavBar() {
         <Image
           src={
             isDarkMode
-              ? "/c/icons/dark_mode.svg"
-              : "/c/icons/light_mode.svg"
+              ? "/icons/dark_mode.svg"
+              : "/icons/light_mode.svg"
           }
           alt="Toggle Icon"
           className={Styles.togglecolor}
@@ -87,8 +87,8 @@ export default function NavBar() {
           <Image
             src={
               isDarkMode
-                ? "/c/icons/dark_mode.svg"
-                : "/c/icons/light_mode.svg"
+                ? "/icons/dark_mode.svg"
+                : "/icons/light_mode.svg"
             }
             alt="Toggle Icon"
             className={Styles.togglecolor}

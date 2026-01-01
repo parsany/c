@@ -26,7 +26,7 @@ export default function News(){
           <div key={index} className={styles.eventItem}>
             <div className={styles.iconContainer}>
               <Image
-                src={`/c/icons/${event.icon}`} 
+                src={`/icons/${event.icon}`} 
                 alt={"icon"}
                 width={24}
                 height={24}
