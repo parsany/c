@@ -16,13 +16,13 @@
   color: var(--text-color);
 }
 
-.toggleMode{
+.toggleMode {
   transition: all ease-in-out 0.2s;
 }
 
 .toggleMode:hover {
   cursor: pointer;
-  filter:  contrast(1.5);
+  filter: contrast(1.5);
 }
 
 .togglecolor {
@@ -34,21 +34,20 @@
   cursor: pointer;
 }
 
-
 .navlist {
   display: flex;
   flex-direction: row;
   column-gap: 2rem;
   margin: 0;
   padding: 0;
-  transition: max-height 0.3s ease-in-out;  
-  overflow: hidden;  
+  transition: max-height 0.3s ease-in-out;
+  overflow: hidden;
 }
 
 .navlistOpen {
-  display: flex;  
-  flex-direction: column;  
-  max-height: 350px;  
+  display: flex;
+  flex-direction: column;
+  max-height: 350px;
 }
 
 .navitem {
@@ -56,6 +55,12 @@
   position: relative;
   margin: 0 1rem;
   transition: color 0.2s ease-in-out;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .navitem:hover {
@@ -69,6 +74,14 @@
   font-family: "Dancing Script", cursive;
   font-size: 1.8rem;
   text-decoration: none;
+}
+
+.updateText {
+  font-family: "Courier New", Courier, monospace;
+  color: #4ade80; /* A modern green color */
+  font-size: 0.9rem;
+  margin-left: 0.5rem;
+  font-weight: normal;
 }
 
 .hamburger {
@@ -101,13 +114,11 @@
   transform: rotate(-45deg) translateY(-8px);
 }
 
-
 .mobileControls {
   display: flex;
   align-items: center;
-  gap: 1rem; 
+  gap: 1rem;
 }
-
 
 .toggleMode {
   transition: all ease-in-out 0.2s;
@@ -123,15 +134,14 @@
   margin: auto;
 }
 
-
 @media (min-width: 851px) {
   .mobileControls {
-    display: none; 
+    display: none;
   }
 
   .toggleMode {
     display: inline-block;
-    order: -1; 
+    order: -1;
   }
 }
 
@@ -141,7 +151,7 @@
   }
 
   .navlist {
-    display: none;  
+    display: none;
     flex-direction: column;
     position: absolute;
     top: var(--header-height);
@@ -150,7 +160,9 @@
     width: 100%;
     padding: 1rem 0;
     z-index: 100;
-    transition: max-height 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    transition:
+      max-height 0.3s ease-in-out,
+      background-color 0.3s ease-in-out;
   }
 
   .navlistOpen {
@@ -176,7 +188,9 @@
     width: 100%;
     padding: 1rem 0;
     z-index: 100;
-    transition: max-height 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    transition:
+      max-height 0.3s ease-in-out,
+      background-color 0.3s ease-in-out;
   }
 
   .navlistOpen {

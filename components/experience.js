@@ -25,23 +25,20 @@ export default function Experience({IsIsolated}) {
               height={30}
             />
             <div className={styles.jobInfo}>
-              <h2 className={styles.jobTitle}>Software Developer</h2>
-              <p className={styles.company}>Freelance</p>
-              <p className={styles.dates}>January 2023 - </p>
+              <h2 className={styles.jobTitle}>Lead Full-Stack Developer</h2>
+              <p className={styles.company}>Independent Team</p>
+              <p className={styles.dates}>July 2025 - Present (6 months)</p>
             </div>
           </div>
           <p className={styles.responsibilitiesTitle}>
-            Responsibilities include:
+            Key achievements & responsibilities:
           </p>
           <ul className={styles.responsibilities}>
             <li className={styles.responsibilitiesItem}>
-              Developed responsive web applications using Next.js and React.
+              Simultaneously managed 7+ projects, prioritizing features and ensuring on-time delivery.
             </li>
             <li className={styles.responsibilitiesItem}>
-              Implemented server-side components to enhance performance and SEO.
-            </li>
-            <li className={styles.responsibilitiesItem}>
-              Participated in code reviews and code contribution.
+              Spearheaded project roadmaps and technical decision-making for a cross-functional team.
             </li>
           </ul>
         </div>
@@ -56,24 +53,82 @@ export default function Experience({IsIsolated}) {
               height={30}
             />
             <div className={styles.jobInfo}>
-              <h2 className={styles.jobTitle}>Game UI Designer</h2>
-              <p className={styles.company}>Saro Studio</p>
-              <p className={styles.dates}>December 2021 - August 2022</p>
+              <h2 className={styles.jobTitle}>Back-end Developer</h2>
+              <p className={styles.company}>Independent Team</p>
+              <p className={styles.dates}>October 2024 - July 2025 (10 months)</p>
             </div>
           </div>
           <p className={styles.responsibilitiesTitle}>
-            Responsibilities include:
+            Key achievements & responsibilities:
           </p>
           <ul className={styles.responsibilities}>
             <li className={styles.responsibilitiesItem}>
-              Designed user interfaces for game menus and HUDs.
+              Designed and implemented scalable, testable, and maintainable back-end architectures.
             </li>
             <li className={styles.responsibilitiesItem}>
-              Collaborated with game developers and artists to create cohesive
-              visual styles.
+              Developed secure authentication and access management systems (RBAC).
+            </li>
+          </ul>
+        </div>
+
+        <div className={styles.job}>
+          <div className={styles.jobHeader}>
+            <Image
+              src="/icons/experience.svg"
+              alt="Experience Icon"
+              className={theme === 'dark' ? styles.icon : styles.icond}
+              width={30}
+              height={30}
+            />
+            <div className={styles.jobInfo}>
+              <h2 className={styles.jobTitle}>Front-end Developer</h2>
+              <p className={styles.company}>Independent Team</p>
+              <p className={styles.dates}>January 2024 - October 2024 (9 months)</p>
+            </div>
+          </div>
+          <p className={styles.responsibilitiesTitle}>
+            Key achievements & responsibilities:
+          </p>
+          <ul className={styles.responsibilities}>
+            <li className={styles.responsibilitiesItem}>
+              Developed secure, reusable components using React, Next.js, and TypeScript.
             </li>
             <li className={styles.responsibilitiesItem}>
-              Created prototypes using Figma to visualize design concepts.
+              Implemented complex UI animations and optimized rendering performance for fast loading.
+            </li>
+            <li className={styles.responsibilitiesItem}>
+              Applied optimized and scalable styling using Tailwind CSS.
+            </li>
+          </ul>
+        </div>
+
+        <div className={styles.job}>
+          <div className={styles.jobHeader}>
+            <Image
+              src="/icons/experience.svg"
+              alt="Experience Icon"
+              className={theme === 'dark' ? styles.icon : styles.icond}
+              width={30}
+              height={30}
+            />
+            <div className={styles.jobInfo}>
+              <h2 className={styles.jobTitle}>UI/UX Designer</h2>
+              <p className={styles.company}>Saro Studio</p>
+              <p className={styles.dates}>November 2021 - October 2022 (10 months)</p>
+            </div>
+          </div>
+          <p className={styles.responsibilitiesTitle}>
+            Key achievements & responsibilities:
+          </p>
+          <ul className={styles.responsibilities}>
+            <li className={styles.responsibilitiesItem}>
+              Designed and prototyped user interfaces and UX in Figma.
+            </li>
+            <li className={styles.responsibilitiesItem}>
+              Created wireframes, complex user flows, and interactive prototypes.
+            </li>
+            <li className={styles.responsibilitiesItem}>
+              Specialized in dashboard UI design and cohesive visual styles.
             </li>
           </ul>
         </div>

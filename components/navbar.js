@@ -41,9 +41,14 @@ export default function NavBar() {
   return (
     <header className={Styles.header} role="banner">
   <nav className={Styles.navbar} role="navigation">
-    <Link href="/" className={Styles.logo} onClick={handleLinkClick}>
-      <p>Phy</p>
-    </Link>
+    <div className={Styles.logoContainer}>
+      <Link href="/" className={Styles.logo} onClick={handleLinkClick}>
+        <p>Phy</p>
+      </Link>
+      <span className={Styles.updateText}>
+        (last update august 2024)
+      </span>
+    </div>
 
     <div className={Styles.mobileControls}>
       <a onClick={toggleTheme} className={Styles.toggleMode}>

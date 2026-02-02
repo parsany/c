@@ -2,6 +2,7 @@ import styles from "@/styles/Profile.module.css";
 import Image from "next/image";
 import MailBox from "@/components/MailBox";
 import React, { useState } from "react";
+import { Phone } from "lucide-react";
 
 export default function MainCard() {
   const [isOpen, setIsOpen] = useState(false);
@@ -110,6 +111,15 @@ export default function MainCard() {
               <a href="#" aria-label="ORCID">
                 🆔
               </a> */}
+              <a
+                href="tel:+989120391838"
+                aria-label="Phone"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {/* use lucide phone icon */}
+               <Phone/>
+              </a>
             </div>
           </div>
         </div>
@@ -118,8 +128,7 @@ export default function MainCard() {
         <div className={styles.about}>
           <h2>Bio</h2>
           <p>
-            Parsa Niavand is a computer science student currently studying at
-            the University of SRBIAU. He has a passion for intelligent systems,
+            Parsa Niavand is a computer science student graduate from the University of SRBIAU. He has a passion for intelligent systems,
             modeling, computation, and robotics. In addition to his academic
             pursuits, he enjoys exploring web and game development, combining
             creativity with technical skill.
