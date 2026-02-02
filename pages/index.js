@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import MainCard from "../components/MainCard";
 import Contact from "../components/contact";
 import Experience from "../components/experience";
@@ -21,6 +22,13 @@ export default function Main() {
 
   return (
     <div>
+      <Head>
+        <title>Parsa Ny | Portfolio & Blog</title>
+        <meta name="description" content="Parsa Ny's personal portfolio featuring projects, experience, and blog posts about software engineering and technology." />
+        <meta name="keywords" content="Parsa Ny, software engineer, portfolio, projects, blog" />
+        <meta property="og:title" content="Parsa Ny | Portfolio & Blog" />
+        <meta property="og:description" content="Discover Parsa Ny's projects and experience in software development." />
+      </Head>
       <UpdateBar />
       <div className={Styles.container}>
         <div className={Styles.maincard}>

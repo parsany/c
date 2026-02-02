@@ -4,7 +4,6 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-      <title>Parsa Ny</title>
       <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
       <body>
