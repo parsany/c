@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://parsany.com/sitemap.xml
+Sitemap: https://parsany.github.io/c/sitemap.xml

@@ -28,6 +28,7 @@ export default function Main() {
         <meta name="keywords" content="Parsa Ny, software engineer, portfolio, projects, blog" />
         <meta property="og:title" content="Parsa Ny | Portfolio & Blog" />
         <meta property="og:description" content="Discover Parsa Ny's projects and experience in software development." />
+        <link rel="canonical" href="https://parsany.github.io/c/" />
       </Head>
       <UpdateBar />
       <div className={Styles.container}>
