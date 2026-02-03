@@ -66,7 +66,7 @@ export default function Experience({IsIsolated}) {
               Designed and implemented scalable, testable, and maintainable back-end architectures.
             </li>
             <li className={styles.responsibilitiesItem}>
-              Developed secure authentication and access management systems (RBAC).
+              Developed secure authentication and access management systems.
             </li>
           </ul>
         </div>
