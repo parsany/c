@@ -13,7 +13,7 @@ export default function Experience({IsIsolated}) {
   
   return (
     <div>
-      <h1 className={styles.title}>Experience</h1>
+      <h1 className={styles.title}>Experience (this part is updated)</h1>
       <div className={IsIsolated ? styles.box : styles.boxnormal}>
         <div className={styles.job}>
           <div className={styles.jobHeader}>

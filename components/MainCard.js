@@ -32,7 +32,7 @@ export default function MainCard() {
               <h3>he/him</h3>
             </div>
 
-            <h2>Software Engineer, AI developer</h2>
+            <h2>Software Engineer</h2>
             {/* Full-Stack Developer & AI Specialist */}
             <div className={styles.links}>
               <a onClick={setIsOpen} style={{ cursor: "pointer" }}>
@@ -126,7 +126,7 @@ export default function MainCard() {
           </p>
           <div>
             <button className={styles.downloadCV} onClick={openPopup}>
-              Download CV
+            Download CV (REDACTED)
             </button>
 
             {showPopup && (
