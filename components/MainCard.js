@@ -111,15 +111,6 @@ export default function MainCard() {
               <a href="#" aria-label="ORCID">
                 🆔
               </a> */}
-              <a
-                href="tel:+989120391838"
-                aria-label="Phone"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {/* use lucide phone icon */}
-               <Phone/>
-              </a>
             </div>
           </div>
         </div>
@@ -131,7 +122,7 @@ export default function MainCard() {
             Parsa Niavand is a computer science student graduate from the University of SRBIAU. He has a passion for intelligent systems,
             modeling, computation, and robotics. In addition to his academic
             pursuits, he enjoys exploring web and game development, combining
-            creativity with technical skill.
+            creativity with technical skill.               contact me for resume and current projects (i don't add them here)
           </p>
           <div>
             <button className={styles.downloadCV} onClick={openPopup}>
