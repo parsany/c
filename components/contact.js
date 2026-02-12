@@ -6,7 +6,7 @@ export default function Contact() {
                 <h1>Contact Me</h1>
                 <div className={Styles.contactInfo}>
                     <p>Email: quantinitycorp at gmail.com</p>
-                    <p>Telegram: <a href="https://t.me/velvetphy">velvetphy</a></p>
+                    <p>Telegram: <a href="https://t.me/parsanid">parsanid</a></p>
                     <p>LinkedIn: <a href="https://www.linkedin.com/in/parsany/">linkedin.com/in/parsany</a></p>
                 </div>
         </div>

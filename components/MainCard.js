@@ -89,7 +89,7 @@ export default function MainCard() {
                 />
               </a>
               <a
-                href="https://t.me/velvetphy"
+                href="https://t.me/parsanid"
                 aria-label="Telegram"
                 target="_blank"
                 rel="noopener noreferrer"
