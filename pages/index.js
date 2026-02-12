@@ -23,7 +23,7 @@ export default function Main() {
   return (
     <div>
       <Head>
-        <title>Parsa Ny | Portfolio & Blog</title>
+        <title>Parsa Ny</title>
         <meta name="description" content="Parsa Ny's personal portfolio featuring projects, experience, and blog posts about software engineering and technology." />
         <meta name="keywords" content="Parsa Ny, software engineer, portfolio, projects, blog" />
         <meta property="og:title" content="Parsa Ny | Portfolio & Blog" />
