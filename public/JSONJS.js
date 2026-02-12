@@ -22,7 +22,7 @@ export const ProjectStuff = [
     tag: ["Programming", "Games"]
   },
   {
-    id: 6,
+    id: 7,
     name: "Evolutionary Algorithm in C++",
     description:
       "I like heuristic algorithms and simulations.(empty repo, stay tuned!)",
@@ -51,6 +51,16 @@ export const ProjectStuff = [
     image: "/projects/QtLib.png",
     link: "https://github.com/parsany/PyLibrary-QT",
     tag: ["Programming","Apps"],
+  },
+  {
+    id: 6,
+    name: "anomaly detection for goldmines ",
+    description:
+      "deep learning models for mineral zone detection (as anomalies) using various Autoencoder architectures.",
+    date: "Nov 2, 2024",
+    image: "/projects/anomaly.png",
+    link: "https://github.com/parsany/anomaly-VAE",
+    tag: ["AI"],
   },
   {
     id: 4,
