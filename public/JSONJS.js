@@ -15,7 +15,7 @@ export const ProjectStuff = [
     name: "Conway Invaders",
     description:
       "Space invaders game but the enemies are cellular automata!",
-    date: "Aug 24, 2025",
+    date: "Aug 24, 2024",
     image: "/projects/cell.png",
     link: "https://github.com/parsany/Conway-game-of-life-invaders",
     video: "/media/cell.webm",
@@ -26,7 +26,7 @@ export const ProjectStuff = [
     name: "Evolutionary Algorithm in C++",
     description:
       "I like heuristic algorithms and simulations.(empty repo, stay tuned!)",
-    date: "May 20, 2024",
+    date: "May 20, 2023",
     image: "/projects/robot.png",
     link: "",
     tag: ["Robotics"],
@@ -37,7 +37,7 @@ export const ProjectStuff = [
     name: "PID_NN",
     description:
       "PID control for optimization of neural networks.",
-    date: "March 27, 2024",
+    date: "March 27, 2025",
     image: "/projects/PID.png",
     link: "https://github.com/parsany/PID_NN",
     tag: ["AI"]
@@ -57,7 +57,7 @@ export const ProjectStuff = [
     name: "anomaly detection for goldmines ",
     description:
       "deep learning models for mineral zone detection (as anomalies) using various Autoencoder architectures.",
-    date: "Nov 2, 2024",
+    date: "Nov 2, 2025",
     image: "/projects/anomaly.png",
     link: "https://github.com/parsany/anomaly-VAE",
     tag: ["AI"],

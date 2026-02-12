@@ -119,10 +119,10 @@ export default function MainCard() {
         <div className={styles.about}>
           <h2>Bio</h2>
           <p>
-            Parsa Niavand is a computer science student graduate from the University of SRBIAU. He has a passion for intelligent systems,
+            Parsa Niavand is a computer science student (near graduation) from the University of SRBIAU. He has a passion for intelligent systems,
             modeling, computation, and robotics. In addition to his academic
             pursuits, he enjoys exploring web and game development, combining
-            creativity with technical skill.               contact me for resume and current projects (i don&apos;t add them here)
+            creativity with technical skill.           
           </p>
           <div>
             <button className={styles.downloadCV} onClick={openPopup}>
@@ -135,16 +135,31 @@ export default function MainCard() {
                   className={styles.CV_container}
                   onClick={(e) => e.stopPropagation()} // Prevent closing popup when clicking inside
                 >
-                  <button className={styles.downloadCV}>
-                    <a href="/CV.pdf" download="cv">
-                      Academic CV
-                    </a>
-                  </button>
-                  <button className={styles.downloadCV}>
-                    <a href="/CVB.pdf" download="cv">
-                      Business CV
-                    </a>
-                  </button>
+                  <p className={styles.cvNotice}>
+                    This CV is redacted as it is outdated. Please contact me for my current resume.
+                  </p>
+                  <div className={styles.cvImageFrame}>
+                    <Image
+                      src="/content/cv.png"
+                      alt="CV Preview"
+                      className={styles.cvPreview}
+                      width={400}
+                      height={560}
+                      priority
+                    />
+                  </div>
+                  <div className={styles.cvButtonsRow}>
+                    <button className={styles.downloadCV}>
+                      <a href="/content/cv.png" target="_blank" rel="noopener noreferrer">
+                        Academic CV
+                      </a>
+                    </button>
+                    <button className={styles.downloadCV}>
+                      <a href="/content/cv.png" target="_blank" rel="noopener noreferrer">
+                        Business CV
+                      </a>
+                    </button>
+                  </div>
                 </div>
               </div>
             )}
