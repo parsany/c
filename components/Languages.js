@@ -1,25 +1,36 @@
 import styles from '@/styles/Languages.module.css';
+import { Globe, Languages as LangIcon } from 'lucide-react';
 
 export default function Languages() {
-  const languages = [
-    {  name: 'English', proficiency: 'Bilingual' },
-    {  name: 'Persian', proficiency: 'Bilingual' },
-  ];
-
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Languages</h1>
-      <div className={styles.languageContainer}>
-        {languages.map((lang, index) => (
-          <div
-            key={index}
-            className={styles.languageCard}
-            aria-label={`${lang.name} - ${lang.proficiency} (${lang.percentage})`}
-          >
-            <div className={styles.languageName}>{lang.name}</div>
-            <p className={styles.proficiency}>{lang.proficiency}</p>
+      <div className={styles.header}>
+        <h2 className={styles.title}>Spoken Languages</h2>
+        <div className={styles.separator}></div>
+      </div>
+
+      <div className={styles.mapCard}>
+        <div className={styles.mapBackground}></div>
+        
+        <div className={styles.grid}>
+          {/* English */}
+          <div className={styles.langItem}>
+            <div className={styles.iconCircle}>
+              <Globe className={styles.icon} size={32} />
+            </div>
+            <h3 className={styles.langName}>English</h3>
+            <p className={styles.proficiency}>Bilingual Proficiency</p>
           </div>
-        ))}
+
+          {/* Persian */}
+          <div className={styles.langItem}>
+            <div className={styles.iconCircle}>
+              <LangIcon className={styles.icon} size={32} />
+            </div>
+            <h3 className={styles.langName}>Persian</h3>
+            <p className={styles.proficiency}>Native / Bilingual</p>
+          </div>
+        </div>
       </div>
     </div>
   );

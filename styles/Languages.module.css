@@ -1,72 +1,128 @@
+/* Container */
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #ffffff;
-  padding: 20px;
+  margin-top: 60px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.header {
+  margin-bottom: 40px;
 }
 
 .title {
-  margin-top: 20px; 
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 20px;
+  font-family: "Georgia", "Times New Roman", serif; /* 1:1 Design */
+  font-size: 2.25rem;
+  font-weight: 700;
   color: var(--title-color);
-  text-align: center;
+  margin-bottom: 16px;
 }
 
-.languageContainer {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
+.separator {
+  width: 64px;
+  height: 4px;
+  background-color: var(--highlight-color2); /* Teal/Primary */
+  margin: 0 auto;
+  border-radius: 999px;
 }
 
-.languageCard {
-  background-color: var(--card-background); /* Changed from button-color to card-background */
-  border-radius: 12px; /* Changed from 50% circle to rounded rect for better fit */
-  width: 140px;
-  height: 100px;
+/* Map Card Container */
+.mapCard {
+  position: relative;
+  background-color: var(--card-background);
+  border: 1px solid var(--section-border);
+  border-radius: 24px; /* rounded-3xl */
+  padding: 48px 32px;
+  overflow: hidden;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.mapBackground {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.05;
+  filter: grayscale(100%);
+  pointer-events: none;
+}
+
+:global(body.dark-mode) .mapBackground {
+  opacity: 0.15;
+}
+
+/* Language Items Grid */
+.grid {
+  position: relative;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Glass Item */
+.langItem {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  border: 1px solid var(--section-border); /* Subtle border */
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  text-align: center;
+  justify-content: center;
+  padding: 32px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--section-border);
+  border-radius: 16px;
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
 }
 
-.languageCard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  border-color: var(--highlight-color); /* Highlight color on hover */
+:global(body.dark-mode) .langItem {
+  background: rgba(30, 41, 59, 0.5); /* Slate 800 / 0.5 */
 }
 
-.languageName {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: var(--title-color); /* Changed to title color */
-  margin-bottom: 5px;
+.langItem:hover {
+  transform: scale(1.02);
+  border-color: var(--highlight-color2); /* Primary Hover */
+}
+
+.iconCircle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: rgba(var(--section-border-rgb), 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  transition: transform 0.3s ease;
+  background-color: var(--section-bg-b);
+}
+
+.langItem:hover .iconCircle {
+  transform: scale(1.1);
+}
+
+.icon {
+  color: var(--highlight-color2);
+}
+
+.langName {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--title-color);
+  margin-bottom: 4px;
 }
 
 .proficiency {
-  font-size: 0.9rem;
-  color: var(--subtitle-color); /* Changed to subtitle color */
-}
-
-/* media queries */
-@media (max-width: 768px) {
-  .languageCard {
-    width: 120px;
-    height: 90px;
-  }
-
-  .languageName {
-    font-size: 1rem;
-  }
-
-  .proficiency {
-    font-size: 0.8rem;
-  }
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--subtitle-color);
 }

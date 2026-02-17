@@ -3,6 +3,13 @@
   background-color: var(--background);
   padding: 48px 24px 24px;
   margin-top: 40px;
+  transition: background-color 0.3s ease;
+}
+
+/* Dark mode override for non-home pages */
+:global(body.dark-mode) .footerNotHome {
+  background-color: #1e293b;
+  border-top: 1px solid var(--section-border);
 }
 
 .footerInner {

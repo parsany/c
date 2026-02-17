@@ -1,115 +1,179 @@
+/* Main Container */
 .container {
-  padding: 2rem;
-  background-color: var(--background-color);
-  color: #ffffff;
-  border-radius: 0.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  position: relative;
+}
+
+/* Header Section */
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.titleWrapper {
+  display: inline-block;
+  position: relative;
 }
 
 .title {
-  margin-top: 45px;
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  text-align: center;
-  color: var(--text-color)
+  font-family: "Georgia", "Times New Roman", serif; /* 1:1 Design - Serif Font */
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--title-color);
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 10;
 }
 
-.skillsWrapper {
-  max-width: 800px;
+.glow {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 100px;
+  height: 100px;
+  background-color: var(--highlight-color); /* Blue/Sapphire glow */
+  opacity: 0.2;
+  filter: blur(40px);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+:global(body.dark-mode) .glow {
+  opacity: 0.4;
+  background-color: #3b82f6; /* Stronger blue in dark mode */
+}
+
+.subtitle {
+  max-width: 600px;
   margin: 0 auto;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  font-size: 1.1rem;
+  color: var(--subtitle-color);
+  font-weight: 300;
+  line-height: 1.6;
 }
 
-.category {
-  border: 1px solid --box-color;
-  border-radius: 0.5rem;
-  margin-bottom: 1rem;
-  padding: 1rem;
-  background-color: var(--skills-color);
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+.titleDecoration {
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--highlight-color2), var(--highlight-color)); /* Teal to Blue */
+  margin: 30px auto 0;
+  border-radius: 999px;
 }
 
-.category:hover {
-  will-change: transform;
-  transition: transform 0.3s ease;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  backface-visibility: hidden;
-  transform: translateY(-2px) scale(1.01) translateZ(0);
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+/* Grid Layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 32px;
+  margin-bottom: 80px;
 }
 
-.categoryTitle {
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Card Styles */
+.card {
+  position: relative;
+  background-color: var(--card-background);
+  border: 1px solid var(--section-border); /* Subtle border */
+  border-radius: 16px;
+  padding: 32px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  border-color: var(--section-border); /* Keep subtle or change on hover */
+}
+
+/* Texture Overlay */
+.textureOverlay {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.03' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+:global(body.dark-mode) .textureOverlay {
+  opacity: 0.2;
+}
+
+/* Background Icon (Faint) */
+.bgIcon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 16px;
+  opacity: 0.05;
+  color: rgb(var(--accent-rgb)); /* 1:1 Design - Explicit color fix */
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover .bgIcon {
+  opacity: 0.1;
+}
+
+/* Card Content */
+.cardHeader {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.iconBox {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+  background-color: rgba(var(--accent-rgb), 0.1);
+  color: rgb(var(--accent-rgb));
+}
+
+.cardTitle {
   font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-  color: var(--skill-title); 
-  /* add dark mode */
+  font-weight: 600;
+  color: var(--title-color);
 }
 
-.skillsList {
+.skillsContainer {
+  position: relative;
+  z-index: 10;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 12px;
 }
 
-.skillItem {
-  
-  background-color: #444;
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+.skillPill {
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--subtitle-color);
+  background-color: transparent;
+  border: 1px solid var(--section-border);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  cursor: default;
 }
 
-.skillName {
-  font-size: 1.1rem;
-  color: var(--skill-name)
-}
-
-
-.itemrow {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  column-gap: 150px;
-}
-
-@media (max-width: 768px) {
-  .title {
-    font-size: 1.5rem;
-  }
-
-  .skillsWrapper {
-    padding: 1rem;
-  }
-
-  .itemrow {
-    flex-direction: column;
-    column-gap: 0;
-    align-items: center;
-  }
-
-  .categoryTitle {
-    font-size: 1.3rem;
-  }
-
-  .skillName {
-    font-size: 1rem;
-  }
-
-  .skillLevel {
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .title {
-    font-size: 1.5rem;
-  }
-
-  .categoryTitle {
-    font-size: 1.1rem;
-  }
+.skillPill:hover {
+  border-color: rgb(var(--accent-rgb));
+  color: rgb(var(--accent-rgb));
+  background-color: transparent;
 }

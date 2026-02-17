@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Elegant Academic Portfolio - Tech Stack</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#14b8a6", // Teal/Emerald-ish from screenshot button
+                        "primary-dark": "#0f766e",
+                        "secondary": "#3b82f6", // Sapphire blue
+                        "background-light": "#f8fafc",
+                        "background-dark": "#0B1120", // Deep Navy
+                        "surface-dark": "#162033", // Slightly lighter navy for cards
+                        "surface-light": "#ffffff",
+                        "accent-emerald": "#10b981",
+                        "accent-sapphire": "#2563eb",
+                    },
+                    fontFamily: {
+                        display: ["Playfair Display", "serif"],
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                        'xl': "1rem",
+                        '2xl': "1.5rem",
+                    },
+                    backgroundImage: {
+                        'monogram-pattern': "url('https://www.transparenttextures.com/patterns/cubes.png')",
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                },
+            },
+        };
+    </script>
+<style>::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B1120;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #334155;
+        }.texture-overlay {
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.03' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-200 font-sans antialiased transition-colors duration-300">
+<nav class="sticky top-0 z-50 w-full backdrop-blur-md bg-background-light/80 dark:bg-background-dark/80 border-b border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-20">
+<div class="flex-shrink-0">
+<a class="font-display text-3xl italic font-bold text-slate-900 dark:text-white tracking-tight" href="#">
+                        Phy
+                    </a>
+</div>
+<div class="hidden md:block">
+<div class="ml-10 flex items-baseline space-x-8">
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors" href="#">Projects</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors" href="#">Skills</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors" href="#">Experience</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors" href="#">Blog Posts</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors" href="#">Materials</a>
+<a class="text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-primary px-3 py-2 rounded-md text-sm font-medium transition-colors" href="#">News</a>
+<a class="bg-primary hover:bg-opacity-90 text-white px-5 py-2 rounded-full text-sm font-semibold shadow-lg shadow-primary/20 transition-all transform hover:scale-105" href="#">CV</a>
+<button class="text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white p-1">
+<span class="material-icons-outlined text-xl">light_mode</span>
+</button>
+</div>
+</div>
+<div class="-mr-2 flex md:hidden">
+<button class="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-700 focus:outline-none" type="button">
+<span class="sr-only">Open main menu</span>
+<span class="material-icons-outlined">menu</span>
+</button>
+</div>
+</div>
+</div>
+</nav>
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+<div class="text-center mb-16 relative">
+<h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white mb-4 relative inline-block">
+                Tech Stack
+                <div class="absolute -right-8 -top-8 w-16 h-16 bg-accent-sapphire/20 rounded-full blur-xl hidden dark:block"></div>
+</h1>
+<p class="mt-4 max-w-2xl mx-auto text-lg text-slate-600 dark:text-slate-400 font-light">
+                A curated selection of technologies and methodologies powering my research and development.
+            </p>
+<div class="w-24 h-1 bg-gradient-to-r from-accent-emerald to-accent-sapphire mx-auto mt-8 rounded-full"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
+<div class="group relative bg-surface-light dark:bg-surface-dark rounded-2xl p-8 border border-slate-200 dark:border-slate-700/50 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden">
+<div class="absolute inset-0 texture-overlay opacity-50 dark:opacity-20 pointer-events-none"></div>
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity duration-300">
+<span class="material-icons-outlined text-8xl text-accent-emerald">code</span>
+</div>
+<h3 class="font-display text-2xl font-semibold text-slate-900 dark:text-white mb-6 relative z-10 flex items-center">
+<span class="w-8 h-8 rounded-lg bg-accent-emerald/10 text-accent-emerald flex items-center justify-center mr-3">
+<span class="material-icons-outlined text-sm">terminal</span>
+</span>
+                    Languages
+                </h3>
+<div class="relative z-10 flex flex-wrap gap-3">
+<span class="px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 rounded-lg hover:border-accent-emerald hover:text-accent-emerald dark:hover:border-accent-emerald dark:hover:text-accent-emerald bg-transparent transition-colors duration-200 cursor-default">Python</span>
+<span class="px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 rounded-lg hover:border-accent-emerald hover:text-accent-emerald dark:hover:border-accent-emerald dark:hover:text-accent-emerald bg-transparent transition-colors duration-200 cursor-default">C++</span>
+<span class="px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 rounded-lg hover:border-accent-emerald hover:text-accent-emerald dark:hover:border-accent-emerald dark:hover:text-accent-emerald bg-transparent transition-colors duration-200 cursor-default">Javascript</span>
+<span class="px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 rounded-lg hover:border-accent-emerald hover:text-accent-emerald dark:hover:border-accent-emerald dark:hover:text-accent-emerald bg-transparent transition-colors duration-200 cursor-default">Typescript</span>
+</div>
+</div>
+<div class="group relative bg-surface-light dark:bg-surface-dark rounded-2xl p-8 border border-slate-200 dark:border-slate-700/50 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden">
+<div class="absolute inset-0 texture-overlay opacity-50 dark:opacity-20 pointer-events-none"></div>
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity duration-300">
+<span class="material-icons-outlined text-8xl text-accent-sapphire">library_books</span>
+</div>
+<h3 class="font-display text-2xl font-semibold text-slate-900 dark:text-white mb-6 relative z-10 flex items-center">
+<span class="w-8 h-8 rounded-lg bg-accent-sapphire/10 text-accent-sapphire flex items-center justify-center mr-3">
+<span class="material-icons-outlined text-sm">functions</span>
+</span>
+                    Python Libraries
+                </h3>
+<div class="relative z-10 flex flex-wrap gap-3">
+<span class="px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 rounded-lg hover:border-accent-sapphire hover:text-accent-sapphire dark:hover:border-accent-sapphire dark:hover:text-accent-sapphire bg-transparent transition-colors duration-200 cursor-default">Pytorch</span>
+<span class="px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 rounded-lg hover:border-accent-sapphire hover:text-accent-sapphire dark:hover:border-accent-sapphire dark:hover:text-accent-sapphire bg-transparent transition-colors duration-200 cursor-default">Numpy</span>
+<span class="px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 rounded-lg hover:border-accent-sapphire hover:text-accent-sapphire dark:hover:border-accent-sapphire dark:hover:text-accent-sapphire bg-transparent transition-colors duration-200 cursor-default">scikit-learn</span>
+<span class="px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 rounded-lg hover:border-accent-sapphire hover:text-accent-sapphire dark:hover:border-accent-sapphire dark:hover:text-accent-sapphire bg-transparent transition-colors duration-200 cursor-default">Matplotlib</span>
+<span class="px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 rounded-lg hover:border-accent-sapphire hover:text-accent-sapphire dark:hover:border-accent-sapphire dark:hover:text-accent-sapphire bg-transparent transition-colors duration-200 cursor-default">OpenCV</span>
+</div>
+</div>
+<div class="group relative bg-surface-light dark:bg-surface-dark rounded-2xl p-8 border border-slate-200 dark:border-slate-700/50 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden">
+<div class="absolute inset-0 texture-overlay opacity-50 dark:opacity-20 pointer-events-none"></div>
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity duration-300">
+<span class="material-icons-outlined text-8xl text-purple-500">construction</span>
+</div>
+<h3 class="font-display text-2xl font-semibold text-slate-900 dark:text-white mb-6 relative z-10 flex items-center">
+<span class="w-8 h-8 rounded-lg bg-purple-500/10 text-purple-500 flex items-center justify-center mr-3">
+<span class="material-icons-outlined text-sm">build</span>
+</span>
+                    Tools
+                </h3>
+<div class="relative z-10 flex flex-wrap gap-3">
+<span class="px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 rounded-lg hover:border-purple-500 hover:text-purple-500 dark:hover:border-purple-500 dark:hover:text-purple-500 bg-transparent transition-colors duration-200 cursor-default">Git</span>
+<span class="px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 rounded-lg hover:border-purple-500 hover:text-purple-500 dark:hover:border-purple-500 dark:hover:text-purple-500 bg-transparent transition-colors duration-200 cursor-default">Bash Scripting</span>
+<span class="px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 rounded-lg hover:border-purple-500 hover:text-purple-500 dark:hover:border-purple-500 dark:hover:text-purple-500 bg-transparent transition-colors duration-200 cursor-default">Linux server</span>
+<span class="px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 rounded-lg hover:border-purple-500 hover:text-purple-500 dark:hover:border-purple-500 dark:hover:text-purple-500 bg-transparent transition-colors duration-200 cursor-default">Unreal Engine</span>
+<span class="px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 rounded-lg hover:border-purple-500 hover:text-purple-500 dark:hover:border-purple-500 dark:hover:text-purple-500 bg-transparent transition-colors duration-200 cursor-default">Latex</span>
+</div>
+</div>
+<div class="group relative bg-surface-light dark:bg-surface-dark rounded-2xl p-8 border border-slate-200 dark:border-slate-700/50 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden">
+<div class="absolute inset-0 texture-overlay opacity-50 dark:opacity-20 pointer-events-none"></div>
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity duration-300">
+<span class="material-icons-outlined text-8xl text-pink-500">web</span>
+</div>
+<h3 class="font-display text-2xl font-semibold text-slate-900 dark:text-white mb-6 relative z-10 flex items-center">
+<span class="w-8 h-8 rounded-lg bg-pink-500/10 text-pink-500 flex items-center justify-center mr-3">
+<span class="material-icons-outlined text-sm">language</span>
+</span>
+                    Web Development
+                </h3>
+<div class="relative z-10 flex flex-wrap gap-3">
+<span class="px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 rounded-lg hover:border-pink-500 hover:text-pink-500 dark:hover:border-pink-500 dark:hover:text-pink-500 bg-transparent transition-colors duration-200 cursor-default">Next.js</span>
+<span class="px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 rounded-lg hover:border-pink-500 hover:text-pink-500 dark:hover:border-pink-500 dark:hover:text-pink-500 bg-transparent transition-colors duration-200 cursor-default">Express.js</span>
+<span class="px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 rounded-lg hover:border-pink-500 hover:text-pink-500 dark:hover:border-pink-500 dark:hover:text-pink-500 bg-transparent transition-colors duration-200 cursor-default">React</span>
+<span class="px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 border border-slate-300 dark:border-slate-600 rounded-lg hover:border-pink-500 hover:text-pink-500 dark:hover:border-pink-500 dark:hover:text-pink-500 bg-transparent transition-colors duration-200 cursor-default">PostgreSQL</span>
+</div>
+</div>
+</div>
+<div class="mt-24 mb-16 relative">
+<div class="text-center mb-12">
+<h2 class="font-display text-4xl font-bold text-slate-900 dark:text-white mb-4">Spoken Languages</h2>
+<div class="w-16 h-1 bg-primary mx-auto rounded-full"></div>
+</div>
+<div class="relative bg-surface-light dark:bg-surface-dark rounded-3xl p-8 md:p-12 border border-slate-200 dark:border-slate-700 overflow-hidden">
+<div class="absolute inset-0 opacity-10 dark:opacity-20 bg-[url('https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg')] bg-center bg-no-repeat bg-cover pointer-events-none grayscale"></div>
+<div class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+<div class="flex flex-col items-center justify-center p-8 bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-200 dark:border-slate-600 hover:border-primary dark:hover:border-primary transition-all duration-300 group">
+<div class="w-16 h-16 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-icons-outlined text-3xl text-primary">public</span>
+</div>
+<h3 class="font-display text-2xl font-bold text-slate-900 dark:text-white mb-1">English</h3>
+<p class="text-slate-500 dark:text-slate-400 font-medium">Bilingual Proficiency</p>
+</div>
+<div class="flex flex-col items-center justify-center p-8 bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-200 dark:border-slate-600 hover:border-primary dark:hover:border-primary transition-all duration-300 group">
+<div class="w-16 h-16 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+<span class="material-icons-outlined text-3xl text-primary">translate</span>
+</div>
+<h3 class="font-display text-2xl font-bold text-slate-900 dark:text-white mb-1">Persian</h3>
+<p class="text-slate-500 dark:text-slate-400 font-medium">Native / Bilingual</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-surface-light dark:bg-surface-dark pt-16 border-t border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+<div class="md:col-span-1">
+<a class="font-display text-3xl italic font-bold text-slate-900 dark:text-white tracking-tight mb-4 block" href="#">
+                        Phy
+                    </a>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6">
+                        Building intelligent systems for the future. Bridging the gap between theoretical research and practical application in computer vision and machine learning.
+                    </p>
+<div class="flex space-x-4">
+<a class="text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="#">
+<span class="sr-only">GitHub</span>
+<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" fill-rule="evenodd"></path></svg>
+</a>
+<a class="text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="#">
+<span class="sr-only">LinkedIn</span>
+<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path clip-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" fill-rule="evenodd"></path></svg>
+</a>
+<a class="text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="#">
+<span class="sr-only">Twitter</span>
+<svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg>
+</a>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-8 md:col-span-2">
+<div>
+<h4 class="text-sm font-semibold text-slate-900 dark:text-white tracking-wider uppercase mb-6">Explore</h4>
+<ul class="space-y-4">
+<li><a class="text-base text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="#">Home</a></li>
+<li><a class="text-base text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="#">Projects</a></li>
+<li><a class="text-base text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="#">Resume</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-sm font-semibold text-slate-900 dark:text-white tracking-wider uppercase mb-6">Contact</h4>
+<ul class="space-y-4">
+<li><a class="text-base text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="#">Email</a></li>
+<li><a class="text-base text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="#">Contact Form</a></li>
+<li><a class="text-base text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors" href="#">Schedule a Call</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="border-t border-slate-200 dark:border-slate-800 py-8 flex flex-col md:flex-row justify-between items-center relative">
+<div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-400/20 to-transparent"></div>
+<p class="text-xs text-slate-500 dark:text-slate-500 text-center md:text-left">
+                    © 2026 Parsa Niavand. All website rights open. Made with Next.js, hosted over Github Pages.
+                </p>
+<div class="flex space-x-6 mt-4 md:mt-0">
+<a class="text-xs text-slate-500 dark:text-slate-500 hover:text-slate-800 dark:hover:text-white transition-colors" href="#">Privacy Policy</a>
+<a class="text-xs text-slate-500 dark:text-slate-500 hover:text-slate-800 dark:hover:text-white transition-colors" href="#">Terms of Service</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Simple dark mode toggle logic for demonstration
+        const btn = document.querySelector('button .material-icons-outlined');
+        const html = document.documentElement;
+        // Set dark mode by default as per screenshot
+        if (!('theme' in localStorage)) {
+            html.classList.add('dark');
+        }
+        btn.parentElement.addEventListener('click', () => {
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.theme = 'light';
+                btn.textContent = 'dark_mode';
+            } else {
+                html.classList.add('dark');
+                localStorage.theme = 'dark';
+                btn.textContent = 'light_mode';
+            }
+        });
+    </script>
+
+</body></html>

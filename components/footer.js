@@ -1,10 +1,14 @@
 import Link from "next/link";
 import Styles from "@/styles/Lowerpage.module.css";
-import NavbarStyles from "@/styles/Navbar.module.css"; // Import navbar styles for the logo font
+import NavbarStyles from "@/styles/Navbar.module.css";
+import { useRouter } from "next/router";
 
 export default function Footer() {
+  const router = useRouter();
+  const isNotHome = router.pathname !== "/";
+
   return (
-    <footer className={Styles.footer}>
+    <footer className={`${Styles.footer} ${isNotHome ? Styles.footerNotHome : ''}`}>
       <div className={Styles.footerInner}>
         <div className={Styles.footerTop}>
           <div className={Styles.brand}>
