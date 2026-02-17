@@ -19,7 +19,7 @@ export default function MainCard() {
           <h1 className={styles.heroName}>Parsa Niavand</h1>
           <h2 className={styles.heroTitle}>Software Engineer &amp; Researcher</h2>
           <p className={styles.heroBio}>
-            a Computer Science senior at SRBIAU with a passion for robotics,
+            Computer Science Graduate at SRBIAU with a passion for robotics,
             modeling, and computation. My work is fueled by a desire to solve complex challenges through research-driven innovation.
           </p>
 
