@@ -39,21 +39,20 @@
 
 .homeButton {
   padding: 14px 35px;
-  background-color: #006600;
+  background-color: #3f0303;
   color: #ffffff;
   border-radius: 12px;
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid #a0ffa0;
   cursor: pointer;
   display: inline-block;
 }
 
 .homeButton:hover {
-  background-color: #004d00;
+  background-color: #800000;
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 102, 0, 0.3);
+  box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3);
 }
 
 @media (max-width: 768px) {

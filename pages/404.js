@@ -15,7 +15,7 @@ export default function Custom404() {
       <UpdateBar />
       <div className={Styles.container} style={{ minHeight: 'calc(100vh - 150px)', justifyContent: 'center' }}>
         <div className={Styles.BoxContainer}>
-          <FileQuestion size={80} color="#a0ffa0" strokeWidth={1.5} style={{ marginBottom: '20px' }} />
+          <FileQuestion size={80} color="#690a0a" strokeWidth={1.5} style={{ marginBottom: '20px' }} />
           
           <h2 className={styles.errorTitle}>Page Not Found</h2>
           

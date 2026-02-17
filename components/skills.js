@@ -5,8 +5,8 @@ import Languages from "./Languages";
 
 const ICON_MAP = {
   "Languages": { icon: Terminal, color: "16, 185, 129" }, // Emerald
-  "Python Libraries": { icon: BookOpen, color: "37, 99, 235" }, // Sapphire
-  "Tools": { icon: Wrench, color: "168, 85, 247" }, // Purple
+  "AI & Data Science": { icon: BookOpen, color: "37, 99, 235" }, // Sapphire
+  "Tools & DevOps": { icon: Wrench, color: "168, 85, 247" }, // Purple
   "Web Development": { icon: Globe, color: "236, 72, 153" }, // Pink
 };
 

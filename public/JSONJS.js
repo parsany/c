@@ -30,7 +30,7 @@ export const ProjectStuff = [
     image: "/projects/robot.png",
     link: "",
     tag: ["Robotics"],
-    wlink:"https://github.com/parsany/EvolutionaryAlgo"
+    wlink: "https://github.com/parsany/EvolutionaryAlgo"
   },
   {
     id: 3,
@@ -50,7 +50,7 @@ export const ProjectStuff = [
     date: "Feb 14, 2025",
     image: "/projects/QtLib.png",
     link: "https://github.com/parsany/PyLibrary-QT",
-    tag: ["Programming","Apps"],
+    tag: ["Programming", "Apps"],
   },
   {
     id: 6,
@@ -76,41 +76,56 @@ export const ProjectStuff = [
 
 export const ProSkills = [
   {
-    category: "Languages",
-    items: [
-      { name: "Python", level: 75},
-      { name: "C++", level: 55 },
-      { name: "Javascript", level: 60 },
-      { name: "Typescript", level: 60 },
-    ],
-  },
-  {
-    category: "Python Libraries",
-    items: [
-      { name: "Pytorch", level: 60 },
-      { name: "Numpy", level: 70 },
-      { name: "scikit-learn", level: 70 },
-      { name: "Matplotlib", level: 70 },
-      { name: "OpenCV", level: 70 },
-    ],
-  },
-  {
-    category: "Tools",
-    items: [
-      { name: "Git", level: 70 },
-      { name: "Bash Scripting", level: 60 },
-      { name: "Linux server", level: 76 },
-      { name: "Unreal Engine", level: 24 },
-      { name: "Latex", level: 70 },
-    ],
-  },
-  {
     category: "Web Development",
     items: [
-      { name: "Next.js", level: 60 },
-      { name: "Express.js", level: 70 },
-      { name: "React", level: 70 },
-      { name: "PostgreSQL", level: 70 },
+      { name: "React & Next.js", level: 90 },
+      { name: "TypeScript", level: 85 },
+      { name: "Node.js & Express", level: 80 },
+      { name: "PostgreSQL & Prisma", level: 75 },
+      { name: "Tailwind CSS", level: 90 },
+      { name: "Redis", level: 70 },
+      { name: "NestJS", level: 75 },
+      { name: "RPC", level: 70 },
+      { name: "Celery", level: 70 },
+    ],
+  },
+  {
+    category: "AI & Data Science",
+    items: [
+      { name: "PyTorch", level: 80 },
+      { name: "NumPy & Pandas", level: 85 },
+      { name: "Scikit-learn", level: 75 },
+      { name: "OpenCV", level: 70 },
+      { name: "Matplotlib", level: 75 },
+      { name: "TensorFlow", level: 65 },
+      { name: "Jupyter", level: 85 },
+      { name: "LangChain", level: 75 },
+    ],
+  },
+  {
+    category: "Languages",
+    items: [
+      { name: "Python", level: 95 },
+      { name: "JavaScript (ES6+)", level: 90 },
+      { name: "C++", level: 70 },
+      { name: "SQL", level: 75 },
+      { name: "Bash", level: 65 },
+      { name: "Java", level: 60 },
+      { name: "HTML5 & CSS3", level: 95 },
+      // { name: "C#", level: 70 },
+    ],
+  },
+  {
+    category: "Tools & DevOps",
+    items: [
+      { name: "Git & GitHub", level: 90 },
+      { name: "Docker", level: 75 },
+      { name: "Kubernetes", level: 75 },
+      { name: "Linux Server", level: 80 },
+      { name: "Figma", level: 75 },
+      { name: "LaTeX", level: 85 },
+      { name: "Unreal Engine", level: 75 },
+      { name: "Postman", level: 80 },
     ],
   },
 ];
