@@ -147,13 +147,23 @@ export default function Experience({IsIsolated}) {
                 <div className={styles.meta}>
                   <span className={styles.company}>SRBIAU University</span>
                   <span className={styles.separator}>•</span>
-                  <span className={styles.duration}>Sep 2019 - Aug 2025</span>
+                  <span className={styles.duration}>Sep 2019 - June 2026</span>
                 </div>
               </div>
             </div>
             
             <div className={styles.cardBody}>
               <p className={styles.gpa}>GPA: 3.4</p>
+              <p className={styles.achievementsLabel} style={{ marginTop: '16px' }}>Relevant Coursework:</p>
+              <ul className={styles.achievementsList}>
+                <li>Artificial Intelligence (3.2/4)</li>
+                <li>Probability I (3.1/4)</li>
+                <li>Combinatorics (3.4/4)</li>
+                <li>Theory of Computation (3.7/4)</li>
+                <li>Linear Optimization (3.1/4)</li>
+                <li>Design & Analysis of Algorithms (3.8)</li>
+                <li>Linear Algebra (3.2)</li>
+              </ul>
             </div>
           </div>
         </div>

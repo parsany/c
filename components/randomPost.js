@@ -40,7 +40,7 @@ export default function LatestWriting() {
 
   return (
     <section className={styles.section}>
-      <h2 className={styles.heading}>Latest Writing</h2>
+      <h2 className={styles.heading}>Latest Writings</h2>
       <div className={styles.list}>
         {recentPosts.map((post) => {
           const { month, day } = formatDateParts(post.date);
