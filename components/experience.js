@@ -27,7 +27,7 @@ export default function Experience({IsIsolated}) {
               <div className={styles.headerText}>
                 <h2 className={styles.role}>Lead Full-Stack Developer</h2>
                 <div className={styles.meta}>
-                  <span className={styles.company}>Independent Team</span>
+                  <span className={styles.company}>Codeafzar Codesheen</span>
                   <span className={styles.separator}>•</span>
                   <span className={styles.duration}>July 2025 - Present</span>
                 </div>
@@ -55,7 +55,7 @@ export default function Experience({IsIsolated}) {
               <div className={styles.headerText}>
                 <h2 className={styles.role}>Back-end Developer</h2>
                 <div className={styles.meta}>
-                  <span className={styles.company}>Independent Team</span>
+                  <span className={styles.company}>Codeafzar Codesheen</span>
                   <span className={styles.separator}>•</span>
                   <span className={styles.duration}>Oct 2024 - July 2025</span>
                 </div>
@@ -83,7 +83,7 @@ export default function Experience({IsIsolated}) {
               <div className={styles.headerText}>
                 <h2 className={styles.role}>Front-end Developer</h2>
                 <div className={styles.meta}>
-                  <span className={styles.company}>Independent Team</span>
+                  <span className={styles.company}>Codeafzar Codesheen</span>
                   <span className={styles.separator}>•</span>
                   <span className={styles.duration}>Jan 2024 - Oct 2024</span>
                 </div>
@@ -112,7 +112,7 @@ export default function Experience({IsIsolated}) {
               <div className={styles.headerText}>
                 <h2 className={styles.role}>UI/UX Designer</h2>
                 <div className={styles.meta}>
-                  <span className={styles.company}>Saro Studio</span>
+                  <span className={styles.company}>Codeafzar Codesheen </span>
                   <span className={styles.separator}>•</span>
                   <span className={styles.duration}>Nov 2021 - Oct 2022</span>
                 </div>
