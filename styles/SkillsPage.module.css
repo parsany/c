@@ -19,7 +19,7 @@
 }
 
 .title {
-  font-family: "Georgia", "Times New Roman", serif; /* 1:1 Design - Serif Font */
+  font-family: "Georgia", "Times New Roman", serif; 
   font-size: 3rem;
   font-weight: 700;
   color: var(--title-color);
@@ -34,7 +34,7 @@
   right: -40px;
   width: 100px;
   height: 100px;
-  background-color: var(--highlight-color); /* Blue/Sapphire glow */
+  background-color: var(--highlight-color);
   opacity: 0.2;
   filter: blur(40px);
   border-radius: 50%;
@@ -44,7 +44,7 @@
 
 :global(body.dark-mode) .glow {
   opacity: 0.4;
-  background-color: #3b82f6; /* Stronger blue in dark mode */
+  background-color: #3b82f6;
 }
 
 .subtitle {
@@ -59,7 +59,7 @@
 .titleDecoration {
   width: 100px;
   height: 4px;
-  background: linear-gradient(90deg, var(--highlight-color2), var(--highlight-color)); /* Teal to Blue */
+  background: linear-gradient(90deg, var(--highlight-color2), var(--highlight-color));
   margin: 30px auto 0;
   border-radius: 999px;
 }
@@ -82,7 +82,7 @@
 .card {
   position: relative;
   background-color: var(--card-background);
-  border: 1px solid var(--section-border); /* Subtle border */
+  border: 1px solid var(--section-border);
   border-radius: 16px;
   padding: 32px;
   overflow: hidden;
@@ -93,7 +93,7 @@
 .card:hover {
   transform: translateY(-4px);
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  border-color: var(--section-border); /* Keep subtle or change on hover */
+  border-color: var(--section-border); 
 }
 
 /* Texture Overlay */
@@ -116,7 +116,7 @@
   right: 0;
   padding: 16px;
   opacity: 0.05;
-  color: rgb(var(--accent-rgb)); /* 1:1 Design - Explicit color fix */
+  color: rgb(var(--accent-rgb));
   pointer-events: none;
   transition: opacity 0.3s ease;
 }
