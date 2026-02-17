@@ -6,7 +6,7 @@ import SkillsHobbies from "./hobbies";
 export default function Skills( {ShowSkills}) {
   return (
     <div>
-      <h2 className={styles.title}>Tech Stack (DEPRICATED)</h2>
+      <h2 className={styles.title}>Tech Stack</h2>
       <div className={styles.skillsWrapper}>
         {ProSkills.map((category, index) => (
           <div key={index} className={styles.category}>

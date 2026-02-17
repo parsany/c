@@ -1,6 +1,6 @@
 import styles from "@/styles/Experience.module.css";
-import Image from "next/image";
 import { useEffect, useState } from 'react';
+import { Briefcase, GraduationCap, Award } from 'lucide-react';
 
 export default function Experience({IsIsolated}) {
 
@@ -12,172 +12,152 @@ export default function Experience({IsIsolated}) {
   }, []);
   
   return (
-    <div>
-      <h1 className={styles.title}>Experience (this part is updated)</h1>
-      <div className={IsIsolated ? styles.box : styles.boxnormal}>
-        <div className={styles.job}>
-          <div className={styles.jobHeader}>
-            <Image
-              src="/icons/experience.svg"
-              alt="Experience Icon"
-              className={theme === 'dark' ? styles.icon : styles.icond}
-              width={30}
-              height={30}
-            />
-            <div className={styles.jobInfo}>
-              <h2 className={styles.jobTitle}>Lead Full-Stack Developer</h2>
-              <p className={styles.company}>Independent Team</p>
-              <p className={styles.dates}>July 2025 - Present (6 months)</p>
+    <div className={styles.wrapper}>
+      <h1 className={styles.sectionTitle}>Experience</h1>
+      
+      <div className={styles.timeline}>
+        {/* Job 1 */}
+        <div className={styles.timelineItem}>
+          <div className={styles.timelineMarker}></div>
+          <div className={styles.card}>
+            <div className={styles.cardHeader}>
+              <div className={styles.iconWrapper}>
+                <Award className={styles.icon} size={24} />
+              </div>
+              <div className={styles.headerText}>
+                <h2 className={styles.role}>Lead Full-Stack Developer</h2>
+                <div className={styles.meta}>
+                  <span className={styles.company}>Independent Team</span>
+                  <span className={styles.separator}>•</span>
+                  <span className={styles.duration}>July 2025 - Present</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className={styles.cardBody}>
+              <p className={styles.achievementsLabel}>Key Achievements:</p>
+              <ul className={styles.achievementsList}>
+                <li>Simultaneously managed 7+ projects, prioritizing features and ensuring on-time delivery.</li>
+                <li>Spearheaded project roadmaps and technical decision-making for a cross-functional team.</li>
+              </ul>
             </div>
           </div>
-          <p className={styles.responsibilitiesTitle}>
-            Key achievements & responsibilities:
-          </p>
-          <ul className={styles.responsibilities}>
-            <li className={styles.responsibilitiesItem}>
-              Simultaneously managed 7+ projects, prioritizing features and ensuring on-time delivery.
-            </li>
-            <li className={styles.responsibilitiesItem}>
-              Spearheaded project roadmaps and technical decision-making for a cross-functional team.
-            </li>
-          </ul>
         </div>
 
-        <div className={styles.job}>
-          <div className={styles.jobHeader}>
-            <Image
-              src="/icons/experience.svg"
-              alt="Experience Icon"
-              className={theme === 'dark' ? styles.icon : styles.icond}
-              width={30}
-              height={30}
-            />
-            <div className={styles.jobInfo}>
-              <h2 className={styles.jobTitle}>Back-end Developer</h2>
-              <p className={styles.company}>Independent Team</p>
-              <p className={styles.dates}>October 2024 - July 2025 (10 months)</p>
+        {/* Job 2 */}
+        <div className={styles.timelineItem}>
+          <div className={styles.timelineMarker}></div>
+          <div className={styles.card}>
+            <div className={styles.cardHeader}>
+              <div className={styles.iconWrapper}>
+                <Award className={styles.icon} size={24} />
+              </div>
+              <div className={styles.headerText}>
+                <h2 className={styles.role}>Back-end Developer</h2>
+                <div className={styles.meta}>
+                  <span className={styles.company}>Independent Team</span>
+                  <span className={styles.separator}>•</span>
+                  <span className={styles.duration}>Oct 2024 - July 2025</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className={styles.cardBody}>
+              <p className={styles.achievementsLabel}>Key Achievements:</p>
+              <ul className={styles.achievementsList}>
+                <li>Designed and implemented scalable, testable, and maintainable back-end architectures.</li>
+                <li>Developed secure authentication and access management systems.</li>
+              </ul>
             </div>
           </div>
-          <p className={styles.responsibilitiesTitle}>
-            Key achievements & responsibilities:
-          </p>
-          <ul className={styles.responsibilities}>
-            <li className={styles.responsibilitiesItem}>
-              Designed and implemented scalable, testable, and maintainable back-end architectures.
-            </li>
-            <li className={styles.responsibilitiesItem}>
-              Developed secure authentication and access management systems.
-            </li>
-          </ul>
         </div>
 
-        <div className={styles.job}>
-          <div className={styles.jobHeader}>
-            <Image
-              src="/icons/experience.svg"
-              alt="Experience Icon"
-              className={theme === 'dark' ? styles.icon : styles.icond}
-              width={30}
-              height={30}
-            />
-            <div className={styles.jobInfo}>
-              <h2 className={styles.jobTitle}>Front-end Developer</h2>
-              <p className={styles.company}>Independent Team</p>
-              <p className={styles.dates}>January 2024 - October 2024 (9 months)</p>
+        {/* Job 3 */}
+        <div className={styles.timelineItem}>
+          <div className={styles.timelineMarker}></div>
+          <div className={styles.card}>
+            <div className={styles.cardHeader}>
+              <div className={styles.iconWrapper}>
+                <Award className={styles.icon} size={24} />
+              </div>
+              <div className={styles.headerText}>
+                <h2 className={styles.role}>Front-end Developer</h2>
+                <div className={styles.meta}>
+                  <span className={styles.company}>Independent Team</span>
+                  <span className={styles.separator}>•</span>
+                  <span className={styles.duration}>Jan 2024 - Oct 2024</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className={styles.cardBody}>
+              <p className={styles.achievementsLabel}>Key Achievements:</p>
+              <ul className={styles.achievementsList}>
+                <li>Developed secure, reusable components using React, Next.js, and TypeScript.</li>
+                <li>Implemented complex UI animations and optimized rendering performance.</li>
+                <li>Applied optimized and scalable styling using Tailwind CSS.</li>
+              </ul>
             </div>
           </div>
-          <p className={styles.responsibilitiesTitle}>
-            Key achievements & responsibilities:
-          </p>
-          <ul className={styles.responsibilities}>
-            <li className={styles.responsibilitiesItem}>
-              Developed secure, reusable components using React, Next.js, and TypeScript.
-            </li>
-            <li className={styles.responsibilitiesItem}>
-              Implemented complex UI animations and optimized rendering performance for fast loading.
-            </li>
-            <li className={styles.responsibilitiesItem}>
-              Applied optimized and scalable styling using Tailwind CSS.
-            </li>
-          </ul>
         </div>
 
-        <div className={styles.job}>
-          <div className={styles.jobHeader}>
-            <Image
-              src="/icons/experience.svg"
-              alt="Experience Icon"
-              className={theme === 'dark' ? styles.icon : styles.icond}
-              width={30}
-              height={30}
-            />
-            <div className={styles.jobInfo}>
-              <h2 className={styles.jobTitle}>UI/UX Designer</h2>
-              <p className={styles.company}>Saro Studio</p>
-              <p className={styles.dates}>November 2021 - October 2022 (10 months)</p>
+        {/* Job 4 */}
+        <div className={styles.timelineItem}>
+          <div className={styles.timelineMarker}></div>
+          <div className={styles.card}>
+            <div className={styles.cardHeader}>
+              <div className={styles.iconWrapper}>
+                <Award className={styles.icon} size={24} />
+              </div>
+              <div className={styles.headerText}>
+                <h2 className={styles.role}>UI/UX Designer</h2>
+                <div className={styles.meta}>
+                  <span className={styles.company}>Saro Studio</span>
+                  <span className={styles.separator}>•</span>
+                  <span className={styles.duration}>Nov 2021 - Oct 2022</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className={styles.cardBody}>
+              <p className={styles.achievementsLabel}>Key Achievements:</p>
+              <ul className={styles.achievementsList}>
+                <li>Designed and prototyped user interfaces and UX in Figma.</li>
+                <li>Created wireframes, complex user flows, and interactive prototypes.</li>
+                <li>Specialized in dashboard UI design and cohesive visual styles.</li>
+              </ul>
             </div>
           </div>
-          <p className={styles.responsibilitiesTitle}>
-            Key achievements & responsibilities:
-          </p>
-          <ul className={styles.responsibilities}>
-            <li className={styles.responsibilitiesItem}>
-              Designed and prototyped user interfaces and UX in Figma.
-            </li>
-            <li className={styles.responsibilitiesItem}>
-              Created wireframes, complex user flows, and interactive prototypes.
-            </li>
-            <li className={styles.responsibilitiesItem}>
-              Specialized in dashboard UI design and cohesive visual styles.
-            </li>
-          </ul>
         </div>
       </div>
 
-      <h1 className={styles.title}>Education</h1>
-
-      <div className={IsIsolated ? styles.box : styles.boxnormal}>
-        <div className={styles.job}>
-          <div className={styles.jobHeader}>
-            <Image
-              src="/icons/education.svg"
-              alt="Education Icon"
-              className={theme === 'dark' ? styles.icon : styles.icond}
-              width={30}
-              height={30}
-            />
-            <div className={styles.jobInfo}>
-              <h2 className={styles.jobTitle}>BSc Computer Science</h2>
-              <p className={styles.company}>SRBIAU University</p>
-              <p className={styles.dates}>September 2019 - August 2025</p>
+      <h1 className={styles.sectionTitle}>Education</h1>
+      
+      <div className={styles.timeline}>
+        {/* Education 1 */}
+        <div className={styles.timelineItem}>
+          <div className={styles.timelineMarker}></div>
+          <div className={styles.card}>
+            <div className={styles.cardHeader}>
+              <div className={styles.iconWrapper}>
+                <GraduationCap className={styles.icon} size={24} />
+              </div>
+              <div className={styles.headerText}>
+                <h2 className={styles.role}>BSc Computer Science</h2>
+                <div className={styles.meta}>
+                  <span className={styles.company}>SRBIAU University</span>
+                  <span className={styles.separator}>•</span>
+                  <span className={styles.duration}>Sep 2019 - Aug 2025</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className={styles.cardBody}>
+              <p className={styles.gpa}>GPA: 3.4</p>
             </div>
           </div>
-          <p className={styles.responsibilitiesTitle}>GPA: 3.4</p>
         </div>
       </div>
-
-      {/* <h1 className={styles.title}>Awards</h1>
-      <div className={IsIsolated ? styles.box : styles.boxnormal}>
-        <div className={styles.job}>
-          <div className={styles.jobHeader}>
-            <Image
-              src="/icons/cup.svg"
-              alt="Awards Icon"
-                            className={theme === 'dark' ? styles.icon : styles.icond}
-              width={30}
-              height={30}
-            />
-            <div className={styles.jobInfo}>
-              <h2 className={styles.jobTitle}>
-                1st Place in the 2022 
-              </h2>
-              <p className={styles.company}>AI for Oceans</p>
-              <p className={styles.dates}>November 2022</p>
-            </div>
-          </div>
-        </div>
-      </div> */}
-
     </div>
   );
 }

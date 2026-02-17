@@ -55,6 +55,9 @@
 
   /* Divider */
   --divider-color: rgba(0, 0, 0, 0.08);
+
+  /* Icon Filter */
+  --icon-filter: none;
 }
 
 body.dark-mode {
@@ -111,6 +114,9 @@ body.dark-mode {
 
   /* Divider */
   --divider-color: rgba(255, 255, 255, 0.08);
+
+  /* Icon Filter */
+  --icon-filter: invert(1);
 }
 
 html,

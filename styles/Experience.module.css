@@ -1,90 +1,201 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: linear-gradient(to right, #1f1f1f, #2a2a2a);
-  padding: 60px;
+.wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
   min-height: 100vh;
 }
 
-.title {
+.sectionTitle {
+  font-family: "Georgia", "Times New Roman", serif;
   font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 20px;
-  margin-top: 37px;
-  color:var(--text-color);
+  font-weight: 700;
+  color: var(--title-color);
+  margin-bottom: 40px;
+  margin-top: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--divider-color);
 }
 
-
-.box {
-  color: var(--experience-color);
-  background-color: var(--primary-color);
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  width: auto;
-  max-width: 800px;
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
-.boxnormal {
-  background-color: var(--primary-color);
-  padding: 20px;
-  border-radius: 8px;
-  width: 100%;
-  max-width: 800px;
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 10px;
+  bottom: 0;
+  width: 2px;
+  background-color: var(--section-border);
+  z-index: 0;
 }
 
-.job {
-  margin-bottom: 30px;
-  padding: 14px;
-  border-left: 4px solid #00bcd4;
+.timelineItem {
+  position: relative;
+  padding-left: 60px;
 }
 
-.jobHeader {
+.timelineMarker {
+  position: absolute;
+  left: 11px;
+  top: 24px;
+  width: 20px;
+  height: 20px;
+  background-color: var(--card-background);
+  border: 4px solid var(--highlight-color);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.card {
+  background-color: var(--card-background);
+  border: 1px solid var(--section-border);
+  border-radius: 12px;
+  padding: 24px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-color: var(--highlight-color);
+}
+
+.cardHeader {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.iconWrapper {
+  background-color: var(--section-bg-b);
+  padding: 10px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .icon {
-  width: 30px;
-  height: 30px;
-  margin-right: 10px;
+  color: var(--highlight-color);
 }
 
-.icond {
-  width: 30px;
-  height: 30px;
-  margin-right: 10px;
-  filter: invert(1);
+.headerText {
+  flex: 1;
 }
 
-.jobTitle {
-  font-size: 1.5rem;
-  font-weight: bold;
+.role {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--title-color);
+  margin-bottom: 4px;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  color: var(--subtitle-color);
+  font-size: 0.95rem;
+}
+
+.separator {
+  color: var(--section-border);
 }
 
 .company {
-  font-size: 1.2rem;
-  color: var(--experience-company);
+  font-weight: 500;
+  color: var(--highlight-color);
 }
 
-.dates {
+.cardBody {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--section-border);
+}
+
+.achievementsLabel {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--foreground);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  opacity: 0.8;
+}
+
+.achievementsList {
+  list-style: none;
+  padding: 0;
+}
+
+.achievementsList li {
+  position: relative;
+  padding-left: 16px;
+  margin-bottom: 8px;
   font-size: 1rem;
-  color: var(--experience-dates);
+  color: var(--foreground);
+  line-height: 1.6;
 }
 
-.responsibilitiesTitle {
-  margin-top: 20px;
+.achievementsList li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  color: var(--highlight-color);
+  font-weight: bold;
 }
 
-.responsibilities {
-  padding: 10px;
-  list-style-type: disc;
-  margin-left: 20px;
+.gpa {
+  font-weight: 600;
+  color: var(--highlight-color);
+  font-size: 1.1rem;
 }
 
-.responsibilitiesItem{
-  margin-top: 5px;
-  color: var(--experience-res);
+/* Responsive */
+@media (max-width: 600px) {
+  .wrapper {
+    padding: 20px;
+  }
+  
+  .timeline::before {
+    left: 10px;
+  }
+  
+  .timelineMarker {
+    left: 1px;
+    width: 16px;
+    height: 16px;
+    border-width: 3px;
+    top: 28px;
+  }
+  
+  .timelineItem {
+    padding-left: 30px;
+  }
+  
+  .card {
+    padding: 16px;
+  }
+  
+  .role {
+    font-size: 1.1rem;
+  }
+  
+  .meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+  
+  .separator {
+    display: none;
+  }
 }

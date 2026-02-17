@@ -12,6 +12,7 @@
   font-weight: bold;
   margin-bottom: 20px;
   color: var(--title-color);
+  text-align: center;
 }
 
 .languageContainer {
@@ -22,50 +23,50 @@
 }
 
 .languageCard {
-  background-color: var(--button-color);
-  border-radius: 50%;
-  width: 130px;
-  height: 130px;
+  background-color: var(--card-background); /* Changed from button-color to card-background */
+  border-radius: 12px; /* Changed from 50% circle to rounded rect for better fit */
+  width: 140px;
+  height: 100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  border: 2px solid var(--highlight-color3);
-  transition: transform 0.4s, filter 0.4s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--section-border); /* Subtle border */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   text-align: center;
 }
 
 .languageCard:hover {
-  transform: scale(1.05);
-  filter: saturate(150%);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  border-color: var(--highlight-color); /* Highlight color on hover */
 }
 
 .languageName {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: bold;
-  color: var(--highlight-color3);
+  color: var(--title-color); /* Changed to title color */
   margin-bottom: 5px;
 }
 
-
 .proficiency {
-  font-size: 0.875rem;
-  color: #b0bec5;
+  font-size: 0.9rem;
+  color: var(--subtitle-color); /* Changed to subtitle color */
 }
 
 /* media queries */
 @media (max-width: 768px) {
   .languageCard {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 90px;
   }
 
   .languageName {
     font-size: 1rem;
   }
 
-  .languageName, .proficiency {
-    font-size: 0.75rem;
+  .proficiency {
+    font-size: 0.8rem;
   }
 }
