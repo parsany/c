@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Styles from "@/styles/Navbar.module.css";
 import { Sun, Moon } from "lucide-react";
+import CV from "./CV";
 
 export default function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isCVOpen, setIsCVOpen] = useState(false);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
@@ -79,14 +81,13 @@ export default function NavBar() {
           ))}
 
           <li className={Styles.navitem}>
-            <Link
-              href="/CVB-iknowucanfindithere-smart!.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={() => setIsCVOpen(true)}
               className={Styles.cvButton}
+              style={{ border: 'none', cursor: 'pointer', fontFamily: 'inherit' }}
             >
               CV
-            </Link>
+            </button>
           </li>
 
           <li className={`${Styles.navitem} ${Styles.desktopThemeToggle}`}>
@@ -100,6 +101,7 @@ export default function NavBar() {
           </li>
         </ul>
       </nav>
+      <CV isOpen={isCVOpen} onClose={() => setIsCVOpen(false)} />
     </header>
   );
 }

@@ -357,6 +357,7 @@
   cursor: pointer;
   font-weight: 600;
   transition: all 0.3s;
+  margin-bottom: 40px;
 }
 
 .morePostsButton:hover {
