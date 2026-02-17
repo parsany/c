@@ -1,189 +1,51 @@
 import styles from "@/styles/Profile.module.css";
 import Image from "next/image";
-import MailBox from "@/components/MailBox";
-import React, { useState } from "react";
-import { Phone } from "lucide-react";
 
 export default function MainCard() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [showPopup, setShowPopup] = useState(false);
-  const openPopup = () => setShowPopup(true);
-  const closePopup = () => setShowPopup(false);
-
-  const handleToggle = () => {
-    setIsOpen(!isOpen);
-  };
-
   return (
-    <div>
-      <div className={styles.main}>
-        {/* Profile Section */}
-        <div className={styles.profile}>
+    <section className={styles.hero} id="about">
+      <div className={styles.heroContent}>
+        <div className={styles.imageWrapper}>
           <Image
             src="/content/main.jpg"
-            alt="Image"
+            alt="Parsa Niavand"
             className={styles.profileImage}
-            width={100}
-            height={24}
+            width={220}
+            height={220}
+            priority
           />
-          <div className={styles.name}>
-            <div className={styles.tuple_construct}>
-              <h1>Parsa Niavand</h1>
-              <h3>he/him</h3>
-            </div>
-
-            <h2>Software Engineer</h2>
-            {/* Full-Stack Developer & AI Specialist */}
-            <div className={styles.links}>
-              <a onClick={setIsOpen} style={{ cursor: "pointer" }}>
-                <Image
-                  src="/icons/mail.svg"
-                  alt="mail"
-                  className={styles.logo}
-                  width={30}
-                  height={30}
-                />
-              </a>
-              {isOpen && <MailBox onClose={handleToggle} />}
-
-              <a
-                href="https://twitter.com/payrimSp"
-                aria-label="Twitter"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Image
-                  src="/icons/twitter.svg"
-                  alt="Twitter"
-                  className={styles.logo}
-                  width={30}
-                  height={30}
-                />
-              </a>
-              <a
-                href="https://www.linkedin.com/parsany"
-                aria-label="linkedin"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Image
-                  src="/icons/linkedin.svg"
-                  alt="linkedin"
-                  className={styles.logo}
-                  width={30}
-                  height={30}
-                />
-              </a>
-              <a
-                href="https://github.com/parsany"
-                aria-label="GitHub"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Image
-                  src="/icons/github-mark.svg"
-                  alt="GitHub"
-                  className={styles.logo}
-                  width={30}
-                  height={30}
-                />
-              </a>
-              <a
-                href="https://t.me/parsanid"
-                aria-label="Telegram"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Image
-                  src="/icons/telegram.svg"
-                  alt="Telegram"
-                  className={styles.logo}
-                  width={30}
-                  height={30}
-                />
-              </a>
-              {/* <a href="#" aria-label="LinkedIn">
-                🔗
-              </a>
-              <a href="#" aria-label="Google Scholar">
-                📚
-              </a>
-              <a href="#" aria-label="ORCID">
-                🆔
-              </a> */}
-            </div>
-          </div>
         </div>
-
-        {/* About */}
-        <div className={styles.about}>
-          <h2>Bio</h2>
-          <p>
-            Parsa Niavand is a computer science student (near graduation) from the University of SRBIAU. He has a passion for intelligent systems,
-            modeling, computation, and robotics. In addition to his academic
-            pursuits, he enjoys exploring web and game development, combining
-            creativity with technical skill.           
+        <div className={styles.textContent}>
+          <h1 className={styles.heroName}>Parsa Niavand</h1>
+          <h2 className={styles.heroTitle}>Software Engineer &amp; Researcher</h2>
+          <p className={styles.heroBio}>
+            a Computer Science senior at SRBIAU with a passion for robotics,
+            modeling, and computation. My work is fueled by a desire to solve complex challenges through research-driven innovation.
           </p>
-          <div>
-            <button className={styles.downloadCV} onClick={openPopup}>
-            Download CV (REDACTED)
-            </button>
 
-            {showPopup && (
-              <div className={styles.overlay} onClick={closePopup}>
-                <div
-                  className={styles.CV_container}
-                  onClick={(e) => e.stopPropagation()} // Prevent closing popup when clicking inside
-                >
-                  <p className={styles.cvNotice}>
-                    This CV is redacted as it is outdated. Please contact me for my current resume.
-                  </p>
-                  <div className={styles.cvImageFrame}>
-                    <Image
-                      src="/content/cv.png"
-                      alt="CV Preview"
-                      className={styles.cvPreview}
-                      width={400}
-                      height={560}
-                      priority
-                    />
-                  </div>
-                  <div className={styles.cvButtonsRow}>
-                    <button className={styles.downloadCV}>
-                      <a href="/content/cv.png" target="_blank" rel="noopener noreferrer">
-                        Academic CV
-                      </a>
-                    </button>
-                    <button className={styles.downloadCV}>
-                      <a href="/content/cv.png" target="_blank" rel="noopener noreferrer">
-                        Business CV
-                      </a>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Interests */}
-        <div className={styles.details}>
-          <div className={styles.section}>
-            <h3>Interests</h3>
-            <ul>
-              <li>Artificial Intelligence</li>
-              <li>Robotics and Simulation</li>
-              <li>Artificial Life</li>
-            </ul>
-          </div>
-          <div className={styles.section}>
-            <h3>Education</h3>
-            <ul>
-              <li>BSc Computer Science - SRBIAU</li>
-            </ul>
+          {/* 
+          KEEP THIS
+          Parsa Niavand is a computer science student (near graduation) from the University of SRBIAU. He has a passion for intelligent systems, modeling, computation, and robotics. In addition to his academic pursuits, he enjoys exploring web and game development, combining creativity with technical skill.
+*/}
+          <div className={styles.socialLinks}>
+            <a href="mailto:parsaniavand@example.com" aria-label="Email" className={styles.socialIcon}>
+              <Image src="/icons/mail.svg" alt="Email" width={22} height={22} />
+            </a>
+            <a href="https://twitter.com/payrimSp" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className={styles.socialIcon}>
+              <Image src="/icons/twitter.svg" alt="Twitter" width={22} height={22} />
+            </a>
+            <a href="https://www.linkedin.com/parsany" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className={styles.socialIcon}>
+              <Image src="/icons/linkedin.svg" alt="LinkedIn" width={22} height={22} />
+            </a>
+            <a href="https://github.com/parsany" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className={styles.socialIcon}>
+              <Image src="/icons/github-mark.svg" alt="GitHub" width={22} height={22} />
+            </a>
+            <a href="https://t.me/parsanid" target="_blank" rel="noopener noreferrer" aria-label="Telegram" className={styles.socialIcon}>
+              <Image src="/icons/telegram.svg" alt="Telegram" width={22} height={22} />
+            </a>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

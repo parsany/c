@@ -1,23 +1,93 @@
 .footer {
-    display: flex;
+  width: 100%;
+  background-color: var(--background);
+  padding: 48px 24px 24px;
+  margin-top: 40px;
+}
+
+.footerInner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.footerTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.brandName {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--title-color);
+  margin: 0;
+}
+
+.tagline {
+  font-size: 0.9rem;
+  color: var(--subtitle-color);
+  margin: 0;
+}
+
+.footerNav {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+
+.footerNav a {
+  font-size: 0.9rem;
+  color: var(--subtitle-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  font-weight: 500;
+}
+
+.footerNav a:hover {
+  color: var(--title-color);
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(128, 128, 128, 0.2);
+  margin-bottom: 20px;
+}
+
+.footerBottom {
+  text-align: center;
+}
+
+.footerBottom p {
+  font-size: 0.8rem;
+  color: var(--subtitle-color);
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .footerTop {
+    flex-direction: column;
+    gap: 20px;
     align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 65px; 
-    background-color: #040a08; 
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
-    position: relative;
-}
-
-.container {
     text-align: center;
-    color: #00ffcc; 
-    font-family: 'Courier New', Courier, monospace; 
-    font-size: 0.9rem; 
-    text-shadow: 0 0 5px rgba(0, 255, 204, 0.4); 
-}
+  }
 
-.container p {
-    margin: 0; 
-    margin-bottom: 2px;
+  .footerNav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .footer {
+    padding: 32px 16px 20px;
+  }
 }

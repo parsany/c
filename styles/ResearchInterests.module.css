@@ -1,0 +1,82 @@
+.section {
+  padding: 60px 20px;
+  width: 100%;
+}
+
+.heading {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--title-color);
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  text-align: center;
+  color: var(--subtitle-color);
+  font-size: 1rem;
+  margin-bottom: 40px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.card {
+  background-color: var(--research-card-bg);
+  border: 1px solid var(--research-card-border);
+  border-radius: 14px;
+  padding: 32px 24px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border-color: var(--research-card-title);
+}
+
+.iconWrapper {
+  color: var(--research-icon-color);
+  margin-bottom: 18px;
+  display: flex;
+  justify-content: center;
+}
+
+.cardTitle {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--research-card-title);
+  margin-bottom: 12px;
+  font-family: "Georgia", "Times New Roman", serif;
+}
+
+.cardDescription {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--subtitle-color);
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+
+  .heading {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

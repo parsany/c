@@ -1,0 +1,187 @@
+.section {
+  padding: 60px 20px;
+  
+  width: 100%;
+}
+
+.heading {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--title-color);
+  margin-bottom: 32px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.item {
+  display: flex;
+  gap: 24px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--divider-color);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.item:first-child {
+  padding-top: 0;
+}
+
+.item:hover {
+  opacity: 0.85;
+}
+
+/* Date Box */
+.dateBox {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  background-color: rgba(128, 128, 128, 0.08);
+  margin-top: 4px;
+}
+
+.dateMonth {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--highlight-color);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+.dateDay {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--title-color);
+  line-height: 1.2;
+}
+
+/* Content */
+.itemContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.tagPill {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.3px;
+}
+
+.readTime {
+  font-size: 0.8rem;
+  color: var(--subtitle-color);
+}
+
+.itemTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--title-color);
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+.itemDescription {
+  font-size: 0.9rem;
+  color: var(--subtitle-color);
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.readArticle {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--highlight-color);
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.readArticle:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* View All */
+.viewAll {
+  margin-top: 32px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.viewAllBtn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--title-color);
+  padding: 0;
+  transition: gap 0.2s ease, color 0.2s ease;
+}
+
+.viewAllBtn:hover {
+  gap: 8px;
+  color: var(--highlight-color);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .section {
+    padding: 40px 16px;
+  }
+
+  .heading {
+    font-size: 1.8rem;
+    margin-bottom: 24px;
+  }
+
+  .item {
+    gap: 16px;
+    padding: 20px 0;
+  }
+
+  .dateBox {
+    width: 48px;
+    height: 48px;
+  }
+
+  .dateDay {
+    font-size: 1.1rem;
+  }
+
+  .itemTitle {
+    font-size: 1rem;
+  }
+
+  .itemDescription {
+    font-size: 0.85rem;
+  }
+}

@@ -1,18 +1,18 @@
 :root {
-  --background: #f9fafb; 
-  --foreground: #212529; 
+  --background: #f9fafb;
+  --foreground: #212529;
   --header-height: 4rem;
-  --accent-color: #f9c74f; 
-  --text-color: #212529; 
-  --hover-text-color: #0a58ca; 
-  --background-color: #f2efe3; 
-  --nice-color: #ffc107; 
-  --background-cc: #f5f5f5; 
+  --accent-color: #f9c74f;
+  --text-color: #212529;
+  --hover-text-color: #0a58ca;
+  --background-color: #eef2f7;
+  --nice-color: #ffc107;
+  --background-cc: #f5f5f5;
   --primary-color: #ffffff;
   --card-background: #ffffff;
   --highlight-color: #00a8e8;
   --highlight-color2: #02c39a;
-  --highlight-color3: #ff5a5f; 
+  --highlight-color3: #ff5a5f;
   --title-color: #1b2747;
   --subtitle-color: #6c757d;
   --banner-background: #f7f8fa;
@@ -21,7 +21,7 @@
   --project-date-color: #6c757d;
   --skills-nav: rgb(89, 133, 7);
   --skills-nav-closed: rgb(49, 50, 51);
-  --foreground2: #dfa460; 
+  --foreground2: #dfa460;
   --experience-company: #495057;
   --experience-dates: #6c757d;
   --experience-color: rgb(36, 47, 58);
@@ -35,96 +35,91 @@
   --button-color3: rgb(17, 17, 17);
   --search-color: #f8f9fa;
   --teach-color: rgb(240, 236, 0);
-  --code-color: #282C34; 
-}
-
-.dark-mode {
-  --background: #121212; 
-  --foreground: #e0e0e0; 
-  --accent-color: #ffb400; 
-  --text-color: #e0e0e0;
-  --hover-text-color: #ffffff;
-  --background-color: #1b1f25;
-  --primary-color: #262934;
-  --card-background: #2e3a59;
-  --highlight-color: #00ffcc;
-  --highlight-color2: #01ad8b;
-  --highlight-color3: #00bcd4;
-  --title-color: #ffffff;
-  --subtitle-color: #b0bec5;
-  --banner-background: #1a1a1a;
-  --project-name-color: #00ffcc;
-  --project-description-color: #dcdcdc;
-  --project-date-color: #a0a0a0;
-  --skills-nav: rgb(103, 150, 42);
-  --skills-nav-closed: rgb(88, 129, 13);
-  --foreground2: #ffa726; 
-  --experience-company: #b0bec5;
-  --experience-dates: #90a4ae;
-  --experience-color: #ffffff;
-  --experience-res: rgb(164, 171, 192);
-  --skills-color: #323f63;
-  --box-color: #827665;
-  --box-color2: #282828;
-  --skill-name: #ffc107;
-  --skill-title: #20dfb5;
-  --button-color: rgb(38, 38, 39);
-  --button-color2: rgb(100, 100, 100);
-  --button-color3: rgb(51, 51, 51);
-  --search-color: #1e1e1e;
-  --teach-color: #f9f9f9;
-  --code-color: #2d2f33;
-}
-
-/* .dark-mode {
-  --background: #0a0a0a;
-  --foreground: #ededed;
-  --accent-color: #dddb5d; 
-  --text-color: #c0c0c0; 
-  --hover-text-color: #ffffff;
-  --background-color: #1b1f25;
-  --primary-color: #262934;
-  --card-background: #2e3a59;
-  --highlight-color: #00ffcc;
-  --highlight-color2: #01ad8b;
-  --highlight-color3: #00bcd4;
-  --title-color: #ffffff;
-  --subtitle-color: #d3d3d3;
-  --banner-background: #333333;
-  --project-name-color: #00ffcc;
-  --project-description-color: #ffffff;
-  --project-date-color: #cccccc;
-  --skills-nav: rgb(103, 150, 42);
-  --skills-nav-closed: rgb(88, 129, 13);
-  --foreground2: #ededed;
-  --experience-company: #b0bec5;
-  --experience-dates: #90a4ae;
-  --experience-color: rgb(255, 255, 255);
-  --experience-res: rgb(164, 171, 192);
-  --skills-color:#323f63;
-  --box-color: rgb(20, 27, 39);
-  --skill-name: #f0a51a;
-  --skill-title: #20dfb5;
-  --button-color:rgb(38, 38, 39);
-  --button-color2:rgb(175, 175, 177);
-  --button-color3: rgb(51, 49, 49);
-  --search-color: var(--primary-color);
-  --teach-color: white;
   --code-color: #282C34;
-} */
+
+  /* Section alternating backgrounds */
+  --section-bg-a: #ffffff;
+  --section-bg-b: #f0f4f8;
+  --section-border: rgba(0, 0, 0, 0.06);
+
+  /* Research card styling */
+  --research-card-bg: rgba(0, 86, 179, 0.06);
+  --research-card-border: rgba(0, 86, 179, 0.18);
+  --research-card-title: #0056b3;
+  --research-icon-color: #0056b3;
+
+  /* Tag pill in light mode */
+  --tag-pill-bg: rgba(0, 86, 179, 0.08);
+  --tag-pill-border: rgba(0, 86, 179, 0.15);
+  --tag-pill-color: #495057;
+
+  /* Divider */
+  --divider-color: rgba(0, 0, 0, 0.08);
+}
+
+body.dark-mode {
+  --background: #0f172a;
+  --foreground: #e2e8f0;
+  --text-color: #e2e8f0;
+  --hover-text-color: #38bdf8;
+  --background-color: #0f172a;
+  --background-cc: #0f172a;
+  --primary-color: #1e293b;
+  --card-background: #1e293b;
+  --title-color: #e2e8f0;
+  --subtitle-color: #94a3b8;
+  --highlight-color: #38bdf8;
+  --highlight-color2: #02c39a;
+  --highlight-color3: #ff5a5f;
+  --banner-background: #1e293b;
+  --project-name-color: #38bdf8;
+  --project-description-color: #94a3b8;
+  --project-date-color: #64748b;
+  --foreground2: #dfa460;
+  --skills-nav: rgb(89, 133, 7);
+  --skills-nav-closed: rgb(150, 150, 150);
+  --experience-company: #94a3b8;
+  --experience-dates: #64748b;
+  --experience-color: #e2e8f0;
+  --experience-res: #94a3b8;
+  --skills-color: #1e293b;
+  --box-color: #334155;
+  --skill-name: #ffc65c;
+  --skill-title: #e2e8f0;
+  --button-color: rgb(235, 235, 235);
+  --button-color2: rgb(51, 65, 85);
+  --button-color3: rgb(226, 232, 240);
+  --search-color: #1e293b;
+  --code-color: #282C34;
+  --nice-color: #ffc107;
+
+  /* Section alternating backgrounds */
+  --section-bg-a: #1e293b;
+  --section-bg-b: #162032;
+  --section-border: rgba(255, 255, 255, 0.06);
+
+  /* Research card styling - teal/green glassmorphic */
+  --research-card-bg: rgba(2, 195, 154, 0.08);
+  --research-card-border: rgba(2, 195, 154, 0.22);
+  --research-card-title: #02c39a;
+  --research-icon-color: #94a3b8;
+
+  /* Tag pill in dark mode */
+  --tag-pill-bg: rgba(255, 255, 255, 0.08);
+  --tag-pill-border: rgba(255, 255, 255, 0.15);
+  --tag-pill-color: #94a3b8;
+
+  /* Divider */
+  --divider-color: rgba(255, 255, 255, 0.08);
+}
 
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
+  min-height: 100vh;
+  font-family: "Roboto", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--background-color);
   color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 * {

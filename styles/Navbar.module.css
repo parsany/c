@@ -2,42 +2,29 @@
   width: 100%;
   z-index: 1000;
   background-color: var(--primary-color);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 0;
 }
 
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 1rem;
+  padding: 0 3rem;
   height: var(--header-height);
-  font-family: "Montserrat", sans-serif;
+  font-family: "Roboto", monospace;
   font-weight: bold;
   color: var(--text-color);
-}
-
-.toggleMode {
-  transition: all ease-in-out 0.2s;
-}
-
-.toggleMode:hover {
-  cursor: pointer;
-  filter: contrast(1.5);
-}
-
-.togglecolor {
-  filter: invert();
-  margin: auto;
-}
-
-.togglecolor image:hover {
-  cursor: pointer;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
 .navlist {
   display: flex;
   flex-direction: row;
-  column-gap: 2rem;
+  align-items: center;
+  column-gap: 2.2rem;
   margin: 0;
   padding: 0;
   transition: max-height 0.3s ease-in-out;
@@ -47,14 +34,18 @@
 .navlistOpen {
   display: flex;
   flex-direction: column;
-  max-height: 350px;
+  max-height: 500px;
 }
 
 .navitem {
   list-style: none;
   position: relative;
-  margin: 0 1rem;
   transition: color 0.2s ease-in-out;
+  font-size: 1.05rem;
+}
+
+.navitem:hover {
+  color: var(--highlight-color);
 }
 
 .logoContainer {
@@ -63,27 +54,62 @@
   gap: 0.5rem;
 }
 
-.navitem:hover {
-  color: #dddb5d;
-}
-
 .logo {
   list-style: none;
   position: relative;
-  margin: 0 1rem;
   font-family: "Dancing Script", cursive;
   font-size: 1.8rem;
   text-decoration: none;
 }
 
-.updateText {
-  font-family: "Courier New", Courier, monospace;
-  color: #4ade80; /* A modern green color */
+/* CV Button */
+.cvButton {
+  display: inline-block;
+  padding: 6px 20px;
+  background-color: #02c39a;
+  color: #ffffff !important;
+  border-radius: 20px;
   font-size: 0.9rem;
-  margin-left: 0.5rem;
-  font-weight: normal;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+  letter-spacing: 0.5px;
 }
 
+.cvButton:hover {
+  background-color: #00a87e;
+  transform: translateY(-1px);
+}
+
+/* Theme Toggle Button */
+.themeToggleBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 50%;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.themeToggleBtn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--highlight-color);
+}
+
+/* Desktop theme toggle (inside navlist) */
+.desktopThemeToggle {
+  margin-left: 0.5rem;
+}
+
+/* Hamburger */
 .hamburger {
   display: none;
   background: none;
@@ -117,35 +143,20 @@
 .mobileControls {
   display: flex;
   align-items: center;
-  gap: 1rem;
-}
-
-.toggleMode {
-  transition: all ease-in-out 0.2s;
-}
-
-.toggleMode:hover {
-  cursor: pointer;
-  filter: contrast(1.5);
-}
-
-.togglecolor {
-  filter: invert();
-  margin: auto;
+  gap: 0.75rem;
 }
 
 @media (min-width: 851px) {
   .mobileControls {
     display: none;
   }
-
-  .toggleMode {
-    display: inline-block;
-    order: -1;
-  }
 }
 
 @media (max-width: 850px) {
+  .navbar {
+    padding: 0 1rem;
+  }
+
   .hamburger {
     display: flex;
   }
@@ -155,53 +166,31 @@
     flex-direction: column;
     position: absolute;
     top: var(--header-height);
+    left: 0;
     right: 0;
     background-color: var(--primary-color);
     width: 100%;
     padding: 1rem 0;
     z-index: 100;
-    transition:
-      max-height 0.3s ease-in-out,
-      background-color 0.3s ease-in-out;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   }
 
   .navlistOpen {
     display: flex;
-    transition: all 0.3s ease-in-out;
-  }
-
-  .mobileControls {
-    gap: 0.5rem;
-  }
-
-  .hamburger {
-    margin-left: 0.5rem;
-  }
-
-  .navlist {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: var(--header-height);
-    right: 0;
-    background-color: var(--primary-color);
-    width: 100%;
-    padding: 1rem 0;
-    z-index: 100;
-    transition:
-      max-height 0.3s ease-in-out,
-      background-color 0.3s ease-in-out;
-  }
-
-  .navlistOpen {
-    display: flex;
-    transition: all 0.3s ease-in-out;
   }
 
   .navitem {
     margin: 0;
-    padding: 1rem;
+    padding: 0.85rem 1.5rem;
     text-align: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .desktopThemeToggle {
+    display: none;
+  }
+
+  .cvButton {
+    margin: 0 auto;
   }
 }

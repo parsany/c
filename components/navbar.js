@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Styles from "@/styles/Navbar.module.css";
-import Image from "next/image";
+import { Sun, Moon } from "lucide-react";
 
 export default function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
@@ -40,71 +40,66 @@ export default function NavBar() {
 
   return (
     <header className={Styles.header} role="banner">
-  <nav className={Styles.navbar} role="navigation">
-    <div className={Styles.logoContainer}>
-      <Link href="/" className={Styles.logo} onClick={handleLinkClick}>
-        <p>Phy</p>
-      </Link>
-      <span className={Styles.updateText}>
-        (last update august 2024)
-      </span>
-    </div>
-
-    <div className={Styles.mobileControls}>
-      <a onClick={toggleTheme} className={Styles.toggleMode}>
-        <Image
-          src={
-            isDarkMode
-              ? "/icons/dark_mode.svg"
-              : "/icons/light_mode.svg"
-          }
-          alt="Toggle Icon"
-          className={Styles.togglecolor}
-          width={20}
-          height={20}
-        />
-      </a>
-
-      <button
-        className={`${Styles.hamburger} ${menuOpen ? Styles.open : ""}`}
-        onClick={toggleMenu}
-        aria-label="Toggle navigation menu"
-      >
-        <span className={Styles.line}></span>
-        <span className={Styles.line}></span>
-        <span className={Styles.line}></span>
-      </button>
-    </div>
-
-    <ul
-      className={`${Styles.navlist} ${menuOpen ? Styles.navlistOpen : ""}`}
-    >
-      {NAV_LINKS.map(({ title, href }) => (
-        <li key={href} className={Styles.navitem}>
-          <Link href={href} onClick={handleLinkClick}>
-            <p>{title}</p>
+      <nav className={Styles.navbar} role="navigation">
+        <div className={Styles.logoContainer}>
+          <Link href="/" className={Styles.logo} onClick={handleLinkClick}>
+            <p>Phy</p>
           </Link>
-        </li>
-      ))}
+        </div>
 
-      <li className={Styles.navitem}>
-        <a onClick={toggleTheme} className={Styles.toggleMode}>
-          <Image
-            src={
-              isDarkMode
-                ? "/icons/dark_mode.svg"
-                : "/icons/light_mode.svg"
-            }
-            alt="Toggle Icon"
-            className={Styles.togglecolor}
-            width={20}
-            height={20}
-          />
-        </a>
-      </li>
-    </ul>
-  </nav>
-</header>
+        <div className={Styles.mobileControls}>
+          <button
+            onClick={toggleTheme}
+            className={Styles.themeToggleBtn}
+            aria-label="Toggle theme"
+          >
+            {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
 
+          <button
+            className={`${Styles.hamburger} ${menuOpen ? Styles.open : ""}`}
+            onClick={toggleMenu}
+            aria-label="Toggle navigation menu"
+          >
+            <span className={Styles.line}></span>
+            <span className={Styles.line}></span>
+            <span className={Styles.line}></span>
+          </button>
+        </div>
+
+        <ul
+          className={`${Styles.navlist} ${menuOpen ? Styles.navlistOpen : ""}`}
+        >
+          {NAV_LINKS.map(({ title, href }) => (
+            <li key={href} className={Styles.navitem}>
+              <Link href={href} onClick={handleLinkClick}>
+                <p>{title}</p>
+              </Link>
+            </li>
+          ))}
+
+          <li className={Styles.navitem}>
+            <Link
+              href="/CVB-iknowucanfindithere-smart!.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={Styles.cvButton}
+            >
+              CV
+            </Link>
+          </li>
+
+          <li className={`${Styles.navitem} ${Styles.desktopThemeToggle}`}>
+            <button
+              onClick={toggleTheme}
+              className={Styles.themeToggleBtn}
+              aria-label="Toggle theme"
+            >
+              {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </header>
   );
 }

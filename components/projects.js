@@ -2,7 +2,8 @@ import { useState, useMemo } from "react";
 import styles from "@/styles/Projects.module.css";
 import Image from "next/image";
 import { ProjectStuff } from "@/public/JSONJS";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
+import { ArrowRight } from "lucide-react";
 
 export default function Projects({ LimitShow }) {
   const [hoveredId, setHoveredId] = useState(null);
@@ -13,10 +14,12 @@ export default function Projects({ LimitShow }) {
   const router = useRouter();
 
   const filteredProjects = useMemo(() => {
-    let projects = selectedCategory && selectedCategory !== "All"
-      ? ProjectStuff.filter((project) => project.tag.includes(selectedCategory))
-      : ProjectStuff;
-
+    let projects =
+      selectedCategory && selectedCategory !== "All"
+        ? ProjectStuff.filter((project) =>
+            project.tag.includes(selectedCategory)
+          )
+        : ProjectStuff;
 
     if (searchTerm.trim()) {
       projects = projects.filter(
@@ -26,26 +29,29 @@ export default function Projects({ LimitShow }) {
       );
     }
 
-    return projects.sort((a, b) => new Date(b.date) - new Date(a.date));
+    return projects.sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
   }, [selectedCategory, searchTerm]);
-
 
   const categories = useMemo(() => {
     const allTags = ProjectStuff.flatMap((project) => project.tag);
     const uniqueTags = new Set(allTags);
     return ["All", ...Array.from(uniqueTags).sort()];
-}, []);
+  }, []);
 
   const handleMouseEnter = (id, index) => {
     setHoveredId({ id, index });
     setPlayedVideos((prev) => ({ ...prev, [id]: true }));
-    setVideoStates((prev) => ({ ...prev, [id]: { loopStarted: false, loopCompleted: false } }));
+    setVideoStates((prev) => ({
+      ...prev,
+      [id]: { loopStarted: false, loopCompleted: false },
+    }));
   };
 
   const handleMouseLeave = (id) => {
     setHoveredId(null);
   };
-
 
   const getCardClass = (project, index) => {
     if (LimitShow !== true) return styles.card;
@@ -70,8 +76,11 @@ export default function Projects({ LimitShow }) {
   };
 
   const renderMedia = ({ id, video, image, name }) => {
-    const shouldPlayVideo = (hoveredId?.id === id || (playedVideos[id] && !videoStates[id]?.loopCompleted)) && video;
-    
+    const shouldPlayVideo =
+      (hoveredId?.id === id ||
+        (playedVideos[id] && !videoStates[id]?.loopCompleted)) &&
+      video;
+
     return shouldPlayVideo ? (
       <video
         src={video}
@@ -80,16 +89,24 @@ export default function Projects({ LimitShow }) {
         loop
         className={styles.video}
         onTimeUpdate={(e) => {
-          if (e.target.currentTime < 0.1 && videoStates[id]?.loopStarted && !hoveredId) {
+          const target = e.target;
+          if (
+            target.currentTime < 0.1 &&
+            videoStates[id]?.loopStarted &&
+            !hoveredId
+          ) {
             setVideoStates((prev) => ({
               ...prev,
-              [id]: { ...prev[id], loopCompleted: true }
+              [id]: { ...prev[id], loopCompleted: true },
             }));
             setPlayedVideos((prev) => ({ ...prev, [id]: false }));
-          } else if (e.target.currentTime > 0.1 && !videoStates[id]?.loopStarted) {
+          } else if (
+            target.currentTime > 0.1 &&
+            !videoStates[id]?.loopStarted
+          ) {
             setVideoStates((prev) => ({
               ...prev,
-              [id]: { ...prev[id], loopStarted: true }
+              [id]: { ...prev[id], loopStarted: true },
             }));
           }
         }}
@@ -98,46 +115,59 @@ export default function Projects({ LimitShow }) {
       <Image
         src={image}
         alt={name}
-        layout="fill"
-        objectFit="cover"
+        fill
+        style={{ objectFit: "cover" }}
         className={styles.image}
       />
     );
   };
-  
-  const displayedProjects =
-  LimitShow === true
-    ? filteredProjects.filter((project) => [1, 2, 3].includes(project.id)).sort((a, b) => a.id - b.id)
-    : filteredProjects.slice(0, LimitShow || undefined);
 
+  const displayedProjects =
+    LimitShow === true
+      ? filteredProjects
+          .filter((project) => [1, 2, 3].includes(project.id))
+          .sort((a, b) => a.id - b.id)
+      : filteredProjects.slice(0, LimitShow || undefined);
+
+  const formatDate = (dateStr) => {
+    const d = new Date(dateStr);
+    const month = d.toLocaleString("en-US", { month: "short" });
+    const year = d.getFullYear();
+    return `${month} ${year}`;
+  };
 
   return (
-    <div className={styles.elements}>
+    <div className={styles.elements} id="projects">
       <h1 className={styles.title}>Selected Projects</h1>
       <p className={styles.subtitle}>
-        I like to learn by making things. Here&apos;s some projects I&apos;ve worked on.
+        I like to learn by making things. Here&apos;s some projects I&apos;ve
+        worked on.
       </p>
 
-      {!LimitShow &&
+      {!LimitShow && (
         <input
-        type="text"
-        placeholder="Search for project name or desc..."
-        className={styles.searchBar}
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
-}
+          type="text"
+          placeholder="Search for project name or desc..."
+          className={styles.searchBar}
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      )}
 
       {!LimitShow && (
         <div className={styles.filterContainer}>
           {categories.map((category) => (
             <button
               key={category}
-              onClick={() => setSelectedCategory(category === "All" ? null : category)}
-              className={`${styles.filterButton} ${selectedCategory === category || (!selectedCategory && category === "All")
+              onClick={() =>
+                setSelectedCategory(category === "All" ? null : category)
+              }
+              className={`${styles.filterButton} ${
+                selectedCategory === category ||
+                (!selectedCategory && category === "All")
                   ? styles.active
                   : ""
-                }`}
+              }`}
             >
               {category}
             </button>
@@ -158,11 +188,29 @@ export default function Projects({ LimitShow }) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Link to ${project.name}`}
+              className={styles.cardLink}
             >
               <div className={styles.banner}>{renderMedia(project)}</div>
               <div className={styles.content}>
+                <div className={styles.tagsRow}>
+                  {project.tag.map((t) => (
+                    <span key={t} className={styles.tagPill}>
+                      {t}
+                    </span>
+                  ))}
+                </div>
                 <h3 className={styles.projectName}>{project.name}</h3>
-                <p className={styles.projectDescription}>{project.description}</p>
+                <p className={styles.projectDescription}>
+                  {project.description}
+                </p>
+                <div className={styles.cardFooter}>
+                  <span className={styles.projectDate}>
+                    {formatDate(project.date)}
+                  </span>
+                  <span className={styles.detailsLink}>
+                    Details <ArrowRight size={14} className={styles.detailsArrow} />
+                  </span>
+                </div>
               </div>
             </a>
           </div>
@@ -171,12 +219,12 @@ export default function Projects({ LimitShow }) {
 
       {LimitShow && (
         <div className={styles.buttonContainer}>
-        <button
-          className={styles.morePostsButton}
-          onClick={() => router.push('/projects')}
-        >
-          More Projects
-        </button>
+          <button
+            className={styles.morePostsButton}
+            onClick={() => router.push("/projects")}
+          >
+            More Projects
+          </button>
         </div>
       )}
     </div>
