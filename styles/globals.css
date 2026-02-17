@@ -98,11 +98,11 @@ body.dark-mode {
   --section-bg-b: #162032;
   --section-border: rgba(255, 255, 255, 0.06);
 
-  /* Research card styling - teal/green glassmorphic */
-  --research-card-bg: rgba(2, 195, 154, 0.08);
-  --research-card-border: rgba(2, 195, 154, 0.22);
-  --research-card-title: #02c39a;
-  --research-icon-color: #94a3b8;
+  /* Research card styling - soft slate blue glassmorphic */
+  --research-card-bg: rgba(56, 189, 248, 0.06);
+  --research-card-border: rgba(56, 189, 248, 0.18);
+  --research-card-title: #38bdf8;
+  --research-icon-color: #64748b;
 
   /* Tag pill in dark mode */
   --tag-pill-bg: rgba(255, 255, 255, 0.08);

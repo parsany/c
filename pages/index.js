@@ -52,7 +52,7 @@ export default function Main() {
           </div>
         )}
 
-        <div className={`${Styles.sectionWrapper} ${Styles.sectionB}`}>
+        <div className={`${Styles.sectionWrapper} ${hasPublications ? Styles.sectionB : Styles.sectionA}`}>
           <RandomPost />
         </div>
       </div>

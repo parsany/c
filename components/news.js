@@ -9,14 +9,10 @@ export default function News(){
       <div className={styles.bio}>
         <h1>About Me</h1>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-          I was born in a beautiful city in Europe in 1993. In 2012, I finished my high school education and received a
-          Matura diploma. Then, in early 2019, I received my Bachelor&apos;s degree in Computer Science. I am currently self-employed
-          as the head of a small collective.
-        </p>
-        
-        <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. 
+         I am a final-year Computer Science student at the University of SRBIAU, driven by a deep fascination with how intelligent systems and computational modeling can reshape our world. My academic focus lies at the intersection of robotics and complex problem-solving, where I strive to turn theoretical research into innovative, real-world technical solutions.
+          </p>
+          <p>
+        Beyond the lab, I bridge the gap between technical rigor and creative expression through web and game development. Whether I’m architecting a system or building an immersive digital environment, I am dedicated to advancing the boundaries of what’s possible through code.
         </p>
       </div>
 
