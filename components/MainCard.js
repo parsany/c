@@ -28,7 +28,7 @@ export default function MainCard() {
           Parsa Niavand is a computer science student (near graduation) from the University of SRBIAU. He has a passion for intelligent systems, modeling, computation, and robotics. In addition to his academic pursuits, he enjoys exploring web and game development, combining creativity with technical skill.
 */}
           <div className={styles.socialLinks}>
-            <a href="mailto:parsaniavand@example.com" aria-label="Email" className={styles.socialIcon}>
+            <a href="mailto:quantinitycorp@gmail.com" aria-label="Email" className={styles.socialIcon}>
               <Image src="/icons/mail.svg" alt="Email" width={22} height={22} />
             </a>
             <a href="https://twitter.com/payrimSp" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className={styles.socialIcon}>

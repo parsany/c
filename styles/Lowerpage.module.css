@@ -2,7 +2,7 @@
   width: 100%;
   background-color: var(--background);
   padding: 48px 24px 24px;
-  margin-top: 40px;
+  border-top: var(--section-border) 1px solid;
   transition: background-color 0.3s ease;
 }
 
