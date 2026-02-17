@@ -3,26 +3,7 @@ import styles from "@/styles/LatestWriting.module.css";
 import Posts from "@/public/content/materials/PostsPage.json";
 import { useRouter } from "next/router";
 import { ChevronRight } from "lucide-react";
-
-const TAG_COLORS = {
-  "C++": "#e44d26",
-  Simulation: "#6c63ff",
-  Programming: "#2196f3",
-  JavaScript: "#f7df1e",
-  Closures: "#9c27b0",
-  CSS: "#00bcd4",
-  Grid: "#4caf50",
-  "Web Design": "#ff9800",
-  Promises: "#ff5722",
-  Asynchronous: "#795548",
-  Python: "#3776ab",
-  Decorators: "#e91e63",
-  React: "#61dafb",
-  Hooks: "#00acc1",
-  SQL: "#336791",
-  Databases: "#8bc34a",
-  publication: "#02c39a",
-};
+import { getTagColor } from "@/utils/tagColor";
 
 export default function LatestWriting() {
   const [recentPosts, setRecentPosts] = useState([]);
@@ -41,10 +22,6 @@ export default function LatestWriting() {
 
   const handlePostClick = (id) => {
     router.push(`/posts/${id}`);
-  };
-
-  const getTagColor = (tag) => {
-    return TAG_COLORS[tag] || "#02c39a";
   };
 
   const estimateReadTime = (post) => {

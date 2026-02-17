@@ -1,38 +1,301 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  align-self: center;
-  padding: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px;
   min-height: 100vh;
 }
 
-.title {
-  margin-top: 40px;
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: var(--title-color);
+/* Header */
+.header {
   text-align: center;
+  margin-bottom: 48px;
 }
 
+.title {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--title-color);
+  margin-bottom: 8px;
+}
 
-/* make align left on the page */
+.subtitle {
+  font-size: 1rem;
+  color: var(--subtitle-color);
+}
 
-.newsBox {
+/* Layout */
+.contentWrapper {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  background-color: var(--card-background);
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  width: auto;
-  max-width: 900px;
-  margin-left: 150px;
+  gap: 40px;
+  align-items: flex-start;
 }
 
+.mainContent {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Post Cards */
+.postsList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.postCard {
+  background-color: var(--card-background);
+  border: 1px solid var(--section-border);
+  border-radius: 12px;
+  padding: 24px 28px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.postCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  border-color: var(--highlight-color);
+}
+
+.postMeta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+.postDate {
+  font-size: 0.82rem;
+  color: var(--subtitle-color);
+  font-weight: 500;
+}
+
+.readTime {
+  font-size: 0.78rem;
+  color: var(--subtitle-color);
+  opacity: 0.7;
+}
+
+.postTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--title-color);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.postDescription {
+  font-size: 0.92rem;
+  color: var(--subtitle-color);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.postFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.postTags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.postTag {
+  padding: 2px 10px;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.3px;
+}
+
+.readArticle {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--highlight-color);
+  transition: opacity 0.2s;
+}
+
+.postCard:hover .readArticle {
+  opacity: 0.8;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--subtitle-color);
+  font-size: 1rem;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 280px;
+  flex-shrink: 0;
+  position: sticky;
+  top: calc(var(--header-height) + 24px);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.filterSection {
+  background-color: var(--card-background);
+  border: 1px solid var(--section-border);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.filterTitle {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--title-color);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 10px 14px;
+  background-color: var(--background-color);
+  color: var(--foreground);
+  border: 1px solid var(--section-border);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.searchInput:focus {
+  border-color: var(--highlight-color);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  cursor: pointer;
+  padding: 5px 14px;
+  background-color: var(--background-color);
+  border: 1px solid var(--section-border);
+  border-radius: 20px;
+  font-size: 0.8rem;
+  color: var(--subtitle-color);
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.tag:hover {
+  border-color: var(--highlight-color);
+  color: var(--highlight-color);
+}
+
+.selectedTag {
+  background-color: var(--highlight-color);
+  border-color: var(--highlight-color);
+  color: #ffffff;
+}
+
+.yearList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.yearButton,
+.monthButton {
+  background-color: var(--background-color);
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--section-border);
+  color: var(--subtitle-color);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  font-weight: 500;
+}
+
+.yearButton:hover,
+.monthButton:hover {
+  border-color: var(--highlight-color);
+  color: var(--highlight-color);
+}
+
+.activeYear,
+.activeMonth {
+  background-color: var(--highlight-color);
+  border-color: var(--highlight-color);
+  color: #ffffff;
+}
+
+.monthList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.clearButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 10px;
+  background: none;
+  border: 1px solid var(--highlight-color3);
+  border-radius: 8px;
+  color: var(--highlight-color3);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clearButton:hover {
+  background-color: var(--highlight-color3);
+  color: #ffffff;
+}
+
+/* View More */
+.viewMoreWrapper {
+  text-align: center;
+  margin-top: 32px;
+}
+
+.viewMoreButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 28px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: transparent;
+  color: var(--title-color);
+  border: 2px solid var(--highlight-color2);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.viewMoreButton:hover {
+  background-color: var(--highlight-color2);
+  color: #ffffff;
+}
+
+/* Random post styles (used by home page) */
+.randomPostBox {
+  padding: 40px 20px;
+}
 
 .newsList {
   display: flex;
@@ -40,407 +303,108 @@
   gap: 20px;
 }
 
-
 .newsItem {
   display: flex;
   align-items: flex-start;
   gap: 20px;
   padding: 15px;
-  transition: background-color 0.3s;
+  cursor: pointer;
+  transition: opacity 0.2s;
 }
 
 .newsItem:hover {
-  filter: brightness(1.2) contrast(1.2) sepia(0.6);
-  cursor: pointer;
-  transition: filter 0.3s;
+  opacity: 0.8;
 }
 
 .date {
   font-size: 0.9rem;
   color: var(--subtitle-color);
-  width: 100px;
-  text-align: right;
+}
+
+.newsTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--title-color);
+}
+
+.description {
+  font-size: 0.9rem;
+  color: var(--subtitle-color);
+  margin: 6px 0;
+}
+
+.readMore {
+  font-size: 0.85rem;
+  color: var(--highlight-color);
+  font-weight: 600;
 }
 
 .content {
   flex: 1;
 }
 
-.newsTitle {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin: 0;
-  color: var(--text-color);
-}
-
-.description {
-  font-size: 1rem;
-  margin: 10px 0;
-  color: var(--foreground);
-}
-
-.readMore {
-  font-size: 0.9rem;
-  color: var(--highlight-color);
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.readMore:hover {
-  text-decoration: underline;
-}
-
-
-.rightPanel {
-  background-color: var(--card-background);
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  width: 280px;
-  margin-left: 40px;
-}
-
-
-.filterTitle {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: var(--title-color);
-  margin-bottom: 15px;
-}
-
-
-.tagsBox {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-bottom: 30px;
-}
-
-.tagsBox h3 {
-  font-size: 1rem;
-  font-weight: bold;
-  color: var(--text-color);
-}
-
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.tag {
-  cursor: pointer;
-  padding: 8px 15px;
-  background-color: var(--card-background);
-  border-radius: 20px;
-  transition: background-color 0.3s;
-  font-size: 0.9rem;
-  color: var(--foreground);
-}
-
-.tag:hover {
-  background-color: var(--highlight-color);
-  color: white;
-}
-
-.selectedTag {
-  background-color: var(--highlight-color);
-  color: white;
-}
-
-
-.searchBox {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-bottom: 30px;
-}
-
-.searchBox input {
-  padding: 10px;
-  background-color: var(--card-background);
-  color: var(--foreground);
-  border-radius: 6px;
-  border: 1px solid var(--highlight-color);
-  font-size: 1rem;
-  outline: none;
-}
-
-.searchBox input:focus {
-  border-color: var(--highlight-color);
-  background-color: var(--card-background-light);
-}
-
-
-.yearMonthBox {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.yearMonthBox h3 {
-  font-size: 1rem;
-  font-weight: bold;
-  color: var(--text-color);
-}
-
-.yearList {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.yearButton {
-  background-color: var(--card-background);
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid var(--highlight-color);
-  color: var(--foreground);
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.yearButton:hover {
-  background-color: var(--highlight-color);
-  color: white;
-}
-
-
-.monthList {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.monthButton {
-  background-color: var(--card-background);
-  padding: 8px;
-  border-radius: 6px;
-  border: 1px solid var(--highlight-color);
-  color: var(--foreground);
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.monthButton:hover {
-  background-color: var(--highlight-color);
-  color: white;
-}
-
-
-.clearButton {
-  margin-top: 25px;
-  background-color: var(--highlight-color2);
-  color: white;
-  padding: 12px;
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-.clearButton:hover {
-  background-color: var(--highlight-color3);
-}
-
-
-.contentWrapper {
-  display: flex;
-  width: 100%;
-}
-
-.newsBox {
-  background-color: var(--card-background);
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  width: 70%;
-}
-
-.rightPanel {
-  background-color: var(--card-background);
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  width: 28%;
-
-}
-
-
 .buttonContainer {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.morePostsButton {
-  background-color: var(--highlight-color2);
-  color: white;
-  padding: 6px 15px;
-  font-size: 1rem;
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.morePostsButton:hover {
-  background-color: var(--highlight-color3);
-}
-
-.viewMoreWrapper {
   text-align: center;
   margin-top: 20px;
 }
 
-.viewMoreButton {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: var(--highlight-color2);
-  color: white;
-  border: none;
+.morePostsButton {
+  background: transparent;
+  color: var(--title-color);
+  padding: 8px 24px;
+  border: 2px solid var(--highlight-color2);
+  border-radius: 8px;
   cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s;
+  font-weight: 600;
+  transition: all 0.3s;
 }
 
-.viewMoreButton:hover {
-  background-color: var(--highlight-color3);
+.morePostsButton:hover {
+  background-color: var(--highlight-color2);
+  color: #ffffff;
 }
 
-
-@media (max-width: 768px) {
-
-  .container {
-    padding: 20px;
-    min-height: auto;
-  }
-
-
-  .title {
-    font-size: 1.8rem;
-    margin-top: 20px;
-  }
-
-
-  .newsBox {
-    flex-direction: column;
-    margin-left: 0;
-    width: 100%;
-    margin-bottom: 20px;
-  }
-
-
-  .newsList {
-    gap: 15px;
-  }
-
-  .newsItem {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
-    padding: 12px;
-  }
-
-  .date {
-    font-size: 0.85rem;
-    width: auto;
-    text-align: left;
-  }
-
-  .content {
-    flex: 1;
-  }
-
-  .newsTitle {
-    font-size: 1.3rem;
-  }
-
-  .description {
-    font-size: 0.95rem;
-  }
-
-
-  .rightPanel {
-    width: 100%;
-    margin-left: 0;
-    margin-top: 20px;
-  }
-
-
-  .filterTitle {
-    font-size: 1.1rem;
-  }
-
-
-  .tagsBox {
-    gap: 10px;
-  }
-
-  .tagsBox h3 {
-    font-size: 0.9rem;
-  }
-
-  .tags {
-    flex-direction: row;
-    gap: 8px;
-  }
-
-  .tag {
-    font-size: 0.85rem;
-    padding: 6px 12px;
-  }
-
-  .selectedTag {
-    background-color: var(--highlight-color);
-    color: white;
-  }
-
-
-  .searchBox input {
-    font-size: 0.9rem;
-    padding: 8px;
-  }
-
-
-  .yearMonthBox {
-    gap: 8px;
-  }
-
-  .yearMonthBox h3 {
-    font-size: 0.9rem;
-  }
-
-  .yearButton,
-  .monthButton {
-    font-size: 0.9rem;
-    padding: 8px;
-  }
-
-  .clearButton {
-    font-size: 0.9rem;
-    padding: 10px;
-  }
-
-
+/* Responsive */
+@media (max-width: 850px) {
   .contentWrapper {
     flex-direction: column;
   }
 
-
-  .newsBox {
+  .sidebar {
     width: 100%;
-    margin-left: 0;
+    position: static;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .filterSection {
+    flex: 1;
     min-width: 200px;
   }
 
+  .container {
+    padding: 24px 16px;
+  }
 
-  .rightPanel {
-    width: 100%;
-    margin-left: 0;
+  .title {
+    font-size: 2rem;
+  }
+
+  .header {
+    margin-bottom: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    flex-direction: column;
+  }
+
+  .postCard {
+    padding: 18px 20px;
+  }
+
+  .postTitle {
+    font-size: 1.1rem;
   }
 }

@@ -4,8 +4,7 @@
     flex-direction: column;
     align-items: center;
     background-color: var(--background-color);
-    color: #ffffff;
-    padding: 40px;
+    color: var(--foreground);
     min-height: 100vh;
   }
 

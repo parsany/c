@@ -1,138 +1,35 @@
 .container {
   display: flex;
-  flex-direction: row;
-  padding: 20px;
-  background-color: var(--background-color);
-  color: var(--text-color);
-  justify-content: center;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
   min-height: 100vh;
+  color: var(--foreground);
 }
 
-.mainContent {
-  flex: 3;
-  max-width: 800px;
-  padding: 5px;
-  margin-left: 80px;
-}
-
-.rightPane {
-  flex: 1;
-  max-width: 300px;
-  background-color: var(--primary-color);
-  border: 1px solid var(--highlight-color2);
-  border-radius: 8px;
-  padding: 20px;
-  position: sticky;
-  top: 20px;
-  margin-left: 150px;
-  margin-top: 50px;
-}
-
-
+/* Left Pane - Navigation */
 .leftPane {
-  flex: 1;
-  max-width: 250px;
-  background-color: var(--primary-color);
-  border: 1px solid var(--highlight-color);
-  border-radius: 8px;
-  padding: 20px;
+  width: 220px;
+  flex-shrink: 0;
   position: sticky;
-  top: 20px;
-  margin-top: 50px;
+  top: calc(var(--header-height) + 24px);
+  align-self: flex-start;
+  background-color: var(--card-background);
+  border: 1px solid var(--section-border);
+  border-radius: 12px;
+  padding: 20px;
+  max-height: calc(100vh - var(--header-height) - 48px);
+  overflow-y: auto;
 }
 
-
-.rightPane h2,
 .leftPane h2 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
+  font-size: 1.05rem;
+  font-weight: 700;
   color: var(--title-color);
+  margin-bottom: 14px;
+  font-family: "Georgia", serif;
 }
-
-
-.toc {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.toc li {
-  margin: 10px 0;
-}
-
-.tocLink {
-  text-decoration: none;
-  color: var(--highlight-color);
-  font-weight: bold;
-}
-
-.tocLink:hover {
-  text-decoration: underline;
-}
-
-
-.title {
-  margin-top: 80px;
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: var(--title-color);
-}
-
-
-.content {
-  line-height: 1.8;
-}
-
-
-.markdown {
-  margin-bottom: 20px;
-}
-
-
-.spoiler {
-  margin: 20px 0;
-  padding: 10px;
-  background-color: var(--box-color);
-  border: 1px solid var(--highlight-color);
-  border-radius: 8px;
-}
-
-.spoiler summary {
-  font-weight: bold;
-  cursor: pointer;
-  color: var(--highlight-color);
-}
-
-.spoiler div {
-  margin-top: 10px;
-}
-
-
-.codeBlock {
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 1.2rem;
-  background-color: #1e1e1e;
-  color: #d4d4d4;
-  border-radius: 8px;
-  padding: 15px;
-  overflow-x: auto;
-  margin: 20px 0;
-  line-height: 1.5;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-
-.latexBlock {
-  background-color: var(--primary-color);
-  color: var(--text-color);
-  padding: 15px;
-  border-radius: 8px;
-  text-align: center;
-  margin: 20px 0;
-  font-size: 1.25rem;
-}
-
 
 .navigation {
   list-style: none;
@@ -141,7 +38,7 @@
 }
 
 .navItem {
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 }
 
 .navHeader {
@@ -150,76 +47,217 @@
 }
 
 .toggleButton {
-  margin-right: 10px;
+  margin-right: 6px;
   cursor: pointer;
-  background-color: transparent;
+  background: none;
   border: none;
-  font-size: 1rem;
+  font-size: 0.85rem;
+  color: var(--subtitle-color);
+  transition: color 0.2s;
+}
+
+.toggleButton:hover {
   color: var(--highlight-color);
 }
 
 .navLink {
   text-decoration: none;
   color: var(--highlight-color);
-  font-weight: bold;
+  font-weight: 600;
+  font-size: 0.88rem;
+  transition: opacity 0.2s;
 }
 
 .navLink:hover {
-  text-decoration: underline;
+  opacity: 0.75;
 }
 
 .subNavigation {
   list-style: none;
-  padding-left: 20px;
-  margin-top: 5px;
+  padding-left: 18px;
+  margin-top: 4px;
 }
 
 .subNavItem {
-  margin-bottom: 5px;
+  margin-bottom: 4px;
 }
 
+/* Main Content */
+.mainContent {
+  flex: 1;
+  min-width: 0;
+  max-width: 700px;
+}
 
-@media (max-width: 768px) {
+.title {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--title-color);
+  margin-top: 32px;
+  margin-bottom: 24px;
+}
+
+.content {
+  line-height: 1.8;
+}
+
+.markdown {
+  margin-bottom: 24px;
+}
+
+.markdown h2,
+.markdown h3 {
+  color: var(--title-color);
+  margin-top: 32px;
+  margin-bottom: 12px;
+}
+
+.markdown p {
+  margin-bottom: 14px;
+  color: var(--foreground);
+}
+
+.markdown ul,
+.markdown ol {
+  padding-left: 24px;
+  margin-bottom: 14px;
+}
+
+.markdown li {
+  margin-bottom: 6px;
+  line-height: 1.7;
+}
+
+/* Code Block */
+.codeBlock {
+  font-family: "Fira Code", "JetBrains Mono", "Courier New", monospace;
+  font-size: 0.9rem;
+  background-color: #1e1e2e;
+  color: #cdd6f4;
+  border-radius: 10px;
+  padding: 18px 20px;
+  overflow-x: auto;
+  margin: 20px 0;
+  line-height: 1.6;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Spoiler */
+.spoiler {
+  margin: 20px 0;
+  padding: 14px 18px;
+  background-color: var(--card-background);
+  border: 1px solid var(--section-border);
+  border-radius: 10px;
+}
+
+.spoiler summary {
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--highlight-color);
+  font-size: 0.95rem;
+}
+
+.spoiler div {
+  margin-top: 12px;
+}
+
+/* LaTeX Block */
+.latexBlock {
+  background-color: var(--card-background);
+  color: var(--foreground);
+  padding: 18px;
+  border-radius: 10px;
+  border: 1px solid var(--section-border);
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.1rem;
+}
+
+/* Right Pane - Table of Contents */
+.rightPane {
+  width: 240px;
+  flex-shrink: 0;
+  position: sticky;
+  top: calc(var(--header-height) + 24px);
+  align-self: flex-start;
+  background-color: var(--card-background);
+  border: 1px solid var(--section-border);
+  border-radius: 12px;
+  padding: 20px;
+  max-height: calc(100vh - var(--header-height) - 48px);
+  overflow-y: auto;
+}
+
+.rightPane h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--title-color);
+  margin-bottom: 14px;
+  font-family: "Georgia", serif;
+}
+
+.toc {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toc li {
+  margin: 8px 0;
+}
+
+.tocLink {
+  text-decoration: none;
+  color: var(--highlight-color);
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: opacity 0.2s;
+}
+
+.tocLink:hover {
+  opacity: 0.75;
+}
+
+/* Loading */
+.loading {
+  text-align: center;
+  padding: 60px;
+  font-size: 1.2rem;
+  color: var(--subtitle-color);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
   .container {
     flex-direction: column;
-    padding: 10px;
+    padding: 16px;
   }
 
   .leftPane,
-  .mainContent,
   .rightPane {
+    width: 100%;
     max-width: 100%;
     position: relative;
     top: 0;
-    margin: 0 auto 20px;
+    max-height: none;
+    margin: 0 0 20px;
+  }
+
+  .mainContent {
+    max-width: 100%;
   }
 
   .title {
     font-size: 2rem;
-    text-align: center;
-  }
-
-  .toc li {
-    margin: 5px 0;
-  }
-
-  .markdown {
-    padding: 0 10px;
-  }
-
-  .codeBlock {
-    font-size: 1rem;
-    padding: 10px;
-  }
-
-  .latexBlock {
-    font-size: 1rem;
+    margin-top: 16px;
   }
 }
 
-
-.loading {
-  text-align: center;
-  padding: 50px;
-  font-size: 1.5rem;
+@media (max-width: 480px) {
+  .codeBlock {
+    font-size: 0.8rem;
+    padding: 12px 14px;
+  }
 }
