@@ -1,20 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from '@/styles/News.module.css';
-import events from '@/public/content/materials/log.json';
-import { Calendar, User, Briefcase, Code, GraduationCap, FileText } from 'lucide-react';
+import logData from '@/public/content/materials/log.json';
+import { Calendar, User, Briefcase, Code, GraduationCap, FileText, Globe, Monitor, AlertTriangle, ShieldAlert, Cpu } from 'lucide-react';
+import Contact from './contact';
 
 const ICON_MAP = {
   'job.svg': Briefcase,
   'code.svg': Code,
   'edu.svg': GraduationCap,
+  'education.svg': GraduationCap,
+  'globe.svg': Globe,
+  'window.svg': Monitor,
+  'experience.svg': Cpu,
+  'file.svg': FileText,
+  'software.svg': Cpu,
   'default': FileText
 };
 
 export default function News() {
+  const [mode, setMode] = useState('personal');
+  const events = logData[mode] || [];
+
   const getIcon = (iconName) => {
     const IconComponent = ICON_MAP[iconName] || ICON_MAP['default'];
     return <IconComponent className={styles.eventIcon} size={20} />;
   };
+
+  const sortedEvents = [...events].sort((a, b) => {
+    const [yearA, monthA = 0] = String(a.date).split('.').map(p => parseInt(p) || 0);
+    const [yearB, monthB = 0] = String(b.date).split('.').map(p => parseInt(p) || 0);
+    
+    if (yearA !== yearB) return yearB - yearA;
+    return monthB - monthA;
+  });
 
   return (
     <div className={styles.container}>
@@ -33,14 +51,32 @@ export default function News() {
         </div>
       </section>
 
+      <Contact/>
+      
+
       <section className={styles.logSection}>
         <div className={styles.header}>
           <Calendar className={styles.headerIcon} size={32} />
           <h2 className={styles.title}>Timeline Log</h2>
         </div>
         
+        <div className={styles.switchContainer}>
+          <button 
+            className={`${styles.switchBtn} ${mode === 'personal' ? styles.active : ''}`}
+            onClick={() => setMode('personal')}
+          >
+            Personal Mode
+          </button>
+           <button 
+            className={`${styles.switchBtn} ${mode === 'fallout' ? styles.active : ''}`}
+            onClick={() => setMode('fallout')}
+          >
+            Fallout Mode
+          </button>
+        </div>
+        
         <div className={styles.timeline}>
-          {[...events].reverse().map((event, index) => (
+          {sortedEvents.map((event, index) => (
             <div key={index} className={styles.timelineItem}>
               <div className={styles.dateColumn}>
                 <span className={styles.date}>{event.date}</span>
@@ -56,7 +92,7 @@ export default function News() {
                   <div className={styles.iconWrapper}>
                     {getIcon(event.icon)}
                   </div>
-                  <p className={styles.description}>{event.description}</p>
+                  <p className={styles.description} dangerouslySetInnerHTML={{ __html: event.description }} />
                 </div>
               </div>
             </div>

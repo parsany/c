@@ -1,5 +1,167 @@
-[
-    { "date": "2016.", "description": "G", "icon": "job.svg" },
-    { "date": "2017.08", "description": "A", "icon": "code.svg" },
-    { "date": "2020.1", "description": "A", "icon": "edu.svg" }
+{
+  "fallout": [
+    {
+      "date": "2001.6",
+      "description": "[BOOT] SUBJECT BORN. VITAL SIGNS STABLE. INITIALIZING LIFESTREAM...",
+      "icon": "experience.svg"
+    },
+    {
+      "date": "2008.3",
+      "description": "[MOVE] RELOCATION PROTOCOL EXECUTED. DESTINATION: TEHRAN SECTOR.",
+      "icon": "globe.svg"
+    },
+    {
+      "date": "2008.4",
+      "description": "[ENROLL] ACADEMIC ENROLLMENT: KEYHAN MODULE. DATA ACQUISITION COMMENCED.",
+      "icon": "edu.svg"
+    },
+    {
+      "date": "2010.1",
+      "description": "[SYNC] TEMPORAL SYNCHRONIZATION: GREGORIAN CALENDAR OVERRIDE.",
+      "icon": "window.svg"
+    },
+    {
+      "date": "2014.2",
+      "description": "[CODE] COGNITIVE AWAKENING. UI/UX MALICE DETECTED. XP SYSTEM ENGAGED.",
+      "icon": "code.svg"
+    },
+    {
+      "date": "2019.4",
+      "description": "[GRAD] EDUCATIONAL PHASE COMPLETE. DIPLOMA SECURED. SECTOR EXIT GRANTED.",
+      "icon": "education.svg"
+    },
+    {
+      "date": "2019.10",
+      "description": "[ACCESS] HIGHER COGNITION FACILITY ACCESSED: SRBIAU NODE CONNECTED.",
+      "icon": "edu.svg"
+    },
+    {
+      "date": "2020.1",
+      "description": "[ERR] GLOBAL SYSTEM ERROR. CORE PROCESSES SUSPENDED. DOWNTIME INITIATED.",
+      "icon": "file.svg"
+    },
+    {
+      "date": "2020.3",
+      "description": "[ANALYSIS] SYSTEM ARCHITECTURE PEAKED. EXISTENTIAL LOGIC OVERRIDE ACTIVE.",
+      "icon": "software.svg"
+    },
+    {
+      "date": "2022.9",
+      "description": "[ALERT] EXTERNAL SYSTEM INTERFERENCE DETECTED. POLITICAL STATIC RISE.",
+      "icon": "window.svg"
+    },
+    {
+      "date": "2023.4",
+      "description": "[REFACTOR] CORE IDENTITY REFACTORING. MAJOR VERSION UPGRADE IN PROGRESS.",
+      "icon": "experience.svg"
+    },
+    {
+      "date": "2024.1",
+      "description": "[DEPLOY] INTERFACE SPECIALIST ASSIGNED. SECTOR: FRONTEND DEVELOPMENT.",
+      "icon": "job.svg"
+    },
+    {
+      "date": "2024.8",
+      "description": "[CMD] COMMAND CENTER ESTABLISHED. DEPLOYING GLOBAL SOFTWARE SOLUTIONS.",
+      "icon": "software.svg"
+    },
+    {
+      "date": "2025.1",
+      "description": "[ALERT] FIREWALL BREACH DETECTED. PERSISTENT EXTERNAL INTERFERENCE.",
+      "icon": "window.svg"
+    }
+  ],
+  "personal": [
+    {
+      "date": "2001.06",
+      "description": "was born.",
+      "icon": "experience.svg"
+    },
+    {
+      "date": "2008.03",
+      "description": "moved to tehran.",
+      "icon": "globe.svg"
+    },
+    {
+      "date": "2008.04",
+      "description": "studied in Keyhan School.",
+      "icon": "edu.svg"
+    },
+    {
+      "date": "2009.06",
+      "description": "Started kyokushin karate.",
+      "icon": "experience.svg"
+    },
+
+    {
+      "date": "2010.01",
+      "description": "got introduced to gregorian calendar.",
+      "icon": "window.svg"
+    },
+    {
+      "date": "2014.02",
+      "description": "got introduced to programming in school, had this science competition and i wanted the powerpoint to have a timer (for bad UX, aka give oponents anxiety) and a menu with locks to open the stages and their XP.",
+      "icon": "code.svg"
+    },
+    {
+      "date": "2019.04",
+      "description": "graduated from highschool.",
+      "icon": "education.svg"
+    },
+    {
+      "date": "2019.10",
+      "description": "started studying CS in SRBIAU university.",
+      "icon": "edu.svg"
+    },
+    {
+      "date": "2020.01",
+      "description": "covid era, took 5 semesters off.",
+      "icon": "file.svg"
+    },
+    {
+      "date": "2020.02",
+      "description": "stopped Karate.",
+      "icon": "experience.svg"
+    },
+    {
+      "date": "2020.03",
+      "description": "my interest in systems started to peak plus philosophy.",
+      "icon": "software.svg"
+    },
+    {
+      "date": "2022.09",
+      "description": "some govermental issues.",
+      "icon": "window.svg"
+    },
+    {
+      "date": "2023.04",
+      "description": "character arc.",
+      "icon": "experience.svg"
+    },
+    {
+      "date": "2023.07",
+      "description": "began playing Guitar.",
+      "icon": "experience.svg"
+    },
+    {
+      "date": "2023.10",
+      "description": "made this website, then got inspored by <a href='https://shinmera.com' target='_blank' style='color: var(--highlight-color); text-decoration: underline;'>shinmera</a> to make this section.",
+      "icon": "experience.svg"
+    },
+    {
+      "date": "2024.01",
+      "description": "started working as a frontend developer.",
+      "icon": "job.svg"
+    },
+    {
+      "date": "2024.08",
+      "description": "running an agency for software solutions.",
+      "icon": "software.svg"
+    },
+    {
+      "date": "2025.01",
+      "description": "more govermental issues, this one kinda hurt me",
+      "icon": "globe.svg"
+    }
   ]
+}

@@ -36,6 +36,35 @@
   color: var(--foreground);
 }
 
+.switchContainer {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.switchBtn {
+  padding: 8px 16px;
+  border: 1px solid var(--divider-color);
+  border-radius: 20px;
+  background-color: var(--card-background);
+  color: var(--foreground);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.switchBtn:hover {
+  background-color: var(--section-bg-b);
+}
+
+.switchBtn.active {
+  background-color: var(--highlight-color);
+  border-color: var(--highlight-color);
+  color: var(--card-background);
+  font-weight: 600;
+}
+
 /* Timeline */
 .timeline {
   display: flex;

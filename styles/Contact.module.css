@@ -1,70 +1,121 @@
 .container {
-  margin: 0; 
-  width: 900px;
-  padding: 20px;
-  background-color: var(--primary-color);
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  color: var(--hover-text-color); 
-  font-family: 'Georgia', serif;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--foreground);
+    margin-bottom: 20px;
+
 }
 
-.container h1 {
-  font-size: 2rem;
+.header {
   text-align: center;
-  color: var(--hover-text-color); 
+  margin-bottom: 20px;
 }
 
-.contactInfo {
-  margin-top: 20px;
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, var(--highlight-color, #e08e42) 0%, #ff7e5f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Outfit', sans-serif;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary, #888);
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.card {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  font-family: 'Roboto', sans-serif; 
-  font-size: 1.2rem; 
-  padding-bottom: 10px;
-}
-
-.contactInfo a {
-  color: var(--hover-text-color); 
+  align-items: center;
+  padding: 24px;
+  background-color: var(--card-background, rgba(255, 255, 255, 0.03));
+  border: 1px solid var(--divider-color, rgba(255, 255, 255, 0.1));
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   text-decoration: none;
-  transition: color 0.3s;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
 }
 
-.contactInfo a:hover {
-  text-decoration: underline;
-  color: var(--highlight-color); 
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--highlight-color, #e08e42);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  background-color: var(--card-hover-bg, rgba(255, 255, 255, 0.06));
 }
 
-@media (max-width: 768px) {
+.iconBox {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(224, 142, 66, 0.1) 0%, rgba(255, 126, 95, 0.1) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16px;
+  color: var(--highlight-color, #e08e42);
+  transition: transform 0.3s ease;
+}
+
+.card:hover .iconBox {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.content {
+  flex: 1;
+}
+
+.content h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: var(--foreground);
+}
+
+.content p {
+  font-size: 0.9rem;
+  color: var(--text-secondary, #aaa);
+  font-family: 'Fira Code', monospace;
+}
+
+.arrow {
+  color: var(--text-secondary, #666);
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+}
+
+.card:hover .arrow {
+  opacity: 1;
+  transform: translateX(0);
+  color: var(--highlight-color, #e08e42);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
   .container {
-    width: 100%; 
-    padding: 15px; 
+    padding: 40px 20px;
   }
-
-  .container h1 {
-    font-size: 1.8rem; 
+  
+  .title {
+    font-size: 2rem;
   }
-
-  .contactInfo {
-    font-size: 1rem; 
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 10px; 
-  }
-
-  .container h1 {
-    font-size: 1.5rem; 
-  }
-
-  .contactInfo {
-    gap: 8px; 
-  }
-
-  .contactInfo a {
-    font-size: 0.9rem; 
+  
+  .grid {
+    grid-template-columns: 1fr;
   }
 }
