@@ -11,7 +11,7 @@ export default function Landing() {
         <title>Parsa Niavand | Software Engineer & Researcher</title>
         <meta
           name="description"
-          content="Discover Parsa Niavand's expertise in software engineering, AI, and robotics. Explore projects, research, and professional experience."
+          content="Discover Parsa Niavand&apos;s expertise in software engineering, AI, and robotics. Explore projects, research, and professional experience."
         />
         <meta
           name="keywords"
@@ -40,9 +40,9 @@ export default function Landing() {
               Building <span className={Styles.highlight}>Intelligent Systems</span> for Tomorrow
             </h1>
             <p className={Styles.heroSubtitle}>
-              I'm Parsa Niavand, a software engineer and researcher passionate about 
+              I&apos;m Parsa Niavand, a software engineer and researcher passionate about 
               AI, robotics, and creating technology that makes a difference. 
-              Let's build something remarkable together.
+              Let&apos;s build something remarkable together.
             </p>
             <div className={Styles.heroCTA}>
               <Link href="/projects" className={Styles.primaryBtn}>
@@ -334,10 +334,10 @@ export default function Landing() {
       <section className={Styles.ctaSection}>
         <div className={Styles.container}>
           <div className={Styles.ctaContent}>
-            <h2>Let's Build Something Together</h2>
+            <h2>Let&apos;s Build Something Together</h2>
             <p>
               Whether you have a project in mind, want to collaborate on research, 
-              or just want to say hello — I'd love to hear from you.
+              or just want to say hello — I&apos;d love to hear from you.
             </p>
             <div className={Styles.ctaButtons}>
               <Link href="mailto:quantinitycorp@gmail.com" className={Styles.ctaPrimary}>
