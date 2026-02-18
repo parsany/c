@@ -52,7 +52,7 @@ export default function Footer() {
         <div className={Styles.footerBottom}>
           <p>
             &copy; {new Date().getFullYear()} Parsa Niavand. All website rights
-            open. Made with Next.js, hosted over Github Pages.
+            open. Made with Next.js, hosted over GitHub Pages.
           </p>
         </div>
       </div>

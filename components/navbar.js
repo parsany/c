@@ -28,6 +28,7 @@ export default function NavBar() {
   };
 
   const NAV_LINKS = [
+    { title: "Landing", href: "/landing" },
     { title: "Projects", href: "/projects" },
     { title: "Skills", href: "/skills" },
     { title: "Experience", href: "/experience" },
