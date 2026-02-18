@@ -56,7 +56,7 @@ export default function Landing() {
             </div>
             <div className={Styles.heroStats}>
               <div className={Styles.statItem}>
-                <span className={Styles.statNumber}>7+</span>
+                <span className={Styles.statNumber}>15+</span>
                 <span className={Styles.statLabel}>Projects Delivered</span>
               </div>
               <div className={Styles.statDivider}></div>
