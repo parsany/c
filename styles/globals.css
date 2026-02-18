@@ -58,65 +58,71 @@
 
   /* Icon Filter */
   --icon-filter: none;
+
+  /* Social Icon Color */
+  --social-icon-color: #0056b3;
 }
 
 body.dark-mode {
-  --background: #0f172a;
-  --foreground: #e2e8f0;
-  --text-color: #e2e8f0;
-  --hover-text-color: #38bdf8;
-  --background-color: #0f172a;
-  --background-cc: #0f172a;
-  --primary-color: #1e293b;
-  --card-background: #1e293b;
-  --title-color: #e2e8f0;
-  --subtitle-color: #94a3b8;
-  --highlight-color: #38bdf8;
+  --background: #1A1C20;
+  --foreground: #F1F2F1;
+  --text-color: #F1F2F1;
+  --hover-text-color: #1F9874;
+  --background-color: #1A1C20;
+  --background-cc: #1A1C20;
+  --primary-color: #1A1C20;
+  --card-background: #23272e;
+  --title-color: #F1F2F1;
+  --subtitle-color: #A0A5A7;
+  --highlight-color: #1F9874;
   --highlight-color2: #02c39a;
   --highlight-color3: #ff5a5f;
-  --banner-background: #1e293b;
-  --project-name-color: #38bdf8;
-  --project-description-color: #94a3b8;
+  --banner-background: #23272e;
+  --project-name-color: #1F9874;
+  --project-description-color: #A0A5A7;
   --project-date-color: #64748b;
   --foreground2: #dfa460;
   --skills-nav: rgb(89, 133, 7);
   --skills-nav-closed: rgb(150, 150, 150);
-  --experience-company: #94a3b8;
+  --experience-company: #A0A5A7;
   --experience-dates: #64748b;
-  --experience-color: #e2e8f0;
-  --experience-res: #94a3b8;
-  --skills-color: #1e293b;
+  --experience-color: #F1F2F1;
+  --experience-res: #A0A5A7;
+  --skills-color: #23272e;
   --box-color: #334155;
   --skill-name: #ffc65c;
-  --skill-title: #e2e8f0;
+  --skill-title: #F1F2F1;
   --button-color: rgb(235, 235, 235);
   --button-color2: rgb(51, 65, 85);
   --button-color3: rgb(226, 232, 240);
-  --search-color: #1e293b;
+  --search-color: #23272e;
   --code-color: #282C34;
-  --nice-color: #ffc107;
+  --nice-color: #1F9874;
 
   /* Section alternating backgrounds */
-  --section-bg-a: #1e273b;
-  --section-bg-b: #162032;
+  --section-bg-a: #1A1C20;
+  --section-bg-b: #15171a;
   --section-border: rgba(255, 255, 255, 0.06);
 
-  /* Research card styling - soft slate blue glassmorphic */
-  --research-card-bg: rgba(56, 189, 248, 0.06);
-  --research-card-border: rgba(56, 189, 248, 0.18);
-  --research-card-title: #38bdf8;
+  /* Research card styling - soft teal glassmorphic */
+  --research-card-bg: rgba(31, 152, 116, 0.06);
+  --research-card-border: rgba(31, 152, 116, 0.18);
+  --research-card-title: #1F9874;
   --research-icon-color: #64748b;
 
   /* Tag pill in dark mode */
   --tag-pill-bg: rgba(255, 255, 255, 0.08);
   --tag-pill-border: rgba(255, 255, 255, 0.15);
-  --tag-pill-color: #94a3b8;
+  --tag-pill-color: #A0A5A7;
 
   /* Divider */
   --divider-color: rgba(255, 255, 255, 0.08);
 
   /* Icon Filter */
   --icon-filter: invert(1);
+
+  /* Social Icon Color */
+  --social-icon-color: #1F9874;
 }
 
 html,

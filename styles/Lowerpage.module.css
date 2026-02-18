@@ -8,7 +8,7 @@
 
 /* Dark mode override for non-home pages */
 :global(body.dark-mode) .footerNotHome {
-  background-color: #1e293b;
+  background-color: var(--background);
   border-top: 1px solid var(--section-border);
 }
 
@@ -44,22 +44,56 @@
   margin: 0;
 }
 
+.navColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+}
+
 .footerNav {
   display: flex;
   gap: 28px;
   align-items: center;
 }
 
-.footerNav a {
-  font-size: 0.9rem;
-  color: var(--subtitle-color);
-  text-decoration: none;
-  transition: color 0.2s ease;
-  font-weight: 500;
+.socialLinks {
+  display: flex;
+  gap: 12px;
 }
 
-.footerNav a:hover {
-  color: var(--title-color);
+.socialIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  background-color: rgba(128, 128, 128, 0.1);
+  text-decoration: none;
+}
+
+.socialIcon:hover {
+  transform: translateY(-2px);
+  background-color: var(--highlight-color);
+}
+
+.iconMask {
+  width: 18px;
+  height: 18px;
+  background-color: var(--social-icon-color);
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  transition: background-color 0.2s ease;
+}
+
+.socialIcon:hover .iconMask {
+  background-color: #ffffff;
 }
 
 .divider {
@@ -86,6 +120,10 @@
     gap: 20px;
     align-items: center;
     text-align: center;
+  }
+
+  .navColumn {
+    align-items: center;
   }
 
   .footerNav {
