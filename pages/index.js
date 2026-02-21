@@ -40,11 +40,7 @@ export default function Main() {
           <MainCard />
         </div>
 
-        {/* <div className={Styles.BoxContainer}>
-          <ResearchInterests />
-        </div> */}
-
-        <div className={Styles.BoxContainer}>
+        <div className={Styles.BoxContainer} style={{background: `var(--section-bg-b)`}}>
           <Projects LimitShow={true} />
         </div>
 
@@ -53,9 +49,16 @@ export default function Main() {
             <Publications />
           </div>
         )}
+
+         <div className={Styles.BoxContainer}>
+          <ResearchInterests />
+        </div>
+        
         <div className={Styles.BoxContainer}>
           <RandomPost />
         </div>
+
+       
       </div>
     </div>
   );

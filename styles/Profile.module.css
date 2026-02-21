@@ -121,7 +121,7 @@
 .heroTitle {
   font-size: 1.15rem;
   font-weight: 500;
-  color: white;
+  color: #2b9e7b;
   margin-bottom: 16px;
 }
 
@@ -139,13 +139,13 @@
 
 .sectionTitle {
   font-size: 1.4rem;
-color: white;
+  color: white;
   margin-bottom: 4px;
   font-weight: 600;
 }
 
 .cvButtonHero {
-  background-color: #0a6c0a;
+  background-color: #05694b;
   color: #ffffff;
   padding: 10px 20px;
   border: none;
@@ -159,7 +159,7 @@ color: white;
 }
 
 .cvButtonHero:hover {
-  background-color: #085508;
+  background-color: #004832;
 }
 
 .bottomGrid {
