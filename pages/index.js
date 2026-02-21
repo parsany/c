@@ -36,22 +36,24 @@ export default function Main() {
       <UpdateBar />
 
       <div className={Styles.container}>
-        <MainCard />
-
-        <div className={`${Styles.sectionWrapper} ${Styles.sectionA}`}>
-          <ResearchInterests />
+        <div className={Styles.BoxContainer} style={{ padding: 0, overflow: "hidden", border: "none" }}>
+          <MainCard />
         </div>
 
-        <div className={`${Styles.sectionWrapper} ${Styles.sectionB}`}>
+        {/* <div className={Styles.BoxContainer}>
+          <ResearchInterests />
+        </div> */}
+
+        <div className={Styles.BoxContainer}>
           <Projects LimitShow={true} />
         </div>
 
         {hasPublications && (
-          <div className={`${Styles.sectionWrapper} ${Styles.sectionA}`}>
+          <div className={Styles.BoxContainer}>
             <Publications />
           </div>
         )}
-        <div className={`${Styles.sectionWrapper} ${hasPublications ? Styles.sectionB : Styles.sectionA}`}>
+        <div className={Styles.BoxContainer}>
           <RandomPost />
         </div>
       </div>

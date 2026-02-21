@@ -2,12 +2,10 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Styles from "@/styles/Navbar.module.css";
 import { Sun, Moon } from "lucide-react";
-import CV from "./CV";
 
 export default function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(true);
-  const [isCVOpen, setIsCVOpen] = useState(false);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
@@ -81,16 +79,6 @@ export default function NavBar() {
             </li>
           ))}
 
-          <li className={Styles.navitem}>
-            <button
-              onClick={() => setIsCVOpen(true)}
-              className={Styles.cvButton}
-              style={{ border: 'none', cursor: 'pointer', fontFamily: 'inherit' }}
-            >
-              CV
-            </button>
-          </li>
-
           <li className={`${Styles.navitem} ${Styles.desktopThemeToggle}`}>
             <button
               onClick={toggleTheme}
@@ -102,7 +90,6 @@ export default function NavBar() {
           </li>
         </ul>
       </nav>
-      <CV isOpen={isCVOpen} onClose={() => setIsCVOpen(false)} />
     </header>
   );
 }

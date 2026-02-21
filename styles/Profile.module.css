@@ -1,8 +1,12 @@
 /* Hero Section */
 .hero {
   position: relative;
-  padding: 60px 20px;
+  padding: 20px 25px;
+  min-height: 600px;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
   background-image: url("/content/W01.jpg");
   background-size: cover;
@@ -35,12 +39,42 @@
 .heroContent {
   max-width: 900px;
   margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 50px;
   position: relative;
   z-index: 2;
+}
 
+.innerCard {
+  background-color: #23272e;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.topSection {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.headerInfo {
+  flex: 1;
+}
+
+.nameRow {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.pronouns {
+  font-size: 0.9rem;
+  color: white;
+  font-weight: 500;
 }
 
 .imageWrapper {
@@ -56,26 +90,7 @@
   border: 2px solid rgba(2, 195, 154, 0.5);
 }
 
-@keyframes glowPulse {
-  0% {
-    box-shadow: 0 0 20px rgba(31, 152, 116, 0.4);
-    transform: scale(1);
-  }
-  50% {
-    box-shadow: 0 0 40px rgba(31, 152, 116, 0.8), 0 0 80px rgba(31, 152, 116, 0.4);
-    transform: scale(0.98);
-    border-color: rgba(31, 152, 116, 0.9);
-  }
-  100% {
-    box-shadow: 0 0 20px rgba(31, 152, 116, 0.4);
-    transform: scale(1);
-  }
-}
 
-:global(body.dark-mode) .imageWrapper::before {
-  border-color: #1F9874;
-  animation: glowPulse 4s infinite ease-in-out;
-}
 
 .profileImage {
   border-radius: 50%;
@@ -87,9 +102,9 @@
   transition: all 0.5s ease;
 }
 
-:global(body.dark-mode) .profileImage {
+/* :global(body.dark-mode) .profileImage {
   box-shadow: 0 0 30px rgba(31, 152, 116, 0.3);
-}
+} */
 
 .textContent {
   flex: 1;
@@ -98,23 +113,78 @@
 .heroName {
   font-size: 2.4rem;
   font-weight: 700;
-  color: #e2e8f0;
-  margin-bottom: 6px;
+  color: white;
+  margin-bottom: 0;
   font-family: "Inter", "Montserrat", sans-serif;
 }
 
 .heroTitle {
   font-size: 1.15rem;
   font-weight: 500;
-  color: #94a3b8;
+  color: white;
   margin-bottom: 16px;
 }
 
 .heroBio {
   font-size: 1rem;
   line-height: 1.7;
-  color: #cbd5e1;
-  max-width: 500px;
+  color: rgb(187, 187, 187);
+}
+
+.bioSection {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sectionTitle {
+  font-size: 1.4rem;
+color: white;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.cvButtonHero {
+  background-color: #0a6c0a;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  width: fit-content;
+  margin-top: 6px;
+  transition: background-color 0.2s;
+}
+
+.cvButtonHero:hover {
+  background-color: #085508;
+}
+
+.bottomGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 24px;
+}
+
+.gridColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.listItems {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.95rem;
 }
 
 .socialLinks {
@@ -144,10 +214,27 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-  .heroContent {
+  .topSection {
     flex-direction: column;
     text-align: center;
     gap: 30px;
+  }
+
+  .nameRow {
+    justify-content: center;
+  }
+
+  .bottomGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .innerCard {
+    padding: 30px 20px;
+  }
+
+  .cvButtonHero {
+    margin: 10px auto 0;
   }
 
   .profileImage {
@@ -166,6 +253,7 @@
   .heroBio {
     max-width: 100%;
     font-size: 0.95rem;
+    text-align: justify;
   }
 
   .socialLinks {

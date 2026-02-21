@@ -24,11 +24,10 @@
   width: 100%;
 }
 
-/* Legacy classes kept for compatibility */
 .BoxContainer {
   width: 100%;
   max-width: 1200px;
-  background-color: var(--primary-color);
+  background-color: var(--card-background);
   border-radius: 8px;
   padding-top: 20px;
   padding-bottom: 20px;
