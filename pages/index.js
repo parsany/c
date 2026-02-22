@@ -50,7 +50,7 @@ export default function Main() {
           </div>
         )}
 
-         <div className={Styles.BoxContainer}>
+         <div className={Styles.BoxContainer} style={{background: `var(--section-bg-b)`}}>
           <ResearchInterests />
         </div>
         

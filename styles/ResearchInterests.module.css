@@ -28,7 +28,7 @@
 }
 
 .card {
-  background-color: var(--research-card-bg);
+  background-color: var(--card-background);
   border: 1px solid var(--research-card-border);
   border-radius: 14px;
   padding: 32px 24px;
