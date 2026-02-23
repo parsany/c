@@ -5,12 +5,14 @@ import { Sun, Moon } from "lucide-react";
 
 export default function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme) {
       setIsDarkMode(savedTheme === "dark");
+    } else {
+      setIsDarkMode(false);
     }
   }, []);
 

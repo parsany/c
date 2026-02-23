@@ -6,10 +6,11 @@ import Head from "next/head";
 
 export default function App({ Component, pageProps }) {
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
+    let savedTheme = localStorage.getItem("theme");
 
     if (!savedTheme) {
-      localStorage.setItem("theme", "dark");
+      savedTheme = "light";
+      localStorage.setItem("theme", savedTheme);
     }
     document.body.classList.toggle("dark-mode", savedTheme === "dark");
   }, []);
