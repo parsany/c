@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "@/styles/Projects.module.css";
 import Image from "next/image";
-import { ProjectStuff } from "@/public/JSONJS";
+import { ProjectAcademic } from "@/public/JSONJS";
 
 export default function Projects({ NumberShown }) {
   const [hoveredId, setHoveredId] = useState(null);
@@ -62,7 +62,7 @@ export default function Projects({ NumberShown }) {
     return `${styles.card} ${positionClass} ${directionClass}`.trim();
   };
 
-  const sortedProjects = ProjectStuff.sort((a, b) => new Date(b.date) - new Date(a.date));
+  const sortedProjects = ProjectAcademic.sort((a, b) => new Date(b.date) - new Date(a.date));
   const displayedProjects = NumberShown === 0 ? sortedProjects : sortedProjects.slice(0, NumberShown);
 
   return (

@@ -1,10 +1,10 @@
-import styles from '@/styles/PageStyle.module.css';
-import Projects from '../../components/projects';
-export default function ProjectsPage() {
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
-  return (
-    <div className={styles.container}>
-      <Projects LimitShow={false}/>
-  </div>
-  );
+export default function ProjectsPage() {
+  const router = useRouter();
+  useEffect(() => {
+    router.replace('/projects/academic');
+  }, [router]);
+  return null;
 }

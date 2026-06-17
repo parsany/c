@@ -67,6 +67,21 @@
   height: 100%;
 }
 
+.cardStaticWrapper {
+  cursor: default !important;
+}
+
+.cardStaticWrapper:hover {
+  transform: none !important;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+.cardStatic {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .card.active {
   z-index: 10;
   opacity: 1;
@@ -276,6 +291,57 @@
   background-color: var(--primary-color);
   color: var(--hover-text-color);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.toggleContainer {
+  position: relative;
+  display: flex;
+  width: 280px;
+  margin: 0 auto 30px auto;
+  background-color: var(--card-background);
+  border: 1px solid var(--section-border);
+  border-radius: 30px;
+  padding: 4px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.toggleSlider {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  background-color: var(--highlight-color);
+  border-radius: 26px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+}
+
+.sliderLeft {
+  transform: translateX(0);
+}
+
+.sliderRight {
+  transform: translateX(100%);
+}
+
+.toggleButton {
+  flex: 1;
+  border: none;
+  background: none;
+  padding: 10px 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-color);
+  cursor: pointer;
+  z-index: 1;
+  border-radius: 26px;
+  transition: color 0.3s ease;
+  outline: none;
+}
+
+.toggleActive {
+  color: #ffffff !important;
 }
 
 /* Responsive */
