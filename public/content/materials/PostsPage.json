@@ -1,80 +1,46 @@
 [
   {
     "id": "P1",
-    "name": "Post 1: Dynamic Simulation in C++",
-    "title": "Dynamic Simulation in C++",
-    "description": "Learn how to create a dynamic simulation in C++ to simulate real-world systems.",
-    "date": "Jan 10, 2000",
-    "emoji": "🖥️",
+    "name": "Formally Verifying Distributed Consensus with Coq",
+    "title": "Formally Verifying Distributed Consensus with Coq",
+    "description": "An in-depth look at using the Coq proof assistant to formally specify and verify safety properties of distributed consensus protocols like Raft.",
+    "date": "Jan 22, 2026",
+    "emoji": "🛡️",
     "link": "#",
-    "tags": ["C++", "Simulation", "Programming"],
-    "body": "In this post, we will learn how to create a dynamic simulation in C++. We will focus on simulating a simple system where the state evolves over time based on user inputs.\n\n### Example Code\n\n```cpp\n#include <iostream>\n#include <vector>\n\nclass Particle {\npublic:\n    float x, y;\n    Particle(float x, float y) : x(x), y(y) {}\n    void update() {\n        x += 0.1f;\n        y += 0.1f;\n    }\n};\n\nint main() {\n    std::vector<Particle> particles;\n    particles.push_back(Particle(0.0f, 0.0f));\n\n    for (int i = 0; i < 10; ++i) {\n        for (auto& particle : particles) {\n            particle.update();\n            std::cout << \"Particle position: \" << particle.x << \", \" << particle.y << std::endl;\n        }\n    }\n    return 0;\n}\n```\n\nThis C++ code demonstrates a basic simulation where particles update their positions over time."
+    "tags": ["Coq", "Formal Verification", "Distributed Systems"],
+    "body": "Distributed consensus is notoriously difficult to get right. Subtle edge cases in network partitioning, leader election, and log replication can lead to catastrophic split-brain scenarios or data loss. While extensive testing and fuzzy testing help, they cannot guarantee correctness under every conceivable interleaving of network delays and failures. To achieve absolute certainty, we must turn to formal verification.\n\nIn this article, we explore how to specify and prove the safety properties of a simplified distributed consensus protocol using **Coq**, an interactive theorem prover based on the Calculus of Inductive Constructions.\n\n### Specifying the Protocol State\n\nWe begin by modeling the network and node states as inductive data types in Coq. Each node has a term, a log of commands, and its current role (Follower, Candidate, or Leader).\n\n```coq\nInductive Role := Follower | Candidate | Leader.\n\nRecord NodeState := {\n  term : nat;\n  log : list (nat * string); (* term * command *)\n  votedFor : option nat;\n  role : Role\n}.\n```\n\nWe represent the network as a set of packets in transit. A packet contains a sender, receiver, and a message type (e.g., RequestVote, AppendEntries).\n\n### Defining Invariants\n\nA critical invariant of protocols like Raft is **Election Safety**: at most one leader can be elected in any given term. We formalize this statement in Coq as a proposition:\n\n```coq\nDefinition election_safety (term : nat) (states : nat -> NodeState) :=\n  forall n1 n2,\n    (role (states n1) = Leader /\\ term (states n1) = term) ->\n    (role (states n2) = Leader /\\ term (states n2) = term) ->\n    n1 = n2.\n```\n\n### Inductive Proofs in Coq\n\nTo prove that `election_safety` holds across all reachable states, we prove it by induction on the transition relation of our system:\n1. **Base Case**: The invariant holds in the initial state.\n2. **Inductive Step**: If the invariant holds in state `S`, and a state transition `S -> S'` occurs (such as a node receiving a vote), the invariant still holds in state `S'`.\n\n```coq\nTheorem election_safety_invariant : forall s, \n  reachable s -> forall term, election_safety term (node_states s).\nProof.\n  intros s Hreach. induction Hreach.\n  - (* Base Case: Initial state *)\n    intros term n1 n2 H1 H2. (* ... proof details ... *)\n  - (* Inductive Step: Transition *)\n    intros term n1 n2 H1 H2. (* ... proof details ... *)\nQed.\n```\n\nThrough constructive logic, Coq compiles these proof scripts into lambda terms, confirming that the system invariants hold mathematically under every possible execution path."
   },
   {
     "id": "P2",
-    "name": "Post 2: Understanding JavaScript Closures",
-    "title": "Understanding JavaScript Closures",
-    "description": "Learn what closures are in JavaScript and how to use them effectively.",
-    "date": "Feb 15, 2000",
-    "emoji": "🔒",
+    "name": "Beyond REST: Architecting Low-Latency Real-Time Systems",
+    "title": "Beyond REST: Architecting Low-Latency Real-Time Systems",
+    "description": "How to combine Next.js, NestJS, and Redis pub/sub to build a messaging infrastructure capable of scaling to thousands of concurrent connections.",
+    "date": "Mar 05, 2026",
+    "emoji": "⚡",
     "link": "#",
-    "tags": ["JavaScript", "Closures", "Programming"],
-    "body": "Closures are a powerful feature of JavaScript that allow a function to remember its lexical scope even after it has been executed. Let's dive into closures and how they work.\n\n### Example Code\n\n```javascript\nfunction outer() {\n  let count = 0;\n  return function inner() {\n    count++;\n    console.log(count);\n  }\n}\n\nconst counter = outer();\ncounter(); // 1\ncounter(); // 2\ncounter(); // 3\n```\n\nIn the above example, the `inner` function forms a closure that 'remembers' the `count` variable from the `outer` function."
+    "tags": ["Next.js", "NestJS", "Socket.io", "Redis"],
+    "body": "When building real-time applications—such as chat ecosystems, live logistics trackers, or collaborative whiteboards—traditional polling or stateless HTTP REST interfaces fall short. They introduce high latency, overload databases, and waste bandwidth. \n\nTo build a highly responsive system, we must establish persistent, bi-directional communication channels. In this guide, we dive into how to architect a low-latency real-time system using NestJS, Socket.io, and a Redis Pub/Sub backplane.\n\n### The Architecture Overview\n\n1. **Client Layer**: Next.js client establishing a connection using a Socket.io client library.\n2. **API & Gateway Layer**: NestJS cluster running WebSocket Gateways behind a load balancer.\n3. **Message Broker / Pub/Sub**: Redis instances distributing WebSocket messages across independent NestJS instances.\n4. **Database & Cache**: PostgreSQL for persistent messages, and Redis for caching session states.\n\n### NestJS WebSocket Gateway\n\nHere is a clean implementation of a real-time gateway in NestJS utilizing Socket.io:\n\n```typescript\n@WebSocketGateway({\n  cors: { origin: '*' },\n  namespace: 'chat'\n})\nexport class ChatGateway implements OnGatewayConnection, OnGatewayDisconnect {\n  @WebSocketServer() server: Server;\n\n  async handleConnection(client: Socket) {\n    const token = client.handshake.query.token;\n    // Authenticate and join user to their personal channel room\n    client.join(`user:${client.id}`);\n  }\n\n  @SubscribeMessage('sendMessage')\n  async handleMessage(\n    @ConnectedSocket() client: Socket,\n    @MessageBody() payload: { recipientId: string; content: string }\n  ) {\n    // Dispatch to the broker so all gateway nodes are aware of the recipient\n    this.server.to(`user:${payload.recipientId}`).emit('message', {\n      senderId: client.id,\n      content: payload.content,\n      timestamp: new Date()\n    });\n  }\n\n  handleDisconnect(client: Socket) {\n    client.leave(`user:${client.id}`);\n  }\n}\n```\n\n### Scaling with Redis Pub/Sub\n\nWhen scaling WebSocket servers horizontally, clients will connect to different server instances. If Alice is connected to Node A and Bob is connected to Node B, Node A cannot directly push a message to Bob's socket. \n\nTo solve this, we bind Socket.io to a Redis adapter. When a message is sent to a room, the event is published to Redis and broadcasted to all active NestJS instances, which deliver it to the target sockets instantly."
   },
   {
     "id": "P3",
-    "name": "Post 3: The Power of CSS Grid",
-    "title": "The Power of CSS Grid",
-    "description": "Discover the flexibility and power of CSS Grid to create complex layouts.",
-    "date": "Apr 10, 2001",
-    "emoji": "🗺️",
+    "name": "Designing Type-Safe Web APIs with Next.js and tRPC",
+    "title": "Designing Type-Safe Web APIs with Next.js and tRPC",
+    "description": "Why we migrated our projects from standard REST endpoints to a type-safe tRPC structure, eliminating manual API type sharing.",
+    "date": "May 12, 2026",
+    "emoji": "⚛️",
     "link": "#",
-    "tags": ["CSS", "Grid", "Web Design"],
-    "body": "CSS Grid is a powerful layout system that allows for complex and responsive layouts with ease. In this post, we'll explore the basics of CSS Grid and build a simple layout.\n\n### Example Code\n\n```css\n.container {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 20px;\n}\n\n.item {\n  background-color: #f0f0f0;\n  padding: 20px;\n  text-align: center;\n}\n```\n\n```html\n<div class=\"container\">\n  <div class=\"item\">Item 1</div>\n  <div class=\"item\">Item 2</div>\n  <div class=\"item\">Item 3</div>\n</div>\n```\n\nThis CSS Grid layout creates a simple three-column design with a gap between each item."
+    "tags": ["Next.js", "tRPC", "TypeScript"],
+    "body": "In a full-stack TypeScript environment, maintaining synchronization between backend schemas and frontend types is a constant struggle. When you change a database column or a request handler, you have to manually update your frontend fetch calls and models. If you forget, your application breaks in production.\n\n**tRPC (TypeScript RPC)** solves this problem by allowing you to share types directly from your backend router to your frontend, without generating any client-side code.\n\n### Defining the Backend Router\n\nWith tRPC, you define your procedures and input validation schemas using libraries like Zod:\n\n```typescript\nimport { initTRPC } from '@trpc/server';\nimport { z } from 'zod';\n\nconst t = initTRPC.create();\n\nexport const appRouter = t.router({\n  getUserById: t.procedure\n    .input(z.object({ id: z.string() }))\n    .query(async ({ input }) => {\n      // Perform type-safe query via Prisma ORM\n      const user = await prisma.user.findUnique({\n        where: { id: input.id }\n      });\n      return user;\n    }),\n});\n\nexport type AppRouter = typeof appRouter;\n```\n\n### Consuming the Router in React/Next.js\n\nOn the frontend, we import the `AppRouter` type definition (not the runtime code) to instantiate our tRPC hooks:\n\n```typescript\nimport { createTRPCReact } from '@trpc/react-query';\nimport type { AppRouter } from '../server/router';\n\nexport const trpc = createTRPCReact<AppRouter>();\n\nexport default function UserProfile({ id }: { id: string }) {\n  // Hovering over 'data' shows compile-time properties of the User schema!\n  const { data, isLoading, error } = trpc.getUserById.useQuery({ id });\n\n  if (isLoading) return <div>Loading...</div>;\n  if (error) return <div>Error: {error.message}</div>;\n\n  return (\n    <div>\n      <h1>{data?.name}</h1>\n      <p>Email: {data?.email}</p>\n    </div>\n  );\n}\n```\n\nBy leveraging the type system, any changes made to the query input schema (e.g. changing `id` from `string` to `number`) are caught by the TypeScript compiler immediately on both backend and frontend, preventing runtime API integration errors completely."
   },
   {
     "id": "P4",
-    "name": "Post 4: Mastering Asynchronous JavaScript",
-    "title": "Mastering Asynchronous JavaScript",
-    "description": "Understand how async/await and Promises work to handle asynchronous operations in JavaScript.",
-    "date": "Mar 20, 2000",
-    "emoji": "⏳",
+    "name": "Optimizing Vector Canvas Rendering on Mobile Hardware",
+    "title": "Optimizing Vector Canvas Rendering on Mobile Hardware",
+    "description": "Lessons learned from building high-frequency location tracking dashboards with hardware-accelerated rendering.",
+    "date": "Jun 02, 2026",
+    "emoji": "🗺️",
     "link": "#",
-    "tags": ["JavaScript", "Asynchronous", "Promises"],
-    "body": "Asynchronous JavaScript is an essential concept in modern web development. Let's explore how async/await and Promises work to handle asynchronous operations.\n\n### Example Code\n\n```javascript\nfunction fetchData(url) {\n  return new Promise((resolve, reject) => {\n    setTimeout(() => {\n      resolve(`Data from ${url}`);\n    }, 2000);\n  });\n}\n\nasync function displayData() {\n  try {\n    const data = await fetchData('https://api.example.com');\n    console.log(data);\n  } catch (error) {\n    console.error(error);\n  }\n}\n\ndisplayData();\n```\n\nIn this example, we use `async/await` to handle the asynchronous operation of fetching data, simplifying the code compared to using traditional Promises."
-  },
-    {
-      "id": "P5",
-      "name": "Post 5: Introduction to Python Decorators 🐍",
-      "title": "Introduction to Python Decorators",
-      "description": "Learn about decorators in Python and how they enhance the functionality of functions.",
-      "date": "Jan 25, 2001",
-      "emoji": "🐍",
-      "link": "#",
-      "tags": ["Python", "Decorators", "Programming"],
-      "body": "Decorators in Python are a way to modify the behavior of a function or class. In this post, we'll learn how decorators work and how to use them effectively.\n\n### Example Code\n\n```python\ndef decorator(func):\n    def wrapper():\n        print('Before the function is called')\n        func()\n        print('After the function is called')\n    return wrapper\n\n@decorator\ndef say_hello():\n    print('Hello, World!')\n\nsay_hello()\n```\n\nIn this example, the `say_hello` function is decorated to add extra functionality before and after the function call."
-    },
-    {
-      "id": "P6",
-      "name": "Post 6: Understanding React Hooks",
-      "title": "Understanding React Hooks",
-      "description": "Get an introduction to React Hooks and learn how they simplify managing state and side effects in React.",
-      "date": "Feb 1, 2001",
-      "emoji": "⚛️",
-      "link": "#",
-      "tags": ["React", "Hooks", "JavaScript"],
-      "body": "React Hooks provide a simpler and cleaner way to manage state and side effects in functional components. Let's explore the basics of React Hooks.\n\n### Example Code\n\n```javascript\nimport React, { useState, useEffect } from 'react';\n\nfunction Counter() {\n  const [count, setCount] = useState(0);\n\n  useEffect(() => {\n    console.log('Component rendered');\n  }, []);\n\n  return (\n    <div>\n      <p>Count: {count}</p>\n      <button onClick={() => setCount(count + 1)}>Increment</button>\n    </div>\n  );\n}\n\nexport default Counter;\n```\n\nIn this example, we use `useState` to manage the state and `useEffect` to handle side effects in a functional component."
-    },
-    {
-      "id": "P7",
-      "name": "Post 7: Introduction to SQL Joins",
-      "title": "Introduction to SQL Joins",
-      "description": "Understand the different types of SQL joins and how they are used to retrieve related data from multiple tables.",
-      "date": "Feb 5, 2001",
-      "emoji": "🔗",
-      "link": "#",
-      "tags": ["SQL", "Databases", "Programming"],
-      "body": "SQL joins are used to combine rows from two or more tables based on a related column. We'll explore the different types of joins in SQL.\n\n### Example Code\n\n```sql\nSELECT employees.name, departments.name\nFROM employees\nJOIN departments ON employees.department_id = departments.id;\n```\n\nIn this example, we use an inner join to retrieve data from two related tables: `employees` and `departments`."
-    }
-  ]
-  
+    "tags": ["React", "Performance", "Web Design"],
+    "body": "While building active tracking maps and discovery grids (like the vector Adventure Map in Atrafian), rendering hundreds of moving markers and path lines can choke mobile CPUs. If a component re-renders on every GPS coordinates tick, frame rates quickly drop below 30 FPS.\n\nHere are the core techniques we implemented to deliver smooth 60 FPS performance on both low-end Android and iOS devices.\n\n### 1. Shift Coordinates Out of React State\n\nReact's virtual DOM reconciliation is too heavy for high-frequency updates (e.g., 60Hz animation loops). Instead of updating marker coordinates in React state, keep direct references (`useRef`) to the DOM/SVG nodes and update their transforms directly:\n\n```javascript\nconst markerRef = useRef(null);\n\n// Triggered on GPS tick\nconst updatePosition = (x, y) => {\n  if (markerRef.current) {\n    markerRef.current.style.transform = `translate3d(${x}px, ${y}px, 0)`;\n  }\n};\n```\n\n### 2. Enable Hardware Acceleration\n\nAlways use 3D CSS transforms (`translate3d` or `translate` with a z-axis value) rather than standard 2D layouts (like `top` and `left`). Using 3D properties instructs the browser to offload layer positioning to the GPU, avoiding expensive layout repaints.\n\n```css\n.marker {\n  position: absolute;\n  will-change: transform;\n  transition: transform 0.1s linear;\n}\n```\n\n### 3. Decouple Animation Frames with requestAnimationFrame\n\nEnsure updates match the display's refresh rate by wrapping marker positions in a `requestAnimationFrame` loop. This aligns computational changes with the browser's paint cycle:\n\n```javascript\nlet frameId;\nconst tick = () => {\n  updatePosition(currentX, currentY);\n  frameId = requestAnimationFrame(tick);\n};\n\nuseEffect(() => {\n  frameId = requestAnimationFrame(tick);\n  return () => cancelAnimationFrame(frameId);\n}, []);\n```"
+  }
+]

@@ -1,231 +1,207 @@
 [
   {
     "id": "learn-python",
-    "title": "Learn Python",
+    "title": "Mastering Modern Python",
     "similar_id": "python",
     "similar_index": 1,
-    "date": "Oct 24, 2024",
+    "date": "Jan 15, 2026",
     "children": ["functions", "OOP", "Dictionaries"],
     "link": "learn-python",
     "image": "/content/course.jpg",
     "show": 1,
-    "description": "python tutorial!",
+    "description": "An advanced guide exploring Python's core runtime, memory allocation, and type systems.",
     "body": [
       {
         "type": "markdown",
-        "content": "# Python Basics\nLearn Python programming step by step."
-      },
-      {
-        "type": "markdown",
-        "content": "## Introduction to Python\nPython is a versatile programming language that is easy to learn and widely used for various applications."
+        "content": "# Mastering Modern Python\n\nPython is a versatile, dynamic language known for its readability. However, underneath its simple syntax lies a sophisticated runtime environment that handles dynamic dispatch, automatic memory management, and meta-object layouts.\n\nIn this guide, we dive deep into the internals of Python 3.x, examining its execution model, type safety features, and resource management systems.\n\n## The Python Execution Model\n\nUnlike compiled languages like C++ that translate code directly to machine instructions, Python compiles source code (`.py`) into intermediate bytecode (`.pyc`). The **CPython Virtual Machine** then executes this bytecode on a stack-based interpreter.\n\nWe can inspect this bytecode using Python's built-in `dis` module:"
       },
       {
         "type": "code",
         "language": "python",
-        "content": "def greet(name):\n    return f\"Hello, {name}!\"\n\nprint(greet(\"World\"))"
+        "content": "import dis\n\ndef add(a, b):\n    return a + b\n\ndis.dis(add)"
       },
       {
         "type": "markdown",
-        "content": "## Variables and Data Types\nIn Python, you can create variables to store data. Here are some common data types:\n- **Integer**: Whole numbers\n- **Float**: Decimal numbers\n- **String**: Text data"
+        "content": "Running this code outputs CPython VM instructions like `LOAD_FAST`, `BINARY_OP`, and `RETURN_VALUE`. Understanding this stack manipulation is key to writing highly optimized performance-critical loops.\n\n## Type Constraints with Type Hints\n\nModern Python supports static analysis via PEP 484 type hints. While Python remains dynamically typed at runtime, using type hints allows static type checkers like `mypy` or `pyright` to identify typing discrepancies before execution."
       },
       {
         "type": "code",
         "language": "python",
-        "content": "age = 30\nheight = 5.9\nname = \"Alice\"\n\nprint(f\"Name: {name}, Age: {age}, Height: {height}\")"
+        "content": "from typing import List, Dict, Optional\n\ndef process_records(records: List[Dict[str, int]]) -> Optional[float]:\n    if not records:\n        return None\n    \n    total = sum(r['value'] for r in records if 'value' in r)\n    return total / len(records)\n\nprint(process_records([{'value': 10}, {'value': 20}]))"
       },
       {
         "type": "markdown",
-        "content": "## Control Structures\nPython includes control structures like loops and conditionals. Here's an example of a simple `if` statement."
+        "content": "## Resource Management and the `with` Statement\n\nPython manages external resources (like files, sockets, database locks) using context managers. By implementing the Context Manager protocol (`__enter__` and `__exit__`), objects guarantee that cleanup code runs even if errors occur during execution."
       },
       {
         "type": "code",
         "language": "python",
-        "content": "if age >= 18:\n    print(\"You are an adult.\")\nelse:\n    print(\"You are a minor.\")"
-      },
-      {
-        "type": "markdown",
-        "content": "## Functions\nFunctions allow you to encapsulate code for reuse. Here’s an example of a function that calculates the area of a rectangle."
-      },
-      {
-        "type": "code",
-        "language": "python",
-        "content": "def area_of_rectangle(length, width):\n    return length * width\n\nprint(area_of_rectangle(5, 3))"
-      },
-      {
-        "type": "markdown",
-        "content": "## Introduction to LaTeX\nLaTeX is a typesetting system that is widely used for mathematical and scientific documents."
-      },
-      {
-        "type": "latex",
-        "content": "\\text{Quadratic Formula: } x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}"
-      },
-      {
-        "type": "markdown",
-        "content": "### Example of a Quadratic Equation\nLet's solve a quadratic equation using the formula."
-      },
-      {
-        "type": "latex",
-        "content": "\\text{For example: } 2x^2 + 3x - 2 = 0"
-      },
-      {
-        "type": "markdown",
-        "content": "## Conclusion\nPython is a powerful tool for programming, and learning its basics is the first step towards mastering it."
+        "content": "class DatabaseTransaction:\n    def __enter__(self):\n        print(\"Beginning database transaction...\")\n        return self\n    \n    def __exit__(self, exc_type, exc_val, exc_tb):\n        if exc_type:\n            print(f\"Rolling back transaction due to error: {exc_val}\")\n        else:\n            print(\"Committing transaction successfully.\")\n        return True # Suppress the exception\n\nwith DatabaseTransaction():\n    raise ValueError(\"Database connection lost!\")"
       }
     ]
   },
   {
     "id": "functions",
-    "title": "Functions in Python",
+    "title": "First-Class Functions & Scopes",
     "children": ["lambda"],
     "similar_id": "python",
     "similar_index": 2,
-    "date": "Oct 24, 2024",
-    "link": "learn-python",
+    "date": "Jan 18, 2026",
+    "link": "functions",
     "image": "/content/course.jpg",
     "show": 0,
-    "description": "responsive",
+    "description": "Scrutinizing lexical environments, closures, and custom function decorators.",
     "body": [
       {
         "type": "markdown",
-        "content": "# Functions\nFunctions are reusable blocks of code that perform a specific task."
-      },
-      {
-        "type": "markdown",
-        "content": "## Defining Functions\nYou can define a function using the `def` keyword."
+        "content": "# First-Class Functions and Closures\n\nIn Python, functions are **first-class objects**. This means they can be passed as arguments, returned from other functions, bound to variable names, and stored in data structures.\n\n## Lexical Scopes and Closures\n\nPython scopes follow the **LEGB rule** (Local, Enclosing, Global, Built-in). When a nested function references a variable in its enclosing scope, a **closure** is formed. The nested function retains access to that variable even after the enclosing function completes execution."
       },
       {
         "type": "code",
         "language": "python",
-        "content": "def add(a, b):\n    return a + b\n\nprint(add(2, 3))"
+        "content": "def create_multiplier(factor: int):\n    # 'factor' is stored in the enclosing scope's cell\n    def multiply(number: int) -> int:\n        return number * factor\n    return multiply\n\ndouble = create_multiplier(2)\ntriple = create_multiplier(3)\n\nprint(double(5)) # Output: 10\nprint(triple(5)) # Output: 15"
       },
       {
         "type": "markdown",
-        "content": "## Function Arguments\nFunctions can take arguments, which are values you pass to the function."
+        "content": "## Custom Decorators\n\nDecorators leverage closures to wrap functions, dynamically injecting behavior before and after their execution. This is widely used for logging, auth checks, and performance caching."
       },
       {
         "type": "code",
         "language": "python",
-        "content": "def greet(name):\n    return f\"Hello, {name}!\"\n\nprint(greet(\"Alice\"))"
+        "content": "import time\nfrom functools import wraps\n\ndef time_execution(func):\n    @wraps(func)\n    def wrapper(*args, **kwargs):\n        start = time.perf_counter()\n        result = func(*args, **kwargs)\n        end = time.perf_counter()\n        print(f\"{func.__name__} executed in {end - start:.6f} seconds\")\n        return result\n    return wrapper\n\n@time_execution\ndef compute_factorial(n):\n    prod = 1\n    for i in range(1, n + 1):\n        prod *= i\n    return prod\n\ncompute_factorial(1000)"
       }
     ]
   },
   {
     "id": "lambda",
-    "title": "Lambda Functions",
+    "title": "Lambda Functions & Functional Constructs",
     "children": [],
     "similar_id": "python",
     "similar_index": 3,
-    "date": "Oct 24, 2024",
-    "link": "learn-python",
+    "date": "Jan 20, 2026",
+    "link": "lambda",
     "image": "/content/course.jpg",
     "show": 0,
-    "description": "responsive",
+    "description": "Anonymous lambda expressions, list comprehensions, and functional operators.",
     "body": [
       {
         "type": "markdown",
-        "content": "# Lambda Functions\nLambda functions are small anonymous functions defined with the `lambda` keyword."
-      },
-      {
-        "type": "markdown",
-        "content": "## Syntax\nThe syntax of a lambda function is: `lambda arguments: expression`."
+        "content": "# Lambda Functions & Functional Constructs\n\nLambda functions in Python are small, anonymous expressions evaluated inline. They are restricted to a single expression and cannot contain block-level statements like assignments or loops.\n\n## Syntax and Limitations\n\nThe syntax is simple: `lambda arguments: expression`"
       },
       {
         "type": "code",
         "language": "python",
-        "content": "square = lambda x: x ** 2\nprint(square(5))  # Output: 25"
+        "content": "# Basic anonymous sorting\npairs = [(1, 'one'), (4, 'four'), (3, 'three'), (2, 'two')]\npairs.sort(key=lambda x: x[0])\nprint(pairs)"
       },
       {
         "type": "markdown",
-        "content": "## Using Lambda with `map`\nYou can use lambda functions with functions like `map`."
+        "content": "## Lambda vs List Comprehensions\n\nWhile lambdas can be used with `map()` and `filter()`, PEP 8 guidelines suggest using list comprehensions or generator expressions for readability:"
       },
       {
         "type": "code",
         "language": "python",
-        "content": "numbers = [1, 2, 3, 4]\nsquared_numbers = list(map(lambda x: x ** 2, numbers))\nprint(squared_numbers)  # Output: [1, 4, 9, 16]"
+        "content": "numbers = [1, 2, 3, 4, 5]\n\n# Functional style with lambda\nsquares_lambda = list(map(lambda x: x**2, numbers))\n\n# Pythonic style with comprehension\nsquares_comp = [x**2 for x in numbers]\n\nprint(squares_lambda == squares_comp) # True"
       }
     ]
   },
   {
     "id": "OOP",
-    "title": "Object-Oriented Programming (OOP)",
+    "title": "Advanced Object-Oriented Design",
     "children": [],
     "similar_id": "python",
     "similar_index": 4,
-    "date": "Oct 24, 2024",
-    "link": "learn-python",
+    "date": "Jan 25, 2026",
+    "link": "OOP",
     "image": "/content/course.jpg",
     "show": 0,
-    "description": "responsive",
+    "description": "Dunder magic methods, class properties, and custom object attributes.",
     "body": [
       {
         "type": "markdown",
-        "content": "# Object-Oriented Programming\nOOP is a programming paradigm based on the concept of objects."
-      },
-      {
-        "type": "markdown",
-        "content": "## Classes and Objects\nA class is a blueprint for creating objects. An object is an instance of a class."
+        "content": "# Advanced Object-Oriented Design\n\nPython's object-oriented framework is highly dynamic. Objects represent namespaces, which are dictionaries accessed via properties and descriptor objects.\n\n## Dunder (Double Underscore) Methods\n\nDunder methods (e.g. `__str__`, `__repr__`, `__getitem__`) allow custom classes to integrate with Python's operators, lists, and standard print statements."
       },
       {
         "type": "code",
         "language": "python",
-        "content": "class Dog:\n    def __init__(self, name):\n        self.name = name\n\n    def bark(self):\n        return f\"{self.name} says woof!\"\n\nmy_dog = Dog(\"Buddy\")\nprint(my_dog.bark())"
+        "content": "class Vector2D:\n    def __init__(self, x: float, y: float):\n        self.x = x\n        self.y = y\n        \n    def __repr__(self):\n        return f\"Vector2D(x={self.x}, y={self.y})\"\n        \n    def __add__(self, other):\n        if not isinstance(other, Vector2D):\n            return NotImplemented\n        return Vector2D(self.x + other.x, self.y + other.y)\n\nv1 = Vector2D(2.5, 4.0)\nv2 = Vector2D(1.5, 2.0)\nprint(v1 + v2) # Output: Vector2D(x=4.0, y=6.0)"
+      },
+      {
+        "type": "markdown",
+        "content": "## Managed Attributes with Properties\n\nThe `@property` decorator allows you to define getter, setter, and deleter methods, exposing clean interfaces while executing validation checks internally."
+      },
+      {
+        "type": "code",
+        "language": "python",
+        "content": "class BankAccount:\n    def __init__(self, initial_balance: float):\n        self._balance = initial_balance # Protected attribute\n        \n    @property\n    def balance(self) -> float:\n        return self._balance\n        \n    @balance.setter\n    def balance(self, amount: float):\n        if amount < 0:\n            raise ValueError(\"Negative balances not allowed.\")\n        self._balance = amount\n\naccount = BankAccount(100.0)\naccount.balance = 150.0\ntry:\n    account.balance = -20.0\nexcept ValueError as e:\n    print(e)"
       }
     ]
   },
   {
     "id": "Dictionaries",
-    "title": "Dictionaries in Python",
+    "title": "Hash Tables & Dictionary Performance",
     "children": [],
     "similar_id": "python",
     "similar_index": 5,
-    "date": "Oct 24, 2024",
-    "link": "learn-python",
+    "date": "Feb 02, 2026",
+    "link": "Dictionaries",
     "image": "/content/course.jpg",
     "show": 0,
-    "description": "responsive",
+    "description": "Understanding key hashing, collision resolution, and amortized constant complexity.",
     "body": [
       {
         "type": "markdown",
-        "content": "# Dictionaries\nDictionaries are mutable, unordered collections of key-value pairs."
-      },
-      {
-        "type": "markdown",
-        "content": "## Creating a Dictionary\nYou can create a dictionary using curly braces `{}`."
+        "content": "# Dictionaries, Hashing, and Complexity\n\nPython's dictionary (`dict`) is one of the most optimized parts of the CPython interpreter. It is a highly efficient hash table that achieves $O(1)$ amortized average-case lookup, insertion, and deletion complexity.\n\n## Hashing and Collisions\n\nWhen you insert a key-value pair, CPython hashes the key to generate an integer. This hash maps directly to an index in an underlying sparse array.\n- **Hash Requirement**: Only **immutable** objects (like strings, tuples, integers) are hashable and can be dictionary keys.\n- **Collision Resolution**: CPython uses **open addressing** with a pseudo-random probing sequence to resolve index conflicts when two keys share the same hash bucket."
       },
       {
         "type": "code",
         "language": "python",
-        "content": "my_dict = {\"name\": \"Alice\", \"age\": 30}\nprint(my_dict[\"name\"])  # Output: Alice"
+        "content": "# Verify custom hash outputs\nkey1 = \"parsany\"\nkey2 = (1, 2, 3)\nprint(f\"Hash of string: {hash(key1)}\")\nprint(f\"Hash of tuple: {hash(key2)}\")"
       },
       {
         "type": "markdown",
-        "content": "## Accessing Values\nYou can access values in a dictionary using their keys."
+        "content": "## Dictionary Safety: The `.get()` Method\n\nAccessing non-existent keys via square brackets triggers a `KeyError`. Using `.get()` avoids this, returning a default value (like `None`) instead of crashing the process."
       },
       {
         "type": "code",
         "language": "python",
-        "content": "print(my_dict[\"age\"])  # Output: 30"
+        "content": "metadata = {\"author\": \"Parsa\", \"year\": 2026}\n\n# Safe checks\ncategory = metadata.get(\"category\", \"General\")\nprint(f\"Category: {category}\")\n\ntry:\n    # Will throw KeyError\n    tags = metadata[\"tags\"]\nexcept KeyError as e:\n    print(f\"Caught error for missing key: {e}\")"
       }
     ]
   },
   {
     "id": "Coq",
-    "title": "Coq",
+    "title": "Constructive Logic & Proof Building in Coq",
     "similar_id": "Coq",
-    "children": ["Coq", "Coq", "Coq"],
+    "children": [],
     "similar_index": 1,
-    "date": "Oct 24, 2024",
+    "date": "Feb 10, 2026",
     "link": "Coq",
     "image": "/content/course.jpg",
     "show": 1,
-    "description": "responsive",
+    "description": "An introduction to interactive verification, Curry-Howard isomorphism, and inductive proofs.",
     "body": [
       {
         "type": "markdown",
-        "content": "# Python Basics\nLearn Python programming step by step."
+        "content": "# Theorem Proving in Coq\n\n**Coq** is a formal proof assistant that allows you to specify mathematical theories, implement algorithms, and construct verified proofs of correctness. It is used to verify critical systems, write compilers (like CompCert), and verify distributed algorithms.\n\n## Curry-Howard Isomorphism\n\nCoq operates on the **Curry-Howard Isomorphism**, which establishes a direct correspondence between logic and programming:\n- A **Proposition** is represented as a **Type**.\n- A **Proof** is represented as a **Program** (or lambda term) that belongs to that Type.\n\n## Specifying Natural Numbers\n\nWe define natural numbers inductively, following Peano arithmetic: zero is a number, and the successor of any number is also a number."
+      },
+      {
+        "type": "code",
+        "language": "coq",
+        "content": "Inductive nat : Type :=\n  | O : nat\n  | S : nat -> nat."
       },
       {
         "type": "markdown",
-        "content": "## Introduction to Python\nPython is a versatile programming language that is easy to learn and widely used for various applications."
-      }]}
+        "content": "Here, `O` represents $0$, and `S O` represents the successor of $0$ ($1$).\n\n## Constructive Addition Proof\n\nLet's prove a simple theorem: for all natural numbers $n$, adding $0$ to $n$ returns $n$. We use tactics like `intros`, `simpl`, and `reflexivity` to write the proof script."
+      },
+      {
+        "type": "code",
+        "language": "coq",
+        "content": "Theorem add_O_n : forall n : nat, 0 + n = n.\nProof.\n  intros n.\n  simpl.\n  reflexivity.\nQed."
+      },
+      {
+        "type": "markdown",
+        "content": "### Explanation of Tactics:\n1. **`intros n`**: Moves the bound variable $n$ from the universal quantifier into the proof context.\n2. **`simpl`**: Reduces terms in the goal using definition reductions (e.g. evaluating $0 + n$).\n3. **`reflexivity`**: Resolves the proof state by asserting that the left-hand side is structurally identical to the right-hand side ($n = n$)."
+      }
+    ]
+  }
 ]
