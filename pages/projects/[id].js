@@ -9,7 +9,7 @@ import remarkGfm from "remark-gfm";
 import Link from "next/link";
 import Image from "next/image";
 import Head from "next/head";
-import { ArrowLeft, ChevronLeft, ChevronRight, Calendar, X } from "lucide-react";
+import { ArrowLeft, ChevronLeft, ChevronRight, Calendar, X, Globe } from "lucide-react";
 
 export default function ProjectDetail({ project }) {
   const router = useRouter();
@@ -28,7 +28,7 @@ export default function ProjectDetail({ project }) {
   const swipeStartX = useRef(0);
 
   const redirectTarget = project?.redirect
-    ? ProjectProfessional.find((p) => String(p.id) === String(project.redirect))
+    ? ProjectProfessional.find((p) => p.slug === project.redirect)
     : null;
 
   // Bind a non-passive wheel event listener to handle zoom and prevent page scroll
@@ -210,6 +210,16 @@ export default function ProjectDetail({ project }) {
             <span className={styles.metaItem}>
               <Calendar size={14} /> {formatDate(project.date)}
             </span>
+            {project.link && (
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.projectLinkButton}
+              >
+                <Globe size={14} /> Visit Website
+              </a>
+            )}
           </div>
 
           {project.tag && project.tag.length > 0 && (
@@ -295,7 +305,7 @@ export default function ProjectDetail({ project }) {
             <p>
               This project is connected to <strong>{redirectTarget.name}</strong>.
             </p>
-            <Link href={`/projects/${redirectTarget.id}`} className={styles.connectedLink}>
+            <Link href={`/projects/${redirectTarget.slug}`} className={styles.connectedLink}>
               View Connected Project: {redirectTarget.name} &rarr;
             </Link>
           </div>
@@ -380,14 +390,14 @@ export default function ProjectDetail({ project }) {
 
 export async function getStaticPaths() {
   const paths = ProjectProfessional.map((project) => ({
-    params: { id: String(project.id) },
+    params: { id: project.slug },
   }));
 
   return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
-  const project = ProjectProfessional.find((item) => String(item.id) === String(params.id)) || null;
+  const project = ProjectProfessional.find((item) => item.slug === params.id) || null;
 
   return {
     props: { project },

@@ -286,7 +286,7 @@ export default function Projects({ LimitShow, initialType = "academic", isUrlBou
               </a>
             ) : (project.isactive || project.redirect || ignoreActiveFilter) ? (
               <Link
-                href={`/projects/${project.id}`}
+                href={`/projects/${project.slug}`}
                 aria-label={`Link to ${project.name}`}
                 className={styles.cardLink}
               >

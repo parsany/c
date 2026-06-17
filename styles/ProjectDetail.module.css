@@ -425,3 +425,26 @@
   }
 }
 
+.projectLinkButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background-color: var(--tag-pill-bg);
+  border: 1px solid var(--tag-pill-border);
+  color: var(--tag-pill-color);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none !important;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.projectLinkButton:hover {
+  background-color: var(--highlight-color);
+  border-color: var(--highlight-color);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
