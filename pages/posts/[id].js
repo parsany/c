@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
 import Posts from '@/public/content/materials/PostsPage.json';
 import styles from '@/styles/PostPage.module.css';
 import ReactMarkdown from 'react-markdown';
@@ -12,18 +11,8 @@ import Link from 'next/link';
 import { ArrowLeft, Clock, Calendar } from 'lucide-react';
 import { getTagColor } from '@/utils/tagColor';
 
-export default function PostPage() {
+export default function PostPage({ post }) {
   const router = useRouter();
-  const { id } = router.query;
-
-  const [post, setPost] = useState(null);
-
-  useEffect(() => {
-    if (id) {
-      const foundPost = Posts.find((item) => item.id === id);
-      setPost(foundPost);
-    }
-  }, [id]);
 
   if (!post) {
     return <div className={styles.loading}>Loading...</div>;
@@ -114,4 +103,20 @@ export default function PostPage() {
       </div>
     </div>
   );
+}
+
+export async function getStaticPaths() {
+  const paths = Posts.map((post) => ({
+    params: { id: post.id },
+  }));
+
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }) {
+  const post = Posts.find((item) => item.id === params.id) || null;
+
+  return {
+    props: { post },
+  };
 }

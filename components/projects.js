@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
-export default function Projects({ LimitShow, initialType = "academic", isUrlBound = false }) {
+export default function Projects({ LimitShow, initialType = "academic", isUrlBound = false, ignoreActiveFilter = false }) {
   const [projectType, setProjectType] = useState(initialType);
   const [hoveredId, setHoveredId] = useState(null);
   const [playedVideos, setPlayedVideos] = useState({});
@@ -23,7 +23,9 @@ export default function Projects({ LimitShow, initialType = "academic", isUrlBou
     const activeProjects =
       projectType === "academic"
         ? ProjectAcademic
-        : ProjectProfessional.filter((p) => p.isactive !== false);
+        : (ignoreActiveFilter
+            ? ProjectProfessional
+            : ProjectProfessional.filter((p) => p.isactive !== false));
     let projects =
       selectedCategory && selectedCategory !== "All"
         ? activeProjects.filter((project) =>
@@ -46,17 +48,19 @@ export default function Projects({ LimitShow, initialType = "academic", isUrlBou
     } else {
       return projects.sort((a, b) => b.id - a.id);
     }
-  }, [projectType, selectedCategory, searchTerm]);
+  }, [projectType, selectedCategory, searchTerm, ignoreActiveFilter]);
 
   const categories = useMemo(() => {
     const activeProjects =
       projectType === "academic"
         ? ProjectAcademic
-        : ProjectProfessional.filter((p) => p.isactive !== false);
+        : (ignoreActiveFilter
+            ? ProjectProfessional
+            : ProjectProfessional.filter((p) => p.isactive !== false));
     const allTags = activeProjects.flatMap((project) => project.tag);
     const uniqueTags = new Set(allTags);
     return ["All", ...Array.from(uniqueTags).sort()];
-  }, [projectType]);
+  }, [projectType, ignoreActiveFilter]);
 
   const handleMouseEnter = (id, index) => {
     setHoveredId({ id, index });
@@ -242,7 +246,7 @@ export default function Projects({ LimitShow, initialType = "academic", isUrlBou
           <div
             key={project.id}
             className={`${getCardClass(project, index)} ${
-              projectType === "professional" && !project.isactive && !project.redirect
+              projectType === "professional" && !project.isactive && !project.redirect && !ignoreActiveFilter
                 ? styles.cardStaticWrapper
                 : ""
             }`}
@@ -280,7 +284,7 @@ export default function Projects({ LimitShow, initialType = "academic", isUrlBou
                   </div>
                 </div>
               </a>
-            ) : (project.isactive || project.redirect) ? (
+            ) : (project.isactive || project.redirect || ignoreActiveFilter) ? (
               <Link
                 href={`/projects/${project.id}`}
                 aria-label={`Link to ${project.name}`}

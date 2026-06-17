@@ -11,11 +11,8 @@ import Image from "next/image";
 import Head from "next/head";
 import { ArrowLeft, ChevronLeft, ChevronRight, Calendar, X } from "lucide-react";
 
-export default function ProjectDetail() {
+export default function ProjectDetail({ project }) {
   const router = useRouter();
-  const { id } = router.query;
-
-  const [project, setProject] = useState(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
   // Lightbox Zoom and Drag States
@@ -33,15 +30,6 @@ export default function ProjectDetail() {
   const redirectTarget = project?.redirect
     ? ProjectProfessional.find((p) => String(p.id) === String(project.redirect))
     : null;
-
-  useEffect(() => {
-    if (id) {
-      const foundProject = ProjectProfessional.find(
-        (item) => String(item.id) === String(id)
-      );
-      setProject(foundProject);
-    }
-  }, [id]);
 
   // Bind a non-passive wheel event listener to handle zoom and prevent page scroll
   useEffect(() => {
@@ -388,4 +376,20 @@ export default function ProjectDetail() {
       )}
     </div>
   );
+}
+
+export async function getStaticPaths() {
+  const paths = ProjectProfessional.map((project) => ({
+    params: { id: String(project.id) },
+  }));
+
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }) {
+  const project = ProjectProfessional.find((item) => String(item.id) === String(params.id)) || null;
+
+  return {
+    props: { project },
+  };
 }
