@@ -125,7 +125,7 @@ export const ProjectProfessional = [
       "/professional/battery-esp/battery-dash-products.png",
       "/professional/battery-esp/battery-dash-perm.png"
     ],
-    tag: ["Turborepo", "NestJS", "Next.js", "Postgres", "Dual Language"],
+    tag: ["Turborepo", "NestJS", "Next.js", "Postgres", "dual-Language"],
     isactive: false,
     link: "",
     text: `# Battery ESP Warranty & E-Commerce\n\nA full-fledged commercial web application designed for selling vehicle batteries and tracking serial warranty activations.\n\n## Project Overview\n- **Role**: Fullstack Developer (Team cooperation)\n- **Timeline**: 3 Weeks\n\n## Key Features\n- **Product Catalogs**: Browsable battery categories with technical specification comparisons.\n- **Warranty System**: Verification panel where customers search serial numbers to validate purchase warranty.\n- **Admin Management**: Advanced admin panel to regulate product listings, access permissions, and generate warranty keys.\n- **Checkout**: Shopping cart module configured for manual checkout verification via phone/operator services.\n- **Localization**: Full dual-language support.\n\n## Tech Stack\n- **Architecture**: Monorepo using Turborepo\n- **Backend**: NestJS\n- **Frontend**: Next.js, React`
