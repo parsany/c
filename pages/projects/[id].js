@@ -31,7 +31,6 @@ export default function ProjectDetail({ project }) {
     ? ProjectProfessional.find((p) => p.slug === project.redirect)
     : null;
 
-  // Bind a non-passive wheel event listener to handle zoom and prevent page scroll
   useEffect(() => {
     const element = overlayRef.current;
     if (!element) return;
@@ -54,10 +53,6 @@ export default function ProjectDetail({ project }) {
       element.removeEventListener("wheel", handleWheelZoom);
     };
   }, [isLightboxOpen]);
-
-  if (!project) {
-    return <div className={styles.loading}>Loading...</div>;
-  }
 
   const resetZoom = useCallback(() => {
     setScale(1);
@@ -223,6 +218,10 @@ export default function ProjectDetail({ project }) {
     }
   }, [closeLightbox]);
 
+  if (!project) {
+    return <div className={styles.loading}>Loading...</div>;
+  }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -272,9 +271,8 @@ export default function ProjectDetail({ project }) {
             {project.project_image.map((imgUrl, index) => (
               <div
                 key={imgUrl}
-                className={`${styles.carouselSlide} ${
-                  index === activeIndex ? styles.carouselSlideActive : ""
-                }`}
+                className={`${styles.carouselSlide} ${index === activeIndex ? styles.carouselSlideActive : ""
+                  }`}
                 onClick={() => setIsLightboxOpen(true)}
                 style={{ cursor: "zoom-in" }}
               >
@@ -311,9 +309,8 @@ export default function ProjectDetail({ project }) {
                     <button
                       key={index}
                       onClick={() => setActiveIndex(index)}
-                      className={`${styles.dot} ${
-                        index === activeIndex ? styles.dotActive : ""
-                      }`}
+                      className={`${styles.dot} ${index === activeIndex ? styles.dotActive : ""
+                        }`}
                       aria-label={`Go to slide ${index + 1}`}
                     />
                   ))}
@@ -389,7 +386,7 @@ export default function ProjectDetail({ project }) {
               </button>
             </>
           )}
-          
+
           <div
             className={styles.lightboxImageContainer}
             onMouseDown={handleMouseDown}
@@ -427,9 +424,8 @@ export default function ProjectDetail({ project }) {
                     resetZoom();
                     setActiveIndex(index);
                   }}
-                  className={`${styles.lightboxDot} ${
-                    index === activeIndex ? styles.lightboxDotActive : ""
-                  }`}
+                  className={`${styles.lightboxDot} ${index === activeIndex ? styles.lightboxDotActive : ""
+                    }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
               ))}
