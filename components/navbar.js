@@ -81,17 +81,17 @@ export default function NavBar() {
               </Link>
             </li>
           ))}
-
-          <li className={`${Styles.navitem} ${Styles.desktopThemeToggle}`}>
-            <button
-              onClick={toggleTheme}
-              className={Styles.themeToggleBtn}
-              aria-label="Toggle theme"
-            >
-              {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
-            </button>
-          </li>
         </ul>
+
+        <div className={Styles.desktopThemeToggleContainer}>
+          <button
+            onClick={toggleTheme}
+            className={Styles.themeToggleBtn}
+            aria-label="Toggle theme"
+          >
+            {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+        </div>
       </nav>
       {menuOpen && (
         <div className={Styles.backdrop} onClick={handleLinkClick} />
