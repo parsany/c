@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { ProjectProfessional } from "@/public/JSONJS";
 import styles from "@/styles/ProjectDetail.module.css";
 import ReactMarkdown from "react-markdown";
@@ -59,24 +59,28 @@ export default function ProjectDetail({ project }) {
     return <div className={styles.loading}>Loading...</div>;
   }
 
-  const resetZoom = () => {
+  const resetZoom = useCallback(() => {
     setScale(1);
     setPosition({ x: 0, y: 0 });
-  };
+  }, []);
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     resetZoom();
-    setActiveIndex((prev) =>
-      prev === 0 ? project.project_image.length - 1 : prev - 1
-    );
-  };
+    if (project?.project_image) {
+      setActiveIndex((prev) =>
+        prev === 0 ? project.project_image.length - 1 : prev - 1
+      );
+    }
+  }, [project?.project_image, resetZoom]);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     resetZoom();
-    setActiveIndex((prev) =>
-      prev === project.project_image.length - 1 ? 0 : prev + 1
-    );
-  };
+    if (project?.project_image) {
+      setActiveIndex((prev) =>
+        prev === project.project_image.length - 1 ? 0 : prev + 1
+      );
+    }
+  }, [project?.project_image, resetZoom]);
 
   const formatDate = (dateStr) => {
     const d = new Date(dateStr);
@@ -185,11 +189,39 @@ export default function ProjectDetail({ project }) {
     }
   };
 
-  const closeLightbox = () => {
+  const closeLightbox = useCallback(() => {
     setIsLightboxOpen(false);
     setScale(1);
     setPosition({ x: 0, y: 0 });
-  };
+  }, []);
+
+  // Handle keyboard navigation (Arrow keys & Escape)
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (!project?.project_image || project.project_image.length <= 1) return;
+
+      if (e.key === "ArrowLeft") {
+        handlePrev();
+      } else if (e.key === "ArrowRight") {
+        handleNext();
+      } else if (e.key === "Escape") {
+        if (isLightboxOpen) {
+          closeLightbox();
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isLightboxOpen, project?.project_image, handlePrev, handleNext, closeLightbox]);
+
+  const handleContainerClick = useCallback((e) => {
+    if (e.target.tagName !== "IMG") {
+      closeLightbox();
+    }
+  }, [closeLightbox]);
 
   return (
     <div className={styles.container}>
@@ -363,12 +395,14 @@ export default function ProjectDetail({ project }) {
             onMouseDown={handleMouseDown}
             onTouchStart={handleTouchStart}
             onDoubleClick={closeLightbox}
+            onClick={handleContainerClick}
             style={{
               cursor: scale > 1 ? (isDragging ? "grabbing" : "grab") : "zoom-out",
             }}
           >
             <div
               className={styles.lightboxTransformWrapper}
+              onClick={(e) => e.stopPropagation()}
               style={{
                 transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
                 transition: isDragging ? "none" : "transform 0.15s ease-out",
@@ -382,6 +416,25 @@ export default function ProjectDetail({ project }) {
               />
             </div>
           </div>
+
+          {project.project_image && project.project_image.length > 1 && (
+            <div className={styles.lightboxIndicators}>
+              {project.project_image.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    resetZoom();
+                    setActiveIndex(index);
+                  }}
+                  className={`${styles.lightboxDot} ${
+                    index === activeIndex ? styles.lightboxDotActive : ""
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
+          )}
         </div>
       )}
     </div>

@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
-export default function Projects({ LimitShow, initialType = "academic", isUrlBound = false, ignoreActiveFilter = false }) {
+export default function Projects({ LimitShow, initialType = "professional", isUrlBound = false, ignoreActiveFilter = false }) {
   const [projectType, setProjectType] = useState(initialType);
   const [hoveredId, setHoveredId] = useState(null);
   const [playedVideos, setPlayedVideos] = useState({});
@@ -76,7 +76,7 @@ export default function Projects({ LimitShow, initialType = "academic", isUrlBou
   };
 
   const getCardClass = (project, index) => {
-    if (LimitShow !== true) return styles.card;
+    if (LimitShow !== true || projectType === "professional") return styles.card;
     const isHovered = hoveredId?.id === project.id;
     const directionClass = hoveredId
       ? hoveredId.index < index

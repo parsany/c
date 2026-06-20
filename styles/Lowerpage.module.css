@@ -7,6 +7,10 @@
   transition: background-color 0.3s ease;
 }
 
+.footerLanding {
+  margin-top: 0;
+}
+
 /* Dark mode override for non-home pages */
 :global(body.dark-mode) .footerNotHome {
   background-color: var(--background);

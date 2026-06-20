@@ -90,7 +90,7 @@
   overflow: hidden;
   margin: 30px 0;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-  background-color: var(--banner-background);
+  background-color: #15171c;
 }
 
 .carouselSlide {
@@ -105,7 +105,7 @@
 }
 
 .carouselImage {
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .arrowButton {
@@ -446,5 +446,37 @@
   border-color: var(--highlight-color);
   color: #ffffff;
   transform: translateY(-1px);
+}
+
+.lightboxIndicators {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10002;
+}
+
+.lightboxDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.lightboxDot:hover {
+  border-color: #ffffff;
+  transform: scale(1.15);
+}
+
+.lightboxDotActive {
+  background-color: #ffffff;
+  border-color: #ffffff;
+  transform: scale(1.2);
 }
 

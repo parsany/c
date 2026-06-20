@@ -88,6 +88,9 @@ export const ProjectProfessional = [
     tag: ["Next.js", "React", "Postgres", "Boutique", "Admin Panel"],
     isactive: true,
     link: "",
+    role: "Solo Fullstack Developer",
+    timeline: "1 Month",
+    highlights: ["Boutique Catalog Showcase", "Interactive Client Hub", "Studio Control Center"],
     text: `# Charbag Ceramic Studio\n\nA premium e-commerce platform and gallery designed for selling unique hand-made ceramic items.\n\n## Project Overview\n- **Role**: Solo Fullstack Developer\n- **Timeline**: 1 Month\n\n## Key Features\n- **Boutique Catalog**: Minimalist showcase of handcrafted collections.\n- **Interactive Client Hub**: Personal dashboard for customers to monitor custom order processes.\n- **Studio Control Center**: Rich admin panel for tracking inventory, managing ceramic workshops, and updating site layouts.\n\n## Tech Stack\n- **Framework**: Next.js\n- **Frontend**: React`
   },
   {
@@ -151,6 +154,9 @@ export const ProjectProfessional = [
     tag: ["NestJS", "Nextjs", "Turborepo", "Redis", "Socket.io", "Postgres", "Payment Gateway"],
     isactive: true,
     link: "https://atrafian.ir",
+    role: "Solo Fullstack & Mobile Dev",
+    timeline: "2 Months",
+    highlights: ["Real-time Socket.io Chat", "Radar Navigation & Discovery", "AWS S3/MinIO Integration"],
     text: `# Atrafian Chat & Social Ecosystem\n\nAn enterprise-grade, highly secure real-time messaging platform and social dashboard built from scratch.\n\n## Project Overview\n- **Role**: Solo Fullstack & Mobile Developer\n- **Timeline**: 2 Months (Full-time)\n\n## Core Features\n- **Real-Time Communication**: Multi-channel personal chats, group chats, and support tickets built with Socket.io.\n- **Radar Navigation & Discovery**: Custom vector adventure map with hardware-accelerated interactive filters.\n- **Privacy & Security**: End-to-end security measures including secure message closing/deletion.\n- **Social Features**: Follower/following architecture and user story updates.\n- **Rich Media**: Sending voice messages, images, and videos stored on AWS S3-compatible MinIO instances.\n- **Infrastructure & Caching**: OTP SMS authentication and also for Redis cache database layer to maximize the speed.\n\n## Tech Stack\n- **Monorepo**: Turborepo\n- **Backend**: NestJS, PostgreSQL, Redis, Socket.io\n- **Frontend**: Next.js (Pages Router), React Query`
   },
   {
@@ -169,6 +175,9 @@ export const ProjectProfessional = [
     tag: ["Next.js", "tRPC", "React", "Payment Gateway", "Postgres"],
     isactive: true,
     link: "",
+    role: "Solo Fullstack Developer",
+    timeline: "2 Months",
+    highlights: ["Book Catalog Search Index", "tRPC Type-Safe API", "Integrated Payment Gateway"],
     text: `# Himheh Book Publishing Platform\n\nA complete book selling and publishing web application developed from scratch.\n\n## Project Overview\n- **Role**: Solo Fullstack Developer\n- **Timeline**: 2 Months\n\n## Key Features\n- **Book Catalog**: A performant browse and search index for published books.\n- **Shopping Cart**: Real-time cart calculations and user inventory verification.\n- **User & Admin Dashboards**: Complete panels for managing orders, uploading new books, and editing publishing metadata.\n- **Security & Payments**: Integrated OTP SMS service for secure authentication and local payment gateway for transactions.\n\n## Tech Stack\n- **Frontend & Backend**: Next.js, tRPC, React\n- **Database**: PostgreSQL with Prisma ORM`
   },
   {

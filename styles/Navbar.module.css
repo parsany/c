@@ -157,33 +157,44 @@
     padding: 0 1rem;
   }
 
+  .mobileControls {
+    position: relative;
+    z-index: 10000;
+  }
+
   .hamburger {
     display: flex;
   }
 
   .navlist {
-    display: none;
+    display: flex;
     flex-direction: column;
-    position: absolute;
-    top: var(--header-height);
-    left: 0;
+    position: fixed;
+    top: 0;
     right: 0;
+    bottom: 0;
     background-color: var(--primary-color);
-    width: 100%;
-    padding: 1rem 0;
-    z-index: 100;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    width: 280px;
+    height: 100vh;
+    padding: 80px 2rem 2rem 2rem;
+    z-index: 9999;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.25);
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    overflow-y: auto;
+    max-height: none !important;
   }
 
   .navlistOpen {
-    display: flex;
+    transform: translateX(0);
   }
 
   .navitem {
     margin: 0;
-    padding: 0.85rem 1.5rem;
-    text-align: center;
+    padding: 1rem 0;
+    text-align: left;
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    width: 100%;
   }
 
   .desktopThemeToggle {
@@ -191,6 +202,24 @@
   }
 
   .cvButton {
-    margin: 0 auto;
+    margin: 0;
+  }
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 9998;
+  animation: fadeIn 0.25s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

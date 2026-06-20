@@ -28,6 +28,7 @@ export default function NavBar() {
   };
 
   const NAV_LINKS = [
+    { title: "Home", href: "/" },
     { title: "Landing", href: "/landing" },
     { title: "Projects", href: "/projects" },
     { title: "Skills", href: "/skills" },
@@ -92,6 +93,9 @@ export default function NavBar() {
           </li>
         </ul>
       </nav>
+      {menuOpen && (
+        <div className={Styles.backdrop} onClick={handleLinkClick} />
+      )}
     </header>
   );
 }

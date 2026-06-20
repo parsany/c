@@ -7,9 +7,10 @@ import { useRouter } from "next/router";
 export default function Footer() {
   const router = useRouter();
   const isNotHome = router.pathname !== "/";
+  const isLanding = router.pathname === "/landing";
 
   return (
-    <footer className={`${Styles.footer} ${isNotHome ? Styles.footerNotHome : ''}`}>
+    <footer className={`${Styles.footer} ${isNotHome ? Styles.footerNotHome : ''} ${isLanding ? Styles.footerLanding : ''}`}>
       <div className={Styles.footerInner}>
         <div className={Styles.footerTop}>
           <div className={Styles.brand}>

@@ -3,8 +3,14 @@ import Image from "next/image";
 import Link from "next/link";
 import Styles from "@/styles/Landing.module.css";
 import { ArrowRight, Code2, Brain, Rocket, Mail, Github, Linkedin, Twitter, FileText, Sparkles, Zap, Target } from "lucide-react";
+import { ProjectProfessional } from "@/public/JSONJS";
 
 export default function Landing() {
+  const featuredProjects = ProjectProfessional
+    .filter(p => p.isactive)
+    .sort((a, b) => b.id - a.id)
+    .slice(0, 3);
+
   return (
     <div className={Styles.page}>
       <Head>
@@ -32,16 +38,13 @@ export default function Landing() {
         </div>
         <div className={Styles.heroContent}>
           <div className={Styles.heroText}>
-            <div className={Styles.badge}>
-              <Sparkles size={14} />
-              <span>Available for Opportunities</span>
-            </div>
+
             <h1 className={Styles.heroTitle}>
               Building <span className={Styles.highlight}>Intelligent Systems</span> for Tomorrow
             </h1>
             <p className={Styles.heroSubtitle}>
-              I&apos;m Parsa Niavand, a software engineer and researcher passionate about 
-              AI, robotics, and creating technology that makes a difference. 
+              I&apos;m Parsa Niavand, a software engineer and researcher passionate about
+              AI, robotics, and creating technology that makes a difference.
               Let&apos;s build something remarkable together.
             </p>
             <div className={Styles.heroCTA}>
@@ -109,8 +112,8 @@ export default function Landing() {
               </div>
               <h3>Full-Stack Excellence</h3>
               <p>
-                From elegant frontends to robust backends, I architect and build 
-                scalable applications using modern technologies like React, Next.js, 
+                From elegant frontends to robust backends, I architect and build
+                scalable applications using modern technologies like React, Next.js,
                 Node.js, and Python.
               </p>
             </div>
@@ -120,8 +123,8 @@ export default function Landing() {
               </div>
               <h3>AI & Research</h3>
               <p>
-                Deep expertise in artificial intelligence, deep learning, and 
-                computational modeling. I transform complex research into 
+                Deep expertise in artificial intelligence, deep learning, and
+                computational modeling. I transform complex research into
                 practical, impactful solutions.
               </p>
             </div>
@@ -131,8 +134,8 @@ export default function Landing() {
               </div>
               <h3>Robotics & Simulation</h3>
               <p>
-                Experience in robotics systems and simulation environments. 
-                I bridge the gap between theoretical models and real-world 
+                Experience in robotics systems and simulation environments.
+                I bridge the gap between theoretical models and real-world
                 applications.
               </p>
             </div>
@@ -144,64 +147,68 @@ export default function Landing() {
       <section className={Styles.featuredSection}>
         <div className={Styles.container}>
           <div className={Styles.sectionHeader}>
-            <h2 className={Styles.sectionTitle}>Featured Work</h2>
+            <h2 className={Styles.sectionTitle}>Featured Professional Work</h2>
             <p className={Styles.sectionSubtitle}>
-              A selection of projects that showcase my skills and passion
+              A selection of enterprise-grade projects that showcase my skills and engineering expertise
             </p>
           </div>
           <div className={Styles.featuredGrid}>
-            <div className={Styles.featuredCard}>
-              <div className={Styles.featuredImage}>
-                <Image
-                  src="/projects/anomaly.png"
-                  alt="Anomaly Detection System"
-                  fill
-                  className={Styles.projectImg}
-                />
-              </div>
-              <div className={Styles.featuredContent}>
-                <div className={Styles.featuredTags}>
-                  <span className={Styles.tag}>AI/ML</span>
-                  <span className={Styles.tag}>Python</span>
+            {featuredProjects.map((project) => (
+              <div key={project.id} className={Styles.featuredCard}>
+                <div className={Styles.featuredImage}>
+                  <Image
+                    src={project.image}
+                    alt={project.name}
+                    fill
+                    className={Styles.projectImg}
+                    sizes="(max-width: 768px) 100vw, 400px"
+                  />
                 </div>
-                <h3>Anomaly Detection System</h3>
-                <p>
-                  Machine learning-based system for detecting anomalies in 
-                  complex datasets with real-time processing capabilities.
-                </p>
-                <Link href="/projects" className={Styles.featuredLink}>
-                  View Project <ArrowRight size={16} />
-                </Link>
-              </div>
-            </div>
-            <div className={Styles.featuredCard}>
-              <div className={Styles.featuredImage}>
-                <Image
-                  src="/projects/QtLib.png"
-                  alt="Qt Library Application"
-                  fill
-                  className={Styles.projectImg}
-                />
-              </div>
-              <div className={Styles.featuredContent}>
-                <div className={Styles.featuredTags}>
-                  <span className={Styles.tag}>C++</span>
-                  <span className={Styles.tag}>Qt</span>
+                <div className={Styles.featuredContent}>
+                  <div className={Styles.featuredTags}>
+                    {project.tag.slice(0, 3).map((t) => (
+                      <span key={t} className={Styles.tag}>
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  <h3 className={Styles.projectTitleText}>{project.name}</h3>
+                  <p className={Styles.projectDescText}>{project.description}</p>
+
+                  {project.highlights && (
+                    <ul className={Styles.projectHighlightsList}>
+                      {project.highlights.map((h, i) => (
+                        <li key={i} className={Styles.highlightPoint}>
+                          <Sparkles size={12} className={Styles.highlightIcon} />
+                          <span>{h}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  <div className={Styles.projectMetaRow}>
+                    {project.role && (
+                      <span className={Styles.projectMetaItem}>
+                        <strong>Role:</strong> {project.role}
+                      </span>
+                    )}
+                    {project.timeline && (
+                      <span className={Styles.projectMetaItem}>
+                        <strong>Timeline:</strong> {project.timeline}
+                      </span>
+                    )}
+                  </div>
+
+                  <Link href={`/projects/${project.slug}`} className={Styles.featuredLink}>
+                    View Project Details <ArrowRight size={16} />
+                  </Link>
                 </div>
-                <h3>Qt Library Application</h3>
-                <p>
-                  Cross-platform desktop application built with Qt framework 
-                  featuring modern UI and efficient data management.
-                </p>
-                <Link href="/projects" className={Styles.featuredLink}>
-                  View Project <ArrowRight size={16} />
-                </Link>
               </div>
-            </div>
+            ))}
           </div>
           <div className={Styles.viewAllWrapper}>
-            <Link href="/projects" className={Styles.viewAllBtn}>
-              View All Projects
+            <Link href="/projects/professional" className={Styles.viewAllBtn}>
+              View All Professional Projects
               <ArrowRight size={18} />
             </Link>
           </div>
@@ -215,9 +222,9 @@ export default function Landing() {
             <div className={Styles.experienceText}>
               <h2 className={Styles.sectionTitle}>Professional Journey</h2>
               <p className={Styles.experienceDesc}>
-                From UI/UX design to leading full-stack development, my career 
-                has been a journey of continuous growth and impact. Currently 
-                serving as Lead Full-Stack Developer at Codeafzar Codesheen, 
+                From UI/UX design to leading full-stack development, my career
+                has been a journey of continuous growth and impact. Currently
+                serving as Lead Full-Stack Developer at Codeafzar Codesheen,
                 where I manage 7+ projects and drive technical innovation.
               </p>
               <div className={Styles.experienceHighlights}>
@@ -336,7 +343,7 @@ export default function Landing() {
           <div className={Styles.ctaContent}>
             <h2>Let&apos;s Build Something Together</h2>
             <p>
-              Whether you have a project in mind, want to collaborate on research, 
+              Whether you have a project in mind, want to collaborate on research,
               or just want to say hello — I&apos;d love to hear from you.
             </p>
             <div className={Styles.ctaButtons}>
