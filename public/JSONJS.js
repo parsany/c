@@ -85,7 +85,7 @@ export const ProjectProfessional = [
     project_image: [
       "/professional/char/char-landing.jpg"
     ],
-    tag: ["Next.js", "React", "Postgres", "Boutique", "Admin Panel"],
+    tag: ["Next.js", "Tailwind CSS", "PostgreSQL", "Boutique"],
     isactive: true,
     link: "",
     role: "Solo Fullstack Developer",
@@ -107,7 +107,7 @@ export const ProjectProfessional = [
       "/professional/battery-msk/msk-services.png",
       "/professional/battery-msk/msk-product-id.png"
     ],
-    tag: ["Next.js", "NestJS", "Turborepo", "Postgres", "dual-language"],
+    tag: ["Next.js", "Tailwind CSS", "NestJS", "Turborepo", "PostgreSQL", "dual-Language"],
     isactive: false,
     redirect: "esp",
     link: "",
@@ -128,7 +128,7 @@ export const ProjectProfessional = [
       "/professional/battery-esp/battery-dash-products.png",
       "/professional/battery-esp/battery-dash-perm.png"
     ],
-    tag: ["Turborepo", "NestJS", "Next.js", "Postgres", "dual-Language"],
+    tag: ["Turborepo", "Tailwind CSS","NestJS", "Next.js", "PostgreSQL", "dual-Language"],
     isactive: false,
     link: "",
     text: `# Battery ESP Warranty & E-Commerce\n\nA full-fledged commercial web application designed for selling vehicle batteries and tracking serial warranty activations.\n\n## Project Overview\n- **Role**: Fullstack Developer (Team cooperation)\n- **Timeline**: 3 Weeks\n\n## Key Features\n- **Product Catalogs**: Browsable battery categories with technical specification comparisons.\n- **Warranty System**: Verification panel where customers search serial numbers to validate purchase warranty.\n- **Admin Management**: Advanced admin panel to regulate product listings, access permissions, and generate warranty keys.\n- **Checkout**: Shopping cart module configured for manual checkout verification via phone/operator services.\n- **Localization**: Full dual-language support.\n\n## Tech Stack\n- **Architecture**: Monorepo using Turborepo\n- **Backend**: NestJS\n- **Frontend**: Next.js, React`
@@ -151,13 +151,13 @@ export const ProjectProfessional = [
       "/professional/atrafian/atrafian-dash-support.png",
       "/professional/atrafian/atrafian-dash-access.png"
     ],
-    tag: ["NestJS", "Nextjs", "Turborepo", "Redis", "Socket.io", "Postgres", "Payment Gateway"],
+    tag: ["NestJS", "Next.js", "Tailwind CSS","Turborepo", "Socket.io", "PostgreSQL", "Payment Gateway"],
     isactive: true,
     link: "https://atrafian.ir",
     role: "Solo Fullstack & Mobile Dev",
     timeline: "2 Months",
     highlights: ["Real-time Socket.io Chat", "Radar Navigation & Discovery", "AWS S3/MinIO Integration"],
-    text: `# Atrafian Chat & Social Ecosystem\n\nAn enterprise-grade, highly secure real-time messaging platform and social dashboard built from scratch.\n\n## Project Overview\n- **Role**: Solo Fullstack & Mobile Developer\n- **Timeline**: 2 Months (Full-time)\n\n## Core Features\n- **Real-Time Communication**: Multi-channel personal chats, group chats, and support tickets built with Socket.io.\n- **Radar Navigation & Discovery**: Custom vector adventure map with hardware-accelerated interactive filters.\n- **Privacy & Security**: End-to-end security measures including secure message closing/deletion.\n- **Social Features**: Follower/following architecture and user story updates.\n- **Rich Media**: Sending voice messages, images, and videos stored on AWS S3-compatible MinIO instances.\n- **Infrastructure & Caching**: OTP SMS authentication and also for Redis cache database layer to maximize the speed.\n\n## Tech Stack\n- **Monorepo**: Turborepo\n- **Backend**: NestJS, PostgreSQL, Redis, Socket.io\n- **Frontend**: Next.js (Pages Router), React Query`
+    text: `# Atrafian Chat & Social Ecosystem\n\nAn enterprise-grade, highly secure real-time messaging platform and social dashboard built from scratch.\n\n## Project Overview\n- **Role**: Solo Fullstack & Mobile Developer\n- **Timeline**: 2 Months (Full-time)\n\n## Core Features\n- **Real-Time Communication**: Multi-channel personal chats, group chats, and support tickets built with Socket.io.\n- **Radar Navigation & Discovery**: Custom vector adventure map with hardware-accelerated interactive filters.\n- **Privacy & Security**: End-to-end security measures including secure message closing/deletion.\n- **Social Features**: Follower/following architecture and user story updates.\n- **Rich Media**: Sending voice messages, images, and videos stored on AWS S3-compatible MinIO instances.\n- **Infrastructure & Caching**: OTP SMS authentication and also for Redis cache database layer to maximize the speed.\n\n## Tech Stack\n- **Monorepo**: Turborepo\n- **Backend**: NestJS, PostgreSQLQL, Redis, Socket.io\n- **Frontend**: Next.js (Pages Router), React Query`
   },
   {
     id: 4,
@@ -172,19 +172,19 @@ export const ProjectProfessional = [
       "/professional/himeh/himeh-product-id.png",
       "/professional/himeh/himeh-checkout.png"
     ],
-    tag: ["Next.js", "tRPC", "React", "Payment Gateway", "Postgres"],
+    tag: ["Next.js", "Tailwind CSS","tRPC", "Payment Gateway", "PostgreSQL"],
     isactive: true,
     link: "",
     role: "Solo Fullstack Developer",
     timeline: "2 Months",
     highlights: ["Book Catalog Search Index", "tRPC Type-Safe API", "Integrated Payment Gateway"],
-    text: `# Himheh Book Publishing Platform\n\nA complete book selling and publishing web application developed from scratch.\n\n## Project Overview\n- **Role**: Solo Fullstack Developer\n- **Timeline**: 2 Months\n\n## Key Features\n- **Book Catalog**: A performant browse and search index for published books.\n- **Shopping Cart**: Real-time cart calculations and user inventory verification.\n- **User & Admin Dashboards**: Complete panels for managing orders, uploading new books, and editing publishing metadata.\n- **Security & Payments**: Integrated OTP SMS service for secure authentication and local payment gateway for transactions.\n\n## Tech Stack\n- **Frontend & Backend**: Next.js, tRPC, React\n- **Database**: PostgreSQL with Prisma ORM`
+    text: `# Himheh Book Publishing Platform\n\nA complete book selling and publishing web application developed from scratch.\n\n## Project Overview\n- **Role**: Solo Fullstack Developer\n- **Timeline**: 2 Months\n\n## Key Features\n- **Book Catalog**: A performant browse and search index for published books.\n- **Shopping Cart**: Real-time cart calculations and user inventory verification.\n- **User & Admin Dashboards**: Complete panels for managing orders, uploading new books, and editing publishing metadata.\n- **Security & Payments**: Integrated OTP SMS service for secure authentication and local payment gateway for transactions.\n\n## Tech Stack\n- **Frontend & Backend**: Next.js, tRPC, React\n- **Database**: PostgreSQLQL with Prisma ORM`
   },
   {
     id: 3,
     slug: "goldenbat",
     name: "Goldenbat GPS Tracking",
-    description: "Enterprise IoT GPS fleet tracking dashboard and landing page displaying real-time vehicle diagnostics.",
+    description: "Enterprise GPS fleet tracking dashboard and landing page displaying real-time vehicle diagnostics.",
     date: "Dec 05, 2024",
     image: "/professional/goldenbat/goldenbat-landing.png",
     project_image: [
@@ -192,10 +192,10 @@ export const ProjectProfessional = [
       "/professional/goldenbat/goldenbat-application.png",
       "/professional/goldenbat/goldenbat-sup.png"
     ],
-    tag: ["Next.js", "tRPC", "IoT", "GPS", "Postgres"],
+    tag: ["Next.js","Tailwind CSS", "tRPC", "GPS", "PostgreSQL"],
     isactive: false,
     link: "https://app.goldengps.ir",
-    text: `# Goldenbat GPS Tracking\n\nAn enterprise-grade IoT vehicle tracking dashboard connected directly to GPS hardware endpoints.\n\n## Project Overview\n- **Role**: Backend & Web Dashboard Developer (Team project)\n- **Timeline**: 2 Weeks (Landing Page) + 1.5 Months (Admin Panel & Backend)\n- **Mobile App**: Developed by a team member\n\n## Key Features\n- **Real-Time GPS Monitoring**: Live mapping of active vehicles across the country, showing vehicle speeds, GPS coordinates, and historical paths.\n- **Device Integration**: Connected backend ingestion endpoints to IoT GPS devices for high-frequency status tracking.\n- **Admin Control Center**: Fully featured admin panel for managing user accounts, fleet groups, and device assignments.\n\n## Tech Stack\n- **Web App**: Next.js with tRPC\n- **Styles**: Custom CSS Modules`
+    text: `# Goldenbat GPS Tracking\n\nAn enterprise-grade vehicle tracking dashboard connected directly to GPS hardware endpoints.\n\n## Project Overview\n- **Role**: Backend & Web Dashboard Developer (Team project)\n- **Timeline**: 2 Weeks (Landing Page) + 1.5 Months (Admin Panel & Backend)\n- **Mobile App**: Developed by a team member\n\n## Key Features\n- **Real-Time GPS Monitoring**: Live mapping of active vehicles across the country, showing vehicle speeds, GPS coordinates, and historical paths.\n- **Device Integration**: Connected backend ingestion endpoints to IoT GPS devices for high-frequency status tracking.\n- **Admin Control Center**: Fully featured admin panel for managing user accounts, fleet groups, and device assignments.\n\n## Tech Stack\n- **Web App**: Next.js with tRPC\n- **Styles**: Custom CSS Modules`
   },
   {
     id: 2,
@@ -212,7 +212,7 @@ export const ProjectProfessional = [
       "/professional/taxiland/taxiland-dash-tickets.png",
       "/professional/taxiland/taxiland-app-wallet.png"
     ],
-    tag: ["Next.js", "tRPC", "React", "Turborepo", "Tailwind CSS", "Postgres"],
+    tag: ["Next.js", "tRPC", "Turborepo", "Tailwind CSS", "PostgreSQL"],
     isactive: false,
     link: "",
     text: `# Taxiland Ride-Sharing\n\nAn Uber-like ride-sharing platform specifically tailored for intercity travel, connecting drivers and passengers across cities.\n\n## Project Overview\n- **Role**: Fullstack Developer (Team collaboration)\n- **Timeline**: 4 Months\n- **Status**: Currently down (archived screenshots shown)\n\n## Key Features\n- **Driver Assignment**: Hybrid assignment system matching passengers to drivers automatically or manually via phone and support dispatch.\n- **Admin Panel**: High-performance dashboard for operators to coordinate trips, manage driver statuses, and process tickets.\n- **Mobile Experience**: Responsive, low-latency client-side interface built for passengers and drivers.\n\n## Tech Stack\n- **Framework**: Next.js (Pages Router)\n- **API layer**: tRPC for type-safe API communication\n- **Styling**: Tailwind CSS`
@@ -229,7 +229,7 @@ export const ProjectProfessional = [
       "/professional/alzahra/alzahra-about.png",
       "/professional/alzahra/alzahra-helper.png"
     ],
-    tag: ["Next.js", "Tailwind CSS", "B2B", "Postgres"],
+    tag: ["Next.js", "Tailwind CSS", "B2B", "PostgreSQL"],
     isactive: false,
     link: "https://app.alzahragold.com",
     text: `# Alzahra Gold Banking B2B Platform\n\nA secure, enterprise-grade B2B platform designed for wholesale gold trading, liquidity management, and institutional banking services.\n\n## Project Overview\n- **Role**: Frontend Developer (Solo landing page implementation)\n- **Timeline**: 1 Week\n- **Backend**: Django (implemented by team members)\n\n## Key Features\n- **Gold Trading Interface**: High-fidelity dashboard for commercial partners to monitor real-time gold spot prices and execute transactions.\n- **B2B User Flow**: Custom onboarding, corporate verification checklists, and secure transactional panels.\n- **Performance**: Optimized frontend with page load times under 1 second using Next.js static optimization.\n\n## Tech Stack\n- **Frontend**: Next.js, Tailwind CSS\n- **Backend API**: Django REST Framework`
@@ -243,7 +243,7 @@ export const ProSkills = [
       { name: "React & Next.js", level: 90 },
       { name: "TypeScript", level: 85 },
       { name: "Node.js & Express", level: 80 },
-      { name: "PostgreSQL & Prisma", level: 75 },
+      { name: "PostgreSQLQL & Prisma", level: 75 },
       { name: "Tailwind CSS", level: 90 },
       { name: "Redis", level: 70 },
       { name: "NestJS", level: 75 },
