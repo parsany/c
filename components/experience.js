@@ -2,7 +2,7 @@ import styles from "@/styles/Experience.module.css";
 import { useEffect, useState } from 'react';
 import { Briefcase, GraduationCap, Award } from 'lucide-react';
 
-export default function Experience({IsIsolated}) {
+export default function Experience({ IsIsolated }) {
 
   const [theme, setTheme] = useState(null);
 
@@ -10,11 +10,11 @@ export default function Experience({IsIsolated}) {
     const savedTheme = localStorage.getItem('theme');
     setTheme(savedTheme);
   }, []);
-  
+
   return (
     <div className={styles.wrapper}>
       <h1 className={styles.sectionTitle}>Experience</h1>
-      
+
       <div className={styles.timeline}>
         {/* Job 1 */}
         <div className={styles.timelineItem}>
@@ -33,7 +33,7 @@ export default function Experience({IsIsolated}) {
                 </div>
               </div>
             </div>
-            
+
             <div className={styles.cardBody}>
               <p className={styles.achievementsLabel}>Key Achievements:</p>
               <ul className={styles.achievementsList}>
@@ -61,7 +61,7 @@ export default function Experience({IsIsolated}) {
                 </div>
               </div>
             </div>
-            
+
             <div className={styles.cardBody}>
               <p className={styles.achievementsLabel}>Key Achievements:</p>
               <ul className={styles.achievementsList}>
@@ -89,13 +89,41 @@ export default function Experience({IsIsolated}) {
                 </div>
               </div>
             </div>
-            
+
             <div className={styles.cardBody}>
               <p className={styles.achievementsLabel}>Key Achievements:</p>
               <ul className={styles.achievementsList}>
                 <li>Developed secure, reusable components using React, Next.js, and TypeScript.</li>
                 <li>Implemented complex UI animations and optimized rendering performance.</li>
                 <li>Applied optimized and scalable styling using Tailwind CSS.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.timelineItem}>
+          <div className={styles.timelineMarker}></div>
+          <div className={styles.card}>
+            <div className={styles.cardHeader}>
+              <div className={styles.iconWrapper}>
+                <Award className={styles.icon} size={24} />
+              </div>
+              <div className={styles.headerText}>
+                <h2 className={styles.role}>Frontend Freelance Developer</h2>
+                <div className={styles.meta}>
+                  <span className={styles.company}>Independent Contract</span>
+                  <span className={styles.separator}>•</span>
+                  <span className={styles.duration}>January 2023 - November 2023</span>
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.cardBody}>
+              <p className={styles.achievementsLabel}>Key Achievements:</p>
+              <ul className={styles.achievementsList}>
+                <li>Built and shipped responsive, client-facing website frontends using Next.js, React, and CSS.</li>
+                <li>Handled on-page technical SEO, set up metadata structures, and optimized page loading speeds for local business landing pages.</li>
+                <li>Converted design mockups and Figma frames into clean, interactive, and modular UI components.</li>
               </ul>
             </div>
           </div>
@@ -118,7 +146,7 @@ export default function Experience({IsIsolated}) {
                 </div>
               </div>
             </div>
-            
+
             <div className={styles.cardBody}>
               <p className={styles.achievementsLabel}>Key Achievements:</p>
               <ul className={styles.achievementsList}>
@@ -132,7 +160,7 @@ export default function Experience({IsIsolated}) {
       </div>
 
       <h1 className={styles.sectionTitle}>Education</h1>
-      
+
       <div className={styles.timeline}>
         {/* Education 1 */}
         <div className={styles.timelineItem}>
@@ -151,7 +179,7 @@ export default function Experience({IsIsolated}) {
                 </div>
               </div>
             </div>
-            
+
             <div className={styles.cardBody}>
               <p className={styles.gpa}>GPA: 3.4</p>
               <p className={styles.achievementsLabel} style={{ marginTop: '16px' }}>Relevant Coursework:</p>

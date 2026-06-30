@@ -1,0 +1,128 @@
+%-------------------------
+% CV for Northeastern University Faculty in Latex
+% Author : Zoe Kearney
+% Based off of: https://www.overleaf.com/latex/templates/coles-resume-template/qhpynjcvjpcj
+% Follows: https://theprofessorisin.com/2016/08/19/dr-karens-rules-of-the-academic-cv/
+% License : MIT
+%------------------------
+
+% Document class and font size
+\documentclass[a4paper,9pt]{extarticle}
+
+% Packages
+\usepackage[utf8]{inputenc} % For input encoding
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=.]{hyperref}
+\usepackage{geometry} % For page margins
+\geometry{a4paper, margin=1in} % Set paper size and margins
+\usepackage{titlesec} % For section title formatting
+\usepackage{enumitem} % For itemized list formatting
+\usepackage{hyperref} % For hyperlinks
+\hypersetup{%
+	colorlinks=false,
+	pdfborderstyle={/S/U/W 1},
+	urlbordercolor=black
+}
+
+% Formatting
+\setlist{noitemsep} % Removes item separation
+\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}[\titlerule] % Section title format
+\titlespacing*{\section}{0pt}{\baselineskip}{\baselineskip} % Section title spacing
+
+% Begin document
+\begin{document}
+	
+	% Disable page numbers
+	\pagestyle{empty}
+	
+	% Header
+% Header
+% Header
+\begin{center}
+	\textbf{\Huge Parsa Niavand }\\[6pt] % Name
+	Tehran, Iran \quad | \quad \href{mailto:vvsparsa@gmail.com}{Email} \quad | \quad \href{https://www.github.com/parsany}{GitHub} \quad | \quad \href{https://www.linkedin.com/in/parsany}{LinkedIn} \quad | \quad \href{https://www.parsany.ir}{parsany.ir}
+\end{center}
+	
+	%------------------------
+	% Skills
+	
+	\section*{SKILLS}
+	
+	\textbf{Programming Languages:}
+	Typescript, Python, SQL, Bash
+	\noindent
+	\newline
+	\textbf{Web Development:}
+	Next.js, React, NestJS, Tailwind CSS, tRPC
+	\noindent
+	\newline
+	\textbf{Databases \& Caching:}
+	PostgreSQL, Redis, Prisma ORM, SQLite
+	\noindent
+	\newline
+	\textbf{DevOps:}
+	Docker, Linux Server, Nginx, Git, AWS S3
+	\newline
+	\textbf{Spoken Languages:}
+	\textbf{Persian:} Native \;\; \textbf{English:} Bilingual
+	
+
+	%------------------------
+	
+	% Projects
+	
+	\section*{PROJECTS}
+	
+	\noindent
+	\textbf{Battery ESP/MSK E-Commerce} (Production Phase) \hfill \small{\hypersetup{pdfborderstyle={/S/U/W 0}}\href{https://parsany.ir/projects/esp}{[Link]}} \vspace*{2pt} \\
+	Co-developed production environments for two enterprise dual-language websites and an internal administration panel using a monorepo architecture. Implemented serial number warranty validation tools backed by NestJS and a PostgreSQL database, complete with admin user permissions controls (RBAC).\vspace{6pt} \\
+
+	\noindent
+	\textbf{Goldenbat GPS Tracking} \hfill \small{\hypersetup{pdfborderstyle={/S/U/W 0}}\href{https://app.goldengps.ir}{[Link]}} \vspace*{2pt} \\
+	Co-developed an enterprise-grade GPS tracking web-application, landing and management dashboard connected directly to IoT GPS hardware endpoints. Engineered high-frequency backend ingestion endpoints to process real-time status tracking, live mapping coordinates, and historical vehicle paths and Geofencing. Developed a fully featured web administration panel using Next.js and tRPC to manage groupings, device assignments, and active user accounts.\vspace{6pt} \\
+
+	\noindent
+	\textbf{Alzahra Gold Wholesaler B2B Platform} \hfill \small{\hypersetup{pdfborderstyle={/S/U/W 0}}\href{http://app.alzahragold.com/}{[Link]}} \vspace*{2pt} \\
+	Developed the high-performance B2B digital gold web portal frontend landing page using Next.js and Tailwind CSS. Contributed to the development of the client-side customer panel, implementing interactive features to streamline commercial workflows and enable institutional buyers to purchase jewelry purchases. Integrated client-side structural views alongside secure wholesale transactional layers connected to a team-implemented Django backend API. \vspace{6pt} \\
+	
+	\noindent
+	\textbf{Atrafian Chat \& Social Ecosystem} \hfill \small{\hypersetup{pdfborderstyle={/S/U/W 0}}\href{https://atrafian.ir}{[Link]}} \vspace*{2pt} \\ 
+	Solely architected and engineered an enterprise-grade real-time web application featuring a native mobile build using Turborepo and Capacitor.js. Implemented high-concurrency messaging and real-time social communication pipelines utilizing Socket.io powered by a NestJS backend ecosystem, backed by a high-efficiency Redis caching layer and secure MinIO S3 media object storage. Developed a completely separate administrative dashboard panel utilizing Next.js to isolate system operations, user management, and Role-Based Access Control (RBAC). \vspace{6pt} \\
+	
+	\noindent
+	\textbf{Taxiland Ride-Sharing Platform} \hfill \small{\hypersetup{pdfborderstyle={/S/U/W 0}}[Archived MVP]} \vspace*{2pt} \\
+	Collaborated on an intercity transportation web application and responsive driver routing system. Developed a rapid web-based administration management panel using Next.js and tRPC allowing dispatch operators to handle dynamic driver assignment and process user support tickets.\vspace{6pt} \\
+	
+	% Employment Section 
+	\section*{RELATED EMPLOYMENT}
+	\noindent
+	\textbf{Fullstack Web Developer} \\
+	 Organization Contract / Freelance  \\
+	January 2024 - Current
+	\begin{itemize}[leftmargin=*]
+		\item Architected complete web applications using Next.js, React, and NestJS backends across distributed code environments.
+		\item Deployed high-fidelity user layouts utilizing Tailwind CSS alongside unified backend architectures inside Turborepo monorepos.
+		\item Built performant server-side configurations, custom caching layers, and high-performance type-safe API routers.
+	\end{itemize}
+	\noindent
+	
+	\vspace*{6pt}
+	\noindent
+	\textbf{Frontend Freelance Developer} \\
+	Independent Contract \\
+	June 2023 -- November 2023
+	\begin{itemize}[leftmargin=*]
+		\item Built and shipped responsive, client-facing website frontends using Next.js, React, and CSS.
+		\item Handled on-page technical SEO, set up metadata structures, and optimized page loading speeds for local business landing pages.
+		\item Converted design mockups and Figma frames into clean, interactive, and modular UI components.
+	\end{itemize}
+
+% Education Section
+\section*{EDUCATION}
+
+\noindent
+\textbf{B.S. in Computer Science} \hfill SRBIAU - Tehran, Iran \\ 
+
+
+	
+\end{document}
