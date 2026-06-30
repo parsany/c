@@ -1,6 +1,6 @@
 export const ProjectAcademic = [
   {
-    id: 1,
+    id: 3,
     name: "Cat Emotion recognition",
     description:
       "Using CNN, I trained a model to recognize the emotion of cats. Last update Aug 2025, *improved accuracy to 70%* ",
@@ -33,7 +33,7 @@ export const ProjectAcademic = [
     wlink: "https://github.com/parsany/EvolutionaryAlgo"
   },
   {
-    id: 3,
+    id: 4,
     name: "PID_NN",
     description:
       "PID control for optimization of neural networks.",
@@ -53,8 +53,8 @@ export const ProjectAcademic = [
     tag: ["Programming", "Apps"],
   },
   {
-    id: 6,
-    name: "anomaly detection for goldmines ",
+    id: 1,
+    name: "Anomaly detection for goldmines ",
     description:
       "deep learning models for mineral zone detection (as anomalies) using various Autoencoder architectures.",
     date: "Nov 2, 2025",
@@ -63,7 +63,7 @@ export const ProjectAcademic = [
     tag: ["AI"],
   },
   {
-    id: 4,
+    id: 6,
     name: "Simple Interpreter with Flex & Bison",
     description:
       "project i did for university class",

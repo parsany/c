@@ -52,7 +52,7 @@ export default function Landing() {
                 <span>Explore My Work</span>
                 <ArrowRight size={18} />
               </Link>
-              <Link href="/CVB-iknowucanfindithere-smart!.pdf" className={Styles.secondaryBtn}>
+              <Link href="/CVB.pdf" className={Styles.secondaryBtn}>
                 <FileText size={18} />
                 <span>View Resume</span>
               </Link>

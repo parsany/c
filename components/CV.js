@@ -23,11 +23,11 @@ export default function CV({ isOpen, onClose }) {
         <button className={styles.closeButton} onClick={onClose} aria-label="Close modal">
           <X size={24} />
         </button>
-        
+
         <p className={styles.cvNotice}>
           This CV is redacted as it is outdated. Please contact me for my current resume.
         </p>
-        
+
         <div className={styles.cvImageFrame}>
           <Image
             src="/content/cv.png"
@@ -38,7 +38,7 @@ export default function CV({ isOpen, onClose }) {
             priority
           />
         </div>
-        
+
         <div className={styles.cvButtonsRow}>
           <button className={styles.downloadCV}>
             <a href="/CVR-iknowucanfindithere-smart!.pdf" target="_blank" rel="noopener noreferrer">
@@ -46,7 +46,7 @@ export default function CV({ isOpen, onClose }) {
             </a>
           </button>
           <button className={styles.downloadCV}>
-            <a href="/CVB-iknowucanfindithere-smart!.pdf" target="_blank" rel="noopener noreferrer">
+            <a href="/CVB.pdf" target="_blank" rel="noopener noreferrer">
               Business CV
             </a>
           </button>

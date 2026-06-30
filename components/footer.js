@@ -27,7 +27,7 @@ export default function Footer() {
             <nav className={Styles.footerNav}>
               <Link href="/">Home</Link>
               <Link href="/projects">Projects</Link>
-              <Link href="/CVB-iknowucanfindithere-smart!.pdf">Resume</Link>
+              <Link href="/CVB.pdf">Resume</Link>
               <Link href="/news">Contact</Link>
             </nav>
             <div className={Styles.socialLinks}>
