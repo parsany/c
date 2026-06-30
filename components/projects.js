@@ -264,7 +264,7 @@ export default function Projects({ LimitShow, initialType = "professional", isUr
                 <div className={styles.banner}>{renderMedia(project)}</div>
                 <div className={styles.content}>
                   <div className={styles.tagsRow}>
-                    {project.tag.map((t) => (
+                    {project.tag.slice(0, 3).map((t) => (
                       <span key={t} className={styles.tagPill}>
                         {t}
                       </span>
@@ -293,7 +293,7 @@ export default function Projects({ LimitShow, initialType = "professional", isUr
                 <div className={styles.banner}>{renderMedia(project)}</div>
                 <div className={styles.content}>
                   <div className={styles.tagsRow}>
-                    {project.tag.map((t) => (
+                    {project.tag.slice(0, 3).map((t) => (
                       <span key={t} className={styles.tagPill}>
                         {t}
                       </span>
@@ -318,7 +318,7 @@ export default function Projects({ LimitShow, initialType = "professional", isUr
                 <div className={styles.banner}>{renderMedia(project)}</div>
                 <div className={styles.content}>
                   <div className={styles.tagsRow}>
-                    {project.tag.map((t) => (
+                    {project.tag.slice(0, 3).map((t) => (
                       <span key={t} className={styles.tagPill}>
                         {t}
                       </span>

@@ -90,11 +90,27 @@
   flex: 1;
 }
 
+.headerMain {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  width: 100%;
+  margin-bottom: 4px;
+}
+
 .role {
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--title-color);
-  margin-bottom: 4px;
+  margin: 0;
+}
+
+.duration {
+  font-size: 0.95rem;
+  color: var(--subtitle-color);
+  white-space: nowrap;
+  font-weight: 500;
 }
 
 .meta {
@@ -189,6 +205,12 @@
     font-size: 1.1rem;
   }
   
+  .headerMain {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
   .meta {
     flex-direction: column;
     align-items: flex-start;

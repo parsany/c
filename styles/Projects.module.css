@@ -161,9 +161,16 @@
 /* Tags */
 .tagsRow {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 8px;
   margin-bottom: 12px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.tagsRow::-webkit-scrollbar {
+  display: none;
 }
 
 .tagPill {
@@ -176,6 +183,7 @@
   color: var(--tag-pill-color);
   font-weight: 500;
   letter-spacing: 0.3px;
+  flex-shrink: 0;
 }
 
 .projectName {
@@ -191,7 +199,13 @@
   color: var(--project-description-color);
   margin-bottom: 16px;
   line-height: 1.5;
-  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  /* autoprefixer: ignore next */
+  -webkit-box-orient: vertical;
+  line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Card Footer */
