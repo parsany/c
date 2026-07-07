@@ -267,7 +267,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
             h1: ({ node, ...props }) => <h1 className="text-xl font-bold text-slate-100 mt-8 mb-4 border-b border-slate-900 pb-2" {...props} />,
             h2: ({ node, ...props }) => <h2 className="text-lg font-semibold text-slate-100 mt-6 mb-3" {...props} />,
             p: ({ node, ...props }) => <p className="mb-4 text-slate-300 leading-relaxed" {...props} />,
-            ul: ({ node, ...props }) => <ul className="list-disc pl-5 mb-4 space-y-2 text-slate-450" {...props} />,
+            ul: ({ node, ...props }) => <ul className="list-disc pl-5 mb-4 space-y-2 text-slate-300" {...props} />,
             li: ({ node, ...props }) => <li className="pl-1" {...props} />,
             code: ({ node, ...props }) => <code className="bg-slate-900 text-slate-300 border border-slate-800 px-1 py-0.5 rounded text-xs font-mono" {...props} />,
           }}

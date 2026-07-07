@@ -61,7 +61,7 @@ function ProjectCard({
 
   return (
     <article
-      className="group flex flex-col justify-between bg-slate-900 border border-slate-800 hover:border-slate-100 rounded-xl p-5 md:p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(210,185,124,0.06)] focus-within:ring-2 focus-within:ring-slate-400 focus-within:outline-none cursor-pointer"
+      className="group flex flex-col justify-between bg-gradient-to-b from-slate-900 to-slate-950/80 border border-slate-800/80 hover:border-slate-100/40 rounded-xl p-5 md:p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(215,201,165,0.08)] focus-within:ring-2 focus-within:ring-slate-400 focus-within:outline-none cursor-pointer"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       onClick={handleCardClick}
@@ -94,7 +94,7 @@ function ProjectCard({
             )}
           </div>
 
-          <p className="text-slate-450 text-sm leading-relaxed line-clamp-3">
+          <p className="text-slate-300 text-sm leading-relaxed line-clamp-3">
             {description}
           </p>
         </div>
@@ -234,13 +234,13 @@ export default function ProjectList() {
           </p>
         </div>
 
-        <div className="flex p-1 gap-1 bg-slate-900 border border-slate-800/80 rounded-lg self-start md:self-auto font-mono text-xs select-none">
+        <div className="flex p-1 gap-1 bg-slate-950 border border-slate-900 rounded-lg self-start md:self-auto font-mono text-xs select-none">
           <button
             onClick={() => setActiveTab("professional")}
             className={`px-3 py-1.5 rounded transition-all focus:outline-none whitespace-nowrap relative ${
               activeTab === "professional"
-                ? "bg-slate-800 text-slate-100 shadow z-10"
-                : "text-slate-500 hover:text-slate-300 z-0"
+                ? "bg-slate-900 border border-slate-800 text-slate-100 shadow z-10"
+                : "text-slate-400 hover:text-slate-200 border border-transparent z-0"
             }`}
           >
             Production Systems ({professionalProjects.length})
@@ -249,8 +249,8 @@ export default function ProjectList() {
             onClick={() => setActiveTab("academic")}
             className={`px-3 py-1.5 rounded transition-all focus:outline-none whitespace-nowrap relative ${
               activeTab === "academic"
-                ? "bg-slate-800 text-slate-100 shadow z-10"
-                : "text-slate-500 hover:text-slate-300 z-0"
+                ? "bg-slate-900 border border-slate-800 text-slate-100 shadow z-10"
+                : "text-slate-400 hover:text-slate-200 border border-transparent z-0"
             }`}
           >
             R&D & Experiments ({academicProjects.length})

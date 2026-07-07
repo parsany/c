@@ -29,11 +29,11 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
         <div className="flex flex-wrap items-center gap-4 text-sm font-mono">
           <button
             onClick={onOpenCommandMenu}
-            className="flex items-center space-x-2 px-3 py-1.5 rounded-md bg-slate-900 border border-slate-800 hover:border-slate-700 hover:bg-slate-900/80 text-slate-300 hover:text-slate-100 transition-colors select-none"
+            className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 hover:bg-slate-900/80 text-slate-300 hover:text-slate-100 transition-all select-none"
             aria-label="Open command menu"
           >
             <span>Explore Menu</span>
-            <kbd className="hidden sm:inline-flex items-center px-1.5 py-0.5 rounded bg-slate-950 text-slate-400 text-xs border border-slate-800">
+            <kbd className="hidden sm:inline-flex items-center px-1.5 py-0.5 rounded bg-slate-950 text-slate-400 text-[10px] border border-slate-800">
               ⌘K
             </kbd>
           </button>
@@ -42,7 +42,7 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center space-x-2 px-3.5 py-1.5 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-950 font-medium transition-colors shadow-sm select-none"
+            className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-950 font-semibold transition-all shadow-sm hover:shadow select-none"
           >
             <span>Download Resume</span>
             <span>&rarr;</span>
