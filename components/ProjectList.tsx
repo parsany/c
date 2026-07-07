@@ -66,28 +66,28 @@ function ProjectCard({
   if (isProfessional) {
     return (
       <article
-        className="group flex flex-col justify-between bg-slate-900/40 border border-slate-800/80 hover:border-slate-100/30 rounded-xl p-5 md:p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(215,201,165,0.04)] focus-within:ring-2 focus-within:ring-slate-400 focus-within:outline-none cursor-pointer"
+        className="group flex flex-col justify-between bg-theme-cardBg border border-theme-cardBorder hover:border-theme-accent/60 rounded-xl p-5 md:p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(37,99,235,0.04)] dark:hover:shadow-[0_8px_30px_rgba(215,201,165,0.04)] focus-within:ring-2 focus-within:ring-theme-accent/50 focus-within:outline-none cursor-pointer"
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
         onClick={handleCardClick}
       >
         <div className="space-y-4">
           <div className="space-y-2">
-            <h3 className="text-lg font-semibold text-slate-100 group-hover:text-slate-50 transition-colors">
+            <h3 className="text-lg font-semibold text-theme-text group-hover:text-theme-accent transition-colors">
               {name}
             </h3>
-            <p className="text-slate-300 text-sm leading-relaxed">
+            <p className="text-theme-secondary text-sm leading-relaxed">
               {description}
             </p>
           </div>
         </div>
 
-        <div className="mt-6 pt-4 border-t border-slate-800/60 flex flex-col gap-3">
+        <div className="mt-6 pt-4 border-t border-theme-border flex flex-col gap-3">
           <div className="flex flex-wrap gap-1.5">
             {tags.slice(0, 4).map((tag: string) => (
               <span
                 key={tag}
-                className="px-2 py-0.5 text-[10px] font-mono rounded bg-slate-950 border border-slate-800 text-slate-400"
+                className="px-2.5 py-0.5 text-[10px] font-mono font-semibold rounded bg-theme-accentLight text-theme-accentText border border-theme-border"
               >
                 {tag}
               </span>
@@ -101,20 +101,20 @@ function ProjectCard({
                   href={link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center space-x-1 text-slate-300 hover:text-slate-100 transition-colors"
+                  className="inline-flex items-center space-x-1 font-bold text-theme-accent hover:text-theme-accentHover hover:underline transition-colors"
                 >
                   <span>Live Site</span>
                   <ArrowRight className="h-3 w-3" />
                 </a>
               ) : (
-                <span className="text-slate-600">Proprietary</span>
+                <span className="text-theme-muted font-medium">Proprietary</span>
               )}
             </div>
 
             {slug && (
               <Link
                 href={`/projects/${slug}`}
-                className="inline-flex items-center space-x-1 text-slate-400 hover:text-slate-200 transition-colors"
+                className="inline-flex items-center space-x-1 text-theme-muted hover:text-theme-text transition-colors"
                 aria-label={`View ${name} architectural details`}
               >
                 <span>Specs</span>
@@ -128,14 +128,14 @@ function ProjectCard({
 
   return (
     <article
-      className="group flex flex-col justify-between bg-gradient-to-b from-slate-900 to-slate-950/80 border border-slate-800/80 hover:border-slate-100/40 rounded-xl p-5 md:p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(215,201,165,0.08)] focus-within:ring-2 focus-within:ring-slate-400 focus-within:outline-none cursor-pointer"
+      className="group flex flex-col justify-between bg-theme-cardBg border border-theme-cardBorder hover:border-theme-accent/60 rounded-xl p-5 md:p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(37,99,235,0.04)] dark:hover:shadow-[0_8px_30px_rgba(215,201,165,0.04)] focus-within:ring-2 focus-within:ring-theme-accent/50 focus-within:outline-none cursor-pointer"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       onClick={handleCardClick}
     >
       <div className="space-y-4">
         <div
-          className="aspect-video w-full rounded-lg overflow-hidden border border-slate-800 bg-slate-950 relative"
+          className="aspect-video w-full rounded-lg overflow-hidden border border-theme-border bg-theme-btnExploreBg relative"
           tabIndex={0}
           onFocus={onMouseEnter}
           onBlur={onMouseLeave}
@@ -161,22 +161,22 @@ function ProjectCard({
         </div>
 
         <div className="space-y-2">
-          <h3 className="text-lg font-semibold text-slate-100 group-hover:text-slate-50 transition-colors">
+          <h3 className="text-lg font-semibold text-theme-text group-hover:text-theme-accent transition-colors">
             {name}
           </h3>
 
-          <p className="text-slate-300 text-sm leading-relaxed line-clamp-3">
+          <p className="text-theme-secondary text-sm leading-relaxed line-clamp-3">
             {description}
           </p>
         </div>
       </div>
 
-      <div className="mt-6 pt-4 border-t border-slate-800/60 flex flex-col gap-3">
+      <div className="mt-6 pt-4 border-t border-theme-border flex flex-col gap-3">
         <div className="flex flex-wrap gap-1.5">
           {tags.slice(0, 3).map((tag: string) => (
             <span
               key={tag}
-              className="px-2 py-0.5 text-[10px] font-mono rounded bg-slate-950 border border-slate-800 text-slate-400"
+              className="px-2.5 py-0.5 text-[10px] font-mono font-semibold rounded bg-theme-accentLight text-theme-accentText border border-theme-border"
             >
               {tag}
             </span>
@@ -190,13 +190,13 @@ function ProjectCard({
                 href={link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center space-x-1 text-slate-300 hover:text-slate-100 transition-colors"
+                className="inline-flex items-center space-x-1 font-bold text-theme-accent hover:text-theme-accentHover hover:underline transition-colors"
               >
                 <span>GitHub Repo</span>
                 <ArrowRight className="h-3 w-3" />
               </a>
             ) : (
-              <span className="text-slate-600">Pending Release</span>
+              <span className="text-theme-muted font-medium">Pending Release</span>
             )}
           </div>
         </div>
@@ -284,22 +284,22 @@ export default function ProjectList() {
   const academicProjects = [...ProjectAcademic].sort((a, b) => b.id - a.id);
 
   return (
-    <section className="pt-8 md:pt-12 pb-12 md:pb-20 border-b border-slate-900/60" id="projects">
+    <section className="pt-8 md:pt-12 pb-12 md:pb-20 border-b border-theme-border" id="projects">
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
         <div>
-          <h2 className="text-2xl font-bold tracking-tight text-slate-100 mb-2">Featured Work</h2>
-          <p className="text-slate-400 text-sm md:text-base max-w-2xl">
+          <h2 className="text-2xl font-bold tracking-tight text-theme-text mb-2">Featured Work</h2>
+          <p className="text-theme-muted text-sm md:text-base max-w-2xl">
             Selected projects, live applications and codebases.
           </p>
         </div>
 
-        <div className="flex flex-col sm:flex-row p-1 gap-1 bg-slate-950 border border-slate-900 rounded-lg self-stretch md:self-auto font-mono text-xs select-none">
+        <div className="flex flex-col sm:flex-row p-1 gap-1 bg-theme-btnExploreBg border border-theme-border rounded-lg self-stretch md:self-auto font-mono text-xs select-none">
           <button
             onClick={() => setActiveTab("professional")}
             className={`px-3 py-1.5 rounded transition-all focus:outline-none whitespace-nowrap text-center ${
               activeTab === "professional"
-                ? "bg-slate-900 border border-slate-800 text-slate-100 shadow z-10"
-                : "text-slate-400 hover:text-slate-200 border border-transparent z-0"
+                ? "bg-theme-bg border border-theme-border text-theme-text shadow-sm z-10 font-bold"
+                : "text-theme-muted hover:text-theme-text border border-transparent z-0"
             } w-full sm:w-auto`}
           >
             Projects ({professionalProjects.length})
@@ -308,8 +308,8 @@ export default function ProjectList() {
             onClick={() => setActiveTab("academic")}
             className={`px-3 py-1.5 rounded transition-all focus:outline-none whitespace-nowrap text-center ${
               activeTab === "academic"
-                ? "bg-slate-900 border border-slate-800 text-slate-100 shadow z-10"
-                : "text-slate-400 hover:text-slate-200 border border-transparent z-0"
+                ? "bg-theme-bg border border-theme-border text-theme-text shadow-sm z-10 font-bold"
+                : "text-theme-muted hover:text-theme-text border border-transparent z-0"
             } w-full sm:w-auto`}
           >
             R&D & Experiments ({academicProjects.length})

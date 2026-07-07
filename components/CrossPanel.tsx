@@ -15,16 +15,16 @@ const Slider = ({ label, value, min, max, onChange }: {
 }) => (
   <div className="mb-3.5">
     <div className="flex justify-between mb-1">
-      <span className="text-[10px] tracking-wider text-slate-400 uppercase">{label}</span>
-      <span className="text-[10px] font-mono text-slate-300">{value}</span>
+      <span className="text-[10px] tracking-wider text-theme-muted uppercase">{label}</span>
+      <span className="text-[10px] font-mono text-theme-text">{value}</span>
     </div>
     <div className="relative h-5 flex items-center">
-      <div className="absolute left-0 right-0 h-[1px] bg-slate-800" />
+      <div className="absolute left-0 right-0 h-[1px] bg-theme-border" />
       <div
         className="absolute left-0 h-[1px]"
         style={{
           width: `${((value - min) / (max - min)) * 100}%`,
-          background: "rgba(215,201,165,0.6)",
+          background: "var(--cross-accent-rgba)",
         }}
       />
       <input
@@ -39,7 +39,7 @@ const Slider = ({ label, value, min, max, onChange }: {
 export default function CrossPanel({ size, onSize, density, onDensity, radius, onRadius, fireMode, onFire, attackMode, onAttack, onClose }: CrossPanelProps) {
   return (
     <div
-      className="absolute bottom-6 right-6 z-50 w-[260px] bg-slate-900 border border-slate-800 rounded-xl shadow-2xl overflow-hidden flex flex-col"
+      className="absolute bottom-6 right-6 z-50 w-[260px] bg-theme-panelBg border border-theme-panelBorder rounded-xl shadow-2xl overflow-hidden flex flex-col"
       style={{
         fontFamily: "'VT323', 'Courier New', monospace",
         animation: "panelIn 0.3s cubic-bezier(0.16,1,0.3,1)",
@@ -49,19 +49,19 @@ export default function CrossPanel({ size, onSize, density, onDensity, radius, o
         @keyframes panelIn { from { opacity:0; transform:translateY(12px) } to { opacity:1; transform:translateY(0) } }
         input[type=range]::-webkit-slider-thumb {
           appearance:none; width:8px; height:8px;
-          background:#d7c9a5; border:none; cursor:pointer;
+          background:var(--cross-accent); border:none; cursor:pointer;
         }
         input[type=range]::-moz-range-thumb {
-          width:8px; height:8px; background:#d7c9a5;
+          width:8px; height:8px; background:var(--cross-accent);
           border:none; cursor:pointer;
         }
       `}</style>
 
-      <div className="flex items-center justify-between px-3.5 py-2.5 border-b border-slate-800/80">
-        <span className="text-[11px] tracking-wider text-slate-400 uppercase">✛ CROSS FIELD</span>
+      <div className="flex items-center justify-between px-3.5 py-2.5 border-b border-theme-border">
+        <span className="text-[11px] tracking-wider text-theme-muted uppercase">✛ CROSS FIELD</span>
         <button
           onClick={onClose}
-          className="text-slate-500 hover:text-slate-200 transition-colors text-sm font-sans"
+          className="text-theme-muted hover:text-theme-text transition-colors text-sm font-sans"
         >
           ✕
         </button>
@@ -73,13 +73,13 @@ export default function CrossPanel({ size, onSize, density, onDensity, radius, o
         <Slider label="Influence Radius" value={radius} min={60} max={320} onChange={onRadius} />
       </div>
 
-      <div className="px-3.5 pb-3.5 pt-2 border-t border-slate-800/60 flex gap-2">
+      <div className="px-3.5 py-3 border-t border-theme-border flex gap-2">
         <button
           onClick={onFire}
           className={`flex-1 py-1.5 px-2 text-[10px] tracking-wider transition-all duration-200 font-mono rounded border ${
             fireMode
               ? "bg-orange-500/10 border-orange-500/40 text-orange-500 shadow-sm"
-              : "bg-slate-950/40 border-slate-800 text-slate-400 hover:text-slate-200 hover:bg-slate-800/40"
+              : "bg-theme-btnExploreBg border border-theme-btnExploreBorder text-theme-btnExploreText hover:text-theme-text hover:bg-theme-accentLight/30 hover:border-theme-accent/60"
           }`}
         >
           {fireMode ? "🔥 BURNING" : "IGNITE"}
@@ -90,7 +90,7 @@ export default function CrossPanel({ size, onSize, density, onDensity, radius, o
           className={`flex-1 py-1.5 px-2 text-[10px] tracking-wider transition-all duration-200 font-mono rounded border ${
             attackMode
               ? "bg-red-500/10 border-red-500/40 text-red-500 shadow-sm"
-              : "bg-slate-950/40 border-slate-800 text-slate-400 hover:text-slate-200 hover:bg-slate-800/40"
+              : "bg-theme-btnExploreBg border border-theme-btnExploreBorder text-theme-btnExploreText hover:text-theme-text hover:bg-theme-accentLight/30 hover:border-theme-accent/60"
           }`}
         >
           {attackMode ? "⚠ ATTACKING" : "ATTACK"}
@@ -98,7 +98,7 @@ export default function CrossPanel({ size, onSize, density, onDensity, radius, o
       </div>
 
       {attackMode && (
-        <div className="px-3.5 pb-2.5 text-[9px] tracking-wider text-slate-500 leading-normal uppercase">
+        <div className="px-3.5 pb-2.5 text-[9px] tracking-wider text-theme-muted leading-normal uppercase">
           CROSSES RELEASED — SYSTEM COMPROMISED
         </div>
       )}

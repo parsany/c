@@ -21,8 +21,9 @@ function lerpColor(a: number[], b: number[], t: number) {
 }
 
 function getFireColor(infl: number, fi: number): [number, number, number] {
-  const SLATE = [51, 65, 85];
-  const GOLD = [215, 201, 165];
+  const isDark = typeof document !== "undefined" && document.documentElement.classList.contains("dark");
+  const SLATE = isDark ? [51, 65, 85] : [148, 163, 184];
+  const GOLD = isDark ? [215, 201, 165] : [180, 142, 60];
   const ORG = [255, 140, 20];
   const RED = [210, 35, 10];
   const BRIGHT = [255, 210, 40];
@@ -396,7 +397,7 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
 
       <section
         ref={sectionRef}
-        className="relative pt-12 md:pt-20 pb-8 md:pb-12 border-b border-slate-900/60 overflow-hidden"
+        className="relative pt-12 md:pt-20 pb-8 md:pb-12 border-b border-zinc-100 dark:border-slate-900/60 overflow-hidden bg-gradient-to-b from-sky-50/50 via-white to-white dark:from-transparent dark:to-transparent"
       >
         <canvas
           ref={canvasRef}
@@ -414,31 +415,31 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
 
         <div className="relative z-10 max-w-3xl">
           <div className="flex items-center space-x-2 mb-6 select-none">
-            <span className="text-xs font-mono text-slate-400 tracking-wider uppercase">
+            <span className="text-xs font-mono font-bold text-rose-600 dark:text-rose-400 tracking-widest uppercase">
               Open to remote work &amp; relocation
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-100 leading-[1.1] mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-slate-100 leading-[1.1] mb-6">
             Hi, I&apos;m Parsa.
           </h1>
 
-          <p className="text-xl md:text-2xl text-slate-300 leading-relaxed font-normal tracking-wide mb-8">
+          <p className="text-xl md:text-2xl text-slate-700 dark:text-slate-300 leading-relaxed font-normal tracking-wide mb-8">
             I build full-stack web apps — mainly with{" "}
-            <span className="text-slate-100 font-medium">TypeScript</span>,{" "}
-            <span className="text-slate-100 font-medium">Next.js</span>, and{" "}
-            <span className="text-slate-100 font-medium">NestJS</span>.
+            <span className="text-slate-900 dark:text-slate-100 font-semibold">TypeScript</span>,{" "}
+            <span className="text-slate-900 dark:text-slate-100 font-semibold">Next.js</span>, and{" "}
+            <span className="text-slate-900 dark:text-slate-100 font-semibold">NestJS</span>.
             {" "}I&apos;ve shipped real products — sometimes solo, sometimes as part of teams of 7+ engineers and designers.
           </p>
 
           <div className="flex flex-wrap items-center gap-4 text-sm font-mono">
             <button
               onClick={onOpenCommandMenu}
-              className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-slate-900 border border-slate-800 hover:border-slate-700 hover:bg-slate-900/80 text-slate-300 hover:text-slate-100 transition-all select-none"
+              className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-theme-btnExploreBg border border-theme-btnExploreBorder hover:border-theme-accent text-theme-btnExploreText hover:text-theme-text transition-all select-none"
               aria-label="Open command menu"
             >
               <span>Explore Menu</span>
-              <kbd className="hidden sm:inline-flex items-center px-1.5 py-0.5 rounded bg-slate-950 text-slate-400 text-[10px] border border-slate-800">
+              <kbd className="hidden sm:inline-flex items-center px-1.5 py-0.5 rounded bg-theme-bg text-theme-muted text-[10px] border border-theme-border">
                 ⌘K
               </kbd>
             </button>
@@ -447,7 +448,7 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-950 font-semibold transition-all shadow-sm hover:shadow select-none"
+              className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-theme-accent hover:bg-theme-accentHover text-white dark:text-slate-950 font-semibold transition-all shadow-sm hover:shadow select-none"
             >
               <span>Download Resume</span>
               <span>&rarr;</span>
@@ -462,9 +463,9 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
             style={{
               position: "absolute", bottom: "1.5rem", right: "1.5rem",
               zIndex: 50,
-              background: "rgba(8,12,20,0.85)",
-              border: "1px solid rgba(215,201,165,0.2)",
-              color: "rgba(215,201,165,0.5)",
+              background: "var(--cross-trigger-bg)",
+              border: "1px solid var(--cross-trigger-border)",
+              color: "var(--cross-trigger-color)",
               cursor: "pointer",
               width: "28px", height: "28px",
               display: "flex", alignItems: "center", justifyContent: "center",
@@ -472,8 +473,8 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
               animation: "trigIn 0.4s cubic-bezier(0.16,1,0.3,1)",
               transition: "border-color 0.2s, color 0.2s",
             }}
-            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(215,201,165,0.5)"; (e.currentTarget as HTMLElement).style.color = "rgba(215,201,165,0.9)"; }}
-            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "rgba(215,201,165,0.2)"; (e.currentTarget as HTMLElement).style.color = "rgba(215,201,165,0.5)"; }}
+            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--cross-trigger-border-hover)"; (e.currentTarget as HTMLElement).style.color = "var(--cross-trigger-color-hover)"; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--cross-trigger-border)"; (e.currentTarget as HTMLElement).style.color = "var(--cross-trigger-color)"; }}
           >
             <style>{`@keyframes trigIn { from { opacity:0; transform:scale(0.7) } to { opacity:1; transform:scale(1) } }`}</style>
             ✛

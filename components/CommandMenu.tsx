@@ -327,7 +327,7 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
     <AnimatePresence>
       {isOpen && (
         <div
-          className="fixed inset-0 z-50 flex items-start justify-center pt-[10vh] px-4 bg-slate-950/80 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-start justify-center pt-[10vh] px-4 bg-slate-950/40 dark:bg-slate-955/80 backdrop-blur-sm"
           onClick={handleOverlayClick}
           role="dialog"
           aria-modal="true"
@@ -339,10 +339,10 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.97, y: -8 }}
             transition={{ type: "spring", duration: 0.3 }}
-            className="w-full max-w-lg bg-slate-900 border border-slate-800 rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[70vh]"
+            className="w-full max-w-lg bg-theme-panelBg border border-theme-panelBorder rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[70vh]"
           >
-            <div className="flex items-center space-x-3 px-4 py-3 border-b border-slate-800/80">
-              <Search className="h-5 w-5 text-slate-500" />
+            <div className="flex items-center space-x-3 px-4 py-3 border-b border-theme-border">
+              <Search className="h-5 w-5 text-theme-muted" />
               <input
                 ref={inputRef}
                 type="text"
@@ -352,7 +352,7 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
                   setSelectedIndex(0);
                 }}
                 placeholder="Type a command or search..."
-                className="w-full bg-transparent border-0 outline-none text-slate-100 text-sm placeholder-slate-500 focus:ring-0 focus:outline-none"
+                className="w-full bg-transparent border-0 outline-none text-theme-text text-sm placeholder-theme-muted focus:ring-0 focus:outline-none"
               />
             </div>
 
@@ -366,8 +366,8 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
                       onClick={cmd.action}
                       onMouseEnter={() => setSelectedIndex(idx)}
                       className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-left transition-colors focus:outline-none ${isSelected
-                        ? "bg-slate-800 text-slate-100"
-                        : "text-slate-400 hover:bg-slate-800/40"
+                        ? "bg-theme-accentLight text-theme-accentText"
+                        : "text-theme-muted hover:bg-theme-accentLight/40"
                         }`}
                       role="option"
                       aria-selected={isSelected}
@@ -375,24 +375,24 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
                       <div className="flex items-center space-x-3">
                         <div
                           className={`p-1.5 rounded ${isSelected
-                            ? "bg-slate-700 text-slate-100"
-                            : "bg-slate-950 text-slate-500 border border-slate-800"
+                            ? "bg-theme-accent text-white"
+                            : "bg-theme-btnExploreBg text-theme-muted border border-theme-btnExploreBorder"
                             }`}
                         >
                           {cmd.icon}
                         </div>
                         <div>
-                          <p className={`text-xs font-medium font-sans ${isSelected ? "text-slate-100" : "text-slate-300"}`}>
+                          <p className={`text-xs font-medium font-sans ${isSelected ? "text-theme-accentText font-bold" : "text-theme-text"}`}>
                             {cmd.title}
                           </p>
-                          <p className="text-[10px] font-mono text-slate-500 mt-0.5">
+                          <p className="text-[10px] font-mono text-theme-muted mt-0.5">
                             {cmd.subtitle}
                           </p>
                         </div>
                       </div>
 
                       {isSelected && (
-                        <div className="text-[10px] font-mono text-slate-500 flex items-center space-x-1">
+                        <div className="text-[10px] font-mono text-theme-muted flex items-center space-x-1">
                           <span>Select</span>
                           <ArrowRight className="h-3 w-3" />
                         </div>
@@ -401,13 +401,13 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
                   );
                 })
               ) : (
-                <div className="py-8 text-center text-slate-500 text-xs font-mono">
+                <div className="py-8 text-center text-theme-muted text-xs font-mono">
                   No commands match your query.
                 </div>
               )}
             </div>
 
-            <div className="px-4 py-2 bg-slate-950/40 border-t border-slate-800/80 flex items-center justify-between text-[10px] font-mono text-slate-500 select-none">
+            <div className="px-4 py-2 bg-theme-btnExploreBg border-t border-theme-border flex items-center justify-between text-[10px] font-mono text-theme-muted select-none">
               <div className="flex items-center space-x-3">
                 <span>↑↓ navigate</span>
                 <span>↵ select</span>

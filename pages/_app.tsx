@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import CommandMenu from "@/components/CommandMenu";
+import { Sun, Moon } from "lucide-react";
 
 const TerminalIntro = dynamic(() => import("@/components/TerminalIntro"), {
   ssr: false,
@@ -14,10 +15,19 @@ const SESSION_KEY = "terminal_seen";
 export default function App({ Component, pageProps }: AppProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [showTerminal, setShowTerminal] = useState<boolean | null>(null);
+  const [theme, setTheme] = useState<"light" | "dark">("light");
 
   useEffect(() => {
-    document.documentElement.classList.add("dark");
-    document.body.classList.add("bg-slate-950", "text-slate-100");
+    const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
+    const initialTheme = savedTheme || "light";
+    setTheme(initialTheme);
+    if (initialTheme === "dark") {
+      document.documentElement.classList.add("dark");
+      document.body.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      document.body.classList.remove("dark");
+    }
 
     const seen = sessionStorage.getItem(SESSION_KEY);
     setShowTerminal(!seen);
@@ -32,6 +42,19 @@ export default function App({ Component, pageProps }: AppProps) {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
+
+  const toggleTheme = () => {
+    const nextTheme = theme === "light" ? "dark" : "light";
+    setTheme(nextTheme);
+    localStorage.setItem("theme", nextTheme);
+    if (nextTheme === "dark") {
+      document.documentElement.classList.add("dark");
+      document.body.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      document.body.classList.remove("dark");
+    }
+  };
 
   const handleTerminalDone = useCallback(() => {
     sessionStorage.setItem(SESSION_KEY, "1");
@@ -61,7 +84,21 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="canonical" href="https://parsany.github.io/c/" />
       </Head>
 
-      <div className="min-h-screen bg-slate-950 text-slate-100 antialiased selection:bg-slate-800 selection:text-slate-100">
+      <div className="min-h-screen bg-theme-bg text-theme-text antialiased selection:bg-theme-accentLight selection:text-theme-accentText transition-colors duration-200">
+        <div className="fixed top-4 right-4 md:top-6 md:right-6 z-50">
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-lg bg-theme-btnExploreBg hover:bg-theme-bg border border-theme-btnExploreBorder hover:border-theme-accent text-theme-btnExploreText hover:text-theme-text transition-all shadow-sm focus:outline-none"
+            aria-label="Toggle Theme"
+          >
+            {theme === "light" ? (
+              <Moon className="h-4.5 w-4.5" />
+            ) : (
+              <Sun className="h-4.5 w-4.5" />
+            )}
+          </button>
+        </div>
+
         <main className="max-w-4xl mx-auto px-6 py-4">
           <Component {...pageProps} onOpenCommandMenu={() => setIsOpen(true)} />
         </main>

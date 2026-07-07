@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { ProjectProfessional } from "@/public/JSONJS";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
@@ -18,6 +18,10 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
   const router = useRouter();
   const [activeIndex, setActiveIndex] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+
+  const dragStartX = useRef<number | null>(null);
+  const dragStartY = useRef<number | null>(null);
+  const hasMoved = useRef(false);
 
   const redirectTarget = project?.redirect
     ? ProjectProfessional.find((p) => p.slug === project.redirect)
@@ -38,6 +42,35 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
       );
     }
   }, [project?.project_image]);
+
+  const handleDragStart = (clientX: number, clientY: number) => {
+    dragStartX.current = clientX;
+    dragStartY.current = clientY;
+    hasMoved.current = false;
+  };
+
+  const handleDragMove = (clientX: number, clientY: number) => {
+    if (dragStartX.current === null || dragStartY.current === null) return;
+    const dx = Math.abs(clientX - dragStartX.current);
+    const dy = Math.abs(clientY - dragStartY.current);
+    if (dx > 8 || dy > 8) {
+      hasMoved.current = true;
+    }
+  };
+
+  const handleDragEnd = (clientX: number) => {
+    if (dragStartX.current === null) return;
+    const diff = clientX - dragStartX.current;
+    if (hasMoved.current) {
+      if (diff > 50) {
+        handlePrev();
+      } else if (diff < -50) {
+        handleNext();
+      }
+    }
+    dragStartX.current = null;
+    dragStartY.current = null;
+  };
 
   const formatDate = (dateStr: string) => {
     const d = new Date(dateStr);
@@ -64,7 +97,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
 
   if (!project) {
     return (
-      <div className="min-h-[50vh] flex items-center justify-center text-sm font-mono text-slate-500">
+      <div className="min-h-[50vh] flex items-center justify-center text-sm font-mono text-theme-muted">
         Loading...
       </div>
     );
@@ -79,22 +112,22 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
 
       <Link
         href="/"
-        className="inline-flex items-center space-x-2 text-xs font-mono text-slate-400 hover:text-slate-200 transition-colors mb-8"
+        className="inline-flex items-center space-x-2 text-xs font-mono text-theme-muted hover:text-theme-text transition-colors mb-8"
       >
         <ArrowLeft className="h-3.5 w-3.5" />
-        <span>Back to digital garden</span>
+        <span>Back to home</span>
       </Link>
 
       <header className="space-y-4 mb-8">
-        <h1 className="text-3xl font-bold tracking-tight text-slate-100">{project.name}</h1>
+        <h1 className="text-3xl font-bold tracking-tight text-theme-text">{project.name}</h1>
         
-        <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-slate-400">
+        <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-theme-muted">
           <span className="flex items-center space-x-1.5">
             <Calendar className="h-3.5 w-3.5" />
             <span>{formatDate(project.date)}</span>
           </span>
           {project.role && (
-            <span className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300">
+            <span className="px-2 py-0.5 rounded bg-theme-btnExploreBg border border-theme-btnExploreBorder text-theme-text">
               {project.role}
             </span>
           )}
@@ -103,7 +136,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center space-x-1 text-slate-300 hover:text-slate-100 transition-colors"
+              className="inline-flex items-center space-x-1 font-bold text-theme-accent hover:text-theme-accentHover transition-colors"
             >
               <Globe className="h-3.5 w-3.5" />
               <span>Visit Website</span>
@@ -116,7 +149,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
             {project.tag.map((tag: string) => (
               <span
                 key={tag}
-                className="px-2 py-0.5 text-[10px] font-mono rounded bg-slate-900 border border-slate-800 text-slate-400"
+                className="px-2.5 py-0.5 text-[10px] font-mono font-semibold rounded bg-theme-accentLight text-theme-accentText border border-theme-border"
               >
                 {tag}
               </span>
@@ -127,10 +160,31 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
 
       {project.project_image && project.project_image.length > 0 && (
         <>
-          <div className="relative aspect-video w-full rounded-xl overflow-hidden bg-slate-950 border border-slate-900 mb-10 group">
+          <div className="relative aspect-video w-full rounded-xl overflow-hidden bg-theme-btnExploreBg border border-theme-border mb-10 group">
             <div
-              className="relative w-full h-full cursor-zoom-in"
-              onClick={() => setIsLightboxOpen(true)}
+              className="relative w-full h-full cursor-zoom-in select-none"
+              onClick={() => {
+                if (!hasMoved.current) {
+                  setIsLightboxOpen(true);
+                }
+              }}
+              onMouseDown={(e) => handleDragStart(e.clientX, e.clientY)}
+              onMouseMove={(e) => handleDragMove(e.clientX, e.clientY)}
+              onMouseUp={(e) => handleDragEnd(e.clientX)}
+              onMouseLeave={() => {
+                dragStartX.current = null;
+                dragStartY.current = null;
+              }}
+              onTouchStart={(e) => handleDragStart(e.touches[0].clientX, e.touches[0].clientY)}
+              onTouchMove={(e) => handleDragMove(e.touches[0].clientX, e.touches[0].clientY)}
+              onTouchEnd={(e) => {
+                if (e.changedTouches && e.changedTouches[0]) {
+                  handleDragEnd(e.changedTouches[0].clientX);
+                } else {
+                  dragStartX.current = null;
+                  dragStartY.current = null;
+                }
+              }}
               role="button"
               tabIndex={0}
               aria-label="Open image in full screen view"
@@ -147,7 +201,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                 fill
                 sizes="800px"
                 priority
-                className="object-cover"
+                className="object-cover pointer-events-none"
               />
             </div>
 
@@ -155,14 +209,14 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
               <>
                 <button
                   onClick={handlePrev}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-slate-950/70 border border-slate-800 hover:bg-slate-900 text-slate-300 hover:text-slate-100 transition-all opacity-0 group-hover:opacity-100 focus:opacity-100"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-theme-panelBg/80 border border-theme-panelBorder hover:bg-theme-btnExploreBg text-theme-text transition-all opacity-0 group-hover:opacity-100 focus:opacity-100"
                   aria-label="Previous image"
                 >
                   <ChevronLeft className="h-4 w-4" />
                 </button>
                 <button
                   onClick={handleNext}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-slate-950/70 border border-slate-800 hover:bg-slate-900 text-slate-300 hover:text-slate-100 transition-all opacity-0 group-hover:opacity-100 focus:opacity-100"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-theme-panelBg/80 border border-theme-panelBorder hover:bg-theme-btnExploreBg text-theme-text transition-all opacity-0 group-hover:opacity-100 focus:opacity-100"
                   aria-label="Next image"
                 >
                   <ChevronRight className="h-4 w-4" />
@@ -173,7 +227,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                       key={idx}
                       onClick={() => setActiveIndex(idx)}
                       className={`h-1.5 w-1.5 rounded-full transition-all ${
-                        idx === activeIndex ? "bg-slate-100 w-3" : "bg-slate-600"
+                        idx === activeIndex ? "bg-theme-accent w-3" : "bg-theme-border2"
                       }`}
                       aria-label={`Go to slide ${idx + 1}`}
                     />
@@ -203,13 +257,33 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                 <X className="h-6 w-6" />
               </button>
 
-              <div className="relative w-[90vw] h-[80vh] flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
+              <div
+                className="relative w-[90vw] h-[80vh] flex items-center justify-center"
+                onClick={(e) => e.stopPropagation()}
+                onMouseDown={(e) => handleDragStart(e.clientX, e.clientY)}
+                onMouseMove={(e) => handleDragMove(e.clientX, e.clientY)}
+                onMouseUp={(e) => handleDragEnd(e.clientX)}
+                onMouseLeave={() => {
+                  dragStartX.current = null;
+                  dragStartY.current = null;
+                }}
+                onTouchStart={(e) => handleDragStart(e.touches[0].clientX, e.touches[0].clientY)}
+                onTouchMove={(e) => handleDragMove(e.touches[0].clientX, e.touches[0].clientY)}
+                onTouchEnd={(e) => {
+                  if (e.changedTouches && e.changedTouches[0]) {
+                    handleDragEnd(e.changedTouches[0].clientX);
+                  } else {
+                    dragStartX.current = null;
+                    dragStartY.current = null;
+                  }
+                }}
+              >
                 <Image
                   src={project.project_image[activeIndex]}
                   alt={`${project.name} full view`}
                   fill
                   sizes="100vw"
-                  className="object-contain select-none cursor-zoom-out"
+                  className="object-contain select-none cursor-zoom-out pointer-events-none"
                   onClick={() => setIsLightboxOpen(false)}
                 />
 
@@ -259,17 +333,17 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
         </>
       )}
 
-      <div className="prose prose-invert max-w-none text-slate-300 text-sm md:text-base leading-relaxed space-y-6">
+      <div className="prose prose-slate dark:prose-invert max-w-none text-slate-700 dark:text-slate-300 text-sm md:text-base leading-relaxed space-y-6">
         <ReactMarkdown
           rehypePlugins={[rehypeRaw, rehypeSlug]}
           remarkPlugins={[remarkGfm]}
           components={{
-            h1: ({ node, ...props }) => <h1 className="text-xl font-bold text-slate-100 mt-8 mb-4 border-b border-slate-900 pb-2" {...props} />,
-            h2: ({ node, ...props }) => <h2 className="text-lg font-semibold text-slate-100 mt-6 mb-3" {...props} />,
-            p: ({ node, ...props }) => <p className="mb-4 text-slate-300 leading-relaxed" {...props} />,
-            ul: ({ node, ...props }) => <ul className="list-disc pl-5 mb-4 space-y-2 text-slate-300" {...props} />,
+            h1: ({ node, ...props }) => <h1 className="text-xl font-bold text-theme-text mt-8 mb-4 border-b border-theme-border pb-2" {...props} />,
+            h2: ({ node, ...props }) => <h2 className="text-lg font-semibold text-theme-text mt-6 mb-3" {...props} />,
+            p: ({ node, ...props }) => <p className="mb-4 text-theme-secondary leading-relaxed" {...props} />,
+            ul: ({ node, ...props }) => <ul className="list-disc pl-5 mb-4 space-y-2 text-theme-secondary" {...props} />,
             li: ({ node, ...props }) => <li className="pl-1" {...props} />,
-            code: ({ node, ...props }) => <code className="bg-slate-900 text-slate-300 border border-slate-800 px-1 py-0.5 rounded text-xs font-mono" {...props} />,
+            code: ({ node, ...props }) => <code className="bg-theme-btnExploreBg text-theme-text border border-theme-border px-1 py-0.5 rounded text-xs font-mono" {...props} />,
           }}
         >
           {project.text}
@@ -277,12 +351,12 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
       </div>
 
       {redirectTarget && (
-        <div className="mt-8 p-4 rounded-lg bg-slate-950 border border-slate-900">
-          <p className="text-xs text-slate-400 font-mono">
+        <div className="mt-8 p-4 rounded-lg bg-theme-btnExploreBg border border-theme-border">
+          <p className="text-xs text-theme-muted font-mono">
             Connected Project:{" "}
             <Link
               href={`/projects/${redirectTarget.slug}`}
-              className="text-slate-200 underline hover:text-slate-100"
+              className="text-theme-text underline hover:text-theme-accent"
             >
               {redirectTarget.name} &rarr;
             </Link>
@@ -290,9 +364,9 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
         </div>
       )}
 
-      <footer className="mt-16 pt-8 border-t border-slate-900/60 flex items-center justify-between text-xs font-mono text-slate-500">
-        <Link href="/" className="hover:text-slate-300 transition-colors">
-          &larr; Back to digital garden
+      <footer className="mt-16 pt-8 border-t border-theme-border flex items-center justify-between text-xs font-mono text-theme-muted">
+        <Link href="/" className="hover:text-theme-text transition-colors">
+          &larr; Back to home
         </Link>
         <span>Specs & Architecture Details</span>
       </footer>
