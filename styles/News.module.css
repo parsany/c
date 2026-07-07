@@ -65,7 +65,7 @@
   font-weight: 600;
 }
 
-/* Timeline */
+
 .timeline {
   display: flex;
   flex-direction: column;
@@ -118,7 +118,7 @@
 .markerLine {
   position: absolute;
   top: 8px;
-  bottom: -32px; /* Connect to next item */
+  bottom: -32px; 
   width: 2px;
   background-color: var(--divider-color);
   z-index: 1;
@@ -176,7 +176,7 @@
     width: 100%;
     text-align: left;
     margin-bottom: 12px;
-    padding-left: 48px; /* Align with content */
+    padding-left: 48px; 
   }
 
   .markerColumn {

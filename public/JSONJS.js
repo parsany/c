@@ -22,17 +22,6 @@ export const ProjectAcademic = [
     tag: ["Programming", "Games"]
   },
   {
-    id: 7,
-    name: "Evolutionary Algorithm in C++",
-    description:
-      "I like heuristic algorithms and simulations.(empty repo, stay tuned!)",
-    date: "May 20, 2023",
-    image: "/projects/robot.webp",
-    link: "",
-    tag: ["Robotics"],
-    wlink: "https://github.com/parsany/EvolutionaryAlgo"
-  },
-  {
     id: 4,
     name: "PID_NN",
     description:
@@ -79,7 +68,7 @@ export const ProjectProfessional = [
     id: 8,
     slug: "charbag",
     name: "Charbag Ceramic Studio",
-    description: "A boutique ceramic shop featuring custom hand-made item listings, an admin portal, and client dashboards.",
+    description: "E-commerce storefront and custom management dashboard built for a local ceramics studio.",
     date: "Aug 10, 2025",
     image: "/professional/char/char-landing.webp",
     project_image: [
@@ -91,13 +80,13 @@ export const ProjectProfessional = [
     role: "Solo Fullstack Developer",
     timeline: "1 Month",
     highlights: ["Boutique Catalog Showcase", "Interactive Client Hub", "Studio Control Center"],
-    text: `# Charbag Ceramic Studio\n\nA premium e-commerce platform and gallery designed for selling unique hand-made ceramic items.\n\n## Project Overview\n- **Role**: Solo Fullstack Developer\n- **Timeline**: 1 Month\n\n## Key Features\n- **Boutique Catalog**: Minimalist showcase of handcrafted collections.\n- **Interactive Client Hub**: Personal dashboard for customers to monitor custom order processes.\n- **Studio Control Center**: Rich admin panel for tracking inventory, managing ceramic workshops, and updating site layouts.\n\n## Tech Stack\n- **Framework**: Next.js\n- **Frontend**: React`
+    text: `# Charbag Ceramic Studio\n\nE-commerce storefront and custom management dashboard built for a local ceramics studio.\n\n## Project Overview\n- **Role**: Solo Fullstack Developer\n- **Timeline**: 1 Month\n\n## Key Features\n- **Boutique Catalog**: Minimalist showcase of handcrafted collections.\n- **Interactive Client Hub**: Personal dashboard for customers to monitor custom order processes.\n- **Studio Control Center**: Rich admin panel for tracking inventory, managing ceramic workshops, and updating site layouts.\n\n## Tech Stack\n- **Framework**: Next.js\n- **Frontend**: React`
   },
   {
     id: 7,
     slug: "msk",
     name: "Battery MSK Client Website",
-    description: "Co-developed production environments for two enterprise dual-language websites and an internal administration panel using a monorepo architecture. Implemented serial number warranty validation tools backed by NestJS and a PostgreSQL database, complete with admin user permissions controls (RBAC).",
+    description: "Dual-language shopify-alternative and internal admin panel featuring a serial-number warranty validation system.",
     date: "Jun 30, 2025",
     image: "/professional/battery-msk/msk-landing.webp",
     project_image: [
@@ -111,13 +100,13 @@ export const ProjectProfessional = [
     isactive: false,
     redirect: "esp",
     link: "",
-    text: `# Battery MSK Client Website\n\nCo-developed production environments for two enterprise dual-language websites and an internal administration panel using a monorepo architecture. Implemented serial number warranty validation tools backed by NestJS and a PostgreSQL database, complete with admin user permissions controls (RBAC).\n\n## Project Overview\n- **Role**: Frontend Developer\n- **Timeline**: Integrated concurrent with Battery ESP\n\n## Redirect Details\nClicking details on this project redirects directly to the primary **Battery ESP** page.`
+    text: `# Battery MSK Client Website\n\nDual-language shopify-alternative and internal admin panel featuring a serial-number warranty validation system.\n\n## Project Overview\n- **Role**: Frontend Developer\n- **Timeline**: Integrated concurrent with Battery ESP\n\n## Redirect Details\nClicking details on this project redirects directly to the primary **Battery ESP** page.`
   },
   {
     id: 6,
     slug: "esp",
     name: "Battery ESP/MSK E-Commerce",
-    description: "Co-developed production environments for two enterprise dual-language websites and an internal administration panel using a monorepo architecture. Implemented serial number warranty validation tools backed by NestJS and a PostgreSQL database, complete with admin user permissions controls (RBAC).",
+    description: "Dual-language shopify-alternative and internal admin panel featuring a serial-number warranty validation system.",
     date: "Jun 15, 2025",
     image: "/professional/battery-esp/esp-landing.webp",
     project_image: [
@@ -132,13 +121,13 @@ export const ProjectProfessional = [
     isactive: false,
     redirect: "msk",
     link: "",
-    text: `# Battery ESP/MSK E-Commerce\n\nCo-developed production environments for two enterprise dual-language websites and an internal administration panel using a monorepo architecture. Implemented serial number warranty validation tools backed by NestJS and a PostgreSQL database, complete with admin user permissions controls (RBAC).\n\n## Project Overview\n- **Role**: Fullstack Developer (Team cooperation)\n- **Timeline**: 3 Weeks\n- **Status**: Production Phase\n\n## Key Features\n- **Product Catalogs**: Browsable battery categories with technical specification comparisons.\n- **Warranty System**: Verification panel where customers search serial numbers to validate purchase warranty.\n- **Admin Management**: Advanced admin panel to regulate product listings, access permissions, and generate warranty keys.\n- **Checkout**: Shopping cart module configured for manual checkout verification via phone/operator services.\n- **Localization**: Full dual-language support.\n\n## Tech Stack\n- **Architecture**: Monorepo using Turborepo\n- **Backend**: NestJS\n- **Frontend**: Next.js, React`
+    text: `# Battery ESP/MSK E-Commerce\n\nDual-language shopify-alternative and internal admin panel featuring a serial-number warranty validation system.\n\n## Project Overview\n- **Role**: Fullstack Developer (Team cooperation)\n- **Timeline**: 3 Weeks\n- **Status**: Production Phase\n\n## Key Features\n- **Product Catalogs**: Browsable battery categories with technical specification comparisons.\n- **Warranty System**: Verification panel where customers search serial numbers to validate purchase warranty.\n- **Admin Management**: Advanced admin panel to regulate product listings, access permissions, and generate warranty keys.\n- **Checkout**: Shopping cart module configured for manual checkout verification via phone/operator services.\n- **Localization**: Full dual-language support.\n\n## Tech Stack\n- **Architecture**: Monorepo using Turborepo\n- **Backend**: NestJS\n- **Frontend**: Next.js, React`
   },
   {
     id: 5,
     slug: "atrafian",
     name: "Atrafian Chat & Social Ecosystem",
-    description: "Solely architected and engineered an enterprise-grade real-time web application featuring a native mobile build using Turborepo and Capacitor.js. Implemented high-concurrency messaging and real-time social communication pipelines utilizing Socket.io powered by a NestJS backend ecosystem, backed by a high-efficiency Redis caching layer and secure MinIO S3 media object storage. Developed a completely separate administrative dashboard panel utilizing Next.js to isolate system operations, user management, and Role-Based Access Control (RBAC).",
+    description: "Real-time chat platform with a mobile app build. Uses WebSockets for live messaging and Redis for fast data caching.",
     date: "Apr 25, 2025",
     image: "/professional/atrafian/atrafian-landing.webp",
     project_image: [
@@ -158,7 +147,7 @@ export const ProjectProfessional = [
     role: "Solo Fullstack & Mobile Dev",
     timeline: "2 Months",
     highlights: ["Real-time Socket.io Chat", "Radar Navigation & Discovery", "AWS S3/MinIO Integration"],
-    text: `# Atrafian Chat & Social Ecosystem\n\nSolely architected and engineered an enterprise-grade real-time web application featuring a native mobile build using Turborepo and Capacitor.js. Implemented high-concurrency messaging and real-time social communication pipelines utilizing Socket.io powered by a NestJS backend ecosystem, backed by a high-efficiency Redis caching layer and secure MinIO S3 media object storage. Developed a completely separate administrative dashboard panel utilizing Next.js to isolate system operations, user management, and Role-Based Access Control (RBAC).\n\n## Project Overview\n- **Role**: Solo Fullstack & Mobile Developer\n- **Timeline**: 2 Months (Full-time)\n\n## Core Features\n- **Real-Time Communication**: Multi-channel personal chats, group chats, and support tickets built with Socket.io.\n- **Radar Navigation & Discovery**: Custom vector adventure map with hardware-accelerated interactive filters.\n- **Privacy & Security**: End-to-end security measures including secure message closing/deletion.\n- **Social Features**: Follower/following architecture and user story updates.\n- **Rich Media**: Sending voice messages, images, and videos stored on AWS S3-compatible MinIO instances.\n- **Infrastructure & Caching**: OTP SMS authentication and also for Redis cache database layer to maximize the speed.\n\n## Tech Stack\n- **Monorepo**: Turborepo\n- **Backend**: NestJS, PostgreSQLQL, Redis, Socket.io\n- **Frontend**: Next.js (Pages Router), React Query`
+    text: `# Atrafian Chat & Social Ecosystem\n\nReal-time chat platform with a mobile app build. Uses WebSockets for live messaging and Redis for fast data caching.\n\n## Project Overview\n- **Role**: Solo Fullstack & Mobile Developer\n- **Timeline**: 2 Months (Full-time)\n\n## Core Features\n- **Real-Time Communication**: Multi-channel personal chats, group chats, and support tickets built with Socket.io.\n- **Radar Navigation & Discovery**: Custom vector adventure map with hardware-accelerated interactive filters.\n- **Privacy & Security**: End-to-end security measures including secure message closing/deletion.\n- **Social Features**: Follower/following architecture and user story updates.\n- **Rich Media**: Sending voice messages, images, and videos stored on AWS S3-compatible MinIO instances.\n- **Infrastructure & Caching**: OTP SMS authentication and also for Redis cache database layer to maximize the speed.\n\n## Tech Stack\n- **Monorepo**: Turborepo\n- **Backend**: NestJS, PostgreSQLQL, Redis, Socket.io\n- **Frontend**: Next.js (Pages Router), React Query`
   },
   {
     id: 4,
@@ -185,7 +174,7 @@ export const ProjectProfessional = [
     id: 3,
     slug: "goldenbat",
     name: "Goldenbat GPS Tracking",
-    description: "Co-developed an enterprise-grade GPS tracking web-application, landing and management dashboard connected directly to IoT GPS hardware endpoints. Engineered high-frequency backend ingestion endpoints to process real-time status tracking, live mapping coordinates, and historical vehicle paths and Geofencing. Developed a fully featured web administration panel using Next.js and tRPC to manage groupings, device assignments, and active user accounts.",
+    description: "Dashboard tracking live vehicle routes. Built API routes to process and map coordinates streamed directly from IoT hardware.",
     date: "Dec 05, 2024",
     image: "/professional/goldenbat/goldenbat-landing.webp",
     project_image: [
@@ -196,7 +185,7 @@ export const ProjectProfessional = [
     tag: ["Next.js", "Tailwind CSS", "tRPC", "GPS", "PostgreSQL"],
     isactive: false,
     link: "http://app.goldengps.ir",
-    text: `# Goldenbat GPS Tracking\n\nCo-developed an enterprise-grade GPS tracking web-application, landing and management dashboard connected directly to IoT GPS hardware endpoints. Engineered high-frequency backend ingestion endpoints to process real-time status tracking, live mapping coordinates, and historical vehicle paths and Geofencing. Developed a fully featured web administration panel using Next.js and tRPC to manage groupings, device assignments, and active user accounts.\n\n## Project Overview\n- **Role**: Backend & Web Dashboard Developer (Team project)\n- **Timeline**: 2 Weeks (Landing Page) + 1.5 Months (Admin Panel & Backend)\n- **Mobile App**: Developed by a team member\n\n## Key Features\n- **Real-Time GPS Monitoring**: Live mapping of active vehicles across the country, showing vehicle speeds, GPS coordinates, and historical paths.\n- **Device Integration**: Connected backend ingestion endpoints to IoT GPS devices for high-frequency status tracking.\n- **Admin Control Center**: Fully featured admin panel for managing user accounts, fleet groups, and device assignments.\n\n## Tech Stack\n- **Web App**: Next.js with tRPC\n- **Styles**: Custom CSS Modules`
+    text: `# Goldenbat GPS Tracking\n\nDashboard tracking live vehicle routes. Built API routes to process and map coordinates streamed directly from IoT hardware.\n\n## Project Overview\n- **Role**: Backend & Web Dashboard Developer (Team project)\n- **Timeline**: 2 Weeks (Landing Page) + 1.5 Months (Admin Panel & Backend)\n- **Mobile App**: Developed by a team member\n\n## Key Features\n- **Real-Time GPS Monitoring**: Live mapping of active vehicles across the country, showing vehicle speeds, GPS coordinates, and historical paths.\n- **Device Integration**: Connected backend ingestion endpoints to IoT GPS devices for high-frequency status tracking.\n- **Admin Control Center**: Fully featured admin panel for managing user accounts, fleet groups, and device assignments.\n\n## Tech Stack\n- **Web App**: Next.js with tRPC\n- **Styles**: Custom CSS Modules`
   },
   {
     id: 2,
@@ -222,7 +211,7 @@ export const ProjectProfessional = [
     id: 1,
     slug: "alzahra",
     name: "Alzahra Gold Wholesaler B2B Platform",
-    description: "Developed the high-performance B2B digital gold web portal frontend landing page using Next.js and Tailwind CSS. Contributed to the development of the client-side customer panel, implementing interactive features to streamline commercial workflows and enable institutional buyers to purchase jewelry purchases. Integrated client-side structural views alongside secure wholesale transactional layers connected to a team-implemented Django backend API.",
+    description: "Frontend B2B customer panel integrated with a custom Django API to handle wholesale transaction workflows.",
     date: "Aug 15, 2024",
     image: "/professional/alzahra/alzahra-landing.webp",
     project_image: [
@@ -233,7 +222,7 @@ export const ProjectProfessional = [
     tag: ["Next.js", "Tailwind CSS", "B2B", "PostgreSQL"],
     isactive: false,
     link: "http://app.alzahragold.com/",
-    text: `# Alzahra Gold Wholesaler B2B Platform\n\nDeveloped the high-performance B2B digital gold web portal frontend landing page using Next.js and Tailwind CSS. Contributed to the development of the client-side customer panel, implementing interactive features to streamline commercial workflows and enable institutional buyers to purchase jewelry purchases. Integrated client-side structural views alongside secure wholesale transactional layers connected to a team-implemented Django backend API.\n\n## Project Overview\n- **Role**: Frontend Developer (Solo landing page implementation)\n- **Timeline**: 1 Week\n- **Backend**: Django (implemented by team members)\n\n## Key Features\n- **Gold Trading Interface**: High-fidelity dashboard for commercial partners to monitor real-time gold spot prices and execute transactions.\n- **B2B User Flow**: Custom onboarding, corporate verification checklists, and secure transactional panels.\n- **Performance**: Optimized frontend with page load times under 1 second using Next.js static optimization.\n\n## Tech Stack\n- **Frontend**: Next.js, Tailwind CSS\n- **Backend API**: Django REST Framework`
+    text: `# Alzahra Gold Wholesaler B2B Platform\n\nFrontend B2B customer panel integrated with a custom Django API to handle wholesale transaction workflows.\n\n## Project Overview\n- **Role**: Frontend Developer (Solo landing page implementation)\n- **Timeline**: 1 Week\n- **Backend**: Django (implemented by team members)\n\n## Key Features\n- **Gold Trading Interface**: High-fidelity dashboard for commercial partners to monitor real-time gold spot prices and execute transactions.\n- **B2B User Flow**: Custom onboarding, corporate verification checklists, and secure transactional panels.\n- **Performance**: Optimized frontend with page load times under 1 second using Next.js static optimization.\n\n## Tech Stack\n- **Frontend**: Next.js, Tailwind CSS\n- **Backend API**: Django REST Framework`
   }
 ];
 
@@ -275,7 +264,6 @@ export const ProSkills = [
       { name: "Bash", level: 65 },
       { name: "Java", level: 60 },
       { name: "HTML5 & CSS3", level: 95 },
-      // { name: "C#", level: 70 },
     ],
   },
   {

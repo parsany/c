@@ -14,7 +14,7 @@ export default function Footer() {
       <div className={Styles.footerInner}>
         <div className={Styles.footerTop}>
           <div className={Styles.brand}>
-            {/* Replicating the Navbar logo style */}
+            
             <Link href="/" className={NavbarStyles.logo} style={{ fontSize: '2rem', marginBottom: '10px', display: 'block' }}>
               Phy
             </Link>

@@ -10,7 +10,7 @@
   margin: 0 auto;
 }
 
-/* Back Link */
+
 .backLink {
   display: inline-flex;
   align-items: center;
@@ -27,7 +27,7 @@
   opacity: 0.75;
 }
 
-/* Header */
+
 .header {
   margin-bottom: 8px;
 }
@@ -72,14 +72,14 @@
   letter-spacing: 0.3px;
 }
 
-/* Divider */
+
 .divider {
   height: 1px;
   background-color: var(--divider-color);
   margin: 28px 0;
 }
 
-/* Article Body */
+
 .body {
   font-size: 1.08rem;
   line-height: 1.85;
@@ -188,7 +188,7 @@
   color: var(--title-color);
 }
 
-/* Code */
+
 .codeBlock {
   font-family: "Fira Code", "JetBrains Mono", "Courier New", monospace;
   font-size: 0.9rem;
@@ -210,12 +210,12 @@
   border: 1px solid var(--section-border);
 }
 
-/* Footer */
+
 .footer {
   padding-top: 8px;
 }
 
-/* Loading */
+
 .loading {
   font-size: 1.2rem;
   color: var(--subtitle-color);
@@ -225,7 +225,7 @@
   background-color: var(--background-color);
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
   .container {
     padding: 20px 16px;

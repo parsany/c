@@ -1,12 +1,10 @@
-import Pagestyles from "@/styles/PageStyle.module.css";
-import Skills from "@/components/skills";
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
-
-export default function SkillsPage() {
-
-  return (
-    <div className={Pagestyles.container}>
-      <Skills ShowSkills="true"/>
-    </div>
-  );
+export default function RedirectPage() {
+  const router = useRouter();
+  useEffect(() => {
+    router.replace('/');
+  }, [router]);
+  return null;
 }

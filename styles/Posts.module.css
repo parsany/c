@@ -5,7 +5,7 @@
   min-height: 100vh;
 }
 
-/* Header */
+
 .header {
   text-align: center;
   margin-bottom: 48px;
@@ -24,7 +24,7 @@
   color: var(--subtitle-color);
 }
 
-/* Layout */
+
 .contentWrapper {
   display: flex;
   gap: 40px;
@@ -36,7 +36,7 @@
   min-width: 0;
 }
 
-/* Post Cards */
+
 .postsList {
   display: flex;
   flex-direction: column;
@@ -131,7 +131,7 @@
   font-size: 1rem;
 }
 
-/* Sidebar */
+
 .sidebar {
   width: 280px;
   flex-shrink: 0;
@@ -266,7 +266,7 @@
   color: #ffffff;
 }
 
-/* View More */
+
 .viewMoreWrapper {
   text-align: center;
   margin-top: 32px;
@@ -292,7 +292,7 @@
   color: #ffffff;
 }
 
-/* Random post styles (used by home page) */
+
 .randomPostBox {
   padding: 40px 20px;
 }
@@ -365,7 +365,7 @@
   color: #ffffff;
 }
 
-/* Responsive */
+
 @media (max-width: 850px) {
   .contentWrapper {
     flex-direction: column;

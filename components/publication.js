@@ -1,4 +1,4 @@
-// components/Publications.js
+
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Posts from '@/public/content/materials/PostsPage.json';

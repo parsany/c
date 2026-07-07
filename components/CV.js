@@ -41,7 +41,7 @@ export default function CV({ isOpen, onClose }) {
 
         <div className={styles.cvButtonsRow}>
           <button className={styles.downloadCV}>
-            <a href="/CVR-iknowucanfindithere-smart!.pdf" target="_blank" rel="noopener noreferrer">
+            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
               Academic CV
             </a>
           </button>

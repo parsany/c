@@ -158,7 +158,7 @@
   flex: 1;
 }
 
-/* Tags */
+
 .tagsRow {
   display: flex;
   flex-wrap: nowrap;
@@ -201,14 +201,14 @@
   line-height: 1.5;
   display: -webkit-box;
   -webkit-line-clamp: 3;
-  /* autoprefixer: ignore next */
+  
   -webkit-box-orient: vertical;
   line-clamp: 3;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/* Card Footer */
+
 .cardFooter {
   display: flex;
   justify-content: space-between;
@@ -246,7 +246,7 @@
   gap: 6px;
 }
 
-/* Buttons */
+
 .buttonContainer {
   display: flex;
   justify-content: center;
@@ -276,7 +276,7 @@
   color: #ffffff;
 }
 
-/* Filter */
+
 .filterContainer {
   display: flex;
   justify-content: center;
@@ -358,7 +358,7 @@
   color: #ffffff !important;
 }
 
-/* Responsive */
+
 @media (max-width: 850px) {
   .grid {
     grid-template-columns: 1fr;

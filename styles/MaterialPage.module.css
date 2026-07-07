@@ -8,7 +8,7 @@
   color: var(--foreground);
 }
 
-/* Left Pane - Navigation */
+
 .leftPane {
   width: 220px;
   flex-shrink: 0;
@@ -82,7 +82,7 @@
   margin-bottom: 4px;
 }
 
-/* Main Content */
+
 .mainContent {
   flex: 1;
   min-width: 0;
@@ -129,7 +129,7 @@
   line-height: 1.7;
 }
 
-/* Code Block */
+
 .codeBlock {
   font-family: "Fira Code", "JetBrains Mono", "Courier New", monospace;
   font-size: 0.9rem;
@@ -143,7 +143,7 @@
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-/* Spoiler */
+
 .spoiler {
   margin: 20px 0;
   padding: 14px 18px;
@@ -163,7 +163,7 @@
   margin-top: 12px;
 }
 
-/* LaTeX Block */
+
 .latexBlock {
   background-color: var(--card-background);
   color: var(--foreground);
@@ -175,7 +175,7 @@
   font-size: 1.1rem;
 }
 
-/* Right Pane - Table of Contents */
+
 .rightPane {
   width: 240px;
   flex-shrink: 0;
@@ -220,7 +220,7 @@
   opacity: 0.75;
 }
 
-/* Loading */
+
 .loading {
   text-align: center;
   padding: 60px;
@@ -228,7 +228,7 @@
   color: var(--subtitle-color);
 }
 
-/* Responsive */
+
 @media (max-width: 1024px) {
   .container {
     flex-direction: column;

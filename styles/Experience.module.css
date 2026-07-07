@@ -175,7 +175,7 @@
   font-size: 1.1rem;
 }
 
-/* Responsive */
+
 @media (max-width: 600px) {
   .wrapper {
     padding: 20px;

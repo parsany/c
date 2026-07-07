@@ -120,7 +120,7 @@
   color: var(--highlight-color, #e08e42);
 }
 
-/* Responsive adjustments */
+
 @media (max-width: 600px) {
   .container {
     padding: 40px 20px;

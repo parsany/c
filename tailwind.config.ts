@@ -8,6 +8,21 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        slate: {
+          50: "#faf8f2",
+          100: "#d2b97c",
+          200: "#c8ae71",
+          300: "#beab79",
+          400: "#a59468",
+          500: "#8c7e59",
+          600: "#736749",
+          700: "#595039",
+          800: "#2d2d2d",
+          900: "#222222",
+          950: "#1a1a1a",
+        },
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

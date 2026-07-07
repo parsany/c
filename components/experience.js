@@ -76,7 +76,7 @@ export default function Experience({ IsIsolated }) {
           </div>
         </div>
 
-        {/* Job 4 */}
+        
         <div className={styles.timelineItem}>
           <div className={styles.timelineMarker}></div>
           <div className={styles.card}>
@@ -107,7 +107,7 @@ export default function Experience({ IsIsolated }) {
       <h1 className={styles.sectionTitle}>Education</h1>
 
       <div className={styles.timeline}>
-        {/* Education 1 */}
+        
         <div className={styles.timelineItem}>
           <div className={styles.timelineMarker}></div>
           <div className={styles.card}>

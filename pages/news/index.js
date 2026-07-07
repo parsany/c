@@ -1,10 +1,10 @@
-import Styles from "@/styles/PageStyle.module.css";
-import News from "../../components/news"
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
-export default function ContactPage() {
-  return (
-    <div className={Styles.outerContainer}>
-        <News />
-    </div>
-  );
+export default function RedirectPage() {
+  const router = useRouter();
+  useEffect(() => {
+    router.replace('/');
+  }, [router]);
+  return null;
 }

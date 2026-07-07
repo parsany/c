@@ -10,7 +10,7 @@
   margin: 0 auto;
 }
 
-/* Back Link */
+
 .backLink {
   display: inline-flex;
   align-items: center;
@@ -27,7 +27,7 @@
   opacity: 0.75;
 }
 
-/* Header */
+
 .header {
   margin-bottom: 8px;
 }
@@ -74,14 +74,14 @@
   letter-spacing: 0.3px;
 }
 
-/* Divider */
+
 .divider {
   height: 1px;
   background-color: var(--divider-color);
   margin: 28px 0;
 }
 
-/* Carousel */
+
 .carouselContainer {
   position: relative;
   width: 100%;
@@ -163,7 +163,7 @@
   transform: scale(1.2);
 }
 
-/* Article Body */
+
 .body {
   font-size: 1.08rem;
   line-height: 1.85;
@@ -224,7 +224,7 @@
   text-underline-offset: 3px;
 }
 
-/* Loading */
+
 .loading {
   font-size: 1.2rem;
   color: var(--subtitle-color);
@@ -234,12 +234,12 @@
   background-color: var(--background-color);
 }
 
-/* Footer */
+
 .footer {
   padding-top: 8px;
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
   .container {
     padding: 20px 16px;
@@ -279,7 +279,7 @@
   }
 }
 
-/* Lightbox Modal Overlay */
+
 .lightboxOverlay {
   position: fixed;
   top: 0;

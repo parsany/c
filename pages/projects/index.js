@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 
-export default function ProjectsPage() {
+export default function RedirectPage() {
   const router = useRouter();
   useEffect(() => {
-    router.replace('/projects/academic');
+    router.replace('/#projects');
   }, [router]);
   return null;
 }

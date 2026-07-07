@@ -13,7 +13,7 @@ export default function Languages() {
         <div className={styles.mapBackground}></div>
         
         <div className={styles.grid}>
-          {/* English */}
+          
           <div className={styles.langItem}>
             <div className={styles.iconCircle}>
               <Globe className={styles.icon} size={32} />
@@ -22,7 +22,7 @@ export default function Languages() {
             <p className={styles.proficiency}>Bilingual Proficiency</p>
           </div>
 
-          {/* Persian */}
+          
           <div className={styles.langItem}>
             <div className={styles.iconCircle}>
               <LangIcon className={styles.icon} size={32} />

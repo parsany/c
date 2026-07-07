@@ -1,10 +1,10 @@
-import Experience from "../../components/experience";
-import styles from "@/styles/PageStyle.module.css";
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
-export default function ExperiencePage() {
-  return (
-    <div className={styles.container}>
-      <Experience IsIsolated={true}/>
-    </div>
-  );
+export default function RedirectPage() {
+  const router = useRouter();
+  useEffect(() => {
+    router.replace('/');
+  }, [router]);
+  return null;
 }

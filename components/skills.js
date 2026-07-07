@@ -4,10 +4,10 @@ import { Terminal, Wrench, Globe, BookOpen, Code } from "lucide-react";
 import Languages from "./Languages"; 
 
 const ICON_MAP = {
-  "Languages": { icon: Terminal, color: "16, 185, 129" }, // Emerald
-  "AI & Data Science": { icon: BookOpen, color: "37, 99, 235" }, // Sapphire
-  "Tools & DevOps": { icon: Wrench, color: "168, 85, 247" }, // Purple
-  "Web Development": { icon: Globe, color: "236, 72, 153" }, // Pink
+  "Languages": { icon: Terminal, color: "16, 185, 129" }, 
+  "AI & Data Science": { icon: BookOpen, color: "37, 99, 235" }, 
+  "Tools & DevOps": { icon: Wrench, color: "168, 85, 247" }, 
+  "Web Development": { icon: Globe, color: "236, 72, 153" }, 
 };
 
 export default function Skills({ ShowSkills }) {
@@ -17,7 +17,7 @@ export default function Skills({ ShowSkills }) {
 
   return (
     <div className={styles.container}>
-      {/* Header */}
+      
       <div className={styles.header}>
         <div className={styles.titleWrapper}>
           <h2 className={styles.title}>Tech Stack</h2>
@@ -29,7 +29,7 @@ export default function Skills({ ShowSkills }) {
         <div className={styles.titleDecoration}></div>
       </div>
 
-      {/* Grid */}
+      
       <div className={styles.grid}>
         {ProSkills.map((category, index) => {
           const { icon: Icon, color } = getCategoryConfig(category.category);
@@ -40,15 +40,15 @@ export default function Skills({ ShowSkills }) {
               className={styles.card}
               style={{ '--accent-rgb': color }}
             >
-              {/* Texture Overlay */}
+              
               <div className={styles.textureOverlay}></div>
               
-              {/* Background Faint Icon */}
+              
               <div className={styles.bgIcon}>
                 <Icon size={96} strokeWidth={1} />
               </div>
 
-              {/* Header */}
+              
               <div className={styles.cardHeader}>
                 <div className={styles.iconBox}>
                   <Icon size={20} />
@@ -56,7 +56,7 @@ export default function Skills({ ShowSkills }) {
                 <h3 className={styles.cardTitle}>{category.category}</h3>
               </div>
 
-              {/* Skills List */}
+              
               <div className={styles.skillsContainer}>
                 {category.items.map((item, itemIndex) => (
                   <span key={itemIndex} className={styles.skillPill}>
@@ -69,7 +69,7 @@ export default function Skills({ ShowSkills }) {
         })}
       </div>
 
-      {/* Spoken Languages Section */}
+      
       <Languages />
     </div>
   );

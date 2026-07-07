@@ -1,4 +1,4 @@
-/* Container */
+
 .container {
   margin-top: 60px;
   margin-bottom: 40px;
@@ -25,7 +25,7 @@
   border-radius: 999px;
 }
 
-/* Map Card Container */
+
 .mapCard {
   position: relative;
   background-color: var(--card-background);
@@ -53,7 +53,7 @@
   opacity: 0.15;
 }
 
-/* Language Items Grid */
+
 .grid {
   position: relative;
   z-index: 10;
@@ -70,7 +70,7 @@
   }
 }
 
-/* Glass Item */
+
 .langItem {
   display: flex;
   flex-direction: column;

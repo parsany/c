@@ -38,7 +38,7 @@
   opacity: 0.85;
 }
 
-/* Date Box */
+
 .dateBox {
   flex-shrink: 0;
   display: flex;
@@ -68,7 +68,7 @@
   line-height: 1.2;
 }
 
-/* Content */
+
 .itemContent {
   flex: 1;
   min-width: 0;
@@ -124,7 +124,7 @@
   text-decoration: underline;
 }
 
-/* View All */
+
 .viewAll {
   margin-top: 32px;
   max-width: 800px;
@@ -151,7 +151,7 @@
   color: var(--highlight-color);
 }
 
-/* Responsive */
+
 @media (max-width: 600px) {
   .section {
     padding: 40px 16px;
