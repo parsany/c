@@ -16,7 +16,7 @@ import {
   AppVisualizer,
   CompilerVisualizer,
 } from "./ArchitectureSVG";
-import { Globe, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 interface ProjectCardProps {
   id: string | number;
@@ -30,6 +30,8 @@ interface ProjectCardProps {
   onMouseEnter: () => void;
   onMouseLeave: () => void;
   renderArchitecture: () => React.ReactNode;
+  image?: string;
+  video?: string;
 }
 
 function ProjectCard({
@@ -43,6 +45,8 @@ function ProjectCard({
   onMouseEnter,
   onMouseLeave,
   renderArchitecture,
+  image,
+  video,
 }: ProjectCardProps) {
   const router = useRouter();
 
@@ -68,31 +72,35 @@ function ProjectCard({
     >
       <div className="space-y-4">
         <div
-          className="aspect-video w-full rounded-lg overflow-hidden border border-slate-800 bg-slate-950"
+          className="aspect-video w-full rounded-lg overflow-hidden border border-slate-800 bg-slate-950 relative"
           tabIndex={0}
           onFocus={onMouseEnter}
           onBlur={onMouseLeave}
         >
-          {renderArchitecture()}
+          {name.toLowerCase().includes("cat") && video && isHovered ? (
+            <video
+              src={video}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+            />
+          ) : (name.toLowerCase().includes("cat") || name.toLowerCase().includes("anomaly")) && image ? (
+            <img
+              src={image}
+              alt={name}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            renderArchitecture()
+          )}
         </div>
 
         <div className="space-y-2">
-          <div className="flex items-center justify-between">
-            <h3 className="text-lg font-semibold text-slate-100 group-hover:text-slate-50 transition-colors">
-              {name}
-            </h3>
-            {link && (
-              <a
-                href={link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-slate-400 hover:text-slate-200 transition-colors"
-                aria-label={`Visit external link for ${name}`}
-              >
-                <Globe className="h-4 w-4" />
-              </a>
-            )}
-          </div>
+          <h3 className="text-lg font-semibold text-slate-100 group-hover:text-slate-50 transition-colors">
+            {name}
+          </h3>
 
           <p className="text-slate-300 text-sm leading-relaxed line-clamp-3">
             {description}
@@ -234,24 +242,24 @@ export default function ProjectList() {
           </p>
         </div>
 
-        <div className="flex p-1 gap-1 bg-slate-950 border border-slate-900 rounded-lg self-start md:self-auto font-mono text-xs select-none">
+        <div className="flex flex-col sm:flex-row p-1 gap-1 bg-slate-950 border border-slate-900 rounded-lg self-stretch md:self-auto font-mono text-xs select-none">
           <button
             onClick={() => setActiveTab("professional")}
-            className={`px-3 py-1.5 rounded transition-all focus:outline-none whitespace-nowrap relative ${
+            className={`px-3 py-1.5 rounded transition-all focus:outline-none whitespace-nowrap text-center ${
               activeTab === "professional"
                 ? "bg-slate-900 border border-slate-800 text-slate-100 shadow z-10"
                 : "text-slate-400 hover:text-slate-200 border border-transparent z-0"
-            }`}
+            } w-full sm:w-auto`}
           >
             Production Systems ({professionalProjects.length})
           </button>
           <button
             onClick={() => setActiveTab("academic")}
-            className={`px-3 py-1.5 rounded transition-all focus:outline-none whitespace-nowrap relative ${
+            className={`px-3 py-1.5 rounded transition-all focus:outline-none whitespace-nowrap text-center ${
               activeTab === "academic"
                 ? "bg-slate-900 border border-slate-800 text-slate-100 shadow z-10"
                 : "text-slate-400 hover:text-slate-200 border border-transparent z-0"
-            }`}
+            } w-full sm:w-auto`}
           >
             R&D & Experiments ({academicProjects.length})
           </button>
@@ -274,6 +282,8 @@ export default function ProjectList() {
               onMouseEnter={() => setHoveredId(project.slug)}
               onMouseLeave={() => setHoveredId(null)}
               renderArchitecture={() => renderArchitecture(project.slug, hoveredId === project.slug)}
+              image={(project as any).image}
+              video={(project as any).video}
             />
           ))}
         </div>
@@ -294,6 +304,8 @@ export default function ProjectList() {
               onMouseEnter={() => setHoveredId(project.id)}
               onMouseLeave={() => setHoveredId(null)}
               renderArchitecture={() => renderArchitecture(project.name, hoveredId === project.id)}
+              image={(project as any).image}
+              video={(project as any).video}
             />
           ))}
         </div>
