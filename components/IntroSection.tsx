@@ -397,7 +397,7 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
 
       <section
         ref={sectionRef}
-        className="relative pt-12 md:pt-20 pb-8 md:pb-12 border-b border-zinc-100 dark:border-slate-900/60 overflow-hidden bg-gradient-to-b from-sky-50/50 via-white to-white dark:from-transparent dark:to-transparent"
+        className="relative pt-12 md:pt-20 pb-8 md:pb-12 border-b border-theme-border overflow-hidden bg-theme-bg"
       >
         <canvas
           ref={canvasRef}
@@ -420,15 +420,15 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 dark:text-slate-100 leading-[1.1] mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-theme-text leading-[1.1] mb-6">
             Hi, I&apos;m Parsa.
           </h1>
 
-          <p className="text-xl md:text-2xl text-slate-700 dark:text-slate-300 leading-relaxed font-normal tracking-wide mb-8">
+          <p className="text-xl md:text-2xl text-theme-secondary leading-relaxed font-normal tracking-wide mb-8">
             I build full-stack web apps — mainly with{" "}
-            <span className="text-slate-900 dark:text-slate-100 font-semibold">TypeScript</span>,{" "}
-            <span className="text-slate-900 dark:text-slate-100 font-semibold">Next.js</span>, and{" "}
-            <span className="text-slate-900 dark:text-slate-100 font-semibold">NestJS</span>.
+            <span className="text-theme-text font-semibold">TypeScript</span>,{" "}
+            <span className="text-theme-text font-semibold">Next.js</span>, and{" "}
+            <span className="text-theme-text font-semibold">NestJS</span>.
             {" "}I&apos;ve shipped real products — sometimes solo, sometimes as part of teams of 7+ engineers and designers.
           </p>
 
@@ -448,7 +448,7 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-theme-accent hover:bg-theme-accentHover text-white dark:text-slate-950 font-semibold transition-all shadow-sm hover:shadow select-none"
+              className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-theme-accent hover:bg-theme-accentHover text-theme-bg font-semibold transition-all shadow-sm hover:shadow select-none"
             >
               <span>Download Resume</span>
               <span>&rarr;</span>

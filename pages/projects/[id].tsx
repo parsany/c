@@ -160,7 +160,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
 
       {project.project_image && project.project_image.length > 0 && (
         <>
-          <div className="relative aspect-video w-full rounded-xl overflow-hidden bg-theme-btnExploreBg border border-theme-border mb-10 group">
+          <div className="relative aspect-video w-full rounded-xl overflow-hidden bg-[#1d2021] border border-theme-border mb-10 group">
             <div
               className="relative w-full h-full cursor-zoom-in select-none"
               onClick={() => {
@@ -245,13 +245,13 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
               aria-modal="true"
               aria-label="Image viewer"
             >
-              <div className="absolute top-6 left-6 text-xs font-mono text-slate-400 select-none z-50">
+              <div className="absolute top-6 left-6 text-xs font-mono text-theme-muted select-none z-50">
                 {activeIndex + 1} / {project.project_image.length}
               </div>
 
               <button
                 onClick={() => setIsLightboxOpen(false)}
-                className="absolute top-5 right-5 p-2.5 bg-slate-900/60 hover:bg-slate-800 border border-slate-800 text-slate-400 hover:text-slate-200 transition-colors z-50 focus:outline-none rounded-full"
+                className="absolute top-5 right-5 p-2.5 bg-zinc-900/60 hover:bg-zinc-800 border border-zinc-800 text-zinc-400 hover:text-zinc-200 transition-colors z-50 focus:outline-none rounded-full"
                 aria-label="Close image viewer"
               >
                 <X className="h-6 w-6" />
@@ -294,7 +294,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                         e.stopPropagation();
                         handlePrev();
                       }}
-                      className="absolute left-4 p-3 rounded-full bg-slate-900/60 border border-slate-800 hover:bg-slate-800 text-slate-200 hover:text-slate-100 transition-colors focus:outline-none"
+                      className="absolute left-4 p-3 rounded-full bg-zinc-900/60 border border-zinc-800 hover:bg-zinc-800 text-zinc-200 hover:text-zinc-100 transition-colors focus:outline-none"
                       aria-label="Previous image"
                     >
                       <ChevronLeft className="h-6 w-6" />
@@ -304,7 +304,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                         e.stopPropagation();
                         handleNext();
                       }}
-                      className="absolute right-4 p-3 rounded-full bg-slate-900/60 border border-slate-800 hover:bg-slate-800 text-slate-200 hover:text-slate-100 transition-colors focus:outline-none"
+                      className="absolute right-4 p-3 rounded-full bg-zinc-900/60 border border-zinc-800 hover:bg-zinc-800 text-zinc-200 hover:text-zinc-100 transition-colors focus:outline-none"
                       aria-label="Next image"
                     >
                       <ChevronRight className="h-6 w-6" />
@@ -319,7 +319,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                             setActiveIndex(idx);
                           }}
                           className={`h-2 w-2 rounded-full transition-all focus:outline-none ${
-                            idx === activeIndex ? "bg-slate-100 w-4" : "bg-slate-600 hover:bg-slate-500"
+                            idx === activeIndex ? "bg-zinc-100 w-4" : "bg-zinc-600 hover:bg-zinc-500"
                           }`}
                           aria-label={`Go to slide ${idx + 1}`}
                         />
@@ -333,7 +333,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
         </>
       )}
 
-      <div className="prose prose-slate dark:prose-invert max-w-none text-slate-700 dark:text-slate-300 text-sm md:text-base leading-relaxed space-y-6">
+      <div className="max-w-none text-theme-secondary text-sm md:text-base leading-relaxed space-y-6">
         <ReactMarkdown
           rehypePlugins={[rehypeRaw, rehypeSlug]}
           remarkPlugins={[remarkGfm]}

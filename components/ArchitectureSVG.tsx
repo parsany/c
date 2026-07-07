@@ -7,7 +7,7 @@ interface ArchitectureProps {
 
 export function AtrafianArchitecture({ isHovered }: ArchitectureProps) {
   return (
-    <div className="w-full h-full flex items-center justify-center p-4 bg-slate-950 border border-slate-900 rounded-lg overflow-hidden relative select-none">
+    <div className="w-full h-full flex items-center justify-center p-4 overflow-hidden relative select-none">
       <svg viewBox="0 0 420 220" fill="none" className="w-full h-full max-h-[180px]">
         <defs>
           <pattern id="grid" width="16" height="16" patternUnits="userSpaceOnUse">
@@ -85,7 +85,7 @@ export function AtrafianArchitecture({ isHovered }: ArchitectureProps) {
 
 export function CharbagArchitecture({ isHovered }: ArchitectureProps) {
   return (
-    <div className="w-full h-full flex items-center justify-center p-4 bg-slate-950 border border-slate-900 rounded-lg overflow-hidden relative select-none">
+    <div className="w-full h-full flex items-center justify-center p-4 overflow-hidden relative select-none">
       <svg viewBox="0 0 420 220" fill="none" className="w-full h-full max-h-[180px]">
         <rect width="100%" height="100%" fill="url(#grid)" />
 
@@ -150,7 +150,7 @@ export function CharbagArchitecture({ isHovered }: ArchitectureProps) {
 
 export function GoldenbatArchitecture({ isHovered }: ArchitectureProps) {
   return (
-    <div className="w-full h-full flex items-center justify-center p-4 bg-slate-950 border border-slate-900 rounded-lg overflow-hidden relative select-none">
+    <div className="w-full h-full flex items-center justify-center p-4 overflow-hidden relative select-none">
       <svg viewBox="0 0 420 220" fill="none" className="w-full h-full max-h-[180px]">
         <rect width="100%" height="100%" fill="url(#grid)" />
 
@@ -215,7 +215,7 @@ export function GoldenbatArchitecture({ isHovered }: ArchitectureProps) {
 
 export function MonorepoArchitecture({ isHovered }: ArchitectureProps) {
   return (
-    <div className="w-full h-full flex items-center justify-center p-4 bg-slate-950 border border-slate-900 rounded-lg overflow-hidden relative select-none">
+    <div className="w-full h-full flex items-center justify-center p-4 overflow-hidden relative select-none">
       <svg viewBox="0 0 420 220" fill="none" className="w-full h-full max-h-[180px]">
         <rect width="100%" height="100%" fill="url(#grid)" />
 
@@ -281,7 +281,7 @@ export function MonorepoArchitecture({ isHovered }: ArchitectureProps) {
 
 export function HimhehArchitecture({ isHovered }: ArchitectureProps) {
   return (
-    <div className="w-full h-full flex items-center justify-center p-4 bg-slate-950 border border-slate-900 rounded-lg overflow-hidden relative select-none">
+    <div className="w-full h-full flex items-center justify-center p-4 overflow-hidden relative select-none">
       <svg viewBox="0 0 420 220" fill="none" className="w-full h-full max-h-[180px]">
         <rect width="100%" height="100%" fill="url(#grid)" />
 
@@ -353,7 +353,7 @@ export function HimhehArchitecture({ isHovered }: ArchitectureProps) {
 
 export function TaxilandArchitecture({ isHovered }: ArchitectureProps) {
   return (
-    <div className="w-full h-full flex items-center justify-center p-4 bg-slate-950 border border-slate-900 rounded-lg overflow-hidden relative select-none">
+    <div className="w-full h-full flex items-center justify-center p-4 overflow-hidden relative select-none">
       <svg viewBox="0 0 420 220" fill="none" className="w-full h-full max-h-[180px]">
         <rect width="100%" height="100%" fill="url(#grid)" />
 
@@ -424,7 +424,7 @@ export function TaxilandArchitecture({ isHovered }: ArchitectureProps) {
 
 export function AlzahraArchitecture({ isHovered }: ArchitectureProps) {
   return (
-    <div className="w-full h-full flex items-center justify-center p-4 bg-slate-950 border border-slate-900 rounded-lg overflow-hidden relative select-none">
+    <div className="w-full h-full flex items-center justify-center p-4 overflow-hidden relative select-none">
       <svg viewBox="0 0 420 220" fill="none" className="w-full h-full max-h-[180px]">
         <rect width="100%" height="100%" fill="url(#grid)" />
 
@@ -477,7 +477,7 @@ export function AlzahraArchitecture({ isHovered }: ArchitectureProps) {
 
 export function AIVisualizer({ isHovered }: ArchitectureProps) {
   return (
-    <div className="w-full h-full flex items-center justify-center p-4 bg-slate-950 border border-slate-900 rounded-lg overflow-hidden relative select-none">
+    <div className="w-full h-full flex items-center justify-center p-4 overflow-hidden relative select-none">
       <svg viewBox="0 0 420 220" fill="none" className="w-full h-full max-h-[180px]">
         <rect width="100%" height="100%" fill="url(#grid)" />
 
@@ -592,7 +592,7 @@ export function GameVisualizer({ isHovered }: ArchitectureProps) {
   ];
 
   return (
-    <div className="w-full h-full flex items-center justify-center p-4 bg-slate-950 border border-slate-900 rounded-lg overflow-hidden relative select-none">
+    <div className="w-full h-full flex items-center justify-center overflow-hidden relative select-none">
       <svg viewBox="0 0 420 220" fill="none" className="w-full h-full max-h-[180px]">
         
         <rect width="100%" height="100%" fill="#020617" />
@@ -764,7 +764,7 @@ export function GameVisualizer({ isHovered }: ArchitectureProps) {
 
 export function RoboticsVisualizer({ isHovered }: ArchitectureProps) {
   return (
-    <div className="w-full h-full flex items-center justify-center p-4 bg-slate-950 border border-slate-900 rounded-lg overflow-hidden relative select-none">
+    <div className="w-full h-full flex items-center justify-center p-4 overflow-hidden relative select-none">
       <svg viewBox="0 0 420 220" fill="none" className="w-full h-full max-h-[180px]">
         <rect width="100%" height="100%" fill="url(#grid)" />
 
@@ -796,7 +796,7 @@ export function RoboticsVisualizer({ isHovered }: ArchitectureProps) {
 
 export function AppVisualizer({ isHovered }: ArchitectureProps) {
   return (
-    <div className="w-full h-full flex items-center justify-center p-4 bg-slate-950 border border-slate-900 rounded-lg overflow-hidden relative select-none">
+    <div className="w-full h-full flex items-center justify-center p-4 overflow-hidden relative select-none">
       <svg viewBox="0 0 420 220" fill="none" className="w-full h-full max-h-[180px]">
         <rect width="100%" height="100%" fill="url(#grid)" />
 
@@ -843,7 +843,7 @@ export function AppVisualizer({ isHovered }: ArchitectureProps) {
 
 export function CompilerVisualizer({ isHovered }: ArchitectureProps) {
   return (
-    <div className="w-full h-full flex items-center justify-center p-4 bg-slate-950 border border-slate-900 rounded-lg overflow-hidden relative select-none">
+    <div className="w-full h-full flex items-center justify-center p-4 overflow-hidden relative select-none">
       <svg viewBox="0 0 420 220" fill="none" className="w-full h-full max-h-[180px]">
         <rect width="100%" height="100%" fill="url(#grid)" />
 

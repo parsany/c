@@ -66,7 +66,7 @@ function ProjectCard({
   if (isProfessional) {
     return (
       <article
-        className="group flex flex-col justify-between bg-theme-cardBg border border-theme-cardBorder hover:border-theme-accent/60 rounded-xl p-5 md:p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(37,99,235,0.04)] dark:hover:shadow-[0_8px_30px_rgba(215,201,165,0.04)] focus-within:ring-2 focus-within:ring-theme-accent/50 focus-within:outline-none cursor-pointer"
+        className="group flex flex-col justify-between bg-theme-cardBg border border-theme-cardBorder hover:border-theme-accent/60 rounded-xl p-5 md:p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(34,165,201,0.04)] dark:hover:shadow-[0_8px_30px_rgba(250,189,47,0.04)] focus-within:ring-2 focus-within:ring-theme-accent/50 focus-within:outline-none cursor-pointer"
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
         onClick={handleCardClick}
@@ -128,7 +128,7 @@ function ProjectCard({
 
   return (
     <article
-      className="group flex flex-col justify-between bg-theme-cardBg border border-theme-cardBorder hover:border-theme-accent/60 rounded-xl p-5 md:p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(37,99,235,0.04)] dark:hover:shadow-[0_8px_30px_rgba(215,201,165,0.04)] focus-within:ring-2 focus-within:ring-theme-accent/50 focus-within:outline-none cursor-pointer"
+      className="group flex flex-col justify-between bg-theme-cardBg border border-theme-cardBorder hover:border-theme-accent/60 rounded-xl p-5 md:p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(34,165,201,0.04)] dark:hover:shadow-[0_8px_30px_rgba(250,189,47,0.04)] focus-within:ring-2 focus-within:ring-theme-accent/50 focus-within:outline-none cursor-pointer"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       onClick={handleCardClick}
@@ -246,7 +246,7 @@ export default function ProjectList() {
     }
 
     return (
-      <div className="w-full h-full flex items-center justify-center p-4 bg-slate-950 border border-slate-900 rounded-lg overflow-hidden relative select-none">
+      <div className="w-full h-full flex items-center justify-center p-4 overflow-hidden relative select-none">
         <svg viewBox="0 0 420 220" fill="none" className="w-full h-full max-h-[200px]">
           <rect width="100%" height="100%" fill="url(#grid)" />
           <path

@@ -327,7 +327,7 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
     <AnimatePresence>
       {isOpen && (
         <div
-          className="fixed inset-0 z-50 flex items-start justify-center pt-[10vh] px-4 bg-slate-950/40 dark:bg-slate-955/80 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-start justify-center pt-[10vh] px-4 bg-black/40 dark:bg-black/60 backdrop-blur-sm"
           onClick={handleOverlayClick}
           role="dialog"
           aria-modal="true"
