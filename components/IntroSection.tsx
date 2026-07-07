@@ -11,7 +11,7 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
       <div className="max-w-3xl">
         <div className="flex items-center space-x-2 mb-6 select-none">
           <span className="text-xs font-mono text-slate-400 tracking-wider uppercase">
-            Available for remote contracts & full-time relocation opportunities
+            Open to remote work & relocation
           </span>
         </div>
 
@@ -20,11 +20,11 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
         </h1>
 
         <p className="text-xl md:text-2xl text-slate-300 leading-relaxed font-normal tracking-wide mb-8">
-          As a Full-Stack Software Engineer, I work closely with agile teams of 7+ developers and designers to build, test, and rapidly deploy applications using{" "}
+          I build full-stack web apps — mainly with{" "}
           <span className="text-slate-100 font-medium">TypeScript</span>,{" "}
           <span className="text-slate-100 font-medium">Next.js</span>, and{" "}
-          <span className="text-slate-100 font-medium">NestJS</span>{" "}
-          to ship clean, highly responsive web products at pace.
+          <span className="text-slate-100 font-medium">NestJS</span>.
+          {" "}I&apos;ve shipped real products — sometimes solo, sometimes as part of teams of 7+ engineers and designers.
         </p>
 
         <div className="flex flex-wrap items-center gap-4 text-sm font-mono">
