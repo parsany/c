@@ -20,10 +20,11 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
         </h1>
 
         <p className="text-xl md:text-2xl text-slate-300 leading-relaxed font-normal tracking-wide mb-8">
-          I&apos;m a Full-Stack Software Engineer building web apps and distributed backend systems with{" "}
+          As a Full-Stack Software Engineer, I work closely with agile teams of 7+ developers and designers to build, test, and rapidly deploy applications using{" "}
           <span className="text-slate-100 font-medium">TypeScript</span>,{" "}
           <span className="text-slate-100 font-medium">Next.js</span>, and{" "}
-          <span className="text-slate-100 font-medium">NestJS</span>.
+          <span className="text-slate-100 font-medium">NestJS</span>{" "}
+          to ship clean, highly responsive web products at pace.
         </p>
 
         <div className="flex flex-wrap items-center gap-4 text-sm font-mono">

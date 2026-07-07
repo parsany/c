@@ -63,6 +63,69 @@ function ProjectCard({
     }
   };
 
+  if (isProfessional) {
+    return (
+      <article
+        className="group flex flex-col justify-between bg-slate-900/40 border border-slate-800/80 hover:border-slate-100/30 rounded-xl p-5 md:p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(215,201,165,0.04)] focus-within:ring-2 focus-within:ring-slate-400 focus-within:outline-none cursor-pointer"
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+        onClick={handleCardClick}
+      >
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <h3 className="text-lg font-semibold text-slate-100 group-hover:text-slate-50 transition-colors">
+              {name}
+            </h3>
+            <p className="text-slate-300 text-sm leading-relaxed">
+              {description}
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-6 pt-4 border-t border-slate-800/60 flex flex-col gap-3">
+          <div className="flex flex-wrap gap-1.5">
+            {tags.slice(0, 4).map((tag: string) => (
+              <span
+                key={tag}
+                className="px-2 py-0.5 text-[10px] font-mono rounded bg-slate-950 border border-slate-800 text-slate-400"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          <div className="flex items-center justify-between text-xs font-mono pt-0.5">
+            <div>
+              {link ? (
+                <a
+                  href={link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center space-x-1 text-slate-300 hover:text-slate-100 transition-colors"
+                >
+                  <span>Live Site</span>
+                  <ArrowRight className="h-3 w-3" />
+                </a>
+              ) : (
+                <span className="text-slate-600">Proprietary</span>
+              )}
+            </div>
+
+            {slug && (
+              <Link
+                href={`/projects/${slug}`}
+                className="inline-flex items-center space-x-1 text-slate-400 hover:text-slate-200 transition-colors"
+                aria-label={`View ${name} architectural details`}
+              >
+                <span>Specs</span>
+              </Link>
+            )}
+          </div>
+        </div>
+      </article>
+    );
+  }
+
   return (
     <article
       className="group flex flex-col justify-between bg-gradient-to-b from-slate-900 to-slate-950/80 border border-slate-800/80 hover:border-slate-100/40 rounded-xl p-5 md:p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(215,201,165,0.08)] focus-within:ring-2 focus-within:ring-slate-400 focus-within:outline-none cursor-pointer"
@@ -129,25 +192,13 @@ function ProjectCard({
                 rel="noopener noreferrer"
                 className="inline-flex items-center space-x-1 text-slate-300 hover:text-slate-100 transition-colors"
               >
-                <span>{isProfessional ? "Live Site" : "GitHub Repo"}</span>
+                <span>GitHub Repo</span>
                 <ArrowRight className="h-3 w-3" />
               </a>
             ) : (
-              <span className="text-slate-600">
-                {isProfessional ? "Proprietary" : "Pending Release"}
-              </span>
+              <span className="text-slate-600">Pending Release</span>
             )}
           </div>
-
-          {isProfessional && slug && (
-            <Link
-              href={`/projects/${slug}`}
-              className="inline-flex items-center space-x-1 text-slate-400 hover:text-slate-200 transition-colors"
-              aria-label={`View ${name} architectural details`}
-            >
-              <span>Specs</span>
-            </Link>
-          )}
         </div>
       </div>
     </article>
@@ -251,7 +302,7 @@ export default function ProjectList() {
                 : "text-slate-400 hover:text-slate-200 border border-transparent z-0"
             } w-full sm:w-auto`}
           >
-            Production Systems ({professionalProjects.length})
+            Projects ({professionalProjects.length})
           </button>
           <button
             onClick={() => setActiveTab("academic")}
