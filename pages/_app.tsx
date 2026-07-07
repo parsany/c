@@ -16,6 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [showTerminal, setShowTerminal] = useState<boolean | null>(null);
   const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [transitioningTheme, setTransitioningTheme] = useState<"light" | "dark" | null>(null);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
@@ -44,16 +45,25 @@ export default function App({ Component, pageProps }: AppProps) {
   }, []);
 
   const toggleTheme = () => {
+    if (transitioningTheme) return;
     const nextTheme = theme === "light" ? "dark" : "light";
-    setTheme(nextTheme);
-    localStorage.setItem("theme", nextTheme);
-    if (nextTheme === "dark") {
-      document.documentElement.classList.add("dark");
-      document.body.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      document.body.classList.remove("dark");
-    }
+    setTransitioningTheme(nextTheme);
+
+    setTimeout(() => {
+      setTheme(nextTheme);
+      localStorage.setItem("theme", nextTheme);
+      if (nextTheme === "dark") {
+        document.documentElement.classList.add("dark");
+        document.body.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+        document.body.classList.remove("dark");
+      }
+    }, 500);
+
+    setTimeout(() => {
+      setTransitioningTheme(null);
+    }, 1000);
   };
 
   const handleTerminalDone = useCallback(() => {
@@ -108,6 +118,21 @@ export default function App({ Component, pageProps }: AppProps) {
 
       {showTerminal === true && (
         <TerminalIntro onDone={handleTerminalDone} />
+      )}
+
+      {transitioningTheme && (
+        <div className="fixed inset-0 z-[9999] pointer-events-none overflow-hidden">
+          <div className="absolute top-1/2 left-1/2 w-[300vw] h-[300vh] -translate-x-1/2 -translate-y-1/2 rotate-[45deg]">
+            <div
+              className="w-full h-full animate-curtain-swipe"
+              style={{
+                background: transitioningTheme === "dark"
+                  ? "linear-gradient(to bottom, rgba(40,40,40,0) 0%, rgba(40,40,40,1) 15%, rgba(40,40,40,1) 85%, rgba(40,40,40,0) 100%)"
+                  : "linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 15%, rgba(255,255,255,1) 85%, rgba(255,255,255,0) 100%)"
+              }}
+            />
+          </div>
+        </div>
       )}
     </>
   );

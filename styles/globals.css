@@ -351,3 +351,22 @@ html.dark ::-webkit-scrollbar-thumb:hover {
   transform-origin: center;
   transform-box: fill-box;
 }
+
+.animate-curtain-swipe {
+  animation: curtain-swipe-anim 1.0s cubic-bezier(0.85, 0, 0.15, 1) forwards;
+}
+
+@keyframes curtain-swipe-anim {
+  0% {
+    transform: translateY(-100%);
+  }
+  48% {
+    transform: translateY(0%);
+  }
+  52% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
