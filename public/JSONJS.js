@@ -65,7 +65,7 @@ export const ProjectAcademic = [
 
 export const ProjectProfessional = [
   {
-    id: 8,
+    id: 2,
     slug: "charbag",
     name: "Charbag Ceramic Studio",
     description: "Online storefront and order management dashboard for a local ceramics studio.",
@@ -83,7 +83,7 @@ export const ProjectProfessional = [
     text: `# Charbag Ceramic Studio\n\nBuilt solo for a local ceramics studio. The client needed a storefront to show their catalog and a simple admin panel to manage orders and workshop schedules — no bloated CMS, just what they actually needed.\n\n- **Role**: Solo Fullstack Developer\n- **Timeline**: 1 Month\n- **Stack**: Next.js, PostgreSQL`
   },
   {
-    id: 7,
+    id: 8,
     slug: "msk",
     name: "Battery MSK Client Website",
     description: "Client-facing website and internal admin panel with dual-language support and a serial-number warranty validation system.",
@@ -102,7 +102,7 @@ export const ProjectProfessional = [
     text: `# Battery MSK Client Website\n\nThe client-facing side of the Battery ESP monorepo — same codebase, different brand. Built and styled the public storefront and warranty lookup pages. See the ESP project for full technical details.\n\n- **Role**: Frontend Developer\n- **Stack**: Next.js, Tailwind CSS, NestJS (shared backend)`
   },
   {
-    id: 6,
+    id: 7,
     slug: "esp",
     name: "Battery ESP/MSK E-Commerce",
     description: "Full e-commerce platform with dual-language support, warranty lookup by serial number, and an internal admin panel.",
@@ -123,7 +123,7 @@ export const ProjectProfessional = [
     text: `# Battery ESP/MSK E-Commerce\n\nBuilt in 3 weeks with one other developer. A Shopify alternative for two battery brands sharing the same backend. The interesting part was the warranty verification system — customers enter a serial number and the system validates it against a database of generated keys.\n\n- **Role**: Fullstack Developer (team of 2)\n- **Timeline**: 3 Weeks\n- **Stack**: Turborepo monorepo, NestJS, Next.js, PostgreSQL`
   },
   {
-    id: 5,
+    id: 6,
     slug: "atrafian",
     name: "Atrafian Chat & Social Ecosystem",
     description: "Real-time chat app with a native mobile build. WebSockets for messaging, Redis for caching, and a custom radar-based discovery map.",
@@ -149,7 +149,7 @@ export const ProjectProfessional = [
     text: `# Atrafian Chat & Social Ecosystem\n\nBuilt solo over 2 months, full-time. A social platform with real-time chat (personal, group, and support channels), a Capacitor-based mobile app, and a custom radar map for location-based discovery. Media (voice, images, video) goes through a self-hosted MinIO instance. Redis handles caching and OTP delivery.\n\nThe radar map was the hardest part — it needed to feel smooth on mobile while handling frequent location updates.\n\n- **Role**: Solo Fullstack & Mobile Developer\n- **Stack**: NestJS, Next.js, Socket.io, Redis, PostgreSQL, Turborepo`
   },
   {
-    id: 4,
+    id: 1,
     slug: "himheh",
     name: "Himheh Publishing",
     description: "Book store and publishing platform. Users can browse, purchase, and track orders. Authors get a dashboard to upload and manage titles.",
@@ -170,7 +170,7 @@ export const ProjectProfessional = [
     text: `# Himheh Book Publishing Platform\n\nBuilt solo over 2 months. A complete book store — authors upload titles through an admin dashboard, customers browse, add to cart, and check out via a local payment gateway. OTP-based auth instead of passwords.\n\n- **Role**: Solo Fullstack Developer\n- **Timeline**: 2 Months\n- **Stack**: Next.js, tRPC, PostgreSQL, Prisma`
   },
   {
-    id: 3,
+    id: 5,
     slug: "goldenbat",
     name: "Goldenbat GPS Tracking",
     description: "Live vehicle tracking dashboard. Ingests GPS coordinates from IoT hardware and shows real-time routes on a map.",
@@ -187,7 +187,7 @@ export const ProjectProfessional = [
     text: `# Goldenbat GPS Tracking\n\nTeam project. I handled the backend and admin dashboard; a teammate built the mobile app. IoT GPS devices stream coordinates to the server, the dashboard plots live vehicle positions and paths on a map. Fleet operators use it to manage groups and device assignments.\n\n- **Role**: Backend & Dashboard Developer\n- **Timeline**: 2 weeks (landing) + 1.5 months (backend & admin panel)\n- **Stack**: Next.js, tRPC, PostgreSQL`
   },
   {
-    id: 2,
+    id: 3,
     slug: "taxiland",
     name: "Taxiland Ride-Sharing Platform",
     description: "Intercity ride-sharing platform. Built the web admin panel that dispatch operators use for driver assignment and support tickets.",
@@ -207,7 +207,7 @@ export const ProjectProfessional = [
     text: `# Taxiland Ride-Sharing Platform\n\nTeam collaboration. Intercity ride-sharing — passengers book trips, drivers pick them up. I built the dispatch admin panel: operators can assign drivers manually or let the system do it automatically, and handle support tickets. Site is currently down, screenshots are from when it was live.\n\n- **Role**: Fullstack Developer (team project)\n- **Timeline**: 4 Months\n- **Stack**: Next.js, tRPC, PostgreSQL, Turborepo`
   },
   {
-    id: 1,
+    id: 4,
     slug: "alzahra",
     name: "Alzahra Gold Wholesaler B2B Platform",
     description: "Frontend B2B panel for a gold wholesaler, integrated with a Django REST API for transaction management.",
