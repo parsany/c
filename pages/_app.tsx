@@ -1,15 +1,26 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
+import dynamic from "next/dynamic";
 import Head from "next/head";
 import CommandMenu from "@/components/CommandMenu";
 
+const TerminalIntro = dynamic(() => import("@/components/TerminalIntro"), {
+  ssr: false,
+});
+
+const SESSION_KEY = "terminal_seen";
+
 export default function App({ Component, pageProps }: AppProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [showTerminal, setShowTerminal] = useState<boolean | null>(null);
 
   useEffect(() => {
     document.documentElement.classList.add("dark");
     document.body.classList.add("bg-slate-950", "text-slate-100");
+
+    const seen = sessionStorage.getItem(SESSION_KEY);
+    setShowTerminal(!seen);
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key?.toLowerCase() === "k") {
@@ -20,6 +31,11 @@ export default function App({ Component, pageProps }: AppProps) {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  const handleTerminalDone = useCallback(() => {
+    sessionStorage.setItem(SESSION_KEY, "1");
+    setShowTerminal(false);
   }, []);
 
   return (
@@ -52,6 +68,10 @@ export default function App({ Component, pageProps }: AppProps) {
       </div>
 
       <CommandMenu isOpen={isOpen} onClose={() => setIsOpen(false)} />
+
+      {showTerminal === true && (
+        <TerminalIntro onDone={handleTerminalDone} />
+      )}
     </>
   );
 }

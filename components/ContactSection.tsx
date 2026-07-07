@@ -46,7 +46,7 @@ export default function ContactSection() {
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
-          <div className="flex items-center justify-between p-4 rounded-lg bg-slate-950 border border-slate-900 focus-within:ring-2 focus-within:ring-slate-500">
+          <article className="flex items-center justify-between p-4 rounded-lg bg-slate-950 border border-slate-900 focus-within:ring-2 focus-within:ring-slate-500">
             <div className="flex items-center space-x-3">
               <div className="p-2 rounded bg-slate-900 border border-slate-800 text-slate-300">
                 <Mail className="h-5 w-5" />
@@ -91,7 +91,7 @@ export default function ContactSection() {
                 )}
               </AnimatePresence>
             </button>
-          </div>
+          </article>
 
           {socials.map((social) => (
             <a
