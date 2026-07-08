@@ -21,10 +21,6 @@ const TAG_PALETTE = [
   "#3f51b5",
 ];
 
-/**
- * Returns a consistent color for a tag based on its character length.
- * Same-length tags get the same color; different lengths get different colors.
- */
 export function getTagColor(tag) {
   const len = tag.length;
   return TAG_PALETTE[len % TAG_PALETTE.length];

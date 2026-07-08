@@ -60,7 +60,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Parsa | Full-Stack Software Engineer</title>
+        <title>Parsa | Personal Portfolio</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charSet="utf-8" />
         <meta
@@ -104,15 +104,45 @@ export default function App({ Component, pageProps }: AppProps) {
 
       {transitioningTheme && (
         <div className="fixed inset-0 z-[9999] pointer-events-none overflow-hidden">
+          {}
           <div className="absolute top-1/2 left-1/2 w-[300vw] h-[300vh] -translate-x-1/2 -translate-y-1/2 rotate-[45deg]">
             <div
               className="w-full h-full animate-curtain-swipe"
               style={{
                 background: transitioningTheme === "dark"
                   ? "linear-gradient(to bottom, rgba(40,40,40,0) 0%, rgba(40,40,40,1) 15%, rgba(40,40,40,1) 85%, rgba(40,40,40,0) 100%)"
-                  : "linear-gradient(to bottom, rgba(249,250,251,0) 0%, rgba(249,250,251,1) 15%, rgba(249,250,251,1) 85%, rgba(249,250,251,0) 100%)"
+                  : "linear-gradient(to bottom, rgba(244,252,251,0) 0%, rgba(244,252,251,1) 15%, rgba(244,252,251,1) 85%, rgba(244,252,251,0) 100%)"
               }}
             />
+          </div>
+
+          {}
+          <style>{`
+            @keyframes curtain-text-in {
+              0%   { opacity: 0; transform: translateY(6px) scale(0.97); }
+              22%  { opacity: 1; transform: translateY(0)   scale(1);    }
+              72%  { opacity: 1; transform: translateY(0)   scale(1);    }
+              100% { opacity: 0; transform: translateY(-6px) scale(0.97);}
+            }
+            .curtain-text { animation: curtain-text-in 1.0s cubic-bezier(0.85,0,0.15,1) forwards; }
+          `}</style>
+
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div
+              className="curtain-text flex flex-col items-center gap-3 select-none"
+              style={{
+                color: transitioningTheme === "dark" ? "rgba(251,241,199,0.55)" : "rgba(36,60,76,0.45)",
+                fontFamily: "'VT323','Courier New',monospace",
+              }}
+            >
+              {}
+              <span style={{ fontSize: "2.2rem", lineHeight: 1, letterSpacing: "0.05em" }}>✛</span>
+
+              {}
+              <span style={{ fontSize: "0.62rem", letterSpacing: "0.35em", textTransform: "uppercase", fontFamily: "ui-sans-serif,system-ui,sans-serif", fontWeight: 600 }}>
+                {transitioningTheme === "dark" ? "switching to dark" : "switching to light"}
+              </span>
+            </div>
           </div>
         </div>
       )}

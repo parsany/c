@@ -94,7 +94,7 @@ export default function CrossPanel({
         y: dragOffsetStart.current.y + dy,
       });
     };
-  });
+  }, []);
 
   const handleMouseDown = (e: React.MouseEvent) => {
     if (window.innerWidth < 640 || e.button !== 0) return;
@@ -124,7 +124,7 @@ export default function CrossPanel({
   const borderColor = isAttacking
     ? "rgba(239, 68, 68, 0.7)"
     : isGoingRogue
-      ? undefined // animated via keyframes
+      ? undefined 
       : isEscaped
         ? "rgba(215, 201, 165, 0.6)"
         : fireMode
@@ -233,7 +233,7 @@ export default function CrossPanel({
         }
       `}</style>
 
-      {/* Wrapper to apply rogue animation class */}
+      {}
       <div
         className={isGoingRogue ? "rogue-panel contents" : "contents"}
         style={isGoingRogue ? { display: "contents" } : {}}
@@ -261,7 +261,7 @@ export default function CrossPanel({
         </button>
       </div>
 
-      {/* Sliders only in idle */}
+      {}
       {phase === 'idle' && (
         <div className="px-5 py-5 flex flex-col gap-1">
           <Slider label="Cross Size" value={size} min={2} max={12} onChange={onSize} />

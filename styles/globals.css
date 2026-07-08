@@ -25,36 +25,37 @@
     --ring: 240 4.9% 83.9%;
     --radius: 0.5rem;
 
-    --bg-primary: #f9fafb;
-    --text-primary: #0f172a;
-    --text-secondary: #475569;
-    --text-muted: #64748b;
-    --border-primary: #e2e8f0;
-    --border-secondary: #cbd5e1;
+    
+    --bg-primary:          #F4FCFB;   
+    --text-primary:        #243C4C;   
+    --text-secondary:      #3d5a6e;   
+    --text-muted:          #698696;   
+    --border-primary:      #ACBCBF;   
+    --border-secondary:    #93aaad;   
 
-    --accent-primary: #2563eb;
-    --accent-hover: #1d4ed8;
-    --accent-light: #f1f5f9;
-    --accent-text: #334155;
+    --accent-primary:      #5289AD;   
+    --accent-hover:        #3e6f91;   
+    --accent-light:        #ddeef6;   
+    --accent-text:         #1a3044;   
 
-    --button-explore-bg: #ffffff;
-    --button-explore-border: #e2e8f0;
-    --button-explore-text: #0f172a;
+    --button-explore-bg:   #eaf4f8;   
+    --button-explore-border: #ACBCBF;
+    --button-explore-text: #243C4C;
 
-    --card-bg: #ffffff;
-    --card-border: #e2e8f0;
+    --card-bg:             #ffffff;   
+    --card-border:         #ACBCBF;
 
-    --panel-bg: #ffffff;
-    --panel-border: #e2e8f0;
-    --panel-text: #0f172a;
+    --panel-bg:            #eef8f9;   
+    --panel-border:        #ACBCBF;
+    --panel-text:          #243C4C;
 
-    --cross-accent: #2563eb;
-    --cross-accent-rgba: rgba(37, 99, 235, 0.6);
-    --cross-trigger-bg: rgba(249, 250, 251, 0.85);
-    --cross-trigger-border: rgba(15, 23, 42, 0.08);
-    --cross-trigger-color: rgba(15, 23, 42, 0.5);
-    --cross-trigger-border-hover: rgba(15, 23, 42, 0.2);
-    --cross-trigger-color-hover: rgba(15, 23, 42, 0.8);
+    --cross-accent:        #5289AD;
+    --cross-accent-rgba:   rgba(82, 137, 173, 0.6);
+    --cross-trigger-bg:    rgba(244, 252, 251, 0.88);
+    --cross-trigger-border:       rgba(36, 60, 76, 0.12);
+    --cross-trigger-color:        rgba(36, 60, 76, 0.45);
+    --cross-trigger-border-hover: rgba(36, 60, 76, 0.28);
+    --cross-trigger-color-hover:  rgba(36, 60, 76, 0.85);
   }
 
   .dark {
@@ -147,7 +148,7 @@ html.dark ::-webkit-scrollbar-thumb:hover {
 }
 
 *:focus-visible {
-  outline: 2px solid #64748b;
+  outline: 2px solid var(--accent-primary);
   outline-offset: 4px;
 }
 

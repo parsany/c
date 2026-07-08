@@ -60,9 +60,9 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
   const fireRef = useRef(false);
   const fireIntRef = useRef(0);
   const attackRef = useRef(false);
-  // phase: 'idle' | 'escaped' | 'going_rogue' | 'attacking'
+  
   const phaseRef = useRef<'idle' | 'escaped' | 'going_rogue' | 'attacking'>('idle');
-  const rogueFlickerRef = useRef(0); // 0–1 flicker intensity during going_rogue
+  const rogueFlickerRef = useRef(0); 
 
   const [showTrigger, setShowTrigger] = useState(false);
   const [panelOpen, setPanelOpen] = useState(false);
@@ -70,9 +70,9 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
   const [density, setDensity] = useState(32);
   const [radius, setRadius] = useState(160);
   const [fireMode, setFireMode] = useState(false);
-  // phase state for re-renders
+  
   const [phase, setPhase] = useState<'idle' | 'escaped' | 'going_rogue' | 'attacking'>('idle');
-  // derived for backwards-compat
+  
   const attackMode = phase === 'attacking';
 
   useEffect(() => { const t = setTimeout(() => setShowTrigger(true), 3000); return () => clearTimeout(t); }, []);
@@ -152,16 +152,14 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
     });
   }, []);
 
-  // Advance through phases on button click
+  
   const handleAttackClick = useCallback(() => {
     setPhase(prev => {
       if (prev === 'idle') {
-        // escaped: immediately rebuild canvas full-screen
         phaseRef.current = 'escaped';
         needsRebuild.current = true;
         return 'escaped';
       }
-      // toggle back to idle if already in any attack phase
       phaseRef.current = 'idle';
       attackRef.current = false;
       rogueFlickerRef.current = 0;
@@ -171,10 +169,20 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
     });
   }, [clearBurns]);
 
-  // Auto-advance escaped → going_rogue → attacking
+
+  const visibleCacheRef = useRef<Element[]>([]);
+  const visibleFrameRef = useRef(-1);
+
+  const getCachedVisible = useCallback(() => {
+    if (visibleFrameRef.current !== frameRef.current) {
+      visibleCacheRef.current = getVisible();
+      visibleFrameRef.current = frameRef.current;
+    }
+    return visibleCacheRef.current;
+  }, [getVisible]);
+
   useEffect(() => {
     if (phase === 'escaped') {
-      // Rebuild immediately so crosses fill screen at correct size
       needsRebuild.current = true;
       const rc = rogueCanvasRef.current;
       if (rc) { rc.width = window.innerWidth; rc.height = window.innerHeight; }
@@ -284,7 +292,7 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
       else fireIntRef.current = Math.max(0, fireIntRef.current - 0.006);
       const fi = fireIntRef.current;
 
-      // Rogue flicker: ramp up during going_rogue phase
+      
       const currentPhase = phaseRef.current;
       if (currentPhase === 'going_rogue') {
         rogueFlickerRef.current = Math.min(1, rogueFlickerRef.current + 0.008);
@@ -300,7 +308,7 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
         const infl = ss(Math.max(0, 1 - dist / R));
 
         let target = node.phase + t;
-        // In escaped/going_rogue/attacking: drift freely, no cursor influence
+        
         if (currentPhase === 'idle' && sm.x !== -9999 && dist < R * 1.8) target = Math.atan2(dy, dx);
         let diff = target - node.angle;
         while (diff < -Math.PI) diff += Math.PI * 2;
@@ -310,13 +318,13 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
         const breathe = Math.sin(t * 3 + node.phase) * 0.5 + 0.5;
         const fireFlicker = fi > 0.5 ? Math.sin(ts * 0.04 + node.phase * 5) * 0.25 + 0.75 : 1;
 
-        // Rogue color flicker: rapid random hue shifts
+        
         let drawR: number, drawG: number, drawB: number;
         if (rf > 0) {
           const flick = Math.sin(ts * 0.08 + node.phase * 7.3) * 0.5 + 0.5;
           const chaos = Math.sin(ts * 0.13 + node.x * 0.05) * 0.5 + 0.5;
           const [baseR, baseG, baseB] = getFireColor(infl, fi);
-          // Interpolate between normal color and chaotic red/gold flicker
+          
           const flickR = Math.round(255 * flick + 200 * (1 - flick));
           const flickG = Math.round(80 * chaos);
           const flickB = Math.round(20 * (1 - flick));
@@ -377,22 +385,31 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
       const rctx = rc?.getContext("2d");
       if (rc && rctx && attackRef.current) {
         rctx.clearRect(0, 0, rc.width, rc.height);
-        const visible = getVisible();
+        const visible = getCachedVisible();
         if (frameRef.current % 30 === 0) {
           spawnForTargets(visible);
         }
+
+        const rectCache = new Map<Element, DOMRect>();
+        const getRect = (el: Element) => {
+          let r = rectCache.get(el);
+          if (!r) { r = el.getBoundingClientRect(); rectCache.set(el, r); }
+          return r;
+        };
+
+        const candidateCenters = visible
+          .filter(el => (burnMapRef.current.get(el) ?? 0) < 1.0)
+          .map(el => { const r = getRect(el); return { el, cx: r.left + r.width * 0.5, cy: r.top + r.height * 0.5 }; });
+
         roguesRef.current = roguesRef.current.filter(rogue => {
-          let rect = rogue.targetEl.getBoundingClientRect();
-          let offScreen = rect.bottom < 0 || rect.top > window.innerHeight;
-          let fullyEaten = (burnMapRef.current.get(rogue.targetEl) ?? 0) >= 1.0;
+          let rect = getRect(rogue.targetEl);
+          const offScreen = rect.bottom < 0 || rect.top > window.innerHeight;
+          const fullyEaten = (burnMapRef.current.get(rogue.targetEl) ?? 0) >= 1.0;
           if (offScreen || fullyEaten) {
-            const candidates = visible.filter(el => (burnMapRef.current.get(el) ?? 0) < 1.0);
             let bestEl: Element | null = null;
             let minDist = Infinity;
-            for (const el of candidates) {
-              const r = el.getBoundingClientRect();
-              const cx = r.left + r.width / 2;
-              const cy = r.top + r.height / 2;
+            for (const { el, cx, cy } of candidateCenters) {
+              if (el === rogue.targetEl) continue;
               const d = Math.hypot(cx - rogue.x, cy - rogue.y);
               if (d < minDist) { minDist = d; bestEl = el; }
             }
@@ -400,7 +417,7 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
               rogue.targetEl = bestEl;
               rogue.eating = false;
               rogue.eatTimer = 0;
-              rect = bestEl.getBoundingClientRect();
+              rect = getRect(bestEl);
             } else {
               return false;
             }
@@ -429,19 +446,22 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
           const [r2, g2, b2] = getFireColor(1, rogue.fireInt);
           drawCross(rctx, rogue.x, rogue.y, sz2, rogue.angle, r2, g2, b2, op2, 1.5);
           if (rogue.eating && rogue.fireInt > 0.5) {
+            const g2dim = Math.round(g2 * 0.6);
             for (let k = 0; k < 3; k++) {
               const px = rogue.x + (Math.random() - 0.5) * 30;
               const py = rogue.y + (Math.random() - 0.5) * 30;
               rctx.beginPath();
               rctx.arc(px, py, Math.random() * 2, 0, Math.PI * 2);
-              rctx.fillStyle = `rgba(${r2},${Math.round(g2 * 0.6)},${b2},${Math.random() * 0.6})`;
+              rctx.fillStyle = `rgba(${r2},${g2dim},${b2},${Math.random() * 0.6})`;
               rctx.fill();
             }
           }
           return true;
         });
+
         const eatingElements = new Set<Element>();
         roguesRef.current.forEach(r => { if (r.eating) eatingElements.add(r.targetEl); });
+        const applyBurnStyles = frameRef.current % 3 === 0;
         burnMapRef.current.forEach((prog, el) => {
           let next = prog;
           if (eatingElements.has(el)) {
@@ -453,24 +473,23 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
             if (h.style) h.style.display = "none";
             return;
           }
-          if (h.style) {
-            h.style.transition = "filter 0.1s, opacity 0.1s, transform 0.05s";
-            if (next < 0.35) {
-              const sh = (Math.random() - 0.5) * next * 5;
-              h.style.transform = `translate(${sh}px,${sh * 0.4}px)`;
-              h.style.filter = `brightness(${1 + next * 3}) saturate(${1 + next * 8}) sepia(${next * 0.8})`;
-            } else if (next < 0.75) {
-              const t2 = (next - 0.35) / 0.4;
-              const sh = (Math.random() - 0.5) * 3;
-              h.style.transform = `translate(${sh}px,${sh}px) scale(${1 - t2 * 0.08})`;
-              h.style.filter = `brightness(${3 - t2 * 2}) saturate(5) sepia(1) hue-rotate(${t2 * 40}deg)`;
-              h.style.opacity = `${1 - t2 * 0.5}`;
-            } else {
-              const t3 = (next - 0.75) / 0.25;
-              h.style.transform = `translateY(${t3 * 10}px) scale(${1 - t3 * 0.1})`;
-              h.style.filter = `brightness(0.2) saturate(0) blur(${t3 * 4}px)`;
-              h.style.opacity = `${Math.max(0, 1 - t3)}`;
-            }
+          if (!applyBurnStyles || !h.style) return;
+          h.style.transition = "filter 0.1s, opacity 0.1s, transform 0.05s";
+          if (next < 0.35) {
+            const sh = (Math.random() - 0.5) * next * 5;
+            h.style.transform = `translate(${sh}px,${sh * 0.4}px)`;
+            h.style.filter = `brightness(${1 + next * 3}) saturate(${1 + next * 8}) sepia(${next * 0.8})`;
+          } else if (next < 0.75) {
+            const t2 = (next - 0.35) / 0.4;
+            const sh = (Math.random() - 0.5) * 3;
+            h.style.transform = `translate(${sh}px,${sh}px) scale(${1 - t2 * 0.08})`;
+            h.style.filter = `brightness(${3 - t2 * 2}) saturate(5) sepia(1) hue-rotate(${t2 * 40}deg)`;
+            h.style.opacity = `${1 - t2 * 0.5}`;
+          } else {
+            const t3 = (next - 0.75) / 0.25;
+            h.style.transform = `translateY(${t3 * 10}px) scale(${1 - t3 * 0.1})`;
+            h.style.filter = `brightness(0.2) saturate(0) blur(${t3 * 4}px)`;
+            h.style.opacity = `${Math.max(0, 1 - t3)}`;
           }
         });
       }
@@ -504,7 +523,7 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
       window.removeEventListener("scroll", handleScroll);
       cancelAnimationFrame(rafRef.current);
     };
-  }, [getVisible, spawnForTargets]);
+  }, [getVisible, spawnForTargets, getCachedVisible]);
 
   return (
     <>
@@ -564,7 +583,7 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-white dark:bg-theme-accent dark:hover:bg-theme-accentHover dark:text-theme-bg font-semibold transition-all shadow-sm hover:shadow select-none"
+              className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-theme-accent hover:bg-theme-accentHover text-white dark:text-theme-bg font-semibold transition-all shadow-sm hover:shadow select-none"
             >
               <span>Download Resume</span>
               <span>&rarr;</span>

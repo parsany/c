@@ -3,7 +3,6 @@ set -e
 
 echo "Starting image optimization..."
 
-# Optimize public/professional images
 find public/professional -type f \( -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" \) | while read -r file; do
     dir=$(dirname "$file")
     base=$(basename "$file")
@@ -13,7 +12,6 @@ find public/professional -type f \( -name "*.png" -o -name "*.jpg" -o -name "*.j
     rm "$file"
 done
 
-# Optimize public/projects images
 find public/projects -type f \( -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" \) | while read -r file; do
     dir=$(dirname "$file")
     base=$(basename "$file")
@@ -23,7 +21,6 @@ find public/projects -type f \( -name "*.png" -o -name "*.jpg" -o -name "*.jpeg"
     rm "$file"
 done
 
-# Update public/JSONJS.js references
 echo "Updating public/JSONJS.js references..."
 sed -i -E 's|("(/professional\|/projects)/[^"]+\.)(png\|jpg\|jpeg)"|\1webp"|g' public/JSONJS.js
 

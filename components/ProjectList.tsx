@@ -4,13 +4,6 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { ProjectProfessional, ProjectAcademic } from "@/public/JSONJS";
 import {
-  AtrafianArchitecture,
-  CharbagArchitecture,
-  GoldenbatArchitecture,
-  MonorepoArchitecture,
-  HimhehArchitecture,
-  TaxilandArchitecture,
-  AlzahraArchitecture,
   AIVisualizer,
   GameVisualizer,
   RoboticsVisualizer,
@@ -212,24 +205,6 @@ export default function ProjectList() {
   const [hoveredId, setHoveredId] = useState<string | number | null>(null);
 
   const renderArchitecture = (identifier: string | number, isHovered: boolean) => {
-    switch (identifier) {
-      case "atrafian":
-        return <AtrafianArchitecture isHovered={isHovered} />;
-      case "charbag":
-        return <CharbagArchitecture isHovered={isHovered} />;
-      case "goldenbat":
-        return <GoldenbatArchitecture isHovered={isHovered} />;
-      case "esp":
-      case "msk":
-        return <MonorepoArchitecture isHovered={isHovered} />;
-      case "himheh":
-        return <HimhehArchitecture isHovered={isHovered} />;
-      case "taxiland":
-        return <TaxilandArchitecture isHovered={isHovered} />;
-      case "alzahra":
-        return <AlzahraArchitecture isHovered={isHovered} />;
-    }
-
     const nameStr = String(identifier).toLowerCase();
     if (nameStr.includes("cat") || nameStr.includes("anomaly") || nameStr.includes("pid_nn")) {
       return <AIVisualizer isHovered={isHovered} />;
@@ -298,21 +273,19 @@ export default function ProjectList() {
         <div className="flex flex-col sm:flex-row p-1 gap-1 bg-theme-btnExploreBg border border-theme-border rounded-lg self-stretch md:self-auto font-mono text-xs select-none">
           <button
             onClick={() => setActiveTab("professional")}
-            className={`px-3 py-1.5 rounded transition-all focus:outline-none whitespace-nowrap text-center ${
-              activeTab === "professional"
+            className={`px-3 py-1.5 rounded transition-all focus:outline-none whitespace-nowrap text-center ${activeTab === "professional"
                 ? "bg-theme-bg border border-theme-border text-theme-text shadow-sm z-10 font-bold"
                 : "text-theme-muted hover:text-theme-text border border-transparent z-0"
-            } w-full sm:w-auto`}
+              } w-full sm:w-auto`}
           >
             Projects ({professionalProjects.length})
           </button>
           <button
             onClick={() => setActiveTab("academic")}
-            className={`px-3 py-1.5 rounded transition-all focus:outline-none whitespace-nowrap text-center ${
-              activeTab === "academic"
+            className={`px-3 py-1.5 rounded transition-all focus:outline-none whitespace-nowrap text-center ${activeTab === "academic"
                 ? "bg-theme-bg border border-theme-border text-theme-text shadow-sm z-10 font-bold"
                 : "text-theme-muted hover:text-theme-text border border-transparent z-0"
-            } w-full sm:w-auto`}
+              } w-full sm:w-auto`}
           >
             R&D & Experiments ({academicProjects.length})
           </button>
