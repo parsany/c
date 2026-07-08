@@ -23,6 +23,127 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
   const dragStartY = useRef<number | null>(null);
   const hasMoved = useRef(false);
 
+  const [zoomScale, setZoomScale] = useState(1);
+  const [zoomOffset, setZoomOffset] = useState({ x: 0, y: 0 });
+  const lastDragPos = useRef<{ x: number; y: number } | null>(null);
+  const pinchStartDist = useRef<number | null>(null);
+  const pinchStartScale = useRef<number>(1);
+  const lastClientXRef = useRef<number>(0);
+  const lightboxContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setZoomScale(1);
+    setZoomOffset({ x: 0, y: 0 });
+  }, [activeIndex, isLightboxOpen]);
+
+  useEffect(() => {
+    const el = lightboxContainerRef.current;
+    if (!el || !isLightboxOpen) return;
+
+    const onWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      const zoomFactor = 0.12;
+      const direction = e.deltaY < 0 ? 1 : -1;
+      setZoomScale((prev) => {
+        const next = Math.max(1, Math.min(8, prev + direction * zoomFactor * prev));
+        if (next === 1) {
+          setZoomOffset({ x: 0, y: 0 });
+        }
+        return next;
+      });
+    };
+
+    el.addEventListener("wheel", onWheel, { passive: false });
+    return () => el.removeEventListener("wheel", onWheel);
+  }, [isLightboxOpen]);
+
+  const handlePointerDown = (e: React.MouseEvent | React.TouchEvent) => {
+    const isTouch = "touches" in e;
+    
+    if (isTouch && e.touches.length === 2) {
+      const dist = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY
+      );
+      pinchStartDist.current = dist;
+      pinchStartScale.current = zoomScale;
+      lastDragPos.current = null;
+      return;
+    }
+
+    const clientX = isTouch ? e.touches[0].clientX : e.clientX;
+    const clientY = isTouch ? e.touches[0].clientY : e.clientY;
+
+    if (zoomScale > 1) {
+      lastDragPos.current = { x: clientX, y: clientY };
+    } else {
+      handleDragStart(clientX, clientY);
+    }
+  };
+
+  const handlePointerMove = (e: React.MouseEvent | React.TouchEvent) => {
+    const isTouch = "touches" in e;
+    
+    if (isTouch && e.touches.length === 2) {
+      if (pinchStartDist.current) {
+        const dist = Math.hypot(
+          e.touches[0].clientX - e.touches[1].clientX,
+          e.touches[0].clientY - e.touches[1].clientY
+        );
+        const factor = dist / pinchStartDist.current;
+        const nextScale = Math.max(1, Math.min(8, pinchStartScale.current * factor));
+        setZoomScale(nextScale);
+        if (nextScale === 1) {
+          setZoomOffset({ x: 0, y: 0 });
+        }
+      }
+      return;
+    }
+
+    const clientX = isTouch ? e.touches[0].clientX : e.clientX;
+    const clientY = isTouch ? e.touches[0].clientY : e.clientY;
+    lastClientXRef.current = clientX;
+
+    if (zoomScale > 1 && lastDragPos.current) {
+      const dx = clientX - lastDragPos.current.x;
+      const dy = clientY - lastDragPos.current.y;
+      setZoomOffset((prev) => ({
+        x: prev.x + dx,
+        y: prev.y + dy,
+      }));
+      lastDragPos.current = { x: clientX, y: clientY };
+    } else {
+      handleDragMove(clientX, clientY);
+    }
+  };
+
+  const handlePointerUp = (e: React.MouseEvent | React.TouchEvent) => {
+    lastDragPos.current = null;
+    pinchStartDist.current = null;
+    if (zoomScale === 1) {
+      let finalX = 0;
+      if ("changedTouches" in e && e.changedTouches && e.changedTouches[0]) {
+        finalX = e.changedTouches[0].clientX;
+      } else if ("clientX" in e) {
+        finalX = e.clientX;
+      } else {
+        finalX = lastClientXRef.current;
+      }
+      handleDragEnd(finalX);
+    }
+  };
+
+  const handleDoubleClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (zoomScale > 1) {
+      setZoomScale(1);
+      setZoomOffset({ x: 0, y: 0 });
+    } else {
+      setZoomScale(2.5);
+      setZoomOffset({ x: 0, y: 0 });
+    }
+  };
+
   const redirectTarget = project?.redirect
     ? ProjectProfessional.find((p) => p.slug === project.redirect)
     : null;
@@ -258,36 +379,39 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
               </button>
 
               <div
-                className="relative w-[90vw] h-[80vh] flex items-center justify-center"
+                ref={lightboxContainerRef}
+                className="relative w-[90vw] h-[80vh] flex items-center justify-center overflow-hidden"
                 onClick={(e) => e.stopPropagation()}
-                onMouseDown={(e) => handleDragStart(e.clientX, e.clientY)}
-                onMouseMove={(e) => handleDragMove(e.clientX, e.clientY)}
-                onMouseUp={(e) => handleDragEnd(e.clientX)}
-                onMouseLeave={() => {
-                  dragStartX.current = null;
-                  dragStartY.current = null;
-                }}
-                onTouchStart={(e) => handleDragStart(e.touches[0].clientX, e.touches[0].clientY)}
-                onTouchMove={(e) => handleDragMove(e.touches[0].clientX, e.touches[0].clientY)}
-                onTouchEnd={(e) => {
-                  if (e.changedTouches && e.changedTouches[0]) {
-                    handleDragEnd(e.changedTouches[0].clientX);
-                  } else {
-                    dragStartX.current = null;
-                    dragStartY.current = null;
-                  }
-                }}
+                onMouseDown={handlePointerDown}
+                onMouseMove={handlePointerMove}
+                onMouseUp={handlePointerUp}
+                onMouseLeave={handlePointerUp}
+                onTouchStart={handlePointerDown}
+                onTouchMove={handlePointerMove}
+                onTouchEnd={handlePointerUp}
+                onDoubleClick={handleDoubleClick}
               >
-                <Image
-                  src={project.project_image[activeIndex]}
-                  alt={`${project.name} full view`}
-                  fill
-                  sizes="100vw"
-                  className="object-contain select-none cursor-zoom-out pointer-events-none"
-                  onClick={() => setIsLightboxOpen(false)}
-                />
+                <div
+                  className="relative w-full h-full select-none"
+                  style={{
+                    transform: `translate(${zoomOffset.x}px, ${zoomOffset.y}px) scale(${zoomScale})`,
+                    transformOrigin: "center center",
+                    transition: (lastDragPos.current || pinchStartDist.current) ? "none" : "transform 0.15s ease-out",
+                  }}
+                >
+                  <Image
+                    src={project.project_image[activeIndex]}
+                    alt={`${project.name} full view`}
+                    fill
+                    sizes="100vw"
+                    className={`object-contain select-none ${
+                      zoomScale > 1 ? "cursor-grab active:cursor-grabbing" : "cursor-zoom-in"
+                    }`}
+                    priority
+                  />
+                </div>
 
-                {project.project_image.length > 1 && (
+                {project.project_image.length > 1 && zoomScale === 1 && (
                   <>
                     <button
                       onClick={(e) => {

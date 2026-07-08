@@ -60,6 +60,9 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
   const fireRef = useRef(false);
   const fireIntRef = useRef(0);
   const attackRef = useRef(false);
+  // phase: 'idle' | 'escaped' | 'going_rogue' | 'attacking'
+  const phaseRef = useRef<'idle' | 'escaped' | 'going_rogue' | 'attacking'>('idle');
+  const rogueFlickerRef = useRef(0); // 0–1 flicker intensity during going_rogue
 
   const [showTrigger, setShowTrigger] = useState(false);
   const [panelOpen, setPanelOpen] = useState(false);
@@ -67,23 +70,40 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
   const [density, setDensity] = useState(32);
   const [radius, setRadius] = useState(160);
   const [fireMode, setFireMode] = useState(false);
-  const [attackMode, setAttackMode] = useState(false);
+  // phase state for re-renders
+  const [phase, setPhase] = useState<'idle' | 'escaped' | 'going_rogue' | 'attacking'>('idle');
+  // derived for backwards-compat
+  const attackMode = phase === 'attacking';
 
   useEffect(() => { const t = setTimeout(() => setShowTrigger(true), 3000); return () => clearTimeout(t); }, []);
 
   useEffect(() => { sizeRef.current = size; needsRebuild.current = true; }, [size]);
   useEffect(() => { densityRef.current = density; needsRebuild.current = true; }, [density]);
   useEffect(() => { radiusRef.current = radius; }, [radius]);
-  useEffect(() => { fireRef.current = fireMode; needsRebuild.current = true; }, [fireMode]);
+  useEffect(() => { fireRef.current = fireMode; }, [fireMode]);
+
+  useEffect(() => {
+    const handleToggle = () => {
+      setFireMode((prev) => !prev);
+    };
+    window.addEventListener("toggle-burning", handleToggle);
+    return () => window.removeEventListener("toggle-burning", handleToggle);
+  }, []);
+
+  useEffect(() => {
+    window.dispatchEvent(new CustomEvent("toggle-burning-state", { detail: fireMode }));
+  }, [fireMode]);
 
   const clearBurns = useCallback(() => {
     burnMapRef.current.forEach((_, el) => {
-      const h = el as HTMLElement;
-      h.style.removeProperty("filter");
-      h.style.removeProperty("opacity");
-      h.style.removeProperty("transform");
-      h.style.removeProperty("transition");
-      h.style.removeProperty("display");
+      const h = el as any;
+      if (h.style) {
+        h.style.removeProperty("filter");
+        h.style.removeProperty("opacity");
+        h.style.removeProperty("transform");
+        h.style.removeProperty("transition");
+        h.style.removeProperty("display");
+      }
     });
     burnMapRef.current.clear();
     roguesRef.current = [];
@@ -113,23 +133,81 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
     roguesRef.current = next;
   }, []);
 
-  const getVisible = useCallback(() =>
-    Array.from(document.querySelectorAll("h1, h2, h3, p, button, a, li, article")).filter(el => {
+  const getVisible = useCallback(() => {
+    return Array.from(
+      document.querySelectorAll(
+        "h1, h2, h3, p, button, a, li, article, hr, svg, circle, line, rect, path, div[class*='border-t'], div[class*='border-b'], div[class*='border-y'], div[class*='border-theme-border']"
+      )
+    ).filter((el) => {
+      if (el.closest('[data-no-destroy="true"]')) return false;
       const r = el.getBoundingClientRect();
+      const classAttr = el.getAttribute("class") || "";
+      const isTiny =
+        ["circle", "line", "rect", "path", "svg", "hr"].includes(el.tagName.toLowerCase()) ||
+        classAttr.includes("border-");
+      if (isTiny) {
+        return r.width > 0 && r.height > 0 && r.bottom > 0 && r.top < window.innerHeight;
+      }
       return r.width > 30 && r.height > 10 && r.bottom > 0 && r.top < window.innerHeight;
-    })
-    , []);
+    });
+  }, []);
 
+  // Advance through phases on button click
+  const handleAttackClick = useCallback(() => {
+    setPhase(prev => {
+      if (prev === 'idle') {
+        // escaped: immediately rebuild canvas full-screen
+        phaseRef.current = 'escaped';
+        needsRebuild.current = true;
+        return 'escaped';
+      }
+      // toggle back to idle if already in any attack phase
+      phaseRef.current = 'idle';
+      attackRef.current = false;
+      rogueFlickerRef.current = 0;
+      needsRebuild.current = true;
+      clearBurns();
+      return 'idle';
+    });
+  }, [clearBurns]);
+
+  // Auto-advance escaped → going_rogue → attacking
   useEffect(() => {
-    attackRef.current = attackMode;
-    if (attackMode) {
+    if (phase === 'escaped') {
+      // Rebuild immediately so crosses fill screen at correct size
+      needsRebuild.current = true;
       const rc = rogueCanvasRef.current;
       if (rc) { rc.width = window.innerWidth; rc.height = window.innerHeight; }
-      spawnForTargets(getVisible());
-    } else {
+
+      const rogueSoon = setTimeout(() => {
+        phaseRef.current = 'going_rogue';
+        setPhase('going_rogue');
+      }, 4000);
+      return () => clearTimeout(rogueSoon);
+    }
+    if (phase === 'going_rogue') {
+      const attackSoon = setTimeout(() => {
+        phaseRef.current = 'attacking';
+        attackRef.current = true;
+        setPhase('attacking');
+        spawnForTargets(getVisible());
+      }, 2500);
+      return () => clearTimeout(attackSoon);
+    }
+    if (phase === 'attacking') {
+      const observer = new MutationObserver(() => {
+        spawnForTargets(getVisible());
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+      return () => observer.disconnect();
+    }
+    if (phase === 'idle') {
+      attackRef.current = false;
+      rogueFlickerRef.current = 0;
+      needsRebuild.current = true;
       clearBurns();
     }
-  }, [attackMode, clearBurns, spawnForTargets, getVisible]);
+  }, [phase, clearBurns, spawnForTargets, getVisible]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -141,7 +219,7 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
     let W = 0, H = 0;
 
     const build = () => {
-      const isFull = fireRef.current || attackRef.current;
+      const isFull = phaseRef.current !== 'idle';
       W = isFull ? window.innerWidth : section.offsetWidth;
       H = isFull ? window.innerHeight : section.offsetHeight;
       canvas.width = W;
@@ -206,6 +284,15 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
       else fireIntRef.current = Math.max(0, fireIntRef.current - 0.006);
       const fi = fireIntRef.current;
 
+      // Rogue flicker: ramp up during going_rogue phase
+      const currentPhase = phaseRef.current;
+      if (currentPhase === 'going_rogue') {
+        rogueFlickerRef.current = Math.min(1, rogueFlickerRef.current + 0.008);
+      } else if (currentPhase !== 'attacking') {
+        rogueFlickerRef.current = Math.max(0, rogueFlickerRef.current - 0.02);
+      }
+      const rf = rogueFlickerRef.current;
+
       for (const node of nodesRef.current) {
         const dx = node.x - sm.x;
         const dy = node.y - sm.y;
@@ -213,7 +300,8 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
         const infl = ss(Math.max(0, 1 - dist / R));
 
         let target = node.phase + t;
-        if (sm.x !== -9999 && dist < R * 1.8) target = Math.atan2(dy, dx);
+        // In escaped/going_rogue/attacking: drift freely, no cursor influence
+        if (currentPhase === 'idle' && sm.x !== -9999 && dist < R * 1.8) target = Math.atan2(dy, dx);
         let diff = target - node.angle;
         while (diff < -Math.PI) diff += Math.PI * 2;
         while (diff > Math.PI) diff -= Math.PI * 2;
@@ -221,10 +309,27 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
 
         const breathe = Math.sin(t * 3 + node.phase) * 0.5 + 0.5;
         const fireFlicker = fi > 0.5 ? Math.sin(ts * 0.04 + node.phase * 5) * 0.25 + 0.75 : 1;
-        const op = (0.02 + breathe * 0.02) * fireFlicker + infl * 0.45;
+
+        // Rogue color flicker: rapid random hue shifts
+        let drawR: number, drawG: number, drawB: number;
+        if (rf > 0) {
+          const flick = Math.sin(ts * 0.08 + node.phase * 7.3) * 0.5 + 0.5;
+          const chaos = Math.sin(ts * 0.13 + node.x * 0.05) * 0.5 + 0.5;
+          const [baseR, baseG, baseB] = getFireColor(infl, fi);
+          // Interpolate between normal color and chaotic red/gold flicker
+          const flickR = Math.round(255 * flick + 200 * (1 - flick));
+          const flickG = Math.round(80 * chaos);
+          const flickB = Math.round(20 * (1 - flick));
+          drawR = Math.round(baseR + (flickR - baseR) * rf);
+          drawG = Math.round(baseG + (flickG - baseG) * rf);
+          drawB = Math.round(baseB + (flickB - baseB) * rf);
+        } else {
+          [drawR, drawG, drawB] = getFireColor(infl, fi);
+        }
+
+        const op = (0.02 + breathe * 0.02) * fireFlicker + infl * 0.45 + rf * (Math.sin(ts * 0.07 + node.phase * 3) * 0.5 + 0.5) * 0.3;
         const len = SZ * (1 + infl * 1.2);
-        const [r, g, b] = getFireColor(infl, fi);
-        drawCross(ctx, node.x, node.y, len, node.angle, r, g, b, op, fi > 0 ? 1 + fi * 0.6 : 1);
+        drawCross(ctx, node.x, node.y, len, node.angle, drawR, drawG, drawB, Math.min(1, op), fi > 0 ? 1 + fi * 0.6 : 1);
       }
 
       const fc = fireCanvasRef.current;
@@ -232,27 +337,36 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
       if (fc && fctx) {
         if (fi > 0 || fireRef.current) {
           if (fc.width !== window.innerWidth) { fc.width = window.innerWidth; fc.height = window.innerHeight; }
+          fctx.globalCompositeOperation = "source-over";
           fctx.clearRect(0, 0, fc.width, fc.height);
-          const spawnN = Math.floor(fi * 6);
+          fctx.globalCompositeOperation = "lighter";
+          
+          const spawnN = Math.floor(fi * 18);
           for (let i = 0; i < spawnN; i++) {
             fireParticlesRef.current.push({
-              x: Math.random() * fc.width, y: fc.height + 10,
-              vx: (Math.random() - 0.5) * 1.2, vy: -(0.8 + Math.random() * 2.5) * fi,
-              life: 1, maxLife: 50 + Math.random() * 70, sz: 0.8 + Math.random() * 2 * fi,
+              x: Math.random() * fc.width,
+              y: fc.height + 10,
+              vx: (Math.random() - 0.5) * 1.5,
+              vy: -(1.2 + Math.random() * 3.2) * fi,
+              life: 1,
+              maxLife: 65 + Math.random() * 85,
+              sz: 3.5 + Math.random() * 6 * fi,
             });
           }
           fireParticlesRef.current = fireParticlesRef.current.filter(p => {
-            p.x += p.vx; p.y += p.vy; p.vx += (Math.random() - 0.5) * 0.15;
+            p.x += p.vx; p.y += p.vy; p.vx += (Math.random() - 0.5) * 0.16;
             p.life -= 1 / p.maxLife;
             if (p.life <= 0) return false;
-            const [fr, fg, fb] = getFireColor(1, Math.min(1, (1 - p.life) * 1.4));
+            
+            const [fr, fg, fb] = getFireColor(1, p.life * fi);
+            
             fctx.beginPath();
             fctx.arc(p.x, p.y, p.sz * p.life, 0, Math.PI * 2);
-            fctx.fillStyle = `rgba(${fr},${fg},${fb},${p.life * fi * 0.35})`;
+            fctx.fillStyle = `rgba(${fr},${fg},${fb},${p.life * fi * 0.7})`;
             fctx.fill();
             return true;
           });
-          if (fireParticlesRef.current.length > 500) fireParticlesRef.current = fireParticlesRef.current.slice(-500);
+          if (fireParticlesRef.current.length > 1500) fireParticlesRef.current = fireParticlesRef.current.slice(-1500);
         } else {
           fctx.clearRect(0, 0, fc.width, fc.height);
           fireParticlesRef.current = [];
@@ -334,27 +448,29 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
             next = Math.min(1, prog + 0.005);
             burnMapRef.current.set(el, next);
           }
-          const h = el as HTMLElement;
+          const h = el as any;
           if (next >= 1) {
-            h.style.display = "none";
+            if (h.style) h.style.display = "none";
             return;
           }
-          h.style.transition = "filter 0.1s, opacity 0.1s, transform 0.05s";
-          if (next < 0.35) {
-            const sh = (Math.random() - 0.5) * next * 5;
-            h.style.transform = `translate(${sh}px,${sh * 0.4}px)`;
-            h.style.filter = `brightness(${1 + next * 3}) saturate(${1 + next * 8}) sepia(${next * 0.8})`;
-          } else if (next < 0.75) {
-            const t2 = (next - 0.35) / 0.4;
-            const sh = (Math.random() - 0.5) * 3;
-            h.style.transform = `translate(${sh}px,${sh}px) scale(${1 - t2 * 0.08})`;
-            h.style.filter = `brightness(${3 - t2 * 2}) saturate(5) sepia(1) hue-rotate(${t2 * 40}deg)`;
-            h.style.opacity = `${1 - t2 * 0.5}`;
-          } else {
-            const t3 = (next - 0.75) / 0.25;
-            h.style.transform = `translateY(${t3 * 10}px) scale(${1 - t3 * 0.1})`;
-            h.style.filter = `brightness(0.2) saturate(0) blur(${t3 * 4}px)`;
-            h.style.opacity = `${Math.max(0, 1 - t3)}`;
+          if (h.style) {
+            h.style.transition = "filter 0.1s, opacity 0.1s, transform 0.05s";
+            if (next < 0.35) {
+              const sh = (Math.random() - 0.5) * next * 5;
+              h.style.transform = `translate(${sh}px,${sh * 0.4}px)`;
+              h.style.filter = `brightness(${1 + next * 3}) saturate(${1 + next * 8}) sepia(${next * 0.8})`;
+            } else if (next < 0.75) {
+              const t2 = (next - 0.35) / 0.4;
+              const sh = (Math.random() - 0.5) * 3;
+              h.style.transform = `translate(${sh}px,${sh}px) scale(${1 - t2 * 0.08})`;
+              h.style.filter = `brightness(${3 - t2 * 2}) saturate(5) sepia(1) hue-rotate(${t2 * 40}deg)`;
+              h.style.opacity = `${1 - t2 * 0.5}`;
+            } else {
+              const t3 = (next - 0.75) / 0.25;
+              h.style.transform = `translateY(${t3 * 10}px) scale(${1 - t3 * 0.1})`;
+              h.style.filter = `brightness(0.2) saturate(0) blur(${t3 * 4}px)`;
+              h.style.opacity = `${Math.max(0, 1 - t3)}`;
+            }
           }
         });
       }
@@ -402,9 +518,9 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
         <canvas
           ref={canvasRef}
           style={{
-            position: fireMode ? "fixed" : "absolute",
+            position: phase !== 'idle' ? "fixed" : "absolute",
             inset: 0,
-            zIndex: fireMode ? 0 : "auto",
+            zIndex: phase !== 'idle' ? 0 : "auto",
             pointerEvents: "none",
             width: "100%",
             height: "100%",
@@ -415,7 +531,7 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
 
         <div className="relative z-10 max-w-3xl">
           <div className="flex items-center space-x-2 mb-6 select-none">
-            <span className="text-xs font-mono font-bold text-rose-600 dark:text-rose-400 tracking-widest uppercase">
+            <span className="text-xs font-mono font-bold text-emerald-700 dark:text-rose-400 tracking-widest uppercase">
               Open to remote work &amp; relocation
             </span>
           </div>
@@ -448,7 +564,7 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
               href="/resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-theme-accent hover:bg-theme-accentHover text-theme-bg font-semibold transition-all shadow-sm hover:shadow select-none"
+              className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-white dark:bg-theme-accent dark:hover:bg-theme-accentHover dark:text-theme-bg font-semibold transition-all shadow-sm hover:shadow select-none"
             >
               <span>Download Resume</span>
               <span>&rarr;</span>
@@ -459,6 +575,7 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
         {showTrigger && !panelOpen && (
           <button
             onClick={() => setPanelOpen(true)}
+            data-no-destroy="true"
             title="Cross field settings"
             style={{
               position: "absolute", bottom: "1.5rem", right: "1.5rem",
@@ -482,14 +599,16 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
         )}
 
         {panelOpen && (
-          <CrossPanel
-            size={size} onSize={v => setSize(v)}
-            density={density} onDensity={v => setDensity(v)}
-            radius={radius} onRadius={v => setRadius(v)}
-            fireMode={fireMode} onFire={() => setFireMode(f => !f)}
-            attackMode={attackMode} onAttack={() => setAttackMode(a => !a)}
-            onClose={() => { setPanelOpen(false); }}
-          />
+          <div data-no-destroy="true">
+            <CrossPanel
+              size={size} onSize={v => setSize(v)}
+              density={density} onDensity={v => setDensity(v)}
+              radius={radius} onRadius={v => setRadius(v)}
+              fireMode={fireMode}
+              attackMode={attackMode} phase={phase} onAttack={handleAttackClick}
+              onClose={() => { setPanelOpen(false); }}
+            />
+          </div>
         )}
       </section>
     </>

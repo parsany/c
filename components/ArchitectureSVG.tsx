@@ -16,7 +16,7 @@ export function AtrafianArchitecture({ isHovered }: ArchitectureProps) {
         </defs>
         <rect width="100%" height="100%" fill="url(#grid)" />
 
-        
+
         <path
           d="M 70 110 L 190 110"
           stroke={isHovered ? "#38bdf8" : "#334155"}
@@ -46,7 +46,7 @@ export function AtrafianArchitecture({ isHovered }: ArchitectureProps) {
           className={isHovered ? "animate-flow-right" : ""}
         />
 
-        
+
         <g transform="translate(20, 85)">
           <rect x="0" y="0" width="50" height="50" rx="6" fill="#0f172a" stroke="#38bdf8" strokeWidth="1.5" />
           <text x="25" y="24" fill="#f8fafc" fontSize="9" textAnchor="middle" fontFamily="monospace">Client</text>
@@ -89,7 +89,7 @@ export function CharbagArchitecture({ isHovered }: ArchitectureProps) {
       <svg viewBox="0 0 420 220" fill="none" className="w-full h-full max-h-[180px]">
         <rect width="100%" height="100%" fill="url(#grid)" />
 
-        
+
         <path
           d="M 80 75 L 180 110"
           stroke={isHovered ? "#10b981" : "#334155"}
@@ -112,7 +112,7 @@ export function CharbagArchitecture({ isHovered }: ArchitectureProps) {
           className={isHovered ? "animate-flow-right" : ""}
         />
 
-        
+
         <g transform="translate(15, 45)">
           <rect x="0" y="0" width="65" height="50" rx="4" fill="#0f172a" stroke="#10b981" strokeWidth="1.2" />
           <text x="32" y="22" fill="#f8fafc" fontSize="8" textAnchor="middle" fontFamily="monospace">Client Portal</text>
@@ -154,7 +154,7 @@ export function GoldenbatArchitecture({ isHovered }: ArchitectureProps) {
       <svg viewBox="0 0 420 220" fill="none" className="w-full h-full max-h-[180px]">
         <rect width="100%" height="100%" fill="url(#grid)" />
 
-        
+
         <path
           d="M 75 70 L 175 110"
           stroke={isHovered ? "#38bdf8" : "#334155"}
@@ -177,7 +177,7 @@ export function GoldenbatArchitecture({ isHovered }: ArchitectureProps) {
           className={isHovered ? "animate-flow-right" : ""}
         />
 
-        
+
         <g transform="translate(15, 45)">
           <rect x="0" y="0" width="60" height="50" rx="6" fill="#0f172a" stroke="#38bdf8" strokeWidth="1.2" />
           <text x="30" y="22" fill="#f8fafc" fontSize="8" textAnchor="middle" fontFamily="monospace">GPS Device</text>
@@ -219,17 +219,17 @@ export function MonorepoArchitecture({ isHovered }: ArchitectureProps) {
       <svg viewBox="0 0 420 220" fill="none" className="w-full h-full max-h-[180px]">
         <rect width="100%" height="100%" fill="url(#grid)" />
 
-        
+
         <rect x="10" y="10" width="220" height="200" rx="8" fill="none" stroke="#334155" strokeWidth="1.5" strokeDasharray="4 4" />
         <text x="20" y="25" fill="#64748b" fontSize="8" fontFamily="monospace">Turborepo Workspace</text>
 
-        
+
         <path d="M 60 70 L 60 120" stroke="#334155" strokeWidth="1" />
         <path d="M 60 170 L 60 120" stroke="#334155" strokeWidth="1" />
         <path d="M 120 70 L 175 110" stroke="#334155" strokeWidth="1" />
         <path d="M 120 170 L 175 110" stroke="#334155" strokeWidth="1" />
 
-        
+
         <path
           d="M 245 110 L 330 110"
           stroke={isHovered ? "#a855f7" : "#334155"}
@@ -238,7 +238,7 @@ export function MonorepoArchitecture({ isHovered }: ArchitectureProps) {
           className={isHovered ? "animate-flow-right" : ""}
         />
 
-        
+
         <g transform="translate(20, 45)">
           <rect x="0" y="0" width="80" height="35" rx="4" fill="#0f172a" stroke="#10b981" strokeWidth="1.2" />
           <text x="40" y="18" fill="#f8fafc" fontSize="8" textAnchor="middle" fontFamily="monospace">Client ESP</text>
@@ -251,20 +251,20 @@ export function MonorepoArchitecture({ isHovered }: ArchitectureProps) {
           <text x="40" y="28" fill="#bfdbfe" fontSize="7" textAnchor="middle" fontFamily="monospace">Next.js Web</text>
         </g>
 
-        
+
         <g transform="translate(25, 105)">
           <rect x="0" y="0" width="70" height="25" rx="4" fill="#1e293b" stroke="#64748b" strokeWidth="1" />
           <text x="35" y="15" fill="#cbd5e1" fontSize="8" textAnchor="middle" fontFamily="monospace">@template/ui</text>
         </g>
 
-        
+
         <g transform="translate(160, 85)">
           <rect x="0" y="0" width="60" height="50" rx="6" fill="#0f172a" stroke="#a855f7" strokeWidth="1.5" className={isHovered ? "stroke-purple-500" : ""} />
           <text x="30" y="22" fill="#f8fafc" fontSize="9" fontWeight="bold" textAnchor="middle" fontFamily="monospace">NestJS</text>
           <text x="30" y="34" fill="#c084fc" fontSize="7" textAnchor="middle" fontFamily="monospace">RBAC API</text>
         </g>
 
-        
+
         <g transform="translate(330, 90)">
           <rect x="0" y="0" width="75" height="40" rx="6" fill="#0f172a" stroke="#a855f7" strokeWidth="1.2" />
           <text x="37.5" y="20" fill="#f8fafc" fontSize="9" textAnchor="middle" fontFamily="monospace">Postgres DB</text>
@@ -285,7 +285,7 @@ export function HimhehArchitecture({ isHovered }: ArchitectureProps) {
       <svg viewBox="0 0 420 220" fill="none" className="w-full h-full max-h-[180px]">
         <rect width="100%" height="100%" fill="url(#grid)" />
 
-        
+
         <path
           d="M 80 110 L 180 110"
           stroke={isHovered ? "#38bdf8" : "#334155"}
@@ -313,7 +313,7 @@ export function HimhehArchitecture({ isHovered }: ArchitectureProps) {
           className={isHovered ? "animate-flow-right" : ""}
         />
 
-        
+
         <g transform="translate(15, 85)">
           <rect x="0" y="0" width="65" height="50" rx="4" fill="#0f172a" stroke="#38bdf8" strokeWidth="1.2" />
           <text x="32.5" y="24" fill="#f8fafc" fontSize="8.5" textAnchor="middle" fontFamily="monospace">Next.js/tRPC</text>
@@ -327,7 +327,7 @@ export function HimhehArchitecture({ isHovered }: ArchitectureProps) {
           <circle cx="35" cy="43" r="1.5" fill="#38bdf8" className={isHovered ? "animate-svg-ping" : "hidden"} />
         </g>
 
-        
+
         <g transform="translate(330, 35)">
           <rect x="0" y="0" width="75" height="35" rx="4" fill="#0f172a" stroke="#eab308" strokeWidth="1.2" />
           <text x="37.5" y="18" fill="#f8fafc" fontSize="8" textAnchor="middle" fontFamily="monospace">OTP Service</text>
@@ -357,7 +357,7 @@ export function TaxilandArchitecture({ isHovered }: ArchitectureProps) {
       <svg viewBox="0 0 420 220" fill="none" className="w-full h-full max-h-[180px]">
         <rect width="100%" height="100%" fill="url(#grid)" />
 
-        
+
         <path
           d="M 80 75 L 180 110"
           stroke={isHovered ? "#38bdf8" : "#334155"}
@@ -385,7 +385,7 @@ export function TaxilandArchitecture({ isHovered }: ArchitectureProps) {
           strokeWidth="1.2"
         />
 
-        
+
         <g transform="translate(15, 45)">
           <rect x="0" y="0" width="65" height="50" rx="4" fill="#0f172a" stroke="#38bdf8" strokeWidth="1.2" />
           <text x="32.5" y="22" fill="#f8fafc" fontSize="8" textAnchor="middle" fontFamily="monospace">Passenger Client</text>
@@ -428,7 +428,7 @@ export function AlzahraArchitecture({ isHovered }: ArchitectureProps) {
       <svg viewBox="0 0 420 220" fill="none" className="w-full h-full max-h-[180px]">
         <rect width="100%" height="100%" fill="url(#grid)" />
 
-        
+
         <path
           d="M 80 110 L 180 110"
           stroke={isHovered ? "#38bdf8" : "#334155"}
@@ -444,7 +444,7 @@ export function AlzahraArchitecture({ isHovered }: ArchitectureProps) {
           className={isHovered ? "animate-flow-right" : ""}
         />
 
-        
+
         <g transform="translate(15, 85)">
           <rect x="0" y="0" width="65" height="50" rx="4" fill="#0f172a" stroke="#38bdf8" strokeWidth="1.2" />
           <text x="32.5" y="22" fill="#f8fafc" fontSize="8" textAnchor="middle" fontFamily="monospace">B2B Portal</text>
@@ -470,19 +470,14 @@ export function AlzahraArchitecture({ isHovered }: ArchitectureProps) {
   );
 }
 
-
-
-
-
-
 export function AIVisualizer({ isHovered }: ArchitectureProps) {
   return (
     <div className="w-full h-full flex items-center justify-center p-4 overflow-hidden relative select-none">
       <svg viewBox="0 0 420 220" fill="none" className="w-full h-full max-h-[180px]">
         <rect width="100%" height="100%" fill="url(#grid)" />
 
-        
-        
+
+
         <line x1="80" y1="60" x2="200" y2="50" stroke={isHovered ? "#38bdf8" : "#1e293b"} strokeWidth={isHovered ? "1.5" : "1"} opacity="0.6" />
         <line x1="80" y1="60" x2="200" y2="110" stroke={isHovered ? "#38bdf8" : "#1e293b"} strokeWidth="1" opacity="0.4" />
         <line x1="80" y1="60" x2="200" y2="170" stroke={isHovered ? "#38bdf8" : "#1e293b"} strokeWidth="1" opacity="0.2" />
@@ -495,7 +490,7 @@ export function AIVisualizer({ isHovered }: ArchitectureProps) {
         <line x1="80" y1="160" x2="200" y2="110" stroke={isHovered ? "#38bdf8" : "#1e293b"} strokeWidth="1" opacity="0.4" />
         <line x1="80" y1="160" x2="200" y2="170" stroke={isHovered ? "#38bdf8" : "#1e293b"} strokeWidth={isHovered ? "1.5" : "1"} opacity="0.6" />
 
-        
+
         <line x1="200" y1="50" x2="320" y2="80" stroke={isHovered ? "#f43f5e" : "#1e293b"} strokeWidth={isHovered ? "1.5" : "1"} opacity="0.6" />
         <line x1="200" y1="50" x2="320" y2="140" stroke={isHovered ? "#f43f5e" : "#1e293b"} strokeWidth="1" opacity="0.3" />
 
@@ -505,7 +500,7 @@ export function AIVisualizer({ isHovered }: ArchitectureProps) {
         <line x1="200" y1="170" x2="320" y2="80" stroke={isHovered ? "#f43f5e" : "#1e293b"} strokeWidth="1" opacity="0.3" />
         <line x1="200" y1="170" x2="320" y2="140" stroke={isHovered ? "#f43f5e" : "#1e293b"} strokeWidth={isHovered ? "1.5" : "1"} opacity="0.6" />
 
-        
+
         {isHovered && (
           <>
             <circle cx="80" cy="110" r="3" fill="#38bdf8" className="animate-svg-ping" />
@@ -513,20 +508,20 @@ export function AIVisualizer({ isHovered }: ArchitectureProps) {
           </>
         )}
 
-        
-        
+
+
         <circle cx="80" cy="60" r="8" fill="#0f172a" stroke="#38bdf8" strokeWidth="1.5" />
         <circle cx="80" cy="110" r="8" fill="#0f172a" stroke="#38bdf8" strokeWidth="1.5" />
         <circle cx="80" cy="160" r="8" fill="#0f172a" stroke="#38bdf8" strokeWidth="1.5" />
         <text x="80" y="45" fill="#64748b" fontSize="7" textAnchor="middle" fontFamily="monospace">Input</text>
 
-        
+
         <circle cx="200" cy="50" r="8" fill="#0f172a" stroke="#a855f7" strokeWidth="1.5" />
         <circle cx="200" cy="110" r="8" fill="#0f172a" stroke="#a855f7" strokeWidth="1.5" />
         <circle cx="200" cy="170" r="8" fill="#0f172a" stroke="#a855f7" strokeWidth="1.5" />
         <text x="200" y="35" fill="#64748b" fontSize="7" textAnchor="middle" fontFamily="monospace">Latent/Hidden</text>
 
-        
+
         <circle cx="320" cy="80" r="8" fill="#0f172a" stroke="#f43f5e" strokeWidth="1.5" />
         <circle cx="320" cy="140" r="8" fill="#0f172a" stroke="#f43f5e" strokeWidth="1.5" />
         <text x="320" y="65" fill="#64748b" fontSize="7" textAnchor="middle" fontFamily="monospace">Output</text>
@@ -594,10 +589,10 @@ export function GameVisualizer({ isHovered }: ArchitectureProps) {
   return (
     <div className="w-full h-full flex items-center justify-center overflow-hidden relative select-none">
       <svg viewBox="0 0 420 220" fill="none" className="w-full h-full max-h-[180px]">
-        
+
         <rect width="100%" height="100%" fill="#020617" />
 
-        
+
         {STARS.map((star, idx) => (
           <circle
             key={idx}
@@ -610,7 +605,7 @@ export function GameVisualizer({ isHovered }: ArchitectureProps) {
           />
         ))}
 
-        
+
         {isHovered && (
           <circle
             cx="210"
@@ -621,7 +616,7 @@ export function GameVisualizer({ isHovered }: ArchitectureProps) {
           />
         )}
 
-        
+
         <g
           transform={isHovered ? "translate(188, 28) scale(1.1)" : "translate(188, 30)"}
           className="transition-transform duration-300 ease-in-out"
@@ -640,10 +635,10 @@ export function GameVisualizer({ isHovered }: ArchitectureProps) {
           )}
         </g>
 
-        
+
         {isHovered && (
           <g transform="translate(210, 40)">
-            
+
             <path
               d="M 0,-5 C 5,-15 15,-15 15,-5 C 25,-5 25,5 15,5 C 15,15 5,15 0,5 C -5,15 -15,15 -15,5 C -25,5 -25,-5 -15,-5 C -15,-15 -5,-15 0,-5 Z"
               fill="#fde047"
@@ -652,7 +647,7 @@ export function GameVisualizer({ isHovered }: ArchitectureProps) {
               className="animate-blast-cloud"
             />
 
-            
+
             <g transform="rotate(0)">
               <line x1="0" y1="0" x2="0" y2="-15" stroke="#f97316" strokeWidth="2" strokeLinecap="round" className="animate-firework-spark" />
               <circle cx="0" cy="-20" r="2.2" fill="#fde047" className="animate-firework-ember" />
@@ -688,7 +683,7 @@ export function GameVisualizer({ isHovered }: ArchitectureProps) {
           </g>
         )}
 
-        
+
         <g
           transform={isHovered ? "translate(188, 28) scale(1.1)" : "translate(188, 30)"}
           className="transition-transform duration-300 ease-in-out"
@@ -707,7 +702,7 @@ export function GameVisualizer({ isHovered }: ArchitectureProps) {
           )}
         </g>
 
-        
+
         <g
           transform={isHovered ? "translate(40, 20) scale(1.05)" : "translate(40, 22)"}
           className="transition-transform duration-300 ease-in-out"
@@ -726,7 +721,7 @@ export function GameVisualizer({ isHovered }: ArchitectureProps) {
           )}
         </g>
 
-        
+
         <g
           transform={isHovered ? "translate(352, 20) scale(1.05)" : "translate(352, 22)"}
           className="transition-transform duration-300 ease-in-out"
@@ -745,7 +740,7 @@ export function GameVisualizer({ isHovered }: ArchitectureProps) {
           )}
         </g>
 
-        
+
         <g
           transform={isHovered ? "translate(0, -4)" : "translate(0, 0)"}
           className="transition-transform duration-300 ease-in-out"
@@ -768,11 +763,11 @@ export function RoboticsVisualizer({ isHovered }: ArchitectureProps) {
       <svg viewBox="0 0 420 220" fill="none" className="w-full h-full max-h-[180px]">
         <rect width="100%" height="100%" fill="url(#grid)" />
 
-        
+
         <line x1="40" y1="110" x2="380" y2="110" stroke="#475569" strokeWidth="1" strokeDasharray="3 3" />
         <text x="50" y="102" fill="#64748b" fontSize="7" fontFamily="monospace">Setpoint Reference</text>
 
-        
+
         <path
           d={
             isHovered
@@ -800,36 +795,36 @@ export function AppVisualizer({ isHovered }: ArchitectureProps) {
       <svg viewBox="0 0 420 220" fill="none" className="w-full h-full max-h-[180px]">
         <rect width="100%" height="100%" fill="url(#grid)" />
 
-        
+
         <g transform="translate(60, 20)">
           <rect x="0" y="0" width="300" height="170" rx="8" fill="#0f172a" stroke="#1e293b" strokeWidth="1.5" />
 
-          
+
           <path d="M 0 25 L 300 25" stroke="#1e293b" strokeWidth="1.2" />
           <circle cx="15" cy="12" r="3.5" fill="#ef4444" opacity="0.8" />
           <circle cx="28" cy="12" r="3.5" fill="#eab308" opacity="0.8" />
           <circle cx="41" cy="12" r="3.5" fill="#22c55e" opacity="0.8" />
           <text x="150" y="16" fill="#475569" fontSize="8" textAnchor="middle" fontFamily="monospace">Custom Library Manager</text>
 
-          
+
           <line x1="80" y1="25" x2="80" y2="170" stroke="#1e293b" strokeWidth="1" />
           <rect x="10" y="38" width="60" height="12" rx="2" fill={isHovered ? "#1e293b" : "#0f172a"} stroke={isHovered ? "#3b82f6" : "none"} strokeWidth="1" />
           <rect x="10" y="58" width="60" height="12" rx="2" fill="#0f172a" />
           <rect x="10" y="78" width="60" height="12" rx="2" fill="#0f172a" />
 
-          
+
           <g transform="translate(95, 38)">
-            
+
             <rect x="0" y="0" width="55" height="45" rx="3" fill="#0f172a" stroke="#1e293b" className={isHovered ? "stroke-sky-500/50" : ""} />
             <line x1="5" y1="32" x2="45" y2="32" stroke="#334155" strokeWidth="2" />
             <line x1="5" y1="38" x2="35" y2="38" stroke="#1e293b" strokeWidth="2" />
 
-            
+
             <rect x="68" y="0" width="55" height="45" rx="3" fill="#0f172a" stroke="#1e293b" className={isHovered ? "stroke-sky-500/50" : ""} />
             <line x1="73" y1="32" x2="113" y2="32" stroke="#334155" strokeWidth="2" />
             <line x1="73" y1="38" x2="103" y2="38" stroke="#1e293b" strokeWidth="2" />
 
-            
+
             <rect x="136" y="0" width="55" height="45" rx="3" fill="#0f172a" stroke="#1e293b" className={isHovered ? "stroke-sky-500/50" : ""} />
             <line x1="141" y1="32" x2="181" y2="32" stroke="#334155" strokeWidth="2" />
             <line x1="141" y1="38" x2="171" y2="38" stroke="#1e293b" strokeWidth="2" />
@@ -847,32 +842,32 @@ export function CompilerVisualizer({ isHovered }: ArchitectureProps) {
       <svg viewBox="0 0 420 220" fill="none" className="w-full h-full max-h-[180px]">
         <rect width="100%" height="100%" fill="url(#grid)" />
 
-        
+
         <line x1="210" y1="50" x2="130" y2="100" stroke={isHovered ? "#10b981" : "#1e293b"} strokeWidth="1.5" />
         <line x1="210" y1="50" x2="290" y2="100" stroke={isHovered ? "#10b981" : "#1e293b"} strokeWidth="1.5" />
         <line x1="130" y1="100" x2="80" y2="150" stroke={isHovered ? "#38bdf8" : "#1e293b"} strokeWidth="1.2" />
         <line x1="130" y1="100" x2="180" y2="150" stroke={isHovered ? "#38bdf8" : "#1e293b"} strokeWidth="1.2" />
 
-        
-        
+
+
         <g transform="translate(180, 30)">
           <rect x="0" y="0" width="60" height="30" rx="4" fill="#0f172a" stroke="#10b981" strokeWidth="1.5" />
           <text x="30" y="18" fill="#f8fafc" fontSize="8.5" textAnchor="middle" fontFamily="monospace">Program</text>
         </g>
 
-        
+
         <g transform="translate(100, 85)">
           <rect x="0" y="0" width="60" height="30" rx="4" fill="#0f172a" stroke="#a855f7" strokeWidth="1.2" />
           <text x="30" y="18" fill="#f8fafc" fontSize="8" textAnchor="middle" fontFamily="monospace">Statement</text>
         </g>
 
-        
+
         <g transform="translate(260, 85)">
           <rect x="0" y="0" width="60" height="30" rx="4" fill="#0f172a" stroke="#a855f7" strokeWidth="1.2" />
           <text x="30" y="18" fill="#f8fafc" fontSize="8" textAnchor="middle" fontFamily="monospace">Declaration</text>
         </g>
 
-        
+
         <g transform="translate(50, 135)">
           <rect x="0" y="0" width="60" height="30" rx="4" fill="#0f172a" stroke="#38bdf8" strokeWidth="1" />
           <text x="30" y="18" fill="#a5f3fc" fontSize="8.5" textAnchor="middle" fontFamily="monospace">ID (&quot;x&quot;)</text>

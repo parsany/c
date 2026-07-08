@@ -4,7 +4,17 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function ContactSection() {
   const [copied, setCopied] = useState(false);
+  const [isBurning, setIsBurning] = useState(false);
   const email = "quantinitycorp@gmail.com";
+
+  React.useEffect(() => {
+    const handleToggle = (e: Event) => {
+      const ce = e as CustomEvent;
+      setIsBurning(ce.detail !== undefined ? ce.detail : !isBurning);
+    };
+    window.addEventListener("toggle-burning-state", handleToggle);
+    return () => window.removeEventListener("toggle-burning-state", handleToggle);
+  }, [isBurning]);
 
   const handleCopyEmail = async () => {
     try {
@@ -38,14 +48,14 @@ export default function ContactSection() {
   ];
 
   return (
-    <section className="pt-8 md:pt-12 pb-12 md:pb-20" id="contact">
-      <div className="max-w-3xl">
+    <section className="pt-8 md:pt-12 pb-12 md:pb-20 w-full" id="contact">
+      <div className="max-w-3xl mb-10">
         <h2 className="text-2xl font-bold tracking-tight text-theme-text mb-2">Connect</h2>
         <p className="text-theme-muted text-sm md:text-base mb-8">
           Get in touch with me:
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <article className="flex items-center justify-between p-4 rounded-lg bg-theme-btnExploreBg border border-theme-border focus-within:ring-2 focus-within:ring-theme-accent/50">
             <div className="flex items-center space-x-3">
               <div className="p-2 rounded bg-theme-bg border border-theme-border text-theme-secondary">
@@ -113,9 +123,17 @@ export default function ContactSection() {
             </a>
           ))}
         </div>
+      </div>
 
-        <div className="text-xs font-mono text-theme-muted flex flex-col sm:flex-row items-center justify-between border-t border-theme-border pt-6 gap-4">
-          <p>© {new Date().getFullYear()} Parsa. All rights reserved.</p>
+      <div className="text-xs font-mono text-theme-muted flex flex-col sm:flex-row items-center justify-between border-t border-theme-border pt-6 gap-4">
+        <p>© {new Date().getFullYear()} Parsa. All rights open.</p>
+        <div className="flex items-center gap-6">
+          <button
+            onClick={() => window.dispatchEvent(new CustomEvent("toggle-burning"))}
+            className={`${isBurning ? "text-orange-500 font-bold" : "hover:text-theme-text"} transition-colors`}
+          >
+            burning
+          </button>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="hover:text-theme-text transition-colors"
