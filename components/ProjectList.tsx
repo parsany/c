@@ -228,29 +228,29 @@ export default function ProjectList() {
           <rect width="100%" height="100%" fill="url(#grid)" />
           <path
             d="M 80 110 L 190 110"
-            stroke={isHovered ? "#64748b" : "#334155"}
+            stroke={isHovered ? "var(--accent-primary)" : "var(--border-secondary)"}
             strokeWidth="1"
             strokeDasharray={isHovered ? "4 4" : "0"}
             className={isHovered ? "animate-flow-right" : ""}
           />
           <path
             d="M 250 110 L 330 110"
-            stroke={isHovered ? "#64748b" : "#334155"}
+            stroke={isHovered ? "var(--accent-primary)" : "var(--border-secondary)"}
             strokeWidth="1"
             strokeDasharray={isHovered ? "4 4" : "0"}
             className={isHovered ? "animate-flow-right" : ""}
           />
           <g transform="translate(20, 85)">
-            <rect x="0" y="0" width="60" height="50" rx="4" fill="#0f172a" stroke="#334155" strokeWidth="1.2" />
-            <text x="30" y="28" fill="#94a3b8" fontSize="8" textAnchor="middle" fontFamily="monospace">Frontend</text>
+            <rect x="0" y="0" width="60" height="50" rx="4" fill="var(--card-bg)" stroke="var(--border-secondary)" strokeWidth="1.2" />
+            <text x="30" y="28" fill="var(--text-secondary)" fontSize="8" textAnchor="middle" fontFamily="monospace">Frontend</text>
           </g>
           <g transform="translate(180, 85)">
-            <rect x="0" y="0" width="70" height="50" rx="4" fill="#0f172a" stroke="#334155" strokeWidth="1.2" />
-            <text x="35" y="28" fill="#94a3b8" fontSize="8" textAnchor="middle" fontFamily="monospace">API Server</text>
+            <rect x="0" y="0" width="70" height="50" rx="4" fill="var(--card-bg)" stroke="var(--border-secondary)" strokeWidth="1.2" />
+            <text x="35" y="28" fill="var(--text-secondary)" fontSize="8" textAnchor="middle" fontFamily="monospace">API Server</text>
           </g>
           <g transform="translate(330, 90)">
-            <rect x="0" y="0" width="70" height="40" rx="4" fill="#0f172a" stroke="#334155" strokeWidth="1.2" />
-            <text x="35" y="24" fill="#94a3b8" fontSize="8" textAnchor="middle" fontFamily="monospace">Database</text>
+            <rect x="0" y="0" width="70" height="40" rx="4" fill="var(--card-bg)" stroke="var(--border-secondary)" strokeWidth="1.2" />
+            <text x="35" y="24" fill="var(--text-secondary)" fontSize="8" textAnchor="middle" fontFamily="monospace">Database</text>
           </g>
         </svg>
       </div>

@@ -60,9 +60,9 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
   const fireRef = useRef(false);
   const fireIntRef = useRef(0);
   const attackRef = useRef(false);
-  
+
   const phaseRef = useRef<'idle' | 'escaped' | 'going_rogue' | 'attacking'>('idle');
-  const rogueFlickerRef = useRef(0); 
+  const rogueFlickerRef = useRef(0);
 
   const [showTrigger, setShowTrigger] = useState(false);
   const [panelOpen, setPanelOpen] = useState(false);
@@ -70,12 +70,12 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
   const [density, setDensity] = useState(32);
   const [radius, setRadius] = useState(160);
   const [fireMode, setFireMode] = useState(false);
-  
+
   const [phase, setPhase] = useState<'idle' | 'escaped' | 'going_rogue' | 'attacking'>('idle');
-  
+
   const attackMode = phase === 'attacking';
 
-  useEffect(() => { const t = setTimeout(() => setShowTrigger(true), 3000); return () => clearTimeout(t); }, []);
+  useEffect(() => { const t = setTimeout(() => setShowTrigger(true), 1500); return () => clearTimeout(t); }, []);
 
   useEffect(() => { sizeRef.current = size; needsRebuild.current = true; }, [size]);
   useEffect(() => { densityRef.current = density; needsRebuild.current = true; }, [density]);
@@ -152,7 +152,7 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
     });
   }, []);
 
-  
+
   const handleAttackClick = useCallback(() => {
     setPhase(prev => {
       if (prev === 'idle') {
@@ -292,7 +292,7 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
       else fireIntRef.current = Math.max(0, fireIntRef.current - 0.006);
       const fi = fireIntRef.current;
 
-      
+
       const currentPhase = phaseRef.current;
       if (currentPhase === 'going_rogue') {
         rogueFlickerRef.current = Math.min(1, rogueFlickerRef.current + 0.008);
@@ -308,7 +308,7 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
         const infl = ss(Math.max(0, 1 - dist / R));
 
         let target = node.phase + t;
-        
+
         if (currentPhase === 'idle' && sm.x !== -9999 && dist < R * 1.8) target = Math.atan2(dy, dx);
         let diff = target - node.angle;
         while (diff < -Math.PI) diff += Math.PI * 2;
@@ -318,13 +318,13 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
         const breathe = Math.sin(t * 3 + node.phase) * 0.5 + 0.5;
         const fireFlicker = fi > 0.5 ? Math.sin(ts * 0.04 + node.phase * 5) * 0.25 + 0.75 : 1;
 
-        
+
         let drawR: number, drawG: number, drawB: number;
         if (rf > 0) {
           const flick = Math.sin(ts * 0.08 + node.phase * 7.3) * 0.5 + 0.5;
           const chaos = Math.sin(ts * 0.13 + node.x * 0.05) * 0.5 + 0.5;
           const [baseR, baseG, baseB] = getFireColor(infl, fi);
-          
+
           const flickR = Math.round(255 * flick + 200 * (1 - flick));
           const flickG = Math.round(80 * chaos);
           const flickB = Math.round(20 * (1 - flick));
@@ -348,7 +348,7 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
           fctx.globalCompositeOperation = "source-over";
           fctx.clearRect(0, 0, fc.width, fc.height);
           fctx.globalCompositeOperation = "lighter";
-          
+
           const spawnN = Math.floor(fi * 18);
           for (let i = 0; i < spawnN; i++) {
             fireParticlesRef.current.push({
@@ -365,9 +365,9 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
             p.x += p.vx; p.y += p.vy; p.vx += (Math.random() - 0.5) * 0.16;
             p.life -= 1 / p.maxLife;
             if (p.life <= 0) return false;
-            
+
             const [fr, fg, fb] = getFireColor(1, p.life * fi);
-            
+
             fctx.beginPath();
             fctx.arc(p.x, p.y, p.sz * p.life, 0, Math.PI * 2);
             fctx.fillStyle = `rgba(${fr},${fg},${fb},${p.life * fi * 0.7})`;

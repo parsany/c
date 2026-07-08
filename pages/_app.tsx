@@ -104,19 +104,17 @@ export default function App({ Component, pageProps }: AppProps) {
 
       {transitioningTheme && (
         <div className="fixed inset-0 z-[9999] pointer-events-none overflow-hidden">
-          {}
           <div className="absolute top-1/2 left-1/2 w-[300vw] h-[300vh] -translate-x-1/2 -translate-y-1/2 rotate-[45deg]">
             <div
               className="w-full h-full animate-curtain-swipe"
               style={{
                 background: transitioningTheme === "dark"
-                  ? "linear-gradient(to bottom, rgba(40,40,40,0) 0%, rgba(40,40,40,1) 15%, rgba(40,40,40,1) 85%, rgba(40,40,40,0) 100%)"
-                  : "linear-gradient(to bottom, rgba(244,252,251,0) 0%, rgba(244,252,251,1) 15%, rgba(244,252,251,1) 85%, rgba(244,252,251,0) 100%)"
+                  ? "linear-gradient(to bottom, var(--curtain-bg-dark-fade) 0%, var(--curtain-bg-dark-solid) 15%, var(--curtain-bg-dark-solid) 85%, var(--curtain-bg-dark-fade) 100%)"
+                  : "linear-gradient(to bottom, var(--curtain-bg-light-fade) 0%, var(--curtain-bg-light-solid) 15%, var(--curtain-bg-light-solid) 85%, var(--curtain-bg-light-fade) 100%)"
               }}
             />
           </div>
 
-          {}
           <style>{`
             @keyframes curtain-text-in {
               0%   { opacity: 0; transform: translateY(6px) scale(0.97); }
@@ -131,14 +129,12 @@ export default function App({ Component, pageProps }: AppProps) {
             <div
               className="curtain-text flex flex-col items-center gap-3 select-none"
               style={{
-                color: transitioningTheme === "dark" ? "rgba(251,241,199,0.55)" : "rgba(36,60,76,0.45)",
+                color: transitioningTheme === "dark" ? "var(--curtain-text-dark)" : "var(--curtain-text-light)",
                 fontFamily: "'VT323','Courier New',monospace",
               }}
             >
-              {}
               <span style={{ fontSize: "2.2rem", lineHeight: 1, letterSpacing: "0.05em" }}>✛</span>
 
-              {}
               <span style={{ fontSize: "0.62rem", letterSpacing: "0.35em", textTransform: "uppercase", fontFamily: "ui-sans-serif,system-ui,sans-serif", fontWeight: 600 }}>
                 {transitioningTheme === "dark" ? "switching to dark" : "switching to light"}
               </span>

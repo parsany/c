@@ -19,39 +19,34 @@ function useIsDark() {
 }
 
 
-function C(isDark: boolean) {
+function C() {
   return {
-    
-    box: isDark ? "#0f172a" : "#ffffff",
-    boxSub: isDark ? "#1e293b" : "#eef8f9",
-    
-    wire: isDark ? "#334155" : "#ACBCBF",
-    wireSub: isDark ? "#1e293b" : "#c8d8db",
-    
-    textPri: isDark ? "#f8fafc" : "#243C4C",
-    textSec: isDark ? "#e2e8f0" : "#3d5a6e",
-    textMut: isDark ? "#64748b" : "#698696",
-    
-    gridBg: isDark ? "transparent" : "rgba(172,188,191,0.07)",
-    
-    gridLine: isDark ? "#1e293b" : "#ACBCBF",
+    box: "var(--svg-box-bg)",
+    boxSub: "var(--svg-box-bg-sub)",
+    wire: "var(--svg-wire-active)",
+    wireSub: "var(--svg-wire-inactive)",
+    textPri: "var(--svg-text-pri)",
+    textSec: "var(--svg-text-mut)",
+    textMut: "var(--svg-text-mut)",
+    gridBg: "transparent",
+    gridLine: "var(--svg-grid-line)",
   };
 }
 
 
-function GridDefs({ isDark }: { isDark: boolean }) {
-  const c = C(isDark);
+function GridDefs() {
+  const c = C();
   return (
     <defs>
       <pattern id="svgGrid" width="16" height="16" patternUnits="userSpaceOnUse">
-        <path d="M 16 0 L 0 0 0 16" fill="none" stroke={c.gridLine} strokeWidth="0.5" opacity="0.4" />
+        <path d="M 16 0 L 0 0 0 16" fill="none" stroke={c.gridLine} strokeWidth="0.5" />
       </pattern>
     </defs>
   );
 }
 
-function GridBg({ isDark }: { isDark: boolean }) {
-  const c = C(isDark);
+function GridBg() {
+  const c = C();
   return (
     <>
       <rect width="100%" height="100%" fill={c.gridBg} />
@@ -62,18 +57,16 @@ function GridBg({ isDark }: { isDark: boolean }) {
 
 
 export function AIVisualizer({ isHovered }: ArchitectureProps) {
-  const isDark = useIsDark();
-  const c = C(isDark);
-  const wire = (h: boolean) => h ? "#38bdf8" : c.wireSub;
-  const wire2 = (h: boolean) => h ? "#f43f5e" : c.wireSub;
+  const c = C();
+  const wire = (h: boolean) => h ? "var(--accent-primary)" : c.wireSub;
+  const wire2 = (h: boolean) => h ? "var(--cross-accent)" : c.wireSub;
 
   return (
     <div className="w-full h-full flex items-center justify-center p-4 overflow-hidden relative select-none">
       <svg viewBox="0 0 420 220" fill="none" className="w-full h-full max-h-[180px]">
-        <GridDefs isDark={isDark} />
-        <GridBg isDark={isDark} />
+        <GridDefs />
+        <GridBg />
 
-        {}
         <line x1="80" y1="60" x2="200" y2="50" stroke={wire(isHovered)} strokeWidth={isHovered ? "1.5" : "1"} opacity="0.6" />
         <line x1="80" y1="60" x2="200" y2="110" stroke={wire(isHovered)} strokeWidth="1" opacity="0.4" />
         <line x1="80" y1="60" x2="200" y2="170" stroke={wire(isHovered)} strokeWidth="1" opacity="0.2" />
@@ -84,7 +77,6 @@ export function AIVisualizer({ isHovered }: ArchitectureProps) {
         <line x1="80" y1="160" x2="200" y2="110" stroke={wire(isHovered)} strokeWidth="1" opacity="0.4" />
         <line x1="80" y1="160" x2="200" y2="170" stroke={wire(isHovered)} strokeWidth={isHovered ? "1.5" : "1"} opacity="0.6" />
 
-        {}
         <line x1="200" y1="50" x2="320" y2="80" stroke={wire2(isHovered)} strokeWidth={isHovered ? "1.5" : "1"} opacity="0.6" />
         <line x1="200" y1="50" x2="320" y2="140" stroke={wire2(isHovered)} strokeWidth="1" opacity="0.3" />
         <line x1="200" y1="110" x2="320" y2="80" stroke={wire2(isHovered)} strokeWidth={isHovered ? "1.5" : "1"} opacity="0.6" />
@@ -94,26 +86,23 @@ export function AIVisualizer({ isHovered }: ArchitectureProps) {
 
         {isHovered && (
           <>
-            <circle cx="80" cy="110" r="3" fill="#38bdf8" className="animate-svg-ping" />
-            <circle cx="200" cy="110" r="3.5" fill="#f43f5e" className="animate-svg-ping" />
+            <circle cx="80" cy="110" r="3" fill="var(--accent-primary)" className="animate-svg-ping" />
+            <circle cx="200" cy="110" r="3.5" fill="var(--cross-accent)" className="animate-svg-ping" />
           </>
         )}
 
-        {}
-        <circle cx="80" cy="60" r="8" fill={c.box} stroke="#38bdf8" strokeWidth="1.5" />
-        <circle cx="80" cy="110" r="8" fill={c.box} stroke="#38bdf8" strokeWidth="1.5" />
-        <circle cx="80" cy="160" r="8" fill={c.box} stroke="#38bdf8" strokeWidth="1.5" />
+        <circle cx="80" cy="60" r="8" fill={c.box} stroke="var(--accent-primary)" strokeWidth="1.5" />
+        <circle cx="80" cy="110" r="8" fill={c.box} stroke="var(--accent-primary)" strokeWidth="1.5" />
+        <circle cx="80" cy="160" r="8" fill={c.box} stroke="var(--accent-primary)" strokeWidth="1.5" />
         <text x="80" y="45" fill={c.textMut} fontSize="7" textAnchor="middle" fontFamily="monospace">Input</text>
 
-        {}
-        <circle cx="200" cy="50" r="8" fill={c.box} stroke="#a855f7" strokeWidth="1.5" />
-        <circle cx="200" cy="110" r="8" fill={c.box} stroke="#a855f7" strokeWidth="1.5" />
-        <circle cx="200" cy="170" r="8" fill={c.box} stroke="#a855f7" strokeWidth="1.5" />
+        <circle cx="200" cy="50" r="8" fill={c.box} stroke="var(--cross-accent)" strokeWidth="1.5" />
+        <circle cx="200" cy="110" r="8" fill={c.box} stroke="var(--cross-accent)" strokeWidth="1.5" />
+        <circle cx="200" cy="170" r="8" fill={c.box} stroke="var(--cross-accent)" strokeWidth="1.5" />
         <text x="200" y="35" fill={c.textMut} fontSize="7" textAnchor="middle" fontFamily="monospace">Latent/Hidden</text>
 
-        {}
-        <circle cx="320" cy="80" r="8" fill={c.box} stroke="#f43f5e" strokeWidth="1.5" />
-        <circle cx="320" cy="140" r="8" fill={c.box} stroke="#f43f5e" strokeWidth="1.5" />
+        <circle cx="320" cy="80" r="8" fill={c.box} stroke="var(--accent-hover)" strokeWidth="1.5" />
+        <circle cx="320" cy="140" r="8" fill={c.box} stroke="var(--accent-hover)" strokeWidth="1.5" />
         <text x="320" y="65" fill={c.textMut} fontSize="7" textAnchor="middle" fontFamily="monospace">Output</text>
       </svg>
     </div>
@@ -166,7 +155,7 @@ export function GameVisualizer({ isHovered }: ArchitectureProps) {
           <circle cx="210" cy="170" r="3" fill="#eab308" className="animate-bullet" />
         )}
 
-        {}
+        { }
         <g transform={isHovered ? "translate(188, 28) scale(1.1)" : "translate(188, 30)"}
           className="transition-transform duration-300 ease-in-out">
           {pinkInvader.map((row, rIdx) =>
@@ -227,14 +216,13 @@ export function GameVisualizer({ isHovered }: ArchitectureProps) {
 
 
 export function RoboticsVisualizer({ isHovered }: ArchitectureProps) {
-  const isDark = useIsDark();
-  const c = C(isDark);
+  const c = C();
 
   return (
     <div className="w-full h-full flex items-center justify-center p-4 overflow-hidden relative select-none">
       <svg viewBox="0 0 420 220" fill="none" className="w-full h-full max-h-[180px]">
-        <GridDefs isDark={isDark} />
-        <GridBg isDark={isDark} />
+        <GridDefs />
+        <GridBg />
 
         <line x1="40" y1="110" x2="380" y2="110"
           stroke={c.wire} strokeWidth="1" strokeDasharray="3 3" />
@@ -246,14 +234,14 @@ export function RoboticsVisualizer({ isHovered }: ArchitectureProps) {
           d={isHovered
             ? "M 40 180 Q 80 40, 120 130 T 200 110 T 280 110 H 380"
             : "M 40 180 H 380"}
-          stroke={isHovered ? "#f59e0b" : c.wire}
+          stroke={isHovered ? "var(--accent-primary)" : c.wire}
           strokeWidth="1.8"
           fill="none"
           className="transition-all duration-1000 ease-out"
         />
 
         {isHovered && (
-          <circle cx="300" cy="110" r="3" fill="#eab308" className="animate-svg-ping" />
+          <circle cx="300" cy="110" r="3" fill="var(--accent-primary)" className="animate-svg-ping" />
         )}
       </svg>
     </div>
@@ -262,22 +250,19 @@ export function RoboticsVisualizer({ isHovered }: ArchitectureProps) {
 
 
 export function AppVisualizer({ isHovered }: ArchitectureProps) {
-  const isDark = useIsDark();
-  const c = C(isDark);
+  const c = C();
 
   return (
     <div className="w-full h-full flex items-center justify-center p-4 overflow-hidden relative select-none">
       <svg viewBox="0 0 420 220" fill="none" className="w-full h-full max-h-[180px]">
-        <GridDefs isDark={isDark} />
-        <GridBg isDark={isDark} />
+        <GridDefs />
+        <GridBg />
 
         <g transform="translate(60, 20)">
-          {}
           <rect x="0" y="0" width="300" height="170" rx="8"
-            fill={c.box} stroke={c.wireSub} strokeWidth="1.5" />
-          <path d="M 0 25 L 300 25" stroke={c.wireSub} strokeWidth="1.2" />
+            fill={c.box} stroke="var(--svg-frame-border)" strokeWidth="1.5" />
+          <path d="M 0 25 L 300 25" stroke="var(--svg-frame-border)" strokeWidth="1.2" />
 
-          {}
           <circle cx="15" cy="12" r="3.5" fill="#ef4444" opacity="0.8" />
           <circle cx="28" cy="12" r="3.5" fill="#eab308" opacity="0.8" />
           <circle cx="41" cy="12" r="3.5" fill="#22c55e" opacity="0.8" />
@@ -285,27 +270,25 @@ export function AppVisualizer({ isHovered }: ArchitectureProps) {
             Custom Library Manager
           </text>
 
-          {}
-          <line x1="80" y1="25" x2="80" y2="170" stroke={c.wireSub} strokeWidth="1" />
+          <line x1="80" y1="25" x2="80" y2="170" stroke="var(--svg-frame-border)" strokeWidth="1" />
           <rect x="10" y="38" width="60" height="12" rx="2"
             fill={isHovered ? c.boxSub : c.box}
-            stroke={isHovered ? "#3b82f6" : c.wireSub} strokeWidth="1" />
-          <rect x="10" y="58" width="60" height="12" rx="2" fill={c.box} stroke={c.wireSub} strokeWidth="0.5" />
-          <rect x="10" y="78" width="60" height="12" rx="2" fill={c.box} stroke={c.wireSub} strokeWidth="0.5" />
+            stroke={isHovered ? "var(--accent-primary)" : "var(--svg-frame-border)"} strokeWidth="1" />
+          <rect x="10" y="58" width="60" height="12" rx="2" fill={c.box} stroke="var(--svg-frame-border)" strokeWidth="0.5" />
+          <rect x="10" y="78" width="60" height="12" rx="2" fill={c.box} stroke="var(--svg-frame-border)" strokeWidth="0.5" />
 
-          {}
           <g transform="translate(95, 38)">
-            <rect x="0" y="0" width="55" height="45" rx="3" fill={c.boxSub} stroke={c.wireSub} className={isHovered ? "stroke-sky-500/50" : ""} />
+            <rect x="0" y="0" width="55" height="45" rx="3" fill={c.boxSub} stroke={isHovered ? "var(--accent-primary)" : "var(--svg-frame-border)"} />
             <line x1="5" y1="32" x2="45" y2="32" stroke={c.wire} strokeWidth="2" />
-            <line x1="5" y1="38" x2="35" y2="38" stroke={c.wireSub} strokeWidth="2" />
+            <line x1="5" y1="38" x2="35" y2="38" stroke="var(--svg-frame-border)" strokeWidth="2" />
 
-            <rect x="68" y="0" width="55" height="45" rx="3" fill={c.boxSub} stroke={c.wireSub} className={isHovered ? "stroke-sky-500/50" : ""} />
+            <rect x="68" y="0" width="55" height="45" rx="3" fill={c.boxSub} stroke={isHovered ? "var(--accent-primary)" : "var(--svg-frame-border)"} />
             <line x1="73" y1="32" x2="113" y2="32" stroke={c.wire} strokeWidth="2" />
-            <line x1="73" y1="38" x2="103" y2="38" stroke={c.wireSub} strokeWidth="2" />
+            <line x1="73" y1="38" x2="103" y2="38" stroke="var(--svg-frame-border)" strokeWidth="2" />
 
-            <rect x="136" y="0" width="55" height="45" rx="3" fill={c.boxSub} stroke={c.wireSub} className={isHovered ? "stroke-sky-500/50" : ""} />
+            <rect x="136" y="0" width="55" height="45" rx="3" fill={c.boxSub} stroke={isHovered ? "var(--accent-primary)" : "var(--svg-frame-border)"} />
             <line x1="141" y1="32" x2="181" y2="32" stroke={c.wire} strokeWidth="2" />
-            <line x1="141" y1="38" x2="171" y2="38" stroke={c.wireSub} strokeWidth="2" />
+            <line x1="141" y1="38" x2="171" y2="38" stroke="var(--svg-frame-border)" strokeWidth="2" />
           </g>
         </g>
       </svg>
@@ -315,49 +298,42 @@ export function AppVisualizer({ isHovered }: ArchitectureProps) {
 
 
 export function CompilerVisualizer({ isHovered }: ArchitectureProps) {
-  const isDark = useIsDark();
-  const c = C(isDark);
+  const c = C();
 
   return (
     <div className="w-full h-full flex items-center justify-center p-4 overflow-hidden relative select-none">
       <svg viewBox="0 0 420 220" fill="none" className="w-full h-full max-h-[180px]">
-        <GridDefs isDark={isDark} />
-        <GridBg isDark={isDark} />
+        <GridDefs />
+        <GridBg />
 
-        {}
-        <line x1="210" y1="50" x2="130" y2="100" stroke={isHovered ? "#10b981" : c.wireSub} strokeWidth="1.5" />
-        <line x1="210" y1="50" x2="290" y2="100" stroke={isHovered ? "#10b981" : c.wireSub} strokeWidth="1.5" />
-        <line x1="130" y1="100" x2="80" y2="150" stroke={isHovered ? "#38bdf8" : c.wireSub} strokeWidth="1.2" />
-        <line x1="130" y1="100" x2="180" y2="150" stroke={isHovered ? "#38bdf8" : c.wireSub} strokeWidth="1.2" />
+        <line x1="210" y1="50" x2="130" y2="100" stroke={isHovered ? "var(--accent-hover)" : c.wireSub} strokeWidth="1.5" />
+        <line x1="210" y1="50" x2="290" y2="100" stroke={isHovered ? "var(--accent-hover)" : c.wireSub} strokeWidth="1.5" />
+        <line x1="130" y1="100" x2="80" y2="150" stroke={isHovered ? "var(--accent-primary)" : c.wireSub} strokeWidth="1.2" />
+        <line x1="130" y1="100" x2="180" y2="150" stroke={isHovered ? "var(--accent-primary)" : c.wireSub} strokeWidth="1.2" />
 
-        {}
         <g transform="translate(180, 30)">
-          <rect x="0" y="0" width="60" height="30" rx="4" fill={c.box} stroke="#10b981" strokeWidth="1.5" />
+          <rect x="0" y="0" width="60" height="30" rx="4" fill={c.box} stroke="var(--accent-hover)" strokeWidth="1.5" />
           <text x="30" y="18" fill={c.textPri} fontSize="8.5" textAnchor="middle" fontFamily="monospace">Program</text>
         </g>
 
-        {}
         <g transform="translate(100, 85)">
-          <rect x="0" y="0" width="60" height="30" rx="4" fill={c.box} stroke="#a855f7" strokeWidth="1.2" />
+          <rect x="0" y="0" width="60" height="30" rx="4" fill={c.box} stroke="var(--cross-accent)" strokeWidth="1.2" />
           <text x="30" y="18" fill={c.textPri} fontSize="8" textAnchor="middle" fontFamily="monospace">Statement</text>
         </g>
 
-        {}
         <g transform="translate(260, 85)">
-          <rect x="0" y="0" width="60" height="30" rx="4" fill={c.box} stroke="#a855f7" strokeWidth="1.2" />
+          <rect x="0" y="0" width="60" height="30" rx="4" fill={c.box} stroke="var(--cross-accent)" strokeWidth="1.2" />
           <text x="30" y="18" fill={c.textPri} fontSize="8" textAnchor="middle" fontFamily="monospace">Declaration</text>
         </g>
 
-        {}
         <g transform="translate(50, 135)">
-          <rect x="0" y="0" width="60" height="30" rx="4" fill={c.boxSub} stroke="#38bdf8" strokeWidth="1" />
-          <text x="30" y="18" fill={isHovered ? "#a5f3fc" : c.textSec} fontSize="8.5" textAnchor="middle" fontFamily="monospace">ID (&quot;x&quot;)</text>
+          <rect x="0" y="0" width="60" height="30" rx="4" fill={c.boxSub} stroke="var(--accent-primary)" strokeWidth="1" />
+          <text x="30" y="18" fill={isHovered ? "var(--accent-primary)" : c.textSec} fontSize="8.5" textAnchor="middle" fontFamily="monospace">ID (&quot;x&quot;)</text>
         </g>
 
-        {}
         <g transform="translate(150, 135)">
-          <rect x="0" y="0" width="60" height="30" rx="4" fill={c.boxSub} stroke="#38bdf8" strokeWidth="1" />
-          <text x="30" y="18" fill={isHovered ? "#a5f3fc" : c.textSec} fontSize="8.5" textAnchor="middle" fontFamily="monospace">NUM (42)</text>
+          <rect x="0" y="0" width="60" height="30" rx="4" fill={c.boxSub} stroke="var(--accent-primary)" strokeWidth="1" />
+          <text x="30" y="18" fill={isHovered ? "var(--accent-primary)" : c.textSec} fontSize="8.5" textAnchor="middle" fontFamily="monospace">NUM (42)</text>
         </g>
       </svg>
     </div>
