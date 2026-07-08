@@ -77,6 +77,50 @@ export default function CrossPanel({
   const isAttacking = phase === 'attacking';
   const isActive = phase !== 'idle';
 
+  const [offset, setOffset] = React.useState({ x: 0, y: 0 });
+  const [isDraggingActive, setIsDraggingActive] = React.useState(false);
+  const isDragging = React.useRef(false);
+  const dragStart = React.useRef({ x: 0, y: 0 });
+  const dragOffsetStart = React.useRef({ x: 0, y: 0 });
+  const handleMouseMoveRef = React.useRef<(e: MouseEvent) => void>(undefined);
+
+  React.useEffect(() => {
+    handleMouseMoveRef.current = (e: MouseEvent) => {
+      if (!isDragging.current) return;
+      const dx = e.clientX - dragStart.current.x;
+      const dy = e.clientY - dragStart.current.y;
+      setOffset({
+        x: dragOffsetStart.current.x + dx,
+        y: dragOffsetStart.current.y + dy,
+      });
+    };
+  });
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (window.innerWidth < 640 || e.button !== 0) return;
+    if ((e.target as HTMLElement).closest('button')) return;
+
+    isDragging.current = true;
+    setIsDraggingActive(true);
+    dragStart.current = { x: e.clientX, y: e.clientY };
+    dragOffsetStart.current = { ...offset };
+
+    const onMouseMove = (ev: MouseEvent) => {
+      handleMouseMoveRef.current?.(ev);
+    };
+    const onMouseUp = () => {
+      isDragging.current = false;
+      setIsDraggingActive(false);
+      document.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('mouseup', onMouseUp);
+    };
+
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
+
+    e.preventDefault();
+  };
+
   const borderColor = isAttacking
     ? "rgba(239, 68, 68, 0.7)"
     : isGoingRogue
@@ -116,13 +160,15 @@ export default function CrossPanel({
   return (
     <div
       data-no-destroy="true"
-      className={`${isActive ? 'fixed' : 'absolute'} bottom-6 right-6 z-[9999] w-[calc(100vw-2rem)] sm:w-[350px] bg-theme-panelBg border rounded-2xl shadow-2xl overflow-hidden flex flex-col transition-all duration-300`}
+      className="fixed bottom-4 right-4 left-4 sm:bottom-6 sm:right-6 sm:left-auto z-[9999] w-auto sm:w-[350px] bg-theme-panelBg border rounded-2xl shadow-2xl overflow-hidden flex flex-col transition-all duration-300"
       style={{
         fontFamily: "'VT323', 'Courier New', monospace",
         animation: "panelIn 0.3s cubic-bezier(0.16,1,0.3,1)",
         boxShadow: isGoingRogue ? undefined : boxShadow,
         borderColor: isGoingRogue ? undefined : borderColor,
         animationName: isGoingRogue ? "panelIn, rogueBorder" : "panelIn",
+        transform: `translate(${offset.x}px, ${offset.y}px)`,
+        transition: isDraggingActive ? "none" : undefined,
       }}
     >
       <style>{`
@@ -198,8 +244,11 @@ export default function CrossPanel({
         style={{ zIndex: -1 }}
       />
 
-      <div className="flex items-center justify-between px-5 py-4 border-b border-theme-border bg-black/5 dark:bg-white/5 select-none">
-        <span className="text-base tracking-widest text-theme-muted uppercase font-bold flex items-center gap-1.5">
+      <div
+        onMouseDown={handleMouseDown}
+        className="flex items-center justify-between px-5 py-4 border-b border-theme-border bg-black/5 dark:bg-white/5 select-none sm:cursor-grab active:sm:cursor-grabbing"
+      >
+        <span className="text-sm sm:text-base tracking-widest text-theme-muted uppercase font-bold flex items-center gap-1 sm:gap-1.5">
           <span>✛</span>
           <span>CROSS FIELD OPTIONS</span>
         </span>
@@ -221,7 +270,6 @@ export default function CrossPanel({
         </div>
       )}
 
-      {/* Status message for non-idle phases */}
       {isEscaped && (
         <div className="px-5 py-4 text-xs font-mono text-yellow-600 dark:text-yellow-300/70 tracking-wide select-none">
           thanks for letting them breathe out.
