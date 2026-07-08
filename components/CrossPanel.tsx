@@ -230,7 +230,7 @@ export default function CrossPanel({
 
       {isGoingRogue && (
         <div className="px-5 py-4 text-xs font-mono tracking-wide select-none" style={{ color: "rgb(239,68,68)", animation: "rogueBtn 0.4s ease-in-out infinite" }}>
-          something's off—
+          something{"'"}s off—
         </div>
       )}
 

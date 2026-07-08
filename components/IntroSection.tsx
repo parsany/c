@@ -504,7 +504,7 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
       window.removeEventListener("scroll", handleScroll);
       cancelAnimationFrame(rafRef.current);
     };
-  }, []);
+  }, [getVisible, spawnForTargets]);
 
   return (
     <>

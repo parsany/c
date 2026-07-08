@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 import Posts from '@/public/content/materials/PostsPage.json';
 import styles from '@/styles/Publications.module.css';
 
@@ -29,9 +30,10 @@ export default function Publications() {
           >
             {post.image && (
               <div className={styles.imageWrapper}>
-                <img
+                <Image
                   src={post.image}
                   alt={post.title}
+                  fill
                   className={styles.image}
                 />
               </div>

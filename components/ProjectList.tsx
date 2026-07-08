@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { ProjectProfessional, ProjectAcademic } from "@/public/JSONJS";
 import {
@@ -150,10 +151,11 @@ function ProjectCard({
               className="w-full h-full object-cover"
             />
           ) : (name.toLowerCase().includes("cat") || name.toLowerCase().includes("anomaly")) && image ? (
-            <img
+            <Image
               src={image}
               alt={name}
-              className="w-full h-full object-cover"
+              fill
+              className="object-cover"
             />
           ) : (
             renderArchitecture()
