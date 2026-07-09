@@ -7,12 +7,12 @@ import { Sun, Moon } from "lucide-react";
 
 export default function App({ Component, pageProps }: AppProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [theme, setTheme] = useState<"light" | "dark">("dark");
   const [transitioningTheme, setTransitioningTheme] = useState<"light" | "dark" | null>(null);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
-    const initialTheme = savedTheme || "light";
+    const initialTheme = savedTheme || "dark";
     setTheme(initialTheme);
     if (initialTheme === "dark") {
       document.documentElement.classList.add("dark");

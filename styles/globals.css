@@ -26,53 +26,56 @@
     --radius: 0.5rem;
 
 
-    --bg-primary: #fdf6e3;
-    --text-primary: #363100;
-    --text-secondary: #756f58;
-    --text-muted: #93a1a1;
-    --border-primary: #eee8d5;
-    --border-secondary: #839496;
+    --bg-primary: #fafafa;
+    --text-primary: #18181b;
+    --text-secondary: #52525b;
+    --text-muted: #71717a;
+    --border-primary: #e5e7eb;
+    --border-secondary: #d4d4d8;
 
-    --accent-primary: #db9d31;
-    --accent-hover: #a12a2a;
-    --accent-light: #eee8d5;
-    --accent-text: #d27f26;
+    --accent-primary: #d89b1d;
+    --accent-hover: #b97a00;
+    --accent-light: #fef3c7;
+    --accent-text: #b45309;
 
-    --button-explore-bg: #eee8d5;
-    --button-explore-border: #93a1a1;
-    --button-explore-text: #002b36;
+    --button-explore-bg: #ffffff;
+    --button-explore-border: #e5e7eb;
+    --button-explore-text: #18181b;
 
-    --card-bg: #fdf6e3;
-    --card-border: #eee8d5;
+    --card-bg: #ffffff;
+    --card-border: #e5e7eb;
 
-    --panel-bg: #eee8d5;
-    --panel-border: #93a1a1;
-    --panel-text: #002b36;
+    --panel-bg: #f4f4f5;
+    --panel-border: #e5e7eb;
+    --panel-text: #18181b;
 
-    --cross-accent: #268bd2;
-    --cross-accent-rgba: rgba(38, 139, 210, 0.6);
-    --cross-trigger-bg: rgba(253, 246, 227, 0.88);
-    --cross-trigger-border: rgba(0, 43, 54, 0.12);
-    --cross-trigger-color: rgba(0, 43, 54, 0.45);
-    --cross-trigger-border-hover: rgba(0, 43, 54, 0.28);
-    --cross-trigger-color-hover: rgba(0, 43, 54, 0.85);
+    --cross-accent: #d89b1d;
+    --cross-accent-rgba: rgba(216, 155, 29, 0.6);
+    --cross-trigger-bg: rgba(255, 255, 255, 0.85);
+    --cross-trigger-border: rgba(24, 24, 27, 0.08);
+    --cross-trigger-color: rgba(24, 24, 27, 0.45);
+    --cross-trigger-border-hover: rgba(24, 24, 27, 0.2);
+    --cross-trigger-color-hover: rgba(24, 24, 27, 0.85);
 
-    --curtain-bg-light-solid: #fdf6e3;
-    --curtain-bg-light-fade: rgba(253, 246, 227, 0);
-    --curtain-text-light: rgba(0, 43, 54, 0.45);
+    --curtain-bg-light-solid: #fafafa;
+    --curtain-bg-light-fade: rgba(250, 250, 250, 0);
+    --curtain-text-light: rgba(24, 24, 27, 0.45);
 
     --curtain-bg-dark-solid: #282828;
     --curtain-bg-dark-fade: rgba(40, 40, 40, 0);
     --curtain-text-dark: rgba(251, 241, 199, 0.55);
 
-    --svg-grid-line: rgba(0, 43, 54, 0.15);
-    --svg-wire-active: #268bd2;
-    --svg-wire-inactive: #93a1a1;
+    --svg-grid-line: rgba(24, 24, 27, 0.08);
+    --svg-wire-active: #d89b1d;
+    --svg-wire-inactive: #d4d4d8;
     --svg-box-bg: #ffffff;
-    --svg-box-bg-sub: #eee8d5;
-    --svg-frame-border: #839496;
-    --svg-text-pri: #002b36;
-    --svg-text-mut: #586e75;
+    --svg-box-bg-sub: #f4f4f5;
+    --svg-frame-border: #d4d4d8;
+    --svg-text-pri: #18181b;
+    --svg-text-mut: #71717a;
+
+    --bg-gradient: radial-gradient(circle at top, #ffffff, #fafafa);
+    --card-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
   }
 
   .dark {
@@ -119,6 +122,9 @@
     --svg-frame-border: #a89984;
     --svg-text-pri: #fbf1c7;
     --svg-text-mut: #a89984;
+
+    --bg-gradient: none;
+    --card-shadow: none;
   }
 }
 
@@ -127,6 +133,8 @@ body {
   max-width: 100vw;
   min-height: 100vh;
   background-color: var(--bg-primary);
+  background-image: var(--bg-gradient, none);
+  background-attachment: fixed;
   color: var(--text-primary);
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   overflow-x: hidden;
@@ -139,7 +147,13 @@ body {
 html.dark,
 body.dark {
   background-color: var(--bg-primary);
+  background-image: none;
   color: var(--text-primary);
+}
+
+/* Card default shadow styling */
+article.group.bg-theme-cardBg {
+  box-shadow: var(--card-shadow, none);
 }
 
 ::-webkit-scrollbar {
