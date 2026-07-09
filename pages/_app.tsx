@@ -80,7 +80,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="canonical" href="https://parsany.github.io/c/" />
       </Head>
 
-      <div className="min-h-screen bg-theme-bg text-theme-text antialiased selection:bg-theme-accentLight selection:text-theme-accentText transition-colors duration-200">
+      <div className="min-h-screen text-theme-text antialiased selection:bg-theme-accentLight selection:text-theme-accentText transition-colors duration-200">
         <div className="fixed top-4 right-4 md:top-6 md:right-6 z-50">
           <button
             onClick={toggleTheme}

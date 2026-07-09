@@ -35,10 +35,10 @@
 
     --accent-primary: #d89b1d;
     --accent-hover: #b97a00;
-    --accent-light: #fef3c7;
-    --accent-text: #b45309;
+    --accent-light: #FFF8E8;
+    --accent-text: #B7791F;
 
-    --button-explore-bg: #ffffff;
+    --button-explore-bg: #fcfcfc;
     --button-explore-border: #e5e7eb;
     --button-explore-text: #18181b;
 
@@ -74,8 +74,8 @@
     --svg-text-pri: #18181b;
     --svg-text-mut: #71717a;
 
-    --bg-gradient: radial-gradient(circle at top, #ffffff, #fafafa);
-    --card-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+    --bg-gradient: radial-gradient(circle at top, #ffffff 20%, #f1f1f4 100%);
+    --card-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
   }
 
   .dark {
@@ -151,9 +151,28 @@ body.dark {
   color: var(--text-primary);
 }
 
-/* Card default shadow styling */
+/* Card default shadow and hover translation overrides */
 article.group.bg-theme-cardBg {
   box-shadow: var(--card-shadow, none);
+}
+
+article.group.bg-theme-cardBg:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04) !important;
+}
+
+.dark article.group.bg-theme-cardBg:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 8px 30px rgba(250, 189, 47, 0.04) !important;
+}
+
+/* Custom tag badge styling for light mode */
+span.bg-theme-accentLight {
+  border-color: #F6D58C;
+}
+
+.dark span.bg-theme-accentLight {
+  border-color: var(--border-primary);
 }
 
 ::-webkit-scrollbar {

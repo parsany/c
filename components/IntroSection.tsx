@@ -532,7 +532,7 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
 
       <section
         ref={sectionRef}
-        className="relative pt-12 md:pt-20 pb-8 md:pb-12 border-b border-theme-border overflow-hidden bg-theme-bg"
+        className="relative pt-12 md:pt-20 pb-8 md:pb-12 border-b border-theme-border overflow-hidden"
       >
         <canvas
           ref={canvasRef}

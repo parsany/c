@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, Folder, Zap, Globe, FileText, ArrowRight } from "lucide-react";
 
@@ -15,6 +16,7 @@ interface CommandItem {
   category: "navigation" | "projects" | "actions";
   icon: React.ReactNode;
   action: () => void;
+  href?: string;
 }
 
 export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
@@ -31,10 +33,44 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       subtitle: "Scroll to main projects section",
       category: "navigation",
       icon: <Folder className="h-4 w-4" />,
+      href: "/#projects",
       action: () => {
         onClose();
         const el = document.getElementById("projects");
-        if (el) el.scrollIntoView({ behavior: "smooth" });
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        } else {
+          router.push("/#projects");
+        }
+      },
+    },
+    {
+      id: "nav-about",
+      title: "Go to About Section",
+      subtitle: "Read about my background & stack",
+      category: "navigation",
+      icon: <Globe className="h-4 w-4" />,
+      href: "/#about-section",
+      action: () => {
+        onClose();
+        const el = document.getElementById("about-section");
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        } else {
+          router.push("/#about-section");
+        }
+      },
+    },
+    {
+      id: "nav-posts",
+      title: "Go to Posts / Writings",
+      subtitle: "Browse technical blogs & guides",
+      category: "navigation",
+      icon: <FileText className="h-4 w-4" />,
+      href: "/posts",
+      action: () => {
+        onClose();
+        router.push("/posts");
       },
     },
     {
@@ -43,10 +79,15 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       subtitle: "Scroll to get in touch details",
       category: "navigation",
       icon: <Globe className="h-4 w-4" />,
+      href: "/#contact",
       action: () => {
         onClose();
         const el = document.getElementById("contact");
-        if (el) el.scrollIntoView({ behavior: "smooth" });
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+        } else {
+          router.push("/#contact");
+        }
       },
     },
     {
@@ -55,6 +96,7 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       subtitle: "View boutique studio catalog system architecture",
       category: "projects",
       icon: <FileText className="h-4 w-4" />,
+      href: "/projects/charbag",
       action: () => {
         onClose();
         router.push("/projects/charbag");
@@ -66,6 +108,7 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       subtitle: "View multilanguage warranty serialization spec",
       category: "projects",
       icon: <FileText className="h-4 w-4" />,
+      href: "/projects/msk",
       action: () => {
         onClose();
         router.push("/projects/msk");
@@ -77,6 +120,7 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       subtitle: "View parts trading system workspace specs",
       category: "projects",
       icon: <FileText className="h-4 w-4" />,
+      href: "/projects/esp",
       action: () => {
         onClose();
         router.push("/projects/esp");
@@ -88,6 +132,7 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       subtitle: "View messaging architecture & media bucket details",
       category: "projects",
       icon: <FileText className="h-4 w-4" />,
+      href: "/projects/atrafian",
       action: () => {
         onClose();
         router.push("/projects/atrafian");
@@ -99,6 +144,7 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       subtitle: "View order dispatcher & SMS verification flow",
       category: "projects",
       icon: <FileText className="h-4 w-4" />,
+      href: "/projects/himheh",
       action: () => {
         onClose();
         router.push("/projects/himheh");
@@ -110,6 +156,7 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       subtitle: "View high-frequency IoT coordinates ingest details",
       category: "projects",
       icon: <FileText className="h-4 w-4" />,
+      href: "/projects/goldenbat",
       action: () => {
         onClose();
         router.push("/projects/goldenbat");
@@ -121,6 +168,7 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       subtitle: "View passenger & driver location cache architecture",
       category: "projects",
       icon: <FileText className="h-4 w-4" />,
+      href: "/projects/taxiland",
       action: () => {
         onClose();
         router.push("/projects/taxiland");
@@ -132,6 +180,7 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       subtitle: "View gold trading Rest API and ledger specs",
       category: "projects",
       icon: <FileText className="h-4 w-4" />,
+      href: "/projects/alzahra",
       action: () => {
         onClose();
         router.push("/projects/alzahra");
@@ -143,6 +192,7 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       subtitle: "Open GitHub repository for CNN cat emotion ML model",
       category: "projects",
       icon: <Globe className="h-4 w-4" />,
+      href: "https://github.com/parsany/CatRecognition",
       action: () => {
         onClose();
         window.open("https://github.com/parsany/CatRecognition", "_blank");
@@ -154,6 +204,7 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       subtitle: "Open GitHub repository for space invaders game on life grids",
       category: "projects",
       icon: <Globe className="h-4 w-4" />,
+      href: "https://github.com/parsany/Conway-game-of-life-invaders",
       action: () => {
         onClose();
         window.open("https://github.com/parsany/Conway-game-of-life-invaders", "_blank");
@@ -165,6 +216,7 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       subtitle: "Open GitHub repository for neural network feedback control weights",
       category: "projects",
       icon: <Globe className="h-4 w-4" />,
+      href: "https://github.com/parsany/PID_NN",
       action: () => {
         onClose();
         window.open("https://github.com/parsany/PID_NN", "_blank");
@@ -176,6 +228,7 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       subtitle: "Open GitHub repository for PySide/QT e-book library layout manager",
       category: "projects",
       icon: <Globe className="h-4 w-4" />,
+      href: "https://github.com/parsany/PyLibrary-QT",
       action: () => {
         onClose();
         window.open("https://github.com/parsany/PyLibrary-QT", "_blank");
@@ -187,6 +240,7 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       subtitle: "Open GitHub repository for mineral VAE autoencoders",
       category: "projects",
       icon: <Globe className="h-4 w-4" />,
+      href: "https://github.com/parsany/anomaly-VAE",
       action: () => {
         onClose();
         window.open("https://github.com/parsany/anomaly-VAE", "_blank");
@@ -198,6 +252,7 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       subtitle: "Open GitHub repository for custom syntax parsing tree interpreter",
       category: "projects",
       icon: <Globe className="h-4 w-4" />,
+      href: "https://github.com/parsany/InterpreterFlexBison",
       action: () => {
         onClose();
         window.open("https://github.com/parsany/InterpreterFlexBison", "_blank");
@@ -220,6 +275,7 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       subtitle: "Open CV PDF file",
       category: "actions",
       icon: <FileText className="h-4 w-4" />,
+      href: "/resume.pdf",
       action: () => {
         onClose();
         window.open("/resume.pdf", "_blank");
@@ -231,6 +287,7 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       subtitle: "github.com/parsany",
       category: "actions",
       icon: <Globe className="h-4 w-4" />,
+      href: "https://github.com/parsany",
       action: () => {
         onClose();
         window.open("https://github.com/parsany", "_blank");
@@ -242,6 +299,7 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       subtitle: "linkedin.com/in/parsany",
       category: "actions",
       icon: <Globe className="h-4 w-4" />,
+      href: "https://www.linkedin.com/in/parsany/",
       action: () => {
         onClose();
         window.open("https://www.linkedin.com/in/parsany/", "_blank");
@@ -360,29 +418,36 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
               {filteredCommands.length > 0 ? (
                 filteredCommands.map((cmd, idx) => {
                   const isSelected = idx === selectedIndex;
-                  return (
-                    <button
-                      key={cmd.id}
-                      onClick={cmd.action}
-                      onMouseEnter={() => setSelectedIndex(idx)}
-                      className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-left transition-colors focus:outline-none ${isSelected
+                  const itemProps = {
+                    onClick: cmd.action,
+                    onMouseEnter: () => setSelectedIndex(idx),
+                    className: `w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-left transition-colors focus:outline-none ${
+                      isSelected
                         ? "bg-theme-accentLight text-theme-accentText"
                         : "text-theme-muted hover:bg-theme-accentLight/40"
-                        }`}
-                      role="option"
-                      aria-selected={isSelected}
-                    >
+                    }`,
+                    role: "option",
+                    "aria-selected": isSelected,
+                  };
+
+                  const itemContent = (
+                    <>
                       <div className="flex items-center space-x-3">
                         <div
-                          className={`p-1.5 rounded ${isSelected
-                            ? "bg-theme-accent text-white"
-                            : "bg-theme-btnExploreBg text-theme-muted border border-theme-btnExploreBorder"
-                            }`}
+                          className={`p-1.5 rounded ${
+                            isSelected
+                              ? "bg-theme-accent text-white"
+                              : "bg-theme-btnExploreBg text-theme-muted border border-theme-btnExploreBorder"
+                          }`}
                         >
                           {cmd.icon}
                         </div>
                         <div>
-                          <p className={`text-xs font-medium font-sans ${isSelected ? "text-theme-accentText font-bold" : "text-theme-text"}`}>
+                          <p
+                            className={`text-xs font-medium font-sans ${
+                              isSelected ? "text-theme-accentText font-bold" : "text-theme-text"
+                            }`}
+                          >
                             {cmd.title}
                           </p>
                           <p className="text-[10px] font-mono text-theme-muted mt-0.5">
@@ -397,6 +462,27 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
                           <ArrowRight className="h-3 w-3" />
                         </div>
                       )}
+                    </>
+                  );
+
+                  if (cmd.href) {
+                    const isExternal = cmd.href.startsWith("http") || cmd.href.endsWith(".pdf");
+                    return (
+                      <Link
+                        {...itemProps}
+                        key={cmd.id}
+                        href={cmd.href}
+                        target={isExternal ? "_blank" : undefined}
+                        rel={isExternal ? "noopener noreferrer" : undefined}
+                      >
+                        {itemContent}
+                      </Link>
+                    );
+                  }
+
+                  return (
+                    <button {...itemProps} key={cmd.id}>
+                      {itemContent}
                     </button>
                   );
                 })
