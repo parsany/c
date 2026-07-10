@@ -9,7 +9,7 @@ export default function Footer() {
       </div>
       <div className="flex items-center space-x-5">
         <a
-          href="mailto:quantinitycorp@gmail.com"
+          href="mailto:vvsparsa@gmail.com"
           className="hover:text-theme-text transition-colors flex items-center gap-1.5"
           aria-label="Email"
         >

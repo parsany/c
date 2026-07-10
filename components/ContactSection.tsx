@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function ContactSection() {
   const [copied, setCopied] = useState(false);
   const [isBurning, setIsBurning] = useState(false);
-  const email = "quantinitycorp@gmail.com";
+  const email = "vvsparsa@gmail.com";
 
   React.useEffect(() => {
     const handleToggle = (e: Event) => {

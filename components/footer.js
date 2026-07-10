@@ -31,7 +31,7 @@ export default function Footer() {
               <Link href="/news">Contact</Link>
             </nav>
             <div className={Styles.socialLinks}>
-              <a href="mailto:quantinitycorp@gmail.com" aria-label="Email" className={Styles.socialIcon}>
+              <a href="mailto:vvsparsa@gmail.com" aria-label="Email" className={Styles.socialIcon}>
                 <div className={Styles.iconMask} style={{ WebkitMaskImage: "url('/icons/mail.svg')", maskImage: "url('/icons/mail.svg')" }} />
               </a>
               <a href="https://twitter.com/payrimSp" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className={Styles.socialIcon}>

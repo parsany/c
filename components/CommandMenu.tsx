@@ -261,12 +261,12 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
     {
       id: "action-email",
       title: "Copy Email Address",
-      subtitle: "quantinitycorp@gmail.com",
+      subtitle: "vvsparsa@gmail.com",
       category: "actions",
       icon: <Zap className="h-4 w-4" />,
       action: () => {
         onClose();
-        navigator.clipboard.writeText("quantinitycorp@gmail.com");
+        navigator.clipboard.writeText("vvsparsa@gmail.com");
       },
     },
     {

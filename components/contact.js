@@ -10,13 +10,13 @@ export default function Contact() {
             </div>
             
             <div className={Styles.grid}>
-                <a href="mailto:quantinitycorp@gmail.com" className={Styles.card}>
+                <a href="mailto:vvsparsa@gmail.com" className={Styles.card}>
                     <div className={Styles.iconBox}>
                         <Mail size={24} />
                     </div>
                     <div className={Styles.content}>
                         <h3>Email</h3>
-                        <p>quantinitycorp@gmail.com</p>
+                        <p>vvsparsa@gmail.com</p>
                     </div>
                     <ExternalLink className={Styles.arrow} size={16} />
                 </a>

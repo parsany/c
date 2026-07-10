@@ -27,7 +27,7 @@ export default function MainCard() {
               </div>
               <h2 className={styles.heroTitle}>Software Engineer &amp; Researcher</h2>
               <div className={styles.socialLinks}>
-                <a href="mailto:quantinitycorp@gmail.com" aria-label="Email" className={styles.socialIcon}>
+                <a href="mailto:vvsparsa@gmail.com" aria-label="Email" className={styles.socialIcon}>
                   <Image src="/icons/mail.svg" alt="Email" width={20} height={20} />
                 </a>
                 <a href="https://twitter.com/payrimSp" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className={styles.socialIcon}>
