@@ -156,7 +156,7 @@ export const ProjectProfessional = [
             { label: "Live Site", url: "https://atrafian.ir" },
             { label: "Mobile Demo", url: "https://github.com/quantinity/Atrafian-App-Demo" }
         ],
-        role: "Fullstack Developer",
+        role: "Solo Fullstack Developer",
         highlights: ["Real-time Socket.io Chat", "Radar Navigation & Discovery", "AWS S3/MinIO Integration"],
         text: `# Atrafian Chat & Social Ecosystem\n\nBuilt over 3 months, full-time. A social platform with real-time chat (personal, group, and support channels), a Capacitor-based mobile app, and a custom radar map for location-based discovery. Media (voice, images, video) goes through a self-hosted MinIO instance. Redis handles caching and OTP delivery.\n\nThe radar map was the hardest part — it needed to feel smooth on mobile while handling frequent location updates, still due to client's contraint instead of using React Native we settled for Capacitor.JS.\n\n- **Role**: Solo Fullstack & Mobile Developer\n- **Timeline**: Jan 2026 – Mar 2026\n- **Stack**: NestJS, Next.js, Socket.io, Redis, PostgreSQL, Turborepo`
     },
@@ -181,7 +181,7 @@ export const ProjectProfessional = [
             { label: "Dashboard", url: "https://himeh.parsany.ir/admin" },
             { label: "User Panel", url: "https://himeh.parsany.ir/profile" }
         ],
-        role: "Fullstack Developer",
+        role: "Solo Fullstack Developer",
         highlights: ["Book Catalog Search Index", "tRPC Type-Safe API", "Integrated Payment Gateway"],
         text: `# Himeh Book Publishing Platform\n\nBuilt over 2 months. A complete book store — authors upload titles through an admin dashboard, customers browse, add to cart, and check out via a local payment gateway. OTP-based auth instead of passwords.\n\n- **Role**: Solo Fullstack Developer\n- **Timeline**: Feb 2025 – Mar 2025\n- **Stack**: Next.js, tRPC, PostgreSQL, Prisma`
     },
