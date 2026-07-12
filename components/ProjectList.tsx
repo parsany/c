@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -80,6 +80,7 @@ function ProjectCard({
             <p className="text-theme-secondary text-sm leading-relaxed line-clamp-3">
               {description}
             </p>
+
           </div>
         </div>
 
@@ -234,6 +235,32 @@ function ProjectCard({
 export default function ProjectList() {
   const [activeTab, setActiveTab] = useState<"professional" | "academic">("professional");
   const [hoveredId, setHoveredId] = useState<string | number | null>(null);
+
+  useEffect(() => {
+    ProjectProfessional.forEach((project) => {
+      if ((project as any).project_image) {
+        (project as any).project_image.forEach((src: string) => {
+          const img = new window.Image();
+          img.src = src;
+        });
+      } else if (project.image) {
+        const img = new window.Image();
+        img.src = project.image;
+      }
+    });
+
+    ProjectAcademic.forEach((project) => {
+      if (project.image) {
+        const img = new window.Image();
+        img.src = project.image;
+      }
+      if ((project as any).video) {
+        const vid = document.createElement("video");
+        vid.src = (project as any).video;
+        vid.preload = "auto";
+      }
+    });
+  }, []);
 
   const renderArchitecture = (identifier: string | number, isHovered: boolean) => {
     const nameStr = String(identifier).toLowerCase();
