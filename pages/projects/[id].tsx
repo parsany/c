@@ -204,7 +204,12 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
   };
 
   const formatDate = (dateStr: string) => {
+    if (!dateStr) return "";
+    if (dateStr.includes("–") || dateStr.includes("-")) {
+      return dateStr;
+    }
     const d = new Date(dateStr);
+    if (isNaN(d.getTime())) return dateStr;
     return d.toLocaleDateString("en-US", {
       year: "numeric",
       month: "long",
