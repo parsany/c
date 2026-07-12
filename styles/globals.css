@@ -65,7 +65,7 @@
     --curtain-bg-dark-fade: rgba(40, 40, 40, 0);
     --curtain-text-dark: rgba(251, 241, 199, 0.55);
 
-    --svg-grid-line: rgba(24, 24, 27, 0.08);
+    --svg-grid-line: rgba(24, 24, 27, 0.18);
     --svg-wire-active: #d89b1d;
     --svg-wire-inactive: #d4d4d8;
     --svg-box-bg: #ffffff;
@@ -151,7 +151,7 @@ body.dark {
   color: var(--text-primary);
 }
 
-/* Card default shadow and hover translation overrides */
+
 article.group.bg-theme-cardBg {
   box-shadow: var(--card-shadow, none);
 }
@@ -166,7 +166,7 @@ article.group.bg-theme-cardBg:hover {
   box-shadow: 0 8px 30px rgba(250, 189, 47, 0.04) !important;
 }
 
-/* Custom tag badge styling for light mode */
+
 span.bg-theme-accentLight {
   border-color: #F6D58C;
 }

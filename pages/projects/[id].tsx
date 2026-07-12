@@ -9,6 +9,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Head from "next/head";
 import { ArrowLeft, ChevronLeft, ChevronRight, Calendar, Globe, X } from "lucide-react";
+import OpenLinks from "@/components/OpenLinks";
 
 interface ProjectDetailProps {
   project: any;
@@ -30,6 +31,15 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
   const pinchStartScale = useRef<number>(1);
   const lastClientXRef = useRef<number>(0);
   const lightboxContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (project?.project_image && project.project_image.length > 0) {
+      project.project_image.forEach((src: string) => {
+        const img = new window.Image();
+        img.src = src;
+      });
+    }
+  }, [project?.project_image]);
 
   useEffect(() => {
     setZoomScale(1);
@@ -59,7 +69,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
 
   const handlePointerDown = (e: React.MouseEvent | React.TouchEvent) => {
     const isTouch = "touches" in e;
-    
+
     if (isTouch && e.touches.length === 2) {
       const dist = Math.hypot(
         e.touches[0].clientX - e.touches[1].clientX,
@@ -83,7 +93,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
 
   const handlePointerMove = (e: React.MouseEvent | React.TouchEvent) => {
     const isTouch = "touches" in e;
-    
+
     if (isTouch && e.touches.length === 2) {
       if (pinchStartDist.current) {
         const dist = Math.hypot(
@@ -224,11 +234,18 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
     );
   }
 
+  const isNoIndex = ["esp", "msk", "taxiland", "goldenbat", "alzahra"].includes(project.slug);
+
   return (
     <article className="max-w-2xl mx-auto py-12">
       <Head>
         <title>{project.name} | Parsa</title>
         <meta name="description" content={project.description} />
+        {isNoIndex ? (
+          <meta name="robots" content="noindex, nofollow" />
+        ) : (
+          <link rel="canonical" href={`https://parsany.ir/projects/${project.slug}`} key="canonical" />
+        )}
       </Head>
 
       <Link
@@ -241,18 +258,25 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
 
       <header className="space-y-4 mb-8">
         <h1 className="text-3xl font-bold tracking-tight text-theme-text">{project.name}</h1>
-        
+
         <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-theme-muted">
           <span className="flex items-center space-x-1.5">
             <Calendar className="h-3.5 w-3.5" />
             <span>{formatDate(project.date)}</span>
           </span>
-          {project.role && (
-            <span className="px-2 py-0.5 rounded bg-theme-btnExploreBg border border-theme-btnExploreBorder text-theme-text">
-              {project.role}
-            </span>
-          )}
-          {project.link && (
+          {project.links && project.links.length >= 2 ? (
+            <OpenLinks links={project.links} position="top" />
+          ) : project.links && project.links.length === 1 ? (
+            <a
+              href={project.links[0].url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center space-x-1 font-bold text-theme-accent hover:text-theme-accentHover transition-colors"
+            >
+              <Globe className="h-3.5 w-3.5" />
+              <span>{project.links[0].label}</span>
+            </a>
+          ) : project.link ? (
             <a
               href={project.link}
               target="_blank"
@@ -262,7 +286,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
               <Globe className="h-3.5 w-3.5" />
               <span>Visit Website</span>
             </a>
-          )}
+          ) : null}
         </div>
 
         {project.tag && (
@@ -325,33 +349,71 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                 className="object-cover pointer-events-none"
               />
             </div>
+            <div 
+              className="absolute inset-0 pointer-events-none opacity-[0.03] dark:hidden"
+              style={{
+                background: "linear-gradient(to top, var(--accent-primary) 0%, transparent 100%)"
+              }}
+            />
+            <div className="absolute inset-0 pointer-events-none hidden dark:block bg-gradient-to-t from-black/25 via-transparent to-black/10" />
 
             {project.project_image.length > 1 && (
               <>
                 <button
-                  onClick={handlePrev}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-theme-panelBg/80 border border-theme-panelBorder hover:bg-theme-btnExploreBg text-theme-text transition-all opacity-0 group-hover:opacity-100 focus:opacity-100"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handlePrev();
+                    e.currentTarget.blur();
+                  }}
+                  onDoubleClick={(e) => e.stopPropagation()}
+                  className="absolute left-3.5 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-8 h-8 rounded-full bg-black/40 hover:bg-black/70 border border-white/10 text-white/80 hover:text-white hover:scale-105 active:scale-95 transition-all opacity-0 group-hover:opacity-100 focus-visible:opacity-100"
                   aria-label="Previous image"
                 >
-                  <ChevronLeft className="h-4 w-4" />
+                  <ChevronLeft className="h-5 w-5" />
                 </button>
                 <button
-                  onClick={handleNext}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-theme-panelBg/80 border border-theme-panelBorder hover:bg-theme-btnExploreBg text-theme-text transition-all opacity-0 group-hover:opacity-100 focus:opacity-100"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleNext();
+                    e.currentTarget.blur();
+                  }}
+                  onDoubleClick={(e) => e.stopPropagation()}
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-8 h-8 rounded-full bg-black/40 hover:bg-black/70 border border-white/10 text-white/80 hover:text-white hover:scale-105 active:scale-95 transition-all opacity-0 group-hover:opacity-100 focus-visible:opacity-100"
                   aria-label="Next image"
                 >
-                  <ChevronRight className="h-4 w-4" />
+                  <ChevronRight className="h-5 w-5" />
                 </button>
-                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex space-x-1">
+
+                <div className="absolute bottom-3 md:bottom-2 inset-x-4 z-10 flex gap-1.5">
                   {project.project_image.map((_: any, idx: number) => (
                     <button
                       key={idx}
-                      onClick={() => setActiveIndex(idx)}
-                      className={`h-1.5 w-1.5 rounded-full transition-all ${
-                        idx === activeIndex ? "bg-theme-accent w-3" : "bg-theme-border2"
-                      }`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setActiveIndex(idx);
+                        e.currentTarget.blur();
+                      }}
+                      onDoubleClick={(e) => e.stopPropagation()}
+                      className="h-1 flex-1 relative rounded-full overflow-hidden focus:outline-none transition-colors dark:!bg-white/20"
+                      style={{
+                        backgroundColor: "color-mix(in srgb, var(--accent-primary) 20%, transparent)"
+                      }}
                       aria-label={`Go to slide ${idx + 1}`}
-                    />
+                    >
+                      {idx === activeIndex ? (
+                        <div 
+                          className="h-full w-full"
+                          style={{ backgroundColor: "var(--accent-primary)" }}
+                        />
+                      ) : idx < activeIndex ? (
+                        <div 
+                          className="h-full w-full dark:!bg-white/70"
+                          style={{
+                            backgroundColor: "color-mix(in srgb, var(--accent-primary) 65%, transparent)"
+                          }}
+                        />
+                      ) : null}
+                    </button>
                   ))}
                 </div>
               </>
@@ -377,6 +439,33 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
               >
                 <X className="h-6 w-6" />
               </button>
+
+              {project.project_image.length > 1 && zoomScale === 1 && (
+                <>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handlePrev();
+                    }}
+                    onDoubleClick={(e) => e.stopPropagation()}
+                    className="absolute left-6 top-1/2 -translate-y-1/2 z-50 flex items-center justify-center w-12 h-12 rounded-full bg-black/40 hover:bg-black/70 border border-white/10 text-white/80 hover:text-white hover:scale-105 active:scale-95 transition-all focus:outline-none"
+                    aria-label="Previous image"
+                  >
+                    <ChevronLeft className="h-6 w-6" />
+                  </button>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleNext();
+                    }}
+                    onDoubleClick={(e) => e.stopPropagation()}
+                    className="absolute right-6 top-1/2 -translate-y-1/2 z-50 flex items-center justify-center w-12 h-12 rounded-full bg-black/40 hover:bg-black/70 border border-white/10 text-white/80 hover:text-white hover:scale-105 active:scale-95 transition-all focus:outline-none"
+                    aria-label="Next image"
+                  >
+                    <ChevronRight className="h-6 w-6" />
+                  </button>
+                </>
+              )}
 
               <div
                 ref={lightboxContainerRef}
@@ -404,54 +493,35 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                     alt={`${project.name} full view`}
                     fill
                     sizes="100vw"
-                    className={`object-contain select-none ${
-                      zoomScale > 1 ? "cursor-grab active:cursor-grabbing" : "cursor-zoom-in"
-                    }`}
+                    className={`object-contain select-none ${zoomScale > 1 ? "cursor-grab active:cursor-grabbing" : "cursor-zoom-in"
+                      }`}
                     priority
                   />
                 </div>
-
-                {project.project_image.length > 1 && zoomScale === 1 && (
-                  <>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handlePrev();
-                      }}
-                      className="absolute left-4 p-3 rounded-full bg-zinc-900/60 border border-zinc-800 hover:bg-zinc-800 text-zinc-200 hover:text-zinc-100 transition-colors focus:outline-none"
-                      aria-label="Previous image"
-                    >
-                      <ChevronLeft className="h-6 w-6" />
-                    </button>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleNext();
-                      }}
-                      className="absolute right-4 p-3 rounded-full bg-zinc-900/60 border border-zinc-800 hover:bg-zinc-800 text-zinc-200 hover:text-zinc-100 transition-colors focus:outline-none"
-                      aria-label="Next image"
-                    >
-                      <ChevronRight className="h-6 w-6" />
-                    </button>
-                    
-                    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-1.5">
-                      {project.project_image.map((_: any, idx: number) => (
-                        <button
-                          key={idx}
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            setActiveIndex(idx);
-                          }}
-                          className={`h-2 w-2 rounded-full transition-all focus:outline-none ${
-                            idx === activeIndex ? "bg-zinc-100 w-4" : "bg-zinc-600 hover:bg-zinc-500"
-                          }`}
-                          aria-label={`Go to slide ${idx + 1}`}
-                        />
-                      ))}
-                    </div>
-                  </>
-                )}
               </div>
+
+              {project.project_image.length > 1 && zoomScale === 1 && (
+                <div className="absolute bottom-6 md:bottom-3 left-1/2 -translate-x-1/2 z-50 flex gap-1.5 w-full max-w-xl px-4">
+                  {project.project_image.map((_: any, idx: number) => (
+                    <button
+                      key={idx}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setActiveIndex(idx);
+                      }}
+                      onDoubleClick={(e) => e.stopPropagation()}
+                      className="h-1 flex-1 relative rounded-full overflow-hidden bg-white/20 hover:bg-white/40 focus:outline-none transition-colors"
+                      aria-label={`Go to slide ${idx + 1}`}
+                    >
+                      {idx === activeIndex ? (
+                        <div className="h-full w-full bg-theme-accent" />
+                      ) : idx < activeIndex ? (
+                        <div className="h-full w-full bg-white/70" />
+                      ) : null}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           )}
         </>

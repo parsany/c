@@ -1,69 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://parsany.github.io/c/</loc>
-    <lastmod>2026-02-02</lastmod>
+    <loc>https://parsany.ir/</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://parsany.github.io/c/experience</loc>
-    <lastmod>2026-02-02</lastmod>
+    <loc>https://parsany.ir/about</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://parsany.github.io/c/projects</loc>
-    <lastmod>2026-02-02</lastmod>
+    <loc>https://parsany.ir/posts</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://parsany.github.io/c/skills</loc>
-    <lastmod>2026-02-02</lastmod>
+    <loc>https://parsany.ir/posts/cat-cnn</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://parsany.ir/posts/conway-CAU</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://parsany.ir/posts/vae-mineral-anomaly</loc>
+    <lastmod>2026-07-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://parsany.ir/projects/charbag</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://parsany.github.io/c/posts/P1</loc>
-    <lastmod>2026-02-02</lastmod>
+    <loc>https://parsany.ir/projects/atrafian</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://parsany.github.io/c/posts/P2</loc>
-    <lastmod>2026-02-02</lastmod>
+    <loc>https://parsany.ir/projects/Himeh</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://parsany.github.io/c/posts/P3</loc>
-    <lastmod>2026-02-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://parsany.github.io/c/posts/P4</loc>
-    <lastmod>2026-02-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://parsany.github.io/c/posts/P5</loc>
-    <lastmod>2026-02-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://parsany.github.io/c/posts/P6</loc>
-    <lastmod>2026-02-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://parsany.github.io/c/posts/P7</loc>
-    <lastmod>2026-02-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
 </urlset>

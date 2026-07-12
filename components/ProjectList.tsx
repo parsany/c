@@ -6,11 +6,12 @@ import { ProjectProfessional, ProjectAcademic } from "@/public/JSONJS";
 import {
   AIVisualizer,
   GameVisualizer,
-  RoboticsVisualizer,
   AppVisualizer,
   CompilerVisualizer,
 } from "./ArchitectureSVG";
 import { ArrowRight } from "lucide-react";
+import OpenLinks from "./OpenLinks";
+import ProjectCarousel from "./ProjectCarousel";
 
 interface ProjectCardProps {
   id: string | number;
@@ -19,6 +20,7 @@ interface ProjectCardProps {
   description: string;
   tags: string[];
   link?: string;
+  links?: { label: string; url: string }[];
   isProfessional: boolean;
   isHovered: boolean;
   onMouseEnter: () => void;
@@ -26,6 +28,7 @@ interface ProjectCardProps {
   renderArchitecture: () => React.ReactNode;
   image?: string;
   video?: string;
+  projectImages?: string[];
 }
 
 function ProjectCard({
@@ -34,6 +37,7 @@ function ProjectCard({
   description,
   tags,
   link,
+  links,
   isProfessional,
   isHovered,
   onMouseEnter,
@@ -41,42 +45,45 @@ function ProjectCard({
   renderArchitecture,
   image,
   video,
+  projectImages,
 }: ProjectCardProps) {
-  const router = useRouter();
-
-  const handleCardClick = (e: React.MouseEvent) => {
-    const target = e.target as HTMLElement;
-    if (target.closest("a") || target.closest("button") || target.closest("[role='button']")) {
-      return;
-    }
-
-    if (isProfessional && slug) {
-      router.push(`/projects/${slug}`);
-    } else if (!isProfessional && link) {
-      window.open(link, "_blank", "noopener,noreferrer");
-    }
-  };
-
   if (isProfessional) {
     return (
       <article
-        className="group flex flex-col justify-between bg-theme-cardBg border border-theme-cardBorder hover:border-theme-accent/60 rounded-xl p-5 md:p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(37,99,235,0.04)] dark:hover:shadow-[0_8px_30px_rgba(250,189,47,0.04)] focus-within:ring-2 focus-within:ring-theme-accent/50 focus-within:outline-none cursor-pointer"
+        className="group relative flex flex-col justify-between bg-theme-cardBg border border-theme-cardBorder hover:border-theme-accent/60 rounded-xl p-5 md:p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(37,99,235,0.04)] dark:hover:shadow-[0_8px_30px_rgba(250,189,47,0.04)] focus-within:ring-2 focus-within:ring-theme-accent/50 focus-within:outline-none"
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
-        onClick={handleCardClick}
       >
         <div className="space-y-4">
+          <div
+            className="aspect-video w-full rounded-lg overflow-hidden border border-theme-border bg-theme-btnExploreBg relative z-10"
+            tabIndex={0}
+          >
+            <ProjectCarousel
+              images={projectImages || (image ? [image] : [])}
+              isHovered={isHovered}
+              projectName={name}
+            />
+          </div>
+
           <div className="space-y-2">
             <h3 className="text-lg font-semibold text-theme-text group-hover:text-theme-accent transition-colors">
-              {name}
+              {slug ? (
+                <Link href={`/projects/${slug}`} className="focus:outline-none">
+                  {name}
+                  <span className="absolute inset-0 z-0" aria-hidden="true" />
+                </Link>
+              ) : (
+                name
+              )}
             </h3>
-            <p className="text-theme-secondary text-sm leading-relaxed">
+            <p className="text-theme-secondary text-sm leading-relaxed line-clamp-3">
               {description}
             </p>
           </div>
         </div>
 
-        <div className="mt-6 pt-4 border-t border-theme-border flex flex-col gap-3">
+        <div className="mt-6 pt-4 border-t border-theme-border flex flex-col gap-3 relative z-10">
           <div className="flex flex-wrap gap-1.5">
             {tags.slice(0, 4).map((tag: string) => (
               <span
@@ -89,8 +96,20 @@ function ProjectCard({
           </div>
 
           <div className="flex items-center justify-between text-xs font-mono pt-0.5">
-            <div>
-              {link ? (
+            <div className="flex flex-wrap gap-x-4 gap-y-1">
+              {links && links.length >= 2 ? (
+                <OpenLinks links={links} position="bottom" />
+              ) : links && links.length === 1 ? (
+                <a
+                  href={links[0].url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center space-x-1 font-bold text-theme-accent hover:text-theme-accentHover hover:underline transition-colors"
+                >
+                  <span>{links[0].label}</span>
+                  <ArrowRight className="h-3 w-3" />
+                </a>
+              ) : link ? (
                 <a
                   href={link}
                   target="_blank"
@@ -122,14 +141,13 @@ function ProjectCard({
 
   return (
     <article
-      className="group flex flex-col justify-between bg-theme-cardBg border border-theme-cardBorder hover:border-theme-accent/60 rounded-xl p-5 md:p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(37,99,235,0.04)] dark:hover:shadow-[0_8px_30px_rgba(250,189,47,0.04)] focus-within:ring-2 focus-within:ring-theme-accent/50 focus-within:outline-none cursor-pointer"
+      className="group relative flex flex-col justify-between bg-theme-cardBg border border-theme-cardBorder hover:border-theme-accent/60 rounded-xl p-5 md:p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(37,99,235,0.04)] dark:hover:shadow-[0_8px_30px_rgba(250,189,47,0.04)] focus-within:ring-2 focus-within:ring-theme-accent/50 focus-within:outline-none"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      onClick={handleCardClick}
     >
       <div className="space-y-4">
         <div
-          className="aspect-video w-full rounded-lg overflow-hidden border border-theme-border bg-theme-btnExploreBg relative"
+          className="aspect-video w-full rounded-lg overflow-hidden border border-theme-border bg-theme-btnExploreBg relative z-10"
           tabIndex={0}
           onFocus={onMouseEnter}
           onBlur={onMouseLeave}
@@ -157,7 +175,19 @@ function ProjectCard({
 
         <div className="space-y-2">
           <h3 className="text-lg font-semibold text-theme-text group-hover:text-theme-accent transition-colors">
-            {name}
+            {link ? (
+              <a
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="focus:outline-none"
+              >
+                {name}
+                <span className="absolute inset-0 z-0" aria-hidden="true" />
+              </a>
+            ) : (
+              name
+            )}
           </h3>
 
           <p className="text-theme-secondary text-sm leading-relaxed line-clamp-3">
@@ -166,7 +196,8 @@ function ProjectCard({
         </div>
       </div>
 
-      <div className="mt-6 pt-4 border-t border-theme-border flex flex-col gap-3">
+
+      <div className="mt-6 pt-4 border-t border-theme-border flex flex-col gap-3 relative z-10">
         <div className="flex flex-wrap gap-1.5">
           {tags.slice(0, 3).map((tag: string) => (
             <span
@@ -211,9 +242,6 @@ export default function ProjectList() {
     }
     if (nameStr.includes("conway") || nameStr.includes("invaders")) {
       return <GameVisualizer isHovered={isHovered} />;
-    }
-    if (nameStr.includes("evolutionary") || nameStr.includes("algorithm")) {
-      return <RoboticsVisualizer isHovered={isHovered} />;
     }
     if (nameStr.includes("qt") || nameStr.includes("library")) {
       return <AppVisualizer isHovered={isHovered} />;
@@ -274,8 +302,8 @@ export default function ProjectList() {
           <button
             onClick={() => setActiveTab("professional")}
             className={`px-3 py-1.5 rounded transition-all focus:outline-none whitespace-nowrap text-center ${activeTab === "professional"
-                ? "bg-theme-bg border border-theme-border text-theme-text shadow-sm z-10 font-bold"
-                : "text-theme-muted hover:text-theme-text border border-transparent z-0"
+              ? "bg-theme-bg border border-theme-border text-theme-text shadow-sm z-10 font-bold"
+              : "text-theme-muted hover:text-theme-text border border-transparent z-0"
               } w-full sm:w-auto`}
           >
             Projects ({professionalProjects.length})
@@ -283,8 +311,8 @@ export default function ProjectList() {
           <button
             onClick={() => setActiveTab("academic")}
             className={`px-3 py-1.5 rounded transition-all focus:outline-none whitespace-nowrap text-center ${activeTab === "academic"
-                ? "bg-theme-bg border border-theme-border text-theme-text shadow-sm z-10 font-bold"
-                : "text-theme-muted hover:text-theme-text border border-transparent z-0"
+              ? "bg-theme-bg border border-theme-border text-theme-text shadow-sm z-10 font-bold"
+              : "text-theme-muted hover:text-theme-text border border-transparent z-0"
               } w-full sm:w-auto`}
           >
             R&D & Experiments ({academicProjects.length})
@@ -303,6 +331,7 @@ export default function ProjectList() {
               description={project.description}
               tags={project.tag}
               link={project.link || undefined}
+              links={(project as any).links}
               isProfessional={true}
               isHovered={hoveredId === project.slug}
               onMouseEnter={() => setHoveredId(project.slug)}
@@ -310,6 +339,7 @@ export default function ProjectList() {
               renderArchitecture={() => renderArchitecture(project.slug, hoveredId === project.slug)}
               image={(project as any).image}
               video={(project as any).video}
+              projectImages={(project as any).project_image}
             />
           ))}
         </div>

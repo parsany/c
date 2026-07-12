@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
+Disallow: /projects/esp
+Disallow: /projects/msk
+Disallow: /projects/taxiland
+Disallow: /projects/goldenbat
+Disallow: /projects/alzahra
 
-Sitemap: https://parsany.github.io/c/sitemap.xml
+Sitemap: https://parsany.ir/sitemap.xml

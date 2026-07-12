@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -22,6 +22,14 @@ export default function BlogArchive() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
 
+  const activePosts = Posts.filter((post) => post.active !== false);
+
+  useEffect(() => {
+    activePosts.forEach((post) => {
+      router.prefetch(`/posts/${post.slug}`);
+    });
+  }, [activePosts, router]);
+
   const estimateReadTime = (body: string) => {
     const words = (body || "").split(/\s+/).length;
     return Math.max(1, Math.ceil(words / 200));
@@ -35,8 +43,6 @@ export default function BlogArchive() {
       day: "numeric",
     });
   };
-
-  const activePosts = Posts.filter((post) => post.active !== false);
 
   const allTags = Array.from(new Set(activePosts.flatMap((post) => post.tags)));
 
@@ -56,6 +62,7 @@ export default function BlogArchive() {
           name="description"
           content="Parsa's writing on software engineering, machine learning experiments, and things I found interesting enough to write up."
         />
+        <link rel="canonical" href="https://parsany.ir/posts" key="canonical" />
       </Head>
 
       <Link

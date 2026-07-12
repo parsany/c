@@ -139,15 +139,15 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       },
     },
     {
-      id: "project-himheh",
-      title: "Himheh Publishing Specs",
+      id: "project-himeh",
+      title: "Himeh Publishing Specs",
       subtitle: "View order dispatcher & SMS verification flow",
       category: "projects",
       icon: <FileText className="h-4 w-4" />,
-      href: "/projects/himheh",
+      href: "/projects/Himeh",
       action: () => {
         onClose();
-        router.push("/projects/himheh");
+        router.push("/projects/Himeh");
       },
     },
     {
@@ -326,6 +326,17 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       document.body.style.overflow = "";
     };
   }, [isOpen]);
+
+  useEffect(() => {
+    router.prefetch("/#projects");
+    router.prefetch("/#about-section");
+    router.prefetch("/posts");
+    router.prefetch("/#contact");
+    const projectSlugs = ["charbag", "msk", "esp", "atrafian", "Himeh", "goldenbat", "taxiland", "alzahra"];
+    projectSlugs.forEach((slug) => {
+      router.prefetch(`/projects/${slug}`);
+    });
+  }, [router]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {

@@ -47,6 +47,7 @@ export default function PostDetail({ post, allPosts }: PostDetailProps) {
       <Head>
         <title>{post.title} | Parsa</title>
         <meta name="description" content={post.description} />
+        <link rel="canonical" href={`https://parsany.ir/posts/${post.slug}`} key="canonical" />
       </Head>
 
       <div className="flex items-center justify-between mb-8">
