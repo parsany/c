@@ -77,7 +77,7 @@ export default function App({ Component, pageProps }: AppProps) {
           content="Hi, I'm Parsa. I'm a Full-Stack Software Engineer building web apps and distributed backend systems with TypeScript, Next.js, and NestJS."
         />
         <meta property="og:type" content="website" />
-        <link rel="canonical" href="https://parsany.ir" key="canonical" />
+        <link rel="canonical" href="https://parsany.com" key="canonical" />
       </Head>
 
       <div className="min-h-screen text-theme-text antialiased selection:bg-theme-accentLight selection:text-theme-accentText transition-colors duration-200">

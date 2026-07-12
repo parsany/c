@@ -98,9 +98,9 @@ export const ProjectProfessional = [
         tag: ["Next.js", "Tailwind CSS", "NestJS", "Turborepo", "PostgreSQL", "dual-Language"],
         isactive: false,
         redirect: "esp",
-        link: "https://mkweb.parsany.ir/en/landing",
+        link: "https://mkweb.parsany.com/en/landing",
         links: [
-            { label: "Website", url: "https://mkweb.parsany.ir/en/landing" }
+            { label: "Website", url: "https://mkweb.parsany.com/en/landing" }
         ],
         role: "Frontend Developer (team)",
         text: `# Battery MSK Client Website\n\nBuilt over 2 months (shared development cycle with ESP). The client-facing side of the Battery ESP monorepo — same codebase, different brand. Built and styled the public storefront and warranty lookup pages. See the ESP project for full technical details.\n\n- **Role**: Frontend Developer (team)\n- **Timeline**: Dec 2025 – June 2026\n- **Stack**: Next.js, Tailwind CSS, NestJS (shared backend)`
@@ -123,10 +123,10 @@ export const ProjectProfessional = [
         tag: ["Turborepo", "Tailwind CSS", "NestJS", "Next.js", "PostgreSQL", "dual-Language"],
         isactive: false,
         redirect: "msk",
-        link: "https://epweb.parsany.ir/",
+        link: "https://epweb.parsany.com/",
         links: [
-            { label: "Website", url: "https://epweb.parsany.ir/" },
-            { label: "Dashboard", url: "https://edash.parsany.ir/" }
+            { label: "Website", url: "https://epweb.parsany.com/" },
+            { label: "Dashboard", url: "https://edash.parsany.com/" }
         ],
         role: "Fullstack Developer (team)",
         text: `# Battery ESP/MSK E-Commerce\n\nBuilt over 2 months. An e-commerce website for two battery brands sharing the same backend. The interesting part was the warranty verification system — customers enter a serial number and the system validates it against a database of generated keys.\n\n- **Role**: Fullstack Developer (team)\n- **Timeline**: Dec 2025 – June 2026\n- **Stack**: Turborepo monorepo, NestJS, Next.js, PostgreSQL`
@@ -162,7 +162,7 @@ export const ProjectProfessional = [
     },
     {
         id: 3,
-        slug: "Himeh",
+        slug: "himheh",
         name: "Himeh Publishing",
         description: "Book store and publishing platform. Users can browse, purchase, and track orders. Authors get a dashboard to upload and manage titles.",
         date: "Feb 2025 – Mar 2025",
@@ -175,11 +175,11 @@ export const ProjectProfessional = [
         ],
         tag: ["Next.js", "Tailwind CSS", "tRPC", "Payment Gateway", "PostgreSQL"],
         isactive: true,
-        link: "https://himeh.parsany.ir/",
+        link: "https://himeh.parsany.com/",
         links: [
-            { label: "Website", url: "https://himeh.parsany.ir/" },
-            { label: "Dashboard", url: "https://himeh.parsany.ir/admin" },
-            { label: "User Panel", url: "https://himeh.parsany.ir/profile" }
+            { label: "Website", url: "https://himeh.parsany.com/" },
+            { label: "Dashboard", url: "https://himeh.parsany.com/admin" },
+            { label: "User Panel", url: "https://himeh.parsany.com/profile" }
         ],
         role: "Solo Fullstack Developer",
         highlights: ["Book Catalog Search Index", "tRPC Type-Safe API", "Integrated Payment Gateway"],
@@ -199,11 +199,11 @@ export const ProjectProfessional = [
         ],
         tag: ["Next.js", "Tailwind CSS", "tRPC", "GPS", "PostgreSQL"],
         isactive: false,
-        link: "https://gbat.parsany.ir",
+        link: "https://gbat.parsany.com",
         links: [
-            { label: "Website", url: "https://gbat.parsany.ir" },
-            { label: "Web Application", url: "https://gbat.parsany.ir/auth/signin" },
-            { label: "Dashboard", url: "https://gdash.parsany.ir/" }
+            { label: "Website", url: "https://gbat.parsany.com" },
+            { label: "Web Application", url: "https://gbat.parsany.com/auth/signin" },
+            { label: "Dashboard", url: "https://gdash.parsany.com/" }
         ],
         role: "Frontend Developer",
         text: `# Goldenbat GPS Tracking\n\nBuilt over 5 months. Team project. I built the landing page and the fleet dashboard frontend (Next.js), also worked on the geofencing and the notification system; a teammate handled the mobile app. The backend ingests 10,000+ GPS coordinate updates per minute with sub-second latency — the dashboard plots live vehicle positions, historical paths, and geofencing alerts. Fleet operators use it to manage device groups and assignments.\n\n- **Role**: Frontend Developer\n- **Timeline**: Sep 2024 – Jan 2025\n- **Stack**: Next.js, tRPC, PostgreSQL\n\n currently down due to maintenance`
@@ -241,9 +241,9 @@ export const ProjectProfessional = [
         ],
         tag: ["Next.js", "Tailwind CSS", "B2B", "PostgreSQL"],
         isactive: false,
-        link: "https://az.parsany.ir/landing",
+        link: "https://az.parsany.com/landing",
         links: [
-            { label: "Website", url: "https://az.parsany.ir/landing" }
+            { label: "Website", url: "https://az.parsany.com/landing" }
         ],
         role: "Frontend Developer",
         text: `# Alzahra Gold Wholesaler B2B Platform\n\nBuilt in 1.5 months. Frontend only — a B2B platform for gold wholesale buyers. I built the landing page (2 weeks) and contributed to the buyer dashboard (1 month) on top of a Django REST API handled by the rest of the team. Landing page hit a desktop Lighthouse score of 99. Customers log in to see pricing, place orders, and track transactions through a multi-step purchasing workflow.\n\n- **Role**: Frontend Developer\n- **Timeline**: Mar 2024 – Apr 2024\n- **Stack**: Next.js, Tailwind CSS (backend: Django REST, not mine)`

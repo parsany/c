@@ -249,7 +249,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
         {isNoIndex ? (
           <meta name="robots" content="noindex, nofollow" />
         ) : (
-          <link rel="canonical" href={`https://parsany.ir/projects/${project.slug}`} key="canonical" />
+          <link rel="canonical" href={`https://parsany.com/projects/${project.slug}`} key="canonical" />
         )}
       </Head>
 

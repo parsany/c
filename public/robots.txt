@@ -6,4 +6,4 @@ Disallow: /projects/taxiland
 Disallow: /projects/goldenbat
 Disallow: /projects/alzahra
 
-Sitemap: https://parsany.ir/sitemap.xml
+Sitemap: https://parsany.com/sitemap.xml

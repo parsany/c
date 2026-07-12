@@ -62,7 +62,7 @@ export default function BlogArchive() {
           name="description"
           content="Parsa's writing on software engineering, machine learning experiments, and things I found interesting enough to write up."
         />
-        <link rel="canonical" href="https://parsany.ir/posts" key="canonical" />
+        <link rel="canonical" href="https://parsany.com/posts" key="canonical" />
       </Head>
 
       <Link

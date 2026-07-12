@@ -13,7 +13,7 @@ export default function AboutPage() {
           name="description"
           content="Parsa is a full-stack software engineer who builds web applications and experiments with machine learning."
         />
-        <link rel="canonical" href="https://parsany.ir/about" key="canonical" />
+        <link rel="canonical" href="https://parsany.com/about" key="canonical" />
       </Head>
 
       <Link
