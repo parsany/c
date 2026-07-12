@@ -59,11 +59,21 @@ function ProjectCard({
             className="aspect-video w-full rounded-lg overflow-hidden border border-theme-border bg-theme-btnExploreBg relative z-10"
             tabIndex={0}
           >
-            <ProjectCarousel
-              images={projectImages || (image ? [image] : [])}
-              isHovered={isHovered}
-              projectName={name}
-            />
+            {slug ? (
+              <Link href={`/projects/${slug}`} className="block w-full h-full">
+                <ProjectCarousel
+                  images={projectImages || (image ? [image] : [])}
+                  isHovered={isHovered}
+                  projectName={name}
+                />
+              </Link>
+            ) : (
+              <ProjectCarousel
+                images={projectImages || (image ? [image] : [])}
+                isHovered={isHovered}
+                projectName={name}
+              />
+            )}
           </div>
 
           <div className="space-y-2">
@@ -153,24 +163,55 @@ function ProjectCard({
           onFocus={onMouseEnter}
           onBlur={onMouseLeave}
         >
-          {name.toLowerCase().includes("cat") && video && isHovered ? (
-            <video
-              src={video}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-full object-cover"
-            />
-          ) : (name.toLowerCase().includes("cat") || name.toLowerCase().includes("anomaly")) && image ? (
-            <Image
-              src={image}
-              alt={name}
-              fill
-              className="object-cover"
-            />
+          {link ? (
+            <a
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full h-full"
+            >
+              {name.toLowerCase().includes("cat") && video && isHovered ? (
+                <video
+                  src={video}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover pointer-events-none"
+                />
+              ) : (name.toLowerCase().includes("cat") || name.toLowerCase().includes("anomaly")) && image ? (
+                <Image
+                  src={image}
+                  alt={name}
+                  fill
+                  className="object-cover pointer-events-none"
+                />
+              ) : (
+                renderArchitecture()
+              )}
+            </a>
           ) : (
-            renderArchitecture()
+            <>
+              {name.toLowerCase().includes("cat") && video && isHovered ? (
+                <video
+                  src={video}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover pointer-events-none"
+                />
+              ) : (name.toLowerCase().includes("cat") || name.toLowerCase().includes("anomaly")) && image ? (
+                <Image
+                  src={image}
+                  alt={name}
+                  fill
+                  className="object-cover pointer-events-none"
+                />
+              ) : (
+                renderArchitecture()
+              )}
+            </>
           )}
         </div>
 
