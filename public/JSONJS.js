@@ -169,8 +169,8 @@ export const ProjectProfessional = [
     {
         id: 2,
         slug: "edu-platform",
-        name: "University Educational Platform",
-        description: "Full-stack educational platform for a university tutor — video courses hosted on S3, a markdown-powered blog with SEO, and a course management dashboard.",
+        name: "Educational Platform*",
+        description: "Full-stack educational platform for a professor — video courses hosted on S3, a markdown-powered blog with SEO, and a course management dashboard.",
         date: "July 2026",
         image: "/professional/edu-platform/im1.webp",
         project_image: [
@@ -187,7 +187,7 @@ export const ProjectProfessional = [
         links: [],
         role: "Solo Fullstack Developer",
         highlights: ["S3 Video Hosting", "Markdown Blog with SEO", "Course Management Dashboard"],
-        text: `# University Tutor Edu-Platform\n\nCurrently in development (Jul 2026). Built for a tutor from my university — they needed a place to host their video courses and write long-form blog posts without relying on third-party platforms.\n\nVideo content is uploaded to an S3-compatible bucket (self-hosted) and streamed directly on the platform. The blog supports full Markdown with automatic SEO metadata generation per post (Open Graph, canonical URLs, structured data). Instructors get a dashboard to manage courses, upload videos, and publish blog posts.\n\n- **Role**: Solo Fullstack Developer\n- **Timeline**: Jul 2026 – present\n- **Stack**: Next.js, NestJS, PostgreSQL, S3 (self-hosted)`
+        text: `# Tutor Edu-Platform\n\nCurrently in development (Jul 2026). Built for a professor from my university i know — they needed a place to host their video courses and write long-form blog posts without relying on third-party platforms.\n\nVideo content is uploaded to an S3-compatible bucket (self-hosted) and streamed directly on the platform. The blog supports full Markdown with automatic SEO metadata generation per post (Open Graph, canonical URLs, structured data). Instructors get a dashboard to manage courses, upload videos, and publish blog posts.\n\n- **Role**: Solo Fullstack Developer\n- **Timeline**: Jul 2026 – present\n- **Stack**: Next.js, NestJS, PostgreSQL, S3 (self-hosted)`
     },
     {
         id: 1,
