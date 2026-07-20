@@ -47,18 +47,31 @@ function ProjectCard({
   video,
   projectImages,
 }: ProjectCardProps) {
+  const [isProjectClicked, setIsProjectClicked] = useState(false);
+
+  const handleCardInteraction = (e: React.MouseEvent<HTMLElement>) => {
+    const target = e.target as HTMLElement;
+    if (target.closest("button, a[target='_blank'], [data-prevent-glow]")) {
+      return;
+    }
+    setIsProjectClicked(true);
+    setTimeout(() => setIsProjectClicked(false), 450);
+  };
+
   if (isProfessional) {
     return (
       <article
-        className="group relative flex flex-col justify-between bg-theme-cardBg border border-theme-cardBorder rounded-xl p-5 md:p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(37,99,235,0.04)] dark:hover:shadow-[0_8px_30px_rgba(250,189,47,0.04)] focus-within:ring-2 focus-within:ring-theme-accent/50 focus-within:outline-none"
+        className={`group relative flex flex-col justify-between bg-theme-cardBg border rounded-xl p-5 md:p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(37,99,235,0.04)] dark:hover:shadow-[0_8px_30px_rgba(250,189,47,0.04)] focus:outline-none ${
+          isProjectClicked
+            ? "!border-theme-text ring-2 ring-theme-text/80 shadow-[0_0_25px_var(--text-primary)]"
+            : "border-theme-cardBorder"
+        }`}
+        onMouseDown={handleCardInteraction}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
         <div className="space-y-4">
-          <div
-            className="aspect-video w-full rounded-lg overflow-hidden border border-theme-border bg-theme-btnExploreBg relative z-10"
-            tabIndex={0}
-          >
+          <div className="aspect-video w-full rounded-lg overflow-hidden border border-theme-border bg-theme-btnExploreBg relative z-10">
             {slug ? (
               <Link href={`/projects/${slug}`} prefetch={true} className="block w-full h-full">
                 <ProjectCarousel
@@ -90,7 +103,6 @@ function ProjectCard({
             <p className="text-theme-secondary text-sm leading-relaxed line-clamp-3">
               {description}
             </p>
-
           </div>
         </div>
 
@@ -153,14 +165,18 @@ function ProjectCard({
 
   return (
     <article
-      className="group relative flex flex-col justify-between bg-theme-cardBg border border-theme-cardBorder rounded-xl p-5 md:p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(37,99,235,0.04)] dark:hover:shadow-[0_8px_30px_rgba(250,189,47,0.04)] focus-within:ring-2 focus-within:ring-theme-accent/50 focus-within:outline-none"
+      className={`group relative flex flex-col justify-between bg-theme-cardBg border rounded-xl p-5 md:p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(37,99,235,0.04)] dark:hover:shadow-[0_8px_30px_rgba(250,189,47,0.04)] focus:outline-none ${
+        isProjectClicked
+          ? "!border-theme-text ring-2 ring-theme-text/80 shadow-[0_0_25px_var(--text-primary)]"
+          : "border-theme-cardBorder"
+      }`}
+      onMouseDown={handleCardInteraction}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
       <div className="space-y-4">
         <div
           className="aspect-video w-full rounded-lg overflow-hidden border border-theme-border bg-theme-btnExploreBg relative z-10"
-          tabIndex={0}
           onFocus={onMouseEnter}
           onBlur={onMouseLeave}
         >

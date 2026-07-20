@@ -150,7 +150,6 @@ export default function ProjectCarousel({
               handlePrev(e);
               e.currentTarget.blur();
             }}
-            onDoubleClick={(e) => e.stopPropagation()}
             className="absolute left-2.5 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-7 h-7 rounded-full bg-black/40 hover:bg-black/70 border border-white/10 text-white/80 hover:text-white hover:scale-105 active:scale-95 transition-all opacity-80 sm:opacity-0 sm:group-hover/carousel:opacity-100 focus-visible:opacity-100"
             aria-label="Previous image"
           >
@@ -161,7 +160,6 @@ export default function ProjectCarousel({
               handleNext(e);
               e.currentTarget.blur();
             }}
-            onDoubleClick={(e) => e.stopPropagation()}
             className="absolute right-2.5 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-7 h-7 rounded-full bg-black/40 hover:bg-black/70 border border-white/10 text-white/80 hover:text-white hover:scale-105 active:scale-95 transition-all opacity-80 sm:opacity-0 sm:group-hover/carousel:opacity-100 focus-visible:opacity-100"
             aria-label="Next image"
           >
@@ -179,7 +177,6 @@ export default function ProjectCarousel({
                 handleDotClick(e, idx);
                 e.currentTarget.blur();
               }}
-              onDoubleClick={(e) => e.stopPropagation()}
               className="h-1 flex-1 relative rounded-full overflow-hidden focus:outline-none transition-colors dark:!bg-white/20"
               style={{
                 backgroundColor: "color-mix(in srgb, var(--accent-primary) 20%, transparent)"

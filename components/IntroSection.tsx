@@ -630,15 +630,15 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
             Hi, I&apos;m Parsa.
           </h1>
 
-         <p className="text-xl md:text-2xl text-theme-secondary leading-relaxed font-normal tracking-wide mb-8">
-  I build full-stack web apps end-to-end — from architecture to deployment
-  — mainly with{" "}
-  <span className="text-theme-text font-semibold">TypeScript</span>,{" "}
-  <span className="text-theme-text font-semibold">Next.js</span>, and{" "}
-  <span className="text-theme-text font-semibold">NestJS</span>. I&apos;ve
-  shipped real products, sometimes solo, sometimes with teams of 7+ engineers
-  and designers.
-</p>
+          <p className="text-xl md:text-2xl text-theme-secondary leading-relaxed font-normal tracking-wide mb-8">
+            I build full-stack web apps end-to-end — from architecture to deployment
+            — mainly with{" "}
+            <span className="text-theme-text font-semibold">TypeScript</span>,{" "}
+            <span className="text-theme-text font-semibold">Next.js</span>, and{" "}
+            <span className="text-theme-text font-semibold">NestJS</span>. I&apos;ve
+            shipped real products, sometimes solo, sometimes with teams of 7+ engineers
+            and designers.
+          </p>
 
           <div className="flex flex-wrap items-center gap-4 text-sm font-mono">
             <button
@@ -677,7 +677,6 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
             <button
               onClick={() => setPanelOpen(true)}
               data-no-destroy="true"
-              title="Cross field settings"
               className="relative overflow-hidden w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold border transition-all duration-300 group-hover:scale-110 active:scale-95"
               style={{
                 background: "var(--cross-trigger-bg)",
