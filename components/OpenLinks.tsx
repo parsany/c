@@ -42,7 +42,7 @@ export default function OpenLinks({ links, className = "", position = "bottom" }
           e.stopPropagation();
           setIsOpen(!isOpen);
         }}
-        className="inline-flex items-center space-x-1.5 font-bold text-theme-accent hover:text-theme-accentHover transition-colors focus:outline-none py-1"
+        className="inline-flex items-center space-x-1.5 font-bold text-[var(--link-prominent-green)] hover:text-[var(--link-prominent-green-hover)] transition-colors focus:outline-none py-1"
         aria-haspopup="true"
         aria-expanded={isOpen}
       >
@@ -72,10 +72,10 @@ export default function OpenLinks({ links, className = "", position = "bottom" }
                   e.stopPropagation();
                   setIsOpen(false);
                 }}
-                className="w-full flex items-center justify-between px-3 py-2 text-left hover:bg-theme-accentLight/60 hover:text-theme-accentText transition-colors duration-150"
+                className="w-full flex items-center justify-between px-3 py-2 text-left hover:bg-emerald-500/10 hover:text-[var(--link-prominent-green)] transition-colors duration-150"
               >
                 <span>{link.label}</span>
-                <ExternalLink className="h-3 w-3 text-theme-muted ml-2" />
+                <ExternalLink className="h-3 w-3 text-[var(--link-prominent-green)] ml-2" />
               </a>
             ))}
           </motion.div>

@@ -24,57 +24,64 @@
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
     --radius: 0.5rem;
-
-
     --bg-primary: #fafafa;
+    --bg-primary: #f6f6f3;
     --text-primary: #18181b;
     --text-secondary: #52525b;
     --text-muted: #71717a;
     --border-primary: #e5e7eb;
     --border-secondary: #d4d4d8;
-
+    --border-primary: #e5e5de;
+    --border-secondary: #d5d5cd;
     --accent-primary: #d89b1d;
     --accent-hover: #b97a00;
     --accent-light: #FFF8E8;
     --accent-text: #B7791F;
-
+    --link-prominent-green: #059669;
+    --link-prominent-green-hover: #047857;
     --button-explore-bg: #fcfcfc;
     --button-explore-border: #e5e7eb;
+    --button-explore-bg: #fdfdfc;
+    --button-explore-border: #e5e5de;
     --button-explore-text: #18181b;
-
     --card-bg: #ffffff;
     --card-border: #e5e7eb;
-
+    --card-bg: #fcfcfb;
+    --card-border: #e5e5de;
     --panel-bg: #f4f4f5;
     --panel-border: #e5e7eb;
+    --panel-bg: #f0f0ed;
+    --panel-border: #e5e5de;
     --panel-text: #18181b;
-
     --cross-accent: #d89b1d;
     --cross-accent-rgba: rgba(216, 155, 29, 0.6);
     --cross-trigger-bg: rgba(255, 255, 255, 0.85);
+    --cross-trigger-bg: rgba(253, 253, 251, 0.85);
     --cross-trigger-border: rgba(24, 24, 27, 0.08);
     --cross-trigger-color: rgba(24, 24, 27, 0.45);
     --cross-trigger-border-hover: rgba(24, 24, 27, 0.2);
     --cross-trigger-color-hover: rgba(24, 24, 27, 0.85);
-
     --curtain-bg-light-solid: #fafafa;
     --curtain-bg-light-fade: rgba(250, 250, 250, 0);
+    --curtain-bg-light-solid: #f6f6f3;
+    --curtain-bg-light-fade: rgba(246, 246, 243, 0);
     --curtain-text-light: rgba(24, 24, 27, 0.45);
-
     --curtain-bg-dark-solid: #282828;
     --curtain-bg-dark-fade: rgba(40, 40, 40, 0);
     --curtain-text-dark: rgba(251, 241, 199, 0.55);
-
     --svg-grid-line: rgba(24, 24, 27, 0.18);
     --svg-wire-active: #d89b1d;
     --svg-wire-inactive: #d4d4d8;
     --svg-box-bg: #ffffff;
     --svg-box-bg-sub: #f4f4f5;
     --svg-frame-border: #d4d4d8;
+    --svg-box-bg: #fcfcfb;
+    --svg-box-bg-sub: #f0f0ed;
+    --svg-frame-border: #d5d5cd;
     --svg-text-pri: #18181b;
     --svg-text-mut: #71717a;
-
     --bg-gradient: radial-gradient(circle at top, #ffffff 20%, #f1f1f4 100%);
+    --bg-gradient: radial-gradient(circle at top, #fafaf8 20%, #e7e7e2 100%);
     --card-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
   }
 
@@ -85,23 +92,20 @@
     --text-muted: #a89984;
     --border-primary: #3c3836;
     --border-secondary: #504945;
-
     --accent-primary: #fabd2f;
     --accent-hover: #d79921;
     --accent-light: #3c3836;
     --accent-text: #fabd2f;
-
+    --link-prominent-green: #10b981;
+    --link-prominent-green-hover: #34d399;
     --button-explore-bg: #32302f;
     --button-explore-border: #3c3836;
     --button-explore-text: #ebdbb2;
-
     --card-bg: #32302f;
     --card-border: #3c3836;
-
     --panel-bg: #1d2021;
     --panel-border: #3c3836;
     --panel-text: #ebdbb2;
-
     --cross-accent: #fabd2f;
     --cross-accent-rgba: rgba(250, 189, 47, 0.6);
     --cross-trigger-bg: rgba(40, 40, 40, 0.85);
@@ -109,11 +113,9 @@
     --cross-trigger-color: rgba(251, 241, 199, 0.5);
     --cross-trigger-border-hover: rgba(251, 241, 199, 0.3);
     --cross-trigger-color-hover: rgba(251, 241, 199, 0.8);
-
     --curtain-bg-solid: #282828;
     --curtain-bg-fade: rgba(40, 40, 40, 0);
     --curtain-text: rgba(251, 241, 199, 0.55);
-
     --svg-grid-line: rgba(251, 241, 199, 0.22);
     --svg-wire-active: #fabd2f;
     --svg-wire-inactive: #7c6f64;
@@ -122,7 +124,6 @@
     --svg-frame-border: #a89984;
     --svg-text-pri: #fbf1c7;
     --svg-text-mut: #a89984;
-
     --bg-gradient: none;
     --card-shadow: none;
   }
@@ -151,7 +152,6 @@ body.dark {
   color: var(--text-primary);
 }
 
-
 article.group.bg-theme-cardBg {
   box-shadow: var(--card-shadow, none);
 }
@@ -165,7 +165,6 @@ article.group.bg-theme-cardBg:hover {
   transform: translateY(-4px) !important;
   box-shadow: 0 8px 30px rgba(250, 189, 47, 0.04) !important;
 }
-
 
 span.bg-theme-accentLight {
   border-color: #F6D58C;
@@ -252,6 +251,15 @@ html.dark ::-webkit-scrollbar-thumb:hover {
 @keyframes line-draw {
   to {
     stroke-dashoffset: 0;
+  }
+}
+
+@keyframes carousel-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
   }
 }
 

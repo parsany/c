@@ -22,8 +22,8 @@ function lerpColor(a: number[], b: number[], t: number) {
 
 function getFireColor(infl: number, fi: number): [number, number, number] {
   const isDark = typeof document !== "undefined" && document.documentElement.classList.contains("dark");
-  const SLATE = isDark ? [51, 65, 85] : [148, 163, 184];
-  const GOLD = isDark ? [215, 201, 165] : [180, 142, 60];
+  const SLATE = isDark ? [51, 65, 85] : [51, 65, 85];
+  const GOLD = isDark ? [215, 201, 165] : [160, 100, 20];
   const ORG = [255, 140, 20];
   const RED = [210, 35, 10];
   const BRIGHT = [255, 210, 40];
@@ -46,6 +46,7 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
   const fireCanvasRef = useRef<HTMLCanvasElement>(null);
   const mouseRef = useRef({ x: -9999, y: -9999 });
   const smoothRef = useRef({ x: -9999, y: -9999 });
+  const autoPosRef = useRef({ x: -9999, y: -9999, angle: 0 });
   const rafRef = useRef<number>(0);
   const nodesRef = useRef<Array<{ x: number; y: number; phase: number; angle: number }>>([]);
   const roguesRef = useRef<Rogue[]>([]);
@@ -110,26 +111,29 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
   }, []);
 
   const spawnForTargets = useCallback((targets: Element[]) => {
+    if (roguesRef.current.length >= 45) return;
     const existing = new Set(roguesRef.current.map(r => r.targetEl));
     const next = [...roguesRef.current];
-    targets.forEach(target => {
-      if (existing.has(target)) return;
+    for (const target of targets) {
+      if (next.length >= 45) break;
+      if (existing.has(target)) continue;
       const rect = target.getBoundingClientRect();
-      const count = Math.max(1, Math.min(6, Math.round(rect.width * rect.height / 4000)));
+      const count = Math.max(1, Math.min(3, Math.round((rect.width * rect.height) / 6000)));
       for (let j = 0; j < count; j++) {
+        if (next.length >= 45) break;
         next.push({
           x: Math.random() * window.innerWidth,
           y: Math.random() * window.innerHeight,
           vx: 0, vy: 0,
           angle: Math.random() * Math.PI * 2,
           targetEl: target,
-          size: sizeRef.current + 1 + Math.random() * 4,
+          size: 5 + Math.random() * 3,
           fireInt: 0,
           eating: false,
           eatTimer: 0,
         });
       }
-    });
+    }
     roguesRef.current = next;
   }, []);
 
@@ -232,7 +236,8 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
       H = isFull ? window.innerHeight : section.offsetHeight;
       canvas.width = W;
       canvas.height = H;
-      const sp = Math.max(10, 76 - densityRef.current);
+      const effectiveDensity = isFull ? Math.min(28, densityRef.current) : densityRef.current;
+      const sp = Math.max(10, 76 - effectiveDensity);
       const cols = Math.ceil(W / sp) + 1;
       const rows = Math.ceil(H / sp) + 1;
       nodesRef.current = [];
@@ -279,19 +284,56 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
 
       ctx.clearRect(0, 0, W, H);
 
-      const sm = smoothRef.current;
-      const rm = mouseRef.current;
-      sm.x += (rm.x - sm.x) * 0.08;
-      sm.y += (rm.y - sm.y) * 0.08;
-
       const t = ts * 0.00055;
-      const R = radiusRef.current;
-      const SZ = sizeRef.current;
+      const R = phaseRef.current !== 'idle' ? 140 : radiusRef.current;
+      const SZ = phaseRef.current !== 'idle' ? 4 : sizeRef.current;
+
+      const rm = mouseRef.current;
+      const auto = autoPosRef.current;
+      let targetX: number;
+      let targetY: number;
+
+      if (rm.x !== -9999 && rm.y !== -9999) {
+        targetX = rm.x;
+        targetY = rm.y;
+        auto.x = rm.x;
+        auto.y = rm.y;
+      } else {
+        if (auto.x === -9999 || auto.y === -9999) {
+          auto.x = W * 0.5;
+          auto.y = H * 0.5;
+        }
+
+        auto.angle += 0.004;
+        const driftX = Math.sin(auto.angle * 1.2) * 0.65 + Math.cos(auto.angle * 0.6) * 0.35;
+        const driftY = Math.cos(auto.angle * 1.0) * 0.55 + Math.sin(auto.angle * 0.7) * 0.3;
+
+        auto.x += driftX;
+        auto.y += driftY;
+
+        const padX = W * 0.12;
+        const padY = H * 0.15;
+        if (auto.x < padX) auto.x += (padX - auto.x) * 0.05;
+        if (auto.x > W - padX) auto.x -= (auto.x - (W - padX)) * 0.05;
+        if (auto.y < padY) auto.y += (padY - auto.y) * 0.05;
+        if (auto.y > H - padY) auto.y -= (auto.y - (H - padY)) * 0.05;
+
+        targetX = auto.x;
+        targetY = auto.y;
+      }
+
+      const sm = smoothRef.current;
+      if (sm.x === -9999 || sm.y === -9999) {
+        sm.x = targetX;
+        sm.y = targetY;
+      } else {
+        sm.x += (targetX - sm.x) * 0.06;
+        sm.y += (targetY - sm.y) * 0.06;
+      }
 
       if (fireRef.current) fireIntRef.current = Math.min(1, fireIntRef.current + 0.004);
       else fireIntRef.current = Math.max(0, fireIntRef.current - 0.006);
       const fi = fireIntRef.current;
-
 
       const currentPhase = phaseRef.current;
       if (currentPhase === 'going_rogue') {
@@ -309,7 +351,7 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
 
         let target = node.phase + t;
 
-        if (currentPhase === 'idle' && sm.x !== -9999 && dist < R * 1.8) target = Math.atan2(dy, dx);
+        if (currentPhase === 'idle' && dist < R * 1.8) target = Math.atan2(dy, dx);
         let diff = target - node.angle;
         while (diff < -Math.PI) diff += Math.PI * 2;
         while (diff > Math.PI) diff -= Math.PI * 2;
@@ -499,8 +541,29 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
 
     const onMove = (e: MouseEvent) => {
       const rect = canvas.getBoundingClientRect();
-      mouseRef.current = { x: e.clientX - rect.left, y: e.clientY - rect.top };
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
+        mouseRef.current = { x, y };
+      } else {
+        mouseRef.current = { x: -9999, y: -9999 };
+      }
     };
+
+    const onTouchMove = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        const rect = canvas.getBoundingClientRect();
+        const touch = e.touches[0];
+        const x = touch.clientX - rect.left;
+        const y = touch.clientY - rect.top;
+        if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
+          mouseRef.current = { x, y };
+        } else {
+          mouseRef.current = { x: -9999, y: -9999 };
+        }
+      }
+    };
+
     const onLeave = () => { mouseRef.current = { x: -9999, y: -9999 }; };
 
     const handleScroll = () => {
@@ -512,6 +575,10 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
     const ro = new ResizeObserver(build);
     ro.observe(section);
     window.addEventListener("mousemove", onMove);
+    window.addEventListener("touchstart", onTouchMove, { passive: true });
+    window.addEventListener("touchmove", onTouchMove, { passive: true });
+    window.addEventListener("touchend", onLeave);
+    window.addEventListener("touchcancel", onLeave);
     document.addEventListener("mouseleave", onLeave);
     window.addEventListener("scroll", handleScroll);
     build();
@@ -519,6 +586,10 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
     return () => {
       ro.disconnect();
       window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("touchstart", onTouchMove);
+      window.removeEventListener("touchmove", onTouchMove);
+      window.removeEventListener("touchend", onLeave);
+      window.removeEventListener("touchcancel", onLeave);
       document.removeEventListener("mouseleave", onLeave);
       window.removeEventListener("scroll", handleScroll);
       cancelAnimationFrame(rafRef.current);
@@ -559,13 +630,15 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
             Hi, I&apos;m Parsa.
           </h1>
 
-          <p className="text-xl md:text-2xl text-theme-secondary leading-relaxed font-normal tracking-wide mb-8">
-            I build full-stack web apps — mainly with{" "}
-            <span className="text-theme-text font-semibold">TypeScript</span>,{" "}
-            <span className="text-theme-text font-semibold">Next.js</span>, and{" "}
-            <span className="text-theme-text font-semibold">NestJS</span>.
-            {" "}I&apos;ve shipped real products — sometimes solo, sometimes as part of teams of 7+ engineers and designers.
-          </p>
+         <p className="text-xl md:text-2xl text-theme-secondary leading-relaxed font-normal tracking-wide mb-8">
+  I build full-stack web apps end-to-end — from architecture to deployment
+  — mainly with{" "}
+  <span className="text-theme-text font-semibold">TypeScript</span>,{" "}
+  <span className="text-theme-text font-semibold">Next.js</span>, and{" "}
+  <span className="text-theme-text font-semibold">NestJS</span>. I&apos;ve
+  shipped real products, sometimes solo, sometimes with teams of 7+ engineers
+  and designers.
+</p>
 
           <div className="flex flex-wrap items-center gap-4 text-sm font-mono">
             <button
@@ -592,29 +665,54 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
         </div>
 
         {showTrigger && !panelOpen && (
-          <button
-            onClick={() => setPanelOpen(true)}
+          <div
+            className="absolute bottom-6 right-6 z-50 flex items-center gap-2 group select-none"
             data-no-destroy="true"
-            title="Cross field settings"
-            style={{
-              position: "absolute", bottom: "1.5rem", right: "1.5rem",
-              zIndex: 50,
-              background: "var(--cross-trigger-bg)",
-              border: "1px solid var(--cross-trigger-border)",
-              color: "var(--cross-trigger-color)",
-              cursor: "pointer",
-              width: "28px", height: "28px",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              fontSize: "13px",
-              animation: "trigIn 0.4s cubic-bezier(0.16,1,0.3,1)",
-              transition: "border-color 0.2s, color 0.2s",
-            }}
-            onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--cross-trigger-border-hover)"; (e.currentTarget as HTMLElement).style.color = "var(--cross-trigger-color-hover)"; }}
-            onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = "var(--cross-trigger-border)"; (e.currentTarget as HTMLElement).style.color = "var(--cross-trigger-color)"; }}
           >
-            <style>{`@keyframes trigIn { from { opacity:0; transform:scale(0.7) } to { opacity:1; transform:scale(1) } }`}</style>
-            ✛
-          </button>
+            {/* Slide-out badge label */}
+            <span className="hidden sm:inline-flex items-center px-2.5 py-1 rounded-md text-[11px] font-mono tracking-widest uppercase bg-theme-panelBg border border-theme-border text-theme-muted group-hover:text-theme-text shadow-md transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 translate-x-2">
+              Cross Options
+            </span>
+
+            <button
+              onClick={() => setPanelOpen(true)}
+              data-no-destroy="true"
+              title="Cross field settings"
+              className="relative overflow-hidden w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold border transition-all duration-300 group-hover:scale-110 active:scale-95"
+              style={{
+                background: "var(--cross-trigger-bg)",
+                borderColor: "var(--cross-trigger-border)",
+                color: "var(--cross-trigger-color)",
+              }}
+              onMouseEnter={e => {
+                const el = e.currentTarget as HTMLElement;
+                el.style.borderColor = "var(--cross-trigger-border-hover)";
+                el.style.color = "var(--cross-trigger-color-hover)";
+              }}
+              onMouseLeave={e => {
+                const el = e.currentTarget as HTMLElement;
+                el.style.borderColor = "var(--cross-trigger-border)";
+                el.style.color = "var(--cross-trigger-color)";
+              }}
+            >
+              {/* Curved flash / shimmer sweep */}
+              <span
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background: "linear-gradient(120deg, transparent 20%, rgba(255, 255, 255, 0.6) 50%, transparent 80%)",
+                  animation: "curvedFlash 4s ease-in-out infinite",
+                }}
+              />
+              <style>{`
+                @keyframes curvedFlash {
+                  0%, 65% { transform: translateX(-150%) skewX(-25deg); opacity: 0; }
+                  70% { opacity: 1; }
+                  85%, 100% { transform: translateX(200%) skewX(-25deg); opacity: 0; }
+                }
+              `}</style>
+              <span className="relative z-10 text-xs font-bold">✛</span>
+            </button>
+          </div>
         )}
 
         {panelOpen && (

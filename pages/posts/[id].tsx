@@ -45,7 +45,7 @@ export default function PostDetail({ post, allPosts }: PostDetailProps) {
   return (
     <article className="max-w-2xl mx-auto py-12">
       <Head>
-        <title>{post.title} | Parsa</title>
+        <title>{`${post.title} | Parsa`}</title>
         <meta name="description" content={post.description} />
         <link rel="canonical" href={`https://parsany.com/posts/${post.slug}`} key="canonical" />
       </Head>

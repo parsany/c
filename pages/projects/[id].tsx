@@ -9,6 +9,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Head from "next/head";
 import { ArrowLeft, ChevronLeft, ChevronRight, Calendar, Globe, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import OpenLinks from "@/components/OpenLinks";
 
 interface ProjectDetailProps {
@@ -18,6 +19,7 @@ interface ProjectDetailProps {
 export default function ProjectDetail({ project }: ProjectDetailProps) {
   const router = useRouter();
   const [activeIndex, setActiveIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
   const dragStartX = useRef<number | null>(null);
@@ -69,6 +71,9 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
 
   const handlePointerDown = (e: React.MouseEvent | React.TouchEvent) => {
     const isTouch = "touches" in e;
+    if (!isTouch) {
+      e.preventDefault();
+    }
 
     if (isTouch && e.touches.length === 2) {
       const dist = Math.hypot(
@@ -160,6 +165,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
 
   const handlePrev = useCallback(() => {
     if (project?.project_image) {
+      setDirection(-1);
       setActiveIndex((prev) =>
         prev === 0 ? project.project_image.length - 1 : prev - 1
       );
@@ -168,6 +174,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
 
   const handleNext = useCallback(() => {
     if (project?.project_image) {
+      setDirection(1);
       setActiveIndex((prev) =>
         prev === project.project_image.length - 1 ? 0 : prev + 1
       );
@@ -239,12 +246,12 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
     );
   }
 
-  const isNoIndex = ["esp", "msk", "taxiland", "goldenbat", "alzahra"].includes(project.slug);
+  const isNoIndex = ["esp", "msk", "taxiland", "goldenbat", "alzahra", "edu-platform"].includes(project.slug);
 
   return (
     <article className="max-w-2xl mx-auto py-12">
       <Head>
-        <title>{project.name} | Parsa</title>
+        <title>{`${project.name} | Parsa`}</title>
         <meta name="description" content={project.description} />
         {isNoIndex ? (
           <meta name="robots" content="noindex, nofollow" />
@@ -276,7 +283,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
               href={project.links[0].url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center space-x-1 font-bold text-theme-accent hover:text-theme-accentHover transition-colors"
+              className="inline-flex items-center space-x-1 font-bold text-[var(--link-prominent-green)] hover:text-[var(--link-prominent-green-hover)] transition-colors"
             >
               <Globe className="h-3.5 w-3.5" />
               <span>{project.links[0].label}</span>
@@ -286,7 +293,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center space-x-1 font-bold text-theme-accent hover:text-theme-accentHover transition-colors"
+              className="inline-flex items-center space-x-1 font-bold text-[var(--link-prominent-green)] hover:text-[var(--link-prominent-green-hover)] transition-colors"
             >
               <Globe className="h-3.5 w-3.5" />
               <span>Visit Website</span>
@@ -345,16 +352,30 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                 }
               }}
             >
-              <Image
-                src={project.project_image[activeIndex]}
-                alt={`${project.name} preview ${activeIndex + 1}`}
-                fill
-                sizes="800px"
-                priority
-                className="object-cover pointer-events-none"
-              />
+              <AnimatePresence initial={false} custom={direction} mode="popLayout">
+                <motion.div
+                  key={activeIndex}
+                  custom={direction}
+                  initial={{ opacity: 0, scale: 1.03 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.98 }}
+                  transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                  className="absolute inset-0 w-full h-full"
+                >
+                  <Image
+                    src={project.project_image[activeIndex]}
+                    alt={`${project.name} preview ${activeIndex + 1}`}
+                    fill
+                    sizes="800px"
+                    priority
+                    draggable={false}
+                    onDragStart={(e) => e.preventDefault()}
+                    className="object-cover pointer-events-none"
+                  />
+                </motion.div>
+              </AnimatePresence>
             </div>
-            <div 
+            <div
               className="absolute inset-0 pointer-events-none opacity-[0.03] dark:hidden"
               style={{
                 background: "linear-gradient(to top, var(--accent-primary) 0%, transparent 100%)"
@@ -395,7 +416,10 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                       key={idx}
                       onClick={(e) => {
                         e.stopPropagation();
-                        setActiveIndex(idx);
+                        if (idx !== activeIndex) {
+                          setDirection(idx > activeIndex ? 1 : -1);
+                          setActiveIndex(idx);
+                        }
                         e.currentTarget.blur();
                       }}
                       onDoubleClick={(e) => e.stopPropagation()}
@@ -406,12 +430,12 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                       aria-label={`Go to slide ${idx + 1}`}
                     >
                       {idx === activeIndex ? (
-                        <div 
+                        <div
                           className="h-full w-full"
                           style={{ backgroundColor: "var(--accent-primary)" }}
                         />
                       ) : idx < activeIndex ? (
-                        <div 
+                        <div
                           className="h-full w-full dark:!bg-white/70"
                           style={{
                             backgroundColor: "color-mix(in srgb, var(--accent-primary) 65%, transparent)"
@@ -493,15 +517,29 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                     transition: (lastDragPos.current || pinchStartDist.current) ? "none" : "transform 0.15s ease-out",
                   }}
                 >
-                  <Image
-                    src={project.project_image[activeIndex]}
-                    alt={`${project.name} full view`}
-                    fill
-                    sizes="100vw"
-                    className={`object-contain select-none ${zoomScale > 1 ? "cursor-grab active:cursor-grabbing" : "cursor-zoom-in"
-                      }`}
-                    priority
-                  />
+                  <AnimatePresence initial={false} custom={direction} mode="popLayout">
+                    <motion.div
+                      key={activeIndex}
+                      custom={direction}
+                      initial={{ opacity: 0, scale: 1.03 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.98 }}
+                      transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                      className="absolute inset-0 w-full h-full"
+                    >
+                      <Image
+                        src={project.project_image[activeIndex]}
+                        alt={`${project.name} full view`}
+                        fill
+                        sizes="100vw"
+                        draggable={false}
+                        onDragStart={(e) => e.preventDefault()}
+                        className={`object-contain select-none ${zoomScale > 1 ? "cursor-grab active:cursor-grabbing" : "cursor-zoom-in"
+                          }`}
+                        priority
+                      />
+                    </motion.div>
+                  </AnimatePresence>
                 </div>
               </div>
 
@@ -512,7 +550,10 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                       key={idx}
                       onClick={(e) => {
                         e.stopPropagation();
-                        setActiveIndex(idx);
+                        if (idx !== activeIndex) {
+                          setDirection(idx > activeIndex ? 1 : -1);
+                          setActiveIndex(idx);
+                        }
                       }}
                       onDoubleClick={(e) => e.stopPropagation()}
                       className="h-1 flex-1 relative rounded-full overflow-hidden bg-white/20 hover:bg-white/40 focus:outline-none transition-colors"

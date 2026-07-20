@@ -65,7 +65,7 @@ export const ProjectAcademic = [
 
 export const ProjectProfessional = [
     {
-        id: 2,
+        id: 3,
         slug: "charbag",
         name: "Charbag Ceramic Studio",
         description: "Online storefront and order management dashboard for a local ceramics studio.",
@@ -103,7 +103,7 @@ export const ProjectProfessional = [
             { label: "Website", url: "https://mkweb.parsany.com/en/landing" }
         ],
         role: "Frontend Developer (team)",
-        text: `# Battery MSK Client Website\n\nBuilt over 2 months (shared development cycle with ESP). The client-facing side of the Battery ESP monorepo — same codebase, different brand. Built and styled the public storefront and warranty lookup pages. See the ESP project for full technical details.\n\n- **Role**: Frontend Developer (team)\n- **Timeline**: Dec 2025 – June 2026\n- **Stack**: Next.js, Tailwind CSS, NestJS (shared backend)`
+        text: `# Battery MSK Client Website\n\nBuilt over 2 months (shared development cycle with ESP), in collaboration with a team. The client-facing side of the Battery ESP monorepo — same codebase, different brand, implemented 1:1 from the design across both FA and EN locales. Built and styled the public storefront and warranty lookup pages. See the ESP project for full technical details.\n\n- **Role**: Frontend Developer (team)\n- **Timeline**: Dec 2025 – June 2026\n- **Stack**: Next.js, Tailwind CSS, NestJS (shared backend)`
     },
     {
         id: 7,
@@ -129,7 +129,7 @@ export const ProjectProfessional = [
             { label: "Dashboard", url: "https://edash.parsany.com/" }
         ],
         role: "Fullstack Developer (team)",
-        text: `# Battery ESP/MSK E-Commerce\n\nBuilt over 2 months. An e-commerce website for two battery brands sharing the same backend. The interesting part was the warranty verification system — customers enter a serial number and the system validates it against a database of generated keys.\n\n- **Role**: Fullstack Developer (team)\n- **Timeline**: Dec 2025 – June 2026\n- **Stack**: Turborepo monorepo, NestJS, Next.js, PostgreSQL`
+        text: `# Battery ESP/MSK E-Commerce\n\nBuilt over 2 months, in collaboration with a team. An e-commerce website for two battery brands sharing the same backend. The interesting part was the warranty verification system — customers enter a serial number and the system validates it against a database of generated keys.\n\n- **Role**: Fullstack Developer (team)\n- **Timeline**: Dec 2025 – June 2026\n- **Stack**: Turborepo monorepo, NestJS, Next.js, PostgreSQL`
     },
     {
         id: 6,
@@ -139,15 +139,21 @@ export const ProjectProfessional = [
         date: "Jan 2026 – Mar 2026",
         image: "/professional/atrafian/atrafian-landing.webp",
         project_image: [
-            "/professional/atrafian/atrafian-landing.webp",
-            "/professional/atrafian/atrafian-chat.webp",
-            "/professional/atrafian/atrafian-mobile-radar.webp",
-            "/professional/atrafian/atrafian-story.webp",
-            "/professional/atrafian/atrafian-profile.webp",
-            "/professional/atrafian/atrafian-dash-main.webp",
-            "/professional/atrafian/atrafian-dash-users.webp",
-            "/professional/atrafian/atrafian-dash-support.webp",
-            "/professional/atrafian/atrafian-dash-access.webp"
+            "/professional/atrafian/im0.webp",
+            "/professional/atrafian/im1.webp",
+            "/professional/atrafian/im2.webp",
+            "/professional/atrafian/im3.webp",
+            "/professional/atrafian/im4.webp",
+            "/professional/atrafian/im5.webp",
+            "/professional/atrafian/im6.webp",
+            "/professional/atrafian/im7.webp",
+            "/professional/atrafian/im8.webp",
+            "/professional/atrafian/im9.webp",
+            "/professional/atrafian/im10.webp",
+            "/professional/atrafian/im11.webp",
+            "/professional/atrafian/im12.webp",
+            "/professional/atrafian/im13.webp",
+
         ],
         tag: ["NestJS", "Next.js", "Tailwind CSS", "Turborepo", "Socket.io", "PostgreSQL", "Payment Gateway"],
         isactive: true,
@@ -158,10 +164,33 @@ export const ProjectProfessional = [
         ],
         role: "Solo Fullstack Developer",
         highlights: ["Real-time Socket.io Chat", "Radar Navigation & Discovery", "AWS S3/MinIO Integration"],
-        text: `# Atrafian Chat & Social Ecosystem\n\nBuilt over 3 months, full-time. A social platform with real-time chat (personal, group, and support channels), a Capacitor-based mobile app, and a custom radar map for location-based discovery. Media (voice, images, video) goes through a self-hosted MinIO instance. Redis handles caching and OTP delivery.\n\nThe radar map was the hardest part — it needed to feel smooth on mobile while handling frequent location updates, still due to client's contraint instead of using React Native we settled for Capacitor.JS.\n\n- **Role**: Solo Fullstack & Mobile Developer\n- **Timeline**: Jan 2026 – Mar 2026\n- **Stack**: NestJS, Next.js, Socket.io, Redis, PostgreSQL, Turborepo`
+        text: `# Atrafian Chat & Social Ecosystem\n\nBuilt over 3 months, full-time, solo. A social platform with real-time chat (personal, group, and support channels), stories, chat requests, and media filters. The discovery map uses a solar-system-style layout — users are placed in orbiting belts sorted by online status and distance instead of live location tracking. Media (voice, images, video) goes through a self-hosted MinIO instance, with Redis handling caching and OTP delivery.\n\nBuilt a client-side NSFW detection pipeline (NSFW.js) that automatically flags and reports suspicious profiles to the admin panel at signup, cutting down manual moderation work. Users can also toggle their own NSFW filter, backed by a server-side NSFW and illegal-word filter. Rounded out with a support/ticketing system and a wallet for buying credits through a payment gateway.\n\nThe radar map was the hardest part — it needed to feel smooth on mobile while updating frequently, and a client constraint ruled out React Native, so we settled on Capacitor.JS.\n\n- **Role**: Solo Fullstack & Mobile Developer\n- **Timeline**: Jan 2026 – Mar 2026\n- **Stack**: NestJS, Next.js, Socket.io, Redis, PostgreSQL, Turborepo`
     },
     {
-        id: 3,
+        id: 2,
+        slug: "edu-platform",
+        name: "University Educational Platform",
+        description: "Full-stack educational platform for a university tutor — video courses hosted on S3, a markdown-powered blog with SEO, and a course management dashboard.",
+        date: "July 2026",
+        image: "/professional/edu-platform/im1.webp",
+        project_image: [
+            "/professional/edu-platform/im1.webp",
+            "/professional/edu-platform/im2.webp",
+            "/professional/edu-platform/im3.webp",
+            "/professional/edu-platform/im4.webp",
+            "/professional/edu-platform/im5.webp",
+            "/professional/edu-platform/im6.webp",
+        ],
+        tag: ["Next.js", "NestJS", "PostgreSQL", "S3", "Markdown", "SEO"],
+        isactive: false,
+        link: "",
+        links: [],
+        role: "Solo Fullstack Developer",
+        highlights: ["S3 Video Hosting", "Markdown Blog with SEO", "Course Management Dashboard"],
+        text: `# University Tutor Edu-Platform\n\nCurrently in development (Jul 2026). Built for a tutor from my university — they needed a place to host their video courses and write long-form blog posts without relying on third-party platforms.\n\nVideo content is uploaded to an S3-compatible bucket (self-hosted) and streamed directly on the platform. The blog supports full Markdown with automatic SEO metadata generation per post (Open Graph, canonical URLs, structured data). Instructors get a dashboard to manage courses, upload videos, and publish blog posts.\n\n- **Role**: Solo Fullstack Developer\n- **Timeline**: Jul 2026 – present\n- **Stack**: Next.js, NestJS, PostgreSQL, S3 (self-hosted)`
+    },
+    {
+        id: 1,
         slug: "himheh",
         name: "Himeh Publishing",
         description: "Book store and publishing platform. Users can browse, purchase, and track orders. Authors get a dashboard to upload and manage titles.",
@@ -206,10 +235,10 @@ export const ProjectProfessional = [
             { label: "Dashboard", url: "https://gdash.parsany.com/" }
         ],
         role: "Frontend Developer",
-        text: `# Goldenbat GPS Tracking\n\nBuilt over 5 months. Team project. I built the landing page and the fleet dashboard frontend (Next.js), also worked on the geofencing and the notification system; a teammate handled the mobile app. The backend ingests 10,000+ GPS coordinate updates per minute with sub-second latency — the dashboard plots live vehicle positions, historical paths, and geofencing alerts. Fleet operators use it to manage device groups and assignments.\n\n- **Role**: Frontend Developer\n- **Timeline**: Sep 2024 – Jan 2025\n- **Stack**: Next.js, tRPC, PostgreSQL\n\n currently down due to maintenance`
+        text: `# Goldenbat GPS Tracking\n\nBuilt over 5 months, in collaboration with a team. I built the landing page and the mobile PWA, and contributed to the fleet dashboard frontend (Next.js) — including work on geofencing and the notification system; a teammate handled the native mobile work. The backend ingests 10,000+ GPS coordinate updates per minute with sub-second latency — the dashboard plots live vehicle positions, historical paths, and geofencing alerts. Fleet operators use it to manage device groups and assignments.\n\n- **Role**: Frontend Developer\n- **Timeline**: Sep 2024 – Jan 2025\n- **Stack**: Next.js, tRPC, PostgreSQL\n\n currently down due to maintenance`
     },
     {
-        id: 1,
+        id: 0,
         slug: "taxiland",
         name: "Taxiland Ride-Sharing Platform",
         description: "Intercity ride-sharing platform. Built the web admin panel that dispatch operators use for driver assignment and support tickets.",
@@ -225,7 +254,7 @@ export const ProjectProfessional = [
         link: "",
         links: [],
         role: "Fullstack Developer",
-        text: `# Taxiland Ride-Sharing Platform\n\nBuilt over 4 months. Team collaboration. Intercity ride-sharing — passengers book trips, drivers pick them up. I worked across the stack: built the tRPC backend, contributed to the mobile app, and built the dispatch admin panel where operators assign drivers and handle support tickets. Site is currently down, screenshots are from when it was live.\n\n- **Role**: Fullstack Developer (team project)\n- **Timeline**: May 2024 – Aug 2024\n- **Stack**: Next.js, tRPC, PostgreSQL, Turborepo`
+        text: `# Taxiland Ride-Sharing Platform\n\nBuilt over 4 months, in collaboration with a team. Intercity ride-sharing — passengers book trips, drivers pick them up. I built the mobile app and contributed to the tRPC backend and the dispatch admin panel where operators assign drivers and handle support tickets. Site is currently down, screenshots are from when it was live.\n\n- **Role**: Fullstack Developer (team project)\n- **Timeline**: May 2024 – Aug 2024\n- **Stack**: Next.js, tRPC, PostgreSQL, Turborepo`
     },
     {
         id: 4,
@@ -246,6 +275,6 @@ export const ProjectProfessional = [
             { label: "Website", url: "https://az.parsany.com/landing" }
         ],
         role: "Frontend Developer",
-        text: `# Alzahra Gold Wholesaler B2B Platform\n\nBuilt in 1.5 months. Frontend only — a B2B platform for gold wholesale buyers. I built the landing page (2 weeks) and contributed to the buyer dashboard (1 month) on top of a Django REST API handled by the rest of the team. Landing page hit a desktop Lighthouse score of 99. Customers log in to see pricing, place orders, and track transactions through a multi-step purchasing workflow.\n\n- **Role**: Frontend Developer\n- **Timeline**: Mar 2024 – Apr 2024\n- **Stack**: Next.js, Tailwind CSS (backend: Django REST, not mine)`
+        text: `# Alzahra Gold Wholesaler B2B Platform\n\nBuilt in 1.5 months, in collaboration with a team. A B2B platform for gold wholesale buyers, built on top of a Django REST API handled by the rest of the team. I built the landing page fully and contributed to the buyer dashboard. Landing page hit a desktop Lighthouse score of 99. Customers log in to see pricing, place orders, and track transactions through a multi-step purchasing workflow.\n\n- **Role**: Frontend Developer\n- **Timeline**: Mar 2024 – Apr 2024\n- **Stack**: Next.js, Tailwind CSS (backend: Django REST, not mine)`
     }
 ];

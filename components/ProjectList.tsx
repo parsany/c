@@ -50,7 +50,7 @@ function ProjectCard({
   if (isProfessional) {
     return (
       <article
-        className="group relative flex flex-col justify-between bg-theme-cardBg border border-theme-cardBorder hover:border-theme-accent/60 rounded-xl p-5 md:p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(37,99,235,0.04)] dark:hover:shadow-[0_8px_30px_rgba(250,189,47,0.04)] focus-within:ring-2 focus-within:ring-theme-accent/50 focus-within:outline-none"
+        className="group relative flex flex-col justify-between bg-theme-cardBg border border-theme-cardBorder rounded-xl p-5 md:p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(37,99,235,0.04)] dark:hover:shadow-[0_8px_30px_rgba(250,189,47,0.04)] focus-within:ring-2 focus-within:ring-theme-accent/50 focus-within:outline-none"
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
@@ -60,7 +60,7 @@ function ProjectCard({
             tabIndex={0}
           >
             {slug ? (
-              <Link href={`/projects/${slug}`} className="block w-full h-full">
+              <Link href={`/projects/${slug}`} prefetch={true} className="block w-full h-full">
                 <ProjectCarousel
                   images={projectImages || (image ? [image] : [])}
                   isHovered={isHovered}
@@ -79,7 +79,7 @@ function ProjectCard({
           <div className="space-y-2">
             <h3 className="text-lg font-semibold text-theme-text group-hover:text-theme-accent transition-colors">
               {slug ? (
-                <Link href={`/projects/${slug}`} className="focus:outline-none">
+                <Link href={`/projects/${slug}`} prefetch={true} className="focus:outline-none">
                   {name}
                   <span className="absolute inset-0 z-0" aria-hidden="true" />
                 </Link>
@@ -115,7 +115,7 @@ function ProjectCard({
                   href={links[0].url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center space-x-1 font-bold text-theme-accent hover:text-theme-accentHover hover:underline transition-colors"
+                  className="inline-flex items-center space-x-1 font-bold text-[var(--link-prominent-green)] hover:text-[var(--link-prominent-green-hover)] hover:underline transition-colors"
                 >
                   <span>{links[0].label}</span>
                   <ArrowRight className="h-3 w-3" />
@@ -125,7 +125,7 @@ function ProjectCard({
                   href={link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center space-x-1 font-bold text-theme-accent hover:text-theme-accentHover hover:underline transition-colors"
+                  className="inline-flex items-center space-x-1 font-bold text-[var(--link-prominent-green)] hover:text-[var(--link-prominent-green-hover)] hover:underline transition-colors"
                 >
                   <span>Live Site</span>
                   <ArrowRight className="h-3 w-3" />
@@ -138,6 +138,7 @@ function ProjectCard({
             {slug && (
               <Link
                 href={`/projects/${slug}`}
+                prefetch={true}
                 className="inline-flex items-center space-x-1 text-theme-muted hover:text-theme-text transition-colors"
                 aria-label={`View ${name} architectural details`}
               >
@@ -152,7 +153,7 @@ function ProjectCard({
 
   return (
     <article
-      className="group relative flex flex-col justify-between bg-theme-cardBg border border-theme-cardBorder hover:border-theme-accent/60 rounded-xl p-5 md:p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(37,99,235,0.04)] dark:hover:shadow-[0_8px_30px_rgba(250,189,47,0.04)] focus-within:ring-2 focus-within:ring-theme-accent/50 focus-within:outline-none"
+      className="group relative flex flex-col justify-between bg-theme-cardBg border border-theme-cardBorder rounded-xl p-5 md:p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(37,99,235,0.04)] dark:hover:shadow-[0_8px_30px_rgba(250,189,47,0.04)] focus-within:ring-2 focus-within:ring-theme-accent/50 focus-within:outline-none"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
@@ -258,7 +259,7 @@ function ProjectCard({
                 href={link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center space-x-1 font-bold text-theme-accent hover:text-theme-accentHover hover:underline transition-colors"
+                className="inline-flex items-center space-x-1 font-bold text-[var(--link-prominent-green)] hover:text-[var(--link-prominent-green-hover)] hover:underline transition-colors"
               >
                 <span>GitHub Repo</span>
                 <ArrowRight className="h-3 w-3" />
