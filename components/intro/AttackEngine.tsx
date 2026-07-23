@@ -210,10 +210,9 @@ export default function AttackEngine({
 
     const ss = (x: number) => x * x * (3 - 2 * x);
 
-    const drawCross = (
+    const addCrossPath = (
       c2d: CanvasRenderingContext2D,
-      cx: number, cy: number, len: number, ang: number,
-      r: number, g: number, b: number, op: number, lw: number
+      cx: number, cy: number, len: number, ang: number
     ) => {
       const cos = Math.cos(ang), sin = Math.sin(ang);
       const topY = -len * 0.45;
@@ -222,22 +221,55 @@ export default function AttackEngine({
       const ty = cy + cos * topY;
       const bx = cx - sin * botY;
       const by = cy + cos * botY;
-
       const barY = -len * 0.15;
       const barHalf = len * 0.42;
       const lx = cx - cos * barHalf - sin * barY;
       const ly = cy - sin * barHalf + cos * barY;
       const rx = cx + cos * barHalf - sin * barY;
       const ry = cy + sin * barHalf + cos * barY;
-
-      c2d.beginPath();
       c2d.moveTo(tx, ty);
       c2d.lineTo(bx, by);
       c2d.moveTo(lx, ly);
       c2d.lineTo(rx, ry);
+    };
+
+    const drawCross = (
+      c2d: CanvasRenderingContext2D,
+      cx: number, cy: number, len: number, ang: number,
+      r: number, g: number, b: number, op: number, lw: number
+    ) => {
+      c2d.beginPath();
+      addCrossPath(c2d, cx, cy, len, ang);
       c2d.strokeStyle = `rgba(${r},${g},${b},${op})`;
       c2d.lineWidth = lw;
       c2d.stroke();
+    };
+
+    type BatchEntry = { cx: number; cy: number; len: number; ang: number };
+    const batchMap = new Map<string, BatchEntry[]>();
+    const addToBatch = (
+      r: number, g: number, b: number, op: number, lw: number,
+      cx: number, cy: number, len: number, ang: number
+    ) => {
+      const opBucket = (Math.round(op * 15) / 15).toFixed(2);
+      const lwBucket = lw.toFixed(1);
+      const key = `${r},${g},${b},${opBucket},${lwBucket}`;
+      let arr = batchMap.get(key);
+      if (!arr) { arr = []; batchMap.set(key, arr); }
+      arr.push({ cx, cy, len, ang });
+    };
+    const flushBatches = (c2d: CanvasRenderingContext2D, lw: number) => {
+      for (const [key, entries] of batchMap) {
+        const parts = key.split(',');
+        const r = parts[0], g = parts[1], b = parts[2], op = parts[3];
+        const batchLw = parseFloat(parts[4]);
+        c2d.beginPath();
+        for (const e of entries) addCrossPath(c2d, e.cx, e.cy, e.len, e.ang);
+        c2d.strokeStyle = `rgba(${r},${g},${b},${op})`;
+        c2d.lineWidth = batchLw;
+        c2d.stroke();
+      }
+      batchMap.clear();
     };
 
     const draw = (ts: number) => {
@@ -315,6 +347,13 @@ export default function AttackEngine({
       const rf = rogueFlickerRef.current;
       const isDark = typeof document !== "undefined" && document.documentElement.classList.contains("dark");
 
+      const hasMouseInteraction = rm.x !== -9999 && rm.y !== -9999;
+      const isIdlePhase = currentPhase === 'idle';
+      if (isIdlePhase && !hasMouseInteraction && fi === 0 && rf === 0 && frameRef.current % 2 !== 0) {
+        rafRef.current = requestAnimationFrame(draw);
+        return;
+      }
+
       for (const node of nodesRef.current) {
         const dx = node.x - sm.x;
         const dy = node.y - sm.y;
@@ -360,8 +399,10 @@ export default function AttackEngine({
 
         const op = (0.02 + breathe * 0.02) * fireFlicker + infl * 0.45 + rf * (Math.sin(ts * 0.07 + node.phase * 3) * 0.5 + 0.5) * 0.3;
         const len = SZ * (1 + infl * 1.2);
-        drawCross(ctx, node.x, node.y, len, node.angle, drawR, drawG, drawB, Math.min(1, op), fi > 0 ? 1 + fi * 0.6 : 1);
+        const lw = fi > 0 ? 1 + fi * 0.6 : 1;
+        addToBatch(drawR, drawG, drawB, Math.min(1, op), lw, node.x, node.y, len, node.angle);
       }
+      flushBatches(ctx, 1);
 
       const fc = fireCanvasRef.current;
       const fctx = fc?.getContext("2d");
