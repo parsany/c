@@ -678,8 +678,16 @@ export default function AttackEngine({
     window.addEventListener("touchcancel", onLeave);
     document.addEventListener("mouseleave", onLeave);
     window.addEventListener("scroll", handleScroll);
-    build();
-    rafRef.current = requestAnimationFrame(draw);
+
+    const startLoop = () => {
+      build();
+      rafRef.current = requestAnimationFrame(draw);
+    };
+    if (document.readyState === "complete") {
+      startLoop();
+    } else {
+      window.addEventListener("load", startLoop, { once: true });
+    }
     return () => {
       ro.disconnect();
       window.removeEventListener("mousemove", onMove);
