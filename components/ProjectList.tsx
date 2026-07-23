@@ -284,6 +284,17 @@ function ProjectCard({
               <span className="text-theme-muted font-medium">Pending Release</span>
             )}
           </div>
+
+          {name.toLowerCase().includes("conway") && (
+            <button
+              onClick={() => window.dispatchEvent(new CustomEvent("start-minigame"))}
+              data-no-destroy="true"
+              className="inline-flex items-center text-xs font-mono text-emerald-600 dark:text-rose-400 hover:text-emerald-500 dark:hover:text-rose-300 font-bold transition-all cursor-pointer select-none"
+              title="Launch minigame"
+            >
+              [wanna play a game?]
+            </button>
+          )}
         </div>
       </div>
     </article>

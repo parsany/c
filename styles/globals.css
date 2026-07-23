@@ -445,3 +445,10 @@ html.dark ::-webkit-scrollbar-thumb:hover {
     transform: translateY(100%);
   }
 }
+
+body.all-eaten section,
+body.all-eaten div,
+body.all-eaten hr,
+body.all-eaten article {
+  border-color: transparent !important;
+}

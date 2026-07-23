@@ -82,23 +82,10 @@ export default function CrossPanel({
   const isDragging = React.useRef(false);
   const dragStart = React.useRef({ x: 0, y: 0 });
   const dragOffsetStart = React.useRef({ x: 0, y: 0 });
-  const handleMouseMoveRef = React.useRef<(e: MouseEvent) => void>(undefined);
-
-  React.useEffect(() => {
-    handleMouseMoveRef.current = (e: MouseEvent) => {
-      if (!isDragging.current) return;
-      const dx = e.clientX - dragStart.current.x;
-      const dy = e.clientY - dragStart.current.y;
-      setOffset({
-        x: dragOffsetStart.current.x + dx,
-        y: dragOffsetStart.current.y + dy,
-      });
-    };
-  }, []);
 
   const handleMouseDown = (e: React.MouseEvent) => {
     if (window.innerWidth < 640 || e.button !== 0) return;
-    if ((e.target as HTMLElement).closest('button')) return;
+    if ((e.target as HTMLElement).closest('button, input, a')) return;
 
     isDragging.current = true;
     setIsDraggingActive(true);
@@ -106,17 +93,24 @@ export default function CrossPanel({
     dragOffsetStart.current = { ...offset };
 
     const onMouseMove = (ev: MouseEvent) => {
-      handleMouseMoveRef.current?.(ev);
+      if (!isDragging.current) return;
+      const dx = ev.clientX - dragStart.current.x;
+      const dy = ev.clientY - dragStart.current.y;
+      setOffset({
+        x: dragOffsetStart.current.x + dx,
+        y: dragOffsetStart.current.y + dy,
+      });
     };
+
     const onMouseUp = () => {
       isDragging.current = false;
       setIsDraggingActive(false);
-      document.removeEventListener('mousemove', onMouseMove);
-      document.removeEventListener('mouseup', onMouseUp);
+      window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('mouseup', onMouseUp);
     };
 
-    document.addEventListener('mousemove', onMouseMove);
-    document.addEventListener('mouseup', onMouseUp);
+    window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('mouseup', onMouseUp);
 
     e.preventDefault();
   };

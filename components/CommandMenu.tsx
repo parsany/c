@@ -46,19 +46,14 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
     },
     {
       id: "nav-about",
-      title: "Go to About Section",
+      title: "Goto About Page",
       subtitle: "Read about my background & stack",
       category: "navigation",
       icon: <Globe className="h-4 w-4" />,
-      href: "/#about-section",
+      href: "/about",
       action: () => {
         onClose();
-        const el = document.getElementById("about-section");
-        if (el) {
-          el.scrollIntoView({ behavior: "smooth" });
-        } else {
-          router.push("/#about-section");
-        }
+        router.push("/about");
       },
     },
     {
@@ -329,7 +324,7 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
 
   useEffect(() => {
     router.prefetch("/#projects");
-    router.prefetch("/#about-section");
+    router.prefetch("/about");
     router.prefetch("/posts");
     router.prefetch("/#contact");
     const projectSlugs = ["charbag", "msk", "esp", "atrafian", "Himeh", "goldenbat", "taxiland", "alzahra"];
@@ -432,11 +427,10 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
                   const itemProps = {
                     onClick: cmd.action,
                     onMouseEnter: () => setSelectedIndex(idx),
-                    className: `w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-left transition-colors focus:outline-none ${
-                      isSelected
+                    className: `w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-left transition-colors focus:outline-none ${isSelected
                         ? "bg-theme-accentLight text-theme-accentText"
                         : "text-theme-muted hover:bg-theme-accentLight/40"
-                    }`,
+                      }`,
                     role: "option",
                     "aria-selected": isSelected,
                   };
@@ -445,19 +439,17 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
                     <>
                       <div className="flex items-center space-x-3">
                         <div
-                          className={`p-1.5 rounded ${
-                            isSelected
+                          className={`p-1.5 rounded ${isSelected
                               ? "bg-theme-accent text-white"
                               : "bg-theme-btnExploreBg text-theme-muted border border-theme-btnExploreBorder"
-                          }`}
+                            }`}
                         >
                           {cmd.icon}
                         </div>
                         <div>
                           <p
-                            className={`text-xs font-medium font-sans ${
-                              isSelected ? "text-theme-accentText font-bold" : "text-theme-text"
-                            }`}
+                            className={`text-xs font-medium font-sans ${isSelected ? "text-theme-accentText font-bold" : "text-theme-text"
+                              }`}
                           >
                             {cmd.title}
                           </p>
