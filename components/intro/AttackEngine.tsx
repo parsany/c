@@ -242,10 +242,6 @@ export default function AttackEngine({
 
     const draw = (ts: number) => {
       frameRef.current++;
-      if (typeof document !== "undefined" && document.hidden) {
-        rafRef.current = requestAnimationFrame(draw);
-        return;
-      }
       if (needsRebuild.current) { build(); needsRebuild.current = false; }
 
       ctx.clearRect(0, 0, W, H);

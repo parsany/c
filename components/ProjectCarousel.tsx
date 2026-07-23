@@ -46,7 +46,7 @@ export default function ProjectCarousel({
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [isHovered, totalImages]);
+  }, [isHovered, totalImages, index]);
 
   if (!images || totalImages === 0) {
     return (
