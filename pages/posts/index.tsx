@@ -119,7 +119,7 @@ export default function BlogArchive() {
       <div className="space-y-8">
         {filteredPosts.length === 0 ? (
           <p className="text-sm font-mono text-theme-muted py-8 text-center border border-dashed border-theme-border rounded-lg">
-            No articles match your criteria.
+            Stay Tuned!
           </p>
         ) : (
           filteredPosts.map((post) => {
