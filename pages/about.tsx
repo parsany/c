@@ -64,10 +64,10 @@ export default function AboutPage() {
           <span>How I Started</span>
         </h2>
         <p>
-          I started programming when I wanted to build tools for myself rather than using heavy, generic software that didn&apos;t fit my workflow. The itch to optimize existing systems led me down the rabbit hole of computer science.
+          I started programming when I wanted to build tools for myself in comparison to using heavy, generic software that didn&apos;t fit my workflow. The itch to optimize existing systems led me down the rabbit hole of computer science.
         </p>
         <p>
-          For a while that meant neural networks and ML — training models, reading papers, the academic side of things. But most people building real products needed websites, and if they wanted ML it was as a backend service, not a research project. So I moved into web development. Turns out a full stack has enough moving parts to stay interesting.
+          For a while that meant neural networks and ML — training models, reading papers, the academic side of things. But most people building real products needed websites, and if they wanted ML, it was as a backend service (like counting hair follicles in a test vial from uploaded photos, vectorizing the data, and serving predictions back to the UI) rather than a research project. So I moved into web development. Turns out a full stack has enough moving parts to stay interesting.
         </p>
         <p>
           Since then, I&apos;ve worked both solo and in teams of up to 7+ engineers. On the product side, I&apos;ve designed e-commerce websites, scaled location tracking infrastructure for GPS-tracking systems, and built real-time chat applications.

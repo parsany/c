@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Mail, Send, Linkedin, Github, Check, Copy } from "lucide-react";
+import Link from "next/link";
+import { Mail, Send, Linkedin, Github, Check, Copy, MessageSquare } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function ContactSection() {
@@ -50,10 +51,21 @@ export default function ContactSection() {
   return (
     <section className="pt-8 md:pt-12 pb-12 md:pb-20 w-full" id="contact">
       <div className="max-w-3xl mb-10">
-        <h2 className="text-2xl font-bold tracking-tight text-theme-text mb-2">Connect</h2>
-        <p className="text-theme-muted text-sm md:text-base mb-8">
-          Get in touch with me:
-        </p>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+          <div>
+            <h2 className="text-2xl font-bold tracking-tight text-theme-text mb-2">Connect</h2>
+            <p className="text-theme-muted text-sm md:text-base">
+              Get in touch with me:
+            </p>
+          </div>
+          <Link
+            href="/contact"
+            className="inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-theme-accent hover:bg-theme-accentHover text-white dark:text-theme-bg font-semibold text-xs transition-all shadow-sm self-start sm:self-auto"
+          >
+            <MessageSquare className="h-4 w-4" />
+            <span>Contact Form &rarr;</span>
+          </Link>
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <article className="flex items-center justify-between p-4 rounded-lg bg-theme-btnExploreBg border border-theme-border focus-within:ring-2 focus-within:ring-theme-accent/50">

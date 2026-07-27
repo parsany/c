@@ -103,7 +103,7 @@ export const ProjectProfessional = [
             { label: "Website", url: "https://mkweb.parsany.com/en/landing" }
         ],
         role: "Frontend Developer (team)",
-        text: `# Battery MSK Client Website\n\nBuilt over 2 months (shared development cycle with ESP), in collaboration with a team. The client-facing side of the Battery ESP monorepo — same codebase, different brand, implemented 1:1 from the design across both FA and EN locales. Built and styled the public storefront and warranty lookup pages. See the ESP project for full technical details.\n\n- **Role**: Frontend Developer (team)\n- **Timeline**: Dec 2025 – June 2026\n- **Stack**: Next.js, Tailwind CSS, NestJS (shared backend)`
+        text: `# Battery MSK Client Website\n\n (shared development cycle with ESP), in collaboration with a team. The client-facing side of the Battery ESP monorepo — same codebase, different brand, implemented 1:1 from the design across both FA and EN locales. Built and styled the public storefront and warranty lookup pages. See the ESP project for full technical details.\n\n- **Role**: Frontend Developer (team)\n- **Timeline**: Dec 2025 – June 2026\n- **Stack**: Next.js, Tailwind CSS, NestJS (shared backend)`
     },
     {
         id: 7,
@@ -129,7 +129,7 @@ export const ProjectProfessional = [
             { label: "Dashboard", url: "https://edash.parsany.com/" }
         ],
         role: "Fullstack Developer (team)",
-        text: `# Battery ESP/MSK E-Commerce\n\nBuilt over 2 months, in collaboration with a team. An e-commerce website for two battery brands sharing the same backend. The interesting part was the warranty verification system — customers enter a serial number and the system validates it against a database of generated keys.\n\n- **Role**: Fullstack Developer (team)\n- **Timeline**: Dec 2025 – June 2026\n- **Stack**: Turborepo monorepo, NestJS, Next.js, PostgreSQL`
+        text: `# Battery ESP/MSK E-Commerce\n\n built in collaboration with a team. An e-commerce website for two battery brands sharing the same backend. The interesting part was the warranty verification system — customers enter a serial number and the system validates it against a database of generated keys.\n\n- **Role**: Fullstack Developer (team)\n- **Timeline**: Dec 2025 – June 2026\n- **Stack**: Turborepo monorepo, NestJS, Next.js, PostgreSQL`
     },
     {
         id: 6,

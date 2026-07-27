@@ -1,4 +1,6 @@
 import React from "react";
+import Link from "next/link";
+import { Mail, ArrowUpRight } from "lucide-react";
 
 interface HeroContentProps {
   onOpenCommandMenu: () => void;
@@ -21,10 +23,28 @@ export default function HeroContent({ onOpenCommandMenu }: HeroContentProps) {
         and designers.
       </p>
 
-      <div className="flex flex-wrap items-center gap-4 text-sm font-mono">
+      <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-sm font-medium">
+        <a
+          href="/resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center space-x-2 px-5 py-2.5 rounded-lg bg-theme-accent hover:bg-theme-accentHover text-white dark:text-theme-bg font-semibold transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 select-none"
+        >
+          <span>Download Resume</span>
+          <ArrowUpRight className="h-4 w-4" />
+        </a>
+
+        <Link
+          href="/contact"
+          className="flex items-center space-x-2 px-5 py-2.5 rounded-lg bg-theme-btnExploreBg border border-theme-btnExploreBorder hover:border-theme-accent text-theme-btnExploreText hover:text-theme-text transition-all select-none"
+        >
+          <span>Get in touch</span>
+          <Mail className="h-4 w-4 text-theme-muted" />
+        </Link>
+
         <button
           onClick={onOpenCommandMenu}
-          className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-theme-btnExploreBg border border-theme-btnExploreBorder hover:border-theme-accent text-theme-btnExploreText hover:text-theme-text transition-all select-none"
+          className="flex items-center space-x-2 px-4 py-2.5 rounded-lg bg-theme-btnExploreBg border border-theme-btnExploreBorder hover:border-theme-accent text-theme-btnExploreText hover:text-theme-text transition-all select-none font-mono text-xs"
           aria-label="Open command menu"
         >
           <span>Explore Menu</span>
@@ -32,16 +52,6 @@ export default function HeroContent({ onOpenCommandMenu }: HeroContentProps) {
             ⌘K
           </kbd>
         </button>
-
-        <a
-          href="/resume.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-theme-accent hover:bg-theme-accentHover text-white dark:text-theme-bg font-semibold transition-all shadow-sm hover:shadow select-none"
-        >
-          <span>Download Resume</span>
-          <span>&rarr;</span>
-        </a>
       </div>
     </>
   );

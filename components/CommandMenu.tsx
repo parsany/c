@@ -69,6 +69,18 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       },
     },
     {
+      id: "nav-contact-page",
+      title: "Go to Contact Page (/contact)",
+      subtitle: "Send a message via contact form",
+      category: "navigation",
+      icon: <Globe className="h-4 w-4" />,
+      href: "/contact",
+      action: () => {
+        onClose();
+        router.push("/contact");
+      },
+    },
+    {
       id: "nav-contact",
       title: "Go to Contact Section",
       subtitle: "Scroll to get in touch details",
@@ -326,6 +338,7 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
     router.prefetch("/#projects");
     router.prefetch("/about");
     router.prefetch("/posts");
+    router.prefetch("/contact");
     router.prefetch("/#contact");
     const projectSlugs = ["charbag", "msk", "esp", "atrafian", "Himeh", "goldenbat", "taxiland", "alzahra"];
     projectSlugs.forEach((slug) => {
