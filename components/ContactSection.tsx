@@ -63,7 +63,7 @@ export default function ContactSection() {
             className="inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-theme-accent hover:bg-theme-accentHover text-white dark:text-theme-bg font-semibold text-xs transition-all shadow-sm self-start sm:self-auto"
           >
             <MessageSquare className="h-4 w-4" />
-            <span>Contact Form &rarr;</span>
+            <span>Get in Tocuh!</span>
           </Link>
         </div>
 
