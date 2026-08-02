@@ -4,7 +4,7 @@ import HeroBadge from "./intro/HeroBadge";
 import HeroContent from "./intro/HeroContent";
 import AttackEngine from "./intro/AttackEngine";
 import { Phase } from "./intro/types";
-import Game from "@/GAME";
+import Game from "@/components/GAME";
 
 interface IntroSectionProps {
   onOpenCommandMenu: () => void;

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ImageFallback } from "./ImageFallback";
 
 interface ProjectCarouselProps {
   images: string[];
@@ -16,18 +17,23 @@ export default function ProjectCarousel({
 }: ProjectCarouselProps) {
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [failedImages, setFailedImages] = useState<{ [key: number]: boolean }>({});
   const timerRef = useRef<NodeJS.Timeout | null>(null);
   const touchStartRef = useRef<{ x: number; y: number } | null>(null);
 
-  const totalImages = images.length;
+  const totalImages = images ? images.length : 0;
   const duration = 3500;
 
   useEffect(() => {
     setIndex(0);
+    setFailedImages({});
     if (images && images.length > 0) {
-      images.forEach((src) => {
+      images.forEach((src, idx) => {
         const img = new window.Image();
         img.src = src;
+        img.onerror = () => {
+          setFailedImages((prev) => ({ ...prev, [idx]: true }));
+        };
       });
     }
   }, [images]);
@@ -49,11 +55,14 @@ export default function ProjectCarousel({
   }, [isHovered, totalImages, index]);
 
   if (!images || totalImages === 0) {
-    return (
-      <div className="w-full h-full bg-theme-btnExploreBg flex items-center justify-center text-xs text-theme-muted font-mono">
-        No preview available
-      </div>
-    );
+    return <ImageFallback label="(Image will be uploaded)" />;
+  }
+
+  const isCurrentFailed = failedImages[index];
+  const allFailed = Object.keys(failedImages).length === totalImages;
+
+  if (allFailed) {
+    return <ImageFallback label="(Image will be uploaded)" />;
   }
 
   const handlePrev = (e: React.MouseEvent) => {
@@ -108,7 +117,7 @@ export default function ProjectCarousel({
     <div
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      className="relative w-full h-full overflow-hidden select-none group/carousel bg-zinc-950"
+      className="relative w-full h-full overflow-hidden select-none group/carousel bg-theme-bg dark:bg-[#1d2021]"
     >
       <AnimatePresence initial={false} custom={direction} mode="popLayout">
         <motion.div
@@ -120,14 +129,19 @@ export default function ProjectCarousel({
           transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
           className="absolute inset-0 w-full h-full"
         >
-          <Image
-            src={images[index]}
-            alt={`${projectName} screenshot ${index + 1}`}
-            fill
-            sizes="(max-width: 768px) 100vw, 50vw"
-            priority={index === 0}
-            className="object-cover pointer-events-none"
-          />
+          {isCurrentFailed ? (
+            <ImageFallback label="(Image will be uploaded)" />
+          ) : (
+            <Image
+              src={images[index]}
+              alt={`${projectName} screenshot ${index + 1}`}
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority={index === 0}
+              onError={() => setFailedImages((prev) => ({ ...prev, [index]: true }))}
+              className="object-cover pointer-events-none"
+            />
+          )}
         </motion.div>
       </AnimatePresence>
 
@@ -139,11 +153,13 @@ export default function ProjectCarousel({
       />
       <div className="absolute inset-0 pointer-events-none hidden dark:block bg-gradient-to-t from-black/25 via-transparent to-black/10" />
 
-      <div className="absolute top-3 right-3 z-10 px-2 py-0.5 rounded-md bg-black/60 backdrop-blur-md border border-white/10 text-[9px] font-mono text-white/90">
-        {index + 1} / {totalImages}
-      </div>
+      {!allFailed && (
+        <div className="absolute top-3 right-3 z-10 px-2 py-0.5 rounded-md bg-black/60 backdrop-blur-md border border-white/10 text-[9px] font-mono text-white/90">
+          {index + 1} / {totalImages}
+        </div>
+      )}
 
-      {totalImages > 1 && (
+      {totalImages > 1 && !allFailed && (
         <>
           <button
             onClick={(e) => {
@@ -168,7 +184,7 @@ export default function ProjectCarousel({
         </>
       )}
 
-      {totalImages > 1 && (
+      {totalImages > 1 && !allFailed && (
         <div className="absolute bottom-3 md:bottom-2 inset-x-4 z-10 flex gap-1.5">
           {images.map((_, idx) => (
             <button
@@ -214,3 +230,4 @@ export default function ProjectCarousel({
     </div>
   );
 }
+

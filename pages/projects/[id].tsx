@@ -11,6 +11,7 @@ import Head from "next/head";
 import { ArrowLeft, ChevronLeft, ChevronRight, Calendar, Globe, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import OpenLinks from "@/components/OpenLinks";
+import { ImageFallback } from "@/components/ImageFallback";
 
 interface ProjectDetailProps {
   project: any;
@@ -21,6 +22,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [failedImages, setFailedImages] = useState<{ [key: number]: boolean }>({});
 
   const dragStartX = useRef<number | null>(null);
   const dragStartY = useRef<number | null>(null);
@@ -35,10 +37,14 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
   const lightboxContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    setFailedImages({});
     if (project?.project_image && project.project_image.length > 0) {
-      project.project_image.forEach((src: string) => {
+      project.project_image.forEach((src: string, idx: number) => {
         const img = new window.Image();
         img.src = src;
+        img.onerror = () => {
+          setFailedImages((prev) => ({ ...prev, [idx]: true }));
+        };
       });
     }
   }, [project?.project_image]);
@@ -315,7 +321,11 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
         )}
       </header>
 
-      {project.project_image && project.project_image.length > 0 && (
+      {(!project.project_image || project.project_image.length === 0 || Object.keys(failedImages).length === project.project_image.length) ? (
+        <div className="relative aspect-video w-full rounded-xl overflow-hidden mb-10 border border-theme-border shadow-sm">
+          <ImageFallback label="(Image will be uploaded)" />
+        </div>
+      ) : (
         <>
           <div className="relative aspect-video w-full rounded-xl overflow-hidden bg-[#1d2021] border border-theme-border mb-10 group">
             <div
@@ -362,16 +372,21 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                   transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
                   className="absolute inset-0 w-full h-full"
                 >
-                  <Image
-                    src={project.project_image[activeIndex]}
-                    alt={`${project.name} preview ${activeIndex + 1}`}
-                    fill
-                    sizes="800px"
-                    priority
-                    draggable={false}
-                    onDragStart={(e) => e.preventDefault()}
-                    className="object-cover pointer-events-none"
-                  />
+                  {failedImages[activeIndex] ? (
+                    <ImageFallback label="(Image will be uploaded)" />
+                  ) : (
+                    <Image
+                      src={project.project_image[activeIndex]}
+                      alt={`${project.name} preview ${activeIndex + 1}`}
+                      fill
+                      sizes="800px"
+                      priority
+                      draggable={false}
+                      onDragStart={(e) => e.preventDefault()}
+                      onError={() => setFailedImages((prev) => ({ ...prev, [activeIndex]: true }))}
+                      className="object-cover pointer-events-none"
+                    />
+                  )}
                 </motion.div>
               </AnimatePresence>
             </div>
@@ -527,17 +542,22 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                       transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
                       className="absolute inset-0 w-full h-full"
                     >
-                      <Image
-                        src={project.project_image[activeIndex]}
-                        alt={`${project.name} full view`}
-                        fill
-                        sizes="100vw"
-                        draggable={false}
-                        onDragStart={(e) => e.preventDefault()}
-                        className={`object-contain select-none ${zoomScale > 1 ? "cursor-grab active:cursor-grabbing" : "cursor-zoom-in"
-                          }`}
-                        priority
-                      />
+                      {failedImages[activeIndex] ? (
+                        <ImageFallback label="(Image will be uploaded)" />
+                      ) : (
+                        <Image
+                          src={project.project_image[activeIndex]}
+                          alt={`${project.name} full view`}
+                          fill
+                          sizes="100vw"
+                          draggable={false}
+                          onDragStart={(e) => e.preventDefault()}
+                          onError={() => setFailedImages((prev) => ({ ...prev, [activeIndex]: true }))}
+                          className={`object-contain select-none ${zoomScale > 1 ? "cursor-grab active:cursor-grabbing" : "cursor-zoom-in"
+                            }`}
+                          priority
+                        />
+                      )}
                     </motion.div>
                   </AnimatePresence>
                 </div>
