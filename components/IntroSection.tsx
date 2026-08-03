@@ -101,9 +101,8 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
 
       <section
         ref={sectionRef}
-        className={`relative pt-12 md:pt-20 pb-8 md:pb-12 border-b border-theme-border overflow-hidden ${
-          isMinigame ? "opacity-0 pointer-events-none" : "opacity-100 transition-opacity duration-300"
-        }`}
+        className={`relative pt-12 md:pt-20 pb-8 md:pb-12 border-b border-theme-border overflow-hidden ${isMinigame ? "opacity-0 pointer-events-none" : "opacity-100 transition-opacity duration-300"
+          }`}
       >
         <AttackEngine
           sectionRef={sectionRef}
@@ -137,12 +136,17 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
 
         <div className="relative z-10 max-w-3xl">
           <HeroBadge allEaten={allEaten} onStartGame={handleStartGame} />
-          <HeroContent onOpenCommandMenu={onOpenCommandMenu} />
+          <HeroContent
+            onOpenCommandMenu={onOpenCommandMenu}
+            showTrigger={showTrigger && !isMinigame}
+            panelOpen={panelOpen}
+            onOpenPanel={() => setPanelOpen(true)}
+          />
         </div>
 
         {showTrigger && !panelOpen && !isMinigame && (
           <div
-            className="absolute bottom-6 right-6 z-50 flex items-center gap-2 group select-none"
+            className="hidden sm:flex absolute bottom-6 right-6 z-50 items-center gap-2 group select-none"
             data-no-destroy="true"
           >
             <span className="hidden sm:inline-flex items-center px-2.5 py-1 rounded-md text-[11px] font-mono tracking-widest uppercase bg-theme-panelBg border border-theme-border text-theme-muted group-hover:text-theme-text shadow-md transition-all duration-300 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 translate-x-2">

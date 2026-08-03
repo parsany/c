@@ -629,8 +629,8 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
           &larr; Back to home
         </Link>
 
-         <Link href="/contact" className="hover:text-theme-text transition-colors">
-           get in touch
+        <Link href="/contact" className="hover:text-theme-text transition-colors">
+          get in touch!
         </Link>
       </footer>
     </article>

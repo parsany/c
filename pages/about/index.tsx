@@ -97,7 +97,14 @@ export default function AboutPage() {
         <Link href="/" className="hover:text-theme-text transition-colors">
           &larr; Back to home
         </Link>
-        <span>Open to work</span>
+        <Link
+          href="/resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-theme-text transition-colors"
+        >
+          Open to work - CV
+        </Link>
       </footer>
     </article>
   );

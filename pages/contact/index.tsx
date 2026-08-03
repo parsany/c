@@ -27,7 +27,7 @@ export default function ContactPage() {
           &larr; Back to home
         </Link>
         <Link href="/about" className="hover:text-theme-text transition-colors">
-          About &rarr;
+          About
         </Link>
       </footer>
     </article>

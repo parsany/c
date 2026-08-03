@@ -62,8 +62,7 @@ export default function ContactSection() {
             href="/contact"
             className="inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-theme-accent hover:bg-theme-accentHover text-white dark:text-theme-bg font-semibold text-xs transition-all shadow-sm self-start sm:self-auto"
           >
-            <MessageSquare className="h-4 w-4" />
-            <span>Get in Tocuh!</span>
+            <span>Get in Touch!</span>
           </Link>
         </div>
 
@@ -140,12 +139,6 @@ export default function ContactSection() {
       <div className="text-xs font-mono text-theme-muted flex flex-col sm:flex-row items-center justify-between border-t border-theme-border pt-6 gap-4">
         <p>© {new Date().getFullYear()} Parsa. All rights open.</p>
         <div className="flex items-center gap-6">
-          <button
-            onClick={() => window.dispatchEvent(new CustomEvent("toggle-burning"))}
-            className={`${isBurning ? "text-orange-500 font-bold" : "hover:text-theme-text"} transition-colors`}
-          >
-            burning
-          </button>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="hover:text-theme-text transition-colors"
