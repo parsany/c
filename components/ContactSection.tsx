@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import Link from "next/link";
 import { Mail, Send, Linkedin, Github, Check, Copy, MessageSquare } from "lucide-react";

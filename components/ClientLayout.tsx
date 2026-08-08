@@ -1,11 +1,11 @@
+"use client";
+
 import "@/styles/globals.css";
-import type { AppProps } from "next/app";
 import { useState, useEffect } from "react";
-import Head from "next/head";
 import CommandMenu from "@/components/CommandMenu";
 import { Sun, Moon } from "lucide-react";
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function ClientLayout({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">("dark");
   const [transitioningTheme, setTransitioningTheme] = useState<"light" | "dark" | null>(null);
@@ -29,8 +29,14 @@ export default function App({ Component, pageProps }: AppProps) {
       }
     };
 
+    const handleCustomOpenMenu = () => setIsOpen(true);
+
     window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    window.addEventListener("open-command-menu", handleCustomOpenMenu);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("open-command-menu", handleCustomOpenMenu);
+    };
   }, []);
 
   const toggleTheme = () => {
@@ -55,36 +61,13 @@ export default function App({ Component, pageProps }: AppProps) {
     }, 1000);
   };
 
-
-
   return (
     <>
-      <Head>
-        <title>Parsa | Personal Portfolio</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta charSet="utf-8" />
-        <meta
-          name="description"
-          content="Hi, I'm Parsa. I'm a Full-Stack Software Engineer building web apps and distributed backend systems with TypeScript, Next.js, and NestJS."
-        />
-        <meta
-          name="keywords"
-          content="Parsa, Software Engineer, TypeScript, Next.js, NestJS, Full-Stack, Portfolio"
-        />
-        <meta property="og:title" content="Parsa | Full-Stack Software Engineer" />
-        <meta
-          property="og:description"
-          content="Hi, I'm Parsa. I'm a Full-Stack Software Engineer building web apps and distributed backend systems with TypeScript, Next.js, and NestJS."
-        />
-        <meta property="og:type" content="website" />
-        <link rel="canonical" href="https://parsany.com" key="canonical" />
-      </Head>
-
       <div className="min-h-screen text-theme-text antialiased selection:bg-theme-accentLight selection:text-theme-accentText transition-colors duration-200">
         <div className="fixed top-4 right-4 md:top-6 md:right-6 z-50">
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-lg bg-theme-btnExploreBg hover:bg-theme-bg border border-theme-btnExploreBorder hover:border-theme-accent text-theme-btnExploreText hover:text-theme-text transition-all shadow-sm focus:outline-none"
+            className="p-2 rounded-lg bg-theme-btnExploreBg hover:bg-theme-bg border border-theme-btnExploreBorder hover:border-theme-accent text-theme-btnExploreText hover:text-theme-text transition-all shadow-sm focus:outline-none cursor-pointer"
             aria-label="Toggle Theme"
           >
             {theme === "light" ? (
@@ -96,7 +79,7 @@ export default function App({ Component, pageProps }: AppProps) {
         </div>
 
         <main className="max-w-4xl mx-auto px-6 py-4">
-          <Component {...pageProps} onOpenCommandMenu={() => setIsOpen(true)} />
+          {children}
         </main>
       </div>
 

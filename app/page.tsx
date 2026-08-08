@@ -5,14 +5,10 @@ import LatestWritings from "@/components/LatestWritings";
 import ProjectList from "@/components/ProjectList";
 import ContactSection from "@/components/ContactSection";
 
-interface HomeProps {
-  onOpenCommandMenu: () => void;
-}
-
-export default function Home({ onOpenCommandMenu }: HomeProps) {
+export default function Home() {
   return (
     <div className="space-y-4">
-      <IntroSection onOpenCommandMenu={onOpenCommandMenu} />
+      <IntroSection />
       <ProjectList />
       <LatestWritings />
       <AboutSection />

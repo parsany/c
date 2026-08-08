@@ -1,6 +1,39 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-slate-50: #fbf9f4;
+  --color-slate-100: #d7c9a5;
+  --color-slate-200: #cbbba0;
+  --color-slate-300: #bfae8a;
+  --color-slate-400: #a79774;
+  --color-slate-500: #8e8060;
+  --color-slate-600: #756a4e;
+  --color-slate-700: #5c533c;
+  --color-slate-800: #2d2d2d;
+  --color-slate-900: #222222;
+  --color-slate-950: #1a1a1a;
+
+  --color-theme-bg: var(--bg-primary);
+  --color-theme-text: var(--text-primary);
+  --color-theme-secondary: var(--text-secondary);
+  --color-theme-muted: var(--text-muted);
+  --color-theme-border: var(--border-primary);
+  --color-theme-border2: var(--border-secondary);
+  --color-theme-accent: var(--accent-primary);
+  --color-theme-accentHover: var(--accent-hover);
+  --color-theme-accentLight: var(--accent-light);
+  --color-theme-accentText: var(--accent-text);
+  --color-theme-btnExploreBg: var(--button-explore-bg);
+  --color-theme-btnExploreBorder: var(--button-explore-border);
+  --color-theme-btnExploreText: var(--button-explore-text);
+  --color-theme-cardBg: var(--card-bg);
+  --color-theme-cardBorder: var(--card-border);
+  --color-theme-panelBg: var(--panel-bg);
+  --color-theme-panelBorder: var(--panel-border);
+  --color-theme-panelText: var(--panel-text);
+}
 
 @font-face {
   font-family: 'Geist';

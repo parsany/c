@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useCallback } from "react";
 import SpaceInvadersEngine from "./SpaceInvadersEngine";
 import GameStatsModal from "./GameStatsModal";

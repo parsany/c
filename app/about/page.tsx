@@ -1,21 +1,21 @@
 import React from "react";
-import Head from "next/head";
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, Terminal, Code, Cpu } from "lucide-react";
 
+export const metadata: Metadata = {
+  title: "About Parsa | Full-Stack Software Engineer",
+  description:
+    "Parsa is a full-stack software engineer who builds web applications and experiments with machine learning.",
+  alternates: {
+    canonical: "https://parsany.com/about",
+  },
+};
+
 export default function AboutPage() {
   return (
     <article className="max-w-2xl mx-auto py-12">
-      <Head>
-        <title>About Parsa | Full-Stack Software Engineer</title>
-        <meta
-          name="description"
-          content="Parsa is a full-stack software engineer who builds web applications and experiments with machine learning."
-        />
-        <link rel="canonical" href="https://parsany.com/about" key="canonical" />
-      </Head>
-
       <Link
         href="/"
         className="inline-flex items-center space-x-2 text-xs font-mono text-theme-muted hover:text-theme-text transition-colors mb-8"

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { Mail, Copy, Check, Github, Linkedin, Send, ArrowUpRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useRef, useEffect, useState, useCallback } from "react";
 import CrossPanel from "./CrossPanel";
 import HeroBadge from "./intro/HeroBadge";
@@ -7,7 +9,7 @@ import { Phase } from "./intro/types";
 import Game from "@/components/GAME";
 
 interface IntroSectionProps {
-  onOpenCommandMenu: () => void;
+  onOpenCommandMenu?: () => void;
 }
 
 export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
@@ -137,7 +139,7 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
         <div className="relative z-10 max-w-3xl">
           <HeroBadge allEaten={allEaten} onStartGame={handleStartGame} />
           <HeroContent
-            onOpenCommandMenu={onOpenCommandMenu}
+            onOpenCommandMenu={onOpenCommandMenu || (() => window.dispatchEvent(new CustomEvent("open-command-menu")))}
             showTrigger={showTrigger && !isMinigame}
             panelOpen={panelOpen}
             onOpenPanel={() => setPanelOpen(true)}

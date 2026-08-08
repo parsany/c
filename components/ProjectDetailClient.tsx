@@ -1,4 +1,5 @@
-import { useRouter } from "next/router";
+"use client";
+
 import { useState, useEffect, useCallback, useRef } from "react";
 import { ProjectProfessional } from "@/public/JSONJS";
 import ReactMarkdown from "react-markdown";
@@ -7,18 +8,16 @@ import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 import Link from "next/link";
 import Image from "next/image";
-import Head from "next/head";
 import { ArrowLeft, ChevronLeft, ChevronRight, Calendar, Globe, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import OpenLinks from "@/components/OpenLinks";
 import { ImageFallback } from "@/components/ImageFallback";
 
-interface ProjectDetailProps {
+interface ProjectDetailClientProps {
   project: any;
 }
 
-export default function ProjectDetail({ project }: ProjectDetailProps) {
-  const router = useRouter();
+export default function ProjectDetailClient({ project }: ProjectDetailClientProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
@@ -244,28 +243,8 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [project?.project_image, isLightboxOpen, handlePrev, handleNext]);
 
-  if (!project) {
-    return (
-      <div className="min-h-[50vh] flex items-center justify-center text-sm font-mono text-theme-muted">
-        Loading...
-      </div>
-    );
-  }
-
-  const isNoIndex = ["esp", "msk", "taxiland", "goldenbat", "alzahra", "edu-platform"].includes(project.slug);
-
   return (
     <article className="max-w-2xl mx-auto py-12">
-      <Head>
-        <title>{`${project.name} | Parsa`}</title>
-        <meta name="description" content={project.description} />
-        {isNoIndex ? (
-          <meta name="robots" content="noindex, nofollow" />
-        ) : (
-          <link rel="canonical" href={`https://parsany.com/projects/${project.slug}`} key="canonical" />
-        )}
-      </Head>
-
       <Link
         href="/"
         className="inline-flex items-center space-x-2 text-xs font-mono text-theme-muted hover:text-theme-text transition-colors mb-8"
@@ -635,20 +614,4 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
       </footer>
     </article>
   );
-}
-
-export async function getStaticPaths() {
-  const paths = ProjectProfessional.map((project) => ({
-    params: { id: project.slug },
-  }));
-
-  return { paths, fallback: false };
-}
-
-export async function getStaticProps({ params }: { params: { id: string } }) {
-  const project = ProjectProfessional.find((item) => item.slug === params.id) || null;
-
-  return {
-    props: { project },
-  };
 }

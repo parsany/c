@@ -1,5 +1,7 @@
+"use client";
+
 import React, { useEffect } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { GameStats } from "./types";
 import { X, FileText, User, RotateCcw, Crosshair, Trophy, Target, Clock, ArrowRight } from "lucide-react";

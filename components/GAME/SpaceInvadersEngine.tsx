@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useRef } from "react";
 import { PlayerShip, Laser, Enemy, EnemyBullet, GameParticle, GameStats } from "./types";
 

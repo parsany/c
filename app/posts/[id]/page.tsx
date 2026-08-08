@@ -1,29 +1,51 @@
-import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
+import React from "react";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 import Link from "next/link";
-import Head from "next/head";
-import { ArrowLeft, Calendar, Clock, BookOpen } from "lucide-react";
+import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import Posts from "@/public/content/materials/PostsPage.json";
 
-interface PostDetailProps {
-  post: any;
-  allPosts: any[];
+export async function generateStaticParams() {
+  return Posts.map((post) => ({
+    id: post.slug,
+  }));
 }
 
-export default function PostDetail({ post, allPosts }: PostDetailProps) {
-  const router = useRouter();
-  const [showOtherBlogs, setShowOtherBlogs] = useState(false);
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const { id } = await params;
+  const post = Posts.find((item) => item.slug === id);
+  if (!post || post.active === false) {
+    return {
+      title: "Post Not Found | Parsa",
+    };
+  }
+  return {
+    title: `${post.title} | Parsa`,
+    description: post.description,
+    alternates: {
+      canonical: `https://parsany.com/posts/${post.slug}`,
+    },
+  };
+}
 
-  if (!post) {
-    return (
-      <div className="min-h-[50vh] flex items-center justify-center text-sm font-mono text-theme-muted">
-        Loading...
-      </div>
-    );
+export default async function PostDetailPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  const post = Posts.find((item) => item.slug === id);
+
+  if (!post || post.active === false) {
+    notFound();
   }
 
   const estimateReadTime = (body: string) => {
@@ -40,16 +62,8 @@ export default function PostDetail({ post, allPosts }: PostDetailProps) {
     });
   };
 
-  const otherPosts = allPosts.filter((p) => p.slug !== post.slug);
-
   return (
     <article className="max-w-2xl mx-auto py-12">
-      <Head>
-        <title>{`${post.title} | Parsa`}</title>
-        <meta name="description" content={post.description} />
-        <link rel="canonical" href={`https://parsany.com/posts/${post.slug}`} key="canonical" />
-      </Head>
-
       <div className="flex items-center justify-between mb-8">
         <Link
           href="/posts"
@@ -127,32 +141,4 @@ export default function PostDetail({ post, allPosts }: PostDetailProps) {
       </footer>
     </article>
   );
-}
-
-export async function getStaticPaths() {
-  const activePosts = Posts.filter((post) => post.active !== false);
-  const paths = activePosts.map((post) => ({
-    params: { id: post.slug },
-  }));
-
-  return { paths, fallback: false };
-}
-
-export async function getStaticProps({ params }: { params: { id: string } }) {
-  const post = Posts.find((item) => item.slug === params.id) || null;
-
-  if (!post || post.active === false) {
-    return {
-      notFound: true,
-    };
-  }
-
-  const activePosts = Posts.filter((post) => post.active !== false);
-
-  return {
-    props: {
-      post,
-      allPosts: activePosts,
-    },
-  };
 }

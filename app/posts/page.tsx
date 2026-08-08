@@ -1,21 +1,10 @@
-import { useState, useEffect } from "react";
-import Head from "next/head";
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { Search, Calendar, Clock, ArrowLeft } from "lucide-react";
 import Posts from "@/public/content/materials/PostsPage.json";
-
-interface Post {
-  id: string;
-  slug: string;
-  name: string;
-  title: string;
-  description: string;
-  date: string;
-  tags: string[];
-  body: string;
-  active?: boolean;
-}
 
 export default function BlogArchive() {
   const router = useRouter();
@@ -23,12 +12,6 @@ export default function BlogArchive() {
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
 
   const activePosts = Posts.filter((post) => post.active !== false);
-
-  useEffect(() => {
-    activePosts.forEach((post) => {
-      router.prefetch(`/posts/${post.slug}`);
-    });
-  }, [activePosts, router]);
 
   const estimateReadTime = (body: string) => {
     const words = (body || "").split(/\s+/).length;
@@ -56,15 +39,6 @@ export default function BlogArchive() {
 
   return (
     <div className="max-w-2xl mx-auto py-12">
-      <Head>
-        <title>Writings | Parsa</title>
-        <meta
-          name="description"
-          content="Parsa's writing on software engineering, machine learning experiments, and things I found interesting enough to write up."
-        />
-        <link rel="canonical" href="https://parsany.com/posts" key="canonical" />
-      </Head>
-
       <Link
         href="/"
         className="inline-flex items-center space-x-2 text-xs font-mono text-theme-muted hover:text-theme-text transition-colors mb-8"

@@ -1,11 +1,13 @@
+"use client";
+
 import React, { useRef, useEffect, useCallback } from "react";
 import { Phase, Rogue, lerpColor, getFireColor } from "./types";
 
 interface AttackEngineProps {
-  sectionRef: React.RefObject<HTMLElement>;
-  canvasRef: React.RefObject<HTMLCanvasElement>;
-  rogueCanvasRef: React.RefObject<HTMLCanvasElement>;
-  fireCanvasRef: React.RefObject<HTMLCanvasElement>;
+  sectionRef: React.RefObject<HTMLElement | null>;
+  canvasRef: React.RefObject<HTMLCanvasElement | null>;
+  rogueCanvasRef: React.RefObject<HTMLCanvasElement | null>;
+  fireCanvasRef: React.RefObject<HTMLCanvasElement | null>;
   phase: Phase;
   setPhase: React.Dispatch<React.SetStateAction<Phase>>;
   size: number;

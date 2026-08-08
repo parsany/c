@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, Folder, Zap, Globe, FileText, ArrowRight } from "lucide-react";
