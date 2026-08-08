@@ -1,2 +1,0 @@
-- move from pages rotuer to app router
-- fix layout stuff, add all SEO related stuff

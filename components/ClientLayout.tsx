@@ -78,7 +78,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
           </button>
         </div>
 
-        <main className="max-w-4xl mx-auto px-6 py-4">
+        <main className="max-w-4xl mx-auto px-4 sm:px-6 py-4">
           {children}
         </main>
       </div>
