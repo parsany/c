@@ -62,8 +62,26 @@ export default async function PostDetailPage({
     });
   };
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "description": post.description,
+    "datePublished": post.date,
+    "author": {
+      "@type": "Person",
+      "name": "Parsa",
+      "url": "https://parsany.com"
+    },
+    "url": `https://parsany.com/posts/${post.slug}`
+  };
+
   return (
     <article className="max-w-2xl mx-auto py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="flex items-center justify-between mb-8">
         <Link
           href="/posts"

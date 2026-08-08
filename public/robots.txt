@@ -5,5 +5,6 @@ Disallow: /projects/msk
 Disallow: /projects/taxiland
 Disallow: /projects/goldenbat
 Disallow: /projects/alzahra
+Disallow: /projects/k2n-solutions
 
 Sitemap: https://parsany.com/sitemap.xml

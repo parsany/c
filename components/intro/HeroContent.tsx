@@ -18,7 +18,7 @@ export default function HeroContent({
   return (
     <>
       <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-theme-text leading-[1.1] mb-6">
-        Hi, I&apos;m Parsa.
+        Hi, I&apos;m Parsa — Full-Stack Software Engineer.
       </h1>
 
       <p className="text-xl md:text-2xl text-theme-secondary leading-relaxed font-normal tracking-wide mb-8 max-w-3xl">

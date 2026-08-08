@@ -49,5 +49,27 @@ export default async function ProjectDetailPage({
     notFound();
   }
 
-  return <ProjectDetailClient project={project} />;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": project.name,
+    "description": project.description,
+    "applicationCategory": "DeveloperApplication",
+    "author": {
+      "@type": "Person",
+      "name": "Parsa",
+      "url": "https://parsany.com"
+    },
+    "url": `https://parsany.com/projects/${project.slug}`
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <ProjectDetailClient project={project} />
+    </>
+  );
 }
