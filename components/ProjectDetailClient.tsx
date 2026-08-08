@@ -386,7 +386,7 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
                     e.currentTarget.blur();
                   }}
                   onDoubleClick={(e) => e.stopPropagation()}
-                  className="absolute left-3.5 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-8 h-8 rounded-full bg-black/40 hover:bg-black/70 border border-white/10 text-white/80 hover:text-white hover:scale-105 active:scale-95 transition-all opacity-0 group-hover:opacity-100 focus-visible:opacity-100"
+                  className="absolute left-3.5 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-8 h-8 rounded-full bg-black/40 hover:bg-black/70 border border-white/10 text-white/80 hover:text-white hover:scale-105 active:scale-95 transition-all opacity-80 sm:opacity-0 sm:group-hover:opacity-100 focus-visible:opacity-100"
                   aria-label="Previous image"
                 >
                   <ChevronLeft className="h-5 w-5" />
@@ -398,7 +398,7 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
                     e.currentTarget.blur();
                   }}
                   onDoubleClick={(e) => e.stopPropagation()}
-                  className="absolute right-3.5 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-8 h-8 rounded-full bg-black/40 hover:bg-black/70 border border-white/10 text-white/80 hover:text-white hover:scale-105 active:scale-95 transition-all opacity-0 group-hover:opacity-100 focus-visible:opacity-100"
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center w-8 h-8 rounded-full bg-black/40 hover:bg-black/70 border border-white/10 text-white/80 hover:text-white hover:scale-105 active:scale-95 transition-all opacity-80 sm:opacity-0 sm:group-hover:opacity-100 focus-visible:opacity-100"
                   aria-label="Next image"
                 >
                   <ChevronRight className="h-5 w-5" />
@@ -417,25 +417,29 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
                         e.currentTarget.blur();
                       }}
                       onDoubleClick={(e) => e.stopPropagation()}
-                      className="h-1 flex-1 relative rounded-full overflow-hidden focus:outline-none transition-colors dark:!bg-white/20"
-                      style={{
-                        backgroundColor: "color-mix(in srgb, var(--accent-primary) 20%, transparent)"
-                      }}
+                      className="py-2.5 -my-2.5 flex-1 relative flex items-center focus:outline-none cursor-pointer"
                       aria-label={`Go to slide ${idx + 1}`}
                     >
-                      {idx === activeIndex ? (
-                        <div
-                          className="h-full w-full"
-                          style={{ backgroundColor: "var(--accent-primary)" }}
-                        />
-                      ) : idx < activeIndex ? (
-                        <div
-                          className="h-full w-full dark:!bg-white/70"
-                          style={{
-                            backgroundColor: "color-mix(in srgb, var(--accent-primary) 65%, transparent)"
-                          }}
-                        />
-                      ) : null}
+                      <div
+                        className="h-1 w-full rounded-full overflow-hidden transition-colors dark:!bg-white/20"
+                        style={{
+                          backgroundColor: "color-mix(in srgb, var(--accent-primary) 20%, transparent)"
+                        }}
+                      >
+                        {idx === activeIndex ? (
+                          <div
+                            className="h-full w-full"
+                            style={{ backgroundColor: "var(--accent-primary)" }}
+                          />
+                        ) : idx < activeIndex ? (
+                          <div
+                            className="h-full w-full dark:!bg-white/70"
+                            style={{
+                              backgroundColor: "color-mix(in srgb, var(--accent-primary) 65%, transparent)"
+                            }}
+                          />
+                        ) : null}
+                      </div>
                     </button>
                   ))}
                 </div>

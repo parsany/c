@@ -330,7 +330,7 @@ export const ProjectProfessional = [
   },
   {
     id: 3,
-    slug: "himheh",
+    slug: "himeh",
     name: "Himeh Publishing",
     description:
       "Book store and publishing platform. Users can browse, purchase, and track orders. Authors get a dashboard to upload and manage titles.",

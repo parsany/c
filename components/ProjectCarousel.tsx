@@ -195,36 +195,40 @@ export default function ProjectCarousel({
                 handleDotClick(e, idx);
                 e.currentTarget.blur();
               }}
-              className="h-1 flex-1 relative rounded-full overflow-hidden focus:outline-none transition-colors dark:!bg-white/20"
-              style={{
-                backgroundColor: "color-mix(in srgb, var(--accent-primary) 20%, transparent)"
-              }}
+              className="py-2.5 -my-2.5 flex-1 relative flex items-center focus:outline-none cursor-pointer"
               aria-label={`Go to slide ${idx + 1}`}
             >
-              {idx === index && isHovered && (
-                <div
-                  key={index}
-                  className="h-full w-full origin-left"
-                  style={{
-                    backgroundColor: "var(--accent-primary)",
-                    animation: `carousel-progress ${duration}ms linear forwards`,
-                  }}
-                />
-              )}
-              {idx === index && !isHovered && (
-                <div
-                  className="h-full w-full"
-                  style={{ backgroundColor: "var(--accent-primary)" }}
-                />
-              )}
-              {idx < index && (
-                <div
-                  className="h-full w-full dark:!bg-white/70"
-                  style={{
-                    backgroundColor: "color-mix(in srgb, var(--accent-primary) 65%, transparent)"
-                  }}
-                />
-              )}
+              <div
+                className="h-1 w-full rounded-full overflow-hidden transition-colors dark:!bg-white/20"
+                style={{
+                  backgroundColor: "color-mix(in srgb, var(--accent-primary) 20%, transparent)"
+                }}
+              >
+                {idx === index && isHovered && (
+                  <div
+                    key={index}
+                    className="h-full w-full origin-left"
+                    style={{
+                      backgroundColor: "var(--accent-primary)",
+                      animation: `carousel-progress ${duration}ms linear forwards`,
+                    }}
+                  />
+                )}
+                {idx === index && !isHovered && (
+                  <div
+                    className="h-full w-full"
+                    style={{ backgroundColor: "var(--accent-primary)" }}
+                  />
+                )}
+                {idx < index && (
+                  <div
+                    className="h-full w-full dark:!bg-white/70"
+                    style={{
+                      backgroundColor: "color-mix(in srgb, var(--accent-primary) 65%, transparent)"
+                    }}
+                  />
+                )}
+              </div>
             </button>
           ))}
         </div>
