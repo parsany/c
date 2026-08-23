@@ -263,6 +263,12 @@ html.dark ::-webkit-scrollbar-thumb:hover {
   outline-offset: 4px;
 }
 
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: none !important;
+}
+
 @keyframes flow-right {
   0% {
     stroke-dashoffset: 24;
@@ -500,4 +506,42 @@ body.all-eaten div,
 body.all-eaten hr,
 body.all-eaten article {
   border-color: transparent !important;
+}
+
+/* Landing Page Styles */
+.landing-root {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.landing-root > *:not(.landing-canvas) {
+  position: relative;
+  z-index: 1;
+}
+
+.projects-track {
+  display: flex;
+  flex-direction: row;
+  will-change: transform;
+}
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
 }

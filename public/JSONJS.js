@@ -61,8 +61,8 @@ export const ProjectAcademic = [
 ];
 
 export const ProjectProfessional = [
-    {
-    id: 11,
+  {
+    id: 5,
     slug: "project-luna",
     name: "Project Luna",
     description:
@@ -81,20 +81,20 @@ export const ProjectProfessional = [
       "MinIO",
       "Tailwind CSS",
     ],
-    isactive: true,
+    isactive: false,
     link: "",
     links: [],
-    role: "Solo Fullstack Developer",
+    role: "Lead Fullstack Developer",
     highlights: [
       "Inventory Grid",
       "Bulk Matrix Cart with Live Tier Pricing",
       "Role-based Admin / Manufacturer / Store Panels",
       "OTP Auth + Strict RBAC",
     ],
-    text: `# Project Luna\n\nOngoing full-stack platform for the power industry.\n\nBuilt as a Turborepo monorepo with a NestJS API, Next.js shared design system, Prisma + PostgreSQL, Redis for OTP, and MinIO for media. Strict role-based access keeps manufacturers, stores, and admins completely isolated while sharing the same backend.\n\n- **Role**: Solo Fullstack Developer\n- **Timeline**: Jun 2026 – Present\n- **Stack**: NestJS, Next.js, Turborepo, Prisma, PostgreSQL, Redis, MinIO, Tailwind CSS`,
+    text: `# Project Luna\n\nOngoing platform for the power industry.\n\nBuilt as a Turborepo monorepo with a NestJS API, Next.js shared design system, Prisma + PostgreSQL, Redis for OTP, and MinIO for media. Strict role-based access keeps manufacturers, stores, and admins completely isolated while sharing the same backend + delegating some tasks.\n\n- **Role**: Fullstack Developer\n- **Timeline**: Jun 2026 – Present\n- **Stack**: NestJS, Next.js, Turborepo, Prisma, PostgreSQL, Redis, MinIO, Tailwind CSS`,
   },
   {
-    id: 10,
+    id: 8,
     slug: "k2n-solutions",
     name: "K2N Solutions Inc.",
     description:
@@ -108,19 +108,18 @@ export const ProjectProfessional = [
       "/professional/k2ninc/services.webp",
       "/professional/k2ninc/mobile-carousel.webp",
     ],
-    tag: ["Next.js", "Tailwind CSS", "Static Export", "cPanel"],
+    tag: ["Next.js", "Tailwind CSS", "cPanel"],
     isactive: true,
-    link: "https://k2ninc.parsany.com/",
+    link: "https://k2ninc.com",
     links: [
-      { label: "Live Demo", url: "https://k2ninc.parsany.com/" },
-     { label: "Website", url: "https://k2ninc.com" },],
+      { label: "Website", url: "https://k2ninc.com" },],
     role: "Solo Frontend Developer",
     highlights: [
       "Static Next.js Export",
       "Sub-second Load Times",
       "cPanel Image Management",
     ],
-    text: `# K2N Solutions Inc.\n\nBuilt the online presence for a licensed electrical engineering and consulting firm. The previous WordPress site was slow and did not reflect the technical credibility of a company with 35+ years of utility-grade experience.\n\nI pitched and delivered a fully static Next.js site focused on performance, clarity, and long-term maintainability. The architecture allows the client to update images directly through cPanel without rebuilds, while keeping the site extremely fast and secure.\n\n- **Role**: Solo Frontend Developer\n- **Timeline**: Jul 2026 – Aug 2026\n- **Stack**: Next.js (static export), Tailwind CSS`,
+    text: `# K2N Solutions Inc.\n\nBuilt the online presence for a licensed electrical engineering and consulting firm. The previous WordPress site was slow and did not reflect the technical credibility of a company with 35+ years of utility-grade experience.\n\nI pitched and delivered a fully static Next.js site focused on performance, clarity, and long-term maintainability. The architecture allows the client to update images directly through cPanel without rebuilds, while keeping the site extremely fast and secure. Next I'm planning to integrate more features using wp-admin as a headless CMS for services, clients and so on.\n\n- **Role**: Solo Frontend Developer\n- **Timeline**: Jul 2026 – Aug 2026\n- **Stack**: Next.js (static export), Tailwind CSS`,
   },
   {
     id: 9,
@@ -146,18 +145,18 @@ export const ProjectProfessional = [
       "PostgreSQL",
       "dual-Language",
     ],
-    isactive: false,
+    isactive: true,
     redirect: "msk",
     link: "https://epweb.parsany.com/",
     links: [
-      { label: "Website", url: "https://epweb.parsany.com/" },
-      { label: "Dashboard", url: "https://edash.parsany.com/" },
+      { label: "Live Demo", url: "https://epweb.parsany.com/" },
+      { label: "Dashboard Demo", url: "https://edash.parsany.com/" },
     ],
     role: "Fullstack Developer (team)",
     text: `# Battery ESP/MSK E-Commerce\n\n built in collaboration with a team. An e-commerce website for two battery brands sharing the same backend. The interesting part was the warranty verification system — customers enter a serial number and the system validates it against a database of generated keys.\n\n- **Role**: Fullstack Developer (team)\n- **Timeline**: Dec 2025 – June 2026\n- **Stack**: Turborepo monorepo, NestJS, Next.js, PostgreSQL`,
   },
   {
-    id: 8,
+    id: 6,
     slug: "msk",
     name: "Battery MSK Client Website",
     description:
@@ -179,21 +178,21 @@ export const ProjectProfessional = [
       "PostgreSQL",
       "dual-Language",
     ],
-    isactive: false,
+    isactive: true,
     redirect: "esp",
     link: "https://mkweb.parsany.com/en/landing",
-    links: [{ label: "Website", url: "https://mkweb.parsany.com/en/landing" }],
+    links: [{ label: "Live Demo", url: "https://mkweb.parsany.com/en/landing" }],
     role: "Frontend Developer (team)",
     text: `# Battery MSK Client Website\n\n (shared development cycle with ESP), in collaboration with a team. The client-facing side of the Battery ESP monorepo — same codebase, different brand, implemented 1:1 from the design across both FA and EN locales. Built and styled the public storefront and warranty lookup pages. See the ESP project for full technical details.\n\n- **Role**: Frontend Developer (team)\n- **Timeline**: Dec 2025 – June 2026\n- **Stack**: Next.js, Tailwind CSS, NestJS (shared backend)`,
   },
-   {
-    id: 7,
+  {
+    id: 10,
     slug: "atrafian",
     name: "Atrafian Chat & Social Ecosystem",
     description:
       "Real-time chat app with a native mobile build. WebSockets for messaging, Redis for caching, and a custom radar-based discovery map.",
     date: "Jan 2026 – Mar 2026",
-    image: "/professional/atrafian/atrafian-landing.webp",
+    image: "/professional/atrafian/im0.webp",
     project_image: [
       "/professional/atrafian/im0.webp",
       "/professional/atrafian/im1.webp",
@@ -224,7 +223,7 @@ export const ProjectProfessional = [
     links: [
       { label: "Live Site", url: "https://atrafian.ir" },
       {
-        label: "Mobile Demo",
+        label: "Mobile Repo Demo",
         url: "https://github.com/quantinity/Atrafian-App-Demo",
       },
     ],
@@ -234,16 +233,16 @@ export const ProjectProfessional = [
       "Radar Navigation & Discovery",
       "AWS S3/MinIO Integration",
     ],
-    text: `# Atrafian Chat & Social Ecosystem\n\nBuilt over 3 months, full-time, solo. A social platform with real-time chat (personal, group, and support channels), stories, chat requests, and media filters. The discovery map uses a solar-system-style layout — users are placed in orbiting belts sorted by online status and distance instead of live location tracking. Media (voice, images, video) goes through a self-hosted MinIO instance, with Redis handling caching and OTP delivery.\n\nBuilt a client-side NSFW detection pipeline (NSFW.js) that automatically flags and reports suspicious profiles to the admin panel at signup, cutting down manual moderation work. Users can also toggle their own NSFW filter, backed by a server-side NSFW and illegal-word filter. Rounded out with a support/ticketing system and a wallet for buying credits through a payment gateway.\n\nThe radar map was the hardest part — it needed to feel smooth on mobile while updating frequently, and a client constraint ruled out React Native, so we settled on Capacitor.JS.\n\n- **Role**: Solo Fullstack & Mobile Developer\n- **Timeline**: Jan 2026 – Mar 2026\n- **Stack**: NestJS, Next.js, Socket.io, Redis, PostgreSQL, Turborepo`,
+    text: `# Atrafian Chat & Social Ecosystem\n\nBuilt over 3 months, full-time, solo. A social platform with real-time chat (personal, group, and support channels), stories, chat requests, and media filters. The discovery map uses a solar-system-style layout — users are placed in orbiting belts sorted by online status and distance instead of live location tracking. Media (voice, images, video) goes through a self-hosted MinIO instance, with Redis handling caching and OTP delivery.\n\n- Architected NestJS/Socket.io real-time chat gateway with automated FCM push fallbacks for offline clients and dynamic socket room routing.\n- Eliminated N+1 query bottlenecks in group messaging via single-query bulk SQL aggregations, maintaining sub-second delivery in 1,000+ user rooms.\n\nBuilt a client-side NSFW detection pipeline (NSFW.js) that automatically flags and reports suspicious profiles to the admin panel at signup, cutting down manual moderation work. Users can also toggle their own NSFW filter, backed by a server-side NSFW and illegal-word filter. Rounded out with a support/ticketing system and a wallet for buying credits through a payment gateway.\n\nThe radar map was the hardest part — it needed to feel smooth on mobile while updating frequently, and a client constraint ruled out React Native, so we settled on Capacitor.JS.\n\n- **Role**: Solo Fullstack & Mobile Developer\n- **Timeline**: Jan 2026 – Mar 2026\n- **Stack**: NestJS, Next.js, Socket.io, Redis, PostgreSQL, Turborepo`,
   },
   {
-    id: 6,
+    id: 11,
     slug: "goldenbat",
     name: "Goldenbat GPS Tracking",
     description:
       "Live vehicle tracking dashboard. Ingests GPS coordinates from IoT hardware and shows real-time routes on a map.",
     date: "Sep 2024 – Jan 2025",
-    image: "/professional/goldenbat/goldenbat-landing.webp",
+    image: "/professional/goldenbat/bat19.webp",
     project_image: [
       "/professional/goldenbat/bat19.webp",
       "/professional/goldenbat/bat18.webp",
@@ -264,25 +263,25 @@ export const ProjectProfessional = [
       "/professional/goldenbat/bat16.webp",
       "/professional/goldenbat/bat17.webp",
     ],
-    tag: ["Next.js", "Tailwind CSS", "tRPC", "GPS", "PostgreSQL"],
-    isactive: false,
+    tag: ["Next.js", "Tailwind CSS", "tRPC", "GPS", "PostgreSQL", "Mapbox"],
+    isactive: true,
     link: "https://gbat.parsany.com",
     links: [
-      { label: "Website", url: "https://gbat.parsany.com" },
-      { label: "Web Application", url: "https://gbat.parsany.com/auth/signin" },
-      { label: "Dashboard", url: "https://gdash.parsany.com/" },
+      { label: "Live Demo (desktop)", url: "https://gbat.parsany.com" },
+      { label: "Web Application (mobile)", url: "https://gbat.parsany.com/auth/signin" },
+      { label: "Dashboard Demo (desktop)", url: "https://gdash.parsany.com/" },
     ],
     role: "Frontend Developer",
     text: `# Goldenbat GPS Tracking\n\nBuilt over 5 months, in collaboration with a team. I built the landing page and the mobile PWA, and contributed to the fleet dashboard frontend (Next.js) — including work on geofencing and the notification system; a teammate handled the native mobile work. The backend ingests 10,000+ GPS coordinate updates per minute with sub-second latency — the dashboard plots live vehicle positions, historical paths, and geofencing alerts. Fleet operators use it to manage device groups and assignments.\n\n- **Role**: Frontend Developer\n- **Timeline**: Sep 2024 – Jan 2025\n- **Stack**: Next.js, tRPC, PostgreSQL\n\n currently down due to maintenance`,
   },
   {
-    id: 5,
+    id: 7,
     slug: "alzahra",
     name: "Alzahra Gold Wholesaler B2B Platform",
     description:
       "Frontend B2B panel for a gold wholesaler, integrated with a Django REST API for transaction management.",
     date: "Mar 2024 – Apr 2024",
-    image: "/professional/alzahra/alzahra-landing.webp",
+    image: "/professional/alzahra/az1.webp",
     project_image: [
       "/professional/alzahra/az1.webp",
       "/professional/alzahra/az2.webp",
@@ -294,9 +293,9 @@ export const ProjectProfessional = [
       "/professional/alzahra/az8.webp",
     ],
     tag: ["Next.js", "Tailwind CSS", "B2B", "PostgreSQL"],
-    isactive: false,
+    isactive: true,
     link: "https://az.parsany.com/landing",
-    links: [{ label: "Website", url: "https://az.parsany.com/landing" }],
+    links: [{ label: "Live Demo (desktop)", url: "https://az.parsany.com/landing" }],
     role: "Frontend Developer",
     text: `# Alzahra Gold Wholesaler B2B Platform\n\nBuilt in 1.5 months, in collaboration with a team. A B2B platform for gold wholesale buyers, built on top of a Django REST API handled by the rest of the team. I built the landing page fully and contributed to the buyer dashboard. Landing page hit a desktop Lighthouse score of 99. Customers log in to see pricing, place orders, and track transactions through a multi-step purchasing workflow.\n\n- **Role**: Frontend Developer\n- **Timeline**: Mar 2024 – Apr 2024\n- **Stack**: Next.js, Tailwind CSS (backend: Django REST, not mine)`,
   },
@@ -343,10 +342,10 @@ export const ProjectProfessional = [
       "/professional/himeh/himeh-checkout.webp",
     ],
     tag: ["Next.js", "Tailwind CSS", "tRPC", "Payment Gateway", "PostgreSQL"],
-    isactive: true,
+    isactive: false,
     link: "https://himeh.parsany.com/",
     links: [
-      { label: "Website", url: "https://himeh.parsany.com/" },
+      { label: "Live Demo", url: "https://himeh.parsany.com/" },
       { label: "Dashboard", url: "https://himeh.parsany.com/admin" },
       { label: "User Panel", url: "https://himeh.parsany.com/profile" },
     ],
@@ -367,8 +366,8 @@ export const ProjectProfessional = [
     date: "Apr 2025",
     image: "/professional/char/char-landing.webp",
     project_image: ["/professional/char/char-landing.webp"],
-    tag: ["Next.js", "Tailwind CSS", "Boutique"],
-    isactive: true,
+    tag: ["Next.js", "Tailwind CSS"],
+    isactive: false,
     link: "",
     links: [],
     highlights: [

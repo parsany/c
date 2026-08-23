@@ -36,9 +36,10 @@ export default function GameStatsModal({
   };
 
   const handleResumeClick = (e: React.MouseEvent) => {
+    e.preventDefault();
     e.stopPropagation();
     onResetToIdle();
-    window.open("/resume.pdf", "_blank");
+    window.dispatchEvent(new CustomEvent("open-resume-modal"));
   };
 
   return (
@@ -54,7 +55,6 @@ export default function GameStatsModal({
         transition={{ type: "spring", duration: 0.3 }}
         className="relative w-full max-w-md bg-theme-panelBg border border-theme-panelBorder rounded-2xl shadow-2xl overflow-hidden flex flex-col p-6 sm:p-7 gap-6 font-sans"
       >
-        {/* Header */}
         <div className="flex items-start justify-between border-b border-theme-border pb-4">
           <div>
             <h2 className="text-xl font-bold tracking-tight text-theme-text font-mono uppercase">
@@ -78,9 +78,7 @@ export default function GameStatsModal({
           </button>
         </div>
 
-        {/* 2x2 Stats Grid */}
         <div className="grid grid-cols-2 gap-3 font-mono">
-          {/* Kills */}
           <div className="p-3.5 rounded-xl bg-theme-bg/60 border border-theme-border/70 flex flex-col items-center justify-center text-center">
             <div className="flex items-center space-x-1.5 mb-1 text-theme-muted text-xs uppercase tracking-wider">
               <Crosshair className="w-3.5 h-3.5 text-theme-accent" />
@@ -91,7 +89,6 @@ export default function GameStatsModal({
             </span>
           </div>
 
-          {/* Score */}
           <div className="p-3.5 rounded-xl bg-theme-bg/60 border border-theme-border/70 flex flex-col items-center justify-center text-center">
             <div className="flex items-center space-x-1.5 mb-1 text-theme-muted text-xs uppercase tracking-wider">
               <Trophy className="w-3.5 h-3.5 text-theme-accent" />
@@ -102,7 +99,6 @@ export default function GameStatsModal({
             </span>
           </div>
 
-          {/* Accuracy */}
           <div className="p-3.5 rounded-xl bg-theme-bg/60 border border-theme-border/70 flex flex-col items-center justify-center text-center">
             <div className="flex items-center space-x-1.5 mb-1 text-theme-muted text-xs uppercase tracking-wider">
               <Target className="w-3.5 h-3.5 text-theme-accent" />
@@ -113,7 +109,6 @@ export default function GameStatsModal({
             </span>
           </div>
 
-          {/* Survival */}
           <div className="p-3.5 rounded-xl bg-theme-bg/60 border border-theme-border/70 flex flex-col items-center justify-center text-center">
             <div className="flex items-center space-x-1.5 mb-1 text-theme-muted text-xs uppercase tracking-wider">
               <Clock className="w-3.5 h-3.5 text-theme-accent" />
@@ -125,9 +120,7 @@ export default function GameStatsModal({
           </div>
         </div>
 
-        {/* Action Buttons */}
         <div className="flex flex-col gap-2.5 pt-1">
-          {/* Primary Action: Play Again */}
           <button
             onClick={(e) => {
               e.stopPropagation();
@@ -140,7 +133,6 @@ export default function GameStatsModal({
             <span>Play Again</span>
           </button>
 
-          {/* Secondary Actions Row: Resume & About Me */}
           <div className="grid grid-cols-2 gap-2.5">
             <a
               href="/resume.pdf"

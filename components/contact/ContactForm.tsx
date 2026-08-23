@@ -51,8 +51,8 @@ export function ContactForm() {
   };
 
   return (
-    <div className="bg-theme-cardBg dark:bg-[#232323] border border-theme-border dark:border-[#333333] rounded-xl p-6 md:p-8 shadow-sm">
-      <h2 className="text-xs font-bold text-theme-text mb-5 font-mono uppercase tracking-wider">
+    <div className="bg-theme-btnExploreBg border border-theme-border rounded-lg p-6 md:p-8">
+      <h2 className="text-xs font-mono font-bold text-theme-text mb-6 uppercase tracking-wider">
         Send a Message
       </h2>
 
@@ -65,17 +65,17 @@ export function ContactForm() {
             exit={{ opacity: 0, scale: 0.95 }}
             className="py-10 px-4 text-center space-y-4"
           >
-            <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
-              <CheckCircle2 className="h-7 w-7" />
+            <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-theme-accent/10 text-theme-accent">
+              <CheckCircle2 className="h-6 w-6" />
             </div>
-            <h3 className="text-lg font-bold text-theme-text">Message Received</h3>
-            <p className="text-xs md:text-sm text-theme-secondary max-w-sm mx-auto leading-relaxed font-mono">
+            <h3 className="text-base font-bold text-theme-text">Message Sent</h3>
+            <p className="text-xs text-theme-secondary max-w-sm mx-auto font-mono">
               Thank you. Your message has been sent successfully and I will respond shortly.
             </p>
             <div className="pt-2">
               <button
                 onClick={() => setFormStatus("idle")}
-                className="text-xs font-mono text-theme-muted hover:text-theme-text underline transition-colors"
+                className="text-xs font-mono text-theme-muted hover:text-theme-accent underline transition-colors"
               >
                 Send another message
               </button>
@@ -88,12 +88,12 @@ export function ContactForm() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="space-y-4.5"
+            className="space-y-4"
           >
             <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} />
 
             {formStatus === "error" && (
-              <div className="p-3.5 rounded-lg bg-rose-500/10 border border-rose-500/20 text-rose-600 dark:text-rose-400 text-xs font-mono flex items-start gap-2.5">
+              <div className="p-3 rounded bg-rose-500/10 border border-rose-500/20 text-rose-600 dark:text-rose-400 text-xs font-mono flex items-start gap-2">
                 <AlertCircle className="h-4 w-4 shrink-0 mt-0.5" />
                 <span>{errorMessage}</span>
               </div>
@@ -101,7 +101,7 @@ export function ContactForm() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
-                <label className="text-[11px] font-mono text-theme-muted dark:text-[#a89984] uppercase tracking-wider block font-medium">
+                <label className="text-[11px] font-mono text-theme-muted uppercase tracking-wider block">
                   Name <span className="text-theme-accent">*</span>
                 </label>
                 <input
@@ -111,12 +111,12 @@ export function ContactForm() {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Your name"
-                  className="w-full px-3.5 py-2.5 bg-theme-btnExploreBg dark:bg-[#181818] border border-theme-border dark:border-[#383838] rounded-lg text-theme-text text-sm placeholder-theme-muted/50 dark:placeholder-[#a89984]/50 focus:outline-none focus:border-theme-accent dark:focus:border-[#fabd2f]/80 focus:ring-1 focus:ring-theme-accent/20 dark:focus:ring-[#fabd2f]/20 transition-all text-xs"
+                  className="w-full px-3.5 py-2 bg-theme-bg border border-theme-border rounded text-theme-text text-xs placeholder:text-theme-muted/50 focus:outline-none focus:border-theme-accent transition-colors"
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-[11px] font-mono text-theme-muted dark:text-[#a89984] uppercase tracking-wider block font-medium">
+                <label className="text-[11px] font-mono text-theme-muted uppercase tracking-wider block">
                   Email <span className="text-theme-accent">*</span>
                 </label>
                 <input
@@ -126,13 +126,13 @@ export function ContactForm() {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="you@example.com"
-                  className="w-full px-3.5 py-2.5 bg-theme-btnExploreBg dark:bg-[#181818] border border-theme-border dark:border-[#383838] rounded-lg text-theme-text text-sm placeholder-theme-muted/50 dark:placeholder-[#a89984]/50 focus:outline-none focus:border-theme-accent dark:focus:border-[#fabd2f]/80 focus:ring-1 focus:ring-theme-accent/20 dark:focus:ring-[#fabd2f]/20 transition-all text-xs"
+                  className="w-full px-3.5 py-2 bg-theme-bg border border-theme-border rounded text-theme-text text-xs placeholder:text-theme-muted/50 focus:outline-none focus:border-theme-accent transition-colors"
                 />
               </div>
             </div>
 
             <div className="space-y-1.5">
-              <label className="text-[11px] font-mono text-theme-muted dark:text-[#a89984] uppercase tracking-wider block font-medium">
+              <label className="text-[11px] font-mono text-theme-muted uppercase tracking-wider block">
                 Subject
               </label>
               <input
@@ -140,17 +140,17 @@ export function ContactForm() {
                 name="subject"
                 value={formData.subject}
                 onChange={handleChange}
-                placeholder="Project inquiry, question, etc."
-                className="w-full px-3.5 py-2.5 bg-theme-btnExploreBg dark:bg-[#181818] border border-theme-border dark:border-[#383838] rounded-lg text-theme-text text-sm placeholder-theme-muted/50 dark:placeholder-[#a89984]/50 focus:outline-none focus:border-theme-accent dark:focus:border-[#fabd2f]/80 focus:ring-1 focus:ring-theme-accent/20 dark:focus:ring-[#fabd2f]/20 transition-all text-xs"
+                placeholder="Project inquiry, collaboration, etc."
+                className="w-full px-3.5 py-2 bg-theme-bg border border-theme-border rounded text-theme-text text-xs placeholder:text-theme-muted/50 focus:outline-none focus:border-theme-accent transition-colors"
               />
             </div>
 
             <div className="space-y-1.5">
               <div className="flex items-center justify-between">
-                <label className="text-[11px] font-mono text-theme-muted dark:text-[#a89984] uppercase tracking-wider block font-medium">
+                <label className="text-[11px] font-mono text-theme-muted uppercase tracking-wider block">
                   Message <span className="text-theme-accent">*</span>
                 </label>
-                <span className="text-[10px] font-mono text-theme-muted dark:text-[#a89984]/70">
+                <span className="text-[10px] font-mono text-theme-muted">
                   {formData.message.length} chars
                 </span>
               </div>
@@ -160,15 +160,15 @@ export function ContactForm() {
                 required
                 value={formData.message}
                 onChange={handleChange}
-                placeholder="Tell me about your project, timeline, or idea..."
-                className="w-full px-3.5 py-2.5 bg-theme-btnExploreBg dark:bg-[#181818] border border-theme-border dark:border-[#383838] rounded-lg text-theme-text text-sm placeholder-theme-muted/50 dark:placeholder-[#a89984]/50 focus:outline-none focus:border-theme-accent dark:focus:border-[#fabd2f]/80 focus:ring-1 focus:ring-theme-accent/20 dark:focus:ring-[#fabd2f]/20 transition-all resize-y min-h-[120px] text-xs"
+                placeholder="Tell me about your project, timeline, or inquiry..."
+                className="w-full px-3.5 py-2 bg-theme-bg border border-theme-border rounded text-theme-text text-xs placeholder:text-theme-muted/50 focus:outline-none focus:border-theme-accent transition-colors resize-y min-h-[120px]"
               ></textarea>
             </div>
 
             <button
               type="submit"
               disabled={formStatus === "submitting"}
-              className="w-full flex items-center justify-center space-x-2 px-5 py-3 rounded-lg bg-theme-accent hover:bg-theme-accentHover text-white dark:text-theme-bg font-mono font-semibold text-xs transition-all shadow-sm disabled:opacity-70 disabled:cursor-not-allowed group select-none mt-2"
+              className="w-full flex items-center justify-center space-x-2 px-4 py-2.5 rounded bg-theme-accent hover:bg-theme-accentHover text-white dark:text-theme-bg font-mono font-semibold text-xs transition-all shadow-xs disabled:opacity-70 disabled:cursor-not-allowed group select-none mt-2"
             >
               {formStatus === "submitting" ? (
                 <>

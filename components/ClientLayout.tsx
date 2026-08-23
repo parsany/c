@@ -2,11 +2,16 @@
 
 import "@/styles/globals.css";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import CommandMenu from "@/components/CommandMenu";
+import ResumeModal from "@/components/ResumeModal";
 import { Sun, Moon } from "lucide-react";
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  const isLanding = pathname === "/landing";
   const [isOpen, setIsOpen] = useState(false);
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">("dark");
   const [transitioningTheme, setTransitioningTheme] = useState<"light" | "dark" | null>(null);
 
@@ -30,12 +35,26 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
     };
 
     const handleCustomOpenMenu = () => setIsOpen(true);
+    const handleCustomOpenResume = () => setIsResumeOpen(true);
+
+    const handleGlobalResumeClick = (e: MouseEvent) => {
+      const target = (e.target as HTMLElement).closest('a[href*="resume.pdf"]');
+      if (target) {
+        e.preventDefault();
+        setIsResumeOpen(true);
+      }
+    };
 
     window.addEventListener("keydown", handleKeyDown);
     window.addEventListener("open-command-menu", handleCustomOpenMenu);
+    window.addEventListener("open-resume-modal", handleCustomOpenResume);
+    document.addEventListener("click", handleGlobalResumeClick, true);
+
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("open-command-menu", handleCustomOpenMenu);
+      window.removeEventListener("open-resume-modal", handleCustomOpenResume);
+      document.removeEventListener("click", handleGlobalResumeClick, true);
     };
   }, []);
 
@@ -78,12 +97,17 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
           </button>
         </div>
 
-        <main className="max-w-4xl mx-auto px-4 sm:px-6 py-4">
-          {children}
-        </main>
+        {isLanding ? (
+          children
+        ) : (
+          <main className="max-w-4xl mx-auto px-4 sm:px-6 py-4">
+            {children}
+          </main>
+        )}
       </div>
 
       <CommandMenu isOpen={isOpen} onClose={() => setIsOpen(false)} />
+      <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
 
       {transitioningTheme && (
         <div className="fixed inset-0 z-[9999] pointer-events-none overflow-hidden">

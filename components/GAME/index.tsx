@@ -43,7 +43,6 @@ export default function Game({ onResetToIdle }: GameProps) {
           pointerEvents: gameOverStats ? "none" : "auto",
         }}
       >
-        {/* Top Right Spacewar HUD Header */}
         {!gameOverStats && (
           <div className="absolute top-4 right-4 z-[10001] flex items-center space-x-3 text-base sm:text-lg font-mono uppercase tracking-wider text-white select-none pointer-events-none">
             <div>
@@ -60,7 +59,6 @@ export default function Game({ onResetToIdle }: GameProps) {
           </div>
         )}
 
-        {/* Arcade Game Canvas */}
         <SpaceInvadersEngine
           key={key}
           onGameOver={handleGameOver}
@@ -69,7 +67,6 @@ export default function Game({ onResetToIdle }: GameProps) {
         />
       </div>
 
-      {/* Standalone Top-Level Game Over Stats Modal Component */}
       {gameOverStats && (
         <GameStatsModal
           stats={gameOverStats}

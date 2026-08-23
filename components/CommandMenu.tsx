@@ -279,13 +279,12 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
     {
       id: "action-resume",
       title: "Download Resume / CV",
-      subtitle: "Open CV PDF file",
+      subtitle: "Select & download resume options",
       category: "actions",
       icon: <FileText className="h-4 w-4" />,
-      href: "/resume.pdf",
       action: () => {
         onClose();
-        window.open("/resume.pdf", "_blank");
+        window.dispatchEvent(new CustomEvent("open-resume-modal"));
       },
     },
     {

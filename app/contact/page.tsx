@@ -18,8 +18,8 @@ export default function ContactPage() {
   return (
     <article className="max-w-2xl mx-auto py-12">
       <ContactHeader />
-      <ContactForm />
       <ContactDirectBar />
+      <ContactForm />
 
       <footer className="mt-16 pt-8 border-t border-theme-border flex items-center justify-between text-xs font-mono text-theme-muted">
         <Link href="/" className="hover:text-theme-text transition-colors">

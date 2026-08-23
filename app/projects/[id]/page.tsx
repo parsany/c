@@ -23,7 +23,7 @@ export async function generateMetadata({
     };
   }
 
-  const isNoIndex = ["esp", "msk", "taxiland", "goldenbat", "alzahra", "edu-platform"].includes(project.slug);
+  const isNoIndex = ["esp", "msk", "taxiland", "goldenbat", "alzahra", "edu-platform", "k2n-solutions", "charbag"].includes(project.slug);
 
   return {
     title: `${project.name} | Parsa`,

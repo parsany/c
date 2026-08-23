@@ -15,7 +15,6 @@ export function ContactHeader() {
 
       <header className="space-y-3 mb-10 border-b border-theme-border pb-8">
         <h1 className="text-3xl font-bold tracking-tight text-theme-text">Get in Touch</h1>
-        <p className="text-theme-muted text-xs font-mono">/usr/bin/contact --send-message</p>
         <p className="text-theme-secondary text-sm md:text-base leading-relaxed pt-1">
           Have a project in mind, a technical question, or an opportunity to discuss? Send a message below or connect directly.
         </p>

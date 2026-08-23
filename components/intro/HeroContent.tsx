@@ -54,7 +54,11 @@ export default function HeroContent({
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center space-x-1.5 sm:space-x-2 px-3.5 sm:px-5 py-2.5 rounded-lg bg-theme-accent hover:bg-theme-accentHover text-white dark:text-theme-bg font-semibold transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 select-none text-xs sm:text-sm text-center"
+            onClick={(e) => {
+              e.preventDefault();
+              window.dispatchEvent(new CustomEvent("open-resume-modal"));
+            }}
+            className="flex items-center justify-center space-x-1.5 sm:space-x-2 px-3.5 sm:px-5 py-2.5 rounded-lg bg-theme-accent hover:bg-theme-accentHover text-white dark:text-theme-bg font-semibold transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 select-none text-xs sm:text-sm text-center cursor-pointer"
           >
             <span className="truncate">Download Resume</span>
             <ArrowUpRight className="h-4 w-4 shrink-0" />

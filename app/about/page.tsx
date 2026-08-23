@@ -28,7 +28,6 @@ export default function AboutPage() {
         <div className="space-y-4">
           <header className="space-y-4">
             <h1 className="text-3xl font-bold tracking-tight text-theme-text">About Me</h1>
-            <p className="text-theme-muted text-xs font-mono">/usr/bin/parsa --verbose</p>
           </header>
           <p className="text-theme-secondary text-sm md:text-base leading-relaxed">
             Hi, I&apos;m Parsa. I like building things for the web. I work across the full stack — from React UIs to distributed backends — and spend a good chunk of my free time on personal R&D: Linux, AI models, and playing with open-source stuff.
@@ -97,14 +96,14 @@ export default function AboutPage() {
         <Link href="/" className="hover:text-theme-text transition-colors">
           &larr; Back to home
         </Link>
-        <Link
+        <a
           href="/resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-theme-text transition-colors"
+          className="hover:text-theme-text transition-colors cursor-pointer"
         >
           Open to work - CV
-        </Link>
+        </a>
       </footer>
     </article>
   );

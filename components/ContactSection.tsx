@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Mail, Send, Linkedin, Github, Check, Copy, MessageSquare } from "lucide-react";
+import { Mail, Send, Linkedin, Github, Check, Copy, MessageSquare, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function ContactSection() {
@@ -31,10 +31,10 @@ export default function ContactSection() {
 
   const socials = [
     {
-      name: "GitHub",
-      href: "https://github.com/parsany",
-      icon: <Github className="h-5 w-5" />,
-      username: "parsany",
+      name: "WhatsApp",
+      href: "https://wa.me/37433877067",
+      icon: <Phone className="h-5 w-5" />,
+      username: "+374 33 877 067",
     },
     {
       name: "LinkedIn",
@@ -47,6 +47,11 @@ export default function ContactSection() {
       href: "https://t.me/parsanid",
       icon: <Send className="h-5 w-5" />,
       username: "@parsanid",
+    }, {
+      name: "GitHub",
+      href: "https://github.com/parsany",
+      icon: <Github className="h-5 w-5" />,
+      username: "parsany",
     },
   ];
 
@@ -64,12 +69,16 @@ export default function ContactSection() {
             href="/contact"
             className="inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-theme-accent hover:bg-theme-accentHover text-white dark:text-theme-bg font-semibold text-xs transition-all shadow-sm self-start sm:self-auto"
           >
-            <span>Get in Touch!</span>
+            <span>Send a Message</span>
           </Link>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <article className="flex items-center justify-between p-4 rounded-lg bg-theme-btnExploreBg border border-theme-border focus-within:ring-2 focus-within:ring-theme-accent/50">
+          <article
+            className={`flex items-center justify-between p-4 rounded-lg bg-theme-btnExploreBg border border-theme-border focus-within:ring-2 focus-within:ring-theme-accent/50 ${
+              (socials.length + 1) % 2 !== 0 ? "sm:col-span-2" : ""
+            }`}
+          >
             <div className="flex items-center space-x-3">
               <div className="p-2 rounded bg-theme-bg border border-theme-border text-theme-secondary">
                 <Mail className="h-5 w-5" />
@@ -90,29 +99,11 @@ export default function ContactSection() {
               className="p-2 rounded hover:bg-theme-bg text-theme-muted hover:text-theme-text transition-colors focus:ring-1 focus:ring-theme-accent focus:outline-none"
               aria-label="Copy email address"
             >
-              <AnimatePresence mode="wait" initial={false}>
-                {copied ? (
-                  <motion.span
-                    key="checked"
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    exit={{ scale: 0.8, opacity: 0 }}
-                    transition={{ duration: 0.15 }}
-                  >
-                    <Check className="h-4 w-4 text-emerald-500 dark:text-emerald-400" />
-                  </motion.span>
-                ) : (
-                  <motion.span
-                    key="copy"
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    exit={{ scale: 0.8, opacity: 0 }}
-                    transition={{ duration: 0.15 }}
-                  >
-                    <Copy className="h-4 w-4" />
-                  </motion.span>
-                )}
-              </AnimatePresence>
+              {copied ? (
+                <Check className="h-4 w-4 text-theme-accent" />
+              ) : (
+                <Copy className="h-4 w-4" />
+              )}
             </button>
           </article>
 
