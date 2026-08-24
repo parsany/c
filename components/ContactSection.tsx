@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Mail, Send, Linkedin, Github, Check, Copy, MessageSquare, Phone } from "lucide-react";
+import { Mail, Send, Linkedin, Github, Check, Copy, MessageSquare, Phone, PhoneCall } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function ContactSection() {
@@ -31,6 +31,12 @@ export default function ContactSection() {
 
   const socials = [
     {
+      name: "SMS",
+      href: "sms:+37433877067",
+      icon: <MessageSquare className="h-5 w-5" />,
+      username: "+374 33 877 067",
+    },
+    {
       name: "WhatsApp",
       href: "https://wa.me/37433877067",
       icon: <Phone className="h-5 w-5" />,
@@ -47,7 +53,8 @@ export default function ContactSection() {
       href: "https://t.me/parsanid",
       icon: <Send className="h-5 w-5" />,
       username: "@parsanid",
-    }, {
+    },
+    {
       name: "GitHub",
       href: "https://github.com/parsany",
       icon: <Github className="h-5 w-5" />,
@@ -65,12 +72,21 @@ export default function ContactSection() {
               Get in touch with me:
             </p>
           </div>
-          <Link
-            href="/contact"
-            className="inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-theme-accent hover:bg-theme-accentHover text-white dark:text-theme-bg font-semibold text-xs transition-all shadow-sm self-start sm:self-auto"
-          >
-            <span>Send a Message</span>
-          </Link>
+          <div className="flex items-center gap-3 self-start sm:self-auto">
+            <a
+              href="tel:+37433877067"
+              className="inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-theme-btnExploreBg hover:bg-theme-border border border-theme-border text-theme-text font-semibold text-xs transition-all shadow-sm"
+            >
+              <PhoneCall className="h-3.5 w-3.5 text-theme-accent" />
+              <span>Call Me</span>
+            </a>
+            <Link
+              href="/contact"
+              className="inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-theme-accent hover:bg-theme-accentHover text-white dark:text-theme-bg font-semibold text-xs transition-all shadow-sm"
+            >
+              <span>Send a Message</span>
+            </Link>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
