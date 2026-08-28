@@ -149,15 +149,16 @@ function ProjectCard({
               )}
             </div>
 
-            {slug && (
-              <Link
-                href={`/projects/${slug}`}
-                prefetch={true}
-                className="inline-flex items-center space-x-1 text-theme-muted hover:text-theme-text transition-colors"
-                aria-label={`View ${name} architectural details`}
+            {(slug === "k2n-solutions" || slug === "atrafian" || name.toLowerCase().includes("k2n") || name.toLowerCase().includes("atrafian")) && (link || (links && links[0]?.url)) && (
+              <a
+                href={link || links?.[0]?.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center space-x-1 font-bold text-[var(--link-prominent-green)] hover:text-[var(--link-prominent-green-hover)] hover:underline transition-colors"
               >
-                <span>Specs</span>
-              </Link>
+                <span>Live</span>
+                <ArrowRight className="h-3 w-3" />
+              </a>
             )}
           </div>
         </div>
