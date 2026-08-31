@@ -45,6 +45,18 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       },
     },
     {
+      id: "nav-cv",
+      title: "Go to CV / Resumes Page (/cv)",
+      subtitle: "View and download all role-tailored resumes",
+      category: "navigation",
+      icon: <FileText className="h-4 w-4" />,
+      href: "/cv",
+      action: () => {
+        onClose();
+        router.push("/cv");
+      },
+    },
+    {
       id: "nav-about",
       title: "Goto About Page",
       subtitle: "Read about my background & stack",
@@ -278,13 +290,61 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
     },
     {
       id: "action-resume",
-      title: "Download Resume / CV",
-      subtitle: "Select & download resume options",
+      title: "Download Resume Modal",
+      subtitle: "Open resume selection modal with all 4 roles",
       category: "actions",
       icon: <FileText className="h-4 w-4" />,
       action: () => {
         onClose();
         window.dispatchEvent(new CustomEvent("open-resume-modal"));
+      },
+    },
+    {
+      id: "action-resume-frontend",
+      title: "Frontend Software Engineer Resume",
+      subtitle: "Next.js • React • TypeScript [PDF]",
+      category: "actions",
+      icon: <FileText className="h-4 w-4" />,
+      href: "/application/frontend_resume.pdf",
+      action: () => {
+        onClose();
+        window.open("/application/frontend_resume.pdf", "_blank");
+      },
+    },
+    {
+      id: "action-resume-backend",
+      title: "Backend Software Engineer Resume",
+      subtitle: "NestJS • Node.js • PostgreSQL • REST APIs [PDF]",
+      category: "actions",
+      icon: <FileText className="h-4 w-4" />,
+      href: "/application/backend_resume.pdf",
+      action: () => {
+        onClose();
+        window.open("/application/backend_resume.pdf", "_blank");
+      },
+    },
+    {
+      id: "action-resume-systems",
+      title: "Junior Systems Engineer Resume",
+      subtitle: "Linux • Nginx • Docker • Infrastructure [PDF]",
+      category: "actions",
+      icon: <FileText className="h-4 w-4" />,
+      href: "/application/systems_engineer_resume.pdf",
+      action: () => {
+        onClose();
+        window.open("/application/systems_engineer_resume.pdf", "_blank");
+      },
+    },
+    {
+      id: "action-resume-support",
+      title: "Technical Support Specialist Resume",
+      subtitle: "Troubleshooting + client-facing support [PDF]",
+      category: "actions",
+      icon: <FileText className="h-4 w-4" />,
+      href: "/application/tech_support_resume.pdf",
+      action: () => {
+        onClose();
+        window.open("/application/tech_support_resume.pdf", "_blank");
       },
     },
     {
@@ -335,6 +395,7 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
 
   useEffect(() => {
     router.prefetch("/#projects");
+    router.prefetch("/cv");
     router.prefetch("/about");
     router.prefetch("/posts");
     router.prefetch("/contact");

@@ -38,8 +38,14 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
     const handleCustomOpenResume = () => setIsResumeOpen(true);
 
     const handleGlobalResumeClick = (e: MouseEvent) => {
-      const target = (e.target as HTMLElement).closest('a[href*="resume.pdf"]');
+      if (window.location.pathname === "/cv" || window.location.pathname.startsWith("/cv/")) {
+        return;
+      }
+      const target = (e.target as HTMLElement).closest('a[href*="resume.pdf"], a[href*="_resume.pdf"]');
       if (target) {
+        if (target.getAttribute("data-no-modal") === "true" || target.closest('[role="dialog"]')) {
+          return;
+        }
         e.preventDefault();
         setIsResumeOpen(true);
       }
