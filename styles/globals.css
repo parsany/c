@@ -316,6 +316,7 @@ select:focus-visible {
   from {
     transform: scaleX(0);
   }
+
   to {
     transform: scaleX(1);
   }
@@ -518,7 +519,7 @@ body.all-eaten article {
   min-height: 100vh;
 }
 
-.landing-root > *:not(.landing-canvas) {
+.landing-root>*:not(.landing-canvas) {
   position: relative;
   z-index: 1;
 }
@@ -529,7 +530,8 @@ body.all-eaten article {
   will-change: transform;
 }
 
-html.lenis, html.lenis body {
+html.lenis,
+html.lenis body {
   height: auto;
 }
 
@@ -547,4 +549,15 @@ html.lenis, html.lenis body {
 
 .lenis.lenis-smooth iframe {
   pointer-events: none;
+}
+
+.LI-profile-badge[data-rendered="true"] .LI-simple-link,
+.LI-profile-badge:has(iframe) .LI-simple-link {
+  display: none !important;
+}
+
+.LI-profile-badge iframe {
+  border-radius: 0.75rem !important;
+  max-width: 100% !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
 }
