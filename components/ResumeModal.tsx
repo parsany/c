@@ -12,6 +12,7 @@ import {
   Terminal,
   Headphones,
   FileText,
+  Cpu,
 } from "lucide-react";
 
 interface ResumeModalProps {
@@ -29,6 +30,14 @@ export interface ResumeOption {
 }
 
 export const RESUME_OPTIONS: ResumeOption[] = [
+  {
+    id: "ai",
+    title: "AI & Machine Learning Engineer",
+    subtitle: "Python • PyTorch • LLMs • RAG Architectures",
+    fileUrl: "/application/ai_resume.pdf",
+    fileName: "ai_resume.pdf",
+    icon: <Cpu className="w-4 h-4 text-theme-accent shrink-0" />,
+  },
   {
     id: "frontend",
     title: "Frontend Software Engineer",
@@ -103,7 +112,6 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
             onClick={(e) => e.stopPropagation()}
             className="relative w-[calc(100vw-2rem)] max-w-md bg-theme-panelBg border border-theme-panelBorder rounded-xl shadow-2xl overflow-hidden flex flex-col p-5 sm:p-6 gap-4 font-sans max-h-[90vh] overflow-y-auto"
           >
-            {/* Header */}
             <div className="flex items-center justify-between pb-1 border-b border-theme-border/50">
               <h2 className="text-base sm:text-lg font-bold tracking-tight text-theme-text font-mono">
                 Resume
@@ -120,7 +128,6 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
               </button>
             </div>
 
-            {/* Primary Full-Stack Resume */}
             <div className="space-y-1">
               <a
                 href="/resume.pdf"
@@ -135,7 +142,6 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
               </a>
             </div>
 
-            {/* Specialized Resumes Dropdown */}
             <div className="space-y-2">
               <button
                 type="button"
@@ -147,9 +153,8 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                   <span>Specialized resumes ({RESUME_OPTIONS.length})</span>
                 </div>
                 <ChevronDown
-                  className={`w-4 h-4 text-theme-muted transition-transform duration-200 ${
-                    isDropdownOpen ? "rotate-180" : ""
-                  }`}
+                  className={`w-4 h-4 text-theme-muted transition-transform duration-200 ${isDropdownOpen ? "rotate-180" : ""
+                    }`}
                 />
               </button>
 
@@ -199,7 +204,6 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
               </AnimatePresence>
             </div>
 
-            {/* Other Resumes / Contact Box */}
             <div className="p-3.5 sm:p-4 rounded-lg bg-theme-bg/60 border border-theme-border/40 space-y-2.5">
               <div>
                 <h3 className="text-xs sm:text-sm font-semibold text-theme-text">

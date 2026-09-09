@@ -6,7 +6,7 @@ import { ArrowLeft, ArrowRight, Download, FileText } from "lucide-react";
 export const metadata: Metadata = {
   title: "CV & Resumes | Parsa",
   description:
-    "Download Parsa's full-stack software engineer resume and role-specific CVs (Frontend, Backend, Systems, Tech Support).",
+    "Download Parsa's full-stack software engineer resume and role-specific CVs (AI/ML, Frontend, Backend, Systems, Tech Support).",
   alternates: {
     canonical: "https://parsany.com/cv",
   },
@@ -21,6 +21,13 @@ interface ResumeItem {
 }
 
 const SPECIALIZED_RESUMES: ResumeItem[] = [
+  {
+    id: "ai",
+    title: "AI & Machine Learning Engineer",
+    subtitle: "Python • PyTorch • LLMs • RAG Architectures",
+    fileUrl: "/application/ai_resume.pdf",
+    fileName: "ai_resume.pdf",
+  },
   {
     id: "frontend",
     title: "Frontend Software Engineer",

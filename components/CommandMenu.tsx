@@ -291,12 +291,24 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
     {
       id: "action-resume",
       title: "Download Resume Modal",
-      subtitle: "Open resume selection modal with all 4 roles",
+      subtitle: "Open resume selection modal with all specialized roles",
       category: "actions",
       icon: <FileText className="h-4 w-4" />,
       action: () => {
         onClose();
         window.dispatchEvent(new CustomEvent("open-resume-modal"));
+      },
+    },
+    {
+      id: "action-resume-ai",
+      title: "AI & Machine Learning Engineer Resume",
+      subtitle: "Python • PyTorch • LLMs • RAG Architectures [PDF]",
+      category: "actions",
+      icon: <FileText className="h-4 w-4" />,
+      href: "/application/ai_resume.pdf",
+      action: () => {
+        onClose();
+        window.open("/application/ai_resume.pdf", "_blank");
       },
     },
     {
