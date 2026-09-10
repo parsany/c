@@ -3,9 +3,10 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Mail, Send, Linkedin, Github, Check, Copy, MessageSquare, Phone, PhoneCall } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function ContactSection() {
+  const { t } = useLanguage();
   const [copied, setCopied] = useState(false);
   const [isBurning, setIsBurning] = useState(false);
   const email = "vvsparsa@gmail.com";
@@ -95,9 +96,9 @@ export default function ContactSection() {
       <div className="max-w-3xl mb-10">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
           <div>
-            <h2 className="text-2xl font-bold tracking-tight text-theme-text mb-2">Connect</h2>
+            <h2 className="text-2xl font-bold tracking-tight text-theme-text mb-2">{t.contact.sectionTitle}</h2>
             <p className="text-theme-muted text-sm md:text-base">
-              Get in touch with me:
+              {t.contact.sectionSubtitle}
             </p>
           </div>
           <div className="flex items-center gap-3 self-start sm:self-auto">
@@ -106,13 +107,13 @@ export default function ContactSection() {
               className="inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-theme-btnExploreBg hover:bg-theme-border border border-theme-border text-theme-text font-semibold text-xs transition-all shadow-sm"
             >
               <PhoneCall className="h-3.5 w-3.5 text-theme-accent" />
-              <span>Call Me</span>
+              <span>{t.contact.callMe}</span>
             </a>
             <Link
               href="/contact"
               className="inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-theme-accent hover:bg-theme-accentHover text-white dark:text-theme-bg font-semibold text-xs transition-all shadow-sm"
             >
-              <span>Send a Message</span>
+              <span>{t.contact.sendMessage}</span>
             </Link>
           </div>
         </div>
@@ -126,7 +127,7 @@ export default function ContactSection() {
                 <Mail className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-xs font-mono text-theme-muted uppercase">Direct Email</p>
+                <p className="text-xs font-mono text-theme-muted uppercase">{t.contact.directEmail}</p>
                 <a
                   href={`mailto:${email}`}
                   className="text-sm font-mono text-theme-text hover:text-theme-accent transition-colors focus:outline-none"
@@ -182,7 +183,7 @@ export default function ContactSection() {
                   <Linkedin className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-xs font-mono text-theme-muted uppercase">Verified Profile</p>
+                  <p className="text-xs font-mono text-theme-muted uppercase">{t.contact.verifiedProfile}</p>
                   <span className="text-sm font-mono text-theme-text font-semibold">
                     LinkedIn
                   </span>
@@ -233,16 +234,17 @@ export default function ContactSection() {
       </div>
 
       <div className="text-xs font-mono text-theme-muted flex flex-col sm:flex-row items-center justify-between border-t border-theme-border pt-6 gap-4">
-        <p>© {new Date().getFullYear()} Parsa. All rights open.</p>
+        <p>© {new Date().getFullYear()} Parsa. {t.common.allRightsOpen}</p>
         <div className="flex items-center gap-6">
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="hover:text-theme-text transition-colors"
+            className="hover:text-theme-text transition-colors cursor-pointer"
           >
-            Back to top &uarr;
+            {t.common.backToTop}
           </button>
         </div>
       </div>
     </section>
   );
 }
+

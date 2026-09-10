@@ -3,8 +3,10 @@
 import React, { useState } from "react";
 import { Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 
 export function ContactForm() {
+  const { t } = useLanguage();
   const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [formData, setFormData] = useState({
@@ -42,18 +44,18 @@ export function ContactForm() {
         setFormData({ name: "", email: "", subject: "", message: "" });
       } else {
         setFormStatus("error");
-        setErrorMessage(resData.message || "Something went wrong. Please try again later.");
+        setErrorMessage(resData.message || t.contact.errorFailed);
       }
     } catch (err) {
       setFormStatus("error");
-      setErrorMessage("Network error. Please check your connection and try again.");
+      setErrorMessage(t.contact.errorFailed);
     }
   };
 
   return (
     <div className="bg-theme-btnExploreBg border border-theme-border rounded-lg p-6 md:p-8">
       <h2 className="text-xs font-mono font-bold text-theme-text mb-6 uppercase tracking-wider">
-        Send a Message
+        {t.contact.formTitle}
       </h2>
 
       <AnimatePresence mode="wait">
@@ -68,16 +70,16 @@ export function ContactForm() {
             <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-theme-accent/10 text-theme-accent">
               <CheckCircle2 className="h-6 w-6" />
             </div>
-            <h3 className="text-base font-bold text-theme-text">Message Sent</h3>
+            <h3 className="text-base font-bold text-theme-text">{t.contact.successTitle}</h3>
             <p className="text-xs text-theme-secondary max-w-sm mx-auto font-mono">
-              Thank you. Your message has been sent successfully and I will respond shortly.
+              {t.contact.successMessage}
             </p>
             <div className="pt-2">
               <button
                 onClick={() => setFormStatus("idle")}
-                className="text-xs font-mono text-theme-muted hover:text-theme-accent underline transition-colors"
+                className="text-xs font-mono text-theme-muted hover:text-theme-accent underline transition-colors cursor-pointer"
               >
-                Send another message
+                {t.contact.sendAnother}
               </button>
             </div>
           </motion.div>
@@ -102,7 +104,7 @@ export function ContactForm() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
                 <label className="text-[11px] font-mono text-theme-muted uppercase tracking-wider block">
-                  Name <span className="text-theme-accent">*</span>
+                  {t.contact.fieldName} <span className="text-theme-accent">*</span>
                 </label>
                 <input
                   type="text"
@@ -110,14 +112,14 @@ export function ContactForm() {
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder="Your name"
+                  placeholder={t.contact.placeholderName}
                   className="w-full px-3.5 py-2 bg-theme-bg border border-theme-border rounded text-theme-text text-xs placeholder:text-theme-muted/50 focus:outline-none focus:border-theme-accent transition-colors"
                 />
               </div>
 
               <div className="space-y-1.5">
                 <label className="text-[11px] font-mono text-theme-muted uppercase tracking-wider block">
-                  Email <span className="text-theme-accent">*</span>
+                  {t.contact.fieldEmail} <span className="text-theme-accent">*</span>
                 </label>
                 <input
                   type="email"
@@ -125,7 +127,7 @@ export function ContactForm() {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="you@example.com"
+                  placeholder={t.contact.placeholderEmail}
                   className="w-full px-3.5 py-2 bg-theme-bg border border-theme-border rounded text-theme-text text-xs placeholder:text-theme-muted/50 focus:outline-none focus:border-theme-accent transition-colors"
                 />
               </div>
@@ -133,14 +135,14 @@ export function ContactForm() {
 
             <div className="space-y-1.5">
               <label className="text-[11px] font-mono text-theme-muted uppercase tracking-wider block">
-                Subject
+                {t.contact.fieldSubject}
               </label>
               <input
                 type="text"
                 name="subject"
                 value={formData.subject}
                 onChange={handleChange}
-                placeholder="Project inquiry, collaboration, etc."
+                placeholder={t.contact.placeholderSubject}
                 className="w-full px-3.5 py-2 bg-theme-bg border border-theme-border rounded text-theme-text text-xs placeholder:text-theme-muted/50 focus:outline-none focus:border-theme-accent transition-colors"
               />
             </div>
@@ -148,7 +150,7 @@ export function ContactForm() {
             <div className="space-y-1.5">
               <div className="flex items-center justify-between">
                 <label className="text-[11px] font-mono text-theme-muted uppercase tracking-wider block">
-                  Message <span className="text-theme-accent">*</span>
+                  {t.contact.fieldMessage} <span className="text-theme-accent">*</span>
                 </label>
                 <span className="text-[10px] font-mono text-theme-muted">
                   {formData.message.length} chars
@@ -160,7 +162,7 @@ export function ContactForm() {
                 required
                 value={formData.message}
                 onChange={handleChange}
-                placeholder="Tell me about your project, timeline, or inquiry..."
+                placeholder={t.contact.placeholderMessage}
                 className="w-full px-3.5 py-2 bg-theme-bg border border-theme-border rounded text-theme-text text-xs placeholder:text-theme-muted/50 focus:outline-none focus:border-theme-accent transition-colors resize-y min-h-[120px]"
               ></textarea>
             </div>
@@ -168,16 +170,16 @@ export function ContactForm() {
             <button
               type="submit"
               disabled={formStatus === "submitting"}
-              className="w-full flex items-center justify-center space-x-2 px-4 py-2.5 rounded bg-theme-accent hover:bg-theme-accentHover text-white dark:text-theme-bg font-mono font-semibold text-xs transition-all shadow-xs disabled:opacity-70 disabled:cursor-not-allowed group select-none mt-2"
+              className="w-full flex items-center justify-center space-x-2 px-4 py-2.5 rounded bg-theme-accent hover:bg-theme-accentHover text-white dark:text-theme-bg font-mono font-semibold text-xs transition-all shadow-xs disabled:opacity-70 disabled:cursor-not-allowed group select-none mt-2 cursor-pointer"
             >
               {formStatus === "submitting" ? (
                 <>
                   <Loader2 className="h-3.5 w-3.5 animate-spin" />
-                  <span>Sending...</span>
+                  <span>{t.contact.sendingButton}</span>
                 </>
               ) : (
                 <>
-                  <span>Send Message</span>
+                  <span>{t.contact.submitButton}</span>
                   <Send className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </>
               )}
@@ -188,3 +190,4 @@ export function ContactForm() {
     </div>
   );
 }
+

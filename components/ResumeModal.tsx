@@ -14,6 +14,7 @@ import {
   FileText,
   Cpu,
 } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface ResumeModalProps {
   isOpen: boolean;
@@ -22,8 +23,8 @@ interface ResumeModalProps {
 
 export interface ResumeOption {
   id: string;
-  title: string;
-  subtitle: string;
+  titleKey: "aiTitle" | "frontendTitle" | "backendTitle" | "systemsTitle" | "supportTitle";
+  subtitleKey: "aiSubtitle" | "frontendSubtitle" | "backendSubtitle" | "systemsSubtitle" | "supportSubtitle";
   fileUrl: string;
   fileName: string;
   icon: React.ReactNode;
@@ -32,40 +33,40 @@ export interface ResumeOption {
 export const RESUME_OPTIONS: ResumeOption[] = [
   {
     id: "ai",
-    title: "AI & Machine Learning Engineer",
-    subtitle: "Python • PyTorch • LLMs • RAG Architectures",
+    titleKey: "aiTitle",
+    subtitleKey: "aiSubtitle",
     fileUrl: "/application/ai_resume.pdf",
     fileName: "ai_resume.pdf",
     icon: <Cpu className="w-4 h-4 text-theme-accent shrink-0" />,
   },
   {
     id: "frontend",
-    title: "Frontend Software Engineer",
-    subtitle: "Next.js • React • TypeScript",
+    titleKey: "frontendTitle",
+    subtitleKey: "frontendSubtitle",
     fileUrl: "/application/frontend_resume.pdf",
     fileName: "frontend_resume.pdf",
     icon: <Code2 className="w-4 h-4 text-theme-accent shrink-0" />,
   },
   {
     id: "backend",
-    title: "Backend Software Engineer",
-    subtitle: "NestJS • Node.js • PostgreSQL • REST APIs",
+    titleKey: "backendTitle",
+    subtitleKey: "backendSubtitle",
     fileUrl: "/application/backend_resume.pdf",
     fileName: "backend_resume.pdf",
     icon: <Server className="w-4 h-4 text-theme-accent shrink-0" />,
   },
   {
     id: "systems",
-    title: "Junior Systems Engineer",
-    subtitle: "Linux • Nginx • Docker • Infrastructure",
+    titleKey: "systemsTitle",
+    subtitleKey: "systemsSubtitle",
     fileUrl: "/application/systems_engineer_resume.pdf",
     fileName: "systems_engineer_resume.pdf",
     icon: <Terminal className="w-4 h-4 text-theme-accent shrink-0" />,
   },
   {
     id: "support",
-    title: "Technical Support Specialist",
-    subtitle: "Troubleshooting + client-facing support",
+    titleKey: "supportTitle",
+    subtitleKey: "supportSubtitle",
     fileUrl: "/application/tech_support_resume.pdf",
     fileName: "tech_support_resume.pdf",
     icon: <Headphones className="w-4 h-4 text-theme-accent shrink-0" />,
@@ -74,6 +75,7 @@ export const RESUME_OPTIONS: ResumeOption[] = [
 
 export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -102,7 +104,7 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
           onClick={onClose}
           role="dialog"
           aria-modal="true"
-          aria-label="Resume Options"
+          aria-label={t.cv.modalTitle}
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.96, y: 8 }}
@@ -114,14 +116,14 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
           >
             <div className="flex items-center justify-between pb-1 border-b border-theme-border/50">
               <h2 className="text-base sm:text-lg font-bold tracking-tight text-theme-text font-mono">
-                Resume
+                {t.cv.modalTitle}
               </h2>
 
               <button
                 onClick={onClose}
                 type="button"
-                title="Close modal"
-                aria-label="Close modal"
+                title={t.common.close}
+                aria-label={t.common.close}
                 className="p-1.5 rounded-lg text-theme-muted hover:text-theme-text hover:bg-theme-bg border border-transparent hover:border-theme-border transition-colors cursor-pointer"
               >
                 <X className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -138,7 +140,7 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                 className="w-full py-2.5 sm:py-3 px-4 rounded-lg bg-theme-accent hover:bg-theme-accentHover text-white dark:text-theme-bg font-bold font-mono text-xs sm:text-sm tracking-wide shadow-sm transition-all cursor-pointer flex items-center justify-center gap-2"
               >
                 <Download className="w-4 h-4" />
-                <span>Open Full-Stack Engineer Resume</span>
+                <span>{t.cv.primaryRoleTitle}</span>
               </a>
             </div>
 
@@ -150,11 +152,12 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
               >
                 <div className="flex items-center space-x-2">
                   <FileText className="w-3.5 h-3.5 text-theme-accent" />
-                  <span>Specialized resumes ({RESUME_OPTIONS.length})</span>
+                  <span>{t.cv.specializedTitle} ({RESUME_OPTIONS.length})</span>
                 </div>
                 <ChevronDown
-                  className={`w-4 h-4 text-theme-muted transition-transform duration-200 ${isDropdownOpen ? "rotate-180" : ""
-                    }`}
+                  className={`w-4 h-4 text-theme-muted transition-transform duration-200 ${
+                    isDropdownOpen ? "rotate-180" : ""
+                  }`}
                 />
               </button>
 
@@ -178,10 +181,10 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                           </div>
                           <div className="min-w-0">
                             <p className="text-xs font-bold font-mono text-theme-text truncate">
-                              {item.title}
+                              {t.cv[item.titleKey]}
                             </p>
                             <p className="text-[10px] font-mono text-theme-muted truncate">
-                              {item.subtitle}
+                              {t.cv[item.subtitleKey]}
                             </p>
                           </div>
                         </div>
@@ -205,28 +208,20 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
             </div>
 
             <div className="p-3.5 sm:p-4 rounded-lg bg-theme-bg/60 border border-theme-border/40 space-y-2.5">
-              <div>
-                <h3 className="text-xs sm:text-sm font-semibold text-theme-text">
-                  Contact for other resumes
-                </h3>
-                <p className="text-[11px] sm:text-xs text-theme-muted leading-relaxed mt-1">
-                  Need a specialized resume for specific roles (Backend, ML, other IT related positions, etc.)?
-                </p>
-              </div>
               <div className="flex gap-2">
                 <Link
                   href="/cv"
                   onClick={onClose}
                   className="flex-1 py-2 sm:py-2.5 px-3 rounded-lg bg-theme-accent/15 border border-theme-accent/40 text-theme-accent hover:bg-theme-accent/25 font-mono font-bold text-xs transition-colors cursor-pointer flex items-center justify-center text-center"
                 >
-                  View /cv Page
+                  {t.cv.viewOnline}
                 </Link>
                 <Link
                   href="/contact"
                   onClick={onClose}
                   className="flex-1 py-2 sm:py-2.5 px-3 rounded-lg bg-theme-btnExploreBg hover:bg-theme-bg border border-theme-btnExploreBorder hover:border-theme-accent text-theme-btnExploreText hover:text-theme-text font-medium text-xs transition-colors cursor-pointer flex items-center justify-center text-center"
                 >
-                  Contact Page
+                  {t.contact.pageTitle}
                 </Link>
               </div>
             </div>
@@ -236,4 +231,5 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
     </AnimatePresence>
   );
 }
+
 

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { ProjectProfessional, ProjectAcademic } from "@/public/JSONJS";
+import { getProjects } from "@/data/projects";
 import {
   AIVisualizer,
   GameVisualizer,
@@ -14,6 +14,7 @@ import {
 import { ArrowRight } from "lucide-react";
 import OpenLinks from "./OpenLinks";
 import ProjectCarousel from "./ProjectCarousel";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface ProjectCardProps {
   id: string | number;
@@ -50,6 +51,7 @@ function ProjectCard({
   projectImages,
 }: ProjectCardProps) {
   const [isProjectClicked, setIsProjectClicked] = useState(false);
+  const { t } = useLanguage();
 
   const handleCardInteraction = (e: React.MouseEvent<HTMLElement>) => {
     const target = e.target as HTMLElement;
@@ -141,11 +143,11 @@ function ProjectCard({
                   rel="noopener noreferrer"
                   className="inline-flex items-center space-x-1 font-bold text-[var(--link-prominent-green)] hover:text-[var(--link-prominent-green-hover)] hover:underline transition-colors"
                 >
-                  <span>Live Site</span>
+                  <span>{t.common.liveSite}</span>
                   <ArrowRight className="h-3 w-3" />
                 </a>
               ) : (
-                <span className="text-theme-muted font-medium">Proprietary</span>
+                <span className="text-theme-muted font-medium">{t.common.proprietary}</span>
               )}
             </div>
 
@@ -156,7 +158,7 @@ function ProjectCard({
                 rel="noopener noreferrer"
                 className="inline-flex items-center space-x-1 font-bold text-[var(--link-prominent-green)] hover:text-[var(--link-prominent-green-hover)] hover:underline transition-colors"
               >
-                <span>Live</span>
+                <span>{t.common.live}</span>
                 <ArrowRight className="h-3 w-3" />
               </a>
             )}
@@ -258,7 +260,6 @@ function ProjectCard({
         </div>
       </div>
 
-
       <div className="mt-6 pt-4 border-t border-theme-border flex flex-col gap-3 relative z-10">
         <div className="flex flex-wrap gap-1.5">
           {tags.slice(0, 3).map((tag: string) => (
@@ -280,11 +281,11 @@ function ProjectCard({
                 rel="noopener noreferrer"
                 className="inline-flex items-center space-x-1 font-bold text-[var(--link-prominent-green)] hover:text-[var(--link-prominent-green-hover)] hover:underline transition-colors"
               >
-                <span>GitHub Repo</span>
+                <span>{t.common.githubRepo}</span>
                 <ArrowRight className="h-3 w-3" />
               </a>
             ) : (
-              <span className="text-theme-muted font-medium">Pending Release</span>
+              <span className="text-theme-muted font-medium">{t.common.pendingRelease}</span>
             )}
           </div>
 
@@ -295,7 +296,7 @@ function ProjectCard({
               className="inline-flex items-center text-xs font-mono text-emerald-600 dark:text-rose-400 hover:text-emerald-500 dark:hover:text-rose-300 font-bold transition-all cursor-pointer select-none"
               title="Launch minigame"
             >
-              [wanna play a game?]
+              {t.projects.wannaPlay}
             </button>
           )}
         </div>
@@ -307,6 +308,8 @@ function ProjectCard({
 export default function ProjectList() {
   const [activeTab, setActiveTab] = useState<"professional" | "academic">("professional");
   const [hoveredId, setHoveredId] = useState<string | number | null>(null);
+  const { locale, t } = useLanguage();
+  const { ProjectProfessional, ProjectAcademic } = getProjects(locale);
 
   useEffect(() => {
     ProjectProfessional.forEach((project) => {
@@ -332,7 +335,7 @@ export default function ProjectList() {
         vid.preload = "auto";
       }
     });
-  }, []);
+  }, [ProjectProfessional, ProjectAcademic]);
 
   const renderArchitecture = (identifier: string | number, isHovered: boolean) => {
     const nameStr = String(identifier).toLowerCase();
@@ -391,30 +394,30 @@ export default function ProjectList() {
     <section className="pt-8 md:pt-12 pb-12 md:pb-20 border-b border-theme-border" id="projects">
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
         <div>
-          <h2 className="text-2xl font-bold tracking-tight text-theme-text mb-2">Featured Work</h2>
+          <h2 className="text-2xl font-bold tracking-tight text-theme-text mb-2">{t.projects.title}</h2>
           <p className="text-theme-muted text-sm md:text-base max-w-2xl">
-            Selected projects, live applications and codebases.
+            {t.projects.subtitle}
           </p>
         </div>
 
         <div className="flex flex-col sm:flex-row p-1 gap-1 bg-theme-btnExploreBg border border-theme-border rounded-lg self-stretch md:self-auto font-mono text-xs select-none">
           <button
             onClick={() => setActiveTab("professional")}
-            className={`px-3 py-1.5 rounded transition-all focus:outline-none whitespace-nowrap text-center ${activeTab === "professional"
+            className={`px-3 py-1.5 rounded transition-all focus:outline-none whitespace-nowrap text-center cursor-pointer ${activeTab === "professional"
               ? "bg-theme-bg border border-theme-border text-theme-text shadow-sm z-10 font-bold"
               : "text-theme-muted hover:text-theme-text border border-transparent z-0"
               } w-full sm:w-auto`}
           >
-            Projects ({professionalProjects.length})
+            {t.projects.tabProjects} ({professionalProjects.length})
           </button>
           <button
             onClick={() => setActiveTab("academic")}
-            className={`px-3 py-1.5 rounded transition-all focus:outline-none whitespace-nowrap text-center ${activeTab === "academic"
+            className={`px-3 py-1.5 rounded transition-all focus:outline-none whitespace-nowrap text-center cursor-pointer ${activeTab === "academic"
               ? "bg-theme-bg border border-theme-border text-theme-text shadow-sm z-10 font-bold"
               : "text-theme-muted hover:text-theme-text border border-transparent z-0"
               } w-full sm:w-auto`}
           >
-            R&D & Experiments ({academicProjects.length})
+            {t.projects.tabAcademic} ({academicProjects.length})
           </button>
         </div>
       </div>
@@ -468,3 +471,4 @@ export default function ProjectList() {
     </section>
   );
 }
+

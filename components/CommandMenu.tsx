@@ -2,7 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, Folder, Zap, Globe, FileText, ArrowRight } from "lucide-react";
+import { Search, Folder, Zap, Globe, FileText, ArrowRight, Languages } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import { Locale } from "@/translations";
 
 interface CommandMenuProps {
   isOpen: boolean;
@@ -13,7 +15,7 @@ interface CommandItem {
   id: string;
   title: string;
   subtitle: string;
-  category: "navigation" | "projects" | "actions";
+  category: "navigation" | "projects" | "actions" | "language";
   icon: React.ReactNode;
   action: () => void;
   href?: string;
@@ -21,16 +23,46 @@ interface CommandItem {
 
 export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
   const router = useRouter();
+  const { t, locale, setLocale } = useLanguage();
   const [search, setSearch] = useState("");
   const [selectedIndex, setSelectedIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  const handleLanguageChange = (newLocale: Locale) => {
+    setLocale(newLocale);
+    onClose();
+  };
+
   const commands: CommandItem[] = [
     {
+      id: "lang-en",
+      title: t.commandMenu.langEn,
+      subtitle: t.commandMenu.langEnSub,
+      category: "language",
+      icon: <Languages className="h-4 w-4 text-theme-accent" />,
+      action: () => handleLanguageChange("en"),
+    },
+    {
+      id: "lang-ru",
+      title: t.commandMenu.langRu,
+      subtitle: t.commandMenu.langRuSub,
+      category: "language",
+      icon: <Languages className="h-4 w-4 text-theme-accent" />,
+      action: () => handleLanguageChange("ru"),
+    },
+    {
+      id: "lang-am",
+      title: t.commandMenu.langAm,
+      subtitle: t.commandMenu.langAmSub,
+      category: "language",
+      icon: <Languages className="h-4 w-4 text-theme-accent" />,
+      action: () => handleLanguageChange("am"),
+    },
+    {
       id: "nav-projects",
-      title: "Go to Selected Projects",
-      subtitle: "Scroll to main projects section",
+      title: t.commandMenu.navProjects,
+      subtitle: t.commandMenu.navProjectsSub,
       category: "navigation",
       icon: <Folder className="h-4 w-4" />,
       href: "/#projects",
@@ -46,8 +78,8 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
     },
     {
       id: "nav-cv",
-      title: "Go to CV / Resumes Page (/cv)",
-      subtitle: "View and download all role-tailored resumes",
+      title: t.commandMenu.navCv,
+      subtitle: t.commandMenu.navCvSub,
       category: "navigation",
       icon: <FileText className="h-4 w-4" />,
       href: "/cv",
@@ -58,8 +90,8 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
     },
     {
       id: "nav-about",
-      title: "Goto About Page",
-      subtitle: "Read about my background & stack",
+      title: t.commandMenu.navAbout,
+      subtitle: t.commandMenu.navAboutSub,
       category: "navigation",
       icon: <Globe className="h-4 w-4" />,
       href: "/about",
@@ -70,8 +102,8 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
     },
     {
       id: "nav-posts",
-      title: "Go to Posts / Writings",
-      subtitle: "Browse technical blogs & guides",
+      title: t.commandMenu.navPosts,
+      subtitle: t.commandMenu.navPostsSub,
       category: "navigation",
       icon: <FileText className="h-4 w-4" />,
       href: "/posts",
@@ -82,8 +114,8 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
     },
     {
       id: "nav-contact-page",
-      title: "Go to Contact Page (/contact)",
-      subtitle: "Send a message via contact form",
+      title: t.commandMenu.navContactPage,
+      subtitle: t.commandMenu.navContactPageSub,
       category: "navigation",
       icon: <Globe className="h-4 w-4" />,
       href: "/contact",
@@ -94,8 +126,8 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
     },
     {
       id: "nav-contact",
-      title: "Go to Contact Section",
-      subtitle: "Scroll to get in touch details",
+      title: t.commandMenu.navContact,
+      subtitle: t.commandMenu.navContactSub,
       category: "navigation",
       icon: <Globe className="h-4 w-4" />,
       href: "/#contact",
@@ -158,123 +190,15 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       },
     },
     {
-      id: "project-himeh",
-      title: "Himeh Publishing Specs",
-      subtitle: "View order dispatcher & SMS verification flow",
-      category: "projects",
-      icon: <FileText className="h-4 w-4" />,
-      href: "/projects/Himeh",
-      action: () => {
-        onClose();
-        router.push("/projects/Himeh");
-      },
-    },
-    {
-      id: "project-goldenbat",
-      title: "Goldenbat GPS Tracking Specs",
-      subtitle: "View high-frequency IoT coordinates ingest details",
-      category: "projects",
-      icon: <FileText className="h-4 w-4" />,
-      href: "/projects/goldenbat",
-      action: () => {
-        onClose();
-        router.push("/projects/goldenbat");
-      },
-    },
-    {
-      id: "project-taxiland",
-      title: "Taxiland Dispatch Specs",
-      subtitle: "View passenger & driver location cache architecture",
-      category: "projects",
-      icon: <FileText className="h-4 w-4" />,
-      href: "/projects/taxiland",
-      action: () => {
-        onClose();
-        router.push("/projects/taxiland");
-      },
-    },
-    {
       id: "project-alzahra",
-      title: "Alzahra Gold Wholesaler Specs",
-      subtitle: "View gold trading Rest API and ledger specs",
+      title: "Al-Zahra Hospital Specs",
+      subtitle: "View clinical directory & schedule booking workflow",
       category: "projects",
       icon: <FileText className="h-4 w-4" />,
       href: "/projects/alzahra",
       action: () => {
         onClose();
         router.push("/projects/alzahra");
-      },
-    },
-    {
-      id: "academic-cat",
-      title: "Cat Emotion Recognition Repo",
-      subtitle: "Open GitHub repository for CNN cat emotion ML model",
-      category: "projects",
-      icon: <Globe className="h-4 w-4" />,
-      href: "https://github.com/parsany/CatRecognition",
-      action: () => {
-        onClose();
-        window.open("https://github.com/parsany/CatRecognition", "_blank");
-      },
-    },
-    {
-      id: "academic-conway",
-      title: "Conway Cellular Automata Invaders Repo",
-      subtitle: "Open GitHub repository for space invaders game on life grids",
-      category: "projects",
-      icon: <Globe className="h-4 w-4" />,
-      href: "https://github.com/parsany/Conway-game-of-life-invaders",
-      action: () => {
-        onClose();
-        window.open("https://github.com/parsany/Conway-game-of-life-invaders", "_blank");
-      },
-    },
-    {
-      id: "academic-pid",
-      title: "PID Neural Network Optimizer Repo",
-      subtitle: "Open GitHub repository for neural network feedback control weights",
-      category: "projects",
-      icon: <Globe className="h-4 w-4" />,
-      href: "https://github.com/parsany/PID_NN",
-      action: () => {
-        onClose();
-        window.open("https://github.com/parsany/PID_NN", "_blank");
-      },
-    },
-    {
-      id: "academic-qt",
-      title: "Library Program QT Repo",
-      subtitle: "Open GitHub repository for PySide/QT e-book library layout manager",
-      category: "projects",
-      icon: <Globe className="h-4 w-4" />,
-      href: "https://github.com/parsany/PyLibrary-QT",
-      action: () => {
-        onClose();
-        window.open("https://github.com/parsany/PyLibrary-QT", "_blank");
-      },
-    },
-    {
-      id: "academic-anomaly",
-      title: "Anomaly detection for Goldmines Repo",
-      subtitle: "Open GitHub repository for mineral VAE autoencoders",
-      category: "projects",
-      icon: <Globe className="h-4 w-4" />,
-      href: "https://github.com/parsany/anomaly-VAE",
-      action: () => {
-        onClose();
-        window.open("https://github.com/parsany/anomaly-VAE", "_blank");
-      },
-    },
-    {
-      id: "academic-interpreter",
-      title: "Interpreter with Flex & Bison Repo",
-      subtitle: "Open GitHub repository for custom syntax parsing tree interpreter",
-      category: "projects",
-      icon: <Globe className="h-4 w-4" />,
-      href: "https://github.com/parsany/InterpreterFlexBison",
-      action: () => {
-        onClose();
-        window.open("https://github.com/parsany/InterpreterFlexBison", "_blank");
       },
     },
     {
@@ -290,8 +214,8 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
     },
     {
       id: "action-resume",
-      title: "Download Resume Modal",
-      subtitle: "Open resume selection modal with all specialized roles",
+      title: t.commandMenu.actionResume,
+      subtitle: t.commandMenu.actionResumeSub,
       category: "actions",
       icon: <FileText className="h-4 w-4" />,
       action: () => {
@@ -301,8 +225,8 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
     },
     {
       id: "action-resume-ai",
-      title: "AI & Machine Learning Engineer Resume",
-      subtitle: "Python • PyTorch • LLMs • RAG Architectures [PDF]",
+      title: t.cv.aiTitle,
+      subtitle: t.cv.aiSubtitle,
       category: "actions",
       icon: <FileText className="h-4 w-4" />,
       href: "/application/ai_resume.pdf",
@@ -313,8 +237,8 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
     },
     {
       id: "action-resume-frontend",
-      title: "Frontend Software Engineer Resume",
-      subtitle: "Next.js • React • TypeScript [PDF]",
+      title: t.cv.frontendTitle,
+      subtitle: t.cv.frontendSubtitle,
       category: "actions",
       icon: <FileText className="h-4 w-4" />,
       href: "/application/frontend_resume.pdf",
@@ -325,8 +249,8 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
     },
     {
       id: "action-resume-backend",
-      title: "Backend Software Engineer Resume",
-      subtitle: "NestJS • Node.js • PostgreSQL • REST APIs [PDF]",
+      title: t.cv.backendTitle,
+      subtitle: t.cv.backendSubtitle,
       category: "actions",
       icon: <FileText className="h-4 w-4" />,
       href: "/application/backend_resume.pdf",
@@ -337,8 +261,8 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
     },
     {
       id: "action-resume-systems",
-      title: "Junior Systems Engineer Resume",
-      subtitle: "Linux • Nginx • Docker • Infrastructure [PDF]",
+      title: t.cv.systemsTitle,
+      subtitle: t.cv.systemsSubtitle,
       category: "actions",
       icon: <FileText className="h-4 w-4" />,
       href: "/application/systems_engineer_resume.pdf",
@@ -349,38 +273,14 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
     },
     {
       id: "action-resume-support",
-      title: "Technical Support Specialist Resume",
-      subtitle: "Troubleshooting + client-facing support [PDF]",
+      title: t.cv.supportTitle,
+      subtitle: t.cv.supportSubtitle,
       category: "actions",
       icon: <FileText className="h-4 w-4" />,
       href: "/application/tech_support_resume.pdf",
       action: () => {
         onClose();
         window.open("/application/tech_support_resume.pdf", "_blank");
-      },
-    },
-    {
-      id: "action-github",
-      title: "Open GitHub Profile",
-      subtitle: "github.com/parsany",
-      category: "actions",
-      icon: <Globe className="h-4 w-4" />,
-      href: "https://github.com/parsany",
-      action: () => {
-        onClose();
-        window.open("https://github.com/parsany", "_blank");
-      },
-    },
-    {
-      id: "action-linkedin",
-      title: "Open LinkedIn Profile",
-      subtitle: "linkedin.com/in/parsany",
-      category: "actions",
-      icon: <Globe className="h-4 w-4" />,
-      href: "https://www.linkedin.com/in/parsany/",
-      action: () => {
-        onClose();
-        window.open("https://www.linkedin.com/in/parsany/", "_blank");
       },
     },
   ];
@@ -412,7 +312,7 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
     router.prefetch("/posts");
     router.prefetch("/contact");
     router.prefetch("/#contact");
-    const projectSlugs = ["charbag", "msk", "esp", "atrafian", "Himeh", "goldenbat", "taxiland", "alzahra"];
+    const projectSlugs = ["charbag", "msk", "esp", "atrafian", "goldenbat", "taxiland", "alzahra"];
     projectSlugs.forEach((slug) => {
       router.prefetch(`/projects/${slug}`);
     });
@@ -500,7 +400,7 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
                   setSearch(e.target.value);
                   setSelectedIndex(0);
                 }}
-                placeholder="Type a command or search..."
+                placeholder={t.commandMenu.placeholder}
                 className="w-full bg-transparent border-0 outline-none text-theme-text text-sm placeholder-theme-muted focus:ring-0 focus:outline-none"
               />
             </div>
@@ -512,10 +412,11 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
                   const itemProps = {
                     onClick: cmd.action,
                     onMouseEnter: () => setSelectedIndex(idx),
-                    className: `w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-left transition-colors focus:outline-none ${isSelected
+                    className: `w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-left transition-colors focus:outline-none cursor-pointer ${
+                      isSelected
                         ? "bg-theme-accentLight text-theme-accentText"
                         : "text-theme-muted hover:bg-theme-accentLight/40"
-                      }`,
+                    }`,
                     role: "option",
                     "aria-selected": isSelected,
                   };
@@ -524,17 +425,19 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
                     <>
                       <div className="flex items-center space-x-3">
                         <div
-                          className={`p-1.5 rounded ${isSelected
+                          className={`p-1.5 rounded ${
+                            isSelected
                               ? "bg-theme-accent text-white"
                               : "bg-theme-btnExploreBg text-theme-muted border border-theme-btnExploreBorder"
-                            }`}
+                          }`}
                         >
                           {cmd.icon}
                         </div>
                         <div>
                           <p
-                            className={`text-xs font-medium font-sans ${isSelected ? "text-theme-accentText font-bold" : "text-theme-text"
-                              }`}
+                            className={`text-xs font-medium font-sans ${
+                              isSelected ? "text-theme-accentText font-bold" : "text-theme-text"
+                            }`}
                           >
                             {cmd.title}
                           </p>
@@ -576,7 +479,7 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
                 })
               ) : (
                 <div className="py-8 text-center text-theme-muted text-xs font-mono">
-                  No commands match your query.
+                  {t.commandMenu.noResults}
                 </div>
               )}
             </div>

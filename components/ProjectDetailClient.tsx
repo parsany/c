@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import { ProjectProfessional } from "@/public/JSONJS";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import rehypeSlug from "rehype-slug";
@@ -12,12 +11,17 @@ import { ArrowLeft, ChevronLeft, ChevronRight, Calendar, Globe, X } from "lucide
 import { motion, AnimatePresence } from "framer-motion";
 import OpenLinks from "@/components/OpenLinks";
 import { ImageFallback } from "@/components/ImageFallback";
+import { useLanguage } from "@/context/LanguageContext";
+import { getProfessionalProject, ProjectProfessional } from "@/data/projects";
 
 interface ProjectDetailClientProps {
   project: any;
 }
 
 export default function ProjectDetailClient({ project }: ProjectDetailClientProps) {
+  const { locale, t } = useLanguage();
+  const currentProject = getProfessionalProject(project.slug, locale) || project;
+
   const [activeIndex, setActiveIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
@@ -37,8 +41,8 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
 
   useEffect(() => {
     setFailedImages({});
-    if (project?.project_image && project.project_image.length > 0) {
-      project.project_image.forEach((src: string, idx: number) => {
+    if (currentProject?.project_image && currentProject.project_image.length > 0) {
+      currentProject.project_image.forEach((src: string, idx: number) => {
         const img = new window.Image();
         img.src = src;
         img.onerror = () => {
@@ -46,7 +50,7 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
         };
       });
     }
-  }, [project?.project_image]);
+  }, [currentProject?.project_image]);
 
   useEffect(() => {
     setZoomScale(1);
@@ -164,27 +168,27 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
     }
   };
 
-  const redirectTarget = project?.redirect
-    ? ProjectProfessional.find((p) => p.slug === project.redirect)
+  const redirectTarget = currentProject?.redirect
+    ? ProjectProfessional.find((p) => p.slug === currentProject.redirect)
     : null;
 
   const handlePrev = useCallback(() => {
-    if (project?.project_image) {
+    if (currentProject?.project_image) {
       setDirection(-1);
       setActiveIndex((prev) =>
-        prev === 0 ? project.project_image.length - 1 : prev - 1
+        prev === 0 ? currentProject.project_image.length - 1 : prev - 1
       );
     }
-  }, [project?.project_image]);
+  }, [currentProject?.project_image]);
 
   const handleNext = useCallback(() => {
-    if (project?.project_image) {
+    if (currentProject?.project_image) {
       setDirection(1);
       setActiveIndex((prev) =>
-        prev === project.project_image.length - 1 ? 0 : prev + 1
+        prev === currentProject.project_image.length - 1 ? 0 : prev + 1
       );
     }
-  }, [project?.project_image]);
+  }, [currentProject?.project_image]);
 
   const handleDragStart = (clientX: number, clientY: number) => {
     dragStartX.current = clientX;
@@ -222,7 +226,7 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
     }
     const d = new Date(dateStr);
     if (isNaN(d.getTime())) return dateStr;
-    return d.toLocaleDateString("en-US", {
+    return d.toLocaleDateString(locale === "ru" ? "ru-RU" : locale === "am" ? "hy-AM" : "en-US", {
       year: "numeric",
       month: "long",
     });
@@ -234,14 +238,14 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
         setIsLightboxOpen(false);
         return;
       }
-      if (!project?.project_image || project.project_image.length <= 1) return;
+      if (!currentProject?.project_image || currentProject.project_image.length <= 1) return;
       if (e.key === "ArrowLeft") handlePrev();
       if (e.key === "ArrowRight") handleNext();
     };
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [project?.project_image, isLightboxOpen, handlePrev, handleNext]);
+  }, [currentProject?.project_image, isLightboxOpen, handlePrev, handleNext]);
 
   return (
     <article className="max-w-2xl mx-auto py-12">
@@ -250,45 +254,45 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
         className="inline-flex items-center space-x-2 text-xs font-mono text-theme-muted hover:text-theme-text transition-colors mb-8"
       >
         <ArrowLeft className="h-3.5 w-3.5" />
-        <span>Back to home</span>
+        <span>{t.common.backToHome}</span>
       </Link>
 
       <header className="space-y-4 mb-8">
-        <h1 className="text-3xl font-bold tracking-tight text-theme-text">{project.name}</h1>
+        <h1 className="text-3xl font-bold tracking-tight text-theme-text">{currentProject.name}</h1>
 
         <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-theme-muted">
           <span className="flex items-center space-x-1.5">
             <Calendar className="h-3.5 w-3.5" />
-            <span>{formatDate(project.date)}</span>
+            <span>{formatDate(currentProject.date)}</span>
           </span>
-          {project.links && project.links.length >= 2 ? (
-            <OpenLinks links={project.links} position="top" />
-          ) : project.links && project.links.length === 1 ? (
+          {currentProject.links && currentProject.links.length >= 2 ? (
+            <OpenLinks links={currentProject.links} position="top" />
+          ) : currentProject.links && currentProject.links.length === 1 ? (
             <a
-              href={project.links[0].url}
+              href={currentProject.links[0].url}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center space-x-1 font-bold text-[var(--link-prominent-green)] hover:text-[var(--link-prominent-green-hover)] transition-colors"
             >
               <Globe className="h-3.5 w-3.5" />
-              <span>{project.links[0].label}</span>
+              <span>{currentProject.links[0].label}</span>
             </a>
-          ) : project.link ? (
+          ) : currentProject.link ? (
             <a
-              href={project.link}
+              href={currentProject.link}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center space-x-1 font-bold text-[var(--link-prominent-green)] hover:text-[var(--link-prominent-green-hover)] transition-colors"
             >
               <Globe className="h-3.5 w-3.5" />
-              <span>Visit Website</span>
+              <span>{t.projects.viewSite}</span>
             </a>
           ) : null}
         </div>
 
-        {project.tag && (
+        {currentProject.tag && (
           <div className="flex flex-wrap gap-1.5 pt-2">
-            {project.tag.map((tag: string) => (
+            {currentProject.tag.map((tag: string) => (
               <span
                 key={tag}
                 className="px-2.5 py-0.5 text-[10px] font-mono font-semibold rounded bg-theme-accentLight text-theme-accentText border border-theme-border"
@@ -300,7 +304,7 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
         )}
       </header>
 
-      {(!project.project_image || project.project_image.length === 0 || Object.keys(failedImages).length === project.project_image.length) ? (
+      {(!currentProject.project_image || currentProject.project_image.length === 0 || Object.keys(failedImages).length === currentProject.project_image.length) ? (
         <div className="relative aspect-video w-full rounded-xl overflow-hidden mb-10 border border-theme-border shadow-sm">
           <ImageFallback label="(Image will be uploaded)" />
         </div>
@@ -355,8 +359,8 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
                     <ImageFallback label="(Image will be uploaded)" />
                   ) : (
                     <Image
-                      src={project.project_image[activeIndex]}
-                      alt={`${project.name} preview ${activeIndex + 1}`}
+                      src={currentProject.project_image[activeIndex]}
+                      alt={`${currentProject.name} preview ${activeIndex + 1}`}
                       fill
                       sizes="800px"
                       priority
@@ -377,7 +381,7 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
             />
             <div className="absolute inset-0 pointer-events-none hidden dark:block bg-gradient-to-t from-black/25 via-transparent to-black/10" />
 
-            {project.project_image.length > 1 && (
+            {currentProject.project_image.length > 1 && (
               <>
                 <button
                   onClick={(e) => {
@@ -405,7 +409,7 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
                 </button>
 
                 <div className="absolute bottom-3 md:bottom-2 inset-x-4 z-10 flex gap-1.5">
-                  {project.project_image.map((_: any, idx: number) => (
+                  {currentProject.project_image.map((_: any, idx: number) => (
                     <button
                       key={idx}
                       onClick={(e) => {
@@ -456,7 +460,7 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
               aria-label="Image viewer"
             >
               <div className="absolute top-6 left-6 text-xs font-mono text-theme-muted select-none z-50">
-                {activeIndex + 1} / {project.project_image.length}
+                {activeIndex + 1} / {currentProject.project_image.length}
               </div>
 
               <button
@@ -467,7 +471,7 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
                 <X className="h-6 w-6" />
               </button>
 
-              {project.project_image.length > 1 && zoomScale === 1 && (
+              {currentProject.project_image.length > 1 && zoomScale === 1 && (
                 <>
                   <button
                     onClick={(e) => {
@@ -529,8 +533,8 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
                         <ImageFallback label="(Image will be uploaded)" />
                       ) : (
                         <Image
-                          src={project.project_image[activeIndex]}
-                          alt={`${project.name} full view`}
+                          src={currentProject.project_image[activeIndex]}
+                          alt={`${currentProject.name} full view`}
                           fill
                           sizes="100vw"
                           draggable={false}
@@ -546,9 +550,9 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
                 </div>
               </div>
 
-              {project.project_image.length > 1 && zoomScale === 1 && (
+              {currentProject.project_image.length > 1 && zoomScale === 1 && (
                 <div className="absolute bottom-6 md:bottom-3 left-1/2 -translate-x-1/2 z-50 flex gap-1.5 w-full max-w-xl px-4">
-                  {project.project_image.map((_: any, idx: number) => (
+                  {currentProject.project_image.map((_: any, idx: number) => (
                     <button
                       key={idx}
                       onClick={(e) => {
@@ -589,14 +593,14 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
             code: ({ node, ...props }) => <code className="bg-theme-btnExploreBg text-theme-text border border-theme-border px-1 py-0.5 rounded text-xs font-mono" {...props} />,
           }}
         >
-          {project.text}
+          {currentProject.text}
         </ReactMarkdown>
       </div>
 
       {redirectTarget && (
         <div className="mt-8 p-4 rounded-lg bg-theme-btnExploreBg border border-theme-border">
           <p className="text-xs text-theme-muted font-mono">
-            Connected Project:{" "}
+            {t.projects.connectedProject}:{" "}
             <Link
               href={`/projects/${redirectTarget.slug}`}
               className="text-theme-text underline hover:text-theme-accent"
@@ -609,11 +613,11 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
 
       <footer className="mt-16 pt-8 border-t border-theme-border flex items-center justify-between text-xs font-mono text-theme-muted">
         <Link href="/" className="hover:text-theme-text transition-colors">
-          &larr; Back to home
+          &larr; {t.common.backToHome}
         </Link>
 
         <Link href="/contact" className="hover:text-theme-text transition-colors">
-          get in touch!
+          {t.hero.getInTouch}!
         </Link>
       </footer>
     </article>

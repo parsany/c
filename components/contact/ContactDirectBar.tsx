@@ -2,12 +2,14 @@
 
 import React, { useState } from "react";
 import { Mail, Copy, Check, Github, Linkedin, Send, ArrowUpRight, Phone } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface ContactDirectBarProps {
   email?: string;
 }
 
 export function ContactDirectBar({ email = "vvsparsa@gmail.com" }: ContactDirectBarProps) {
+  const { t } = useLanguage();
   const [copied, setCopied] = useState(false);
 
   const handleCopyEmail = async () => {
@@ -55,7 +57,7 @@ export function ContactDirectBar({ email = "vvsparsa@gmail.com" }: ContactDirect
             <Mail className="h-4 w-4" />
           </div>
           <div className="min-w-0">
-            <p className="text-[10px] font-mono text-theme-muted uppercase tracking-wider">Direct Email</p>
+            <p className="text-[10px] font-mono text-theme-muted uppercase tracking-wider">{t.contact.directEmail}</p>
             <a
               href={`mailto:${email}`}
               className="text-xs sm:text-sm font-mono text-theme-text hover:text-theme-accent transition-colors truncate block"
@@ -67,7 +69,7 @@ export function ContactDirectBar({ email = "vvsparsa@gmail.com" }: ContactDirect
 
         <button
           onClick={handleCopyEmail}
-          className="inline-flex items-center justify-center space-x-2 px-3 py-1.5 rounded bg-theme-bg border border-theme-border hover:border-theme-accent/50 text-theme-secondary hover:text-theme-text text-xs font-mono transition-colors shrink-0 select-none"
+          className="inline-flex items-center justify-center space-x-2 px-3 py-1.5 rounded bg-theme-bg border border-theme-border hover:border-theme-accent/50 text-theme-secondary hover:text-theme-text text-xs font-mono transition-colors shrink-0 select-none cursor-pointer"
           title="Copy email address"
         >
           {copied ? (
@@ -111,3 +113,4 @@ export function ContactDirectBar({ email = "vvsparsa@gmail.com" }: ContactDirect
     </div>
   );
 }
+

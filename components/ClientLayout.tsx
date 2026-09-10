@@ -5,15 +5,18 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import CommandMenu from "@/components/CommandMenu";
 import ResumeModal from "@/components/ResumeModal";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { LanguageProvider, useLanguage } from "@/context/LanguageContext";
 import { Sun, Moon } from "lucide-react";
 
-export default function ClientLayout({ children }: { children: React.ReactNode }) {
+function InnerLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const isLanding = pathname === "/landing";
   const [isOpen, setIsOpen] = useState(false);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">("dark");
   const [transitioningTheme, setTransitioningTheme] = useState<"light" | "dark" | null>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
@@ -89,11 +92,13 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
   return (
     <>
       <div className="min-h-screen text-theme-text antialiased selection:bg-theme-accentLight selection:text-theme-accentText transition-colors duration-200">
-        <div className="fixed top-4 right-4 md:top-6 md:right-6 z-50">
+        <div className="fixed top-4 right-4 md:top-6 md:right-6 z-50 flex items-center gap-2.5">
+          <LanguageSwitcher />
           <button
             onClick={toggleTheme}
             className="p-2 rounded-lg bg-theme-btnExploreBg hover:bg-theme-bg border border-theme-btnExploreBorder hover:border-theme-accent text-theme-btnExploreText hover:text-theme-text transition-all shadow-sm focus:outline-none cursor-pointer"
-            aria-label="Toggle Theme"
+            aria-label={t.common.toggleTheme}
+            title={t.common.toggleTheme}
           >
             {theme === "light" ? (
               <Moon className="h-4.5 w-4.5" />
@@ -149,7 +154,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
               <span style={{ fontSize: "2.2rem", lineHeight: 1, letterSpacing: "0.05em" }}>✛</span>
 
               <span style={{ fontSize: "0.62rem", letterSpacing: "0.35em", textTransform: "uppercase", fontFamily: "ui-sans-serif,system-ui,sans-serif", fontWeight: 600 }}>
-                {transitioningTheme === "dark" ? "switching to dark" : "switching to light"}
+                {transitioningTheme === "dark" ? t.common.switchingToDark : t.common.switchingToLight}
               </span>
             </div>
           </div>
@@ -158,3 +163,12 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
     </>
   );
 }
+
+export default function ClientLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <LanguageProvider>
+      <InnerLayout>{children}</InnerLayout>
+    </LanguageProvider>
+  );
+}
+

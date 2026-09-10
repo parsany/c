@@ -5,9 +5,11 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Search, Calendar, Clock, ArrowLeft } from "lucide-react";
 import Posts from "@/public/content/materials/PostsPage.json";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function BlogArchive() {
   const router = useRouter();
+  const { t, locale } = useLanguage();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
 
@@ -20,7 +22,8 @@ export default function BlogArchive() {
 
   const formatDate = (dateStr: string) => {
     const d = new Date(dateStr);
-    return d.toLocaleDateString("en-US", {
+    const dateLocale = locale === "ru" ? "ru-RU" : locale === "am" ? "hy-AM" : "en-US";
+    return d.toLocaleDateString(dateLocale, {
       year: "numeric",
       month: "short",
       day: "numeric",
@@ -44,13 +47,13 @@ export default function BlogArchive() {
         className="inline-flex items-center space-x-2 text-xs font-mono text-theme-muted hover:text-theme-text transition-colors mb-8"
       >
         <ArrowLeft className="h-3.5 w-3.5" />
-        <span>Back to home</span>
+        <span>{t.common.backToHome}</span>
       </Link>
 
       <header className="space-y-4 mb-10">
-        <h1 className="text-3xl font-bold tracking-tight text-theme-text">Writings</h1>
+        <h1 className="text-3xl font-bold tracking-tight text-theme-text">{t.writings.pageTitle}</h1>
         <p className="text-theme-secondary text-sm">
-          Things I built, broke, and eventually figured out.
+          {t.writings.pageSubtitle}
         </p>
       </header>
 
@@ -61,25 +64,25 @@ export default function BlogArchive() {
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search articles..."
+            placeholder={t.writings.searchPlaceholder}
             className="w-full pl-9 pr-4 py-2 text-sm bg-theme-btnExploreBg border border-theme-border rounded-lg text-theme-text placeholder-theme-muted outline-none focus:border-theme-accent transition-colors"
           />
         </div>
         <div className="flex flex-wrap gap-1.5 select-none">
           <button
             onClick={() => setSelectedTag(null)}
-            className={`px-2.5 py-1 text-xs font-mono rounded transition-all border ${selectedTag === null
+            className={`px-2.5 py-1 text-xs font-mono rounded transition-all border cursor-pointer ${selectedTag === null
               ? "bg-theme-accent text-white dark:text-theme-bg border-theme-accent font-bold"
               : "bg-theme-btnExploreBg text-theme-muted border-theme-border hover:border-theme-accent/60"
               }`}
           >
-            All
+            {t.writings.allTag}
           </button>
           {allTags.map((tag) => (
             <button
               key={tag}
               onClick={() => setSelectedTag(selectedTag === tag ? null : tag)}
-              className={`px-2.5 py-1 text-xs font-mono rounded transition-all border ${selectedTag === tag
+              className={`px-2.5 py-1 text-xs font-mono rounded transition-all border cursor-pointer ${selectedTag === tag
                 ? "bg-theme-accent text-white dark:text-theme-bg border-theme-accent font-bold"
                 : "bg-theme-btnExploreBg text-theme-muted border-theme-border hover:border-theme-accent/60"
                 }`}
@@ -93,7 +96,7 @@ export default function BlogArchive() {
       <div className="space-y-8">
         {filteredPosts.length === 0 ? (
           <p className="text-sm font-mono text-theme-muted py-8 text-center border border-dashed border-theme-border rounded-lg">
-            Stay Tuned!
+            {t.writings.stayTuned}
           </p>
         ) : (
           filteredPosts.map((post) => {
@@ -112,7 +115,7 @@ export default function BlogArchive() {
                   <span>•</span>
                   <span className="flex items-center space-x-1">
                     <Clock className="h-3 w-3" />
-                    <span>{readTime}m read</span>
+                    <span>{readTime} {t.writings.minRead}</span>
                   </span>
                 </div>
 
@@ -142,3 +145,4 @@ export default function BlogArchive() {
     </div>
   );
 }
+

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Posts from "@/public/content/materials/PostsPage.json";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface Post {
   id: string;
@@ -18,6 +19,7 @@ interface Post {
 }
 
 export default function LatestWritings() {
+  const { t } = useLanguage();
   const [recentPosts, setRecentPosts] = useState<Post[]>([]);
 
   useEffect(() => {
@@ -30,7 +32,7 @@ export default function LatestWritings() {
 
   return (
     <section className="pt-8 md:pt-12 pb-12 border-b border-theme-border" id="writings">
-      <h2 className="text-xl font-bold tracking-tight text-theme-text mb-6">Latest Writings</h2>
+      <h2 className="text-xl font-bold tracking-tight text-theme-text mb-6">{t.writings.sectionTitle}</h2>
       <ul className="space-y-4 pl-1 mb-6">
         {recentPosts.map((post) => (
           <li key={post.id} className="flex items-start space-x-3">
@@ -48,9 +50,10 @@ export default function LatestWritings() {
         href="/posts"
         className="inline-flex items-center space-x-1 text-xs font-mono font-bold text-theme-accent hover:text-theme-accentHover transition-colors"
       >
-        <span>View all posts</span>
+        <span>{t.writings.viewAll}</span>
         <ArrowRight className="h-3 w-3" />
       </Link>
     </section>
   );
 }
+

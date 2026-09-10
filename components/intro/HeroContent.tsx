@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Mail, ArrowUpRight } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface HeroContentProps {
   onOpenCommandMenu: () => void;
@@ -15,20 +16,16 @@ export default function HeroContent({
   panelOpen,
   onOpenPanel,
 }: HeroContentProps) {
+  const { t } = useLanguage();
+
   return (
     <>
       <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-theme-text leading-[1.15] mb-6">
-        Hi, I&apos;m Parsa
+        {t.hero.title}
       </h1>
 
       <p className="text-xl md:text-2xl text-theme-secondary leading-relaxed font-normal tracking-wide mb-8 max-w-3xl">
-        I build full-stack web apps end-to-end — from architecture to deployment
-        — mainly with{" "}
-        <span className="text-theme-text font-semibold">TypeScript</span>,{" "}
-        <span className="text-theme-text font-semibold">Next.js</span>, and{" "}
-        <span className="text-theme-text font-semibold">NestJS</span>. I&apos;ve
-        shipped real products, sometimes solo, sometimes with teams of 7+ engineers
-        and designers.
+        {t.hero.description}
       </p>
 
       <div className="relative flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 text-sm font-medium w-full sm:w-auto">
@@ -37,7 +34,7 @@ export default function HeroContent({
             <button
               onClick={onOpenPanel}
               data-no-destroy="true"
-              aria-label="Cross Options"
+              aria-label={t.hero.crossOptions}
               className="relative overflow-hidden w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold border transition-all duration-300 active:scale-95 shadow-sm"
               style={{
                 background: "var(--cross-trigger-bg)",
@@ -60,7 +57,7 @@ export default function HeroContent({
             }}
             className="flex items-center justify-center space-x-1.5 sm:space-x-2 px-3.5 sm:px-5 py-2.5 rounded-lg bg-theme-accent hover:bg-theme-accentHover text-white dark:text-theme-bg font-semibold transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 select-none text-xs sm:text-sm text-center cursor-pointer"
           >
-            <span className="truncate">Download Resume</span>
+            <span className="truncate">{t.hero.downloadResume}</span>
             <ArrowUpRight className="h-4 w-4 shrink-0" />
           </a>
 
@@ -68,7 +65,7 @@ export default function HeroContent({
             href="/contact"
             className="flex items-center justify-center space-x-1.5 sm:space-x-2 px-3.5 sm:px-5 py-2.5 rounded-lg bg-theme-btnExploreBg border border-theme-btnExploreBorder hover:border-theme-accent text-theme-btnExploreText hover:text-theme-text transition-all select-none text-xs sm:text-sm text-center"
           >
-            <span className="truncate">Get in touch</span>
+            <span className="truncate">{t.hero.getInTouch}</span>
             <Mail className="h-4 w-4 text-theme-muted shrink-0" />
           </Link>
         </div>
@@ -76,9 +73,9 @@ export default function HeroContent({
         <button
           onClick={onOpenCommandMenu}
           className="flex items-center justify-center space-x-2 px-4 py-2.5 rounded-lg bg-theme-btnExploreBg border border-theme-btnExploreBorder hover:border-theme-accent text-theme-btnExploreText hover:text-theme-text transition-all select-none font-mono text-xs w-full sm:w-auto"
-          aria-label="Open command menu"
+          aria-label={t.hero.exploreMenu}
         >
-          <span>Explore Menu</span>
+          <span>{t.hero.exploreMenu}</span>
           <kbd className="inline-flex items-center px-1.5 py-0.5 rounded bg-theme-bg text-theme-muted text-[10px] border border-theme-border">
             ⌘K
           </kbd>
