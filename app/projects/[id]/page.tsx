@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ProjectProfessional } from "@/public/JSONJS";
 import ProjectDetailClient from "@/components/ProjectDetailClient";
+import { SITE_URL, SITE_AUTHOR } from "@/lib/config";
 
 export async function generateStaticParams() {
   return ProjectProfessional.map((project) => ({
@@ -23,16 +24,14 @@ export async function generateMetadata({
     };
   }
 
-  const isNoIndex = ["esp", "msk", "taxiland", "goldenbat", "alzahra", "edu-platform", "k2n-solutions", "charbag"].includes(project.slug);
-
   return {
     title: `${project.name} | Parsa`,
     description: project.description,
-    robots: isNoIndex ? { index: false, follow: false } : undefined,
-    alternates: isNoIndex
+    robots: project.noindex ? { index: false, follow: false } : undefined,
+    alternates: project.noindex
       ? undefined
       : {
-          canonical: `https://parsany.com/projects/${project.slug}`,
+          canonical: `${SITE_URL}/projects/${project.slug}`,
         },
   };
 }
@@ -57,10 +56,10 @@ export default async function ProjectDetailPage({
     "applicationCategory": "DeveloperApplication",
     "author": {
       "@type": "Person",
-      "name": "Parsa",
-      "url": "https://parsany.com"
+      "name": SITE_AUTHOR,
+      "url": SITE_URL,
     },
-    "url": `https://parsany.com/projects/${project.slug}`
+    "url": `${SITE_URL}/projects/${project.slug}`,
   };
 
   return (

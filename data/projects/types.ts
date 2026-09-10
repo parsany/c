@@ -7,6 +7,8 @@ export interface AcademicProject {
   link: string;
   video?: string;
   tag: string[];
+  visualizer?: "ai" | "game" | "app" | "compiler";
+  minigame?: boolean;
 }
 
 export interface ProfessionalProject {
@@ -25,4 +27,6 @@ export interface ProfessionalProject {
   highlights?: string[];
   redirect?: string;
   text: string;
+  isLive?: boolean;
+  noindex?: boolean;
 }

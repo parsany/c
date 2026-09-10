@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { getProjects } from "@/data/projects";
 import {
   AIVisualizer,
@@ -17,7 +16,6 @@ import ProjectCarousel from "./ProjectCarousel";
 import { useLanguage } from "@/context/LanguageContext";
 
 interface ProjectCardProps {
-  id: string | number;
   slug?: string;
   name: string;
   description: string;
@@ -28,14 +26,66 @@ interface ProjectCardProps {
   isHovered: boolean;
   onMouseEnter: () => void;
   onMouseLeave: () => void;
-  renderArchitecture: () => React.ReactNode;
+  visualizer?: "ai" | "game" | "app" | "compiler";
   image?: string;
   video?: string;
   projectImages?: string[];
+  minigame?: boolean;
+  isLive?: boolean;
+}
+
+function DefaultArchitectureSVG({ isHovered }: { isHovered: boolean }) {
+  return (
+    <div className="w-full h-full flex items-center justify-center p-4 overflow-hidden relative select-none">
+      <svg viewBox="0 0 420 220" fill="none" className="w-full h-full max-h-[200px]">
+        <rect width="100%" height="100%" fill="url(#grid)" />
+        <path
+          d="M 80 110 L 190 110"
+          stroke={isHovered ? "var(--accent-primary)" : "var(--border-secondary)"}
+          strokeWidth="1"
+          strokeDasharray={isHovered ? "4 4" : "0"}
+          className={isHovered ? "animate-flow-right" : ""}
+        />
+        <path
+          d="M 250 110 L 330 110"
+          stroke={isHovered ? "var(--accent-primary)" : "var(--border-secondary)"}
+          strokeWidth="1"
+          strokeDasharray={isHovered ? "4 4" : "0"}
+          className={isHovered ? "animate-flow-right" : ""}
+        />
+        <g transform="translate(20, 85)">
+          <rect x="0" y="0" width="60" height="50" rx="4" fill="var(--card-bg)" stroke="var(--border-secondary)" strokeWidth="1.2" />
+          <text x="30" y="28" fill="var(--text-secondary)" fontSize="8" textAnchor="middle" fontFamily="monospace">Frontend</text>
+        </g>
+        <g transform="translate(180, 85)">
+          <rect x="0" y="0" width="70" height="50" rx="4" fill="var(--card-bg)" stroke="var(--border-secondary)" strokeWidth="1.2" />
+          <text x="35" y="28" fill="var(--text-secondary)" fontSize="8" textAnchor="middle" fontFamily="monospace">API Server</text>
+        </g>
+        <g transform="translate(330, 90)">
+          <rect x="0" y="0" width="70" height="40" rx="4" fill="var(--card-bg)" stroke="var(--border-secondary)" strokeWidth="1.2" />
+          <text x="35" y="24" fill="var(--text-secondary)" fontSize="8" textAnchor="middle" fontFamily="monospace">Database</text>
+        </g>
+      </svg>
+    </div>
+  );
+}
+
+function renderVisualizer(visualizerType?: "ai" | "game" | "app" | "compiler", isHovered: boolean = false) {
+  switch (visualizerType) {
+    case "ai":
+      return <AIVisualizer isHovered={isHovered} />;
+    case "game":
+      return <GameVisualizer isHovered={isHovered} />;
+    case "app":
+      return <AppVisualizer isHovered={isHovered} />;
+    case "compiler":
+      return <CompilerVisualizer isHovered={isHovered} />;
+    default:
+      return null;
+  }
 }
 
 function ProjectCard({
-  id,
   slug,
   name,
   description,
@@ -46,26 +96,15 @@ function ProjectCard({
   isHovered,
   onMouseEnter,
   onMouseLeave,
-  renderArchitecture,
+  visualizer,
   image,
   video,
   projectImages,
+  minigame,
+  isLive,
 }: ProjectCardProps) {
   const [isProjectClicked, setIsProjectClicked] = useState(false);
   const { t } = useLanguage();
-
-  const isCat =
-    id === 5 ||
-    name.toLowerCase().includes("cat") ||
-    (typeof id === "string" && id.includes("cat"));
-  const isAnomaly =
-    id === 6 ||
-    name.toLowerCase().includes("anomaly") ||
-    (typeof id === "string" && id.includes("anomaly"));
-  const isConway =
-    id === 4 ||
-    name.toLowerCase().includes("conway") ||
-    (typeof id === "string" && id.includes("conway"));
 
   const handleCardInteraction = (e: React.MouseEvent<HTMLElement>) => {
     const target = e.target as HTMLElement;
@@ -165,7 +204,7 @@ function ProjectCard({
               )}
             </div>
 
-            {(slug === "k2n-solutions" || slug === "atrafian" || name.toLowerCase().includes("k2n") || name.toLowerCase().includes("atrafian")) && (link || (links && links[0]?.url)) && (
+            {isLive && (link || (links && links[0]?.url)) && (
               <a
                 href={link || links?.[0]?.url}
                 target="_blank"
@@ -181,6 +220,35 @@ function ProjectCard({
       </article>
     );
   }
+
+  const renderMedia = () => {
+    if (visualizer) {
+      return renderVisualizer(visualizer, isHovered);
+    }
+    if (video && isHovered) {
+      return (
+        <video
+          src={video}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover pointer-events-none"
+        />
+      );
+    }
+    if (image) {
+      return (
+        <Image
+          src={image}
+          alt={name}
+          fill
+          className="object-cover pointer-events-none"
+        />
+      );
+    }
+    return <DefaultArchitectureSVG isHovered={isHovered} />;
+  };
 
   return (
     <article
@@ -204,50 +272,14 @@ function ProjectCard({
               href={link}
               target="_blank"
               rel="noopener noreferrer"
-              className="block w-full h-full"
+              className="relative block w-full h-full"
             >
-              {isCat && video && isHovered ? (
-                <video
-                  src={video}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover pointer-events-none"
-                />
-              ) : (isCat || isAnomaly) && image ? (
-                <Image
-                  src={image}
-                  alt={name}
-                  fill
-                  className="object-cover pointer-events-none"
-                />
-              ) : (
-                renderArchitecture()
-              )}
+              {renderMedia()}
             </a>
           ) : (
-            <>
-              {isCat && video && isHovered ? (
-                <video
-                  src={video}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover pointer-events-none"
-                />
-              ) : (isCat || isAnomaly) && image ? (
-                <Image
-                  src={image}
-                  alt={name}
-                  fill
-                  className="object-cover pointer-events-none"
-                />
-              ) : (
-                renderArchitecture()
-              )}
-            </>
+            <div className="relative block w-full h-full">
+              {renderMedia()}
+            </div>
           )}
         </div>
 
@@ -303,7 +335,7 @@ function ProjectCard({
             )}
           </div>
 
-          {isConway && (
+          {minigame && (
             <button
               onClick={() => window.dispatchEvent(new CustomEvent("start-minigame"))}
               data-no-destroy="true"
@@ -327,8 +359,8 @@ export default function ProjectList() {
 
   useEffect(() => {
     ProjectProfessional.forEach((project) => {
-      if ((project as any).project_image) {
-        (project as any).project_image.forEach((src: string) => {
+      if (project.project_image?.length) {
+        project.project_image.forEach((src) => {
           const img = new window.Image();
           img.src = src;
         });
@@ -343,70 +375,13 @@ export default function ProjectList() {
         const img = new window.Image();
         img.src = project.image;
       }
-      if ((project as any).video) {
+      if (project.video) {
         const vid = document.createElement("video");
-        vid.src = (project as any).video;
+        vid.src = project.video;
         vid.preload = "auto";
       }
     });
   }, [ProjectProfessional, ProjectAcademic]);
-
-  const renderArchitecture = (identifier: string | number, isHovered: boolean) => {
-    const idStr = String(identifier).toLowerCase();
-    if (
-      identifier === 5 ||
-      identifier === 6 ||
-      identifier === 3 ||
-      idStr.includes("cat") ||
-      idStr.includes("anomaly") ||
-      idStr.includes("pid_nn")
-    ) {
-      return <AIVisualizer isHovered={isHovered} />;
-    }
-    if (identifier === 4 || idStr.includes("conway") || idStr.includes("invaders")) {
-      return <GameVisualizer isHovered={isHovered} />;
-    }
-    if (identifier === 2 || idStr.includes("qt") || idStr.includes("library")) {
-      return <AppVisualizer isHovered={isHovered} />;
-    }
-    if (identifier === 1 || idStr.includes("interpreter") || idStr.includes("flex")) {
-      return <CompilerVisualizer isHovered={isHovered} />;
-    }
-
-    return (
-      <div className="w-full h-full flex items-center justify-center p-4 overflow-hidden relative select-none">
-        <svg viewBox="0 0 420 220" fill="none" className="w-full h-full max-h-[200px]">
-          <rect width="100%" height="100%" fill="url(#grid)" />
-          <path
-            d="M 80 110 L 190 110"
-            stroke={isHovered ? "var(--accent-primary)" : "var(--border-secondary)"}
-            strokeWidth="1"
-            strokeDasharray={isHovered ? "4 4" : "0"}
-            className={isHovered ? "animate-flow-right" : ""}
-          />
-          <path
-            d="M 250 110 L 330 110"
-            stroke={isHovered ? "var(--accent-primary)" : "var(--border-secondary)"}
-            strokeWidth="1"
-            strokeDasharray={isHovered ? "4 4" : "0"}
-            className={isHovered ? "animate-flow-right" : ""}
-          />
-          <g transform="translate(20, 85)">
-            <rect x="0" y="0" width="60" height="50" rx="4" fill="var(--card-bg)" stroke="var(--border-secondary)" strokeWidth="1.2" />
-            <text x="30" y="28" fill="var(--text-secondary)" fontSize="8" textAnchor="middle" fontFamily="monospace">Frontend</text>
-          </g>
-          <g transform="translate(180, 85)">
-            <rect x="0" y="0" width="70" height="50" rx="4" fill="var(--card-bg)" stroke="var(--border-secondary)" strokeWidth="1.2" />
-            <text x="35" y="28" fill="var(--text-secondary)" fontSize="8" textAnchor="middle" fontFamily="monospace">API Server</text>
-          </g>
-          <g transform="translate(330, 90)">
-            <rect x="0" y="0" width="70" height="40" rx="4" fill="var(--card-bg)" stroke="var(--border-secondary)" strokeWidth="1.2" />
-            <text x="35" y="24" fill="var(--text-secondary)" fontSize="8" textAnchor="middle" fontFamily="monospace">Database</text>
-          </g>
-        </svg>
-      </div>
-    );
-  };
 
   const professionalProjects = [...ProjectProfessional].sort((a, b) => b.id - a.id);
   const academicProjects = [...ProjectAcademic].sort((a, b) => b.id - a.id);
@@ -448,21 +423,19 @@ export default function ProjectList() {
           {professionalProjects.map((project) => (
             <ProjectCard
               key={project.id}
-              id={project.id}
               slug={project.slug}
               name={project.name}
               description={project.description}
               tags={project.tag}
               link={project.link || undefined}
-              links={(project as any).links}
+              links={project.links}
               isProfessional={true}
               isHovered={hoveredId === project.slug}
               onMouseEnter={() => setHoveredId(project.slug)}
               onMouseLeave={() => setHoveredId(null)}
-              renderArchitecture={() => renderArchitecture(project.slug, hoveredId === project.slug)}
-              image={(project as any).image}
-              video={(project as any).video}
-              projectImages={(project as any).project_image}
+              image={project.image}
+              projectImages={project.project_image}
+              isLive={project.isLive}
             />
           ))}
         </div>
@@ -473,7 +446,6 @@ export default function ProjectList() {
           {academicProjects.map((project) => (
             <ProjectCard
               key={project.id}
-              id={project.id}
               name={project.name}
               description={project.description}
               tags={project.tag}
@@ -482,9 +454,10 @@ export default function ProjectList() {
               isHovered={hoveredId === project.id}
               onMouseEnter={() => setHoveredId(project.id)}
               onMouseLeave={() => setHoveredId(null)}
-              renderArchitecture={() => renderArchitecture(project.id, hoveredId === project.id)}
-              image={(project as any).image}
-              video={(project as any).video}
+              visualizer={project.visualizer}
+              image={project.image}
+              video={project.video}
+              minigame={project.minigame}
             />
           ))}
         </div>
@@ -492,4 +465,3 @@ export default function ProjectList() {
     </section>
   );
 }
-
