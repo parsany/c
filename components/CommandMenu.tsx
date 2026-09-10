@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Search, Folder, Zap, Globe, FileText, ArrowRight, Languages } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { Locale } from "@/translations";
+import { FlagIcon } from "./LanguageSwitcher";
 
 interface CommandMenuProps {
   isOpen: boolean;
@@ -40,7 +41,7 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       title: t.commandMenu.langEn,
       subtitle: t.commandMenu.langEnSub,
       category: "language",
-      icon: <Languages className="h-4 w-4 text-theme-accent" />,
+      icon: <FlagIcon locale="en" className="w-4 h-3 border border-black/10 dark:border-white/10" />,
       action: () => handleLanguageChange("en"),
     },
     {
@@ -48,7 +49,7 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       title: t.commandMenu.langRu,
       subtitle: t.commandMenu.langRuSub,
       category: "language",
-      icon: <Languages className="h-4 w-4 text-theme-accent" />,
+      icon: <FlagIcon locale="ru" className="w-4 h-3 border border-black/10 dark:border-white/10" />,
       action: () => handleLanguageChange("ru"),
     },
     {
@@ -56,7 +57,7 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       title: t.commandMenu.langAm,
       subtitle: t.commandMenu.langAmSub,
       category: "language",
-      icon: <Languages className="h-4 w-4 text-theme-accent" />,
+      icon: <FlagIcon locale="am" className="w-4 h-3 border border-black/10 dark:border-white/10" />,
       action: () => handleLanguageChange("am"),
     },
     {
@@ -412,11 +413,10 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
                   const itemProps = {
                     onClick: cmd.action,
                     onMouseEnter: () => setSelectedIndex(idx),
-                    className: `w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-left transition-colors focus:outline-none cursor-pointer ${
-                      isSelected
+                    className: `w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-left transition-colors focus:outline-none cursor-pointer ${isSelected
                         ? "bg-theme-accentLight text-theme-accentText"
                         : "text-theme-muted hover:bg-theme-accentLight/40"
-                    }`,
+                      }`,
                     role: "option",
                     "aria-selected": isSelected,
                   };
@@ -425,19 +425,17 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
                     <>
                       <div className="flex items-center space-x-3">
                         <div
-                          className={`p-1.5 rounded ${
-                            isSelected
+                          className={`p-1.5 rounded ${isSelected
                               ? "bg-theme-accent text-white"
                               : "bg-theme-btnExploreBg text-theme-muted border border-theme-btnExploreBorder"
-                          }`}
+                            }`}
                         >
                           {cmd.icon}
                         </div>
                         <div>
                           <p
-                            className={`text-xs font-medium font-sans ${
-                              isSelected ? "text-theme-accentText font-bold" : "text-theme-text"
-                            }`}
+                            className={`text-xs font-medium font-sans ${isSelected ? "text-theme-accentText font-bold" : "text-theme-text"
+                              }`}
                           >
                             {cmd.title}
                           </p>
