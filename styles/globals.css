@@ -3,17 +3,18 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-slate-50: #fbf9f4;
-  --color-slate-100: #d7c9a5;
-  --color-slate-200: #cbbba0;
-  --color-slate-300: #bfae8a;
-  --color-slate-400: #a79774;
-  --color-slate-500: #8e8060;
-  --color-slate-600: #756a4e;
-  --color-slate-700: #5c533c;
-  --color-slate-800: #2d2d2d;
-  --color-slate-900: #222222;
-  --color-slate-950: #1a1a1a;
+  /* Ararat Stone scale — warm volcanic stone tones */
+  --color-slate-50: #faf7f2;
+  --color-slate-100: #f5ede3;
+  --color-slate-200: #e8ddd0;
+  --color-slate-300: #d9c8b5;
+  --color-slate-400: #b8a090;
+  --color-slate-500: #96786a;
+  --color-slate-600: #7a5c4f;
+  --color-slate-700: #5c4035;
+  --color-slate-800: #2d2220;
+  --color-slate-900: #1c1917;
+  --color-slate-950: #120e0d;
 
   --color-theme-bg: var(--bg-primary);
   --color-theme-text: var(--text-primary);
@@ -73,67 +74,53 @@
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
     --radius: 0.5rem;
-    --bg-primary: #fafafa;
-    --bg-primary: #f6f6f3;
-    --text-primary: #18181b;
-    --text-secondary: #52525b;
-    --text-muted: #71717a;
-    --border-primary: #e5e7eb;
-    --border-secondary: #d4d4d8;
-    --border-primary: #e5e5de;
-    --border-secondary: #d5d5cd;
-    --accent-primary: #d89b1d;
-    --accent-hover: #b97a00;
-    --accent-light: #FFF8E8;
-    --accent-text: #B7791F;
+    /* Ararat Stone & Pomegranate — Armenian light mode */
+    --bg-primary: #faf7f2;
+    --text-primary: #1c1917;
+    --text-secondary: #57534e;
+    --text-muted: #78716c;
+    --border-primary: #e8ddd0;
+    --border-secondary: #ddd0bf;
+    --accent-primary: #c0392b;
+    --accent-hover: #96281b;
+    --accent-light: #fdecea;
+    --accent-text: #922b21;
     --link-prominent-green: #059669;
     --link-prominent-green-hover: #047857;
-    --button-explore-bg: #fcfcfc;
-    --button-explore-border: #e5e7eb;
-    --button-explore-bg: #fdfdfc;
-    --button-explore-border: #e5e5de;
-    --button-explore-text: #18181b;
-    --card-bg: #ffffff;
-    --card-border: #e5e7eb;
-    --card-bg: #fcfcfb;
-    --card-border: #e5e5de;
-    --panel-bg: #f4f4f5;
-    --panel-border: #e5e7eb;
-    --panel-bg: #f0f0ed;
-    --panel-border: #e5e5de;
-    --panel-text: #18181b;
-    --cross-accent: #d89b1d;
-    --cross-accent-rgba: rgba(216, 155, 29, 0.6);
-    --cross-trigger-bg: rgba(255, 255, 255, 0.85);
-    --cross-trigger-bg: rgba(253, 253, 251, 0.85);
-    --cross-trigger-border: rgba(24, 24, 27, 0.08);
-    --cross-trigger-color: rgba(24, 24, 27, 0.45);
-    --cross-trigger-border-hover: rgba(24, 24, 27, 0.2);
-    --cross-trigger-color-hover: rgba(24, 24, 27, 0.85);
-    --curtain-bg-light-solid: #fafafa;
-    --curtain-bg-light-fade: rgba(250, 250, 250, 0);
-    --curtain-bg-light-solid: #f6f6f3;
-    --curtain-bg-light-fade: rgba(246, 246, 243, 0);
-    --curtain-text-light: rgba(24, 24, 27, 0.45);
+    --button-explore-bg: #fdfaf6;
+    --button-explore-border: #e8ddd0;
+    --button-explore-text: #1c1917;
+    --card-bg: #fefcf9;
+    --card-border: #e8ddd0;
+    --panel-bg: #f5ede3;
+    --panel-border: #e8ddd0;
+    --panel-text: #1c1917;
+    --cross-accent: #c0392b;
+    --cross-accent-rgba: rgba(192, 57, 43, 0.6);
+    --cross-trigger-bg: rgba(253, 250, 246, 0.88);
+    --cross-trigger-border: rgba(28, 25, 23, 0.08);
+    --cross-trigger-color: rgba(28, 25, 23, 0.45);
+    --cross-trigger-border-hover: rgba(28, 25, 23, 0.2);
+    --cross-trigger-color-hover: rgba(28, 25, 23, 0.85);
+    --curtain-bg-light-solid: #faf7f2;
+    --curtain-bg-light-fade: rgba(250, 247, 242, 0);
+    --curtain-text-light: rgba(28, 25, 23, 0.45);
     --curtain-bg-dark-solid: #282828;
     --curtain-bg-dark-fade: rgba(40, 40, 40, 0);
     --curtain-text-dark: rgba(251, 241, 199, 0.55);
-    --svg-grid-line: rgba(24, 24, 27, 0.18);
-    --svg-wire-active: #d89b1d;
-    --svg-wire-inactive: #d4d4d8;
-    --svg-box-bg: #ffffff;
-    --svg-box-bg-sub: #f4f4f5;
-    --svg-frame-border: #d4d4d8;
-    --svg-box-bg: #fcfcfb;
-    --svg-box-bg-sub: #f0f0ed;
-    --svg-frame-border: #d5d5cd;
-    --svg-text-pri: #18181b;
-    --svg-text-mut: #71717a;
-    --bg-gradient: radial-gradient(circle at top, #ffffff 20%, #f1f1f4 100%);
-    --bg-gradient: radial-gradient(circle at top, #fafaf8 20%, #e7e7e2 100%);
+    --svg-grid-line: rgba(28, 25, 23, 0.15);
+    --svg-wire-active: #c0392b;
+    --svg-wire-inactive: #ddd0bf;
+    --svg-box-bg: #fefcf9;
+    --svg-box-bg-sub: #f5ede3;
+    --svg-frame-border: #ddd0bf;
+    --svg-text-pri: #1c1917;
+    --svg-text-mut: #78716c;
+    --bg-gradient: radial-gradient(circle at top, #faf7f2 20%, #f0e8dc 100%);
     --card-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
   }
 
+  /* Tuff Stone & Wine — Gruvbox DNA, pomegranate-rose accent */
   .dark {
     --bg-primary: #282828;
     --text-primary: #fbf1c7;
@@ -141,10 +128,10 @@
     --text-muted: #a89984;
     --border-primary: #3c3836;
     --border-secondary: #504945;
-    --accent-primary: #fabd2f;
-    --accent-hover: #d79921;
+    --accent-primary: #e85d4a;
+    --accent-hover: #c0392b;
     --accent-light: #3c3836;
-    --accent-text: #fabd2f;
+    --accent-text: #e85d4a;
     --link-prominent-green: #10b981;
     --link-prominent-green-hover: #34d399;
     --button-explore-bg: #32302f;
@@ -155,8 +142,8 @@
     --panel-bg: #1d2021;
     --panel-border: #3c3836;
     --panel-text: #ebdbb2;
-    --cross-accent: #fabd2f;
-    --cross-accent-rgba: rgba(250, 189, 47, 0.6);
+    --cross-accent: #e85d4a;
+    --cross-accent-rgba: rgba(232, 93, 74, 0.6);
     --cross-trigger-bg: rgba(40, 40, 40, 0.85);
     --cross-trigger-border: rgba(251, 241, 199, 0.1);
     --cross-trigger-color: rgba(251, 241, 199, 0.5);
@@ -166,7 +153,7 @@
     --curtain-bg-fade: rgba(40, 40, 40, 0);
     --curtain-text: rgba(251, 241, 199, 0.55);
     --svg-grid-line: rgba(251, 241, 199, 0.22);
-    --svg-wire-active: #fabd2f;
+    --svg-wire-active: #e85d4a;
     --svg-wire-inactive: #7c6f64;
     --svg-box-bg: #282828;
     --svg-box-bg-sub: #1d2021;
@@ -215,11 +202,11 @@ article.group.bg-theme-cardBg:hover {
 
 .dark article.group.bg-theme-cardBg:hover {
   transform: translateY(-4px) !important;
-  box-shadow: 0 8px 30px rgba(250, 189, 47, 0.04) !important;
+  box-shadow: 0 8px 30px rgba(232, 93, 74, 0.06) !important;
 }
 
 span.bg-theme-accentLight {
-  border-color: #F6D58C;
+  border-color: #f5b7b1;
 }
 
 .dark span.bg-theme-accentLight {
