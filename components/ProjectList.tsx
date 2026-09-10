@@ -35,6 +35,7 @@ interface ProjectCardProps {
 }
 
 function ProjectCard({
+  id,
   slug,
   name,
   description,
@@ -52,6 +53,19 @@ function ProjectCard({
 }: ProjectCardProps) {
   const [isProjectClicked, setIsProjectClicked] = useState(false);
   const { t } = useLanguage();
+
+  const isCat =
+    id === 5 ||
+    name.toLowerCase().includes("cat") ||
+    (typeof id === "string" && id.includes("cat"));
+  const isAnomaly =
+    id === 6 ||
+    name.toLowerCase().includes("anomaly") ||
+    (typeof id === "string" && id.includes("anomaly"));
+  const isConway =
+    id === 4 ||
+    name.toLowerCase().includes("conway") ||
+    (typeof id === "string" && id.includes("conway"));
 
   const handleCardInteraction = (e: React.MouseEvent<HTMLElement>) => {
     const target = e.target as HTMLElement;
@@ -192,7 +206,7 @@ function ProjectCard({
               rel="noopener noreferrer"
               className="block w-full h-full"
             >
-              {name.toLowerCase().includes("cat") && video && isHovered ? (
+              {isCat && video && isHovered ? (
                 <video
                   src={video}
                   autoPlay
@@ -201,7 +215,7 @@ function ProjectCard({
                   playsInline
                   className="w-full h-full object-cover pointer-events-none"
                 />
-              ) : (name.toLowerCase().includes("cat") || name.toLowerCase().includes("anomaly")) && image ? (
+              ) : (isCat || isAnomaly) && image ? (
                 <Image
                   src={image}
                   alt={name}
@@ -214,7 +228,7 @@ function ProjectCard({
             </a>
           ) : (
             <>
-              {name.toLowerCase().includes("cat") && video && isHovered ? (
+              {isCat && video && isHovered ? (
                 <video
                   src={video}
                   autoPlay
@@ -223,7 +237,7 @@ function ProjectCard({
                   playsInline
                   className="w-full h-full object-cover pointer-events-none"
                 />
-              ) : (name.toLowerCase().includes("cat") || name.toLowerCase().includes("anomaly")) && image ? (
+              ) : (isCat || isAnomaly) && image ? (
                 <Image
                   src={image}
                   alt={name}
@@ -289,7 +303,7 @@ function ProjectCard({
             )}
           </div>
 
-          {name.toLowerCase().includes("conway") && (
+          {isConway && (
             <button
               onClick={() => window.dispatchEvent(new CustomEvent("start-minigame"))}
               data-no-destroy="true"
@@ -338,17 +352,24 @@ export default function ProjectList() {
   }, [ProjectProfessional, ProjectAcademic]);
 
   const renderArchitecture = (identifier: string | number, isHovered: boolean) => {
-    const nameStr = String(identifier).toLowerCase();
-    if (nameStr.includes("cat") || nameStr.includes("anomaly") || nameStr.includes("pid_nn")) {
+    const idStr = String(identifier).toLowerCase();
+    if (
+      identifier === 5 ||
+      identifier === 6 ||
+      identifier === 3 ||
+      idStr.includes("cat") ||
+      idStr.includes("anomaly") ||
+      idStr.includes("pid_nn")
+    ) {
       return <AIVisualizer isHovered={isHovered} />;
     }
-    if (nameStr.includes("conway") || nameStr.includes("invaders")) {
+    if (identifier === 4 || idStr.includes("conway") || idStr.includes("invaders")) {
       return <GameVisualizer isHovered={isHovered} />;
     }
-    if (nameStr.includes("qt") || nameStr.includes("library")) {
+    if (identifier === 2 || idStr.includes("qt") || idStr.includes("library")) {
       return <AppVisualizer isHovered={isHovered} />;
     }
-    if (nameStr.includes("interpreter") || nameStr.includes("flex")) {
+    if (identifier === 1 || idStr.includes("interpreter") || idStr.includes("flex")) {
       return <CompilerVisualizer isHovered={isHovered} />;
     }
 
@@ -461,7 +482,7 @@ export default function ProjectList() {
               isHovered={hoveredId === project.id}
               onMouseEnter={() => setHoveredId(project.id)}
               onMouseLeave={() => setHoveredId(null)}
-              renderArchitecture={() => renderArchitecture(project.name, hoveredId === project.id)}
+              renderArchitecture={() => renderArchitecture(project.id, hoveredId === project.id)}
               image={(project as any).image}
               video={(project as any).video}
             />
