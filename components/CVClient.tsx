@@ -7,8 +7,8 @@ import { useLanguage } from "@/context/LanguageContext";
 
 interface ResumeItem {
   id: string;
-  titleKey: "aiTitle" | "frontendTitle" | "backendTitle" | "systemsTitle" | "supportTitle";
-  subtitleKey: "aiSubtitle" | "frontendSubtitle" | "backendSubtitle" | "systemsSubtitle" | "supportSubtitle";
+  titleKey: "aiTitle" | "frontendTitle" | "backendTitle" | "devopsTitle" | "supportTitle";
+  subtitleKey: "aiSubtitle" | "frontendSubtitle" | "backendSubtitle" | "devopsSubtitle" | "supportSubtitle";
   fileUrl: string;
   fileName: string;
 }
@@ -36,11 +36,11 @@ const SPECIALIZED_RESUMES: ResumeItem[] = [
     fileName: "backend_resume.pdf",
   },
   {
-    id: "systems",
-    titleKey: "systemsTitle",
-    subtitleKey: "systemsSubtitle",
-    fileUrl: "/application/systems_engineer_resume.pdf",
-    fileName: "systems_engineer_resume.pdf",
+    id: "devops",
+    titleKey: "devopsTitle",
+    subtitleKey: "devopsSubtitle",
+    fileUrl: "/application/devops_resume.pdf",
+    fileName: "devops_resume.pdf",
   },
   {
     id: "support",

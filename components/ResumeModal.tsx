@@ -23,8 +23,8 @@ interface ResumeModalProps {
 
 export interface ResumeOption {
   id: string;
-  titleKey: "aiTitle" | "frontendTitle" | "backendTitle" | "systemsTitle" | "supportTitle";
-  subtitleKey: "aiSubtitle" | "frontendSubtitle" | "backendSubtitle" | "systemsSubtitle" | "supportSubtitle";
+  titleKey: "aiTitle" | "frontendTitle" | "backendTitle" | "devopsTitle" | "supportTitle";
+  subtitleKey: "aiSubtitle" | "frontendSubtitle" | "backendSubtitle" | "devopsSubtitle" | "supportSubtitle";
   fileUrl: string;
   fileName: string;
   icon: React.ReactNode;
@@ -56,11 +56,11 @@ export const RESUME_OPTIONS: ResumeOption[] = [
     icon: <Server className="w-4 h-4 text-theme-accent shrink-0" />,
   },
   {
-    id: "systems",
-    titleKey: "systemsTitle",
-    subtitleKey: "systemsSubtitle",
-    fileUrl: "/application/systems_engineer_resume.pdf",
-    fileName: "systems_engineer_resume.pdf",
+    id: "devops",
+    titleKey: "devopsTitle",
+    subtitleKey: "devopsSubtitle",
+    fileUrl: "/application/devops_resume.pdf",
+    fileName: "devops_resume.pdf",
     icon: <Terminal className="w-4 h-4 text-theme-accent shrink-0" />,
   },
   {

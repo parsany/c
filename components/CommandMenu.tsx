@@ -261,15 +261,15 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       },
     },
     {
-      id: "action-resume-systems",
-      title: t.cv.systemsTitle,
-      subtitle: t.cv.systemsSubtitle,
+      id: "action-resume-devops",
+      title: t.cv.devopsTitle,
+      subtitle: t.cv.devopsSubtitle,
       category: "actions",
       icon: <FileText className="h-4 w-4" />,
-      href: "/application/systems_engineer_resume.pdf",
+      href: "/application/devops_resume.pdf",
       action: () => {
         onClose();
-        window.open("/application/systems_engineer_resume.pdf", "_blank");
+        window.open("/application/devops_resume.pdf", "_blank");
       },
     },
     {
