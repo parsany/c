@@ -116,6 +116,8 @@ export const am = {
     frontendSubtitle: "Next.js • React • TypeScript",
     backendTitle: "Backend Software Engineer",
     backendSubtitle: "NestJS • Node.js • PostgreSQL • REST APIs",
+    qaTitle: "Quality Assurance Engineer",
+    qaSubtitle: "Playwright • TypeScript • E2E թեստավորում • CI/CD",
     devopsTitle: "DevOps Engineer",
     devopsSubtitle: "Linux • Docker • CI/CD • Ենթակառուցվածքներ",
     supportTitle: "Technical Support Specialist",

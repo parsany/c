@@ -13,6 +13,7 @@ import {
   Headphones,
   FileText,
   Cpu,
+  CheckCircle2,
 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -23,8 +24,8 @@ interface ResumeModalProps {
 
 export interface ResumeOption {
   id: string;
-  titleKey: "aiTitle" | "frontendTitle" | "backendTitle" | "devopsTitle" | "supportTitle";
-  subtitleKey: "aiSubtitle" | "frontendSubtitle" | "backendSubtitle" | "devopsSubtitle" | "supportSubtitle";
+  titleKey: "aiTitle" | "frontendTitle" | "backendTitle" | "qaTitle" | "devopsTitle" | "supportTitle";
+  subtitleKey: "aiSubtitle" | "frontendSubtitle" | "backendSubtitle" | "qaSubtitle" | "devopsSubtitle" | "supportSubtitle";
   fileUrl: string;
   fileName: string;
   icon: React.ReactNode;
@@ -54,6 +55,14 @@ export const RESUME_OPTIONS: ResumeOption[] = [
     fileUrl: "/application/backend_resume.pdf",
     fileName: "backend_resume.pdf",
     icon: <Server className="w-4 h-4 text-theme-accent shrink-0" />,
+  },
+  {
+    id: "qa",
+    titleKey: "qaTitle",
+    subtitleKey: "qaSubtitle",
+    fileUrl: "/application/QA_resume.pdf",
+    fileName: "QA_resume.pdf",
+    icon: <CheckCircle2 className="w-4 h-4 text-theme-accent shrink-0" />,
   },
   {
     id: "devops",
@@ -155,9 +164,8 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                   <span>{t.cv.specializedTitle} ({RESUME_OPTIONS.length})</span>
                 </div>
                 <ChevronDown
-                  className={`w-4 h-4 text-theme-muted transition-transform duration-200 ${
-                    isDropdownOpen ? "rotate-180" : ""
-                  }`}
+                  className={`w-4 h-4 text-theme-muted transition-transform duration-200 ${isDropdownOpen ? "rotate-180" : ""
+                    }`}
                 />
               </button>
 

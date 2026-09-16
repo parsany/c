@@ -261,6 +261,18 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       },
     },
     {
+      id: "action-resume-qa",
+      title: t.cv.qaTitle,
+      subtitle: t.cv.qaSubtitle,
+      category: "actions",
+      icon: <FileText className="h-4 w-4" />,
+      href: "/application/QA_resume.pdf",
+      action: () => {
+        onClose();
+        window.open("/application/QA_resume.pdf", "_blank");
+      },
+    },
+    {
       id: "action-resume-devops",
       title: t.cv.devopsTitle,
       subtitle: t.cv.devopsSubtitle,
@@ -414,8 +426,8 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
                     onClick: cmd.action,
                     onMouseEnter: () => setSelectedIndex(idx),
                     className: `w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-left transition-colors focus:outline-none cursor-pointer ${isSelected
-                        ? "bg-theme-accentLight text-theme-accentText"
-                        : "text-theme-muted hover:bg-theme-accentLight/40"
+                      ? "bg-theme-accentLight text-theme-accentText"
+                      : "text-theme-muted hover:bg-theme-accentLight/40"
                       }`,
                     role: "option",
                     "aria-selected": isSelected,
@@ -426,8 +438,8 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
                       <div className="flex items-center space-x-3">
                         <div
                           className={`p-1.5 rounded ${isSelected
-                              ? "bg-theme-accent text-white"
-                              : "bg-theme-btnExploreBg text-theme-muted border border-theme-btnExploreBorder"
+                            ? "bg-theme-accent text-white"
+                            : "bg-theme-btnExploreBg text-theme-muted border border-theme-btnExploreBorder"
                             }`}
                         >
                           {cmd.icon}

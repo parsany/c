@@ -229,9 +229,9 @@ export const ProjectProfessional: ProfessionalProject[] = [
     ],
     isactive: true,
     isLive: true,
-    link: "https://atrafian.ir",
+    link: "https://atraf.parsany.com",
     links: [
-      { label: "Live Site", url: "https://atrafian.ir" },
+      { label: "Live Site", url: "https://atraf.parsany.com" },
       {
         label: "Mobile Repo Demo",
         url: "https://github.com/quantinity/Atrafian-App-Demo",

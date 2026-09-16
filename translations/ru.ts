@@ -115,6 +115,8 @@ export const ru = {
     frontendSubtitle: "Next.js • React • TypeScript",
     backendTitle: "Backend Software Engineer",
     backendSubtitle: "NestJS • Node.js • PostgreSQL • REST APIs",
+    qaTitle: "Quality Assurance Engineer",
+    qaSubtitle: "Playwright • TypeScript • E2E тестирование • CI/CD",
     devopsTitle: "DevOps Engineer",
     devopsSubtitle: "Linux • Docker • CI/CD • Инфраструктура",
     supportTitle: "Technical Support Specialist",
