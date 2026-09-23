@@ -11,7 +11,7 @@ export default function HeroBadge({ allEaten, onStartGame }: HeroBadgeProps) {
 
   return (
     <>
-      <div className="flex flex-wrap items-center gap-6 sm:gap-8 mb-6 select-none" data-no-destroy="true">
+      <div className="flex flex-wrap items-center gap-6 sm:gap-8 mb-6 select-none" data-hero-badge="true" data-no-destroy="true">
         <span className="text-xs sm:text-sm font-mono font-bold text-emerald-700 dark:text-rose-400 tracking-widest uppercase flex items-center h-8">
           {t.hero.badge}
         </span>

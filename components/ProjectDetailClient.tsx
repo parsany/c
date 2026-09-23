@@ -12,10 +12,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import OpenLinks from "@/components/OpenLinks";
 import { ImageFallback } from "@/components/ImageFallback";
 import { useLanguage } from "@/context/LanguageContext";
-import { getProfessionalProject, ProjectProfessional } from "@/data/projects";
+import { getProfessionalProject, ProjectProfessional, ProfessionalProject } from "@/data/projects";
 
 interface ProjectDetailClientProps {
-  project: any;
+  project: ProfessionalProject;
 }
 
 export default function ProjectDetailClient({ project }: ProjectDetailClientProps) {
@@ -26,6 +26,7 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
   const [direction, setDirection] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [failedImages, setFailedImages] = useState<{ [key: number]: boolean }>({});
+  const [isInteracting, setIsInteracting] = useState(false);
 
   const dragStartX = useRef<number | null>(null);
   const dragStartY = useRef<number | null>(null);
@@ -38,24 +39,6 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
   const pinchStartScale = useRef<number>(1);
   const lastClientXRef = useRef<number>(0);
   const lightboxContainerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    setFailedImages({});
-    if (currentProject?.project_image && currentProject.project_image.length > 0) {
-      currentProject.project_image.forEach((src: string, idx: number) => {
-        const img = new window.Image();
-        img.src = src;
-        img.onerror = () => {
-          setFailedImages((prev) => ({ ...prev, [idx]: true }));
-        };
-      });
-    }
-  }, [currentProject?.project_image]);
-
-  useEffect(() => {
-    setZoomScale(1);
-    setZoomOffset({ x: 0, y: 0 });
-  }, [activeIndex, isLightboxOpen]);
 
   useEffect(() => {
     const el = lightboxContainerRef.current;
@@ -97,6 +80,7 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
 
     const clientX = isTouch ? e.touches[0].clientX : e.clientX;
     const clientY = isTouch ? e.touches[0].clientY : e.clientY;
+    setIsInteracting(true);
 
     if (zoomScale > 1) {
       lastDragPos.current = { x: clientX, y: clientY };
@@ -142,6 +126,7 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
   };
 
   const handlePointerUp = (e: React.MouseEvent | React.TouchEvent) => {
+    setIsInteracting(false);
     lastDragPos.current = null;
     pinchStartDist.current = null;
     if (zoomScale === 1) {
@@ -173,22 +158,26 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
     : null;
 
   const handlePrev = useCallback(() => {
-    if (currentProject?.project_image) {
+    if (currentProject.project_image) {
       setDirection(-1);
       setActiveIndex((prev) =>
         prev === 0 ? currentProject.project_image.length - 1 : prev - 1
       );
+      setZoomScale(1);
+      setZoomOffset({ x: 0, y: 0 });
     }
-  }, [currentProject?.project_image]);
+  }, [currentProject.project_image]);
 
   const handleNext = useCallback(() => {
-    if (currentProject?.project_image) {
+    if (currentProject.project_image) {
       setDirection(1);
       setActiveIndex((prev) =>
         prev === currentProject.project_image.length - 1 ? 0 : prev + 1
       );
+      setZoomScale(1);
+      setZoomOffset({ x: 0, y: 0 });
     }
-  }, [currentProject?.project_image]);
+  }, [currentProject.project_image]);
 
   const handleDragStart = (clientX: number, clientY: number) => {
     dragStartX.current = clientX;
@@ -409,7 +398,7 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
                 </button>
 
                 <div className="absolute bottom-3 md:bottom-2 inset-x-4 z-10 flex gap-1.5">
-                  {currentProject.project_image.map((_: any, idx: number) => (
+                  {currentProject.project_image.map((_: string, idx: number) => (
                     <button
                       key={idx}
                       onClick={(e) => {
@@ -516,7 +505,7 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
                   style={{
                     transform: `translate(${zoomOffset.x}px, ${zoomOffset.y}px) scale(${zoomScale})`,
                     transformOrigin: "center center",
-                    transition: (lastDragPos.current || pinchStartDist.current) ? "none" : "transform 0.15s ease-out",
+                    transition: isInteracting ? "none" : "transform 0.15s ease-out",
                   }}
                 >
                   <AnimatePresence initial={false} custom={direction} mode="popLayout">
@@ -552,7 +541,7 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
 
               {currentProject.project_image.length > 1 && zoomScale === 1 && (
                 <div className="absolute bottom-6 md:bottom-3 left-1/2 -translate-x-1/2 z-50 flex gap-1.5 w-full max-w-xl px-4">
-                  {currentProject.project_image.map((_: any, idx: number) => (
+                  {currentProject.project_image.map((_: string, idx: number) => (
                     <button
                       key={idx}
                       onClick={(e) => {

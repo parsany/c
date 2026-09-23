@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useEffect, useSyncExternalStore } from "react";
 import { Locale, LOCALES, translations, Translations } from "@/translations";
 
 interface LanguageContextType {
@@ -29,44 +29,52 @@ function setCookie(name: string, value: string, days = 365) {
   document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/; SameSite=Lax`;
 }
 
+function getLocaleSnapshot(): Locale {
+  if (typeof document === "undefined") return "en";
+  const cookieLocale = getCookie("site_locale") as Locale | null;
+  const localLocale = typeof localStorage !== "undefined" ? (localStorage.getItem("site_locale") as Locale | null) : null;
+  const saved = cookieLocale || localLocale;
+
+  if (saved === "en" || saved === "ru" || saved === "am") {
+    return saved;
+  }
+
+  const navLang = (navigator.language || "").toLowerCase();
+  if (navLang.startsWith("ru")) return "ru";
+  if (navLang.startsWith("hy") || navLang.startsWith("am")) return "am";
+  return "en";
+}
+
+function getServerSnapshot(): Locale {
+  return "en";
+}
+
+function subscribeLocale(callback: () => void) {
+  if (typeof window === "undefined") return () => {};
+  window.addEventListener("storage", callback);
+  window.addEventListener("locale-change", callback);
+  return () => {
+    window.removeEventListener("storage", callback);
+    window.removeEventListener("locale-change", callback);
+  };
+}
+
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>("en");
+  const locale = useSyncExternalStore(subscribeLocale, getLocaleSnapshot, getServerSnapshot);
 
   useEffect(() => {
-    // 1. Check cookies first, then localStorage
-    const cookieLocale = getCookie("site_locale") as Locale | null;
-    const localLocale = typeof localStorage !== "undefined" ? (localStorage.getItem("site_locale") as Locale | null) : null;
-    const saved = cookieLocale || localLocale;
-
-    if (saved && (saved === "en" || saved === "ru" || saved === "am")) {
-      setLocaleState(saved);
-      document.documentElement.lang = saved === "am" ? "hy" : saved;
-      // Sync cookie and localStorage
-      setCookie("site_locale", saved);
-      localStorage.setItem("site_locale", saved);
-    } else {
-      // Auto-detect browser language
-      const navLang = (navigator.language || "").toLowerCase();
-      let detected: Locale = "en";
-      if (navLang.startsWith("ru")) {
-        detected = "ru";
-      } else if (navLang.startsWith("hy") || navLang.startsWith("am")) {
-        detected = "am";
-      }
-      setLocaleState(detected);
-      document.documentElement.lang = detected === "am" ? "hy" : detected;
-      setCookie("site_locale", detected);
-      localStorage.setItem("site_locale", detected);
-    }
-  }, []);
+    document.documentElement.lang = locale === "am" ? "hy" : locale;
+  }, [locale]);
 
   const setLocale = (newLocale: Locale) => {
-    setLocaleState(newLocale);
     setCookie("site_locale", newLocale);
     if (typeof localStorage !== "undefined") {
       localStorage.setItem("site_locale", newLocale);
     }
     document.documentElement.lang = newLocale === "am" ? "hy" : newLocale;
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new Event("locale-change"));
+    }
   };
 
   const t = translations[locale] || translations.en;

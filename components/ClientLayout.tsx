@@ -1,7 +1,7 @@
 "use client";
 
 import "@/styles/globals.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useSyncExternalStore } from "react";
 import { usePathname } from "next/navigation";
 import CommandMenu from "@/components/CommandMenu";
 import ResumeModal from "@/components/ResumeModal";
@@ -9,27 +9,45 @@ import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { LanguageProvider, useLanguage } from "@/context/LanguageContext";
 import { Sun, Moon } from "lucide-react";
 
+function getThemeSnapshot(): "light" | "dark" {
+  if (typeof window === "undefined") return "dark";
+  return (localStorage.getItem("theme") as "light" | "dark") || "dark";
+}
+
+function getServerThemeSnapshot(): "light" | "dark" {
+  return "dark";
+}
+
+function subscribeTheme(callback: () => void) {
+  if (typeof window === "undefined") return () => {};
+  window.addEventListener("storage", callback);
+  window.addEventListener("theme-change", callback);
+  return () => {
+    window.removeEventListener("storage", callback);
+    window.removeEventListener("theme-change", callback);
+  };
+}
+
 function InnerLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const isLanding = pathname === "/landing";
   const [isOpen, setIsOpen] = useState(false);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
+  const theme = useSyncExternalStore(subscribeTheme, getThemeSnapshot, getServerThemeSnapshot);
   const [transitioningTheme, setTransitioningTheme] = useState<"light" | "dark" | null>(null);
   const { t } = useLanguage();
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
-    const initialTheme = savedTheme || "dark";
-    setTheme(initialTheme);
-    if (initialTheme === "dark") {
+    if (theme === "dark") {
       document.documentElement.classList.add("dark");
       document.body.classList.add("dark");
     } else {
       document.documentElement.classList.remove("dark");
       document.body.classList.remove("dark");
     }
+  }, [theme]);
 
+  useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key?.toLowerCase() === "k") {
         e.preventDefault();
@@ -73,14 +91,9 @@ function InnerLayout({ children }: { children: React.ReactNode }) {
     setTransitioningTheme(nextTheme);
 
     setTimeout(() => {
-      setTheme(nextTheme);
       localStorage.setItem("theme", nextTheme);
-      if (nextTheme === "dark") {
-        document.documentElement.classList.add("dark");
-        document.body.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-        document.body.classList.remove("dark");
+      if (typeof window !== "undefined") {
+        window.dispatchEvent(new Event("theme-change"));
       }
     }, 500);
 

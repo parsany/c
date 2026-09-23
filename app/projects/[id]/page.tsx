@@ -1,7 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ProjectProfessional } from "@/public/JSONJS";
+import { ProjectProfessional } from "@/data/projects";
 import ProjectDetailClient from "@/components/ProjectDetailClient";
 import { SITE_URL, SITE_AUTHOR } from "@/lib/config";
 

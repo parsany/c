@@ -3,12 +3,13 @@
 import React, { useState } from "react";
 import { Mail, Copy, Check, Github, Linkedin, Send, ArrowUpRight, Phone } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { SITE_EMAIL } from "@/lib/config";
 
 interface ContactDirectBarProps {
   email?: string;
 }
 
-export function ContactDirectBar({ email = "vvsparsa@gmail.com" }: ContactDirectBarProps) {
+export function ContactDirectBar({ email = SITE_EMAIL }: ContactDirectBarProps) {
   const { t } = useLanguage();
   const [copied, setCopied] = useState(false);
 

@@ -65,7 +65,7 @@ export default function AttackEngine({
 
   const clearBurns = useCallback(() => {
     burnMapRef.current.forEach((_, el) => {
-      const h = el as any;
+      const h = el as HTMLElement;
       if (h.style) {
         h.style.removeProperty("filter");
         h.style.removeProperty("opacity");
@@ -82,6 +82,7 @@ export default function AttackEngine({
   const isTargetable = useCallback((el: Element) => {
     if (!el || !document.body.contains(el)) return false;
     if (el.closest('[data-no-destroy="true"]')) return false;
+    if (el.closest('[role="dialog"]')) return false;
     if ((burnMapRef.current.get(el) ?? 0) >= 1.0) return false;
     const r = el.getBoundingClientRect();
     if (r.width <= 0 || r.height <= 0) return false;
@@ -470,7 +471,7 @@ export default function AttackEngine({
           if (candidateCenters.length === 0 && burnMapRef.current.size > 0) {
             setAllEaten(prev => prev ? prev : true);
 
-            const badgeEl = document.querySelector('[data-no-destroy="true"]');
+            const badgeEl = document.querySelector('[data-hero-badge="true"]') || document.querySelector('[data-no-destroy="true"]');
             let targetX = window.innerWidth * 0.5;
             let targetY = 100;
             if (badgeEl) {
@@ -658,7 +659,7 @@ export default function AttackEngine({
             next = Math.min(1, prog + eatRate);
             burnMapRef.current.set(el, next);
           }
-          const h = el as any;
+          const h = el as HTMLElement;
           if (next >= 1) {
             if (h.style) h.style.display = "none";
             return;

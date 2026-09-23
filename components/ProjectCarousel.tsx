@@ -27,20 +27,6 @@ export default function ProjectCarousel({
   const duration = 3500;
 
   useEffect(() => {
-    setIndex(0);
-    setFailedImages({});
-    if (images && images.length > 0) {
-      images.forEach((src, idx) => {
-        const img = new window.Image();
-        img.src = src;
-        img.onerror = () => {
-          setFailedImages((prev) => ({ ...prev, [idx]: true }));
-        };
-      });
-    }
-  }, [images]);
-
-  useEffect(() => {
     if (!isHovered || totalImages <= 1) {
       if (timerRef.current) clearInterval(timerRef.current);
       return;
@@ -54,7 +40,7 @@ export default function ProjectCarousel({
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [isHovered, totalImages, index]);
+  }, [isHovered, totalImages]);
 
   if (!images || totalImages === 0) {
     return <ImageFallback label="(Image will be uploaded)" />;

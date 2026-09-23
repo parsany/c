@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Posts from "@/public/content/materials/PostsPage.json";
@@ -20,15 +20,17 @@ interface Post {
 
 export default function LatestWritings() {
   const { t } = useLanguage();
-  const [recentPosts, setRecentPosts] = useState<Post[]>([]);
 
-  useEffect(() => {
-    const sorted = [...Posts]
+  const recentPosts = React.useMemo(() => {
+    return [...Posts]
       .filter((post) => post.active !== false)
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-      .slice(0, 3);
-    setRecentPosts(sorted as Post[]);
+      .slice(0, 3) as Post[];
   }, []);
+
+  if (recentPosts.length === 0) {
+    return null;
+  }
 
   return (
     <section className="pt-8 md:pt-12 pb-12 border-b border-theme-border" id="writings">

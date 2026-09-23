@@ -5,7 +5,11 @@ import Posts from "@/public/content/materials/PostsPage.json";
 import PostDetailClient from "@/components/PostDetailClient";
 
 export async function generateStaticParams() {
-  return Posts.map((post) => ({
+  const activePosts = Posts.filter((post) => post.active !== false);
+  if (activePosts.length === 0) {
+    return [{ id: "_draft" }];
+  }
+  return activePosts.map((post) => ({
     id: post.slug,
   }));
 }

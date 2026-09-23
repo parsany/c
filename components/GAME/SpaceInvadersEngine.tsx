@@ -16,7 +16,7 @@ export default function SpaceInvadersEngine({
 }: SpaceInvadersEngineProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const rafRef = useRef<number>(0);
-  const mouseRef = useRef({ x: window.innerWidth * 0.5, y: window.innerHeight * 0.8 });
+  const mouseRef = useRef({ x: 0, y: 0 });
   const isMouseDownRef = useRef(false);
   const lastShotRef = useRef(0);
 
@@ -24,15 +24,15 @@ export default function SpaceInvadersEngine({
     kills: 0,
     shotsFired: 0,
     shotsHit: 0,
-    startTime: Date.now(),
+    startTime: 0,
     endTime: 0,
     score: 0,
     wave: 1,
   });
 
   const playerRef = useRef<PlayerShip>({
-    x: window.innerWidth * 0.5,
-    y: window.innerHeight * 0.8,
+    x: 0,
+    y: 0,
     vx: 0,
     vy: 0,
     angle: -Math.PI * 0.5,
@@ -91,8 +91,16 @@ export default function SpaceInvadersEngine({
     const resize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
+      if (playerRef.current.x === 0 && playerRef.current.y === 0) {
+        playerRef.current.x = window.innerWidth * 0.5;
+        playerRef.current.y = window.innerHeight * 0.8;
+        mouseRef.current = { x: window.innerWidth * 0.5, y: window.innerHeight * 0.8 };
+      }
     };
     resize();
+    if (statsRef.current.startTime === 0) {
+      statsRef.current.startTime = Date.now();
+    }
     window.addEventListener("resize", resize);
 
     const onMouseMove = (e: MouseEvent) => {

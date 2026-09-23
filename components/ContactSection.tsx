@@ -4,12 +4,14 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { Mail, Send, Linkedin, Github, Check, Copy, MessageSquare, Phone, PhoneCall } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { SITE_EMAIL } from "@/lib/config";
 
 export default function ContactSection() {
   const { t } = useLanguage();
   const [copied, setCopied] = useState(false);
   const [isBurning, setIsBurning] = useState(false);
-  const email = "vvsparsa@gmail.com";
+  const mounted = React.useSyncExternalStore(() => () => {}, () => true, () => false);
+  const email = SITE_EMAIL;
 
   React.useEffect(() => {
     const handleToggle = (e: Event) => {
@@ -20,15 +22,7 @@ export default function ContactSection() {
     return () => window.removeEventListener("toggle-burning-state", handleToggle);
   }, [isBurning]);
 
-  const [mounted, setMounted] = useState(false);
-
   React.useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  React.useEffect(() => {
-    if (!mounted) return;
-
     // Load or trigger LinkedIn script only after client DOM is ready
     const existingScript = document.getElementById("linkedin-profile-badge-js");
     if (existingScript) {
@@ -46,7 +40,7 @@ export default function ContactSection() {
       const s = document.getElementById("linkedin-profile-badge-js");
       if (s) s.remove();
     };
-  }, [mounted]);
+  }, []);
 
   const handleCopyEmail = async () => {
     try {

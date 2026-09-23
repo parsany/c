@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { getProjects } from "@/data/projects";
@@ -357,31 +357,6 @@ export default function ProjectList() {
   const { locale, t } = useLanguage();
   const { ProjectProfessional, ProjectAcademic } = getProjects(locale);
 
-  useEffect(() => {
-    ProjectProfessional.forEach((project) => {
-      if (project.project_image?.length) {
-        project.project_image.forEach((src) => {
-          const img = new window.Image();
-          img.src = src;
-        });
-      } else if (project.image) {
-        const img = new window.Image();
-        img.src = project.image;
-      }
-    });
-
-    ProjectAcademic.forEach((project) => {
-      if (project.image) {
-        const img = new window.Image();
-        img.src = project.image;
-      }
-      if (project.video) {
-        const vid = document.createElement("video");
-        vid.src = project.video;
-        vid.preload = "auto";
-      }
-    });
-  }, [ProjectProfessional, ProjectAcademic]);
 
   const professionalProjects = [...ProjectProfessional].sort((a, b) => b.id - a.id);
   const academicProjects = [...ProjectAcademic].sort((a, b) => b.id - a.id);

@@ -1,11 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, Folder, Zap, Globe, FileText, ArrowRight, Languages } from "lucide-react";
+import { Search, Folder, Zap, Globe, FileText, ArrowRight } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { Locale } from "@/translations";
 import { FlagIcon } from "./LanguageSwitcher";
+import { getProjects } from "@/data/projects";
+import { SITE_EMAIL } from "@/lib/config";
 
 interface CommandMenuProps {
   isOpen: boolean;
@@ -30,10 +32,30 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  const handleClose = useCallback(() => {
+    setSearch("");
+    setSelectedIndex(0);
+    onClose();
+  }, [onClose]);
+
   const handleLanguageChange = (newLocale: Locale) => {
     setLocale(newLocale);
-    onClose();
+    handleClose();
   };
+
+  const { ProjectProfessional } = getProjects(locale);
+  const projectCommands: CommandItem[] = ProjectProfessional.map((p) => ({
+    id: `project-${p.slug}`,
+    title: p.name,
+    subtitle: p.description,
+    category: "projects" as const,
+    icon: <FileText className="h-4 w-4" />,
+    href: `/projects/${p.slug}`,
+    action: () => {
+      handleClose();
+      router.push(`/projects/${p.slug}`);
+    },
+  }));
 
   const commands: CommandItem[] = [
     {
@@ -142,75 +164,16 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
         }
       },
     },
-    {
-      id: "project-charbag",
-      title: "Charbag Ceramic Studio Specs",
-      subtitle: "View boutique studio catalog system architecture",
-      category: "projects",
-      icon: <FileText className="h-4 w-4" />,
-      href: "/projects/charbag",
-      action: () => {
-        onClose();
-        router.push("/projects/charbag");
-      },
-    },
-    {
-      id: "project-msk",
-      title: "Battery MSK Client Specs",
-      subtitle: "View multilanguage warranty serialization spec",
-      category: "projects",
-      icon: <FileText className="h-4 w-4" />,
-      href: "/projects/msk",
-      action: () => {
-        onClose();
-        router.push("/projects/msk");
-      },
-    },
-    {
-      id: "project-esp",
-      title: "Battery ESP E-Commerce Specs",
-      subtitle: "View parts trading system workspace specs",
-      category: "projects",
-      icon: <FileText className="h-4 w-4" />,
-      href: "/projects/esp",
-      action: () => {
-        onClose();
-        router.push("/projects/esp");
-      },
-    },
-    {
-      id: "project-atrafian",
-      title: "Atrafian Chat Ecosystem Specs",
-      subtitle: "View messaging architecture & media bucket details",
-      category: "projects",
-      icon: <FileText className="h-4 w-4" />,
-      href: "/projects/atrafian",
-      action: () => {
-        onClose();
-        router.push("/projects/atrafian");
-      },
-    },
-    {
-      id: "project-alzahra",
-      title: "Al-Zahra Hospital Specs",
-      subtitle: "View clinical directory & schedule booking workflow",
-      category: "projects",
-      icon: <FileText className="h-4 w-4" />,
-      href: "/projects/alzahra",
-      action: () => {
-        onClose();
-        router.push("/projects/alzahra");
-      },
-    },
+    ...projectCommands,
     {
       id: "action-email",
       title: "Copy Email Address",
-      subtitle: "vvsparsa@gmail.com",
+      subtitle: SITE_EMAIL,
       category: "actions",
       icon: <Zap className="h-4 w-4" />,
       action: () => {
-        onClose();
-        navigator.clipboard.writeText("vvsparsa@gmail.com");
+        handleClose();
+        navigator.clipboard.writeText(SITE_EMAIL);
       },
     },
     {
@@ -261,15 +224,27 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       },
     },
     {
-      id: "action-resume-systems",
-      title: t.cv.systemsTitle,
-      subtitle: t.cv.systemsSubtitle,
+      id: "action-resume-qa",
+      title: t.cv.qaTitle,
+      subtitle: t.cv.qaSubtitle,
       category: "actions",
       icon: <FileText className="h-4 w-4" />,
-      href: "/application/systems_engineer_resume.pdf",
+      href: "/application/QA_resume.pdf",
       action: () => {
         onClose();
-        window.open("/application/systems_engineer_resume.pdf", "_blank");
+        window.open("/application/QA_resume.pdf", "_blank");
+      },
+    },
+    {
+      id: "action-resume-devops",
+      title: t.cv.devopsTitle,
+      subtitle: t.cv.devopsSubtitle,
+      category: "actions",
+      icon: <FileText className="h-4 w-4" />,
+      href: "/application/devops_resume.pdf",
+      action: () => {
+        onClose();
+        window.open("/application/devops_resume.pdf", "_blank");
       },
     },
     {
@@ -295,8 +270,6 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
   useEffect(() => {
     if (isOpen) {
       setTimeout(() => inputRef.current?.focus(), 50);
-      setSearch("");
-      setSelectedIndex(0);
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
@@ -313,18 +286,17 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
     router.prefetch("/posts");
     router.prefetch("/contact");
     router.prefetch("/#contact");
-    const projectSlugs = ["charbag", "msk", "esp", "atrafian", "goldenbat", "taxiland", "alzahra"];
-    projectSlugs.forEach((slug) => {
-      router.prefetch(`/projects/${slug}`);
+    ProjectProfessional.forEach((p) => {
+      router.prefetch(`/projects/${p.slug}`);
     });
-  }, [router]);
+  }, [router, ProjectProfessional]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!isOpen) return;
 
       if (e.key === "Escape") {
-        onClose();
+        handleClose();
       } else if (e.key === "ArrowDown") {
         e.preventDefault();
         setSelectedIndex((prev) =>
@@ -365,11 +337,11 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, filteredCommands, selectedIndex, onClose]);
+  }, [isOpen, filteredCommands, selectedIndex, handleClose]);
 
   const handleOverlayClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
-      onClose();
+      handleClose();
     }
   };
 
@@ -382,6 +354,7 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
           role="dialog"
           aria-modal="true"
           aria-label="Command Menu"
+          data-no-destroy="true"
         >
           <motion.div
             ref={containerRef}
@@ -414,8 +387,8 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
                     onClick: cmd.action,
                     onMouseEnter: () => setSelectedIndex(idx),
                     className: `w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-left transition-colors focus:outline-none cursor-pointer ${isSelected
-                        ? "bg-theme-accentLight text-theme-accentText"
-                        : "text-theme-muted hover:bg-theme-accentLight/40"
+                      ? "bg-theme-accentLight text-theme-accentText"
+                      : "text-theme-muted hover:bg-theme-accentLight/40"
                       }`,
                     role: "option",
                     "aria-selected": isSelected,
@@ -426,8 +399,8 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
                       <div className="flex items-center space-x-3">
                         <div
                           className={`p-1.5 rounded ${isSelected
-                              ? "bg-theme-accent text-white"
-                              : "bg-theme-btnExploreBg text-theme-muted border border-theme-btnExploreBorder"
+                            ? "bg-theme-accent text-white"
+                            : "bg-theme-btnExploreBg text-theme-muted border border-theme-btnExploreBorder"
                             }`}
                         >
                           {cmd.icon}

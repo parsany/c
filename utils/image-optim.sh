@@ -21,7 +21,7 @@ find public/projects -type f \( -name "*.png" -o -name "*.jpg" -o -name "*.jpeg"
     rm "$file"
 done
 
-echo "Updating public/JSONJS.js references..."
-sed -i -E 's|("(/professional\|/projects)/[^"]+\.)(png\|jpg\|jpeg)"|\1webp"|g' public/JSONJS.js
+echo "Updating data/projects references..."
+sed -i -E 's|("(/professional\|/projects)/[^"]+\.)(png\|jpg\|jpeg)"|\1webp"|g' data/projects/*.ts
 
 echo "Image optimization complete!"

@@ -13,6 +13,7 @@ import {
   Headphones,
   FileText,
   Cpu,
+  CheckCircle2,
 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -21,90 +22,56 @@ interface ResumeModalProps {
   onClose: () => void;
 }
 
-export interface ResumeOption {
-  id: string;
-  titleKey: "aiTitle" | "frontendTitle" | "backendTitle" | "systemsTitle" | "supportTitle";
-  subtitleKey: "aiSubtitle" | "frontendSubtitle" | "backendSubtitle" | "systemsSubtitle" | "supportSubtitle";
-  fileUrl: string;
-  fileName: string;
-  icon: React.ReactNode;
-}
+import { SPECIALIZED_RESUMES, ResumeConfig } from "@/lib/config";
 
-export const RESUME_OPTIONS: ResumeOption[] = [
-  {
-    id: "ai",
-    titleKey: "aiTitle",
-    subtitleKey: "aiSubtitle",
-    fileUrl: "/application/ai_resume.pdf",
-    fileName: "ai_resume.pdf",
-    icon: <Cpu className="w-4 h-4 text-theme-accent shrink-0" />,
-  },
-  {
-    id: "frontend",
-    titleKey: "frontendTitle",
-    subtitleKey: "frontendSubtitle",
-    fileUrl: "/application/frontend_resume.pdf",
-    fileName: "frontend_resume.pdf",
-    icon: <Code2 className="w-4 h-4 text-theme-accent shrink-0" />,
-  },
-  {
-    id: "backend",
-    titleKey: "backendTitle",
-    subtitleKey: "backendSubtitle",
-    fileUrl: "/application/backend_resume.pdf",
-    fileName: "backend_resume.pdf",
-    icon: <Server className="w-4 h-4 text-theme-accent shrink-0" />,
-  },
-  {
-    id: "systems",
-    titleKey: "systemsTitle",
-    subtitleKey: "systemsSubtitle",
-    fileUrl: "/application/systems_engineer_resume.pdf",
-    fileName: "systems_engineer_resume.pdf",
-    icon: <Terminal className="w-4 h-4 text-theme-accent shrink-0" />,
-  },
-  {
-    id: "support",
-    titleKey: "supportTitle",
-    subtitleKey: "supportSubtitle",
-    fileUrl: "/application/tech_support_resume.pdf",
-    fileName: "tech_support_resume.pdf",
-    icon: <Headphones className="w-4 h-4 text-theme-accent shrink-0" />,
-  },
-];
+const getResumeIcon = (iconName: ResumeConfig["iconName"]) => {
+  switch (iconName) {
+    case "Cpu": return <Cpu className="w-4 h-4 text-theme-accent shrink-0" />;
+    case "Code2": return <Code2 className="w-4 h-4 text-theme-accent shrink-0" />;
+    case "Server": return <Server className="w-4 h-4 text-theme-accent shrink-0" />;
+    case "CheckCircle2": return <CheckCircle2 className="w-4 h-4 text-theme-accent shrink-0" />;
+    case "Terminal": return <Terminal className="w-4 h-4 text-theme-accent shrink-0" />;
+    case "Headphones": return <Headphones className="w-4 h-4 text-theme-accent shrink-0" />;
+  }
+};
 
 export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { t } = useLanguage();
 
+  const handleClose = React.useCallback(() => {
+    setIsDropdownOpen(false);
+    onClose();
+  }, [onClose]);
+
   useEffect(() => {
+    if (!isOpen) return;
+
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (isOpen && e.key === "Escape") {
-        onClose();
+      if (e.key === "Escape") {
+        handleClose();
       }
     };
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-      setIsDropdownOpen(false);
-      window.addEventListener("keydown", handleKeyDown);
-    } else {
-      document.body.style.overflow = "";
-    }
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+
     return () => {
       document.body.style.overflow = "";
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isOpen, onClose]);
+  }, [isOpen, handleClose]);
 
   return (
     <AnimatePresence>
       {isOpen && (
         <div
           className="fixed inset-0 z-[99999] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm select-none"
-          onClick={onClose}
+          onClick={handleClose}
           role="dialog"
           aria-modal="true"
           aria-label={t.cv.modalTitle}
+          data-no-destroy="true"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.96, y: 8 }}
@@ -112,6 +79,7 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
             exit={{ opacity: 0, scale: 0.96, y: 8 }}
             transition={{ type: "spring", duration: 0.25 }}
             onClick={(e) => e.stopPropagation()}
+            data-no-destroy="true"
             className="relative w-[calc(100vw-2rem)] max-w-md bg-theme-panelBg border border-theme-panelBorder rounded-xl shadow-2xl overflow-hidden flex flex-col p-5 sm:p-6 gap-4 font-sans max-h-[90vh] overflow-y-auto"
           >
             <div className="flex items-center justify-between pb-1 border-b border-theme-border/50">
@@ -120,7 +88,7 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
               </h2>
 
               <button
-                onClick={onClose}
+                onClick={handleClose}
                 type="button"
                 title={t.common.close}
                 aria-label={t.common.close}
@@ -136,7 +104,7 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-no-modal="true"
-                onClick={onClose}
+                onClick={handleClose}
                 className="w-full py-2.5 sm:py-3 px-4 rounded-lg bg-theme-accent hover:bg-theme-accentHover text-white dark:text-theme-bg font-bold font-mono text-xs sm:text-sm tracking-wide shadow-sm transition-all cursor-pointer flex items-center justify-center gap-2"
               >
                 <Download className="w-4 h-4" />
@@ -152,12 +120,11 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
               >
                 <div className="flex items-center space-x-2">
                   <FileText className="w-3.5 h-3.5 text-theme-accent" />
-                  <span>{t.cv.specializedTitle} ({RESUME_OPTIONS.length})</span>
+                  <span>{t.cv.specializedTitle} ({SPECIALIZED_RESUMES.length})</span>
                 </div>
                 <ChevronDown
-                  className={`w-4 h-4 text-theme-muted transition-transform duration-200 ${
-                    isDropdownOpen ? "rotate-180" : ""
-                  }`}
+                  className={`w-4 h-4 text-theme-muted transition-transform duration-200 ${isDropdownOpen ? "rotate-180" : ""
+                    }`}
                 />
               </button>
 
@@ -170,14 +137,14 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                     transition={{ duration: 0.2 }}
                     className="space-y-1.5 overflow-hidden"
                   >
-                    {RESUME_OPTIONS.map((item) => (
+                    {SPECIALIZED_RESUMES.map((item) => (
                       <div
                         key={item.id}
                         className="flex items-center justify-between p-2.5 rounded-lg bg-theme-bg/50 hover:bg-theme-bg border border-theme-border/40 hover:border-theme-border transition-colors gap-2"
                       >
                         <div className="flex items-center space-x-2.5 min-w-0">
                           <div className="p-1.5 rounded-md bg-theme-btnExploreBg border border-theme-btnExploreBorder shrink-0">
-                            {item.icon}
+                            {getResumeIcon(item.iconName)}
                           </div>
                           <div className="min-w-0">
                             <p className="text-xs font-bold font-mono text-theme-text truncate">
@@ -194,7 +161,7 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
                           target="_blank"
                           rel="noopener noreferrer"
                           data-no-modal="true"
-                          onClick={onClose}
+                          onClick={handleClose}
                           className="px-2.5 py-1 rounded-md bg-theme-btnExploreBg hover:bg-theme-bg border border-theme-btnExploreBorder hover:border-theme-accent text-theme-text font-mono text-xs transition-colors flex items-center space-x-1 shrink-0 cursor-pointer"
                         >
                           <Download className="w-3 h-3 text-theme-accent" />
@@ -211,14 +178,14 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
               <div className="flex gap-2">
                 <Link
                   href="/cv"
-                  onClick={onClose}
+                  onClick={handleClose}
                   className="flex-1 py-2 sm:py-2.5 px-3 rounded-lg bg-theme-accent/15 border border-theme-accent/40 text-theme-accent hover:bg-theme-accent/25 font-mono font-bold text-xs transition-colors cursor-pointer flex items-center justify-center text-center"
                 >
                   {t.cv.viewOnline}
                 </Link>
                 <Link
                   href="/contact"
-                  onClick={onClose}
+                  onClick={handleClose}
                   className="flex-1 py-2 sm:py-2.5 px-3 rounded-lg bg-theme-btnExploreBg hover:bg-theme-bg border border-theme-btnExploreBorder hover:border-theme-accent text-theme-btnExploreText hover:text-theme-text font-medium text-xs transition-colors cursor-pointer flex items-center justify-center text-center"
                 >
                   {t.contact.pageTitle}

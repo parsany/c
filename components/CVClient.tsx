@@ -5,51 +5,7 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight, Download, FileText } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
-interface ResumeItem {
-  id: string;
-  titleKey: "aiTitle" | "frontendTitle" | "backendTitle" | "systemsTitle" | "supportTitle";
-  subtitleKey: "aiSubtitle" | "frontendSubtitle" | "backendSubtitle" | "systemsSubtitle" | "supportSubtitle";
-  fileUrl: string;
-  fileName: string;
-}
-
-const SPECIALIZED_RESUMES: ResumeItem[] = [
-  {
-    id: "ai",
-    titleKey: "aiTitle",
-    subtitleKey: "aiSubtitle",
-    fileUrl: "/application/ai_resume.pdf",
-    fileName: "ai_resume.pdf",
-  },
-  {
-    id: "frontend",
-    titleKey: "frontendTitle",
-    subtitleKey: "frontendSubtitle",
-    fileUrl: "/application/frontend_resume.pdf",
-    fileName: "frontend_resume.pdf",
-  },
-  {
-    id: "backend",
-    titleKey: "backendTitle",
-    subtitleKey: "backendSubtitle",
-    fileUrl: "/application/backend_resume.pdf",
-    fileName: "backend_resume.pdf",
-  },
-  {
-    id: "systems",
-    titleKey: "systemsTitle",
-    subtitleKey: "systemsSubtitle",
-    fileUrl: "/application/systems_engineer_resume.pdf",
-    fileName: "systems_engineer_resume.pdf",
-  },
-  {
-    id: "support",
-    titleKey: "supportTitle",
-    subtitleKey: "supportSubtitle",
-    fileUrl: "/application/tech_support_resume.pdf",
-    fileName: "tech_support_resume.pdf",
-  },
-];
+import { SPECIALIZED_RESUMES } from "@/lib/config";
 
 export default function CVClient() {
   const { t } = useLanguage();
