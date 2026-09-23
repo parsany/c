@@ -135,7 +135,7 @@ export default function GameStatsModal({
 
           <div className="grid grid-cols-2 gap-2.5">
             <a
-              href="/resume.pdf"
+              href="/Parsa_niavand_CV.pdf"
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleResumeClick}

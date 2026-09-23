@@ -117,7 +117,7 @@ export default function HeroSection() {
             About
           </Link>
           <a
-            href="/resume.pdf"
+            href="/Parsa_niavand_CV.pdf"
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => {

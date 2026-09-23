@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
 
 export default function ResumePage() {
-  redirect("/resume.pdf");
+  redirect("/Parsa_niavand_CV.pdf");
 }
