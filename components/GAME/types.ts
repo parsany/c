@@ -27,7 +27,7 @@ export interface Enemy {
   y: number;
   vx: number;
   vy: number;
-  type: 0 | 1 | 2; // 3 distinct space invader sprite patterns
+  type: 0 | 1 | 2; 
   size: number;
   health: number;
   maxHealth: number;

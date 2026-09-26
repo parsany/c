@@ -48,7 +48,7 @@ export default function HeroContent({
         )}
         <div className="grid grid-cols-2 gap-2.5 sm:flex sm:items-center sm:gap-4">
           <a
-            href="/Parsa_niavand_CV.pdf"
+            href="/Full_stack_parsa_niavand.pdf"
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => {

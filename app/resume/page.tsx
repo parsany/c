@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
 
 export default function ResumePage() {
-  redirect("/Parsa_niavand_CV.pdf");
+  redirect("/Full_stack_parsa_niavand.pdf");
 }

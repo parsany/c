@@ -23,7 +23,7 @@ export default function ContactSection() {
   }, [isBurning]);
 
   React.useEffect(() => {
-    // Load or trigger LinkedIn script only after client DOM is ready
+    
     const existingScript = document.getElementById("linkedin-profile-badge-js");
     if (existingScript) {
       existingScript.remove();
@@ -166,7 +166,7 @@ export default function ContactSection() {
               </a>
             ))}
 
-          {/* LinkedIn Badge & Profile Card */}
+          {}
           <div
             className="sm:col-span-2 rounded-xl border border-theme-border bg-theme-btnExploreBg p-5 flex flex-col items-center justify-center transition-all hover:border-theme-accent/40 shadow-sm overflow-hidden"
             suppressHydrationWarning

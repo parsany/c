@@ -198,7 +198,7 @@ export default function SpaceInvadersEngine({
 
       const player = playerRef.current;
 
-      // If player is dead, clear screen, disable canvas pointer events and stop enemy rendering so stats modal sits cleanly on top
+      
       if (!player.alive) {
         if (canvas) {
           canvas.style.cursor = "default";
@@ -208,14 +208,14 @@ export default function SpaceInvadersEngine({
         return;
       }
 
-      // Check Wave Respawn
+      
       if (enemiesRef.current.length === 0) {
         statsRef.current.wave++;
         spawnWave(statsRef.current.wave);
         onUpdateStats(statsRef.current.kills, statsRef.current.score, statsRef.current.wave);
       }
 
-      // Update & Draw Player
+      
       const mouse = mouseRef.current;
       const cx = W * 0.5;
       const cy = H * 0.5;
@@ -223,7 +223,7 @@ export default function SpaceInvadersEngine({
       player.x += (mouse.x - player.x) * 0.18;
       player.y += (mouse.y - player.y) * 0.18;
 
-      // Player always faces the center of the screen
+      
       const dx = cx - player.x;
       const dy = cy - player.y;
       player.angle = Math.atan2(dy, dx);
@@ -250,7 +250,7 @@ export default function SpaceInvadersEngine({
 
       ctx.restore();
 
-      // Update Lasers (bullets travel through the full screen)
+      
       lasersRef.current = lasersRef.current.filter((laser) => {
         laser.x += laser.vx;
         laser.y += laser.vy;
@@ -286,7 +286,7 @@ export default function SpaceInvadersEngine({
 
       enemiesRef.current = enemiesRef.current.filter((e) => e.health > 0);
 
-      // Update Invaders
+      
       for (const enemy of enemiesRef.current) {
         enemy.x += enemy.vx;
         enemy.y += enemy.vy;
@@ -315,7 +315,7 @@ export default function SpaceInvadersEngine({
         drawSpacewarEnemy(ctx, enemy.x, enemy.y, enemy.size, enemy.type, vectorColor);
       }
 
-      // Update Enemy Bullets
+      
       enemyBulletsRef.current = enemyBulletsRef.current.filter((bullet) => {
         bullet.x += bullet.vx;
         bullet.y += bullet.vy;

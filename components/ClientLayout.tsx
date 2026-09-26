@@ -62,7 +62,7 @@ function InnerLayout({ children }: { children: React.ReactNode }) {
       if (window.location.pathname === "/cv" || window.location.pathname.startsWith("/cv/")) {
         return;
       }
-      const target = (e.target as HTMLElement).closest('a[href*="resume.pdf"], a[href*="_resume.pdf"]');
+      const target = (e.target as HTMLElement).closest('a[href*="resume.pdf"], a[href*="_resume.pdf"], a[href*="Full_stack_parsa_niavand.pdf"], a[href*="Parsa_niavand_CV.pdf"]');
       if (target) {
         if (target.getAttribute("data-no-modal") === "true" || target.closest('[role="dialog"]')) {
           return;

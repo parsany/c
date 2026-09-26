@@ -193,10 +193,10 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       subtitle: t.cv.aiSubtitle,
       category: "actions",
       icon: <FileText className="h-4 w-4" />,
-      href: "/application/ai_resume.pdf",
+      href: "/application/ai_resume_parsa_niavand.pdf",
       action: () => {
         onClose();
-        window.open("/application/ai_resume.pdf", "_blank");
+        window.open("/application/ai_resume_parsa_niavand.pdf", "_blank");
       },
     },
     {
@@ -205,10 +205,10 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       subtitle: t.cv.frontendSubtitle,
       category: "actions",
       icon: <FileText className="h-4 w-4" />,
-      href: "/application/frontend_resume.pdf",
+      href: "/application/frontend_resume_parsa_niavand.pdf",
       action: () => {
         onClose();
-        window.open("/application/frontend_resume.pdf", "_blank");
+        window.open("/application/frontend_resume_parsa_niavand.pdf", "_blank");
       },
     },
     {
@@ -217,10 +217,10 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       subtitle: t.cv.backendSubtitle,
       category: "actions",
       icon: <FileText className="h-4 w-4" />,
-      href: "/application/backend_resume.pdf",
+      href: "/application/backend_resume_parsa_niavand.pdf",
       action: () => {
         onClose();
-        window.open("/application/backend_resume.pdf", "_blank");
+        window.open("/application/backend_resume_parsa_niavand.pdf", "_blank");
       },
     },
     {
@@ -229,10 +229,10 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       subtitle: t.cv.qaSubtitle,
       category: "actions",
       icon: <FileText className="h-4 w-4" />,
-      href: "/application/QA_resume.pdf",
+      href: "/application/QA_resume_parsa_niavand.pdf",
       action: () => {
         onClose();
-        window.open("/application/QA_resume.pdf", "_blank");
+        window.open("/application/QA_resume_parsa_niavand.pdf", "_blank");
       },
     },
     {
@@ -241,10 +241,10 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       subtitle: t.cv.devopsSubtitle,
       category: "actions",
       icon: <FileText className="h-4 w-4" />,
-      href: "/application/devops_resume.pdf",
+      href: "/application/devops_resume_parsa_niavand.pdf",
       action: () => {
         onClose();
-        window.open("/application/devops_resume.pdf", "_blank");
+        window.open("/application/devops_resume_parsa_niavand.pdf", "_blank");
       },
     },
     {
@@ -253,10 +253,10 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       subtitle: t.cv.supportSubtitle,
       category: "actions",
       icon: <FileText className="h-4 w-4" />,
-      href: "/application/tech_support_resume.pdf",
+      href: "/application/tech_support_resume_parsa_niavand.pdf",
       action: () => {
         onClose();
-        window.open("/application/tech_support_resume.pdf", "_blank");
+        window.open("/application/tech_support_resume_parsa_niavand.pdf", "_blank");
       },
     },
   ];
