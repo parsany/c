@@ -1,16 +1,18 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { GameStats } from "./types";
-import { X, FileText, User, RotateCcw, Crosshair, Trophy, Target, Clock, ArrowRight } from "lucide-react";
+import { X, FileText, User, RotateCcw, Crosshair, Trophy, Target, Clock, ArrowRight, ArrowLeft } from "lucide-react";
 
 interface GameStatsModalProps {
   stats: GameStats;
   onRestart: () => void;
   onResetToIdle: () => void;
 }
+
+const HIGH_SCORE_KEY = "conway_invaders_high_score";
 
 export default function GameStatsModal({
   stats,
@@ -21,12 +23,38 @@ export default function GameStatsModal({
   const durationSec = Math.max(1, Math.round((stats.endTime - stats.startTime) / 1000));
   const accuracy = stats.shotsFired > 0 ? Math.round((stats.shotsHit / stats.shotsFired) * 100) : 0;
 
+  const [{ highScore, isNewHigh }] = useState(() => {
+    if (typeof window === "undefined") {
+      return { highScore: stats.score, isNewHigh: false };
+    }
+    try {
+      const saved = localStorage.getItem(HIGH_SCORE_KEY);
+      const prevHigh = saved ? parseInt(saved, 10) : 0;
+      if (stats.score > prevHigh) {
+        localStorage.setItem(HIGH_SCORE_KEY, stats.score.toString());
+        return { highScore: stats.score, isNewHigh: true };
+      }
+      return { highScore: prevHigh, isNewHigh: false };
+    } catch {
+      return { highScore: stats.score, isNewHigh: false };
+    }
+  });
+
   useEffect(() => {
     document.body.style.cursor = "default";
     return () => {
       document.body.style.cursor = "default";
     };
   }, []);
+
+  const handleExitHome = (e?: React.MouseEvent) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    onResetToIdle();
+    router.push("/");
+  };
 
   const handleAboutClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -39,82 +67,91 @@ export default function GameStatsModal({
     e.preventDefault();
     e.stopPropagation();
     onResetToIdle();
-    window.dispatchEvent(new CustomEvent("open-resume-modal"));
+    router.push("/cv");
   };
 
   return (
     <div
-      className="fixed inset-0 z-[99999] flex items-center justify-center p-4 bg-black/60 backdrop-blur-md select-none"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md select-none"
       style={{ pointerEvents: "auto", cursor: "default" }}
       onClick={(e) => e.stopPropagation()}
     >
       <motion.div
-        initial={{ opacity: 0, scale: 0.95, y: 10 }}
+        initial={{ opacity: 0, scale: 0.95, y: 15 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.95, y: 10 }}
-        transition={{ type: "spring", duration: 0.3 }}
-        className="relative w-full max-w-md bg-theme-panelBg border border-theme-panelBorder rounded-2xl shadow-2xl overflow-hidden flex flex-col p-6 sm:p-7 gap-6 font-sans"
+        exit={{ opacity: 0, scale: 0.95, y: 15 }}
+        transition={{ type: "spring", duration: 0.35, bounce: 0.15 }}
+        className="relative w-full max-w-md bg-[#121216] border border-white/10 rounded-2xl shadow-2xl overflow-hidden flex flex-col p-6 sm:p-7 gap-5 font-sans text-white"
       >
-        <div className="flex items-start justify-between border-b border-theme-border pb-4">
+        <div className="flex items-start justify-between border-b border-white/10 pb-4">
           <div>
-            <h2 className="text-xl font-bold tracking-tight text-theme-text font-mono uppercase">
-              GAME OVER
-            </h2>
-            <p className="text-xs text-theme-muted font-mono tracking-wider uppercase mt-0.5">
+            <div className="flex items-center gap-2">
+              <h2 className="text-xl font-bold tracking-tight text-white font-mono uppercase">
+                GAME OVER
+              </h2>
+              {isNewHigh && (
+                <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-amber-500/20 text-amber-400 border border-amber-500/30 uppercase tracking-widest animate-pulse">
+                  New High!
+                </span>
+              )}
+            </div>
+            <p className="text-xs text-white/50 font-mono tracking-wider uppercase mt-1">
               Performance Summary
             </p>
           </div>
           <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onResetToIdle();
-            }}
+            onClick={handleExitHome}
             type="button"
-            title="Return to Homepage"
-            aria-label="Return to Homepage"
-            className="p-1.5 rounded-lg text-theme-muted hover:text-theme-text hover:bg-black/5 dark:hover:bg-white/5 transition-colors cursor-pointer"
+            title="Exit to Homepage"
+            aria-label="Exit to Homepage"
+            className="p-1.5 rounded-lg text-white/60 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         <div className="grid grid-cols-2 gap-3 font-mono">
-          <div className="p-3.5 rounded-xl bg-theme-bg/60 border border-theme-border/70 flex flex-col items-center justify-center text-center">
-            <div className="flex items-center space-x-1.5 mb-1 text-theme-muted text-xs uppercase tracking-wider">
-              <Crosshair className="w-3.5 h-3.5 text-theme-accent" />
+          <div className="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 flex flex-col items-center justify-center text-center">
+            <div className="flex items-center space-x-1.5 mb-1 text-white/50 text-xs uppercase tracking-wider">
+              <Crosshair className="w-3.5 h-3.5 text-rose-400" />
               <span>Kills</span>
             </div>
-            <span className="text-2xl font-bold text-theme-text">
+            <span className="text-2xl font-bold text-white">
               {stats.kills}
             </span>
           </div>
 
-          <div className="p-3.5 rounded-xl bg-theme-bg/60 border border-theme-border/70 flex flex-col items-center justify-center text-center">
-            <div className="flex items-center space-x-1.5 mb-1 text-theme-muted text-xs uppercase tracking-wider">
-              <Trophy className="w-3.5 h-3.5 text-theme-accent" />
+          <div className="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 flex flex-col items-center justify-center text-center">
+            <div className="flex items-center space-x-1.5 mb-1 text-white/50 text-xs uppercase tracking-wider">
+              <Trophy className="w-3.5 h-3.5 text-amber-400" />
               <span>Score</span>
             </div>
-            <span className="text-2xl font-bold text-theme-text">
+            <span className="text-2xl font-bold text-white">
               {stats.score}
             </span>
+            {highScore > 0 && (
+              <span className="text-[11px] text-white/40 mt-0.5">
+                Best: {highScore}
+              </span>
+            )}
           </div>
 
-          <div className="p-3.5 rounded-xl bg-theme-bg/60 border border-theme-border/70 flex flex-col items-center justify-center text-center">
-            <div className="flex items-center space-x-1.5 mb-1 text-theme-muted text-xs uppercase tracking-wider">
-              <Target className="w-3.5 h-3.5 text-theme-accent" />
+          <div className="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 flex flex-col items-center justify-center text-center">
+            <div className="flex items-center space-x-1.5 mb-1 text-white/50 text-xs uppercase tracking-wider">
+              <Target className="w-3.5 h-3.5 text-sky-400" />
               <span>Accuracy</span>
             </div>
-            <span className="text-2xl font-bold text-theme-text">
+            <span className="text-2xl font-bold text-white">
               {accuracy}%
             </span>
           </div>
 
-          <div className="p-3.5 rounded-xl bg-theme-bg/60 border border-theme-border/70 flex flex-col items-center justify-center text-center">
-            <div className="flex items-center space-x-1.5 mb-1 text-theme-muted text-xs uppercase tracking-wider">
-              <Clock className="w-3.5 h-3.5 text-theme-accent" />
+          <div className="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 flex flex-col items-center justify-center text-center">
+            <div className="flex items-center space-x-1.5 mb-1 text-white/50 text-xs uppercase tracking-wider">
+              <Clock className="w-3.5 h-3.5 text-emerald-400" />
               <span>Survival</span>
             </div>
-            <span className="text-2xl font-bold text-theme-text">
+            <span className="text-2xl font-bold text-white">
               {durationSec}s
             </span>
           </div>
@@ -127,38 +164,44 @@ export default function GameStatsModal({
               onRestart();
             }}
             type="button"
-            className="w-full py-2.5 px-4 rounded-xl bg-theme-accent hover:bg-theme-accentHover text-white dark:text-theme-bg font-bold font-mono text-sm tracking-wider uppercase shadow-sm transition-all cursor-pointer hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center space-x-2"
+            className="w-full py-3 px-4 rounded-xl bg-rose-500 hover:bg-rose-600 text-white font-bold font-mono text-sm tracking-wider uppercase shadow-md transition-all cursor-pointer hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center space-x-2"
           >
             <RotateCcw className="w-4 h-4" />
             <span>Play Again</span>
           </button>
 
           <div className="grid grid-cols-2 gap-2.5">
-            <a
-              href="/Full_stack_parsa_niavand.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
               onClick={handleResumeClick}
-              className="py-2 px-3 rounded-xl bg-theme-btnExploreBg hover:bg-theme-bg border border-theme-btnExploreBorder hover:border-theme-accent/50 text-theme-btnExploreText hover:text-theme-text font-medium font-sans text-xs transition-all cursor-pointer hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center space-x-1.5 group"
+              type="button"
+              className="py-2.5 px-3 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] border border-white/10 hover:border-white/20 text-white/80 hover:text-white font-medium font-sans text-xs transition-all cursor-pointer hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center space-x-1.5 group"
             >
-              <FileText className="w-3.5 h-3.5 text-theme-muted group-hover:text-theme-text transition-colors" />
+              <FileText className="w-3.5 h-3.5 text-white/60 group-hover:text-white transition-colors" />
               <span>Resume</span>
-              <ArrowRight className="w-3 h-3 text-theme-muted group-hover:translate-x-0.5 transition-transform" />
-            </a>
+              <ArrowRight className="w-3 h-3 text-white/40 group-hover:translate-x-0.5 transition-transform" />
+            </button>
 
             <button
               onClick={handleAboutClick}
               type="button"
-              className="py-2 px-3 rounded-xl bg-theme-btnExploreBg hover:bg-theme-bg border border-theme-btnExploreBorder hover:border-theme-accent/50 text-theme-btnExploreText hover:text-theme-text font-medium font-sans text-xs transition-all cursor-pointer hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center space-x-1.5 group"
+              className="py-2.5 px-3 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] border border-white/10 hover:border-white/20 text-white/80 hover:text-white font-medium font-sans text-xs transition-all cursor-pointer hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center space-x-1.5 group"
             >
-              <User className="w-3.5 h-3.5 text-theme-muted group-hover:text-theme-text transition-colors" />
+              <User className="w-3.5 h-3.5 text-white/60 group-hover:text-white transition-colors" />
               <span>About Me</span>
-              <ArrowRight className="w-3 h-3 text-theme-muted group-hover:translate-x-0.5 transition-transform" />
+              <ArrowRight className="w-3 h-3 text-white/40 group-hover:translate-x-0.5 transition-transform" />
             </button>
           </div>
+
+          <button
+            onClick={handleExitHome}
+            type="button"
+            className="w-full py-2 px-3 text-center text-xs font-mono text-white/50 hover:text-white transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+          >
+            <ArrowLeft className="w-3.5 h-3.5" />
+            <span>Return to Portfolio</span>
+          </button>
         </div>
       </motion.div>
     </div>
   );
-
 }

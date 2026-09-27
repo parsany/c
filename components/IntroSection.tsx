@@ -1,18 +1,19 @@
 "use client";
 
 import React, { useRef, useEffect, useState, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import CrossPanel from "./CrossPanel";
 import HeroBadge from "./intro/HeroBadge";
 import HeroContent from "./intro/HeroContent";
 import AttackEngine from "./intro/AttackEngine";
 import { Phase } from "./intro/types";
-import Game from "@/components/GAME";
 
 interface IntroSectionProps {
   onOpenCommandMenu?: () => void;
 }
 
 export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
+  const router = useRouter();
   const sectionRef = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const rogueCanvasRef = useRef<HTMLCanvasElement>(null);
@@ -28,7 +29,6 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
   const [allEaten, setAllEaten] = useState(false);
 
   const attackMode = phase === 'attacking';
-  const isMinigame = phase === 'minigame';
 
   useEffect(() => {
     const t = setTimeout(() => setShowTrigger(true), 1500);
@@ -42,13 +42,15 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
   }, []);
 
   useEffect(() => {
-    const handleStartMinigame = () => setPhase('minigame');
+    const handleStartMinigame = () => {
+      router.push("/game");
+    };
     window.addEventListener("start-minigame", handleStartMinigame);
     return () => window.removeEventListener("start-minigame", handleStartMinigame);
-  }, []);
+  }, [router]);
 
   useEffect(() => {
-    if (allEaten || isMinigame) {
+    if (allEaten) {
       document.body.classList.add("all-eaten");
     } else {
       document.body.classList.remove("all-eaten");
@@ -56,7 +58,7 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
     return () => {
       document.body.classList.remove("all-eaten");
     };
-  }, [allEaten, isMinigame]);
+  }, [allEaten]);
 
   useEffect(() => {
     window.dispatchEvent(new CustomEvent("toggle-burning-state", { detail: fireMode }));
@@ -67,19 +69,11 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
   }, []);
 
   const handleStartGame = useCallback(() => {
-    setPhase('minigame');
-  }, []);
-
-  const handleResetToIdle = useCallback(() => {
-    setPhase('idle');
-  }, []);
+    router.push("/game");
+  }, [router]);
 
   return (
     <>
-      {isMinigame && (
-        <Game onResetToIdle={handleResetToIdle} />
-      )}
-
       <canvas
         ref={fireCanvasRef}
         style={{
@@ -103,8 +97,7 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
 
       <section
         ref={sectionRef}
-        className={`relative pt-12 md:pt-20 pb-8 md:pb-12 border-b border-theme-border overflow-hidden ${isMinigame ? "opacity-0 pointer-events-none" : "opacity-100 transition-opacity duration-300"
-          }`}
+        className="relative pt-12 md:pt-20 pb-8 md:pb-12 border-b border-theme-border overflow-hidden opacity-100 transition-opacity duration-300"
       >
         <AttackEngine
           sectionRef={sectionRef}
@@ -140,13 +133,13 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
           <HeroBadge allEaten={allEaten} onStartGame={handleStartGame} />
           <HeroContent
             onOpenCommandMenu={onOpenCommandMenu || (() => window.dispatchEvent(new CustomEvent("open-command-menu")))}
-            showTrigger={showTrigger && !isMinigame}
+            showTrigger={showTrigger}
             panelOpen={panelOpen}
             onOpenPanel={() => setPanelOpen(true)}
           />
         </div>
 
-        {showTrigger && !panelOpen && !isMinigame && (
+        {showTrigger && !panelOpen && (
           <div
             className="hidden sm:flex absolute bottom-6 right-6 z-50 items-center gap-2 group select-none"
             data-no-destroy="true"
@@ -196,7 +189,7 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
 
       </section>
 
-      {panelOpen && !isMinigame && (
+      {panelOpen && (
         <div data-no-destroy="true">
           <CrossPanel
             size={size}

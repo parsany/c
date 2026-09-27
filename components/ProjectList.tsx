@@ -336,14 +336,14 @@ function ProjectCard({
           </div>
 
           {minigame && (
-            <button
-              onClick={() => window.dispatchEvent(new CustomEvent("start-minigame"))}
+            <Link
+              href="/game"
               data-no-destroy="true"
               className="inline-flex items-center text-xs font-mono text-emerald-600 dark:text-rose-400 hover:text-emerald-500 dark:hover:text-rose-300 font-bold transition-all cursor-pointer select-none"
               title="Launch minigame"
             >
               {t.projects.wannaPlay}
-            </button>
+            </Link>
           )}
         </div>
       </div>

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, Folder, Zap, Globe, FileText, ArrowRight } from "lucide-react";
+import { Search, Folder, Zap, Globe, FileText, ArrowRight, Gamepad2 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { Locale } from "@/translations";
 import { FlagIcon } from "./LanguageSwitcher";
@@ -185,6 +185,18 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       action: () => {
         onClose();
         window.dispatchEvent(new CustomEvent("open-resume-modal"));
+      },
+    },
+    {
+      id: "action-minigame",
+      title: t.commandMenu.actionMinigame,
+      subtitle: t.commandMenu.actionMinigameSub,
+      category: "actions",
+      icon: <Gamepad2 className="h-4 w-4" />,
+      href: "/game",
+      action: () => {
+        handleClose();
+        router.push("/game");
       },
     },
     {

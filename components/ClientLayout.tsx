@@ -31,6 +31,8 @@ function subscribeTheme(callback: () => void) {
 function InnerLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const isLanding = pathname === "/landing";
+  const isGame = pathname === "/game" || pathname?.startsWith("/game");
+  const isFullScreen = isLanding || isGame;
   const [isOpen, setIsOpen] = useState(false);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
   const theme = useSyncExternalStore(subscribeTheme, getThemeSnapshot, getServerThemeSnapshot);
@@ -105,23 +107,25 @@ function InnerLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <div className="min-h-screen text-theme-text antialiased selection:bg-theme-accentLight selection:text-theme-accentText transition-colors duration-200">
-        <div className="fixed top-4 right-4 md:top-6 md:right-6 z-50 flex items-center gap-2.5">
-          <LanguageSwitcher />
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-lg bg-theme-btnExploreBg hover:bg-theme-bg border border-theme-btnExploreBorder hover:border-theme-accent text-theme-btnExploreText hover:text-theme-text transition-all shadow-sm focus:outline-none cursor-pointer"
-            aria-label={t.common.toggleTheme}
-            title={t.common.toggleTheme}
-          >
-            {theme === "light" ? (
-              <Moon className="h-4.5 w-4.5" />
-            ) : (
-              <Sun className="h-4.5 w-4.5" />
-            )}
-          </button>
-        </div>
+        {!isGame && (
+          <div className="fixed top-4 right-4 md:top-6 md:right-6 z-50 flex items-center gap-2.5">
+            <LanguageSwitcher />
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-lg bg-theme-btnExploreBg hover:bg-theme-bg border border-theme-btnExploreBorder hover:border-theme-accent text-theme-btnExploreText hover:text-theme-text transition-all shadow-sm focus:outline-none cursor-pointer"
+              aria-label={t.common.toggleTheme}
+              title={t.common.toggleTheme}
+            >
+              {theme === "light" ? (
+                <Moon className="h-4.5 w-4.5" />
+              ) : (
+                <Sun className="h-4.5 w-4.5" />
+              )}
+            </button>
+          </div>
+        )}
 
-        {isLanding ? (
+        {isFullScreen ? (
           children
         ) : (
           <main className="max-w-4xl mx-auto px-4 sm:px-6 py-4">
