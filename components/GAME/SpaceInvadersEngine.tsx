@@ -16,7 +16,7 @@ export default function SpaceInvadersEngine({
 }: SpaceInvadersEngineProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const rafRef = useRef<number>(0);
-  const mouseRef = useRef({ x: window.innerWidth * 0.5, y: window.innerHeight * 0.8 });
+  const mouseRef = useRef({ x: 0, y: 0 });
   const isMouseDownRef = useRef(false);
   const lastShotRef = useRef(0);
 
@@ -24,15 +24,15 @@ export default function SpaceInvadersEngine({
     kills: 0,
     shotsFired: 0,
     shotsHit: 0,
-    startTime: Date.now(),
+    startTime: 0,
     endTime: 0,
     score: 0,
     wave: 1,
   });
 
   const playerRef = useRef<PlayerShip>({
-    x: window.innerWidth * 0.5,
-    y: window.innerHeight * 0.8,
+    x: 0,
+    y: 0,
     vx: 0,
     vy: 0,
     angle: -Math.PI * 0.5,
@@ -91,8 +91,16 @@ export default function SpaceInvadersEngine({
     const resize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
+      if (playerRef.current.x === 0 && playerRef.current.y === 0) {
+        playerRef.current.x = window.innerWidth * 0.5;
+        playerRef.current.y = window.innerHeight * 0.8;
+        mouseRef.current = { x: window.innerWidth * 0.5, y: window.innerHeight * 0.8 };
+      }
     };
     resize();
+    if (statsRef.current.startTime === 0) {
+      statsRef.current.startTime = Date.now();
+    }
     window.addEventListener("resize", resize);
 
     const onMouseMove = (e: MouseEvent) => {
@@ -190,7 +198,7 @@ export default function SpaceInvadersEngine({
 
       const player = playerRef.current;
 
-      // If player is dead, clear screen, disable canvas pointer events and stop enemy rendering so stats modal sits cleanly on top
+      
       if (!player.alive) {
         if (canvas) {
           canvas.style.cursor = "default";
@@ -200,14 +208,14 @@ export default function SpaceInvadersEngine({
         return;
       }
 
-      // Check Wave Respawn
+      
       if (enemiesRef.current.length === 0) {
         statsRef.current.wave++;
         spawnWave(statsRef.current.wave);
         onUpdateStats(statsRef.current.kills, statsRef.current.score, statsRef.current.wave);
       }
 
-      // Update & Draw Player
+      
       const mouse = mouseRef.current;
       const cx = W * 0.5;
       const cy = H * 0.5;
@@ -215,7 +223,7 @@ export default function SpaceInvadersEngine({
       player.x += (mouse.x - player.x) * 0.18;
       player.y += (mouse.y - player.y) * 0.18;
 
-      // Player always faces the center of the screen
+      
       const dx = cx - player.x;
       const dy = cy - player.y;
       player.angle = Math.atan2(dy, dx);
@@ -242,7 +250,7 @@ export default function SpaceInvadersEngine({
 
       ctx.restore();
 
-      // Update Lasers (bullets travel through the full screen)
+      
       lasersRef.current = lasersRef.current.filter((laser) => {
         laser.x += laser.vx;
         laser.y += laser.vy;
@@ -278,7 +286,7 @@ export default function SpaceInvadersEngine({
 
       enemiesRef.current = enemiesRef.current.filter((e) => e.health > 0);
 
-      // Update Invaders
+      
       for (const enemy of enemiesRef.current) {
         enemy.x += enemy.vx;
         enemy.y += enemy.vy;
@@ -307,7 +315,7 @@ export default function SpaceInvadersEngine({
         drawSpacewarEnemy(ctx, enemy.x, enemy.y, enemy.size, enemy.type, vectorColor);
       }
 
-      // Update Enemy Bullets
+      
       enemyBulletsRef.current = enemyBulletsRef.current.filter((bullet) => {
         bullet.x += bullet.vx;
         bullet.y += bullet.vy;

@@ -1,32 +1,53 @@
 "use client";
 
 import "@/styles/globals.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useSyncExternalStore } from "react";
 import { usePathname } from "next/navigation";
 import CommandMenu from "@/components/CommandMenu";
 import ResumeModal from "@/components/ResumeModal";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { LanguageProvider, useLanguage } from "@/context/LanguageContext";
 import { Sun, Moon } from "lucide-react";
 
-export default function ClientLayout({ children }: { children: React.ReactNode }) {
+function getThemeSnapshot(): "light" | "dark" {
+  if (typeof window === "undefined") return "dark";
+  return (localStorage.getItem("theme") as "light" | "dark") || "dark";
+}
+
+function getServerThemeSnapshot(): "light" | "dark" {
+  return "dark";
+}
+
+function subscribeTheme(callback: () => void) {
+  if (typeof window === "undefined") return () => {};
+  window.addEventListener("storage", callback);
+  window.addEventListener("theme-change", callback);
+  return () => {
+    window.removeEventListener("storage", callback);
+    window.removeEventListener("theme-change", callback);
+  };
+}
+
+function InnerLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const isLanding = pathname === "/landing";
   const [isOpen, setIsOpen] = useState(false);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
+  const theme = useSyncExternalStore(subscribeTheme, getThemeSnapshot, getServerThemeSnapshot);
   const [transitioningTheme, setTransitioningTheme] = useState<"light" | "dark" | null>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
-    const initialTheme = savedTheme || "dark";
-    setTheme(initialTheme);
-    if (initialTheme === "dark") {
+    if (theme === "dark") {
       document.documentElement.classList.add("dark");
       document.body.classList.add("dark");
     } else {
       document.documentElement.classList.remove("dark");
       document.body.classList.remove("dark");
     }
+  }, [theme]);
 
+  useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key?.toLowerCase() === "k") {
         e.preventDefault();
@@ -41,7 +62,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
       if (window.location.pathname === "/cv" || window.location.pathname.startsWith("/cv/")) {
         return;
       }
-      const target = (e.target as HTMLElement).closest('a[href*="resume.pdf"], a[href*="_resume.pdf"]');
+      const target = (e.target as HTMLElement).closest('a[href*="resume.pdf"], a[href*="_resume.pdf"], a[href*="Full_stack_parsa_niavand.pdf"], a[href*="Parsa_niavand_CV.pdf"]');
       if (target) {
         if (target.getAttribute("data-no-modal") === "true" || target.closest('[role="dialog"]')) {
           return;
@@ -70,14 +91,9 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
     setTransitioningTheme(nextTheme);
 
     setTimeout(() => {
-      setTheme(nextTheme);
       localStorage.setItem("theme", nextTheme);
-      if (nextTheme === "dark") {
-        document.documentElement.classList.add("dark");
-        document.body.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-        document.body.classList.remove("dark");
+      if (typeof window !== "undefined") {
+        window.dispatchEvent(new Event("theme-change"));
       }
     }, 500);
 
@@ -89,11 +105,13 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
   return (
     <>
       <div className="min-h-screen text-theme-text antialiased selection:bg-theme-accentLight selection:text-theme-accentText transition-colors duration-200">
-        <div className="fixed top-4 right-4 md:top-6 md:right-6 z-50">
+        <div className="fixed top-4 right-4 md:top-6 md:right-6 z-50 flex items-center gap-2.5">
+          <LanguageSwitcher />
           <button
             onClick={toggleTheme}
             className="p-2 rounded-lg bg-theme-btnExploreBg hover:bg-theme-bg border border-theme-btnExploreBorder hover:border-theme-accent text-theme-btnExploreText hover:text-theme-text transition-all shadow-sm focus:outline-none cursor-pointer"
-            aria-label="Toggle Theme"
+            aria-label={t.common.toggleTheme}
+            title={t.common.toggleTheme}
           >
             {theme === "light" ? (
               <Moon className="h-4.5 w-4.5" />
@@ -149,7 +167,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
               <span style={{ fontSize: "2.2rem", lineHeight: 1, letterSpacing: "0.05em" }}>✛</span>
 
               <span style={{ fontSize: "0.62rem", letterSpacing: "0.35em", textTransform: "uppercase", fontFamily: "ui-sans-serif,system-ui,sans-serif", fontWeight: 600 }}>
-                {transitioningTheme === "dark" ? "switching to dark" : "switching to light"}
+                {transitioningTheme === "dark" ? t.common.switchingToDark : t.common.switchingToLight}
               </span>
             </div>
           </div>
@@ -158,3 +176,12 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
     </>
   );
 }
+
+export default function ClientLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <LanguageProvider>
+      <InnerLayout>{children}</InnerLayout>
+    </LanguageProvider>
+  );
+}
+

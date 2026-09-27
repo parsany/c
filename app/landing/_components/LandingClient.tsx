@@ -9,7 +9,7 @@ import HorizontalProjects from "./HorizontalProjects";
 import AcademicSection from "./AcademicSection";
 import ContactCTA from "./ContactCTA";
 
-import { ProjectProfessional, ProjectAcademic } from "@/public/JSONJS";
+import { ProjectProfessional, ProjectAcademic } from "@/data/projects";
 
 export default function LandingClient() {
   useLenis();
