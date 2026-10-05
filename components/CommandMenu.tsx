@@ -2,7 +2,22 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, Folder, Zap, Globe, FileText, ArrowRight, Gamepad2 } from "lucide-react";
+import {
+  Search,
+  Folder,
+  Zap,
+  Globe,
+  FileText,
+  ArrowRight,
+  Gamepad2,
+  Download,
+  Code2,
+  Server,
+  CheckCircle2,
+  Terminal,
+  Cpu,
+  Headphones,
+} from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { Locale } from "@/translations";
 import { FlagIcon } from "./LanguageSwitcher";
@@ -18,10 +33,11 @@ interface CommandItem {
   id: string;
   title: string;
   subtitle: string;
-  category: "navigation" | "projects" | "actions" | "language";
+  category: "navigation" | "projects" | "actions" | "language" | "resumes";
   icon: React.ReactNode;
   action: () => void;
   href?: string;
+  keywords?: string[];
 }
 
 export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
@@ -57,31 +73,114 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
     },
   }));
 
+  const resumeCommands: CommandItem[] = [
+    {
+      id: "resume-fullstack",
+      title: t.cv.primaryRoleTitle,
+      subtitle: t.cv.primaryRoleSubtitle,
+      category: "resumes",
+      icon: <Code2 className="h-4 w-4" />,
+      href: "/Full_stack_parsa_niavand.pdf",
+      keywords: ["resume", "cv", "fullstack", "full stack", "full-stack", "software engineer", "developer", "pdf"],
+      action: () => {
+        handleClose();
+        window.open("/Full_stack_parsa_niavand.pdf", "_blank");
+      },
+    },
+    {
+      id: "resume-frontend",
+      title: t.cv.frontendTitle,
+      subtitle: t.cv.frontendSubtitle,
+      category: "resumes",
+      icon: <Code2 className="h-4 w-4" />,
+      href: "/application/frontend_resume_parsa_niavand.pdf",
+      keywords: ["resume", "cv", "frontend", "front end", "front-end", "react", "next.js", "ui", "pdf"],
+      action: () => {
+        handleClose();
+        window.open("/application/frontend_resume_parsa_niavand.pdf", "_blank");
+      },
+    },
+    {
+      id: "resume-backend",
+      title: t.cv.backendTitle,
+      subtitle: t.cv.backendSubtitle,
+      category: "resumes",
+      icon: <Server className="h-4 w-4" />,
+      href: "/application/backend_resume_parsa_niavand.pdf",
+      keywords: ["resume", "cv", "backend", "back end", "back-end", "nestjs", "node", "api", "database", "pdf"],
+      action: () => {
+        handleClose();
+        window.open("/application/backend_resume_parsa_niavand.pdf", "_blank");
+      },
+    },
+    {
+      id: "resume-qa",
+      title: t.cv.qaTitle,
+      subtitle: t.cv.qaSubtitle,
+      category: "resumes",
+      icon: <CheckCircle2 className="h-4 w-4" />,
+      href: "/application/QA_resume_parsa_niavand.pdf",
+      keywords: ["resume", "cv", "qa", "quality assurance", "testing", "test", "tester", "playwright", "e2e", "pdf"],
+      action: () => {
+        handleClose();
+        window.open("/application/QA_resume_parsa_niavand.pdf", "_blank");
+      },
+    },
+    {
+      id: "resume-devops",
+      title: t.cv.devopsTitle,
+      subtitle: t.cv.devopsSubtitle,
+      category: "resumes",
+      icon: <Terminal className="h-4 w-4" />,
+      href: "/application/devops_resume_parsa_niavand.pdf",
+      keywords: ["resume", "cv", "devops", "dev ops", "dev-ops", "docker", "linux", "ci/cd", "infrastructure", "pdf"],
+      action: () => {
+        handleClose();
+        window.open("/application/devops_resume_parsa_niavand.pdf", "_blank");
+      },
+    },
+    {
+      id: "resume-ai",
+      title: t.cv.aiTitle,
+      subtitle: t.cv.aiSubtitle,
+      category: "resumes",
+      icon: <Cpu className="h-4 w-4" />,
+      href: "/application/ai_resume_parsa_niavand.pdf",
+      keywords: ["resume", "cv", "ai", "machine learning", "ml", "python", "pytorch", "llm", "pdf"],
+      action: () => {
+        handleClose();
+        window.open("/application/ai_resume_parsa_niavand.pdf", "_blank");
+      },
+    },
+    {
+      id: "resume-support",
+      title: t.cv.supportTitle,
+      subtitle: t.cv.supportSubtitle,
+      category: "resumes",
+      icon: <Headphones className="h-4 w-4" />,
+      href: "/application/tech_support_resume_parsa_niavand.pdf",
+      keywords: ["resume", "cv", "support", "technical support", "tech support", "it support", "troubleshooting", "pdf"],
+      action: () => {
+        handleClose();
+        window.open("/application/tech_support_resume_parsa_niavand.pdf", "_blank");
+      },
+    },
+    {
+      id: "action-resume-modal",
+      title: t.commandMenu.actionResume,
+      subtitle: t.commandMenu.actionResumeSub,
+      category: "resumes",
+      icon: <Download className="h-4 w-4" />,
+      keywords: ["resume", "cv", "download", "all resumes", "choose format", "pdf"],
+      action: () => {
+        handleClose();
+        window.dispatchEvent(new CustomEvent("open-resume-modal"));
+      },
+    },
+  ];
+
   const commands: CommandItem[] = [
-    {
-      id: "lang-en",
-      title: t.commandMenu.langEn,
-      subtitle: t.commandMenu.langEnSub,
-      category: "language",
-      icon: <FlagIcon locale="en" className="w-4 h-3 border border-black/10 dark:border-white/10" />,
-      action: () => handleLanguageChange("en"),
-    },
-    {
-      id: "lang-ru",
-      title: t.commandMenu.langRu,
-      subtitle: t.commandMenu.langRuSub,
-      category: "language",
-      icon: <FlagIcon locale="ru" className="w-4 h-3 border border-black/10 dark:border-white/10" />,
-      action: () => handleLanguageChange("ru"),
-    },
-    {
-      id: "lang-am",
-      title: t.commandMenu.langAm,
-      subtitle: t.commandMenu.langAmSub,
-      category: "language",
-      icon: <FlagIcon locale="am" className="w-4 h-3 border border-black/10 dark:border-white/10" />,
-      action: () => handleLanguageChange("am"),
-    },
+    ...resumeCommands,
     {
       id: "nav-projects",
       title: t.commandMenu.navProjects,
@@ -106,6 +205,7 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       category: "navigation",
       icon: <FileText className="h-4 w-4" />,
       href: "/cv",
+      keywords: ["cv", "resume", "resumes", "page"],
       action: () => {
         onClose();
         router.push("/cv");
@@ -171,20 +271,10 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       subtitle: SITE_EMAIL,
       category: "actions",
       icon: <Zap className="h-4 w-4" />,
+      keywords: ["email", "contact", "copy", "gmail"],
       action: () => {
         handleClose();
         navigator.clipboard.writeText(SITE_EMAIL);
-      },
-    },
-    {
-      id: "action-resume",
-      title: t.commandMenu.actionResume,
-      subtitle: t.commandMenu.actionResumeSub,
-      category: "actions",
-      icon: <FileText className="h-4 w-4" />,
-      action: () => {
-        onClose();
-        window.dispatchEvent(new CustomEvent("open-resume-modal"));
       },
     },
     {
@@ -194,90 +284,51 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       category: "actions",
       icon: <Gamepad2 className="h-4 w-4" />,
       href: "/game",
+      keywords: ["game", "minigame", "space invaders", "play"],
       action: () => {
         handleClose();
         router.push("/game");
       },
     },
     {
-      id: "action-resume-ai",
-      title: t.cv.aiTitle,
-      subtitle: t.cv.aiSubtitle,
-      category: "actions",
-      icon: <FileText className="h-4 w-4" />,
-      href: "/application/ai_resume_parsa_niavand.pdf",
-      action: () => {
-        onClose();
-        window.open("/application/ai_resume_parsa_niavand.pdf", "_blank");
-      },
+      id: "lang-en",
+      title: t.commandMenu.langEn,
+      subtitle: t.commandMenu.langEnSub,
+      category: "language",
+      icon: <FlagIcon locale="en" className="w-4 h-3 border border-black/10 dark:border-white/10" />,
+      keywords: ["language", "locale", "english", "en"],
+      action: () => handleLanguageChange("en"),
     },
     {
-      id: "action-resume-frontend",
-      title: t.cv.frontendTitle,
-      subtitle: t.cv.frontendSubtitle,
-      category: "actions",
-      icon: <FileText className="h-4 w-4" />,
-      href: "/application/frontend_resume_parsa_niavand.pdf",
-      action: () => {
-        onClose();
-        window.open("/application/frontend_resume_parsa_niavand.pdf", "_blank");
-      },
+      id: "lang-ru",
+      title: t.commandMenu.langRu,
+      subtitle: t.commandMenu.langRuSub,
+      category: "language",
+      icon: <FlagIcon locale="ru" className="w-4 h-3 border border-black/10 dark:border-white/10" />,
+      keywords: ["language", "locale", "russian", "ru", "русский"],
+      action: () => handleLanguageChange("ru"),
     },
     {
-      id: "action-resume-backend",
-      title: t.cv.backendTitle,
-      subtitle: t.cv.backendSubtitle,
-      category: "actions",
-      icon: <FileText className="h-4 w-4" />,
-      href: "/application/backend_resume_parsa_niavand.pdf",
-      action: () => {
-        onClose();
-        window.open("/application/backend_resume_parsa_niavand.pdf", "_blank");
-      },
-    },
-    {
-      id: "action-resume-qa",
-      title: t.cv.qaTitle,
-      subtitle: t.cv.qaSubtitle,
-      category: "actions",
-      icon: <FileText className="h-4 w-4" />,
-      href: "/application/QA_resume_parsa_niavand.pdf",
-      action: () => {
-        onClose();
-        window.open("/application/QA_resume_parsa_niavand.pdf", "_blank");
-      },
-    },
-    {
-      id: "action-resume-devops",
-      title: t.cv.devopsTitle,
-      subtitle: t.cv.devopsSubtitle,
-      category: "actions",
-      icon: <FileText className="h-4 w-4" />,
-      href: "/application/devops_resume_parsa_niavand.pdf",
-      action: () => {
-        onClose();
-        window.open("/application/devops_resume_parsa_niavand.pdf", "_blank");
-      },
-    },
-    {
-      id: "action-resume-support",
-      title: t.cv.supportTitle,
-      subtitle: t.cv.supportSubtitle,
-      category: "actions",
-      icon: <FileText className="h-4 w-4" />,
-      href: "/application/tech_support_resume_parsa_niavand.pdf",
-      action: () => {
-        onClose();
-        window.open("/application/tech_support_resume_parsa_niavand.pdf", "_blank");
-      },
+      id: "lang-am",
+      title: t.commandMenu.langAm,
+      subtitle: t.commandMenu.langAmSub,
+      category: "language",
+      icon: <FlagIcon locale="am" className="w-4 h-3 border border-black/10 dark:border-white/10" />,
+      keywords: ["language", "locale", "armenian", "am", "հայերեն"],
+      action: () => handleLanguageChange("am"),
     },
   ];
 
-  const filteredCommands = commands.filter((cmd) =>
-    cmd.title.toLowerCase().includes(search.toLowerCase()) ||
-    cmd.subtitle.toLowerCase().includes(search.toLowerCase()) ||
-    cmd.category.toLowerCase().includes(search.toLowerCase())
-  );
+  const filteredCommands = commands.filter((cmd) => {
+    const q = search.toLowerCase().trim();
+    if (!q) return true;
+    return (
+      cmd.title.toLowerCase().includes(q) ||
+      cmd.subtitle.toLowerCase().includes(q) ||
+      cmd.category.toLowerCase().includes(q) ||
+      (cmd.keywords && cmd.keywords.some((k) => k.toLowerCase().includes(q)))
+    );
+  });
 
   useEffect(() => {
     if (isOpen) {
