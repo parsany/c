@@ -112,6 +112,8 @@ export default function AttackEngine({
           fireInt: 0,
           eating: false,
           eatTimer: 0,
+          targetOffsetX: (Math.random() - 0.5) * 0.7,
+          targetOffsetY: (Math.random() - 0.5) * 0.7,
         });
       }
     }
@@ -553,22 +555,69 @@ export default function AttackEngine({
           }
         }
 
+        const targetCounts = new Map<Element, number>();
+        for (const r of roguesRef.current) {
+          if (isTargetable(r.targetEl)) {
+            targetCounts.set(r.targetEl, (targetCounts.get(r.targetEl) || 0) + 1);
+          }
+        }
+
+        const numAvailable = candidateCenters.length;
+        const minConcurrentTargets = Math.min(numAvailable, 4);
+        const totalRogues = roguesRef.current.length;
+        const maxRoguesPerTarget = minConcurrentTargets > 0
+          ? Math.max(3, Math.ceil(totalRogues / minConcurrentTargets))
+          : 60;
+
         const eatingCounts = new Map<Element, number>();
 
         roguesRef.current = roguesRef.current.filter(rogue => {
-          if (!isTargetable(rogue.targetEl)) {
+          const currentTargetValid = isTargetable(rogue.targetEl);
+          const currentAssigned = currentTargetValid ? (targetCounts.get(rogue.targetEl) || 0) : 0;
+          const shouldRebalance = currentTargetValid && !rogue.eating && currentAssigned > maxRoguesPerTarget;
+
+          if (!currentTargetValid || shouldRebalance) {
             let bestEl: Element | null = null;
-            let minDist = Infinity;
+            let bestScore = Infinity;
+
             for (const { el, cx, cy } of candidateCenters) {
               if (el === rogue.targetEl) continue;
+              const count = targetCounts.get(el) || 0;
+              if (count >= maxRoguesPerTarget) continue;
               const d = Math.hypot(cx - rogue.x, cy - rogue.y);
-              if (d < minDist) { minDist = d; bestEl = el; }
+              const score = d + count * 220;
+              if (score < bestScore) {
+                bestScore = score;
+                bestEl = el;
+              }
             }
+
+            if (!bestEl && candidateCenters.length > 0) {
+              let minCount = Infinity;
+              let minDist = Infinity;
+              for (const { el, cx, cy } of candidateCenters) {
+                if (el === rogue.targetEl && candidateCenters.length > 1) continue;
+                const count = targetCounts.get(el) || 0;
+                const d = Math.hypot(cx - rogue.x, cy - rogue.y);
+                if (count < minCount || (count === minCount && d < minDist)) {
+                  minCount = count;
+                  minDist = d;
+                  bestEl = el;
+                }
+              }
+            }
+
             if (bestEl) {
+              if (currentTargetValid) {
+                targetCounts.set(rogue.targetEl, Math.max(0, (targetCounts.get(rogue.targetEl) || 1) - 1));
+              }
+              targetCounts.set(bestEl, (targetCounts.get(bestEl) || 0) + 1);
               rogue.targetEl = bestEl;
               rogue.eating = false;
               rogue.eatTimer = 0;
-            } else {
+              rogue.targetOffsetX = (Math.random() - 0.5) * 0.7;
+              rogue.targetOffsetY = (Math.random() - 0.5) * 0.7;
+            } else if (!currentTargetValid) {
               rogue.angle += 0.08 + (Math.random() - 0.5) * 0.1;
               const speed = 7;
               rogue.vx = rogue.vx * 0.85 + Math.cos(rogue.angle) * speed * 0.15;
@@ -588,8 +637,10 @@ export default function AttackEngine({
           }
 
           const rect = getRect(rogue.targetEl);
-          const tx = rect.left + rect.width * 0.5;
-          const ty = rect.top + rect.height * 0.5;
+          const offX = Math.max(0.12, Math.min(0.88, 0.5 + (rogue.targetOffsetX ?? 0)));
+          const offY = Math.max(0.12, Math.min(0.88, 0.5 + (rogue.targetOffsetY ?? 0)));
+          const tx = rect.left + rect.width * offX;
+          const ty = rect.top + rect.height * offY;
           const dx = tx - rogue.x;
           const dy = ty - rogue.y;
           const dist2 = Math.hypot(dx, dy);
@@ -600,13 +651,17 @@ export default function AttackEngine({
           const insideRect = rogue.x >= rect.left - 12 && rogue.x <= rect.right + 12 &&
             rogue.y >= rect.top - 12 && rogue.y <= rect.bottom + 12;
 
-          if (dist2 < 20 || insideRect) {
+          if (dist2 < 22 || insideRect) {
             rogue.eating = true;
             rogue.eatTimer++;
             eatingCounts.set(rogue.targetEl, (eatingCounts.get(rogue.targetEl) || 0) + 1);
             if (!burnMapRef.current.has(rogue.targetEl)) {
               burnMapRef.current.set(rogue.targetEl, 0);
             }
+            rogue.vx = rogue.vx * 0.65 + (Math.random() - 0.5) * 0.9;
+            rogue.vy = rogue.vy * 0.65 + (Math.random() - 0.5) * 0.9;
+            rogue.x += rogue.vx;
+            rogue.y += rogue.vy;
           } else {
             rogue.eating = false;
             const sp2 = Math.min(dist2 * 0.16, 12);
@@ -650,6 +705,28 @@ export default function AttackEngine({
           }
           return true;
         });
+
+        
+        const rLen = roguesRef.current.length;
+        for (let i = 0; i < rLen; i++) {
+          const r1 = roguesRef.current[i];
+          for (let j = i + 1; j < rLen; j++) {
+            const r2 = roguesRef.current[j];
+            const ndx = r1.x - r2.x;
+            const ndy = r1.y - r2.y;
+            const ndist = Math.hypot(ndx, ndy);
+            const minDist = 22;
+            if (ndist < minDist && ndist > 0.01) {
+              const push = ((minDist - ndist) / minDist) * 0.7;
+              const px = (ndx / ndist) * push;
+              const py = (ndy / ndist) * push;
+              r1.x += px;
+              r1.y += py;
+              r2.x -= px;
+              r2.y -= py;
+            }
+          }
+        }
 
         burnMapRef.current.forEach((prog, el) => {
           let next = prog;
