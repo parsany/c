@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import LandingClient from "./_components/LandingClient";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Parsa — Full-Stack Software Engineer & Systems Developer",
@@ -14,6 +14,10 @@ export const metadata: Metadata = {
   // },
 };
 
+// export default function LandingPage() {
+//   return <LandingClient />;
+// }
+
 export default function LandingPage() {
-  return <LandingClient />;
+  return redirect("/");
 }

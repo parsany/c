@@ -1,18 +1,20 @@
 "use client";
 
 import React, { useRef, useEffect, useState, useCallback } from "react";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
 import CrossPanel from "./CrossPanel";
 import HeroBadge from "./intro/HeroBadge";
 import HeroContent from "./intro/HeroContent";
 import AttackEngine from "./intro/AttackEngine";
 import { Phase } from "./intro/types";
-import Game from "@/components/GAME";
 
 interface IntroSectionProps {
   onOpenCommandMenu?: () => void;
 }
 
 export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
+  const router = useRouter();
   const sectionRef = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const rogueCanvasRef = useRef<HTMLCanvasElement>(null);
@@ -28,7 +30,6 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
   const [allEaten, setAllEaten] = useState(false);
 
   const attackMode = phase === 'attacking';
-  const isMinigame = phase === 'minigame';
 
   useEffect(() => {
     const t = setTimeout(() => setShowTrigger(true), 1500);
@@ -42,13 +43,15 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
   }, []);
 
   useEffect(() => {
-    const handleStartMinigame = () => setPhase('minigame');
+    const handleStartMinigame = () => {
+      router.push("/game");
+    };
     window.addEventListener("start-minigame", handleStartMinigame);
     return () => window.removeEventListener("start-minigame", handleStartMinigame);
-  }, []);
+  }, [router]);
 
   useEffect(() => {
-    if (allEaten || isMinigame) {
+    if (allEaten) {
       document.body.classList.add("all-eaten");
     } else {
       document.body.classList.remove("all-eaten");
@@ -56,7 +59,7 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
     return () => {
       document.body.classList.remove("all-eaten");
     };
-  }, [allEaten, isMinigame]);
+  }, [allEaten]);
 
   useEffect(() => {
     window.dispatchEvent(new CustomEvent("toggle-burning-state", { detail: fireMode }));
@@ -67,19 +70,11 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
   }, []);
 
   const handleStartGame = useCallback(() => {
-    setPhase('minigame');
-  }, []);
-
-  const handleResetToIdle = useCallback(() => {
-    setPhase('idle');
-  }, []);
+    router.push("/game");
+  }, [router]);
 
   return (
     <>
-      {isMinigame && (
-        <Game onResetToIdle={handleResetToIdle} />
-      )}
-
       <canvas
         ref={fireCanvasRef}
         style={{
@@ -103,8 +98,7 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
 
       <section
         ref={sectionRef}
-        className={`relative pt-12 md:pt-20 pb-8 md:pb-12 border-b border-theme-border overflow-hidden ${isMinigame ? "opacity-0 pointer-events-none" : "opacity-100 transition-opacity duration-300"
-          }`}
+        className="relative pt-12 md:pt-20 pb-8 md:pb-12 border-b border-theme-border overflow-hidden opacity-100 transition-opacity duration-300"
       >
         <AttackEngine
           sectionRef={sectionRef}
@@ -136,17 +130,63 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
           aria-hidden="true"
         />
 
-        <div className="relative z-10 max-w-3xl">
-          <HeroBadge allEaten={allEaten} onStartGame={handleStartGame} />
-          <HeroContent
-            onOpenCommandMenu={onOpenCommandMenu || (() => window.dispatchEvent(new CustomEvent("open-command-menu")))}
-            showTrigger={showTrigger && !isMinigame}
-            panelOpen={panelOpen}
-            onOpenPanel={() => setPanelOpen(true)}
-          />
+        <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-8 md:gap-12">
+          {}
+          <div className="flex-1 min-w-0 max-w-2xl">
+            <HeroBadge allEaten={allEaten} onStartGame={handleStartGame} />
+            <HeroContent
+              onOpenCommandMenu={onOpenCommandMenu || (() => window.dispatchEvent(new CustomEvent("open-command-menu")))}
+              showTrigger={showTrigger}
+              panelOpen={panelOpen}
+              onOpenPanel={() => setPanelOpen(true)}
+            />
+          </div>
+
+          {}
+          <div className="flex-shrink-0 flex justify-center md:justify-end">
+            <div
+              className="relative group"
+              data-attackable="true"
+              style={{
+                width: "clamp(160px, 22vw, 240px)",
+                height: "clamp(160px, 22vw, 240px)",
+              }}
+            >
+              {}
+              <div
+                className="absolute -inset-[3px] rounded-2xl opacity-60 group-hover:opacity-90 transition-opacity duration-500"
+                style={{
+                  background: "linear-gradient(135deg, var(--accent-primary) 0%, transparent 60%)",
+                  borderRadius: "18px",
+                }}
+              />
+              <div
+                className="relative w-full h-full rounded-2xl overflow-hidden border-2 shadow-xl"
+                style={{
+                  borderColor: "var(--border-secondary)",
+                  boxShadow: "0 8px 32px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.10)",
+                }}
+              >
+                <Image
+                  src="/content/main.jpg"
+                  alt="Parsa Niavand — Full-Stack Software Engineer"
+                  fill
+                  sizes="(max-width: 768px) 180px, 240px"
+                  className="object-cover object-top"
+                  priority
+                />
+                <div
+                  className="absolute inset-x-0 bottom-0 h-1/4 pointer-events-none"
+                  style={{
+                    background: "linear-gradient(to top, rgba(0,0,0,0.22) 0%, transparent 100%)",
+                  }}
+                />
+              </div>
+            </div>
+          </div>
         </div>
 
-        {showTrigger && !panelOpen && !isMinigame && (
+        {showTrigger && !panelOpen && (
           <div
             className="hidden sm:flex absolute bottom-6 right-6 z-50 items-center gap-2 group select-none"
             data-no-destroy="true"
@@ -196,7 +236,7 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
 
       </section>
 
-      {panelOpen && !isMinigame && (
+      {panelOpen && (
         <div data-no-destroy="true">
           <CrossPanel
             size={size}

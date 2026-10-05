@@ -1,4 +1,6 @@
-export const ProjectAcademic = [
+import { AcademicProject, ProfessionalProject } from "./types";
+
+export const ProjectAcademic: AcademicProject[] = [
   {
     id: 5,
     name: "Cat Emotion recognition",
@@ -19,6 +21,8 @@ export const ProjectAcademic = [
     link: "https://github.com/parsany/Conway-game-of-life-invaders",
     video: "/media/cell.webm",
     tag: ["Programming", "Games"],
+    visualizer: "game",
+    minigame: true,
   },
   {
     id: 3,
@@ -28,6 +32,7 @@ export const ProjectAcademic = [
     image: "/projects/PID.webp",
     link: "https://github.com/parsany/PID_NN",
     tag: ["AI"],
+    visualizer: "ai",
   },
   {
     id: 2,
@@ -38,6 +43,7 @@ export const ProjectAcademic = [
     image: "/projects/QtLib.webp",
     link: "https://github.com/parsany/PyLibrary-QT",
     tag: ["Programming", "Apps"],
+    visualizer: "app",
   },
   {
     id: 6,
@@ -57,10 +63,11 @@ export const ProjectAcademic = [
     image: "/projects/flex.webp",
     link: "https://github.com/parsany/InterpreterFlexBison",
     tag: ["Programming"],
+    visualizer: "compiler",
   },
 ];
 
-export const ProjectProfessional = [
+export const ProjectProfessional: ProfessionalProject[] = [
   {
     id: 5,
     slug: "project-luna",
@@ -69,8 +76,7 @@ export const ProjectProfessional = [
       "Enterprise platform for the power industry. Full inventory management, ordering matrix, order pipeline, and role-based dashboards.",
     date: "Jun 2026 – Present",
     image: "/professional/luna/luna-landing.webp",
-    project_image: [
-    ],
+    project_image: [],
     tag: [
       "NestJS",
       "Next.js",
@@ -110,9 +116,10 @@ export const ProjectProfessional = [
     ],
     tag: ["Next.js", "Tailwind CSS", "cPanel"],
     isactive: true,
+    isLive: true,
+    noindex: true,
     link: "https://k2ninc.com",
-    links: [
-      { label: "Website", url: "https://k2ninc.com" },],
+    links: [{ label: "Website", url: "https://k2ninc.com" }],
     role: "Solo Frontend Developer",
     highlights: [
       "Static Next.js Export",
@@ -147,6 +154,7 @@ export const ProjectProfessional = [
     ],
     isactive: true,
     redirect: "msk",
+    noindex: true,
     link: "https://epweb.parsany.com/",
     links: [
       { label: "Live Demo", url: "https://epweb.parsany.com/" },
@@ -180,6 +188,7 @@ export const ProjectProfessional = [
     ],
     isactive: true,
     redirect: "esp",
+    noindex: true,
     link: "https://mkweb.parsany.com/en/landing",
     links: [{ label: "Live Demo", url: "https://mkweb.parsany.com/en/landing" }],
     role: "Frontend Developer (team)",
@@ -219,11 +228,14 @@ export const ProjectProfessional = [
       "Payment Gateway",
     ],
     isactive: true,
-    link: "https://atrafian.ir",
+    isLive: true,
+    link: "https://atraf.parsany.com",
     links: [
-      { label: "Live Site", url: "https://atrafian.ir" },
+      { label: "Main Website", url: "https://atrafian.ir" },
+      { label: "Live Demo (English)", url: "https://atraf.parsany.com" },
+      { label: "Dashboard", url: "https://atradmin.parsany.com" },
       {
-        label: "Mobile Repo Demo",
+        label: "Mobile Repo Demo (English)",
         url: "https://github.com/quantinity/Atrafian-App-Demo",
       },
     ],
@@ -267,11 +279,13 @@ export const ProjectProfessional = [
     ],
     tag: ["Next.js", "Tailwind CSS", "tRPC", "GPS", "PostgreSQL", "Mapbox"],
     isactive: true,
+    noindex: true,
     link: "https://gbat.parsany.com",
     links: [
       { label: "Live Demo (desktop)", url: "https://gbat.parsany.com" },
       { label: "Web Application (mobile)", url: "https://gbat.parsany.com/auth/signin" },
       { label: "Dashboard Demo (desktop)", url: "https://gdash.parsany.com/" },
+      { label: "Main Website (down)", url: "https://app.goldengps.ir/" },
     ],
     role: "Frontend Developer",
     text: `# Goldenbat GPS Tracking\n\nBuilt over 5 months, in collaboration with a team. I built the landing page and the mobile PWA, and contributed to the fleet dashboard frontend (Next.js) — including work on geofencing and the notification system; a teammate handled the native mobile work. The backend ingests 10,000+ GPS coordinate updates per minute with sub-second latency — the dashboard plots live vehicle positions, historical paths, and geofencing alerts. Fleet operators use it to manage device groups and assignments.\n\n- **Role**: Frontend Developer\n- **Timeline**: Sep 2024 – Jan 2025\n- **Stack**: Next.js, tRPC, PostgreSQL\n\n currently down due to maintenance`,
@@ -296,8 +310,12 @@ export const ProjectProfessional = [
     ],
     tag: ["Next.js", "Tailwind CSS", "B2B", "PostgreSQL"],
     isactive: true,
+    noindex: true,
     link: "https://az.parsany.com/landing",
-    links: [{ label: "Live Demo (desktop)", url: "https://az.parsany.com/landing" }],
+    links: [
+      { label: "Main Website", url: "https://app.alzahragold.com/" },
+      { label: "Live Demo (desktop)", url: "https://az.parsany.com/landing" },
+    ],
     role: "Frontend Developer",
     text: `# Alzahra Gold Wholesaler B2B Platform\n\nBuilt in 1.5 months, in collaboration with a team. A B2B platform for gold wholesale buyers, built on top of a Django REST API handled by the rest of the team. I built the landing page fully and contributed to the buyer dashboard. Landing page hit a desktop Lighthouse score of 99. Customers log in to see pricing, place orders, and track transactions through a multi-step purchasing workflow.\n\n- **Role**: Frontend Developer\n- **Timeline**: Mar 2024 – Apr 2024\n- **Stack**: Next.js, Tailwind CSS (backend: Django REST, not mine)`,
   },
@@ -319,6 +337,7 @@ export const ProjectProfessional = [
     ],
     tag: ["Next.js", "NestJS", "PostgreSQL", "S3", "Markdown", "SEO"],
     isactive: false,
+    noindex: true,
     link: "",
     links: [],
     role: "Solo Fullstack Developer",
@@ -370,6 +389,7 @@ export const ProjectProfessional = [
     project_image: ["/professional/char/char-landing.webp"],
     tag: ["Next.js", "Tailwind CSS"],
     isactive: false,
+    noindex: true,
     link: "",
     links: [],
     highlights: [
@@ -394,6 +414,7 @@ export const ProjectProfessional = [
     ],
     tag: ["Next.js", "tRPC", "Turborepo", "Tailwind CSS", "PostgreSQL"],
     isactive: false,
+    noindex: true,
     link: "",
     links: [],
     role: "Fullstack Developer",

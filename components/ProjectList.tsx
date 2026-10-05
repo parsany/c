@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { ProjectProfessional, ProjectAcademic } from "@/public/JSONJS";
+import { getProjects } from "@/data/projects";
 import {
   AIVisualizer,
   GameVisualizer,
@@ -14,9 +13,9 @@ import {
 import { ArrowRight } from "lucide-react";
 import OpenLinks from "./OpenLinks";
 import ProjectCarousel from "./ProjectCarousel";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface ProjectCardProps {
-  id: string | number;
   slug?: string;
   name: string;
   description: string;
@@ -27,10 +26,63 @@ interface ProjectCardProps {
   isHovered: boolean;
   onMouseEnter: () => void;
   onMouseLeave: () => void;
-  renderArchitecture: () => React.ReactNode;
+  visualizer?: "ai" | "game" | "app" | "compiler";
   image?: string;
   video?: string;
   projectImages?: string[];
+  minigame?: boolean;
+  isLive?: boolean;
+}
+
+function DefaultArchitectureSVG({ isHovered }: { isHovered: boolean }) {
+  return (
+    <div className="w-full h-full flex items-center justify-center p-4 overflow-hidden relative select-none">
+      <svg viewBox="0 0 420 220" fill="none" className="w-full h-full max-h-[200px]">
+        <rect width="100%" height="100%" fill="url(#grid)" />
+        <path
+          d="M 80 110 L 190 110"
+          stroke={isHovered ? "var(--accent-primary)" : "var(--border-secondary)"}
+          strokeWidth="1"
+          strokeDasharray={isHovered ? "4 4" : "0"}
+          className={isHovered ? "animate-flow-right" : ""}
+        />
+        <path
+          d="M 250 110 L 330 110"
+          stroke={isHovered ? "var(--accent-primary)" : "var(--border-secondary)"}
+          strokeWidth="1"
+          strokeDasharray={isHovered ? "4 4" : "0"}
+          className={isHovered ? "animate-flow-right" : ""}
+        />
+        <g transform="translate(20, 85)">
+          <rect x="0" y="0" width="60" height="50" rx="4" fill="var(--card-bg)" stroke="var(--border-secondary)" strokeWidth="1.2" />
+          <text x="30" y="28" fill="var(--text-secondary)" fontSize="8" textAnchor="middle" fontFamily="monospace">Frontend</text>
+        </g>
+        <g transform="translate(180, 85)">
+          <rect x="0" y="0" width="70" height="50" rx="4" fill="var(--card-bg)" stroke="var(--border-secondary)" strokeWidth="1.2" />
+          <text x="35" y="28" fill="var(--text-secondary)" fontSize="8" textAnchor="middle" fontFamily="monospace">API Server</text>
+        </g>
+        <g transform="translate(330, 90)">
+          <rect x="0" y="0" width="70" height="40" rx="4" fill="var(--card-bg)" stroke="var(--border-secondary)" strokeWidth="1.2" />
+          <text x="35" y="24" fill="var(--text-secondary)" fontSize="8" textAnchor="middle" fontFamily="monospace">Database</text>
+        </g>
+      </svg>
+    </div>
+  );
+}
+
+function renderVisualizer(visualizerType?: "ai" | "game" | "app" | "compiler", isHovered: boolean = false) {
+  switch (visualizerType) {
+    case "ai":
+      return <AIVisualizer isHovered={isHovered} />;
+    case "game":
+      return <GameVisualizer isHovered={isHovered} />;
+    case "app":
+      return <AppVisualizer isHovered={isHovered} />;
+    case "compiler":
+      return <CompilerVisualizer isHovered={isHovered} />;
+    default:
+      return null;
+  }
 }
 
 function ProjectCard({
@@ -44,12 +96,15 @@ function ProjectCard({
   isHovered,
   onMouseEnter,
   onMouseLeave,
-  renderArchitecture,
+  visualizer,
   image,
   video,
   projectImages,
+  minigame,
+  isLive,
 }: ProjectCardProps) {
   const [isProjectClicked, setIsProjectClicked] = useState(false);
+  const { t } = useLanguage();
 
   const handleCardInteraction = (e: React.MouseEvent<HTMLElement>) => {
     const target = e.target as HTMLElement;
@@ -141,29 +196,59 @@ function ProjectCard({
                   rel="noopener noreferrer"
                   className="inline-flex items-center space-x-1 font-bold text-[var(--link-prominent-green)] hover:text-[var(--link-prominent-green-hover)] hover:underline transition-colors"
                 >
-                  <span>Live Site</span>
+                  <span>{t.common.liveSite}</span>
                   <ArrowRight className="h-3 w-3" />
                 </a>
               ) : (
-                <span className="text-theme-muted font-medium">Proprietary</span>
+                <span className="text-theme-muted font-medium">{t.common.proprietary}</span>
               )}
             </div>
 
-            {slug && (
-              <Link
-                href={`/projects/${slug}`}
-                prefetch={true}
-                className="inline-flex items-center space-x-1 text-theme-muted hover:text-theme-text transition-colors"
-                aria-label={`View ${name} architectural details`}
+            {isLive && (link || (links && links[0]?.url)) && (
+              <a
+                href={link || links?.[0]?.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center space-x-1 font-bold text-[var(--link-prominent-green)] hover:text-[var(--link-prominent-green-hover)] hover:underline transition-colors"
               >
-                <span>Specs</span>
-              </Link>
+                <span>{t.common.live}</span>
+                <ArrowRight className="h-3 w-3" />
+              </a>
             )}
           </div>
         </div>
       </article>
     );
   }
+
+  const renderMedia = () => {
+    if (visualizer) {
+      return renderVisualizer(visualizer, isHovered);
+    }
+    if (video && isHovered) {
+      return (
+        <video
+          src={video}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover pointer-events-none"
+        />
+      );
+    }
+    if (image) {
+      return (
+        <Image
+          src={image}
+          alt={name}
+          fill
+          className="object-cover pointer-events-none"
+        />
+      );
+    }
+    return <DefaultArchitectureSVG isHovered={isHovered} />;
+  };
 
   return (
     <article
@@ -187,50 +272,14 @@ function ProjectCard({
               href={link}
               target="_blank"
               rel="noopener noreferrer"
-              className="block w-full h-full"
+              className="relative block w-full h-full"
             >
-              {name.toLowerCase().includes("cat") && video && isHovered ? (
-                <video
-                  src={video}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover pointer-events-none"
-                />
-              ) : (name.toLowerCase().includes("cat") || name.toLowerCase().includes("anomaly")) && image ? (
-                <Image
-                  src={image}
-                  alt={name}
-                  fill
-                  className="object-cover pointer-events-none"
-                />
-              ) : (
-                renderArchitecture()
-              )}
+              {renderMedia()}
             </a>
           ) : (
-            <>
-              {name.toLowerCase().includes("cat") && video && isHovered ? (
-                <video
-                  src={video}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover pointer-events-none"
-                />
-              ) : (name.toLowerCase().includes("cat") || name.toLowerCase().includes("anomaly")) && image ? (
-                <Image
-                  src={image}
-                  alt={name}
-                  fill
-                  className="object-cover pointer-events-none"
-                />
-              ) : (
-                renderArchitecture()
-              )}
-            </>
+            <div className="relative block w-full h-full">
+              {renderMedia()}
+            </div>
           )}
         </div>
 
@@ -257,7 +306,6 @@ function ProjectCard({
         </div>
       </div>
 
-
       <div className="mt-6 pt-4 border-t border-theme-border flex flex-col gap-3 relative z-10">
         <div className="flex flex-wrap gap-1.5">
           {tags.slice(0, 3).map((tag: string) => (
@@ -279,23 +327,23 @@ function ProjectCard({
                 rel="noopener noreferrer"
                 className="inline-flex items-center space-x-1 font-bold text-[var(--link-prominent-green)] hover:text-[var(--link-prominent-green-hover)] hover:underline transition-colors"
               >
-                <span>GitHub Repo</span>
+                <span>{t.common.githubRepo}</span>
                 <ArrowRight className="h-3 w-3" />
               </a>
             ) : (
-              <span className="text-theme-muted font-medium">Pending Release</span>
+              <span className="text-theme-muted font-medium">{t.common.pendingRelease}</span>
             )}
           </div>
 
-          {name.toLowerCase().includes("conway") && (
-            <button
-              onClick={() => window.dispatchEvent(new CustomEvent("start-minigame"))}
+          {minigame && (
+            <Link
+              href="/game"
               data-no-destroy="true"
               className="inline-flex items-center text-xs font-mono text-emerald-600 dark:text-rose-400 hover:text-emerald-500 dark:hover:text-rose-300 font-bold transition-all cursor-pointer select-none"
               title="Launch minigame"
             >
-              [wanna play a game?]
-            </button>
+              {t.projects.wannaPlay}
+            </Link>
           )}
         </div>
       </div>
@@ -306,82 +354,9 @@ function ProjectCard({
 export default function ProjectList() {
   const [activeTab, setActiveTab] = useState<"professional" | "academic">("professional");
   const [hoveredId, setHoveredId] = useState<string | number | null>(null);
+  const { locale, t } = useLanguage();
+  const { ProjectProfessional, ProjectAcademic } = getProjects(locale);
 
-  useEffect(() => {
-    ProjectProfessional.forEach((project) => {
-      if ((project as any).project_image) {
-        (project as any).project_image.forEach((src: string) => {
-          const img = new window.Image();
-          img.src = src;
-        });
-      } else if (project.image) {
-        const img = new window.Image();
-        img.src = project.image;
-      }
-    });
-
-    ProjectAcademic.forEach((project) => {
-      if (project.image) {
-        const img = new window.Image();
-        img.src = project.image;
-      }
-      if ((project as any).video) {
-        const vid = document.createElement("video");
-        vid.src = (project as any).video;
-        vid.preload = "auto";
-      }
-    });
-  }, []);
-
-  const renderArchitecture = (identifier: string | number, isHovered: boolean) => {
-    const nameStr = String(identifier).toLowerCase();
-    if (nameStr.includes("cat") || nameStr.includes("anomaly") || nameStr.includes("pid_nn")) {
-      return <AIVisualizer isHovered={isHovered} />;
-    }
-    if (nameStr.includes("conway") || nameStr.includes("invaders")) {
-      return <GameVisualizer isHovered={isHovered} />;
-    }
-    if (nameStr.includes("qt") || nameStr.includes("library")) {
-      return <AppVisualizer isHovered={isHovered} />;
-    }
-    if (nameStr.includes("interpreter") || nameStr.includes("flex")) {
-      return <CompilerVisualizer isHovered={isHovered} />;
-    }
-
-    return (
-      <div className="w-full h-full flex items-center justify-center p-4 overflow-hidden relative select-none">
-        <svg viewBox="0 0 420 220" fill="none" className="w-full h-full max-h-[200px]">
-          <rect width="100%" height="100%" fill="url(#grid)" />
-          <path
-            d="M 80 110 L 190 110"
-            stroke={isHovered ? "var(--accent-primary)" : "var(--border-secondary)"}
-            strokeWidth="1"
-            strokeDasharray={isHovered ? "4 4" : "0"}
-            className={isHovered ? "animate-flow-right" : ""}
-          />
-          <path
-            d="M 250 110 L 330 110"
-            stroke={isHovered ? "var(--accent-primary)" : "var(--border-secondary)"}
-            strokeWidth="1"
-            strokeDasharray={isHovered ? "4 4" : "0"}
-            className={isHovered ? "animate-flow-right" : ""}
-          />
-          <g transform="translate(20, 85)">
-            <rect x="0" y="0" width="60" height="50" rx="4" fill="var(--card-bg)" stroke="var(--border-secondary)" strokeWidth="1.2" />
-            <text x="30" y="28" fill="var(--text-secondary)" fontSize="8" textAnchor="middle" fontFamily="monospace">Frontend</text>
-          </g>
-          <g transform="translate(180, 85)">
-            <rect x="0" y="0" width="70" height="50" rx="4" fill="var(--card-bg)" stroke="var(--border-secondary)" strokeWidth="1.2" />
-            <text x="35" y="28" fill="var(--text-secondary)" fontSize="8" textAnchor="middle" fontFamily="monospace">API Server</text>
-          </g>
-          <g transform="translate(330, 90)">
-            <rect x="0" y="0" width="70" height="40" rx="4" fill="var(--card-bg)" stroke="var(--border-secondary)" strokeWidth="1.2" />
-            <text x="35" y="24" fill="var(--text-secondary)" fontSize="8" textAnchor="middle" fontFamily="monospace">Database</text>
-          </g>
-        </svg>
-      </div>
-    );
-  };
 
   const professionalProjects = [...ProjectProfessional].sort((a, b) => b.id - a.id);
   const academicProjects = [...ProjectAcademic].sort((a, b) => b.id - a.id);
@@ -390,30 +365,30 @@ export default function ProjectList() {
     <section className="pt-8 md:pt-12 pb-12 md:pb-20 border-b border-theme-border" id="projects">
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
         <div>
-          <h2 className="text-2xl font-bold tracking-tight text-theme-text mb-2">Featured Work</h2>
+          <h2 className="text-2xl font-bold tracking-tight text-theme-text mb-2">{t.projects.title}</h2>
           <p className="text-theme-muted text-sm md:text-base max-w-2xl">
-            Selected projects, live applications and codebases.
+            {t.projects.subtitle}
           </p>
         </div>
 
         <div className="flex flex-col sm:flex-row p-1 gap-1 bg-theme-btnExploreBg border border-theme-border rounded-lg self-stretch md:self-auto font-mono text-xs select-none">
           <button
             onClick={() => setActiveTab("professional")}
-            className={`px-3 py-1.5 rounded transition-all focus:outline-none whitespace-nowrap text-center ${activeTab === "professional"
+            className={`px-3 py-1.5 rounded transition-all focus:outline-none whitespace-nowrap text-center cursor-pointer ${activeTab === "professional"
               ? "bg-theme-bg border border-theme-border text-theme-text shadow-sm z-10 font-bold"
               : "text-theme-muted hover:text-theme-text border border-transparent z-0"
               } w-full sm:w-auto`}
           >
-            Projects ({professionalProjects.length})
+            {t.projects.tabProjects} ({professionalProjects.length})
           </button>
           <button
             onClick={() => setActiveTab("academic")}
-            className={`px-3 py-1.5 rounded transition-all focus:outline-none whitespace-nowrap text-center ${activeTab === "academic"
+            className={`px-3 py-1.5 rounded transition-all focus:outline-none whitespace-nowrap text-center cursor-pointer ${activeTab === "academic"
               ? "bg-theme-bg border border-theme-border text-theme-text shadow-sm z-10 font-bold"
               : "text-theme-muted hover:text-theme-text border border-transparent z-0"
               } w-full sm:w-auto`}
           >
-            R&D & Experiments ({academicProjects.length})
+            {t.projects.tabAcademic} ({academicProjects.length})
           </button>
         </div>
       </div>
@@ -423,21 +398,19 @@ export default function ProjectList() {
           {professionalProjects.map((project) => (
             <ProjectCard
               key={project.id}
-              id={project.id}
               slug={project.slug}
               name={project.name}
               description={project.description}
               tags={project.tag}
               link={project.link || undefined}
-              links={(project as any).links}
+              links={project.links}
               isProfessional={true}
               isHovered={hoveredId === project.slug}
               onMouseEnter={() => setHoveredId(project.slug)}
               onMouseLeave={() => setHoveredId(null)}
-              renderArchitecture={() => renderArchitecture(project.slug, hoveredId === project.slug)}
-              image={(project as any).image}
-              video={(project as any).video}
-              projectImages={(project as any).project_image}
+              image={project.image}
+              projectImages={project.project_image}
+              isLive={project.isLive}
             />
           ))}
         </div>
@@ -448,7 +421,6 @@ export default function ProjectList() {
           {academicProjects.map((project) => (
             <ProjectCard
               key={project.id}
-              id={project.id}
               name={project.name}
               description={project.description}
               tags={project.tag}
@@ -457,9 +429,10 @@ export default function ProjectList() {
               isHovered={hoveredId === project.id}
               onMouseEnter={() => setHoveredId(project.id)}
               onMouseLeave={() => setHoveredId(null)}
-              renderArchitecture={() => renderArchitecture(project.name, hoveredId === project.id)}
-              image={(project as any).image}
-              video={(project as any).video}
+              visualizer={project.visualizer}
+              image={project.image}
+              video={project.video}
+              minigame={project.minigame}
             />
           ))}
         </div>

@@ -37,3 +37,5 @@ yarn-error.log*
 next-env.d.ts
 
 /local-files
+AGENTS.md
+CLAUDE.md
