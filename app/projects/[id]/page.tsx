@@ -31,7 +31,7 @@ export async function generateMetadata({
     alternates: project.noindex
       ? undefined
       : {
-          canonical: `${SITE_URL}/projects/${project.slug}`,
+          canonical: `${SITE_URL}/projects/${project.slug}/`,
         },
   };
 }

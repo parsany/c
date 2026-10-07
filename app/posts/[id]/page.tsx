@@ -30,7 +30,7 @@ export async function generateMetadata({
     title: `${post.title} | Parsa`,
     description: post.description,
     alternates: {
-      canonical: `https://parsany.com/posts/${post.slug}`,
+      canonical: `https://parsany.com/posts/${post.slug}/`,
     },
   };
 }

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     "Download Parsa's full-stack software engineer resume and role-specific CVs (AI/ML, Frontend, Backend, QA, Systems, Tech Support).",
   alternates: {
-    canonical: "https://parsany.com/cv",
+    canonical: "https://parsany.com/cv/",
   },
 };
 

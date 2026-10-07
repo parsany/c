@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description:
     "Get in touch with Parsa for web app development, software engineering, architecture inquiries, or collaboration opportunities.",
   alternates: {
-    canonical: "https://parsany.com/contact",
+    canonical: "https://parsany.com/contact/",
   },
 };
 

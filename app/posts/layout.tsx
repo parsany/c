@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description:
     "Parsa's writing on software engineering, machine learning experiments, and things I found interesting enough to write up.",
   alternates: {
-    canonical: "https://parsany.com/posts",
+    canonical: "https://parsany.com/posts/",
   },
 };
 

@@ -10,37 +10,37 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticPages: MetadataRoute.Sitemap = [
     {
-      url: SITE_URL,
+      url: `${SITE_URL}/`,
       lastModified: currentDate,
       changeFrequency: "monthly",
       priority: 1.0,
     },
     {
-      url: `${SITE_URL}/about`,
+      url: `${SITE_URL}/about/`,
       lastModified: currentDate,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: `${SITE_URL}/contact`,
+      url: `${SITE_URL}/contact/`,
       lastModified: currentDate,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: `${SITE_URL}/cv`,
+      url: `${SITE_URL}/cv/`,
       lastModified: currentDate,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: `${SITE_URL}/game`,
+      url: `${SITE_URL}/game/`,
       lastModified: currentDate,
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
-      url: `${SITE_URL}/posts`,
+      url: `${SITE_URL}/posts/`,
       lastModified: currentDate,
       changeFrequency: "monthly",
       priority: 0.1,
@@ -50,7 +50,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const projectPages: MetadataRoute.Sitemap = ProjectProfessional.filter(
     (p) => !p.noindex
   ).map((project) => ({
-    url: `${SITE_URL}/projects/${project.slug}`,
+    url: `${SITE_URL}/projects/${project.slug}/`,
     lastModified: currentDate,
     changeFrequency: "monthly",
     priority: 0.7,
@@ -59,7 +59,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const postPages: MetadataRoute.Sitemap = Posts.filter(
     (post) => post.active !== false
   ).map((post) => ({
-    url: `${SITE_URL}/posts/${post.slug}`,
+    url: `${SITE_URL}/posts/${post.slug}/`,
     lastModified: currentDate,
     changeFrequency: "monthly",
     priority: 0.6,

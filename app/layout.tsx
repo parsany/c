@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     type: "website",
   },
   alternates: {
-    canonical: "https://parsany.com",
+    canonical: "https://parsany.com/",
   },
 };
 

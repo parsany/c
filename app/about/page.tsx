@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     "Parsa is a full-stack software engineer who builds web applications and experiments with machine learning.",
   alternates: {
-    canonical: "https://parsany.com/about",
+    canonical: "https://parsany.com/about/",
   },
 };
 
