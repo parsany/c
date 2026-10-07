@@ -1,0 +1,45 @@
+# Parsa Niavand
+
+> Full-Stack Software Engineer specializing in TypeScript, Next.js, NestJS, and distributed backend systems. Available for freelance and full-time opportunities.
+
+## About
+
+Parsa Niavand is a Full-Stack Software Engineer with hands-on experience building production-grade web applications, real-time systems, and AI/ML projects. Based in Armenia (previously Iran). Works across the entire stack — from pixel-perfect frontends to scalable backend architectures.
+
+- **Website**: https://parsany.com
+- **GitHub**: https://github.com/parsany
+- **LinkedIn**: https://www.linkedin.com/in/parsany/
+- **Contact**: https://parsany.com/contact
+- **CV**: https://parsany.com/cv
+
+## Core Skills
+
+TypeScript, Next.js, NestJS, React, Node.js, PostgreSQL, Redis, Prisma, Turborepo, Socket.io, tRPC, Tailwind CSS, Docker, Python, Machine Learning (PyTorch, CNNs, Autoencoders)
+
+## Selected Professional Projects
+
+- **Project Luna** — Enterprise platform for the power industry. Full inventory management, ordering matrix, order pipeline, and role-based dashboards. Stack: NestJS, Next.js, Turborepo, PostgreSQL, Redis, MinIO. Role: Lead Fullstack Developer. https://parsany.com/projects/project-luna
+- **Atrafian Chat & Social Ecosystem** — Real-time social platform with WebSocket chat, stories, radar-based discovery map, NSFW detection, payment gateway, and native mobile app (Capacitor.js). Stack: NestJS, Next.js, Socket.io, Redis, PostgreSQL. Role: Solo Fullstack Developer. https://parsany.com/projects/atrafian
+- **Battery ESP/MSK E-Commerce** — Dual-brand e-commerce with warranty serial-number lookup, dual-language support, and admin panel. Stack: NestJS, Next.js, PostgreSQL (Turborepo monorepo). https://parsany.com/projects/esp
+- **Goldenbat GPS Tracking** — Live vehicle tracking dashboard ingesting 10,000+ GPS updates/min with geofencing alerts. Stack: Next.js, tRPC, Mapbox, PostgreSQL. https://parsany.com/projects/goldenbat
+- **Himeh Publishing** — Full-stack book store with author dashboards, OTP auth, payment gateway, and order management. Stack: Next.js, tRPC, PostgreSQL. https://parsany.com/projects/himeh
+- **Alzahra Gold Wholesaler B2B** — B2B panel for gold wholesale buyers on a Django REST API. Lighthouse 99. Stack: Next.js, Tailwind CSS. https://parsany.com/projects/alzahra
+
+## Selected Academic / Personal Projects
+
+- **Cat Emotion Recognition** — CNN model for cat emotion detection, 70% accuracy. https://parsany.com/projects
+- **Conway Invaders** — Space Invaders where enemies are cellular automata (Conway's Game of Life). https://parsany.com/game
+- **Anomaly Detection for Goldmines** — Autoencoder-based deep learning for mineral zone detection. https://parsany.com/projects
+- **PID_NN** — PID control applied to neural network optimization. https://parsany.com/projects
+
+## Pages
+
+- Home: https://parsany.com/
+- About: https://parsany.com/about
+- Projects: https://parsany.com/projects
+- Posts / Blog: https://parsany.com/posts
+- CV / Resume: https://parsany.com/cv
+- Contact: https://parsany.com/contact
+- Interactive Game: https://parsany.com/game
+- Sitemap: https://parsany.com/sitemap.xml
+- LLMs Full Context: https://parsany.com/llms-full.txt
