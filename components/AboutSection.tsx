@@ -1,24 +1,29 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function AboutSection() {
+  const { t } = useLanguage();
+
   return (
     <section className="pt-8 md:pt-12 pb-12 border-b border-theme-border" id="about-section">
-      <h2 className="text-xl font-bold tracking-tight text-theme-text mb-6">About Me</h2>
+      <h2 className="text-xl font-bold tracking-tight text-theme-text mb-6">{t.about.title}</h2>
       <div className="space-y-4 text-theme-secondary text-sm md:text-base leading-relaxed max-w-2xl">
         <p>
-          I build things for the web. On the product side, I&apos;ve shipped real-time chat systems, ride-sharing applications, and e-commerce platforms. On the side, I tinker with Linux, writing PyTorch models, and open-source tooling — mostly because I find them interesting.
+          {t.about.previewText1}
         </p>
         <p>
-          I write TypeScript, prefer boring and correct over clever and broken, and I like working on projects where the code directly affects how something feels to use.
+          {t.about.previewText2}
         </p>
         <div className="pt-2">
           <Link
             href="/about"
             className="inline-flex items-center space-x-1 text-xs font-mono font-bold text-theme-accent hover:text-theme-accentHover transition-colors"
           >
-            <span>More about me</span>
+            <span>{t.about.moreAboutMe}</span>
             <ArrowRight className="h-3 w-3" />
           </Link>
         </div>
@@ -26,3 +31,4 @@ export default function AboutSection() {
     </section>
   );
 }
+

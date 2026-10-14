@@ -1,76 +1,87 @@
-export const ProjectAcademic = [
+import { AcademicProject, ProfessionalProject } from "./types";
+
+export const ProjectAcademic: AcademicProject[] = [
   {
     id: 5,
     name: "Cat Emotion recognition",
     description:
-      "Using CNN, I trained a model to recognize the emotion of cats. Last update Aug 2025, *improved accuracy to 70%* ",
+      "Custom CNN computer vision model trained for feline emotion classification (70% test accuracy).",
     date: "Aug 21, 2025",
     image: "/projects/cat.webp",
     link: "https://github.com/parsany/CatRecognition",
     video: "/media/cat.webm",
-    tag: ["AI"],
+    tag: ["AI", "PyTorch"],
   },
   {
     id: 4,
     name: "Conway Invaders",
-    description: "Space invaders game but the enemies are cellular automata!",
+    description:
+      "Real-time space invaders arcade mechanics powered by deterministic Conway's Game of Life cellular automata.",
     date: "Aug 24, 2024",
     image: "/projects/cell.webp",
     link: "https://github.com/parsany/Conway-game-of-life-invaders",
     video: "/media/cell.webm",
     tag: ["Programming", "Games"],
+    visualizer: "game",
+    minigame: true,
   },
   {
     id: 3,
     name: "PID_NN",
-    description: "PID control for optimization of neural networks.",
+    description:
+      "PID feedback loop control integration for gradient optimization in deep neural networks.",
     date: "March 27, 2025",
     image: "/projects/PID.webp",
     link: "https://github.com/parsany/PID_NN",
-    tag: ["AI"],
+    tag: ["AI", "Optimization"],
+    visualizer: "ai",
   },
   {
     id: 2,
-    name: "Library Program QT",
+    name: "PyLibrary Qt",
     description:
-      "I Hate Calibre's UI and macOS got a pretty nice feel app, so i made this for myself.",
+      "Minimalist cross-platform desktop library manager built with Python and Qt, featuring local SQLite indexing and native UI performance.",
     date: "Feb 14, 2025",
     image: "/projects/QtLib.webp",
     link: "https://github.com/parsany/PyLibrary-QT",
-    tag: ["Programming", "Apps"],
+    tag: ["Python", "Qt", "Apps"],
+    visualizer: "app",
   },
   {
     id: 6,
-    name: "Anomaly detection for goldmines ",
+    name: "Anomaly detection for goldmines",
     description:
-      "deep learning models for mineral zone detection (as anomalies) using various Autoencoder architectures.",
+      "Deep learning autoencoder architectures (VAE) for mineral zone anomaly detection in geophysical spatial datasets.",
     date: "Nov 2, 2025",
     image: "/projects/anomaly.webp",
     link: "https://github.com/parsany/anomaly-VAE",
-    tag: ["AI"],
+    tag: ["AI", "Deep Learning"],
   },
   {
     id: 1,
-    name: "Simple Interpreter with Flex & Bison",
-    description: "project i did for university class",
+    name: "Interpreter with Flex & Bison",
+    description:
+      "Custom programming language interpreter featuring Lex/Flex lexical tokenizer and Bison LALR grammar parsing engine.",
     date: "Sep 2, 2025",
     image: "/projects/flex.webp",
     link: "https://github.com/parsany/InterpreterFlexBison",
-    tag: ["Programming"],
+    tag: ["C", "Compilers"],
+    visualizer: "compiler",
   },
 ];
 
-export const ProjectProfessional = [
+export const ProjectProfessional: ProfessionalProject[] = [
   {
     id: 5,
     slug: "project-luna",
     name: "Project Luna",
+    category: "Enterprise Platform",
+    serviceHeadline: "Power Industry Operations & Inventory Engine",
     description:
       "Enterprise platform for the power industry. Full inventory management, ordering matrix, order pipeline, and role-based dashboards.",
     date: "Jun 2026 – Present",
     image: "/professional/luna/luna-landing.webp",
-    project_image: [
-    ],
+    project_image: [],
     tag: [
       "NestJS",
       "Next.js",
@@ -85,6 +96,10 @@ export const ProjectProfessional = [
     link: "",
     links: [],
     role: "Lead Fullstack Developer",
+    keyOutcomes: [
+      "**Multi-Tenant RBAC:** Isolated manufacturer, store, and admin pipelines",
+      "**Live Tier Pricing:** Dynamic bulk matrix ordering with NestJS & Redis",
+    ],
     highlights: [
       "Inventory Grid",
       "Bulk Matrix Cart with Live Tier Pricing",
@@ -97,6 +112,8 @@ export const ProjectProfessional = [
     id: 8,
     slug: "k2n-solutions",
     name: "K2N Solutions Inc.",
+    category: "Optimization & Rebuild",
+    serviceHeadline: "High-Performance Engineering Web Platform",
     description:
       "High-performance static website for an electrical engineering and consulting firm, rebuilt from WordPress for speed, clarity, and professional presence.",
     date: "Jul 2026 – Aug 2026",
@@ -108,12 +125,17 @@ export const ProjectProfessional = [
       "/professional/k2ninc/services.webp",
       "/professional/k2ninc/mobile-carousel.webp",
     ],
-    tag: ["Next.js", "Tailwind CSS", "cPanel"],
+    tag: ["Next.js", "Tailwind CSS", "cPanel", "Performance"],
     isactive: true,
+    isLive: true,
+    noindex: true,
     link: "https://k2ninc.com",
-    links: [
-      { label: "Website", url: "https://k2ninc.com" },],
+    links: [{ label: "Website", url: "https://k2ninc.com" }],
     role: "Solo Frontend Developer",
+    keyOutcomes: [
+      "**100/100 Core Web Vitals:** Sub-second static Next.js export",
+      "**Zero-Rebuild CMS:** Instant image management directly via cPanel",
+    ],
     highlights: [
       "Static Next.js Export",
       "Sub-second Load Times",
@@ -125,6 +147,8 @@ export const ProjectProfessional = [
     id: 9,
     slug: "esp",
     name: "Battery ESP/MSK E-Commerce",
+    category: "E-Commerce & Backend",
+    serviceHeadline: "Dual-Brand Storefront & Warranty Validation Engine",
     description:
       "Full e-commerce platform with dual-language support, warranty lookup by serial number, and an internal admin panel.",
     date: "Dec 2025 – June 2026",
@@ -134,7 +158,7 @@ export const ProjectProfessional = [
       "/professional/battery-esp/esp-product-page.webp",
       "/professional/battery-esp/esp-product-id.webp",
       "/professional/battery-esp/battery-warranty.webp",
-      "/professional/battery-esp/battery-dash-products.webp",
+      "/professional/battery-dash-products.webp",
       "/professional/battery-esp/battery-dash-perm.webp",
     ],
     tag: [
@@ -143,22 +167,29 @@ export const ProjectProfessional = [
       "NestJS",
       "Next.js",
       "PostgreSQL",
-      "dual-Language",
+      "i18n",
     ],
     isactive: true,
     redirect: "msk",
+    noindex: true,
     link: "https://epweb.parsany.com/",
     links: [
       { label: "Live Demo", url: "https://epweb.parsany.com/" },
       { label: "Dashboard Demo", url: "https://edash.parsany.com/" },
     ],
     role: "Fullstack Developer (team)",
+    keyOutcomes: [
+      "**Unified Backend:** Single NestJS engine powering two storefront brands",
+      "**Warranty Engine:** Automated serial-number validation & lookup",
+    ],
     text: `# Battery ESP/MSK E-Commerce\n\n built in collaboration with a team. An e-commerce website for two battery brands sharing the same backend. The interesting part was the warranty verification system — customers enter a serial number and the system validates it against a database of generated keys.\n\n- **Role**: Fullstack Developer (team)\n- **Timeline**: Dec 2025 – June 2026\n- **Stack**: Turborepo monorepo, NestJS, Next.js, PostgreSQL`,
   },
   {
     id: 6,
     slug: "msk",
     name: "Battery MSK Client Website",
+    category: "Website Development",
+    serviceHeadline: "Client Storefront & Multi-Language Warranty Portal",
     description:
       "Client-facing website and internal admin panel with dual-language support and a serial-number warranty validation system.",
     date: "Dec 2025 – June 2026",
@@ -176,19 +207,26 @@ export const ProjectProfessional = [
       "NestJS",
       "Turborepo",
       "PostgreSQL",
-      "dual-Language",
+      "i18n",
     ],
     isactive: true,
     redirect: "esp",
+    noindex: true,
     link: "https://mkweb.parsany.com/en/landing",
     links: [{ label: "Live Demo", url: "https://mkweb.parsany.com/en/landing" }],
     role: "Frontend Developer (team)",
+    keyOutcomes: [
+      "**1:1 Design Fidelity:** Dual-language storefront with Turborepo tokens",
+      "**Live Verification:** Instant serial warranty lookup across EN & FA locales",
+    ],
     text: `# Battery MSK Client Website\n\n (shared development cycle with ESP), in collaboration with a team. The client-facing side of the Battery ESP monorepo — same codebase, different brand, implemented 1:1 from the design across both FA and EN locales. Built and styled the public storefront and warranty lookup pages. See the ESP project for full technical details.\n\n- **Role**: Frontend Developer (team)\n- **Timeline**: Dec 2025 – June 2026\n- **Stack**: Next.js, Tailwind CSS, NestJS (shared backend)`,
   },
   {
     id: 10,
     slug: "atrafian",
     name: "Atrafian Chat & Social Ecosystem",
+    category: "Real-Time Architecture",
+    serviceHeadline: "High-Concurrency Messaging & Geolocation Radar",
     description:
       "Real-time chat app with a native mobile build. WebSockets for messaging, Redis for caching, and a custom radar-based discovery map.",
     date: "Jan 2026 – Mar 2026",
@@ -216,18 +254,25 @@ export const ProjectProfessional = [
       "Turborepo",
       "Socket.io",
       "PostgreSQL",
-      "Payment Gateway",
+      "Redis",
     ],
     isactive: true,
-    link: "https://atrafian.ir",
+    isLive: true,
+    link: "https://atraf.parsany.com",
     links: [
-      { label: "Live Site", url: "https://atrafian.ir" },
+      { label: "Main Website", url: "https://atrafian.ir" },
+      { label: "Live Demo (English)", url: "https://atraf.parsany.com" },
+      { label: "Dashboard", url: "https://atradmin.parsany.com" },
       {
-        label: "Mobile Repo Demo",
+        label: "Mobile Repo Demo (English)",
         url: "https://github.com/quantinity/Atrafian-App-Demo",
       },
     ],
     role: "Solo Fullstack Developer",
+    keyOutcomes: [
+      "**Sub-Second Delivery:** 1,000+ user rooms via bulk SQL aggregations",
+      "**Socket.io + Redis:** Real-time messaging with automated FCM push fallback",
+    ],
     highlights: [
       "Real-time Socket.io Chat",
       "Radar Navigation & Discovery",
@@ -239,6 +284,8 @@ export const ProjectProfessional = [
     id: 11,
     slug: "goldenbat",
     name: "Goldenbat GPS Tracking",
+    category: "IoT Dashboard & Systems",
+    serviceHeadline: "Real-Time Fleet Telemetry & Geofencing Dashboard",
     description:
       "Live vehicle tracking dashboard. Ingests GPS coordinates from IoT hardware and shows real-time routes on a map.",
     date: "Sep 2024 – Jan 2025",
@@ -267,19 +314,27 @@ export const ProjectProfessional = [
     ],
     tag: ["Next.js", "Tailwind CSS", "tRPC", "GPS", "PostgreSQL", "Mapbox"],
     isactive: true,
+    noindex: true,
     link: "https://gbat.parsany.com",
     links: [
       { label: "Live Demo (desktop)", url: "https://gbat.parsany.com" },
       { label: "Web Application (mobile)", url: "https://gbat.parsany.com/auth/signin" },
       { label: "Dashboard Demo (desktop)", url: "https://gdash.parsany.com/" },
+      { label: "Main Website (down)", url: "https://app.goldengps.ir/" },
     ],
     role: "Frontend Developer",
+    keyOutcomes: [
+      "**10,000+ Updates/Min:** Sub-second IoT telemetry plotting on Mapbox",
+      "**Fleet Geofencing:** Dynamic breadcrumb routes and boundary alerts",
+    ],
     text: `# Goldenbat GPS Tracking\n\nBuilt over 5 months, in collaboration with a team. I built the landing page and the mobile PWA, and contributed to the fleet dashboard frontend (Next.js) — including work on geofencing and the notification system; a teammate handled the native mobile work. The backend ingests 10,000+ GPS coordinate updates per minute with sub-second latency — the dashboard plots live vehicle positions, historical paths, and geofencing alerts. Fleet operators use it to manage device groups and assignments.\n\n- **Role**: Frontend Developer\n- **Timeline**: Sep 2024 – Jan 2025\n- **Stack**: Next.js, tRPC, PostgreSQL\n\n currently down due to maintenance`,
   },
   {
     id: 7,
     slug: "alzahra",
     name: "Alzahra Gold Wholesaler B2B Platform",
+    category: "B2B Web Development",
+    serviceHeadline: "Wholesale Bullion Transaction & Pricing Portal",
     description:
       "Frontend B2B panel for a gold wholesaler, integrated with a Django REST API for transaction management.",
     date: "Mar 2024 – Apr 2024",
@@ -296,15 +351,25 @@ export const ProjectProfessional = [
     ],
     tag: ["Next.js", "Tailwind CSS", "B2B", "PostgreSQL"],
     isactive: true,
+    noindex: true,
     link: "https://az.parsany.com/landing",
-    links: [{ label: "Live Demo (desktop)", url: "https://az.parsany.com/landing" }],
+    links: [
+      { label: "Main Website", url: "https://app.alzahragold.com/" },
+      { label: "Live Demo (desktop)", url: "https://az.parsany.com/landing" },
+    ],
     role: "Frontend Developer",
+    keyOutcomes: [
+      "**99 Lighthouse Score:** High-volume wholesale bullion transaction portal",
+      "**Live Tier Market:** Multi-step purchasing connected to Django REST ledger",
+    ],
     text: `# Alzahra Gold Wholesaler B2B Platform\n\nBuilt in 1.5 months, in collaboration with a team. A B2B platform for gold wholesale buyers, built on top of a Django REST API handled by the rest of the team. I built the landing page fully and contributed to the buyer dashboard. Landing page hit a desktop Lighthouse score of 99. Customers log in to see pricing, place orders, and track transactions through a multi-step purchasing workflow.\n\n- **Role**: Frontend Developer\n- **Timeline**: Mar 2024 – Apr 2024\n- **Stack**: Next.js, Tailwind CSS (backend: Django REST, not mine)`,
   },
   {
     id: 4,
     slug: "edu-platform",
     name: "Educational Platform*",
+    category: "Full-Stack Development",
+    serviceHeadline: "Video Streaming & Academic Publishing Engine",
     description:
       "Full-stack educational platform for a professor — video courses hosted on S3, a markdown-powered blog with SEO, and a course management dashboard.",
     date: "July 2026",
@@ -319,9 +384,14 @@ export const ProjectProfessional = [
     ],
     tag: ["Next.js", "NestJS", "PostgreSQL", "S3", "Markdown", "SEO"],
     isactive: false,
+    noindex: true,
     link: "",
     links: [],
     role: "Solo Fullstack Developer",
+    keyOutcomes: [
+      "**Self-Hosted Video:** S3-compatible high-performance lecture streaming",
+      "**SEO Markdown Engine:** Automated Open Graph and canonical metadata",
+    ],
     highlights: [
       "S3 Video Hosting",
       "Markdown Blog with SEO",
@@ -333,6 +403,8 @@ export const ProjectProfessional = [
     id: 3,
     slug: "himeh",
     name: "Himeh Publishing",
+    category: "E-Commerce & Publishing",
+    serviceHeadline: "Bookstore & Author Management Portal",
     description:
       "Book store and publishing platform. Users can browse, purchase, and track orders. Authors get a dashboard to upload and manage titles.",
     date: "Feb 2025 – Mar 2025",
@@ -352,6 +424,10 @@ export const ProjectProfessional = [
       { label: "User Panel", url: "https://himeh.parsany.com/profile" },
     ],
     role: "Solo Fullstack Developer",
+    keyOutcomes: [
+      "**End-to-End Type Safety:** tRPC API bridging storefront and author portals",
+      "**Passwordless OTP:** Frictionless auth with integrated payment gateway",
+    ],
     highlights: [
       "Book Catalog Search Index",
       "tRPC Type-Safe API",
@@ -363,6 +439,8 @@ export const ProjectProfessional = [
     id: 2,
     slug: "charbag",
     name: "Charbag Ceramic Studio",
+    category: "Website Development",
+    serviceHeadline: "Boutique Ceramic Studio Showcase",
     description:
       "Landing for a local ceramics studio for catalog.",
     date: "Apr 2025",
@@ -370,8 +448,13 @@ export const ProjectProfessional = [
     project_image: ["/professional/char/char-landing.webp"],
     tag: ["Next.js", "Tailwind CSS"],
     isactive: false,
+    noindex: true,
     link: "",
     links: [],
+    keyOutcomes: [
+      "**High-Performance Showcase:** Ultra-fast static rendering for boutique crafts",
+      "**Mobile-First Gallery:** Responsive showcase for ceramic collections",
+    ],
     highlights: [
       "Boutique Catalog Showcase",
       "Interactive Client Hub",
@@ -383,6 +466,8 @@ export const ProjectProfessional = [
     id: 1,
     slug: "taxiland",
     name: "Taxiland Ride-Sharing Platform",
+    category: "Dispatch Systems & Full-Stack",
+    serviceHeadline: "Intercity Ride-Sharing Dispatch Admin",
     description:
       "Intercity ride-sharing platform. Built the web admin panel that dispatch operators use for driver assignment and support tickets.",
     date: "May 2024 – Aug 2024",
@@ -394,9 +479,14 @@ export const ProjectProfessional = [
     ],
     tag: ["Next.js", "tRPC", "Turborepo", "Tailwind CSS", "PostgreSQL"],
     isactive: false,
+    noindex: true,
     link: "",
     links: [],
     role: "Fullstack Developer",
+    keyOutcomes: [
+      "**Real-Time Dispatch:** High-throughput operator console for driver routing",
+      "**Turborepo + tRPC:** Unified intercity booking & support ticket engine",
+    ],
     text: `# Taxiland Ride-Sharing Platform\n\nBuilt over 4 months, in collaboration with a team. Intercity ride-sharing — passengers book trips, drivers pick them up. I built the mobile app and contributed to the tRPC backend and the dispatch admin panel where operators assign drivers and handle support tickets. Site is currently down, screenshots are from when it was live.\n\n- **Role**: Fullstack Developer (team project)\n- **Timeline**: May 2024 – Aug 2024\n- **Stack**: Next.js, tRPC, PostgreSQL, Turborepo`,
   },
 ];

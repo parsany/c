@@ -1,0 +1,183 @@
+# Parsa Niavand — Full Context for LLMs
+
+> This file provides comprehensive context about Parsa Niavand and his work for AI language models. See https://parsany.com/llms.txt for the concise version.
+
+---
+
+## Identity
+
+**Name**: Parsa Niavand  
+**Role**: Full-Stack Software Engineer  
+**Website**: https://parsany.com  
+**GitHub**: https://github.com/parsany  
+**LinkedIn**: https://www.linkedin.com/in/parsany/  
+**Telegram**: https://t.me/parsanid  
+**Email**: vvsparsa@gmail.com  
+
+---
+
+## About
+
+Parsa is a Full-Stack Software Engineer with proven experience shipping production systems across the full stack — from responsive frontends in Next.js and Tailwind CSS to distributed NestJS backends with PostgreSQL, Redis, and real-time WebSocket layers. He has led projects solo from architecture through deployment, and has collaborated on multi-developer teams using Turborepo monorepos.
+
+He has a strong academic background in machine learning and AI, with personal projects spanning CNNs for image classification, autoencoders for anomaly detection, and PID-based neural network optimization.
+
+Currently based in Armenia. Open to remote full-time roles and freelance contracts.
+
+---
+
+## Technical Skills
+
+### Languages
+- TypeScript (primary), JavaScript, Python, SQL, C++
+
+### Frontend
+- Next.js (App Router), React, Tailwind CSS, shadcn/ui, Framer Motion
+- PWA, Capacitor.js (native mobile), responsive/accessible UI
+
+### Backend
+- NestJS, Node.js, tRPC, REST APIs, WebSockets (Socket.io)
+- Authentication: OTP, JWT, RBAC
+- PostgreSQL, Prisma ORM, Redis, MinIO / S3
+
+### DevOps / Infrastructure
+- Turborepo monorepos, Docker, CI/CD (GitHub Actions), cPanel, VPS deployment
+- Nginx, PM2, self-hosted MinIO
+
+### AI / Machine Learning
+- PyTorch, CNNs, Autoencoders (VAE), NSFW.js (client-side)
+- Projects: image classification, anomaly detection, PID control for NNs
+
+---
+
+## Professional Projects
+
+### Project Luna (Jun 2026 – Present)
+**Role**: Lead Fullstack Developer  
+**Stack**: NestJS, Next.js, Turborepo, PostgreSQL, Prisma, Redis, MinIO, Tailwind CSS  
+Enterprise platform for the power industry. Features full inventory management with grid-based product browsing, a bulk ordering matrix with live tier pricing, and role-based dashboards for manufacturers, stores, and admins. Strict RBAC ensures complete isolation between user types. OTP-based authentication.  
+**URL**: https://parsany.com/projects/project-luna
+
+---
+
+### Atrafian Chat & Social Ecosystem (Jan 2026 – Mar 2026)
+**Role**: Solo Fullstack & Mobile Developer  
+**Stack**: NestJS, Next.js, Socket.io, Redis, PostgreSQL, Turborepo, Capacitor.js  
+A full real-time social platform built solo over 3 months. Features:
+- Real-time personal, group, and support chat via Socket.io with FCM push fallback for offline users
+- Stories, chat requests, media sharing (images, voice, video) via self-hosted MinIO
+- Radar discovery map using a solar-system-style layout — users orbit in belts by online status and distance rather than live GPS
+- Client-side NSFW detection via NSFW.js at signup with admin reporting
+- Server-side illegal-word and NSFW filter layer
+- Support ticketing system and wallet with payment gateway integration
+- Eliminated N+1 query issues in group messaging with bulk SQL aggregations (sub-second delivery in 1,000+ user rooms)
+- Mobile app built with Capacitor.js (client constraint ruled out React Native)
+
+**Live**: https://atraf.parsany.com | **Dashboard**: https://atradmin.parsany.com  
+**URL**: https://parsany.com/projects/atrafian
+
+---
+
+### Battery ESP / MSK E-Commerce (Dec 2025 – Jun 2026)
+**Role**: Fullstack Developer (team)  
+**Stack**: NestJS, Next.js, PostgreSQL, Turborepo, Tailwind CSS  
+Dual-brand e-commerce platform for two battery brands (ESP and MSK) sharing one NestJS backend. Dual-language (FA/EN). Key feature: warranty verification — customers enter a serial number, validated against a DB of pre-generated keys.  
+**Live Demo**: https://epweb.parsany.com | **Dashboard**: https://edash.parsany.com  
+**URL**: https://parsany.com/projects/esp
+
+---
+
+### Goldenbat GPS Tracking (Sep 2024 – Jan 2025)
+**Role**: Frontend Developer (team)  
+**Stack**: Next.js, tRPC, Mapbox, PostgreSQL  
+Live fleet tracking dashboard for a GPS hardware company. Backend ingests 10,000+ GPS coordinate updates/minute with sub-second latency. Dashboard shows live vehicle positions, historical paths, geofencing alerts. Built the landing page, mobile PWA, and contributed to the fleet dashboard — including geofencing UI and notification system.  
+**Live Demo**: https://gbat.parsany.com  
+**URL**: https://parsany.com/projects/goldenbat
+
+---
+
+### Alzahra Gold Wholesaler B2B (Mar 2024 – Apr 2024)
+**Role**: Frontend Developer (team)  
+**Stack**: Next.js, Tailwind CSS (backend: Django REST by teammate)  
+B2B panel for gold wholesale buyers. Multi-step purchasing workflow, order tracking, pricing display. Landing page achieved Lighthouse score of 99.  
+**Live Demo**: https://az.parsany.com/landing  
+**URL**: https://parsany.com/projects/alzahra
+
+---
+
+### Himeh Publishing Platform (Feb 2025 – Mar 2025)
+**Role**: Solo Fullstack Developer  
+**Stack**: Next.js, tRPC, PostgreSQL, Prisma  
+Complete book store — authors upload titles via admin dashboard, customers browse, add to cart, and check out via local payment gateway. OTP-based passwordless auth.  
+**Live Demo**: https://himeh.parsany.com  
+**URL**: https://parsany.com/projects/himeh
+
+---
+
+### Taxiland Ride-Sharing Platform (May 2024 – Aug 2024)
+**Role**: Fullstack Developer (team)  
+**Stack**: Next.js, tRPC, PostgreSQL, Turborepo  
+Intercity ride-sharing app. Built the mobile app and contributed to the tRPC backend and dispatch admin panel (driver assignment, support tickets).  
+**URL**: https://parsany.com/projects/taxiland
+
+---
+
+### K2N Solutions Inc. (Jul 2026 – Aug 2026)
+**Role**: Solo Frontend Developer  
+**Stack**: Next.js (static export), Tailwind CSS, cPanel  
+Static high-performance website for a licensed electrical engineering and consulting firm with 35+ years of utility-grade experience. Rebuilt from WordPress. Images managed via cPanel without rebuilds.  
+**Live**: https://k2ninc.com  
+**URL**: https://parsany.com/projects/k2n-solutions
+
+---
+
+### Educational Platform (Jul 2026 – Present)
+**Role**: Solo Fullstack Developer  
+**Stack**: Next.js, NestJS, PostgreSQL, S3 (self-hosted)  
+Video course + blog platform for a university professor. S3-streamed video content, Markdown blog with automatic SEO metadata (Open Graph, canonical URLs, structured data), instructor dashboard for course/post management.  
+**URL**: https://parsany.com/projects/edu-platform
+
+---
+
+## Academic & Personal Projects
+
+### Cat Emotion Recognition
+CNN trained to classify cat emotions. Last updated Aug 2025 with accuracy improved to 70%.  
+**GitHub**: https://github.com/parsany/CatRecognition
+
+### Anomaly Detection for Goldmines
+Deep learning models using various Autoencoder architectures (including VAE) for mineral zone (anomaly) detection in geological data.  
+**GitHub**: https://github.com/parsany/anomaly-VAE
+
+### Conway Invaders
+Space Invaders where enemies are Conway's Game of Life cellular automata. Playable at https://parsany.com/game  
+**GitHub**: https://github.com/parsany/Conway-game-of-life-invaders
+
+### PID_NN
+PID control applied to optimize neural network training dynamics.  
+**GitHub**: https://github.com/parsany/PID_NN
+
+### Library Program QT
+Desktop library manager built with PyQt — a personal tool replacing Calibre's UI.  
+**GitHub**: https://github.com/parsany/PyLibrary-QT
+
+### Simple Interpreter with Flex & Bison
+University compiler construction project — a working interpreter built with Flex (lexer) and Bison (parser).  
+**GitHub**: https://github.com/parsany/InterpreterFlexBison
+
+---
+
+## Site Structure
+
+| Page | URL | Description |
+|------|-----|-------------|
+| Home | https://parsany.com/ | Portfolio landing page with intro, skills, and featured work |
+| About | https://parsany.com/about | Background, experience timeline, and personal story |
+| Projects | https://parsany.com/projects | Professional and academic project showcase |
+| Posts | https://parsany.com/posts | Blog / technical writing |
+| CV / Resume | https://parsany.com/cv | Downloadable CVs by specialization (AI, Frontend, Backend, QA, DevOps, Support) |
+| Contact | https://parsany.com/contact | Contact form and social links |
+| Game | https://parsany.com/game | Interactive Conway Invaders playable in browser |
+| Sitemap | https://parsany.com/sitemap.xml | Full XML sitemap |
+| LLMs Summary | https://parsany.com/llms.txt | Concise LLM context |
+| LLMs Full | https://parsany.com/llms-full.txt | This file — full LLM context |

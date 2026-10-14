@@ -11,6 +11,8 @@ export type Rogue = {
   fireInt: number;
   eating: boolean;
   eatTimer: number;
+  targetOffsetX?: number;
+  targetOffsetY?: number;
 };
 
 export function lerpColor(a: number[], b: number[], t: number): number[] {

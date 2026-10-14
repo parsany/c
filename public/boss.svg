@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 120" fill="none">
+  <defs>
+    <linearGradient id="bossHullGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#18181b" />
+      <stop offset="100%" stop-color="#09090b" />
+    </linearGradient>
+    <linearGradient id="bossCoreGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ef4444" />
+      <stop offset="100%" stop-color="#991b1b" />
+    </linearGradient>
+    <filter id="coreGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <path d="M120 18 L155 35 L210 50 L235 75 L220 85 L180 80 L160 98 L140 92 L120 110 L100 92 L80 98 L60 80 L20 85 L5 75 L30 50 L85 35 Z" fill="url(#bossHullGrad)" stroke="#f87171" stroke-width="2.5" stroke-linejoin="round" />
+  <path d="M120 28 L145 42 L180 54 L195 72 L165 76 L145 86 L120 98 L95 86 L75 76 L45 72 L60 54 L95 42 Z" stroke="#38bdf8" stroke-width="1.5" stroke-linejoin="round" opacity="0.85" />
+  <path d="M100 50 L120 38 L140 50 L135 72 L120 80 L105 72 Z" fill="#27272a" stroke="#ef4444" stroke-width="2" />
+  <circle cx="120" cy="60" r="10" fill="url(#bossCoreGrad)" filter="url(#coreGlow)" />
+  <circle cx="120" cy="60" r="4" fill="#ffffff" />
+  <rect x="24" y="60" width="10" height="28" rx="2" fill="#18181b" stroke="#f87171" stroke-width="1.5" />
+  <line x1="29" y1="88" x2="29" y2="102" stroke="#ef4444" stroke-width="2" />
+  <rect x="206" y="60" width="10" height="28" rx="2" fill="#18181b" stroke="#f87171" stroke-width="1.5" />
+  <line x1="211" y1="88" x2="211" y2="102" stroke="#ef4444" stroke-width="2" />
+  <line x1="90" y1="96" x2="90" y2="114" stroke="#f97316" stroke-width="3" stroke-linecap="round" />
+  <line x1="150" y1="96" x2="150" y2="114" stroke="#f97316" stroke-width="3" stroke-linecap="round" />
+  <line x1="120" y1="18" x2="120" y2="38" stroke="#38bdf8" stroke-width="1.5" />
+  <polygon points="115,22 120,14 125,22" fill="#38bdf8" />
+</svg>

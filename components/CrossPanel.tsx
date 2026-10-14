@@ -1,6 +1,5 @@
 import React from "react";
-
-type Phase = 'idle' | 'escaped' | 'going_rogue' | 'attacking';
+import { Phase } from "./intro/types";
 
 interface CrossPanelProps {
   size: number;

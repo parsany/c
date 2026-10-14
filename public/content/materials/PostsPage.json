@@ -1,47 +1,47 @@
 [
-{
-  "id": "P5",
-  "active": false,
-  "slug": "cat-cnn",
-  "name": "Cat Emotion Classification with ConvNeXt-Large",
-  "title": "Iterating from 26% to High Accuracy: Cat Emotion Classification with ConvNeXt-Large",
-  "description": "How I evolved a cat mood classifier from a struggling 26% baseline custom CNN into a fine-tuned ConvNeXt-Large pipeline using modern training techniques.",
-  "date": "Jun 18, 2026",
-  "link": "https://github.com/parsany/CatRecognition",
-  "tags": [
-    "PyTorch",
-    "Computer Vision"
-  ],
-  "body": "Classifying feline emotions from web images sounds straightforward until you start looking at the data. Unlike human face datasets where landmarks are obvious, cat mood signals are subtle — a slight drop in the ear, a slight squint, or tense whiskers. Simple architectures tend to fail fast because they end up memorizing background textures instead of learning facial geometry.\n\nWhen I first started testing on the Roboflow Cat Emotions dataset, I threw a small custom CNN with residual connections at the problem. It plateaued at a painful ~26% validation accuracy. It was clear the model lacked both capacity and pre-trained visual primitives. Upgrading to a standard pre-trained ResNet-50 and unfreezing all layers jumped performance straight to ~60%, proving that transfer learning was non-negotiable here.\n\nTo push things further, I switched the backbone to ConvNeXt-Large. But switching the architecture was only half the battle. What actually closed the generalization gap was dialing in the training stack.\n\nI added `TrivialAugmentWide` for parameter-free data augmentation, which stopped the model from over-indexing on specific lighting conditions. Pairing AdamW with a cosine annealing schedule let the learning rate settle smoothly into local minima, while label smoothing (0.1) kept cross-entropy loss from making the predictions over-confident. Finally, running with Automatic Mixed Precision (AMP) made it possible to train a backbone this size on an 8GB VRAM GPU without spilling memory, while gradient clipping kept training stable.\n\nCombined, these adjustments transformed the project from an overfitted experiment into a usable model that accurately classifies emotions on unfamiliar cat photos instead of just memorizing the training set."
-},
-{
-"id": "P6",
-"active": false,
-"slug": "conway-CAU",
-"name": "Conway Invaders: Building Space Invaders with Cellular Automata",
-"title": "Conway Invaders: Replacing Scripted Space Invaders with Cellular Automata",
-"description": "A Python & Pygame port and expansion of Conway Invaders, replacing standard enemy sprites with self-evolving cell grids and a dynamic, regenerating boss.",
-"date": "Jun 29, 2026",
-"link": "https://github.com/parsany/Conway-game-of-life-invaders",
-"tags": [
-"Python",
-"Pygame"
-],
-"body": "Inspired by the classic C++/OpenGL project, I wanted to build a Python and Pygame port of Conway Invaders — an arcade shooter where the enemy fleet isn't made of pre-scripted sprites, but living patterns governed by John Conway's Game of Life.\n\nThe core loop shifts the feel of traditional Space Invaders. Every enemy wave evolves generation-by-generation in real time according to standard B3/S23 Conway rules. When you fire at an invader, your shots don't just reduce a health bar; they directly flip active cells to inactive. A single hit can disrupt an enemy cluster, causing it to decay into static blocks, collapse, or unpredictably split into moving gliders.\n\nThe centerpiece of the implementation is the dynamic boss fight. Instead of giving the boss a standard numerical HP bar, its health is tied directly to its live active cell count. If you don't sustain continuous damage, the pattern's cellular rules allow it to naturally regenerate lost sections during the fight.\n\nTo keep gameplay responsive, I included a 5-shot spread weapon mapped to the `X` key, specifically meant for tearing wide gaps in dense cellular formations before they expand toward your ship. Once the main campaign is cleared, the game opens up post-game modes, including a boss reset challenge and an endless sandbox mode for experimenting with rule interactions. The result is a shooter where you're constantly trying to contain or collapse living grid patterns that evolve under fire."
-},
-{
-"id": "P7",
-"active": false,
-"slug": "vae-mineral-anomaly",
-"name": "Multi-Architecture Autoencoders for Geological Anomaly Detection",
-"title": "Multi-Architecture Autoencoders for Geological Anomaly Detection",
-"description": "An end-to-end PyTorch framework running 10+ Autoencoder architectures to detect high-probability mineral deposit zones evaluated against real mine location shapefiles.",
-"date": "Jul 05, 2026",
-"link": "https://github.com/parsany/anomaly-VAE",
-"tags": [
-"PyTorch",
-"Geospatial"
-],
-"body": "In mineral exploration, spotting high-probability targets like Gold Porphyry from geochemical and geophysical survey maps is essentially an unsupervised anomaly problem. Most of a survey area consists of ordinary background rock, while the valuable mineral deposits appear as tiny, localized structural or compositional anomalies.\n\nInstead of picking a single autoencoder design and hoping for the best, I built an end-to-end deep learning framework in PyTorch that trains 10+ autoencoder architectures in sequence, outputs normalized TIFF anomaly heatmaps, and automatically ranks their performance.\n\nThe framework covers a broad spectrum of models. On the baseline side, it evaluates standard, Convolutional (CAE), and ResNet-CAE architectures for spatial feature extraction. For probabilistic modeling, it runs Variational Autoencoders (VAE) and Beta-VAEs. To handle noise and perceptual consistency, it incorporates SSIM, Denoising, Masked, Contractive, and Sparse Autoencoders.\n\n```bash\n# Train all 10+ models and dump output TIFF heatmaps\npython run_pipeline.py\n\n# Benchmark heatmaps against known ground-truth mine shapefiles (.shp)\npython evaluate_results.py\n```\n\nTo figure out which architecture actually provides value on the ground, `evaluate_results.py` overlays generated heatmaps with shapefiles (`.shp`) of known deposit locations to compute AUC-ROC scores. This converts raw reconstruction errors into an objective ranking chart, giving geologists a clear, data-driven way to see which models best isolate real mineral targets and shortlist which core sections are worth sending to the lab."
-}
+  {
+    "id": "P5",
+    "active": false,
+    "slug": "cat-cnn",
+    "name": "Cat Emotion Classification with ConvNeXt-Large",
+    "title": "Iterating from 26% to High Accuracy: Cat Emotion Classification with ConvNeXt-Large",
+    "description": "How I evolved a cat mood classifier from a struggling 26% baseline custom CNN into a fine-tuned ConvNeXt-Large pipeline using modern training techniques.",
+    "date": "Jun 18, 2026",
+    "link": "https://github.com/parsany/CatRecognition",
+    "tags": [
+      "PyTorch",
+      "Computer Vision"
+    ],
+    "body": "Classifying feline emotions from web images sounds straightforward until you start looking at the data. Unlike human face datasets where landmarks are obvious, cat mood signals are subtle — a slight drop in the ear, a slight squint, or tense whiskers. Simple architectures tend to fail fast because they end up memorizing background textures instead of learning facial geometry.\n\nWhen I first started testing on the Roboflow Cat Emotions dataset, I threw a small custom CNN with residual connections at the problem. It plateaued at a painful ~26% validation accuracy. It was clear the model lacked both capacity and pre-trained visual primitives. Upgrading to a standard pre-trained ResNet-50 and unfreezing all layers jumped performance straight to ~60%, proving that transfer learning was non-negotiable here.\n\nTo push things further, I switched the backbone to ConvNeXt-Large. But switching the architecture was only half the battle. What actually closed the generalization gap was dialing in the training stack.\n\nI added `TrivialAugmentWide` for parameter-free data augmentation, which stopped the model from over-indexing on specific lighting conditions. Pairing AdamW with a cosine annealing schedule let the learning rate settle smoothly into local minima, while label smoothing (0.1) kept cross-entropy loss from making the predictions over-confident. Finally, running with Automatic Mixed Precision (AMP) made it possible to train a backbone this size on an 8GB VRAM GPU without spilling memory, while gradient clipping kept training stable.\n\nCombined, these adjustments transformed the project from an overfitted experiment into a usable model that accurately classifies emotions on unfamiliar cat photos instead of just memorizing the training set."
+  },
+  {
+    "id": "P6",
+    "active": false,
+    "slug": "conway-CAU",
+    "name": "Conway Invaders: Building Space Invaders with Cellular Automata",
+    "title": "Conway Invaders: Replacing Scripted Space Invaders with Cellular Automata",
+    "description": "A Python & Pygame port and expansion of Conway Invaders, replacing standard enemy sprites with self-evolving cell grids and a dynamic, regenerating boss.",
+    "date": "Jun 29, 2026",
+    "link": "https://github.com/parsany/Conway-game-of-life-invaders",
+    "tags": [
+      "Python",
+      "Pygame"
+    ],
+    "body": "Inspired by the classic C++/OpenGL project, I wanted to build a Python and Pygame port of Conway Invaders — an arcade shooter where the enemy fleet isn't made of pre-scripted sprites, but living patterns governed by John Conway's Game of Life.\n\nThe core loop shifts the feel of traditional Space Invaders. Every enemy wave evolves generation-by-generation in real time according to standard B3/S23 Conway rules. When you fire at an invader, your shots don't just reduce a health bar; they directly flip active cells to inactive. A single hit can disrupt an enemy cluster, causing it to decay into static blocks, collapse, or unpredictably split into moving gliders.\n\nThe centerpiece of the implementation is the dynamic boss fight. Instead of giving the boss a standard numerical HP bar, its health is tied directly to its live active cell count. If you don't sustain continuous damage, the pattern's cellular rules allow it to naturally regenerate lost sections during the fight.\n\nTo keep gameplay responsive, I included a 5-shot spread weapon mapped to the `X` key, specifically meant for tearing wide gaps in dense cellular formations before they expand toward your ship. Once the main campaign is cleared, the game opens up post-game modes, including a boss reset challenge and an endless sandbox mode for experimenting with rule interactions. The result is a shooter where you're constantly trying to contain or collapse living grid patterns that evolve under fire."
+  },
+  {
+    "id": "P7",
+    "active": false,
+    "slug": "vae-mineral-anomaly",
+    "name": "Multi-Architecture Autoencoders for Geological Anomaly Detection",
+    "title": "Multi-Architecture Autoencoders for Geological Anomaly Detection",
+    "description": "An end-to-end PyTorch framework running 10+ Autoencoder architectures to detect high-probability mineral deposit zones evaluated against real mine location shapefiles.",
+    "date": "Jul 05, 2026",
+    "link": "https://github.com/parsany/anomaly-VAE",
+    "tags": [
+      "PyTorch",
+      "Geospatial"
+    ],
+    "body": "In mineral exploration, spotting high-probability targets like Gold Porphyry from geochemical and geophysical survey maps is essentially an unsupervised anomaly problem. Most of a survey area consists of ordinary background rock, while the valuable mineral deposits appear as tiny, localized structural or compositional anomalies.\n\nInstead of picking a single autoencoder design and hoping for the best, I built an end-to-end deep learning framework in PyTorch that trains 10+ autoencoder architectures in sequence, outputs normalized TIFF anomaly heatmaps, and automatically ranks their performance.\n\nThe framework covers a broad spectrum of models. On the baseline side, it evaluates standard, Convolutional (CAE), and ResNet-CAE architectures for spatial feature extraction. For probabilistic modeling, it runs Variational Autoencoders (VAE) and Beta-VAEs. To handle noise and perceptual consistency, it incorporates SSIM, Denoising, Masked, Contractive, and Sparse Autoencoders.\n\n```bash\n# Train all 10+ models and dump output TIFF heatmaps\npython run_pipeline.py\n\n# Benchmark heatmaps against known ground-truth mine shapefiles (.shp)\npython evaluate_results.py\n```\n\nTo figure out which architecture actually provides value on the ground, `evaluate_results.py` overlays generated heatmaps with shapefiles (`.shp`) of known deposit locations to compute AUC-ROC scores. This converts raw reconstruction errors into an objective ranking chart, giving geologists a clear, data-driven way to see which models best isolate real mineral targets and shortlist which core sections are worth sending to the lab."
+  }
 ]
