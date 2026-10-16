@@ -27,6 +27,9 @@ export default function AboutClient() {
           <p className="text-theme-secondary text-sm md:text-base leading-relaxed">
             {t.about.pageIntro}
           </p>
+          <p className="text-theme-secondary text-sm md:text-base leading-relaxed">
+            {t.about.previewTextInfrastructure}
+          </p>
         </div>
 
         <div className="flex justify-center md:justify-end pt-2 md:pt-0">

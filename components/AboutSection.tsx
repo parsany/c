@@ -16,6 +16,9 @@ export default function AboutSection() {
           {t.about.previewText1}
         </p>
         <p>
+          {t.about.previewTextInfrastructure}
+        </p>
+        <p>
           {t.about.previewText2}
         </p>
         <div className="pt-2">

@@ -56,6 +56,8 @@ export const en = {
     title: "About Me",
     previewText1:
       "I build things for the web. On the product side, I've shipped real-time chat systems, ride-sharing applications, and e-commerce platforms. On the side, I tinker with Linux, writing PyTorch models, and open-source tooling — mostly because I find them interesting.",
+    previewTextInfrastructure:
+      "Beyond writing code, I run what I build. At Codesheen I configured and maintained a Linux production server hosting six Dockerized applications behind an Nginx reverse proxy, with SSL/TLS certificates and DNS records for our domains, and I handled day-to-day IT for the team's workstations and office network. That end-to-end ownership, from backend and deployment through to keeping services running, is the part of the work I enjoy most, and I'm now looking to move deeper into systems administration and infrastructure.",
     previewText2:
       "I write TypeScript, prefer boring and correct over clever and broken, and I like working on projects where the code directly affects how something feels to use.",
     moreAboutMe: "More about me",
