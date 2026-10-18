@@ -316,6 +316,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
       { label: "Web Application (mobile)", url: "https://gbat.parsany.com/auth/signin" },
       { label: "Dashboard Demo (desktop)", url: "https://gdash.parsany.com/" },
       { label: "Main Website (down)", url: "https://app.goldengps.ir/" },
+      { label: "Каталог Продукции (PDF)", url: "/catalog/goldenbat.pdf" },
     ],
     role: "Frontend-разработчик",
     text: `# Goldenbat GPS Tracking\n\nРазработано за 5 месяцев в команде. Создал лендинг, мобильное PWA и участвовал в разработке интерфейса дашборда флота (Next.js), включая геозоны и уведомления. Бэкенд обрабатывает более 10 000 обновлений GPS в минуту с минимальной задержкой.\n\n- **Роль**: Frontend-разработчик\n- **Период**: Сен 2024 – Янв 2025\n- **Стек**: Next.js, tRPC, PostgreSQL`,
@@ -350,6 +351,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
     links: [
       { label: "Main Website", url: "https://app.alzahragold.com/" },
       { label: "Live Demo (desktop)", url: "https://az.parsany.com/landing" },
+      { label: "Каталог Продукции (PDF)", url: "/catalog/alzahra.pdf" },
     ],
     role: "Frontend-разработчик",
     text: `# Alzahra Gold Wholesaler B2B Platform\n\nРазработано за 1,5 месяца в команде. B2B-платформа для оптовых покупателей золота. Разработал посадочную страницу с результатом Lighthouse 99 и внес вклад в панель покупателя.\n\n- **Роль**: Frontend-разработчик\n- **Период**: Март 2024 – Апр 2024\n- **Стек**: Next.js, Tailwind CSS (бэкенд: Django REST)`,

@@ -316,6 +316,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
       { label: "Web Application (mobile)", url: "https://gbat.parsany.com/auth/signin" },
       { label: "Dashboard Demo (desktop)", url: "https://gdash.parsany.com/" },
       { label: "Main Website (down)", url: "https://app.goldengps.ir/" },
+      { label: "Ապրանքների Կատալոգ (PDF)", url: "/catalog/goldenbat.pdf" },
     ],
     role: "Frontend ծրագրավորող",
     text: `# Goldenbat GPS Tracking\n\nՍտեղծվել է 5 ամսում՝ թիմի հետ համատեղ: Ստեղծել եմ լենդինգ էջը, PWA հավելվածը և նպաստել Next.js վահանակի զարգացմանը՝ ներառյալ գեոֆենսինգը և ծանուցումները:\n\n- **Դեր**: Frontend ծրագրավորող\n- **Ժամանակացույց**: Սեպտեմբեր 2024 – Հունվար 2025\n- **Տեխնոլոգիաներ**: Next.js, tRPC, PostgreSQL`,
@@ -350,6 +351,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
     links: [
       { label: "Main Website", url: "https://app.alzahragold.com/" },
       { label: "Live Demo (desktop)", url: "https://az.parsany.com/landing" },
+      { label: "Ապրանքների Կատալոգ (PDF)", url: "/catalog/alzahra.pdf" },
     ],
     role: "Frontend ծրագրավորող",
     text: `# Alzahra Gold Wholesaler B2B Platform\n\nՍտեղծվել է 1.5 ամսում՝ թիմի հետ համատեղ: B2B հարթակ ոսկու մեծածախ գնորդների համար: Ստեղծել եմ լենդինգ էջը (Lighthouse գնահատականը՝ 99) և գնորդների վահանակը:\n\n- **Դեր**: Frontend ծրագրավորող\n- **Ժամանակացույց**: Մարտ 2024 – Ապրիլ 2024\n- **Տեխնոլոգիաներ**: Next.js, Tailwind CSS`,

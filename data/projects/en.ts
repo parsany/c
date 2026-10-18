@@ -321,6 +321,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
       { label: "Web Application (mobile)", url: "https://gbat.parsany.com/auth/signin" },
       { label: "Dashboard Demo (desktop)", url: "https://gdash.parsany.com/" },
       { label: "Main Website (down)", url: "https://app.goldengps.ir/" },
+      { label: "Product Catalogue (PDF)", url: "/catalog/goldenbat.pdf" },
     ],
     role: "Frontend Developer",
     keyOutcomes: [
@@ -356,6 +357,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
     links: [
       { label: "Main Website", url: "https://app.alzahragold.com/" },
       { label: "Live Demo (desktop)", url: "https://az.parsany.com/landing" },
+      { label: "Product Catalogue (PDF)", url: "/catalog/alzahra.pdf" },
     ],
     role: "Frontend Developer",
     keyOutcomes: [
