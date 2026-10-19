@@ -186,7 +186,7 @@ function ProjectCard({
           <div className="space-y-2">
             <div className="flex items-center justify-between gap-1.5 pt-0.5">
               <span className="text-[11px] font-mono uppercase tracking-wider text-theme-accent font-bold px-2 py-0.5 rounded bg-theme-accentLight border border-theme-border">
-                {category || t.projects.catWeb}
+                {category || t.projects.catEnterprise}
               </span>
             </div>
 
@@ -418,47 +418,46 @@ export default function ProjectList() {
   const professionalProjects = [...ProjectProfessional].sort((a, b) => b.id - a.id);
   const academicProjects = [...ProjectAcademic].sort((a, b) => b.id - a.id);
 
-  const getProjectCategoryGroup = (p: ProfessionalProject): string => {
+  const projectMatchesCategory = (p: ProfessionalProject, catId: string): boolean => {
+    if (catId === "all") return true;
     const slug = p.slug;
-    if (["charbag", "himeh", "alzahra", "msk"].includes(slug)) return "web";
-    if (["k2n-solutions", "esp"].includes(slug)) return "optimization";
-    if (["goldenbat", "atrafian", "taxiland"].includes(slug)) return "realtime";
-    if (["project-luna", "edu-platform"].includes(slug)) return "enterprise";
-
-    const cat = (p.category || "").toLowerCase();
-    if (cat.includes("optimization") || cat.includes("rebuild") || cat.includes("օպտիմիզացիա")) return "optimization";
-    if (cat.includes("real-time") || cat.includes("iot") || cat.includes("dispatch") || cat.includes("реального времени") || cat.includes("ժամանակի")) return "realtime";
-    if (cat.includes("enterprise") || cat.includes("academic") || cat.includes("portal") || cat.includes("корпоративная") || cat.includes("կորպորատիվ")) return "enterprise";
-    return "web";
+    if (catId === "enterprise") {
+      return (
+        ["project-luna", "alzahra", "msk", "esp", "goldenbat", "edu-platform"].includes(slug) ||
+        (p.category || "").toLowerCase().includes("enterprise") ||
+        (p.category || "").toLowerCase().includes("корпоратив") ||
+        (p.category || "").toLowerCase().includes("կորպորատիվ")
+      );
+    }
+    if (catId === "realtime") {
+      return (
+        ["atrafian", "goldenbat", "taxiland"].includes(slug) ||
+        (p.category || "").toLowerCase().includes("real-time") ||
+        (p.category || "").toLowerCase().includes("реального времени") ||
+        (p.category || "").toLowerCase().includes("ժամանակի") ||
+        (p.category || "").toLowerCase().includes("dispatch") ||
+        (p.category || "").toLowerCase().includes("диспетчер")
+      );
+    }
+    return false;
   };
 
   const categories = [
     { id: "all", label: t.projects.catAll || "All Work", count: professionalProjects.length },
     {
-      id: "web",
-      label: t.projects.catWeb || "Website Development",
-      count: professionalProjects.filter((p) => getProjectCategoryGroup(p) === "web").length,
-    },
-    {
-      id: "optimization",
-      label: t.projects.catOptimization || "Optimization & Performance",
-      count: professionalProjects.filter((p) => getProjectCategoryGroup(p) === "optimization").length,
+      id: "enterprise",
+      label: t.projects.catEnterprise || "Enterprise Platforms",
+      count: professionalProjects.filter((p) => projectMatchesCategory(p, "enterprise")).length,
     },
     {
       id: "realtime",
       label: t.projects.catRealtime || "Real-Time & Systems",
-      count: professionalProjects.filter((p) => getProjectCategoryGroup(p) === "realtime").length,
-    },
-    {
-      id: "enterprise",
-      label: t.projects.catEnterprise || "Enterprise Platforms",
-      count: professionalProjects.filter((p) => getProjectCategoryGroup(p) === "enterprise").length,
+      count: professionalProjects.filter((p) => projectMatchesCategory(p, "realtime")).length,
     },
   ];
 
   const filteredProfessionalProjects = professionalProjects.filter((p) => {
-    if (selectedCategory === "all") return true;
-    return getProjectCategoryGroup(p) === selectedCategory;
+    return projectMatchesCategory(p, selectedCategory);
   });
 
   const displayedProfessionalProjects =

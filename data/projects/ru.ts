@@ -108,7 +108,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
     id: 8,
     slug: "k2n-solutions",
     name: "K2N Solutions Inc.",
-    category: "Оптимизация и ребилд",
+    category: "Инженерная веб-платформа",
     keyOutcomes: [
       "**100/100 Core Web Vitals:** Статический экспорт Next.js с мгновенной загрузкой",
       "**Управление без пересборки:** Быстрое обновление контента через cPanel",
@@ -142,7 +142,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
     id: 9,
     slug: "esp",
     name: "Battery ESP/MSK E-Commerce",
-    category: "E-Commerce и бэкенд",
+    category: "Корпоративная платформа",
     keyOutcomes: [
       "**Единый бэкенд:** Один сервис NestJS для двух брендовых витрин",
       "**Гарантийный сервис:** Автоматическая валидация по серийным номерам",
@@ -182,7 +182,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
     id: 6,
     slug: "msk",
     name: "Battery MSK Клиентский Сайт",
-    category: "Веб-разработка",
+    category: "Корпоративная платформа",
     keyOutcomes: [
       "**1:1 соответствие макету:** Двуязычная витрина с токенами Turborepo",
       "**Мгновенная проверка:** Поиск гарантии по серийному номеру для EN и FA",
@@ -276,7 +276,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
     id: 11,
     slug: "goldenbat",
     name: "Goldenbat GPS Мониторинг",
-    category: "IoT-дашборды и системы",
+    category: "Корпоративная платформа",
     keyOutcomes: [
       "**10 000+ точек/мин:** Телеметрия IoT с субсекундным рендерингом Mapbox",
       "**Геозоны флота:** Динамические маршруты и автоматические оповещения",
@@ -325,7 +325,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
     id: 7,
     slug: "alzahra",
     name: "B2B Платформа Оптовой Торговли Золотом Alzahra",
-    category: "B2B веб-разработка",
+    category: "Корпоративная платформа",
     keyOutcomes: [
       "**99 баллов Lighthouse:** Оптимизированный B2B-портал оптовых сделок",
       "**Рыночные котировки:** Многоэтапная покупка с интеграцией в Django REST",
@@ -429,7 +429,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
     id: 2,
     slug: "charbag",
     name: "Керамическая студия Charbag",
-    category: "Веб-разработка",
+    category: "Витрина бренда",
     keyOutcomes: [
       "**Высокая скорость:** Быстрый статический рендеринг каталога керамики",
       "**Адаптивная галерея:** Удобный просмотр коллекций на смартфонах",

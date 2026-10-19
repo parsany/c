@@ -112,7 +112,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
     id: 8,
     slug: "k2n-solutions",
     name: "K2N Solutions Inc.",
-    category: "Optimization & Rebuild",
+    category: "Engineering Web Platform",
     serviceHeadline: "High-Performance Engineering Web Platform",
     description:
       "High-performance static website for an electrical engineering and consulting firm, rebuilt from WordPress for speed, clarity, and professional presence.",
@@ -125,7 +125,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
       "/professional/k2ninc/services.webp",
       "/professional/k2ninc/mobile-carousel.webp",
     ],
-    tag: ["Next.js", "Tailwind CSS", "cPanel", "Performance"],
+    tag: ["Next.js", "Tailwind CSS", "cPanel"],
     isactive: true,
     isLive: true,
     noindex: true,
@@ -147,7 +147,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
     id: 9,
     slug: "esp",
     name: "Battery ESP/MSK E-Commerce",
-    category: "E-Commerce & Backend",
+    category: "Enterprise Platform",
     serviceHeadline: "Dual-Brand Storefront & Warranty Validation Engine",
     description:
       "Full e-commerce platform with dual-language support, warranty lookup by serial number, and an internal admin panel.",
@@ -188,7 +188,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
     id: 6,
     slug: "msk",
     name: "Battery MSK Client Website",
-    category: "Website Development",
+    category: "Enterprise Platform",
     serviceHeadline: "Client Storefront & Multi-Language Warranty Portal",
     description:
       "Client-facing website and internal admin panel with dual-language support and a serial-number warranty validation system.",
@@ -284,7 +284,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
     id: 11,
     slug: "goldenbat",
     name: "Goldenbat GPS Tracking",
-    category: "IoT Dashboard & Systems",
+    category: "Enterprise Platform",
     serviceHeadline: "Real-Time Fleet Telemetry & Geofencing Dashboard",
     description:
       "Live vehicle tracking dashboard. Ingests GPS coordinates from IoT hardware and shows real-time routes on a map.",
@@ -334,7 +334,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
     id: 7,
     slug: "alzahra",
     name: "Alzahra Gold Wholesaler B2B Platform",
-    category: "B2B Web Development",
+    category: "Enterprise Platform",
     serviceHeadline: "Wholesale Bullion Transaction & Pricing Portal",
     description:
       "Frontend B2B panel for a gold wholesaler, integrated with a Django REST API for transaction management.",
@@ -441,7 +441,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
     id: 2,
     slug: "charbag",
     name: "Charbag Ceramic Studio",
-    category: "Website Development",
+    category: "Brand Showcase",
     serviceHeadline: "Boutique Ceramic Studio Showcase",
     description:
       "Landing for a local ceramics studio for catalog.",

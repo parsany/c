@@ -108,7 +108,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
     id: 8,
     slug: "k2n-solutions",
     name: "K2N Solutions Inc.",
-    category: "Օպտիմիզացիա և վերակառուցում",
+    category: "Ինժեներական վեբ հարթակ",
     keyOutcomes: [
       "**100/100 Core Web Vitals:** Next.js ստատիկ արտահանում ենթավայրկյանական արագությամբ",
       "**Առանց վերակառուցման CMS:** Պատկերների արագ թարմացում cPanel-ի միջոցով",
@@ -142,7 +142,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
     id: 9,
     slug: "esp",
     name: "Battery ESP/MSK Էլեկտրոնային Առևտուր",
-    category: "Էլեկտրոնային առևտուր և բեքենդ",
+    category: "Կորպորատիվ հարթակ",
     keyOutcomes: [
       "**Միասնական բեքենդ:** Մեկ NestJS շարժիչ երկու ապրանքանիշերի համար",
       "**Երաշխիքային համակարգ:** Սերիական համարների ավտոմատ ստուգում",
@@ -182,7 +182,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
     id: 6,
     slug: "msk",
     name: "Battery MSK Կայք",
-    category: "Վեբ մշակում",
+    category: "Կորպորատիվ հարթակ",
     keyOutcomes: [
       "**1:1 դիզայնի ճշգրտություն:** Երկլեզու վիտրինա Turborepo թոքեններով",
       "**Արագ ստուգում:** Երաշխիքի ստուգում սերիական համարով EN և FA լեզուներով",
@@ -276,7 +276,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
     id: 11,
     slug: "goldenbat",
     name: "Goldenbat GPS Հետևում",
-    category: "IoT վահանակներ և համակարգեր",
+    category: "Կորպորատիվ հարթակ",
     keyOutcomes: [
       "**10,000+ թարմացում/րոպե:** IoT տելեմետրիա Mapbox-ի արագ արտապատկերմամբ",
       "**Ֆլոտի գեոզոնաներ:** Դինամիկ երթուղիներ և ավտոմատ ծանուցումներ",
@@ -325,7 +325,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
     id: 7,
     slug: "alzahra",
     name: "Alzahra Ոսկու Մեծածախ B2B Հարթակ",
-    category: "B2B վեբ մշակում",
+    category: "Կորպորատիվ հարթակ",
     keyOutcomes: [
       "**99 Lighthouse միավոր:** Օպտիմիզացված B2B պորտալ մեծածախ գործարքների համար",
       "**Շուկայական գներ:** Բազմափուլ գնումներ Django REST ինտեգրմամբ",
@@ -429,7 +429,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
     id: 2,
     slug: "charbag",
     name: "Charbag Կերամիկայի Ստուդիա",
-    category: "Վեբ մշակում",
+    category: "Բրենդի ցուցափեղկ",
     keyOutcomes: [
       "**Բարձր արագություն:** Ստատիկ արագ արտապատկերում կերամիկայի կատալոգի համար",
       "**Հարմարեցված պատկերասրահ:** Կոլեկցիաների հարմար դիտում սմարթֆոններով",
