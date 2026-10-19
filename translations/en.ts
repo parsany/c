@@ -35,7 +35,7 @@ export const en = {
   projects: {
     title: "Featured Work",
     subtitle: "Selected projects, live applications and codebases.",
-    tabProjects: "Projects",
+    tabProjects: "Products",
     tabAcademic: "R&D & Experiments",
     wannaPlay: "[wanna play a game?]",
     openProject: "Open project details",

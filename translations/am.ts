@@ -35,7 +35,7 @@ export const am = {
   projects: {
     title: "Ընտրված նախագծեր",
     subtitle: "Առանձնացված նախագծեր, աշխատող հավելվածներ և կոդային բազաներ:",
-    tabProjects: "Նախագծեր",
+    tabProjects: "Պրոդուկտներ",
     tabAcademic: "R&D և Փորձարկումներ",
     wannaPlay: "[ուզո՞ւմ ես խաղալ]",
     openProject: "Բացել նախագծի մանրամասները",

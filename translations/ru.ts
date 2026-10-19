@@ -35,7 +35,7 @@ export const ru = {
   projects: {
     title: "Избранные проекты",
     subtitle: "Отобранные проекты, готовые приложения и кодовые базы.",
-    tabProjects: "Проекты",
+    tabProjects: "Продукты",
     tabAcademic: "R&D и Эксперименты",
     wannaPlay: "[хочешь сыграть?]",
     openProject: "Открыть детали проекта",
