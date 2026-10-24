@@ -80,11 +80,11 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       subtitle: t.cv.primaryRoleSubtitle,
       category: "resumes",
       icon: <Code2 className="h-4 w-4" />,
-      href: "/Full_stack_parsa_niavand.pdf",
+      href: "/CV.pdf",
       keywords: ["resume", "cv", "fullstack", "full stack", "full-stack", "software engineer", "developer", "pdf"],
       action: () => {
         handleClose();
-        window.open("/Full_stack_parsa_niavand.pdf", "_blank");
+        window.open("/CV.pdf", "_blank");
       },
     },
     {

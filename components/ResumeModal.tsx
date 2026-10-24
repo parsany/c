@@ -100,7 +100,7 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
 
             <div className="space-y-1">
               <a
-                href="/Full_stack_parsa_niavand.pdf"
+                href="/CV.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 data-no-modal="true"

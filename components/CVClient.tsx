@@ -43,7 +43,7 @@ export default function CVClient() {
 
             <div className="flex items-center space-x-3 shrink-0">
               <a
-                href="/Full_stack_parsa_niavand.pdf"
+                href="/CV.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 data-no-modal="true"
@@ -53,8 +53,8 @@ export default function CVClient() {
                 <ArrowRight className="h-3 w-3" />
               </a>
               <a
-                href="/Full_stack_parsa_niavand.pdf"
-                download="Full_stack_parsa_niavand.pdf"
+                href="/CV.pdf"
+                download="CV.pdf"
                 data-no-modal="true"
                 className="inline-flex items-center space-x-1 px-3.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-white font-mono font-bold text-xs transition-colors cursor-pointer"
               >

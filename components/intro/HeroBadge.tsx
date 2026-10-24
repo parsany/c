@@ -18,7 +18,7 @@ export default function HeroBadge({ allEaten, onStartGame }: HeroBadgeProps) {
 
         {allEaten && (
           <a
-            href="/Full_stack_parsa_niavand.pdf"
+            href="/CV.pdf"
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => {

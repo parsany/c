@@ -95,7 +95,7 @@ export default function AboutClient() {
           &larr; {t.common.backToHome}
         </Link>
         <a
-          href="/Full_stack_parsa_niavand.pdf"
+          href="/CV.pdf"
           target="_blank"
           rel="noopener noreferrer"
           onClick={(e) => {
