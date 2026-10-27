@@ -35,11 +35,12 @@ function getLocaleSnapshot(): Locale {
   const localLocale = typeof localStorage !== "undefined" ? (localStorage.getItem("site_locale") as Locale | null) : null;
   const saved = cookieLocale || localLocale;
 
-  if (saved === "en" || saved === "ru" || saved === "am") {
+  if (saved === "en" || saved === "ru" || saved === "am" || saved === "de") {
     return saved;
   }
 
   const navLang = (navigator.language || "").toLowerCase();
+  if (navLang.startsWith("de")) return "de";
   if (navLang.startsWith("ru")) return "ru";
   if (navLang.startsWith("hy") || navLang.startsWith("am")) return "am";
   return "en";

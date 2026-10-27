@@ -22,7 +22,8 @@ export default function BlogArchive() {
 
   const formatDate = (dateStr: string) => {
     const d = new Date(dateStr);
-    const dateLocale = locale === "ru" ? "ru-RU" : locale === "am" ? "hy-AM" : "en-US";
+    const dateLocale =
+      locale === "ru" ? "ru-RU" : locale === "am" ? "hy-AM" : locale === "de" ? "de-DE" : "en-US";
     return d.toLocaleDateString(dateLocale, {
       year: "numeric",
       month: "short",

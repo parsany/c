@@ -215,10 +215,13 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
     }
     const d = new Date(dateStr);
     if (isNaN(d.getTime())) return dateStr;
-    return d.toLocaleDateString(locale === "ru" ? "ru-RU" : locale === "am" ? "hy-AM" : "en-US", {
-      year: "numeric",
-      month: "long",
-    });
+    return d.toLocaleDateString(
+      locale === "ru" ? "ru-RU" : locale === "am" ? "hy-AM" : locale === "de" ? "de-DE" : "en-US",
+      {
+        year: "numeric",
+        month: "long",
+      }
+    );
   };
 
   useEffect(() => {

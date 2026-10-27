@@ -21,6 +21,7 @@ export const ru = {
     english: "English",
     russian: "Русский",
     armenian: "Հայերեն",
+    german: "Немецкий",
   },
   hero: {
     badge: "Открыт для удаленной работы и релокации",
@@ -176,5 +177,7 @@ export const ru = {
     langRuSub: "Переключить сайт на русский язык",
     langAm: "Հայերեն (Armenian)",
     langAmSub: "Կայքի լեզուն փոխել հայերենի",
+    langDe: "Deutsch (German)",
+    langDeSub: "Переключить сайт на немецкий язык",
   },
 };

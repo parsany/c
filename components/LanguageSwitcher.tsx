@@ -64,9 +64,25 @@ export function FlagAm({ className = "w-4.5 h-3" }: { className?: string }) {
   );
 }
 
+export function FlagDe({ className = "w-4.5 h-3" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 60 30"
+      className={`${className} rounded-[2px] overflow-hidden shrink-0`}
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <rect width="60" height="10" y="0" fill="#000000" />
+      <rect width="60" height="10" y="10" fill="#DD0000" />
+      <rect width="60" height="10" y="20" fill="#FFCE00" />
+    </svg>
+  );
+}
+
 export function FlagIcon({ locale, className }: { locale: Locale; className?: string }) {
   if (locale === "ru") return <FlagRu className={className} />;
   if (locale === "am") return <FlagAm className={className} />;
+  if (locale === "de") return <FlagDe className={className} />;
   return <FlagEn className={className} />;
 }
 

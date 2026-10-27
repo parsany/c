@@ -2,6 +2,7 @@ import { Locale } from "@/translations";
 import * as enProjects from "./en";
 import * as ruProjects from "./ru";
 import * as amProjects from "./am";
+import * as deProjects from "./de";
 import { AcademicProject, ProfessionalProject } from "./types";
 
 export * from "./types";
@@ -16,6 +17,7 @@ export const projectsByLocale: Record<
   en: enProjects,
   ru: ruProjects,
   am: amProjects,
+  de: deProjects,
 };
 
 export const ProjectAcademic = enProjects.ProjectAcademic;

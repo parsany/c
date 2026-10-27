@@ -21,6 +21,7 @@ export const am = {
     english: "English",
     russian: "Русский",
     armenian: "Հայերեն",
+    german: "Գերմաներեն",
   },
   hero: {
     badge: "Բաց եմ հեռավար աշխատանքի և տեղափոխման համար",
@@ -177,5 +178,7 @@ export const am = {
     langRuSub: "Переключить сайт на русский язык",
     langAm: "Հայերեն (Armenian)",
     langAmSub: "Կայքի լեզուն փոխել հայերենի",
+    langDe: "Deutsch (German)",
+    langDeSub: "Կայքի լեզուն փոխել գերմաներենի",
   },
 };

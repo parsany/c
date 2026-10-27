@@ -317,6 +317,15 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       keywords: ["language", "locale", "armenian", "am", "հայերեն"],
       action: () => handleLanguageChange("am"),
     },
+    {
+      id: "lang-de",
+      title: t.commandMenu.langDe,
+      subtitle: t.commandMenu.langDeSub,
+      category: "language",
+      icon: <FlagIcon locale="de" className="w-4 h-3 border border-black/10 dark:border-white/10" />,
+      keywords: ["language", "locale", "german", "de", "deutsch"],
+      action: () => handleLanguageChange("de"),
+    },
   ];
 
   const filteredCommands = commands.filter((cmd) => {

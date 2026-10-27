@@ -21,6 +21,7 @@ export const en = {
     english: "English",
     russian: "Russian",
     armenian: "Armenian",
+    german: "German",
   },
   hero: {
     badge: "Open to remote work & relocation",
@@ -177,5 +178,7 @@ export const en = {
     langRuSub: "Переключить сайт на русский язык",
     langAm: "Հայերեն (Armenian)",
     langAmSub: "Կայքի լեզուն փոխել հայերենի",
+    langDe: "Deutsch (German)",
+    langDeSub: "Switch website language to German",
   },
 };
