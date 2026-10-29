@@ -28,19 +28,19 @@ export default function ProjectCarousel({
 
   useEffect(() => {
     if (!isHovered || totalImages <= 1) {
-      if (timerRef.current) clearInterval(timerRef.current);
+      if (timerRef.current) clearTimeout(timerRef.current);
       return;
     }
 
-    timerRef.current = setInterval(() => {
+    timerRef.current = setTimeout(() => {
       setDirection(1);
       setIndex((prev) => (prev + 1) % totalImages);
     }, duration);
 
     return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
+      if (timerRef.current) clearTimeout(timerRef.current);
     };
-  }, [isHovered, totalImages]);
+  }, [isHovered, totalImages, index]);
 
   if (!images || totalImages === 0) {
     return <ImageFallback label="(Image will be uploaded)" />;
