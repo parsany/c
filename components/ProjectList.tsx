@@ -156,7 +156,7 @@ function ProjectCard({
         onMouseLeave={onMouseLeave}
       >
         <div className="space-y-4">
-          <div className="aspect-[2.1/1] w-full rounded-lg overflow-hidden border border-theme-border bg-theme-btnExploreBg relative z-10">
+          <div className="aspect-[16/10] w-full rounded-lg overflow-hidden border border-theme-border bg-theme-btnExploreBg relative z-10">
             {imagesList.length > 0 ? (
               slug ? (
                 <Link href={`/projects/${slug}`} prefetch={true} className="block w-full h-full">

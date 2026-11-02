@@ -230,9 +230,9 @@ export const ProjectProfessional: ProfessionalProject[] = [
     description:
       "Echtzeit-Chat-App mit nativer mobiler Distribution. WebSockets für Messaging, Redis für Caching und eine maßgeschneiderte Radar-Entdeckungskarte.",
     date: "Jan 2026 – Mar 2026",
-    image: "/professional/atrafian/im0.webp",
+    image: "/professional/atrafian/im13.webp",
     project_image: [
-      "/professional/atrafian/im0.webp",
+      "/professional/atrafian/im13.webp",
       "/professional/atrafian/im1.webp",
       "/professional/atrafian/im2.webp",
       "/professional/atrafian/im3.webp",
@@ -245,7 +245,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
       "/professional/atrafian/im10.webp",
       "/professional/atrafian/im11.webp",
       "/professional/atrafian/im12.webp",
-      "/professional/atrafian/im13.webp",
+      "/professional/atrafian/im0.webp",
     ],
     tag: [
       "NestJS",

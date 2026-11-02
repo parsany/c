@@ -226,9 +226,9 @@ export const ProjectProfessional: ProfessionalProject[] = [
     description:
       "Իրական ժամանակի չաթ հավելված բջջային տարբերակով: WebSockets հաղորդագրությունների համար, Redis քեշավորման համար և ռադարային քարտեզ:",
     date: "Jan 2026 – Mar 2026",
-    image: "/professional/atrafian/im0.webp",
+    image: "/professional/atrafian/im13.webp",
     project_image: [
-      "/professional/atrafian/im0.webp",
+      "/professional/atrafian/im13.webp",
       "/professional/atrafian/im1.webp",
       "/professional/atrafian/im2.webp",
       "/professional/atrafian/im3.webp",
@@ -241,7 +241,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
       "/professional/atrafian/im10.webp",
       "/professional/atrafian/im11.webp",
       "/professional/atrafian/im12.webp",
-      "/professional/atrafian/im13.webp",
+      "/professional/atrafian/im0.webp",
     ],
     tag: [
       "NestJS",

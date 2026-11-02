@@ -359,7 +359,7 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
                       draggable={false}
                       onDragStart={(e) => e.preventDefault()}
                       onError={() => setFailedImages((prev) => ({ ...prev, [activeIndex]: true }))}
-                      className="object-cover pointer-events-none"
+                      className="object-cover object-top pointer-events-none"
                     />
                   )}
                 </motion.div>

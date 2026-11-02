@@ -127,7 +127,7 @@ export default function ProjectCarousel({
               sizes="(max-width: 768px) 100vw, 50vw"
               priority={index === 0}
               onError={() => setFailedImages((prev) => ({ ...prev, [index]: true }))}
-              className="object-cover pointer-events-none"
+              className="object-cover object-top pointer-events-none"
             />
           )}
         </motion.div>
