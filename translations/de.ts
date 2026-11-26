@@ -24,7 +24,6 @@ export const de = {
     german: "Deutsch",
   },
   hero: {
-    badge: "Offen für Remote-Arbeit & Relocation",
     title: "Hi, ich bin Parsa",
     description:
       "Ich entwickle Full-Stack-Webanwendungen von Grund auf – von der Architektur über das Testing bis hin zum Deployment – vor allem mit TypeScript, Next.js und NestJS. Ich habe reale Produkte ausgeliefert, sowohl eigenverantwortlich als auch in Teams mit 7+ Entwicklern und Designern.",
