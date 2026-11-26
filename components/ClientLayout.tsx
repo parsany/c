@@ -1,14 +1,14 @@
 "use client";
 
 import "@/styles/globals.css";
-import { useState, useEffect, useSyncExternalStore } from "react";
+import { useState, useEffect, useRef, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import CommandMenu from "@/components/CommandMenu";
 import ResumeModal from "@/components/ResumeModal";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { LanguageProvider, useLanguage } from "@/context/LanguageContext";
-import { Sun, Moon, Search } from "lucide-react";
+import { Sun, Moon, Search, Menu, X } from "lucide-react";
 
 function getThemeSnapshot(): "light" | "dark" {
   if (typeof window === "undefined") return "dark";
@@ -37,9 +37,29 @@ function InnerLayout({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+  const mobileNavRef = useRef<HTMLDivElement>(null);
   const theme = useSyncExternalStore(subscribeTheme, getThemeSnapshot, getServerThemeSnapshot);
   const [transitioningTheme, setTransitioningTheme] = useState<"light" | "dark" | null>(null);
   const { t } = useLanguage();
+
+  useEffect(() => {
+    if (!isMobileNavOpen) return;
+    const handleClickOutside = (e: MouseEvent) => {
+      if (mobileNavRef.current && !mobileNavRef.current.contains(e.target as Node)) {
+        setIsMobileNavOpen(false);
+      }
+    };
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsMobileNavOpen(false);
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isMobileNavOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -135,7 +155,7 @@ function InnerLayout({ children }: { children: React.ReactNode }) {
             <div
               className={`pointer-events-auto mx-auto flex items-center justify-between gap-3 transition-all duration-300 ease-out ${
                 isScrolled
-                  ? "max-w-3xl h-12 px-4 sm:px-5 rounded-full backdrop-blur-xl bg-theme-bg/75 border border-theme-border/80 shadow-[0_8px_30px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.35)]"
+                  ? "max-w-4xl h-12 px-4 sm:px-5 rounded-full backdrop-blur-xl bg-theme-bg/75 border border-theme-border/80 shadow-[0_8px_30px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.35)]"
                   : "max-w-5xl h-16 px-4 sm:px-6 rounded-none bg-transparent border border-transparent"
               }`}
             >
@@ -146,7 +166,7 @@ function InnerLayout({ children }: { children: React.ReactNode }) {
                 parsa<span className="text-theme-accent">.</span>
               </Link>
 
-              <nav className="hidden md:flex items-center gap-5 text-xs font-mono" aria-label="Primary">
+              <nav className="hidden md:flex items-center gap-3.5 lg:gap-5 text-xs font-mono" aria-label="Primary">
                 {navLinks.map((item) => {
                   const isActive = pathname === item.match || pathname?.startsWith(`${item.match}/`);
                   return (
@@ -189,6 +209,52 @@ function InnerLayout({ children }: { children: React.ReactNode }) {
                     <Sun className="h-4 w-4" />
                   )}
                 </button>
+
+                {/* Mobile nav dropdown */}
+                <div className="relative md:hidden" ref={mobileNavRef}>
+                  <button
+                    type="button"
+                    onClick={() => setIsMobileNavOpen((prev) => !prev)}
+                    aria-haspopup="menu"
+                    aria-expanded={isMobileNavOpen}
+                    aria-label="Navigation menu"
+                    className="p-2 rounded-full bg-theme-btnExploreBg/80 hover:bg-theme-bg border border-theme-btnExploreBorder hover:border-theme-accent text-theme-btnExploreText hover:text-theme-text transition-all shadow-xs focus:outline-none cursor-pointer"
+                  >
+                    {isMobileNavOpen ? (
+                      <X className="h-4 w-4" />
+                    ) : (
+                      <Menu className="h-4 w-4" />
+                    )}
+                  </button>
+
+                  {isMobileNavOpen && (
+                    <nav
+                      aria-label="Mobile navigation"
+                      className="absolute right-0 mt-2 w-52 rounded-2xl bg-theme-panelBg/95 backdrop-blur-xl border border-theme-panelBorder shadow-xl py-1.5 z-50 font-mono text-xs"
+                    >
+                      {navLinks.map((item) => {
+                        const isActive = pathname === item.match || pathname?.startsWith(`${item.match}/`);
+                        return (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            onClick={() => setIsMobileNavOpen(false)}
+                            className={`flex items-center justify-between px-3.5 py-2.5 transition-colors ${
+                              isActive
+                                ? "bg-theme-accentLight text-theme-accentText font-semibold"
+                                : "text-theme-text hover:bg-theme-bg/60"
+                            }`}
+                          >
+                            <span>{item.label}</span>
+                            <span className={`text-[11px] ${isActive ? "text-theme-accent" : "text-theme-muted"}`}>
+                              {isActive ? "•" : "›"}
+                            </span>
+                          </Link>
+                        );
+                      })}
+                    </nav>
+                  )}
+                </div>
               </div>
             </div>
           </header>

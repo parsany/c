@@ -1,6 +1,7 @@
 "use client";
 
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { ChevronDown, Check } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { Locale } from "@/translations";
 
@@ -88,32 +89,107 @@ export function FlagIcon({ locale, className }: { locale: Locale; className?: st
 
 export default function LanguageSwitcher() {
   const { locale, setLocale, locales } = useLanguage();
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleClickOutside = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsOpen(false);
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen]);
+
+  const currentLocale = locales.find((l) => l.code === locale) || locales[0];
 
   return (
-    <div
-      className="inline-flex items-center p-0.5 rounded-lg bg-theme-btnExploreBg border border-theme-btnExploreBorder shadow-sm select-none gap-0.5"
-      role="group"
-      aria-label="Language selector"
-    >
-      {locales.map((item) => {
-        const isActive = locale === item.code;
-        return (
-          <button
-            key={item.code}
-            onClick={() => setLocale(item.code)}
-            title={item.fullLabel}
-            className={`p-1.5 rounded-md transition-all cursor-pointer flex items-center justify-center ${
-              isActive
-                ? "bg-theme-bg border border-theme-border shadow-xs opacity-100 scale-105"
-                : "opacity-50 hover:opacity-100 hover:bg-theme-bg/40 border border-transparent"
-            }`}
-            aria-pressed={isActive}
-            aria-label={item.fullLabel}
+    <>
+      {/* Compact dropdown on mobile / tablet (< lg) */}
+      <div className="relative lg:hidden" ref={dropdownRef}>
+        <button
+          type="button"
+          onClick={() => setIsOpen((prev) => !prev)}
+          aria-haspopup="listbox"
+          aria-expanded={isOpen}
+          aria-label={`Language: ${currentLocale.fullLabel}`}
+          className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-theme-btnExploreBg/80 hover:bg-theme-bg border border-theme-btnExploreBorder hover:border-theme-accent text-theme-text transition-all shadow-xs cursor-pointer"
+        >
+          <FlagIcon locale={locale} className="w-4.5 h-3 border border-black/10 dark:border-white/10" />
+          <ChevronDown className={`h-3 w-3 text-theme-muted transition-transform duration-150 ${isOpen ? "rotate-180" : ""}`} />
+        </button>
+
+        {isOpen && (
+          <div
+            role="listbox"
+            aria-label="Language selector"
+            className="absolute right-0 mt-2 w-40 rounded-xl bg-theme-panelBg border border-theme-panelBorder shadow-xl py-1 z-50 font-mono text-xs"
           >
-            <FlagIcon locale={item.code} className="w-5 h-3.5 border border-black/10 dark:border-white/10" />
-          </button>
-        );
-      })}
-    </div>
+            {locales.map((item) => {
+              const isActive = locale === item.code;
+              return (
+                <button
+                  key={item.code}
+                  type="button"
+                  role="option"
+                  aria-selected={isActive}
+                  onClick={() => {
+                    setLocale(item.code);
+                    setIsOpen(false);
+                  }}
+                  className={`w-full flex items-center justify-between px-3 py-2 text-left transition-colors cursor-pointer ${
+                    isActive
+                      ? "bg-theme-accentLight text-theme-accentText font-semibold"
+                      : "text-theme-text hover:bg-theme-bg/60"
+                  }`}
+                >
+                  <span className="flex items-center gap-2.5">
+                    <FlagIcon locale={item.code} className="w-4.5 h-3 border border-black/10 dark:border-white/10" />
+                    <span>{item.fullLabel}</span>
+                  </span>
+                  {isActive && <Check className="h-3 w-3 text-theme-accent shrink-0" />}
+                </button>
+              );
+            })}
+          </div>
+        )}
+      </div>
+
+      {/* Inline flag bar on desktop (lg+) */}
+      <div
+        className="hidden lg:inline-flex items-center p-0.5 rounded-full bg-theme-btnExploreBg/80 border border-theme-btnExploreBorder shadow-xs select-none gap-0.5"
+        role="group"
+        aria-label="Language selector"
+      >
+        {locales.map((item) => {
+          const isActive = locale === item.code;
+          return (
+            <button
+              key={item.code}
+              onClick={() => setLocale(item.code)}
+              title={item.fullLabel}
+              className={`p-1.5 rounded-full transition-all cursor-pointer flex items-center justify-center ${
+                isActive
+                  ? "bg-theme-bg border border-theme-border shadow-xs opacity-100"
+                  : "opacity-55 hover:opacity-100 hover:bg-theme-bg/40 border border-transparent"
+              }`}
+              aria-pressed={isActive}
+              aria-label={item.fullLabel}
+            >
+              <FlagIcon locale={item.code} className="w-4.5 h-3 border border-black/10 dark:border-white/10" />
+            </button>
+          );
+        })}
+      </div>
+    </>
   );
 }
