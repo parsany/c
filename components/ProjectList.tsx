@@ -146,7 +146,7 @@ function ProjectCard({
   if (isProfessional) {
     return (
       <article
-        className={`group relative flex flex-col justify-between bg-theme-cardBg border rounded-xl p-5 md:p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-md focus:outline-none ${
+        className={`group relative flex flex-col justify-between bg-theme-cardBg border rounded-xl p-5 md:p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-md hover:z-20 focus-within:z-20 focus:outline-none ${
           isProjectClicked
             ? "!border-theme-text ring-1 ring-theme-text/40"
             : "border-theme-cardBorder"
@@ -233,7 +233,7 @@ function ProjectCard({
           <div className="flex items-center justify-between text-xs font-mono pt-0.5">
             <div className="flex flex-wrap gap-x-4 gap-y-1">
               {links && links.length >= 2 ? (
-                <OpenLinks links={links} position="bottom" />
+                <OpenLinks links={links} position="top" />
               ) : links && links.length === 1 ? (
                 <a
                   href={links[0].url}
@@ -542,7 +542,7 @@ export default function ProjectList() {
 
       {activeTab === "professional" && (
         <>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {displayedProfessionalProjects.map((project) => (
               <ProjectCard
                 key={project.id}
@@ -588,7 +588,7 @@ export default function ProjectList() {
       )}
 
       {activeTab === "academic" && (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {academicProjects.map((project) => (
             <ProjectCard
               key={project.id}

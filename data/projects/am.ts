@@ -315,7 +315,6 @@ export const ProjectProfessional: ProfessionalProject[] = [
       { label: "Live Demo (desktop)", url: "https://gbat.parsany.com" },
       { label: "Web Application (mobile)", url: "https://gbat.parsany.com/auth/signin" },
       { label: "Dashboard Demo (desktop)", url: "https://gdash.parsany.com/" },
-      { label: "Main Website (down)", url: "https://app.goldengps.ir/" },
       { label: "Ապրանքների Կատալոգ (PDF)", url: "/catalog/goldenbat.pdf" },
     ],
     role: "Frontend ծրագրավորող",

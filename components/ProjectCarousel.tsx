@@ -173,51 +173,56 @@ export default function ProjectCarousel({
       )}
 
       {totalImages > 1 && !allFailed && (
-        <div className="absolute bottom-3 md:bottom-2 inset-x-4 z-10 flex gap-1.5">
-          {images.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={(e) => {
-                handleDotClick(e, idx);
-                e.currentTarget.blur();
-              }}
-              className="py-2.5 -my-2.5 flex-1 relative flex items-center focus:outline-none cursor-pointer"
-              aria-label={`Go to slide ${idx + 1}`}
-            >
+        <>
+          <div className="absolute inset-x-0 bottom-0 h-14 pointer-events-none bg-gradient-to-t from-black/60 via-black/25 to-transparent z-[5]" />
+          {totalImages > 8 ? (
+            <div className="absolute bottom-2.5 inset-x-4 z-10 h-1 rounded-full bg-white/35 overflow-hidden">
               <div
-                className="h-1 w-full rounded-full overflow-hidden transition-colors dark:!bg-white/20"
+                className="h-full rounded-full transition-all duration-300 ease-out"
                 style={{
-                  backgroundColor: "color-mix(in srgb, var(--accent-primary) 20%, transparent)"
+                  width: `${((index + 1) / totalImages) * 100}%`,
+                  backgroundColor: "var(--accent-primary)",
                 }}
-              >
-                {idx === index && isHovered && (
-                  <div
-                    key={index}
-                    className="h-full w-full origin-left"
-                    style={{
-                      backgroundColor: "var(--accent-primary)",
-                      animation: `carousel-progress ${duration}ms linear forwards`,
-                    }}
-                  />
-                )}
-                {idx === index && !isHovered && (
-                  <div
-                    className="h-full w-full"
-                    style={{ backgroundColor: "var(--accent-primary)" }}
-                  />
-                )}
-                {idx < index && (
-                  <div
-                    className="h-full w-full dark:!bg-white/70"
-                    style={{
-                      backgroundColor: "color-mix(in srgb, var(--accent-primary) 65%, transparent)"
-                    }}
-                  />
-                )}
-              </div>
-            </button>
-          ))}
-        </div>
+              />
+            </div>
+          ) : (
+            <div className="absolute bottom-3 md:bottom-2 inset-x-4 z-10 flex gap-1.5">
+              {images.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={(e) => {
+                    handleDotClick(e, idx);
+                    e.currentTarget.blur();
+                  }}
+                  className="py-2.5 -my-2.5 flex-1 relative flex items-center focus:outline-none cursor-pointer"
+                  aria-label={`Go to slide ${idx + 1}`}
+                >
+                  <div className="h-1 w-full rounded-full overflow-hidden transition-colors bg-white/35">
+                    {idx === index && isHovered && (
+                      <div
+                        key={index}
+                        className="h-full w-full origin-left"
+                        style={{
+                          backgroundColor: "var(--accent-primary)",
+                          animation: `carousel-progress ${duration}ms linear forwards`,
+                        }}
+                      />
+                    )}
+                    {idx === index && !isHovered && (
+                      <div
+                        className="h-full w-full"
+                        style={{ backgroundColor: "var(--accent-primary)" }}
+                      />
+                    )}
+                    {idx < index && (
+                      <div className="h-full w-full bg-white/75" />
+                    )}
+                  </div>
+                </button>
+              ))}
+            </div>
+          )}
+        </>
       )}
     </div>
   );

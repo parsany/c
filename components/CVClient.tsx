@@ -33,15 +33,18 @@ export default function CVClient() {
         <div className="p-5 md:p-6 rounded-xl bg-theme-cardBg border border-theme-cardBorder space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="space-y-1">
-              <h2 className="text-lg font-bold text-theme-text">
-                {t.cv.primaryRoleTitle}
-              </h2>
-              <p className="text-xs font-mono text-theme-muted">
+              <div className="flex items-center space-x-2">
+                <FileText className="h-4 w-4 text-theme-accent shrink-0" />
+                <h2 className="text-lg font-bold text-theme-text">
+                  {t.cv.primaryRoleTitle}
+                </h2>
+              </div>
+              <p className="text-xs font-mono text-theme-muted pl-6">
                 {t.cv.primaryRoleSubtitle}
               </p>
             </div>
 
-            <div className="flex items-center space-x-3 shrink-0">
+            <div className="flex items-center space-x-3 shrink-0 pl-6 sm:pl-0">
               <a
                 href="/CV.pdf"
                 target="_blank"
@@ -56,7 +59,7 @@ export default function CVClient() {
                 href="/CV.pdf"
                 download="CV.pdf"
                 data-no-modal="true"
-                className="inline-flex items-center space-x-1 px-3.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-white font-mono font-bold text-xs transition-colors cursor-pointer"
+                className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg bg-theme-accent hover:bg-theme-accentHover text-white dark:text-theme-bg font-mono font-bold text-xs transition-colors shadow-xs cursor-pointer"
               >
                 <Download className="h-3.5 w-3.5" />
                 <span>{t.common.downloadPdf}</span>

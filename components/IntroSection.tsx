@@ -182,6 +182,8 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
             <button
               onClick={() => setPanelOpen(true)}
               data-no-destroy="true"
+              aria-label="Cross Options"
+              title="Cross Options"
               className="relative overflow-hidden w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold border transition-all duration-300 group-hover:scale-110 active:scale-95"
               style={{
                 background: "var(--cross-trigger-bg)",

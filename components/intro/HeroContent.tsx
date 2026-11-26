@@ -60,6 +60,7 @@ export default function HeroContent({
               onClick={onOpenPanel}
               data-no-destroy="true"
               aria-label={t.hero.crossOptions}
+              title={t.hero.crossOptions}
               className="relative overflow-hidden w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold border transition-all duration-300 active:scale-95 shadow-sm"
               style={{
                 background: "var(--cross-trigger-bg)",
@@ -101,7 +102,7 @@ export default function HeroContent({
           aria-label={t.hero.exploreMenu}
         >
           <span>{t.hero.exploreMenu}</span>
-          <kbd className="inline-flex items-center px-1.5 py-0.5 rounded bg-theme-bg text-theme-muted text-[10px] border border-theme-border">
+          <kbd className="hidden sm:inline-flex items-center px-1.5 py-0.5 rounded bg-theme-bg text-theme-muted text-[10px] border border-theme-border">
             ⌘K
           </kbd>
         </button>

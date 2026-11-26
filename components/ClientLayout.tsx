@@ -2,12 +2,13 @@
 
 import "@/styles/globals.css";
 import { useState, useEffect, useSyncExternalStore } from "react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import CommandMenu from "@/components/CommandMenu";
 import ResumeModal from "@/components/ResumeModal";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { LanguageProvider, useLanguage } from "@/context/LanguageContext";
-import { Sun, Moon } from "lucide-react";
+import { Sun, Moon, Search } from "lucide-react";
 
 function getThemeSnapshot(): "light" | "dark" {
   if (typeof window === "undefined") return "dark";
@@ -35,9 +36,19 @@ function InnerLayout({ children }: { children: React.ReactNode }) {
   const isFullScreen = isLanding || isGame;
   const [isOpen, setIsOpen] = useState(false);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const theme = useSyncExternalStore(subscribeTheme, getThemeSnapshot, getServerThemeSnapshot);
   const [transitioningTheme, setTransitioningTheme] = useState<"light" | "dark" | null>(null);
   const { t } = useLanguage();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 24);
+    };
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     if (theme === "dark") {
@@ -97,38 +108,96 @@ function InnerLayout({ children }: { children: React.ReactNode }) {
       if (typeof window !== "undefined") {
         window.dispatchEvent(new Event("theme-change"));
       }
-    }, 500);
+    }, 275);
 
     setTimeout(() => {
       setTransitioningTheme(null);
-    }, 1000);
+    }, 550);
   };
+
+  const navLinks = [
+    { href: "/#projects", label: t.projects.tabProjects, match: "/projects" },
+    { href: "/about", label: t.about.title, match: "/about" },
+    { href: "/posts", label: t.writings.pageTitle, match: "/posts" },
+    { href: "/cv", label: "CV", match: "/cv" },
+    { href: "/contact", label: t.contact.pageTitle, match: "/contact" },
+  ];
 
   return (
     <>
       <div className="min-h-screen text-theme-text antialiased selection:bg-theme-accentLight selection:text-theme-accentText transition-colors duration-200">
         {!isGame && (
-          <div className="fixed top-4 right-4 md:top-6 md:right-6 z-50 flex items-center gap-2.5">
-            <LanguageSwitcher />
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-lg bg-theme-btnExploreBg hover:bg-theme-bg border border-theme-btnExploreBorder hover:border-theme-accent text-theme-btnExploreText hover:text-theme-text transition-all shadow-sm focus:outline-none cursor-pointer"
-              aria-label={t.common.toggleTheme}
-              title={t.common.toggleTheme}
+          <header
+            className={`sticky top-0 z-40 w-full transition-all duration-300 ease-out pointer-events-none ${
+              isScrolled ? "pt-3 px-3 sm:px-6" : "pt-0 px-0"
+            }`}
+          >
+            <div
+              className={`pointer-events-auto mx-auto flex items-center justify-between gap-3 transition-all duration-300 ease-out ${
+                isScrolled
+                  ? "max-w-3xl h-12 px-4 sm:px-5 rounded-full backdrop-blur-xl bg-theme-bg/75 border border-theme-border/80 shadow-[0_8px_30px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.35)]"
+                  : "max-w-5xl h-16 px-4 sm:px-6 rounded-none bg-transparent border border-transparent"
+              }`}
             >
-              {theme === "light" ? (
-                <Moon className="h-4.5 w-4.5" />
-              ) : (
-                <Sun className="h-4.5 w-4.5" />
-              )}
-            </button>
-          </div>
+              <Link
+                href="/"
+                className="font-mono text-sm font-bold tracking-tight text-theme-text hover:text-theme-accent transition-colors shrink-0"
+              >
+                parsa<span className="text-theme-accent">.</span>
+              </Link>
+
+              <nav className="hidden md:flex items-center gap-5 text-xs font-mono" aria-label="Primary">
+                {navLinks.map((item) => {
+                  const isActive = pathname === item.match || pathname?.startsWith(`${item.match}/`);
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={`transition-colors whitespace-nowrap ${
+                        isActive
+                          ? "text-theme-accent font-semibold"
+                          : "text-theme-muted hover:text-theme-text"
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  );
+                })}
+              </nav>
+
+              <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                <button
+                  onClick={() => setIsOpen(true)}
+                  type="button"
+                  className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-theme-btnExploreBg/80 hover:bg-theme-bg border border-theme-btnExploreBorder hover:border-theme-accent text-theme-muted hover:text-theme-text transition-all text-xs font-mono cursor-pointer"
+                  aria-label={t.hero.exploreMenu}
+                  title={t.hero.exploreMenu}
+                >
+                  <Search className="h-3.5 w-3.5" />
+                  <kbd className="hidden sm:inline-block text-[10px] opacity-80">⌘K</kbd>
+                </button>
+                <LanguageSwitcher />
+                <button
+                  onClick={toggleTheme}
+                  className="p-2 rounded-full bg-theme-btnExploreBg/80 hover:bg-theme-bg border border-theme-btnExploreBorder hover:border-theme-accent text-theme-btnExploreText hover:text-theme-text transition-all shadow-xs focus:outline-none cursor-pointer"
+                  aria-label={t.common.toggleTheme}
+                  title={t.common.toggleTheme}
+                >
+                  {theme === "light" ? (
+                    <Moon className="h-4 w-4" />
+                  ) : (
+                    <Sun className="h-4 w-4" />
+                  )}
+                </button>
+              </div>
+            </div>
+          </header>
         )}
 
         {isFullScreen ? (
           children
         ) : (
-          <main className="max-w-4xl mx-auto px-4 sm:px-6 py-4">
+          <main className="max-w-5xl mx-auto px-4 sm:px-6 py-4">
             {children}
           </main>
         )}
@@ -157,7 +226,7 @@ function InnerLayout({ children }: { children: React.ReactNode }) {
               72%  { opacity: 1; transform: translateY(0)   scale(1);    }
               100% { opacity: 0; transform: translateY(-6px) scale(0.97);}
             }
-            .curtain-text { animation: curtain-text-in 1.0s cubic-bezier(0.85,0,0.15,1) forwards; }
+            .curtain-text { animation: curtain-text-in 0.55s cubic-bezier(0.85,0,0.15,1) forwards; }
           `}</style>
 
           <div className="absolute inset-0 flex items-center justify-center">

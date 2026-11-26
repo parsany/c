@@ -175,7 +175,7 @@ University compiler construction project — a working interpreter built with Fl
 | About | https://parsany.com/about | Background, experience timeline, and personal story |
 | Projects | https://parsany.com/projects | Professional and academic project showcase |
 | Posts | https://parsany.com/posts | Blog / technical writing |
-| CV / Resume | https://parsany.com/cv | Downloadable CVs by specialization (AI, Frontend, Backend, QA, DevOps, Support) |
+| CV / Resume | https://parsany.com/cv | Downloadable CVs (Full-Stack, AI & Machine Learning) |
 | Contact | https://parsany.com/contact | Contact form and social links |
 | Game | https://parsany.com/game | Interactive Conway Invaders playable in browser |
 | Sitemap | https://parsany.com/sitemap.xml | Full XML sitemap |

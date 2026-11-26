@@ -577,7 +577,7 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
           rehypePlugins={[rehypeRaw, rehypeSlug]}
           remarkPlugins={[remarkGfm]}
           components={{
-            h1: ({ node, ...props }) => <h1 className="text-xl font-bold text-theme-text mt-8 mb-4 border-b border-theme-border pb-2" {...props} />,
+            h1: ({ node, ...props }) => <h2 className="text-xl font-bold text-theme-text mt-8 mb-4 border-b border-theme-border pb-2" {...props} />,
             h2: ({ node, ...props }) => <h2 className="text-lg font-semibold text-theme-text mt-6 mb-3" {...props} />,
             p: ({ node, ...props }) => <p className="mb-4 text-theme-secondary leading-relaxed" {...props} />,
             ul: ({ node, ...props }) => <ul className="list-disc pl-5 mb-4 space-y-2 text-theme-secondary" {...props} />,

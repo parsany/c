@@ -12,11 +12,7 @@ import {
   Gamepad2,
   Download,
   Code2,
-  Server,
-  CheckCircle2,
-  Terminal,
   Cpu,
-  Headphones,
 } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { Locale } from "@/translations";
@@ -88,58 +84,6 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       },
     },
     {
-      id: "resume-frontend",
-      title: t.cv.frontendTitle,
-      subtitle: t.cv.frontendSubtitle,
-      category: "resumes",
-      icon: <Code2 className="h-4 w-4" />,
-      href: "/application/frontend_resume_parsa_niavand.pdf",
-      keywords: ["resume", "cv", "frontend", "front end", "front-end", "react", "next.js", "ui", "pdf"],
-      action: () => {
-        handleClose();
-        window.open("/application/frontend_resume_parsa_niavand.pdf", "_blank");
-      },
-    },
-    {
-      id: "resume-backend",
-      title: t.cv.backendTitle,
-      subtitle: t.cv.backendSubtitle,
-      category: "resumes",
-      icon: <Server className="h-4 w-4" />,
-      href: "/application/backend_resume_parsa_niavand.pdf",
-      keywords: ["resume", "cv", "backend", "back end", "back-end", "nestjs", "node", "api", "database", "pdf"],
-      action: () => {
-        handleClose();
-        window.open("/application/backend_resume_parsa_niavand.pdf", "_blank");
-      },
-    },
-    {
-      id: "resume-qa",
-      title: t.cv.qaTitle,
-      subtitle: t.cv.qaSubtitle,
-      category: "resumes",
-      icon: <CheckCircle2 className="h-4 w-4" />,
-      href: "/application/QA_resume_parsa_niavand.pdf",
-      keywords: ["resume", "cv", "qa", "quality assurance", "testing", "test", "tester", "playwright", "e2e", "pdf"],
-      action: () => {
-        handleClose();
-        window.open("/application/QA_resume_parsa_niavand.pdf", "_blank");
-      },
-    },
-    {
-      id: "resume-devops",
-      title: t.cv.devopsTitle,
-      subtitle: t.cv.devopsSubtitle,
-      category: "resumes",
-      icon: <Terminal className="h-4 w-4" />,
-      href: "/application/devops_resume_parsa_niavand.pdf",
-      keywords: ["resume", "cv", "devops", "dev ops", "dev-ops", "docker", "linux", "ci/cd", "infrastructure", "pdf"],
-      action: () => {
-        handleClose();
-        window.open("/application/devops_resume_parsa_niavand.pdf", "_blank");
-      },
-    },
-    {
       id: "resume-ai",
       title: t.cv.aiTitle,
       subtitle: t.cv.aiSubtitle,
@@ -150,19 +94,6 @@ export default function CommandMenu({ isOpen, onClose }: CommandMenuProps) {
       action: () => {
         handleClose();
         window.open("/application/ai_resume_parsa_niavand.pdf", "_blank");
-      },
-    },
-    {
-      id: "resume-support",
-      title: t.cv.supportTitle,
-      subtitle: t.cv.supportSubtitle,
-      category: "resumes",
-      icon: <Headphones className="h-4 w-4" />,
-      href: "/application/tech_support_resume_parsa_niavand.pdf",
-      keywords: ["resume", "cv", "support", "technical support", "tech support", "it support", "troubleshooting", "pdf"],
-      action: () => {
-        handleClose();
-        window.open("/application/tech_support_resume_parsa_niavand.pdf", "_blank");
       },
     },
     {

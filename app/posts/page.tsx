@@ -58,41 +58,43 @@ export default function BlogArchive() {
         </p>
       </header>
 
-      <div className="space-y-6 mb-10">
-        <div className="relative flex items-center">
-          <Search className="absolute left-3 h-4 w-4 text-theme-muted pointer-events-none" />
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder={t.writings.searchPlaceholder}
-            className="w-full pl-9 pr-4 py-2 text-sm bg-theme-btnExploreBg border border-theme-border rounded-lg text-theme-text placeholder-theme-muted outline-none focus:border-theme-accent transition-colors"
-          />
-        </div>
-        <div className="flex flex-wrap gap-1.5 select-none">
-          <button
-            onClick={() => setSelectedTag(null)}
-            className={`px-2.5 py-1 text-xs font-mono rounded transition-all border cursor-pointer ${selectedTag === null
-              ? "bg-theme-accent text-white dark:text-theme-bg border-theme-accent font-bold"
-              : "bg-theme-btnExploreBg text-theme-muted border-theme-border hover:border-theme-accent/60"
-              }`}
-          >
-            {t.writings.allTag}
-          </button>
-          {allTags.map((tag) => (
+      {activePosts.length > 0 && (
+        <div className="space-y-6 mb-10">
+          <div className="relative flex items-center">
+            <Search className="absolute left-3 h-4 w-4 text-theme-muted pointer-events-none" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder={t.writings.searchPlaceholder}
+              className="w-full pl-9 pr-4 py-2 text-sm bg-theme-btnExploreBg border border-theme-border rounded-lg text-theme-text placeholder-theme-muted outline-none focus:border-theme-accent transition-colors"
+            />
+          </div>
+          <div className="flex flex-wrap gap-1.5 select-none">
             <button
-              key={tag}
-              onClick={() => setSelectedTag(selectedTag === tag ? null : tag)}
-              className={`px-2.5 py-1 text-xs font-mono rounded transition-all border cursor-pointer ${selectedTag === tag
+              onClick={() => setSelectedTag(null)}
+              className={`px-2.5 py-1 text-xs font-mono rounded transition-all border cursor-pointer ${selectedTag === null
                 ? "bg-theme-accent text-white dark:text-theme-bg border-theme-accent font-bold"
                 : "bg-theme-btnExploreBg text-theme-muted border-theme-border hover:border-theme-accent/60"
                 }`}
             >
-              {tag}
+              {t.writings.allTag}
             </button>
-          ))}
+            {allTags.map((tag) => (
+              <button
+                key={tag}
+                onClick={() => setSelectedTag(selectedTag === tag ? null : tag)}
+                className={`px-2.5 py-1 text-xs font-mono rounded transition-all border cursor-pointer ${selectedTag === tag
+                  ? "bg-theme-accent text-white dark:text-theme-bg border-theme-accent font-bold"
+                  : "bg-theme-btnExploreBg text-theme-muted border-theme-border hover:border-theme-accent/60"
+                  }`}
+              >
+                {tag}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
       <div className="space-y-8">
         {filteredPosts.length === 0 ? (
@@ -143,6 +145,15 @@ export default function BlogArchive() {
           })
         )}
       </div>
+
+      <footer className="mt-16 pt-8 border-t border-theme-border flex items-center justify-between text-xs font-mono text-theme-muted">
+        <Link href="/" className="hover:text-theme-text transition-colors">
+          &larr; {t.common.backToHome}
+        </Link>
+        <Link href="/contact" className="hover:text-theme-text transition-colors">
+          {t.contact.pageTitle} &rarr;
+        </Link>
+      </footer>
     </div>
   );
 }

@@ -320,7 +320,6 @@ export const ProjectProfessional: ProfessionalProject[] = [
       { label: "Live Demo (desktop)", url: "https://gbat.parsany.com" },
       { label: "Web Application (mobile)", url: "https://gbat.parsany.com/auth/signin" },
       { label: "Dashboard Demo (desktop)", url: "https://gdash.parsany.com/" },
-      { label: "Main Website (down)", url: "https://app.goldengps.ir/" },
       { label: "Product Catalogue (PDF)", url: "/catalog/goldenbat.pdf" },
     ],
     role: "Frontend Developer",
@@ -328,7 +327,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
       "**10,000+ Updates/Min:** Sub-second IoT telemetry plotting on Mapbox",
       "**Fleet Geofencing:** Dynamic breadcrumb routes and boundary alerts",
     ],
-    text: `# Goldenbat GPS Tracking\n\nBuilt over 5 months, in collaboration with a team. I built the landing page and the mobile PWA, and contributed to the fleet dashboard frontend (Next.js) — including work on geofencing and the notification system; a teammate handled the native mobile work. The backend ingests 10,000+ GPS coordinate updates per minute with sub-second latency — the dashboard plots live vehicle positions, historical paths, and geofencing alerts. Fleet operators use it to manage device groups and assignments.\n\n- **Role**: Frontend Developer\n- **Timeline**: Sep 2024 – Jan 2025\n- **Stack**: Next.js, tRPC, PostgreSQL\n\n currently down due to maintenance`,
+    text: `# Goldenbat GPS Tracking\n\nBuilt over 5 months, in collaboration with a team. I built the landing page and the mobile PWA, and contributed to the fleet dashboard frontend (Next.js) — including work on geofencing and the notification system; a teammate handled the native mobile work. The backend ingests 10,000+ GPS coordinate updates per minute with sub-second latency — the dashboard plots live vehicle positions, historical paths, and geofencing alerts. Fleet operators use it to manage device groups and assignments.\n\n- **Role**: Frontend Developer\n- **Timeline**: Sep 2024 – Jan 2025\n- **Stack**: Next.js, tRPC, PostgreSQL`,
   },
   {
     id: 7,
