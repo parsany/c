@@ -5,6 +5,8 @@ export interface AcademicProject {
   date: string;
   image: string;
   link: string;
+  liveLink?: string;
+  liveLabel?: string;
   video?: string;
   tag: string[];
   visualizer?: "ai" | "game" | "app" | "compiler";

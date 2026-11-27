@@ -23,6 +23,8 @@ interface ProjectCardProps {
   description: string;
   tags: string[];
   link?: string;
+  liveLink?: string;
+  liveLabel?: string;
   links?: { label: string; url: string }[];
   isProfessional: boolean;
   isHovered: boolean;
@@ -115,6 +117,8 @@ function ProjectCard({
   description,
   tags,
   link,
+  liveLink,
+  liveLabel,
   links,
   isProfessional,
   isHovered,
@@ -436,6 +440,18 @@ function ProjectCard({
             )}
           </div>
 
+          {liveLink && (
+            <a
+              href={liveLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center space-x-1 font-bold text-[var(--link-prominent-green)] hover:text-[var(--link-prominent-green-hover)] hover:underline transition-colors"
+            >
+              <span>{liveLabel || t.common.live}</span>
+              <ArrowRight className="h-3 w-3" />
+            </a>
+          )}
+
           {minigame && (
             <Link
               href="/game"
@@ -648,6 +664,8 @@ export default function ProjectList() {
               description={project.description}
               tags={project.tag}
               link={project.link || undefined}
+              liveLink={project.liveLink}
+              liveLabel={project.liveLabel}
               isProfessional={false}
               isHovered={hoveredId === project.id}
               onMouseEnter={() => setHoveredId(project.id)}

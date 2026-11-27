@@ -32,6 +32,8 @@ export const ProjectAcademic: AcademicProject[] = [
     date: "Nov 27, 2026",
     image: "/projects/workstation.webp",
     link: "https://github.com/parsany/workstation-KV",
+    liveLink: "https://workstation.parsany.com/",
+    liveLabel: "Open Planner",
     tag: ["Local-First", "Cloudflare KV", "PWA"],
   },
   {
