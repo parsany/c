@@ -98,6 +98,21 @@ export default function PostDetailClient({ post }: PostDetailClientProps) {
             ul: ({ node, ...props }) => <ul className="list-disc pl-5 mb-4 space-y-2 text-theme-secondary" {...props} />,
             ol: ({ node, ...props }) => <ol className="list-decimal pl-5 mb-4 space-y-2 text-theme-secondary" {...props} />,
             li: ({ node, ...props }) => <li className="pl-1" {...props} />,
+            a: ({ node, ...props }) => (
+              <a
+                className="text-theme-accent hover:underline font-medium"
+                target="_blank"
+                rel="noopener noreferrer"
+                {...props}
+              />
+            ),
+            img: ({ node, ...props }) => (
+              <img
+                className="w-full rounded-xl border border-theme-border my-6 shadow-sm"
+                loading="lazy"
+                {...props}
+              />
+            ),
             code: ({ node, ...props }) => (
               <code className="bg-theme-btnExploreBg text-theme-text border border-theme-border px-1.5 py-0.5 rounded text-xs font-mono" {...props} />
             ),

@@ -6,7 +6,7 @@ interface ImageFallbackProps {
   className?: string;
 }
 
-export function ImageFallback({ label = "(Image will be uploaded)", className = "" }: ImageFallbackProps) {
+export function ImageFallback({ label = "Preview Coming Soon", className = "" }: ImageFallbackProps) {
   return (
     <div className={`w-full h-full min-h-[180px] bg-gradient-to-br from-[#f5f5f0] via-[#eaeae2] to-[#dfdfe7] dark:from-[#222425] dark:via-[#282a2b] dark:to-[#1d1f20] flex flex-col items-center justify-center p-6 text-center select-none border border-theme-border/30 dark:border-transparent relative overflow-hidden group ${className}`}>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-500/10 via-transparent to-transparent dark:from-amber-400/5 opacity-80 pointer-events-none" />

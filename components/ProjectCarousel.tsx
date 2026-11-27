@@ -43,14 +43,14 @@ export default function ProjectCarousel({
   }, [isHovered, totalImages, index]);
 
   if (!images || totalImages === 0) {
-    return <ImageFallback label="(Image will be uploaded)" />;
+    return <ImageFallback label="Preview Coming Soon" />;
   }
 
   const isCurrentFailed = failedImages[index];
   const allFailed = Object.keys(failedImages).length === totalImages;
 
   if (allFailed) {
-    return <ImageFallback label="(Image will be uploaded)" />;
+    return <ImageFallback label="Preview Coming Soon" />;
   }
 
   const handlePrev = (e: React.MouseEvent) => {
@@ -118,7 +118,7 @@ export default function ProjectCarousel({
           className="absolute inset-0 w-full h-full"
         >
           {isCurrentFailed ? (
-            <ImageFallback label="(Image will be uploaded)" />
+            <ImageFallback label="Preview Coming Soon" />
           ) : (
             <Image
               src={images[index]}
@@ -174,8 +174,8 @@ export default function ProjectCarousel({
 
       {totalImages > 1 && !allFailed && (
         <>
-          <div className="absolute inset-x-0 bottom-0 h-14 pointer-events-none bg-gradient-to-t from-black/60 via-black/25 to-transparent z-[5]" />
-          {totalImages > 8 ? (
+          <div className="absolute inset-x-0 bottom-0 h-8 pointer-events-none bg-gradient-to-t from-black/30 via-black/10 to-transparent z-[5]" />
+          {totalImages > 5 ? (
             <div className="absolute bottom-2.5 inset-x-4 z-10 h-1 rounded-full bg-white/35 overflow-hidden">
               <div
                 className="h-full rounded-full transition-all duration-300 ease-out"

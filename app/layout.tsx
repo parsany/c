@@ -7,6 +7,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://parsany.com"),
   title: "Parsa Niavand | Full-Stack Software Engineer & Portfolio",
   description:
     "Hi, I'm Parsa Niavand. I'm a Full-Stack Software Engineer building web apps and distributed backend systems with TypeScript, Next.js, and NestJS.",
@@ -23,17 +24,46 @@ export const metadata: Metadata = {
     "Web Development",
     "Freelance Developer",
   ],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   icons: {
-    icon: "/favicon.ico",
-    apple: "/favicon.ico",
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: "/apple-icon.png",
   },
   openGraph: {
     title: "Parsa Niavand | Full-Stack Software Engineer",
     description:
       "Hi, I'm Parsa Niavand. I'm a Full-Stack Software Engineer building web apps and distributed backend systems with TypeScript, Next.js, and NestJS.",
-    url: "https://parsany.com",
+    url: "https://parsany.com/",
     siteName: "Parsa Niavand Portfolio",
+    locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Parsa Niavand — Full-Stack Software Engineer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Parsa Niavand | Full-Stack Software Engineer",
+    description:
+      "Hi, I'm Parsa Niavand. I'm a Full-Stack Software Engineer building web apps and distributed backend systems with TypeScript, Next.js, and NestJS.",
+    images: ["/og-image.png"],
   },
   alternates: {
     canonical: "https://parsany.com/",
@@ -60,7 +90,7 @@ const jsonLd = {
         "Full-Stack Software Engineer specializing in TypeScript, Next.js, NestJS, and distributed backend systems. Building production-grade web applications and real-time systems.",
       "url": "https://parsany.com",
       "email": "vvsparsa@gmail.com",
-      "image": "https://parsany.com/favicon.ico",
+      "image": "https://parsany.com/content/portrait.jpg",
       "sameAs": [
         "https://github.com/parsany",
         "https://www.linkedin.com/in/parsany/",
@@ -150,6 +180,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" data-scroll-behavior="smooth">
       <head>
+        <meta property="og:logo" content="https://parsany.com/apple-icon.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

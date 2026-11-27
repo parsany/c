@@ -2,7 +2,7 @@ import { AcademicProject, ProfessionalProject } from "./types";
 
 export const ProjectAcademic: AcademicProject[] = [
   {
-    id: 5,
+    id: 6,
     name: "Erkennung von Katzenemotionen",
     description:
       "Eigenes CNN-Computer-Vision-Modell, trainiert zur Emotionsklassifizierung bei Katzen (70 % Testgenauigkeit).",
@@ -13,7 +13,7 @@ export const ProjectAcademic: AcademicProject[] = [
     tag: ["KI", "PyTorch"],
   },
   {
-    id: 4,
+    id: 5,
     name: "Conway Invaders",
     description:
       "Echtzeit-Space-Invaders-Arcade-Mechanik, angetrieben durch deterministische zelluläre Automaten nach Conways Spiel des Lebens.",
@@ -24,6 +24,16 @@ export const ProjectAcademic: AcademicProject[] = [
     tag: ["Programmierung", "Spiele"],
     visualizer: "game",
     minigame: true,
+  },
+  {
+    id: 4,
+    name: "Workstation & KV Sync",
+    description:
+      "Local-First Tauri + SQLite WASM (OPFS) PWA mit Zero-Knowledge-AES-256-GCM-Synchronisation über Cloudflare Workers KV.",
+    date: "Nov 27, 2026",
+    image: "/projects/workstation.webp",
+    link: "https://github.com/parsany/workstation-KV",
+    tag: ["Local-First", "Cloudflare KV", "PWA"],
   },
   {
     id: 3,
@@ -48,7 +58,7 @@ export const ProjectAcademic: AcademicProject[] = [
     visualizer: "app",
   },
   {
-    id: 6,
+    id: 7,
     name: "Anomalieerkennung für Goldminen",
     description:
       "Deep-Learning-Autoencoder-Architekturen (VAE) zur Erkennung mineralischer Zonenanomalien in geophysikalischen räumlichen Datensätzen.",
@@ -80,7 +90,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
     description:
       "Unternehmensplattform für die Energiewirtschaft. Umfassende Bestandsverwaltung, Bestellmatrix, Auftragspipeline und rollenbasierte Dashboards.",
     date: "Jun 2026 – Present",
-    image: "/professional/luna/luna-landing.webp",
+    image: "",
     project_image: [],
     tag: [
       "NestJS",

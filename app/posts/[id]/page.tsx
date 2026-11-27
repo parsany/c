@@ -14,6 +14,11 @@ export async function generateStaticParams() {
   }));
 }
 
+function getPostOgImage(body: string): string {
+  const match = body.match(/!\[[^\]]*\]\((\/[^)\s]+)\)/);
+  return match ? match[1] : "/og-image.png";
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -26,9 +31,32 @@ export async function generateMetadata({
       title: "Post Not Found | Parsa",
     };
   }
+  const ogImage = getPostOgImage(post.body || "");
   return {
     title: `${post.title} | Parsa`,
     description: post.description,
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      url: `https://parsany.com/posts/${post.slug}/`,
+      siteName: "Parsa Niavand Portfolio",
+      type: "article",
+      publishedTime: post.date,
+      authors: ["Parsa Niavand"],
+      tags: post.tags,
+      images: [
+        {
+          url: ogImage,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description,
+      images: [ogImage],
+    },
     alternates: {
       canonical: `https://parsany.com/posts/${post.slug}/`,
     },
@@ -47,18 +75,25 @@ export default async function PostDetailPage({
     notFound();
   }
 
+  const ogImage = getPostOgImage(post.body || "");
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": post.title,
     "description": post.description,
+    "image": `https://parsany.com${ogImage}`,
     "datePublished": post.date,
     "author": {
       "@type": "Person",
-      "name": "Parsa",
+      "name": "Parsa Niavand",
       "url": "https://parsany.com"
     },
-    "url": `https://parsany.com/posts/${post.slug}`
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://parsany.com/posts/${post.slug}/`
+    },
+    "url": `https://parsany.com/posts/${post.slug}/`
   };
 
   return (

@@ -145,7 +145,7 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
           {}
           <div className="hidden md:flex flex-shrink-0 justify-end">
             <div
-              className="relative group rounded-2xl overflow-hidden border border-theme-border bg-theme-btnExploreBg shadow-md"
+              className="relative group rounded-full overflow-hidden border border-theme-border bg-theme-btnExploreBg shadow-md"
               data-attackable="true"
               style={{
                 width: "clamp(160px, 22vw, 240px)",
@@ -153,18 +153,12 @@ export default function IntroSection({ onOpenCommandMenu }: IntroSectionProps) {
               }}
             >
               <Image
-                src="/content/main.jpg"
+                src="/content/portrait.jpg"
                 alt="Parsa Niavand — Full-Stack Software Engineer"
                 fill
                 sizes="240px"
-                className="object-cover object-top"
+                className="object-cover object-center scale-[1.14]"
                 priority
-              />
-              <div
-                className="absolute inset-x-0 bottom-0 h-1/4 pointer-events-none"
-                style={{
-                  background: "linear-gradient(to top, rgba(0,0,0,0.22) 0%, transparent 100%)",
-                }}
               />
             </div>
           </div>

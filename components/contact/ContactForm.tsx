@@ -170,7 +170,7 @@ export function ContactForm() {
             <button
               type="submit"
               disabled={formStatus === "submitting"}
-              className="w-full flex items-center justify-center space-x-2 px-4 py-2.5 rounded bg-theme-accent hover:bg-theme-accentHover text-white dark:text-theme-bg font-mono font-semibold text-xs transition-all shadow-xs disabled:opacity-70 disabled:cursor-not-allowed group select-none mt-2 cursor-pointer"
+              className="w-full flex items-center justify-center space-x-2 px-4 py-2.5 rounded bg-theme-accent hover:bg-theme-accentHover text-white dark:text-slate-950 font-mono font-semibold text-xs transition-all shadow-xs disabled:opacity-70 disabled:cursor-not-allowed group select-none mt-2 cursor-pointer"
             >
               {formStatus === "submitting" ? (
                 <>

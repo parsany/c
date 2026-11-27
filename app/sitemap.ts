@@ -43,7 +43,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${SITE_URL}/posts/`,
       lastModified: currentDate,
       changeFrequency: "monthly",
-      priority: 0.1,
+      priority: 0.8,
     },
   ];
 

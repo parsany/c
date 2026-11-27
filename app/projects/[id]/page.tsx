@@ -24,10 +24,31 @@ export async function generateMetadata({
     };
   }
 
+  const projectImage = project.image || project.project_image?.[0] || "/og-image.png";
+
   return {
     title: `${project.name} | Parsa`,
     description: project.description,
     robots: project.noindex ? { index: false, follow: false } : undefined,
+    openGraph: {
+      title: `${project.name} | Parsa`,
+      description: project.description,
+      url: `${SITE_URL}/projects/${project.slug}/`,
+      siteName: "Parsa Niavand Portfolio",
+      type: "website",
+      images: [
+        {
+          url: projectImage,
+          alt: project.name,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.name} | Parsa`,
+      description: project.description,
+      images: [projectImage],
+    },
     alternates: project.noindex
       ? undefined
       : {
@@ -48,18 +69,21 @@ export default async function ProjectDetailPage({
     notFound();
   }
 
+  const projectImage = project.image || project.project_image?.[0] || "/og-image.png";
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": project.name,
     "description": project.description,
+    "image": `${SITE_URL}${projectImage}`,
     "applicationCategory": "DeveloperApplication",
     "author": {
       "@type": "Person",
       "name": SITE_AUTHOR,
       "url": SITE_URL,
     },
-    "url": `${SITE_URL}/projects/${project.slug}`,
+    "url": `${SITE_URL}/projects/${project.slug}/`,
   };
 
   return (

@@ -59,7 +59,7 @@ export default function CVClient() {
                 href="/CV.pdf"
                 download="CV.pdf"
                 data-no-modal="true"
-                className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg bg-theme-accent hover:bg-theme-accentHover text-white dark:text-theme-bg font-mono font-bold text-xs transition-colors shadow-xs cursor-pointer"
+                className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg bg-theme-accent hover:bg-theme-accentHover text-white dark:text-slate-950 font-mono font-bold text-xs transition-colors shadow-xs cursor-pointer"
               >
                 <Download className="h-3.5 w-3.5" />
                 <span>{t.common.downloadPdf}</span>
@@ -98,9 +98,10 @@ export default function CVClient() {
                   target="_blank"
                   rel="noopener noreferrer"
                   data-no-modal="true"
-                  className="inline-flex items-center space-x-1 text-xs font-mono text-theme-muted hover:text-theme-text transition-colors"
+                  className="inline-flex items-center space-x-1 text-xs font-mono font-bold text-theme-secondary hover:text-theme-text transition-colors"
                 >
                   <span>{t.common.view}</span>
+                  <ArrowRight className="h-3 w-3" />
                 </a>
                 <a
                   href={item.fileUrl}

@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Mail, Send, Linkedin, Github, Check, Copy, MessageSquare, Phone, PhoneCall } from "lucide-react";
+import { Mail, Send, Linkedin, Github, Check, Copy, Phone, PhoneCall } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { SITE_EMAIL } from "@/lib/config";
 
@@ -34,28 +34,22 @@ export default function ContactSection() {
 
   const socials = [
     {
-      name: "SMS",
-      href: "sms:+37433877067",
-      icon: <MessageSquare className="h-5 w-5" />,
-      username: "+374 33 877 067",
-    },
-    {
       name: "WhatsApp",
       href: "https://wa.me/37433877067",
       icon: <Phone className="h-5 w-5" />,
       username: "+374 33 877 067",
     },
     {
-      name: "LinkedIn",
-      href: "https://www.linkedin.com/in/parsany/",
-      icon: <Linkedin className="h-5 w-5" />,
-      username: "parsany",
-    },
-    {
       name: "Telegram",
       href: "https://t.me/parsanid",
       icon: <Send className="h-5 w-5" />,
       username: "@parsanid",
+    },
+    {
+      name: "LinkedIn",
+      href: "https://www.linkedin.com/in/parsany/",
+      icon: <Linkedin className="h-5 w-5" />,
+      username: "parsany",
     },
     {
       name: "GitHub",
@@ -67,7 +61,7 @@ export default function ContactSection() {
 
   return (
     <section className="pt-8 md:pt-12 pb-12 md:pb-20 w-full" id="contact">
-      <div className="max-w-3xl mb-10">
+      <div className="w-full mb-10">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
           <div>
             <h2 className="text-2xl font-bold tracking-tight text-theme-text mb-2">{t.contact.sectionTitle}</h2>
@@ -85,7 +79,7 @@ export default function ContactSection() {
             </a>
             <Link
               href="/contact"
-              className="inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-theme-accent hover:bg-theme-accentHover text-white dark:text-theme-bg font-semibold text-xs transition-all shadow-sm"
+              className="inline-flex items-center space-x-2 px-4 py-2 rounded-lg bg-theme-accent hover:bg-theme-accentHover text-white dark:text-slate-950 font-semibold text-xs transition-all shadow-sm"
             >
               <span>{t.contact.sendMessage}</span>
             </Link>
@@ -124,17 +118,13 @@ export default function ContactSection() {
             </button>
           </article>
 
-          {socials.map((social, idx) => {
-            const isLast = idx === socials.length - 1;
-            return (
+          {socials.map((social) => (
               <a
                 key={social.name}
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`group flex items-center justify-between p-4 rounded-lg bg-theme-btnExploreBg border border-theme-border hover:border-theme-accent/60 transition-all focus:ring-2 focus:ring-theme-accent/50 focus:outline-none ${
-                  isLast ? "sm:col-span-2" : ""
-                }`}
+                className="group flex items-center justify-between p-4 rounded-lg bg-theme-btnExploreBg border border-theme-border hover:border-theme-accent/60 transition-all focus:ring-2 focus:ring-theme-accent/50 focus:outline-none"
               >
                 <div className="flex items-center space-x-3">
                   <div className="p-2 rounded bg-theme-bg border border-theme-border text-theme-secondary">
@@ -147,15 +137,8 @@ export default function ContactSection() {
                     </span>
                   </div>
                 </div>
-                {isLast && (
-                  <span className="text-xs font-mono text-theme-muted group-hover:text-theme-accent transition-colors hidden sm:inline-flex items-center gap-1">
-                    <span>github.com/parsany</span>
-                    <span>&rarr;</span>
-                  </span>
-                )}
               </a>
-            );
-          })}
+            ))}
         </div>
       </div>
 

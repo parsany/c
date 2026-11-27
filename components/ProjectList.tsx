@@ -37,6 +37,7 @@ interface ProjectCardProps {
   category?: string;
   serviceHeadline?: string;
   keyOutcomes?: string[];
+  isFullWidth?: boolean;
 }
 
 function DefaultArchitectureSVG({ isHovered }: { isHovered: boolean }) {
@@ -128,6 +129,7 @@ function ProjectCard({
   category,
   serviceHeadline,
   keyOutcomes,
+  isFullWidth = false,
 }: ProjectCardProps) {
   const [isProjectClicked, setIsProjectClicked] = useState(false);
   const { t } = useLanguage();
@@ -146,7 +148,11 @@ function ProjectCard({
   if (isProfessional) {
     return (
       <article
-        className={`group relative flex flex-col justify-between bg-theme-cardBg border rounded-xl p-5 md:p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-md hover:z-20 focus-within:z-20 focus:outline-none ${
+        className={`group relative ${
+          isFullWidth
+            ? "md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 items-stretch"
+            : "flex flex-col justify-between"
+        } bg-theme-cardBg border rounded-xl p-5 md:p-6 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-md hover:z-20 focus-within:z-20 focus:outline-none ${
           isProjectClicked
             ? "!border-theme-text ring-1 ring-theme-text/40"
             : "border-theme-cardBorder"
@@ -155,7 +161,7 @@ function ProjectCard({
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
-        <div className="space-y-4">
+        <div className={isFullWidth ? "flex flex-col justify-center" : "space-y-4"}>
           <div className="aspect-[16/10] w-full rounded-lg overflow-hidden border border-theme-border bg-theme-btnExploreBg relative z-10">
             {imagesList.length > 0 ? (
               slug ? (
@@ -183,42 +189,81 @@ function ProjectCard({
             )}
           </div>
 
-          <div className="space-y-2">
-            <div className="flex items-center justify-between gap-1.5 pt-0.5">
-              <span className="text-[11px] font-mono uppercase tracking-wider text-theme-accent font-bold px-2 py-0.5 rounded bg-theme-accentLight border border-theme-border">
-                {category || t.projects.catEnterprise}
-              </span>
-            </div>
+          {!isFullWidth && (
+            <div className="space-y-2">
+              <div className="flex items-center justify-between gap-1.5 pt-0.5">
+                <span className="text-[11px] font-mono uppercase tracking-wider text-theme-accent font-bold px-2 py-0.5 rounded bg-theme-accentLight border border-theme-border">
+                  {category || t.projects.catEnterprise}
+                </span>
+              </div>
 
-            <h3 className="text-lg font-bold text-theme-text group-hover:text-theme-accent transition-colors leading-snug">
-              {slug ? (
-                <Link href={`/projects/${slug}`} prefetch={true} className="focus:outline-none">
-                  {name}
-                  <span className="absolute inset-0 z-0" aria-hidden="true" />
-                </Link>
+              <h3 className="text-lg font-bold text-theme-text group-hover:text-theme-accent transition-colors leading-snug">
+                {slug ? (
+                  <Link href={`/projects/${slug}`} prefetch={true} className="focus:outline-none">
+                    {name}
+                    <span className="absolute inset-0 z-0" aria-hidden="true" />
+                  </Link>
+                ) : (
+                  name
+                )}
+              </h3>
+
+              {keyOutcomes && keyOutcomes.length > 0 ? (
+                <ul className="space-y-1.5 pt-1 text-xs text-theme-secondary">
+                  {keyOutcomes.slice(0, 2).map((bullet, idx) => (
+                    <li key={idx} className="flex items-start gap-2">
+                      <span className="text-theme-accent font-bold select-none text-[11px] mt-0.5">›</span>
+                      <FormattedOutcome text={bullet} />
+                    </li>
+                  ))}
+                </ul>
               ) : (
-                name
+                <p className="text-theme-secondary text-sm leading-relaxed line-clamp-2">
+                  {description}
+                </p>
               )}
-            </h3>
-
-            {keyOutcomes && keyOutcomes.length > 0 ? (
-              <ul className="space-y-1.5 pt-1 text-xs text-theme-secondary">
-                {keyOutcomes.slice(0, 2).map((bullet, idx) => (
-                  <li key={idx} className="flex items-start gap-2">
-                    <span className="text-theme-accent font-bold select-none text-[11px] mt-0.5">›</span>
-                    <FormattedOutcome text={bullet} />
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p className="text-theme-secondary text-sm leading-relaxed line-clamp-2">
-                {description}
-              </p>
-            )}
-          </div>
+            </div>
+          )}
         </div>
 
-        <div className="mt-6 pt-4 border-t border-theme-border flex flex-col gap-3 relative z-10">
+        <div className={isFullWidth ? "flex flex-col justify-between gap-4" : ""}>
+          {isFullWidth && (
+            <div className="space-y-2.5">
+              <div className="flex items-center justify-between gap-1.5 pt-0.5">
+                <span className="text-[11px] font-mono uppercase tracking-wider text-theme-accent font-bold px-2 py-0.5 rounded bg-theme-accentLight border border-theme-border">
+                  {category || t.projects.catEnterprise}
+                </span>
+              </div>
+
+              <h3 className="text-lg md:text-xl font-bold text-theme-text group-hover:text-theme-accent transition-colors leading-snug">
+                {slug ? (
+                  <Link href={`/projects/${slug}`} prefetch={true} className="focus:outline-none">
+                    {name}
+                    <span className="absolute inset-0 z-0" aria-hidden="true" />
+                  </Link>
+                ) : (
+                  name
+                )}
+              </h3>
+
+              {keyOutcomes && keyOutcomes.length > 0 ? (
+                <ul className="space-y-1.5 pt-1 text-xs md:text-sm text-theme-secondary">
+                  {keyOutcomes.slice(0, 2).map((bullet, idx) => (
+                    <li key={idx} className="flex items-start gap-2">
+                      <span className="text-theme-accent font-bold select-none text-[11px] mt-0.5">›</span>
+                      <FormattedOutcome text={bullet} />
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="text-theme-secondary text-sm leading-relaxed line-clamp-3">
+                  {description}
+                </p>
+              )}
+            </div>
+          )}
+
+          <div className={`${isFullWidth ? "pt-4" : "mt-6 pt-4"} border-t border-theme-border flex flex-col gap-3 relative z-10`}>
           <div className="flex flex-wrap gap-1.5">
             {tags.slice(0, 4).map((tag: string) => (
               <span
@@ -271,6 +316,7 @@ function ProjectCard({
               </a>
             )}
           </div>
+        </div>
         </div>
       </article>
     );
@@ -520,7 +566,7 @@ export default function ProjectList() {
       </div>
 
       {activeTab === "professional" && (
-        <div className="flex flex-wrap items-center gap-1.5 mb-8 font-mono text-xs select-none">
+        <div className="flex items-center gap-2 mb-8 font-mono text-xs select-none overflow-x-auto pb-1 sm:flex-wrap sm:overflow-visible sm:pb-0">
           {categories.map((cat) => (
             <button
               key={cat.id}
@@ -528,7 +574,7 @@ export default function ProjectList() {
                 setSelectedCategory(cat.id);
                 setShowAll(false);
               }}
-              className={`px-2.5 py-1 rounded transition-colors cursor-pointer border ${
+              className={`px-2.5 py-1 rounded transition-colors cursor-pointer border whitespace-nowrap shrink-0 ${
                 selectedCategory === cat.id
                   ? "bg-theme-bg border-theme-border text-theme-text font-bold shadow-xs"
                   : "bg-theme-btnExploreBg/60 border-transparent text-theme-muted hover:text-theme-text hover:border-theme-border/50"
@@ -543,27 +589,33 @@ export default function ProjectList() {
       {activeTab === "professional" && (
         <>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {displayedProfessionalProjects.map((project) => (
-              <ProjectCard
-                key={project.id}
-                slug={project.slug}
-                name={project.name}
-                description={project.description}
-                tags={project.tag}
-                link={project.link || undefined}
-                links={project.links}
-                isProfessional={true}
-                isHovered={hoveredId === project.slug}
-                onMouseEnter={() => setHoveredId(project.slug)}
-                onMouseLeave={() => setHoveredId(null)}
-                image={project.image}
-                projectImages={project.project_image}
-                isLive={project.isLive}
-                category={project.category}
-                serviceHeadline={project.serviceHeadline}
-                keyOutcomes={project.keyOutcomes}
-              />
-            ))}
+            {displayedProfessionalProjects.map((project, idx) => {
+              const isOrphanLast =
+                displayedProfessionalProjects.length % 2 === 1 &&
+                idx === displayedProfessionalProjects.length - 1;
+              return (
+                <ProjectCard
+                  key={project.id}
+                  slug={project.slug}
+                  name={project.name}
+                  description={project.description}
+                  tags={project.tag}
+                  link={project.link || undefined}
+                  links={project.links}
+                  isProfessional={true}
+                  isHovered={hoveredId === project.slug}
+                  onMouseEnter={() => setHoveredId(project.slug)}
+                  onMouseLeave={() => setHoveredId(null)}
+                  image={project.image}
+                  projectImages={project.project_image}
+                  isLive={project.isLive}
+                  category={project.category}
+                  serviceHeadline={project.serviceHeadline}
+                  keyOutcomes={project.keyOutcomes}
+                  isFullWidth={isOrphanLast}
+                />
+              );
+            })}
           </div>
 
           {selectedCategory === "all" && filteredProfessionalProjects.length > 6 && (

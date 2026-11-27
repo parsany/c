@@ -2,7 +2,7 @@ import { AcademicProject, ProfessionalProject } from "./types";
 
 export const ProjectAcademic: AcademicProject[] = [
   {
-    id: 5,
+    id: 6,
     name: "Распознавание эмоций кошек",
     description:
       "С помощью CNN я обучил модель распознавать эмоции кошек. Последнее обновление: авг. 2025 г., *точность повышена до 70%*",
@@ -13,7 +13,7 @@ export const ProjectAcademic: AcademicProject[] = [
     tag: ["AI"],
   },
   {
-    id: 4,
+    id: 5,
     name: "Conway Invaders",
     description: "Игра Space Invaders, но враги — это клеточные автоматы!",
     date: "Aug 24, 2024",
@@ -23,6 +23,16 @@ export const ProjectAcademic: AcademicProject[] = [
     tag: ["Programming", "Games"],
     visualizer: "game",
     minigame: true,
+  },
+  {
+    id: 4,
+    name: "Workstation & KV Sync",
+    description:
+      "Local-first Tauri + SQLite WASM (OPFS) PWA с zero-knowledge шифрованием AES-256-GCM и синхронизацией через Cloudflare Workers KV.",
+    date: "Nov 27, 2026",
+    image: "/projects/workstation.webp",
+    link: "https://github.com/parsany/workstation-KV",
+    tag: ["Local-First", "Cloudflare KV", "PWA"],
   },
   {
     id: 3,
@@ -46,7 +56,7 @@ export const ProjectAcademic: AcademicProject[] = [
     visualizer: "app",
   },
   {
-    id: 6,
+    id: 7,
     name: "Обнаружение аномалий для золотодобычи",
     description:
       "Модели глубокого обучения для обнаружения минеральных зон (как аномалий) с использованием различных архитектур автоэнкодеров.",
@@ -80,7 +90,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
     description:
       "Корпоративная платформа для энергетической отрасли. Полное управление складом, матрица заказов, воронка заказов и ролевые панели управления.",
     date: "Jun 2026 – Present",
-    image: "/professional/luna/luna-landing.webp",
+    image: "",
     project_image: [],
     tag: [
       "NestJS",

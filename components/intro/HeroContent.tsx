@@ -28,22 +28,16 @@ export default function HeroContent({
 
         <div className="md:hidden flex-shrink-0">
           <div
-            className="relative group w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden border border-theme-border bg-theme-btnExploreBg shadow-md"
+            className="relative group w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border border-theme-border bg-theme-btnExploreBg shadow-md"
             data-attackable="true"
           >
             <Image
-              src="/content/main.jpg"
+              src="/content/portrait.jpg"
               alt="Parsa Niavand — Full-Stack Software Engineer"
               fill
               sizes="(max-width: 640px) 112px, 128px"
-              className="object-cover object-top transition-transform duration-300 ease-out group-hover:scale-105"
+              className="object-cover object-center scale-[1.14] transition-transform duration-300 ease-out group-hover:scale-[1.18]"
               priority
-            />
-            <div
-              className="absolute inset-x-0 bottom-0 h-1/4 pointer-events-none"
-              style={{
-                background: "linear-gradient(to top, rgba(0,0,0,0.22) 0%, transparent 100%)",
-              }}
             />
           </div>
         </div>
@@ -81,7 +75,7 @@ export default function HeroContent({
               e.preventDefault();
               window.dispatchEvent(new CustomEvent("open-resume-modal"));
             }}
-            className="flex items-center justify-center space-x-1.5 sm:space-x-2 px-3.5 sm:px-5 py-2.5 rounded-lg bg-theme-accent hover:bg-theme-accentHover text-white dark:text-theme-bg font-semibold transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 select-none text-xs sm:text-sm text-center cursor-pointer"
+            className="flex items-center justify-center space-x-1.5 sm:space-x-2 px-3.5 sm:px-5 py-2.5 rounded-lg bg-theme-accent hover:bg-theme-accentHover text-white dark:text-slate-950 font-semibold transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 select-none text-xs sm:text-sm text-center cursor-pointer"
           >
             <span className="truncate">{t.hero.downloadResume}</span>
             <ArrowUpRight className="h-4 w-4 shrink-0" />
@@ -98,11 +92,11 @@ export default function HeroContent({
 
         <button
           onClick={onOpenCommandMenu}
-          className="flex items-center justify-center space-x-2 px-4 py-2.5 rounded-lg bg-theme-btnExploreBg border border-theme-btnExploreBorder hover:border-theme-accent text-theme-btnExploreText hover:text-theme-text transition-all select-none font-mono text-xs w-full sm:w-auto"
+          className="group/cmd flex items-center justify-center space-x-2 px-4 py-2.5 rounded-lg bg-theme-btnExploreBg border border-theme-btnExploreBorder hover:border-theme-accent text-theme-btnExploreText hover:text-theme-text transition-all select-none font-mono text-xs w-full sm:w-auto cursor-pointer"
           aria-label={t.hero.exploreMenu}
         >
           <span>{t.hero.exploreMenu}</span>
-          <kbd className="hidden sm:inline-flex items-center px-1.5 py-0.5 rounded bg-theme-bg text-theme-muted text-[10px] border border-theme-border">
+          <kbd className="hidden sm:inline-flex items-center px-1.5 py-0.5 rounded bg-theme-bg text-theme-accent font-semibold text-[10px] border border-theme-accent/30 group-hover/cmd:border-theme-accent transition-colors">
             ⌘K
           </kbd>
         </button>

@@ -2,7 +2,7 @@ import { AcademicProject, ProfessionalProject } from "./types";
 
 export const ProjectAcademic: AcademicProject[] = [
   {
-    id: 5,
+    id: 6,
     name: "Cat Emotion recognition",
     description:
       "Custom CNN computer vision model trained for feline emotion classification (70% test accuracy).",
@@ -13,7 +13,7 @@ export const ProjectAcademic: AcademicProject[] = [
     tag: ["AI", "PyTorch"],
   },
   {
-    id: 4,
+    id: 5,
     name: "Conway Invaders",
     description:
       "Real-time space invaders arcade mechanics powered by deterministic Conway's Game of Life cellular automata.",
@@ -24,6 +24,16 @@ export const ProjectAcademic: AcademicProject[] = [
     tag: ["Programming", "Games"],
     visualizer: "game",
     minigame: true,
+  },
+  {
+    id: 4,
+    name: "Workstation & KV Sync",
+    description:
+      "Local-first Tauri + SQLite WASM (OPFS) PWA with zero-knowledge AES-256-GCM sync on Cloudflare Workers KV.",
+    date: "Nov 27, 2026",
+    image: "/projects/workstation.webp",
+    link: "https://github.com/parsany/workstation-KV",
+    tag: ["Local-First", "Cloudflare KV", "PWA"],
   },
   {
     id: 3,
@@ -48,7 +58,7 @@ export const ProjectAcademic: AcademicProject[] = [
     visualizer: "app",
   },
   {
-    id: 6,
+    id: 7,
     name: "Anomaly detection for goldmines",
     description:
       "Deep learning autoencoder architectures (VAE) for mineral zone anomaly detection in geophysical spatial datasets.",
@@ -80,7 +90,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
     description:
       "Enterprise platform for the power industry. Full inventory management, ordering matrix, order pipeline, and role-based dashboards.",
     date: "Jun 2026 – Present",
-    image: "/professional/luna/luna-landing.webp",
+    image: "",
     project_image: [],
     tag: [
       "NestJS",

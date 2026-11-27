@@ -2,7 +2,7 @@ import { AcademicProject, ProfessionalProject } from "./types";
 
 export const ProjectAcademic: AcademicProject[] = [
   {
-    id: 5,
+    id: 6,
     name: "Կատուների հույզերի ճանաչում",
     description:
       "CNN-ի միջոցով վարժեցրել եմ մոդել՝ կատուների հույզերը ճանաչելու համար։ Վերջին թարմացումը՝ օգոստոս 2025, *ճշգրտությունը բարելավվել է մինչև 70%*",
@@ -13,7 +13,7 @@ export const ProjectAcademic: AcademicProject[] = [
     tag: ["AI"],
   },
   {
-    id: 4,
+    id: 5,
     name: "Conway Invaders",
     description: "Space Invaders խաղ, բայց թշնամիները բջջային ավտոմատներ են:",
     date: "Aug 24, 2024",
@@ -23,6 +23,16 @@ export const ProjectAcademic: AcademicProject[] = [
     tag: ["Programming", "Games"],
     visualizer: "game",
     minigame: true,
+  },
+  {
+    id: 4,
+    name: "Workstation & KV Sync",
+    description:
+      "Local-first Tauri + SQLite WASM (OPFS) PWA՝ AES-256-GCM գաղտնագրված սինխրոնիզացիայով Cloudflare Workers KV-ում։",
+    date: "Nov 27, 2026",
+    image: "/projects/workstation.webp",
+    link: "https://github.com/parsany/workstation-KV",
+    tag: ["Local-First", "Cloudflare KV", "PWA"],
   },
   {
     id: 3,
@@ -46,7 +56,7 @@ export const ProjectAcademic: AcademicProject[] = [
     visualizer: "app",
   },
   {
-    id: 6,
+    id: 7,
     name: "Անոմալիաների հայտնաբերում ոսկու հանքերի համար",
     description:
       "Խորը ուսուցման մոդելներ հանքային գոտիների հայտնաբերման համար (որպես անոմալիաներ)՝ օգտագործելով Autoencoder-ի տարբեր ճարտարապետություններ:",
@@ -80,7 +90,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
     description:
       "Ձեռնարկատիրական հարթակ էներգետիկայի ոլորտի համար: Գույքագրման կառավարում, պատվերների մատրիցա, պատվերների խողովակաշար և դերային վահանակներ:",
     date: "Jun 2026 – Present",
-    image: "/professional/luna/luna-landing.webp",
+    image: "",
     project_image: [],
     tag: [
       "NestJS",
