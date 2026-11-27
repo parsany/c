@@ -106,9 +106,12 @@ export default function PostDetailClient({ post }: PostDetailClientProps) {
                 {...props}
               />
             ),
-            img: ({ node, ...props }) => (
+            img: ({ node, className, ...props }) => (
               <img
-                className="w-full rounded-xl border border-theme-border my-6 shadow-sm"
+                className={
+                  className ||
+                  "max-w-full max-h-[560px] w-auto mx-auto rounded-xl my-6 shadow-sm"
+                }
                 loading="lazy"
                 {...props}
               />
