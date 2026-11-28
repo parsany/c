@@ -88,7 +88,8 @@ export const ProjectProfessional: ProfessionalProject[] = [
     slug: "project-luna",
     name: "Project Luna",
     category: "Unternehmensplattform",
-    serviceHeadline: "Betriebs- und Bestandsplattform für die Energiewirtschaft",
+    serviceHeadline:
+      "Betriebs- und Bestandsplattform für die Energiewirtschaft",
     description:
       "Unternehmensplattform für die Energiewirtschaft. Umfassende Bestandsverwaltung, Bestellmatrix, Auftragspipeline und rollenbasierte Dashboards.",
     date: "Jun 2026 – Present",
@@ -118,7 +119,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
       "Rollenbasierte Admin-, Hersteller- und Händler-Panels",
       "OTP-Authentifizierung + striktes RBAC",
     ],
-    text: `# Project Luna\n\nFortlaufende Plattform für die Energiewirtschaft.\n\nAufgebaut als Turborepo-Monorepo mit NestJS-API, gemeinsamem Next.js-Designsystem, Prisma + PostgreSQL, Redis für OTP und MinIO für Medien. Ein striktes rollenbasiertes Zugriffskonzept (RBAC) hält Hersteller, Händler und Administratoren vollständig isoliert, während sie dasselbe Backend nutzen.\n\n- **Rolle**: Leitender Fullstack-Entwickler\n- **Zeitraum**: Juni 2026 – Heute\n- **Stack**: NestJS, Next.js, Turborepo, Prisma, PostgreSQL, Redis, MinIO, Tailwind CSS`,
+    text: `# Project Luna\n\nFortlaufende Unternehmensplattform für die Energiewirtschaft mit Bestandsrastern, Mengenbestellmatrix mit Live-Staffelpreisen und mehrstufigen Auftragspipelines.\n\nHersteller, Händler und Administratoren arbeiten auf demselben Katalog und Auftragslebenszyklus. Die eigentliche Herausforderung liegt darin, Mandanten strikt voneinander zu isolieren und dennoch kontrollierte Aufgaben-Delegation zwischen Rollen zuzulassen. Die Plattform läuft als Turborepo-Monorepo mit NestJS-API, gemeinsamem Next.js-Designsystem, Prisma + PostgreSQL, Redis für OTP und MinIO für Medien.\n\nEin gemeinsames Backend mit striktem RBAC verhindert Synchronisationsfehler bei Live-Staffelpreisen und Beständen, verlangt aber hohe Disziplin im Datenmodell, damit Workflow-Änderungen eines Mandanten nicht auf andere durchschlagen. Derzeit in aktiver Entwicklung für das Bestandsraster, die Mengenbestellmatrix und isolierte Rollen-Panels.\n\n- **Rolle**: Leitender Fullstack-Entwickler\n- **Zeitraum**: Juni 2026 – Heute\n- **Stack**: NestJS, Next.js, Turborepo, Prisma, PostgreSQL, Redis, MinIO, Tailwind CSS`,
   },
   {
     id: 8,
@@ -153,7 +154,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
       "Ladezeiten unter einer Sekunde",
       "cPanel-Bildverwaltung",
     ],
-    text: `# K2N Solutions Inc.\n\nEntwicklung des Webauftritts für ein lizenziertes Elektrotechnik- und Beratungsunternehmen. Die bisherige WordPress-Website war langsam und spiegelte die über 35-jährige Erfahrung des Unternehmens nicht angemessen wider.\n\nIch konzipierte und implementierte eine vollständig statische Next.js-Website mit Fokus auf Geschwindigkeit, Klarheit und einfache Wartbarkeit. Die Architektur ermöglicht es dem Kunden, Bilder direkt über cPanel ohne Rebuilds zu aktualisieren, während die Seite extrem schnell und sicher bleibt.\n\n- **Rolle**: Frontend-Entwickler\n- **Zeitraum**: Juli 2026 – Aug. 2026\n- **Stack**: Next.js (statischer Export), Tailwind CSS`,
+    text: `# K2N Solutions Inc.\n\nNeugestaltung des Webauftritts für ein lizenziertes Elektrotechnik- und Beratungsunternehmen mit über 35 Jahren Erfahrung. Die alte WordPress-Seite war träge und spiegelte die technische Kompetenz des Unternehmens nicht wider, gleichzeitig sollte das Team Bilder ohne Entwickler-Builds austauschen können.\n\nIch habe einen vollständig statischen Next.js-Export mit Tailwind CSS konzipiert und umgesetzt, bei dem Bilddateien direkt über cPanel ohne Rebuild aktualisiert werden können. Der Verzicht auf SSR reduzierte Wartungsaufwand und Angriffsfläche auf dem bestehenden cPanel-Hosting, während dynamische Leistungs- und Kundenbereiche für eine spätere Headless-\`wp-admin\`-Anbindung vorgesehen sind.\n\nDie neue Website erreicht **100/100 Core Web Vitals** mit Ladezeiten unter einer Sekunde und Bild-Updates ohne Rebuild.\n\n- **Rolle**: Frontend-Entwickler\n- **Zeitraum**: Juli 2026 – Aug. 2026\n- **Stack**: Next.js (statischer Export), Tailwind CSS, cPanel`,
   },
   {
     id: 9,
@@ -194,7 +195,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
       "**Einheitliches Backend:** Zentrale NestJS-Engine für zwei Marken-Storefronts",
       "**Garantie-Engine:** Automatisierte Validierung und Abfrage von Seriennummern",
     ],
-    text: `# Battery ESP/MSK E-Commerce\n\nEntwickelt in Zusammenarbeit mit einem Team. Eine E-Commerce-Plattform für zwei Batteriemarken, die sich dasselbe Backend teilen. Die zentrale Besonderheit war das Garantieüberprüfungssystem: Kunden geben eine Seriennummer ein, die das System mit einer Datenbank generierter Schlüssel abgleicht.\n\n- **Rolle**: Fullstack-Entwickler (im Team)\n- **Zeitraum**: Dez. 2025 – Juni 2026\n- **Stack**: Turborepo-Monorepo, NestJS, Next.js, PostgreSQL`,
+    text: `# Battery ESP/MSK E-Commerce\n\nÜber 7 Monate im Team für zwei EV-Batteriemarken (\`ESP\` und \`MSK\`) entwickelt, die zweisprachige Storefronts (\`EN\`/\`FA\`), ein internes Betriebs-Dashboard und eine seriennummernbasierte Garantieprüfung ohne doppelte Backend-Logik benötigten.\n\nDie eigentliche Herausforderung waren zwei getrennte Markenidentitäten, umfangreiche Werks-Excel-Tabellen für Seriennummern und feingranulare Mitarbeiterrechte auf Basis einer einzigen API. Im Turborepo-Monorepo teilen sich zwei Next.js-\`[locale]\`-Storefronts (\`esp\`, \`msk\`) und ein internes Dashboard eine NestJS-API mit 12 Prisma/PostgreSQL-Modellen. Der \`WarrantyService\` importiert Werks-Excel-Dateien (\`XLSX\`), ordnet Seriennummern Produkten zu, stellt eine öffentliche Prüfung (\`GET /warranties/check/:code\`) bereit, verknüpft freie Garantien beim Kauf transaktional mit \`OrderItem\`-Zeilen und exportiert Chargen über \`ExcelJS\`. Beim Start scannt \`RbacService\` die NestJS-Controller (\`DiscoveryService\` + \`MetadataScanner\`) und registriert \`@Resource\`-Dekoratoren (\`READ\`, \`WRITE\`, \`UPDATE\`, \`DELETE\`) automatisch in PostgreSQL und im Arbeitsspeicher.\n\nEin gemeinsames Backend sparte Monate an doppelter Wartung, verlangte aber saubere Markengrenzen bei jeder Produkt-, Bestell- und Garantieabfrage. Die automatische RBAC-Erkennung ersparte manuelles Seeding, koppelt die Rechte-Synchronisation jedoch an den NestJS-Start.\n\nHeute betreibt ein einziges Backend beide zweisprachigen Storefronts und das Admin-Dashboard und ersetzt manuelle Tabellenprüfungen durch sofortige Seriennummern-Validierung.\n\n- **Rolle**: Fullstack-Entwickler (im Team)\n- **Zeitraum**: Dez. 2025 – Juni 2026\n- **Stack**: Turborepo, NestJS, Next.js, PostgreSQL, Prisma, i18n`,
   },
   {
     id: 6,
@@ -225,20 +226,23 @@ export const ProjectProfessional: ProfessionalProject[] = [
     redirect: "esp",
     noindex: true,
     link: "https://mkweb.parsany.com/en/landing",
-    links: [{ label: "Live-Demo", url: "https://mkweb.parsany.com/en/landing" }],
+    links: [
+      { label: "Live-Demo", url: "https://mkweb.parsany.com/en/landing" },
+    ],
     role: "Frontend-Entwickler (im Team)",
     keyOutcomes: [
       "**1:1-Designtreue:** Zweisprachige Storefront mit Design-Tokens aus Turborepo",
       "**Echtzeit-Validierung:** Sofortige Garantieprüfung nach Seriennummer für EN & FA",
     ],
-    text: `# Battery MSK Kunden-Website\n\nEntwickelt im Team (paralleler Zyklus zu ESP). Die kundenorientierte Seite des Battery-ESP-Monorepos – gleiche Codebasis, andere Marke, 1:1 nach Designvorgaben in beiden Sprachen (FA und EN) umgesetzt. Erstellung und Gestaltung der öffentlichen Storefront und der Garantieabfrageseiten.\n\n- **Rolle**: Frontend-Entwickler (im Team)\n- **Zeitraum**: Dez. 2025 – Juni 2026\n- **Stack**: Next.js, Tailwind CSS, NestJS (geteiltes Backend)`,
+    text: `# Battery MSK Kunden-Website\n\nParallel zum ESP-Release als öffentliche Storefront für die zweite Marke im \`battery-app\`-Monorepo entwickelt. Mein Fokus lag auf der 1:1-Umsetzung der Storefront- und Garantieabfrageseiten aus dem Design für Persisch (\`FA\`) und Englisch (\`EN\`).\n\nDie Anwendung liegt als \`apps/msk\` im gemeinsamen Turborepo-Monorepo, nutzt die geteilten \`@battery-app/ui\`-Komponenten, Typen und Query-Hooks und kommuniziert direkt mit der zentralen NestJS-API für Katalog und Garantien.\n\n\`msk\` als eigene Next.js-App statt als dynamisch gethemte Einzel-App zu führen, ermöglichte unabhängige Layouts, Assets und RTL/LTR-Routing ohne bedingtes Styling-Chaos – bei gleichzeitig geteilten Typen und API-Hooks. Ausgeliefert mit 1:1-Designtreue in beiden Sprachen und Live-Garantieprüfung.\n\n- **Rolle**: Frontend-Entwickler (im Team)\n- **Zeitraum**: Dez. 2025 – Juni 2026\n- **Stack**: Next.js, Tailwind CSS, Turborepo, NestJS (geteiltes Backend), i18n`,
   },
   {
     id: 10,
     slug: "atrafian",
     name: "Atrafian Chat- & Social-Ökosystem",
     category: "Echtzeit-Architektur",
-    serviceHeadline: "Hochgradig nebenläufiges Messaging & Geolokalisierungs-Radar",
+    serviceHeadline:
+      "Hochgradig nebenläufiges Messaging & Geolokalisierungs-Radar",
     description:
       "Echtzeit-Chat-App mit nativer mobiler Distribution. WebSockets für Messaging, Redis für Caching und eine maßgeschneiderte Radar-Entdeckungskarte.",
     date: "Jan 2026 – Mar 2026",
@@ -290,7 +294,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
       "Radar-Navigation & Entdeckung",
       "AWS S3/MinIO-Integration",
     ],
-    text: `# Atrafian Chat- & Social-Ökosystem\n\nÜber 3 Monate in Vollzeit eigenständig entwickelt. Eine soziale Plattform mit Echtzeit-Chat (Einzel-, Gruppen- und Support-Kanäle), Stories, Kontaktanfragen und Medienfiltern. Die Entdeckungskarte nutzt ein Sonnensystem-Layout: Nutzer werden in Umlaufbahnen nach Online-Status und Distanz angeordnet statt kontinuierlich geortet. Mediendateien (Audio, Bild, Video) laufen über eine selbst gehostete MinIO-Instanz, während Redis Caching und OTP übernimmt.\n\n- Konzeption des NestJS/Socket.io-Echtzeit-Gateways mit automatischer FCM-Push-Rückfallebene für Offline-Clients und dynamischem Raum-Routing.\n- Beseitigung von N+1-Query-Engpässen im Gruppen-Messaging durch optimierte SQL-Aggregationen, wodurch Latenzen unter einer Sekunde selbst in Räumen mit über 1.000 Teilnehmern gehalten werden.\n\n- **Rolle**: Fullstack- & Mobile-Entwickler\n- **Zeitraum**: Jan. 2026 – März 2026\n- **Stack**: NestJS, Next.js, Socket.io, Redis, PostgreSQL, Turborepo`,
+    text: `# Atrafian Chat- & Social-Ökosystem\n\nÜber 3 Monate in Vollzeit eigenständig entwickelt. Atrafian ist eine Social-Discovery- und Messaging-Plattform mit Einzel-, Gruppen-, Stadtraum- und Support-Chats, Stories, Guthaben-Wallet und nativer Android-App.\n\nZwei Anforderungen bestimmten die Architektur: Der Entdeckungsbildschirm musste sich mobil wie ein flüssiges Sonnensystem-Radar anfühlen, ohne Akkus durch dauerhaftes GPS-Polling leerzuziehen, und Gruppenräume mussten bei über 1.000 gleichzeitigen Nutzern ohne N+1-Engpässe stabil bleiben. Das Turborepo-Monorepo kombiniert ein 15-Module-NestJS-Backend, 31 Prisma/PostgreSQL-Modelle, ein Next.js-Admin-Panel und eine Capacitor-Android-App. \`DiscoveryService\` filtert Kandidaten zunächst per Bounding-Box (\`latDelta\`/\`lngDelta\`) über PostgreSQL-Indizes vor, bevor eine Raw-SQL-Haversine-Abfrage die Distanz berechnet. Das Messaging läuft über ein Socket.io-\`ChatGateway\` mit Multi-Device-Socket-Sets, 5-Minuten-Idle-Timern, store-spezifischen Update-Kanälen (\`cafebazaar\`, \`myket\`, \`main\`) und automatischem FCM-Push-Fallback für Offline-Nutzer. Medien laufen über selbst gehostetes MinIO, Redis übernimmt Caching und OTP.\n\nDa eine Kundenanforderung React Native ausschloss, war Capacitor.js der pragmatische Weg. Clientseitige Erstprüfung per \`NSFW.js\` bei der Registrierung fing auffällige Profile ab, noch bevor der serverseitige \`WordList\`-Filter greifen musste. Bounding-Box + Haversine in SQL sparte die Komplexität von PostGIS, und gebündelte SQL-Aggregationen statt ORM-Schleifen hielten die Gruppenchat-Latenz konstant niedrig.\n\nErgebnis: Zustellung unter einer Sekunde in Räumen mit 1.000+ Nutzern, automatisierte NSFW-Vorfilterung und eine gemeinsame Codebasis für Web, Admin und mehrere Android-Stores.\n\n- **Rolle**: Fullstack- & Mobile-Entwickler\n- **Zeitraum**: Jan. 2026 – März 2026\n- **Stack**: NestJS, Next.js, Socket.io, Capacitor.js, PostgreSQL, Prisma, Redis, MinIO, Turborepo`,
   },
   {
     id: 11,
@@ -340,7 +344,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
       "**10.000+ Updates/Min:** IoT-Telemetrie im Subsekundenbereich visualisiert mit Mapbox",
       "**Flotten-Geofencing:** Dynamische Routenhistorie und automatische Gebietswarnungen",
     ],
-    text: `# Goldenbat GPS-Flottenüberwachung\n\nÜber 5 Monate im Team entwickelt. Ich habe die Landing-Page sowie die mobile PWA gebaut und am Frontend des Flotten-Dashboards (Next.js) mitgewirkt – einschließlich Geofencing und Benachrichtigungssystem. Das Backend verarbeitet über 10.000 GPS-Koordinaten-Updates pro Minute mit minimaler Latenz; das Dashboard stellt aktuelle Positionen, Routenverläufe und Geofencing-Warnungen dar.\n\n- **Rolle**: Frontend-Entwickler\n- **Zeitraum**: Sept. 2024 – Jan. 2025\n- **Stack**: Next.js, tRPC, PostgreSQL\n\n Aktuell wegen Wartungsarbeiten offline`,
+    text: `# Goldenbat GPS-Flottenüberwachung\n\nÜber 5 Monate im Team entwickelt. Ich habe die Landingpage und die mobile PWA umgesetzt und am Next.js-Flotten-Dashboard, am Geofencing sowie an der Benachrichtigungs-Pipeline mitgearbeitet, während ein Teamkollege die native Mobile-App betreute.\n\nBei über 10.000 GPS-Koordinaten-Updates pro Minute von unterschiedlichen IoT-Trackern durfte die Oberfläche nicht blind Datenbankzeilen pollen, und verrauschte Hardware-Events (schnelles Zündungs-Toggeln, kurze Signalabbrüche) hätten Fahrer und Disponenten mit Fehlalarmen überflutet. Die Webschicht besteht aus zwei Next.js-+-tRPC-Apps (\`goldenbat-client-app\` mit 12 Routern und \`goldenbat-dashboard-app\` mit 16 Routern) auf einem 36-Modelle-Prisma/PostgreSQL-Schema. Live-Telemetrie kommt aus Traccars Parser-API und wird serverseitig nach IMEI, Modell, Online-Status und Provinz mittels \`@turf/boolean-point-in-polygon\` gegen GeoJSON-Gebietsgrenzen des jeweiligen Landes gefiltert. Benachrichtigungen laufen entkoppelt in einem Python-3.11-+-Celery-Beat-Worker, der alle 10 Sekunden sowohl \`GeoFenceEvents\` als auch Traccars \`tc_events\` abfragt und Meldungen per HTTP mit Retry/Backoff zustellt. Hardware-Befehle unterstützen Online-TCP-Versand mit SMS-Fallback und Webhook-Statusverfolgung.\n\nStatt Traccars Schema direkt in Prisma einzubinden, hielten wir dessen Datenbank getrennt und verknüpften Events im Celery-Worker mit einem 1-Stunden-Redis-Deduplizierungs-Cache und einem 10-Sekunden-Zündungs-Debounce. Das brachte eine kleine Polling-Verzögerung von bis zu 10 Sekunden, schützte die Next.js-Apps aber vollständig vor Traccar-Updates und Event-Stürmen.\n\nIm Betrieb verarbeitete das System 10.000+ Updates pro Minute mit Subsekunden-Kartenrendering für Live-Tracking, Routenhistorie, Geofencing und Fernabschaltung verschiedener Tracker-Marken.\n\n- **Rolle**: Frontend-Entwickler\n- **Zeitraum**: Sept. 2024 – Jan. 2025\n- **Stack**: Next.js, tRPC, Prisma, PostgreSQL, Mapbox, Turf.js, Python, Celery, Redis`,
   },
   {
     id: 7,
@@ -376,14 +380,15 @@ export const ProjectProfessional: ProfessionalProject[] = [
       "**99 Lighthouse-Score:** Leistungsstarkes Portal für Barrentransaktionen im Großhandel",
       "**Live-Marktkurse:** Mehrstufiger Kaufprozess mit direkter Anbindung an Django-REST-Hauptbuch",
     ],
-    text: `# Alzahra Gold-Großhandel B2B-Plattform\n\nIn 1,5 Monaten in Teamarbeit realisiert. Eine B2B-Plattform für Goldgroßkäufer auf Basis einer Django-REST-API, die von den Backend-Entwicklern des Teams bereitgestellt wurde. Ich habe die Landingpage komplett umgesetzt und am Dashboard für Einkäufer mitgewirkt. Die Landingpage erzielte einen Desktop-Lighthouse-Score von 99.\n\n- **Rolle**: Frontend-Entwickler\n- **Zeitraum**: März 2024 – Apr. 2024\n- **Stack**: Next.js, Tailwind CSS (Backend: Django REST)`,
+    text: `# Alzahra Gold-Großhandel B2B-Plattform\n\nIn 1,5 Monaten im Team auf Basis einer Django-REST-API realisiert, die vom restlichen Team betreut wurde. Ich habe die öffentliche Landingpage komplett umgesetzt und am authentifizierten Käufer-Dashboard mitgewirkt.\n\nGold-Großkäufer landen in einem Dashboard, das mehrere parallele API-Aufrufe (Kurse, Bestellungen, Benachrichtigungen, Support) über kurzlebige JWTs absetzt, während die Landingpage sofort laden und Vertrauen schaffen musste. Das Frontend entstand mit Next.js 14, MUI, Radix UI, Zustand, Framer Motion, Embla Carousel, Jalali-Kalenderunterstützung (\`date-fns-jalali\`) und OTP-Login. Im Axios-Client implementierte ich einen Single-Flight-\`isRefreshing\`-Lock mit \`failedQueue\`-Puffer: Laufen parallele Anfragen in ein \`401\`/\`403\`, wird genau ein Token-Refresh ausgelöst, während alle übrigen Requests warten und automatisch mit dem neuen Token wiederholt werden.\n\nDie Kombination aus MUI und Radix UI beschleunigte datenlastige B2B-Tabellen und Jalali-Datepicker, während eigene Modals und OTP-Felder schlank blieben – solange das Bundle der Landingpage sauber getrennt blieb. Die Landingpage erreichte einen **Desktop-Lighthouse-Score von 99**, und das Portal beseitigte Token-Refresh-Race-Conditions im mehrstufigen Bestellprozess.\n\n- **Rolle**: Frontend-Entwickler\n- **Zeitraum**: März 2024 – Apr. 2024\n- **Stack**: Next.js 14, Tailwind CSS, MUI, Zustand, Axios (Backend: Django REST)`,
   },
   {
     id: 4,
     slug: "edu-platform",
     name: "Bildungsplattform*",
     category: "Full-Stack-Entwicklung",
-    serviceHeadline: "Videostreaming & Plattform für akademische Veröffentlichungen",
+    serviceHeadline:
+      "Videostreaming & Plattform für akademische Veröffentlichungen",
     description:
       "Full-Stack-Bildungsplattform für einen Universitätsprofessor: Videokurse auf S3, Markdown-Blog mit SEO und Kursverwaltungs-Dashboard.",
     date: "July 2026",
@@ -411,7 +416,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
       "Markdown-Blog mit SEO",
       "Kursverwaltungs-Dashboard",
     ],
-    text: `# Tutor-Bildungsplattform\n\nDerzeit in Entwicklung (Juli 2026). Entwickelt für einen bekannten Universitätsprofessor – gesucht war eine Lösung, um Videokurse bereitzustellen und ausführliche Fachartikel zu veröffentlichen, ohne auf Drittanbieter angewiesen zu sein.\n\nVideoinhalte werden auf einen selbst gehosteten, S3-kompatiblen Speicher hochgeladen und direkt auf der Plattform gestreamt. Der Blog unterstützt vollwertiges Markdown mit automatischer SEO-Metadaten-Generierung pro Beitrag (Open Graph, kanonische URLs, strukturierte Daten).\n\n- **Rolle**: Fullstack-Entwickler\n- **Zeitraum**: Juli 2026 – Heute\n- **Stack**: Next.js, NestJS, PostgreSQL, S3 (selbst gehostet)`,
+    text: `# Bildungsplattform\n\nDerzeit in Entwicklung für einen Universitätsprofessor, der Videokurse und lange Fachartikel an einem eigenen Ort veröffentlichen wollte, statt sein Publikum zwischen YouTube/Vimeo und externen Blog-Plattformen aufzuteilen.\n\nAufgebaut mit Next.js, NestJS und PostgreSQL verbindet die Plattform einen selbst gehosteten, S3-kompatiblen Speicher für direktes Vorlesungs-Streaming mit einer Markdown-Blog-Engine, die pro Beitrag automatisch Open-Graph-Tags, kanonische URLs und strukturierte Daten generiert – gesteuert über ein Dozenten-Dashboard.\n\nSelbst gehostetes S3-Video vermeidet Plattformgebühren und Lock-in, tauscht dafür aber den Komfort eines gemanagten Video-CDNs gegen volle Kontrolle über Bandbreite und Auslieferung. Kurs-Dashboard, S3-Videopipeline und SEO-Markdown-Engine stehen bereits.\n\n- **Rolle**: Fullstack-Entwickler\n- **Zeitraum**: Juli 2026 – Heute\n- **Stack**: Next.js, NestJS, PostgreSQL, S3 (selbst gehostet), Markdown`,
   },
   {
     id: 3,
@@ -429,7 +434,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
       "/professional/himeh/himeh-product-id.webp",
       "/professional/himeh/himeh-checkout.webp",
     ],
-    tag: ["Next.js", "Tailwind CSS", "tRPC", "Payment Gateway", "PostgreSQL"],
+    tag: ["Next.js", "Tailwind CSS", "NextAuth", "Redis", "MinIO/S3", "Java"],
     isactive: false,
     link: "https://himeh.parsany.com/",
     links: [
@@ -439,15 +444,15 @@ export const ProjectProfessional: ProfessionalProject[] = [
     ],
     role: "Fullstack-Entwickler",
     keyOutcomes: [
-      "**End-to-End-Typsicherheit:** tRPC-API als Brücke zwischen Shop und Autoren-Portal",
+      "**10-Module-Admin-Portal:** Katalog-, Versand-, Gutschein- und Ticket-Verwaltung",
       "**Passwortloses OTP:** Reibungslose Anmeldung mit integriertem Zahlungs-Gateway",
     ],
     highlights: [
       "Suchindex für den Buchkatalog",
-      "Typsichere tRPC-API",
+      "Cron-basierte Bewertungsaggregation",
       "Integriertes Zahlungs-Gateway",
     ],
-    text: `# Himeh Buchverlagsplattform\n\nIn 2 Monaten entwickelt. Eine vollständige Online-Buchhandlung: Autoren laden Titel über ein Administrations-Dashboard hoch, Kunden suchen nach Büchern, legen sie in den Warenkorb und bezahlen über ein lokales Zahlungs-Gateway. Passwortlose Authentifizierung über Einmalpasswörter (OTP).\n\n- **Rolle**: Fullstack-Entwickler\n- **Zeitraum**: Feb. 2025 – März 2025\n- **Stack**: Next.js, tRPC, PostgreSQL, Prisma`,
+    text: `# Himeh Buchverlag\n\nIn 2 Monaten eigenständig als Online-Buchhandlung und Verlagsportal entwickelt. Leser stöbern, favorisieren und bestellen Bücher über ein lokales Zahlungs-Gateway, während Admins und Verlage Bestand, Lieferungen, Gutscheine, Sonderangebote und Tickets verwalten.\n\nEine Buchhandlung braucht schnelle Katalog-Ladezeiten und verlässliche Bewertungsaggregationen ohne langsame Produktseiten sowie ein Backoffice für Bestellungen, Versand, Gutscheine und Verlagsanfragen. Ich entwickelte die Web-App mit Next.js 15 (React 19, Turbopack), passwortlosem NextAuth-v5-OTP-Login, Redis (\`ioredis\`) und MinIO/S3 für Buchcover, angebunden an ein Java-Backend (\`backend.jar\`). Das Admin-Panel umfasst 10 Module (Bücher, Bestellungen, Lieferungen, Gutscheine, Angebote, Kategorien, Tickets, Anfragen, Verlagsnachrichten und Nutzer), während Bewertungsberechnungen über einen per \`CRON_SECRET\` geschützten Endpunkt (\`/api/cron/update-ratings\`) laufen.\n\nDie Auslagerung der Bewertungs-Updates in einen Cron-Job hielt Katalogabfragen schnell und vorhersehbar, und reines OTP-Login ersparte Passwort-Reset-Support für Gelegenheitskäufer. Ausgeliefert als kompletter Shop samt Checkout und 10-Module-Verlagsportal in 2 Monaten.\n\n- **Rolle**: Fullstack-Entwickler\n- **Zeitraum**: Feb. 2025 – März 2025\n- **Stack**: Next.js 15, Tailwind CSS, NextAuth, Redis, MinIO/S3, Java`,
   },
   {
     id: 2,
@@ -474,7 +479,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
       "Interaktiver Kunden-Hub",
       "Studio-Leitstelle",
     ],
-    text: `# Keramikstudio Charbag\n\nEntwickelt für ein lokales Keramikstudio. Der Kunde benötigte eine ansprechende Präsentationsseite für seinen handwerklichen Katalog.\n\n- **Rolle**: Fullstack-Entwickler\n- **Zeitraum**: Apr. 2025\n- **Stack**: Next.js, PostgreSQL`,
+    text: `# Keramikstudio Charbag\n\nStorefront und Katalog-Showcase für ein lokales Keramikstudio zur Online-Präsentation handgefertigter Kollektionen.\n\nDa Keramik stark von visuellen Details lebt und die meisten Besucher mobil stöbern, lag der Fokus auf einer schlanken, Mobile-First-Galerie mit Next.js, Tailwind CSS und PostgreSQL statt eines überdimensionierten Checkout-Systems, bevor überhaupt Online-Zahlungen benötigt wurden. Ergebnis ist ein schneller, klarer Katalog passend zur visuellen Identität des Studios.\n\n- **Rolle**: Fullstack-Entwickler\n- **Zeitraum**: Apr. 2025\n- **Stack**: Next.js, Tailwind CSS, PostgreSQL`,
   },
   {
     id: 1,
@@ -501,6 +506,6 @@ export const ProjectProfessional: ProfessionalProject[] = [
       "**Echtzeit-Disposition:** Leistungsfähige Konsole zur Routenplanung und Fahrerzuteilung",
       "**Turborepo + tRPC:** Einheitliche Plattform für Buchungen und Support-Tickets",
     ],
-    text: `# Taxiland Mitfahr-Plattform\n\nÜber 4 Monate im Team entwickelt. Eine Plattform für Überland-Fahrgemeinschaften: Passagiere buchen Fahrten, Fahrer übernehmen diese. Ich habe die mobile Anwendung erstellt und am tRPC-Backend sowie am Dispositions-Admin-Panel mitgewirkt, über das Mitarbeiter Fahrern Aufträge zuweisen und Tickets verwalten.\n\n- **Rolle**: Fullstack-Entwickler (Teamprojekt)\n- **Zeitraum**: Mai 2024 – Aug. 2024\n- **Stack**: Next.js, tRPC, PostgreSQL, Turborepo`,
+    text: `# Taxiland Mitfahr-Plattform\n\nÜber 4 Monate im Team für Überland-Fahrgemeinschaften entwickelt: Passagiere buchen Hin- oder Hin-und-Rückfahrten, Fahrer übernehmen Routen und Disponenten steuern Zuteilungen sowie Support-Tickets. Ich entwickelte die mobile Anwendung und wirkte am tRPC-Backend und dem Dispositions-Dashboard mit.\n\nÜberlandfahrten bedeuten mehrteilige Routen, Anzahlungen und sensible Fahrer-Dokumente (Ausweise, Fahrzeugpapiere), die niemals über öffentliche URLs erreichbar sein dürfen – während Passagier-, Fahrer- und Disponenten-Apps synchron bleiben müssen. Das Turborepo-Monorepo umfasst drei Next.js-+-tRPC-v11-Apps (\`client\`, \`driver\`, \`dashboard\`) auf einem gemeinsamen 16-Modelle-Prisma/PostgreSQL-Paket (\`@taxiland/db\`), Redis (\`ioredis\`), Faraz-SMS-OTP und \`@taxiland/geo\`. Die Fahrtanlage läuft in einer atomaren \`prisma.$transaction\`, die den Fahrgast per Telefonnummer anlegt oder aktualisiert, \`Trip\`- und \`TripLeg\`-Zeilen (\`ONE_WAY\`/\`ROUND_TRIP\`) erzeugt und \`BigInt\`-Preise speichert. Fahrer-Dokumente liegen in einem privaten MinIO-Bucket und werden Disponenten ausschließlich über kurzlebige Presigned-GET-URLs bereitgestellt.\n\nStatt früh für eine kommerzielle Geocoding-API zu zahlen, kapselt \`@taxiland/geo\` OpenStreetMap Nominatim, um die 6-stufige Verwaltungshierarchie des jeweiligen Landes zu parsen und \`Polygon\`/\`MultiPolygon\`-Grenzen zu extrahieren. tRPC über alle drei Apps hinweg lieferte durchgängige Typsicherheit ohne OpenAPI-Pflege, band Frontend und API aber enger an das Monorepo.\n\nDas Ergebnis vereinte Buchung, Fahrerverifizierung und Disposition in einem typsicheren Monorepo mit atomaren Mehrstrecken-Transaktionen und null öffentlicher Freigabe von Dokumenten. *(Seite aktuell offline; Screenshots stammen aus dem Produktivbetrieb.)*\n\n- **Rolle**: Fullstack-Entwickler (im Team)\n- **Zeitraum**: Mai 2024 – Aug. 2024\n- **Stack**: Next.js, tRPC, Turborepo, Prisma, PostgreSQL, Redis, MinIO`,
   },
 ];

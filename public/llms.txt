@@ -4,7 +4,7 @@
 
 ## About
 
-Parsa Niavand is a Full-Stack Software Engineer with hands-on experience building production-grade web applications, real-time systems, and AI/ML projects. Based in Armenia (previously Iran). Works across the entire stack — from pixel-perfect frontends to scalable backend architectures.
+Parsa Niavand is a Full-Stack Software Engineer with hands-on experience building production-grade web applications, real-time systems, and AI/ML projects. Based in Armenia. Works across the entire stack — from pixel-perfect frontends to scalable backend architectures.
 
 - **Website**: https://parsany.com
 - **GitHub**: https://github.com/parsany

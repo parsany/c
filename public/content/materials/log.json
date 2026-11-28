@@ -7,7 +7,7 @@
     },
     {
       "date": "2008.03",
-      "description": "moved to tehran.",
+      "description": "moved to the capital.",
       "icon": "globe.svg"
     },
     {
@@ -20,7 +20,6 @@
       "description": "Started kyokushin karate.",
       "icon": "experience.svg"
     },
-
     {
       "date": "2010.01",
       "description": "got introduced to gregorian calendar.",
@@ -56,7 +55,7 @@
       "description": "my interest in systems started to peak plus philosophy.",
       "icon": "software.svg"
     },
-     {
+    {
       "date": "2020.04",
       "description": "started learning AI.",
       "icon": "software.svg"
