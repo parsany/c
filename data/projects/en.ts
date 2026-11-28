@@ -272,6 +272,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
     ],
     isactive: true,
     isLive: true,
+    noindex: true,
     link: "https://atraf.parsany.com",
     links: [
       { label: "Main Website", url: "https://atrafian.ir" },
@@ -435,6 +436,7 @@ export const ProjectProfessional: ProfessionalProject[] = [
     ],
     tag: ["Next.js", "Tailwind CSS", "NextAuth", "Redis", "MinIO/S3", "Java"],
     isactive: false,
+    noindex: true,
     link: "https://himeh.parsany.com/",
     links: [
       { label: "Live Demo", url: "https://himeh.parsany.com/" },
